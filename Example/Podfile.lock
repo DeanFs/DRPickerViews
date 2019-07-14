@@ -1,0 +1,16 @@
+PODS:
+  - DRPickerViews (0.1.0)
+
+DEPENDENCIES:
+  - DRPickerViews (from `../`)
+
+EXTERNAL SOURCES:
+  DRPickerViews:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DRPickerViews: c1522027270dec2b4a064e16a8416862c14522c4
+
+PODFILE CHECKSUM: e2f3ea7439bfebfa7a8a46f9ab27846c70a7ebf1
+
+COCOAPODS: 1.7.0.rc.1

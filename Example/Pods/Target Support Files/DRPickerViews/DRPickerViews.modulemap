@@ -1,0 +1,6 @@
+framework module DRPickerViews {
+  umbrella header "DRPickerViews-umbrella.h"
+
+  export *
+  module * { export * }
+}

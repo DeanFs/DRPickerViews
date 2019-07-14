@@ -1,0 +1,22 @@
+{
+  "name": "DRPickerViews",
+  "version": "0.1.0",
+  "summary": "A short description of DRPickerViews.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Dean_F/DRPickerViews",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Dean_F": "stone.feng1990@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Dean_F/DRPickerViews.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "DRPickerViews/Classes/**/*"
+}
