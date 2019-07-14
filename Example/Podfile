@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'DRPickerViews_Example' do
+  pod 'DRPickerViews', :path => '../'
+
+  target 'DRPickerViews_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
