@@ -1,9 +1,9 @@
 {
   "name": "DRPickerViews",
   "version": "0.1.0",
-  "summary": "A short description of DRPickerViews.",
+  "summary": "自定义选择器集合",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/Dean_F/DRPickerViews",
+  "homepage": "https://github.com/DeanFs/DRPickerViews",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +12,66 @@
     "Dean_F": "stone.feng1990@gmail.com"
   },
   "source": {
-    "git": "https://github.com/Dean_F/DRPickerViews.git",
+    "git": "https://github.com/DeanFs/DRPickerViews.git",
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
-  "source_files": "DRPickerViews/Classes/**/*"
+  "resources": [
+    "DRPickerViews/Assets/*",
+    "DRPickerViews/Classes/**/*.xib"
+  ],
+  "subspecs": [
+    {
+      "name": "DatePickers",
+      "source_files": "DRPickerViews/Classes/DatePickers/*.{h,m}",
+      "subspecs": [
+        {
+          "name": "SubViews",
+          "source_files": "DRPickerViews/Classes/DatePickers/SubViews/*.{h,m}"
+        },
+        {
+          "name": "Classes",
+          "source_files": "DRPickerViews/Classes/DatePickers/Classes/*.{h,m}",
+          "subspecs": [
+            {
+              "name": "DRYMDWithLunarPicker",
+              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRYMDWithLunarPicker/*.{h,m}",
+              "subspecs": [
+                {
+                  "name": "DataSource",
+                  "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRYMDWithLunarPicker/DataSource/*.{h,m}"
+                }
+              ]
+            },
+            {
+              "name": "DRTimeConsumingPicker",
+              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRTimeConsumingPicker/*.{h,m}"
+            },
+            {
+              "name": "DRYMDPicker",
+              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRYMDPicker/*.{h,m}"
+            },
+            {
+              "name": "DRYMDWithTodayPicker",
+              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRYMDWithTodayPicker/*.{h,m}"
+            },
+            {
+              "name": "DRYearMonthPicker",
+              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRYearMonthPicker/*.{h,m}"
+            },
+            {
+              "name": "DRMDWTPicker",
+              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRMDWTPicker/*.{h,m}"
+            },
+            {
+              "name": "DRHourMinutePicker",
+              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRHourMinutePicker/*.{h,m}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

@@ -7,16 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24797792509ED1D593F749EF1AE1FCB1 /* DRMDWTPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = E49331D0A25DAAEE841C024CD15A5717 /* DRMDWTPicker.xib */; };
 		2E0CD260069D04935D80A888A6C3FF7D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		32DDB8D0D0F82CE88580D4EFDA455433 /* DRYMDWithLunarPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7973830A5AB799B79E8D37EE896A5340 /* DRYMDWithLunarPicker.xib */; };
+		344B38F9887E3BD2C742A5E7D4606DC2 /* DRYMDPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = A38DC77A5299C934422A54F5FA824F13 /* DRYMDPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A2AEC3807DAF6721C1CC52966F7AE51 /* DRBaseDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A83400713A0CC49CCB7E97BC9E92CB /* DRBaseDatePicker.m */; };
+		3D63FBEA1344522166D2CAE3E0C85B6E /* DRYMDWithTodayPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 33AEF7DF7AB5BF621A4B4280D21B2E93 /* DRYMDWithTodayPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3DD52C9CE7520505A03B5E0A9051567D /* DRYearMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8AB1142875C55FA134C53C0D38E2BC /* DRYearMonthPicker.m */; };
+		400FA977A0C56D357DCFFCC84C9DBE7B /* DRTimeConsumingPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73403B9E932E9D1E425CBED0785720BB /* DRTimeConsumingPicker.xib */; };
 		44628927E1ABFCFB34464C9CAE2790E6 /* Pods-DRPickerViews_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E2ECFF80DA112C61E00925C08B7882EB /* Pods-DRPickerViews_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		551A3AA56C0F69307CF84E045F888117 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		4D2FDD37B04317B0ED3C280E36FEBE65 /* DRDatePickerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C0686841C03E54337D186F221D8DBF /* DRDatePickerFactory.m */; };
+		5C86DE17555800885E99E7D88E524156 /* DRHourMinutePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A128C704D2D176671684B6CEE7CDE00 /* DRHourMinutePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60DCE6727480A33C4CC6ED2B10BCD846 /* DRMDWTPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = B4D20512AA1A709C771D2FBFFD10F500 /* DRMDWTPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64077CAB37BE63B61C02433964166991 /* DRYearMonthPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = DC8F9566DC4947C6C933BA300191301D /* DRYearMonthPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		71A3999A14BB529A14171AB7EB615644 /* DRHourMinuteAtomicPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2939FC31C6E85FFC74C2AB08156F1996 /* DRHourMinuteAtomicPickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7596ADCD3460B279A2FA8BC608D04D50 /* DRHourMinuteAtomicPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4634C3C88FBB8927E36B1A26A7C75E /* DRHourMinuteAtomicPickerView.m */; };
 		78B4290C46D5078D5B6DC56EC35ACF21 /* Pods-DRPickerViews_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 991CC9C96D3EEEDE6DC606ABC0423CF5 /* Pods-DRPickerViews_Example-dummy.m */; };
+		812CEA4A001EF15B06EEB05564467A17 /* DRYearMonthPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = E288AD887C1EADE730B207CBB9FE4A1F /* DRYearMonthPicker.xib */; };
 		8506F5C3DFF3F04524723C387E557B0E /* Pods-DRPickerViews_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9140D8A38BF549B21A184EAB7BB25B63 /* Pods-DRPickerViews_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B53E53449045D06478972968134174F /* DRMDWTPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C879B13EC99EA55E35F9A34964965 /* DRMDWTPicker.m */; };
+		8F7B7545C4451426812A0E99EA8B374D /* DRTimeConsumingPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 0112FED06900481AA2B7CDAD824EC6A1 /* DRTimeConsumingPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		939271558ADB095BA687BCD3D5774C6F /* DRYMDWithLunarPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = D4785318DCC4BEF0A6AE7D9231130B41 /* DRYMDWithLunarPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		967BFA3CE02F07777DCCB74ECADDF8AA /* DRYMDPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB17017943BAB74732BADE24EF64E30 /* DRYMDPicker.m */; };
+		994492EFBE90643A1522E40C6132856A /* DRHourMinutePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E0EFB361B16BB83DAF08D8FD2DE277 /* DRHourMinutePicker.xib */; };
+		99D4D9D375DB291095782133E50CE56D /* DRTimeConsumingPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6C5358D5D358EED43B975FCE236268 /* DRTimeConsumingPicker.m */; };
+		9B039AA6B7C9B23B514E2D0746967296 /* DRPickerViews-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D54649061A83342F0182ACDC169FF190 /* DRPickerViews-dummy.m */; };
 		9D913EC0F00A3A635682F7C007DE48B4 /* Pods-DRPickerViews_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A95BCC5A0613F175CB538050E212978D /* Pods-DRPickerViews_Tests-dummy.m */; };
-		A5F3C2C315E36BDF5A9D17FCBF706279 /* DRPickerViews-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B3CCD9C256CBFAE3ED6A4B4677A51767 /* DRPickerViews-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A0B3B0D43D2409B84AD6157FF8141AC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		A4439511305096EBA8A6725506715A03 /* DRHourMinutePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D1DF8CFD053D5C3750A37176668F713E /* DRHourMinutePicker.m */; };
+		A62CBF399487B728D7AB635F0D990902 /* DRYMDWithLunarPickerOutputObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B1F1008738D7BBF175405DAF9C3224 /* DRYMDWithLunarPickerOutputObject.m */; };
+		B4C712F4AFC7EBFE61EF90F8CFEAAF98 /* DRYMDWithLunarPickerMonthDayDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 643A2A55713E4FD008917DE3911A4F1B /* DRYMDWithLunarPickerMonthDayDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC14FE6D2402BC654D52F3A56027FD83 /* DRYMDWithLunarPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C8B0EA5F0A30C8E4C22525E8C6F85E /* DRYMDWithLunarPicker.m */; };
 		CA3A94770D62F1BCDB6E0ACC370702DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		DA3722F8050FCC9366D0E5AEF4677A9D /* ReplaceMe.m in Sources */ = {isa = PBXBuildFile; fileRef = D77EE46C8BA24667873CA13149F940D6 /* ReplaceMe.m */; };
-		E14302C08343061F55BC50143E2F85C3 /* DRPickerViews-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4F1E7543C5BE1516B77572FF331983 /* DRPickerViews-dummy.m */; };
+		CDC09605016462681DA5F4418AED5087 /* DRYMDWithTodayPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2733E93E3153210C030DDF3200F42D8F /* DRYMDWithTodayPicker.m */; };
+		CDD559008970DA0BBC4D5482615424BD /* DRDatePickerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = BF10AC38A75945D9B0A44DB4A173378B /* DRDatePickerFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC1CE1E9BF798F36A0CA57E73246930C /* DRHourMinuteAtomicPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DEEE25CBBB2C1719C7DEEF33283293D /* DRHourMinuteAtomicPickerView.xib */; };
+		DE531653A03D102C13683AD9BF0D1514 /* DRPickerViews-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1194489CCA16001E44ABCFDDBEAAB847 /* DRPickerViews-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2CBC02DF330A32489931BA68107061A /* DRYMDWithLunarPickerOutputObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9CA110E6A67B765206DEA563297F81 /* DRYMDWithLunarPickerOutputObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8DD9263949D6A268C6830FA06996F07 /* DRBaseDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B08F78B1923C08BD712C0E48C1D845B /* DRBaseDatePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EDEB3557CED504E9CB8F75308CEA791B /* DRYMDWithTodayPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B117F0DDD4A9BCE1D255D47FC2945B /* DRYMDWithTodayPicker.xib */; };
+		F0B0F3E97DD4A01B49EB392FA2CAFEBC /* DRYMDWithLunarPickerMonthDayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DE37AF62F6347293C7C137D9D9666DFC /* DRYMDWithLunarPickerMonthDayDataSource.m */; };
+		F7369D6B3D42F7C67FB97B080403319C /* DRYMDPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67D3EA378C2D48A837B2C2E0CE2ECCAB /* DRYMDPicker.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,46 +68,77 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0112FED06900481AA2B7CDAD824EC6A1 /* DRTimeConsumingPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRTimeConsumingPicker.h; path = DRPickerViews/Classes/DatePickers/Classes/DRTimeConsumingPicker/DRTimeConsumingPicker.h; sourceTree = "<group>"; };
+		05B117F0DDD4A9BCE1D255D47FC2945B /* DRYMDWithTodayPicker.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRYMDWithTodayPicker.xib; sourceTree = "<group>"; };
 		068459F7E41FE1D4623C8957C7111C5A /* Pods-DRPickerViews_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DRPickerViews_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		0A2C1CBC3B2C1BA9F6C88D67061403E4 /* DRPickerViews-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DRPickerViews-prefix.pch"; sourceTree = "<group>"; };
+		0B08F78B1923C08BD712C0E48C1D845B /* DRBaseDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRBaseDatePicker.h; path = DRPickerViews/Classes/DatePickers/Classes/DRBaseDatePicker.h; sourceTree = "<group>"; };
 		0BB6C03C66E2694394B433491B8E1A97 /* Pods-DRPickerViews_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DRPickerViews_Example.modulemap"; sourceTree = "<group>"; };
 		0BFFF6856EE9D82B351A09E662C48B96 /* Pods-DRPickerViews_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DRPickerViews_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		0DEEE25CBBB2C1719C7DEEF33283293D /* DRHourMinuteAtomicPickerView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRHourMinuteAtomicPickerView.xib; sourceTree = "<group>"; };
+		1194489CCA16001E44ABCFDDBEAAB847 /* DRPickerViews-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DRPickerViews-umbrella.h"; sourceTree = "<group>"; };
 		1709FB229CE39348D93039BCCADC2BAC /* Pods_DRPickerViews_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DRPickerViews_Example.framework; path = "Pods-DRPickerViews_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17FC8DBE5D5C8BC0AB06B31C61CF0D93 /* DRPickerViews.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = DRPickerViews.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		20A983266DB042FCCCABA27004636DD3 /* Pods-DRPickerViews_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DRPickerViews_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		2D13B05813EB538F10312712BBEB70F0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		2733E93E3153210C030DDF3200F42D8F /* DRYMDWithTodayPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRYMDWithTodayPicker.m; path = DRPickerViews/Classes/DatePickers/Classes/DRYMDWithTodayPicker/DRYMDWithTodayPicker.m; sourceTree = "<group>"; };
+		2939FC31C6E85FFC74C2AB08156F1996 /* DRHourMinuteAtomicPickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRHourMinuteAtomicPickerView.h; path = DRPickerViews/Classes/DatePickers/SubViews/DRHourMinuteAtomicPickerView.h; sourceTree = "<group>"; };
+		30C8B0EA5F0A30C8E4C22525E8C6F85E /* DRYMDWithLunarPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRYMDWithLunarPicker.m; path = DRPickerViews/Classes/DatePickers/Classes/DRYMDWithLunarPicker/DRYMDWithLunarPicker.m; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		33AEF7DF7AB5BF621A4B4280D21B2E93 /* DRYMDWithTodayPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRYMDWithTodayPicker.h; path = DRPickerViews/Classes/DatePickers/Classes/DRYMDWithTodayPicker/DRYMDWithTodayPicker.h; sourceTree = "<group>"; };
+		40B1F1008738D7BBF175405DAF9C3224 /* DRYMDWithLunarPickerOutputObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRYMDWithLunarPickerOutputObject.m; path = DRPickerViews/Classes/DatePickers/Classes/DRYMDWithLunarPicker/DataSource/DRYMDWithLunarPickerOutputObject.m; sourceTree = "<group>"; };
 		442F05B11284F903EF88BF413A6E7BF6 /* Pods-DRPickerViews_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DRPickerViews_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		44E0EFB361B16BB83DAF08D8FD2DE277 /* DRHourMinutePicker.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRHourMinutePicker.xib; sourceTree = "<group>"; };
 		463186DDC526D2942B986048C7FA9EF6 /* Pods-DRPickerViews_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DRPickerViews_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		525A1FD1C466ED8359D29E6EC57CE788 /* DRPickerViews.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = DRPickerViews.modulemap; sourceTree = "<group>"; };
+		5296C919BFE2011B1885C813874CA21F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		54F446ED36B9809AAE18E7AC132D7B71 /* Pods-DRPickerViews_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DRPickerViews_Example-Info.plist"; sourceTree = "<group>"; };
-		5590606EA7D3CBA5B8B8120A839A0DC9 /* DRPickerViews-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DRPickerViews-Info.plist"; sourceTree = "<group>"; };
 		5BD3E02D0CB7FBC236FADAF2C79A6444 /* Pods-DRPickerViews_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DRPickerViews_Example.release.xcconfig"; sourceTree = "<group>"; };
 		5C609C725B4BD57C6734C0F96A1CD15F /* DRPickerViews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DRPickerViews.framework; path = DRPickerViews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D9DE39FE8BF08CDF8CC13F6A824FBC7 /* DRPickerViews.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = DRPickerViews.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6398218C9B2796F79522BE53E9A45B0F /* Pods-DRPickerViews_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DRPickerViews_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		7B375DBB359AD904986F9F1D8CB20315 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		643A2A55713E4FD008917DE3911A4F1B /* DRYMDWithLunarPickerMonthDayDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRYMDWithLunarPickerMonthDayDataSource.h; path = DRPickerViews/Classes/DatePickers/Classes/DRYMDWithLunarPicker/DataSource/DRYMDWithLunarPickerMonthDayDataSource.h; sourceTree = "<group>"; };
+		67D3EA378C2D48A837B2C2E0CE2ECCAB /* DRYMDPicker.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRYMDPicker.xib; sourceTree = "<group>"; };
+		6809FE194FCC49A5CF14ED38D4AC86D5 /* DRPickerViews-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DRPickerViews-Info.plist"; sourceTree = "<group>"; };
+		6A128C704D2D176671684B6CEE7CDE00 /* DRHourMinutePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRHourMinutePicker.h; path = DRPickerViews/Classes/DatePickers/Classes/DRHourMinutePicker/DRHourMinutePicker.h; sourceTree = "<group>"; };
+		6B11BCC549E7291A8CDE644B9B2C8C29 /* DRPickerViews.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DRPickerViews.xcconfig; sourceTree = "<group>"; };
+		6E9CA110E6A67B765206DEA563297F81 /* DRYMDWithLunarPickerOutputObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRYMDWithLunarPickerOutputObject.h; path = DRPickerViews/Classes/DatePickers/Classes/DRYMDWithLunarPicker/DataSource/DRYMDWithLunarPickerOutputObject.h; sourceTree = "<group>"; };
+		6EB17017943BAB74732BADE24EF64E30 /* DRYMDPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRYMDPicker.m; path = DRPickerViews/Classes/DatePickers/Classes/DRYMDPicker/DRYMDPicker.m; sourceTree = "<group>"; };
+		71A83400713A0CC49CCB7E97BC9E92CB /* DRBaseDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRBaseDatePicker.m; path = DRPickerViews/Classes/DatePickers/Classes/DRBaseDatePicker.m; sourceTree = "<group>"; };
+		73403B9E932E9D1E425CBED0785720BB /* DRTimeConsumingPicker.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRTimeConsumingPicker.xib; sourceTree = "<group>"; };
+		7973830A5AB799B79E8D37EE896A5340 /* DRYMDWithLunarPicker.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRYMDWithLunarPicker.xib; sourceTree = "<group>"; };
+		7FD0B959352E4971322645E79B659587 /* DRPickerViews.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = DRPickerViews.modulemap; sourceTree = "<group>"; };
+		80C0686841C03E54337D186F221D8DBF /* DRDatePickerFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRDatePickerFactory.m; path = DRPickerViews/Classes/DatePickers/DRDatePickerFactory.m; sourceTree = "<group>"; };
+		8A6C879B13EC99EA55E35F9A34964965 /* DRMDWTPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRMDWTPicker.m; path = DRPickerViews/Classes/DatePickers/Classes/DRMDWTPicker/DRMDWTPicker.m; sourceTree = "<group>"; };
+		8C8AB1142875C55FA134C53C0D38E2BC /* DRYearMonthPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRYearMonthPicker.m; path = DRPickerViews/Classes/DatePickers/Classes/DRYearMonthPicker/DRYearMonthPicker.m; sourceTree = "<group>"; };
+		90E67D55114AE084AEF03BE84AD5A8F8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		9140D8A38BF549B21A184EAB7BB25B63 /* Pods-DRPickerViews_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DRPickerViews_Tests-umbrella.h"; sourceTree = "<group>"; };
 		991CC9C96D3EEEDE6DC606ABC0423CF5 /* Pods-DRPickerViews_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DRPickerViews_Example-dummy.m"; sourceTree = "<group>"; };
+		9D4634C3C88FBB8927E36B1A26A7C75E /* DRHourMinuteAtomicPickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRHourMinuteAtomicPickerView.m; path = DRPickerViews/Classes/DatePickers/SubViews/DRHourMinuteAtomicPickerView.m; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F1C0F771E13D061DEBA2DD293E5E35A /* Pods-DRPickerViews_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DRPickerViews_Example-frameworks.sh"; sourceTree = "<group>"; };
+		A38DC77A5299C934422A54F5FA824F13 /* DRYMDPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRYMDPicker.h; path = DRPickerViews/Classes/DatePickers/Classes/DRYMDPicker/DRYMDPicker.h; sourceTree = "<group>"; };
 		A41838FB0E743DD4D4139D0FD5149CD6 /* Pods_DRPickerViews_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DRPickerViews_Tests.framework; path = "Pods-DRPickerViews_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A95BCC5A0613F175CB538050E212978D /* Pods-DRPickerViews_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DRPickerViews_Tests-dummy.m"; sourceTree = "<group>"; };
 		AB39CEBD351303BC085E8CD8CBDF5687 /* Pods-DRPickerViews_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DRPickerViews_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		ADE8C916426D708E345427D01EA5E913 /* Pods-DRPickerViews_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DRPickerViews_Tests.modulemap"; sourceTree = "<group>"; };
-		B33A4F842AD33F4A20937E3FB291CCD7 /* DRPickerViews-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DRPickerViews-prefix.pch"; sourceTree = "<group>"; };
-		B3CCD9C256CBFAE3ED6A4B4677A51767 /* DRPickerViews-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DRPickerViews-umbrella.h"; sourceTree = "<group>"; };
-		BB4F1E7543C5BE1516B77572FF331983 /* DRPickerViews-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DRPickerViews-dummy.m"; sourceTree = "<group>"; };
-		BD4982CC717AE1EC33A06673F0F16B68 /* DRPickerViews.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DRPickerViews.xcconfig; sourceTree = "<group>"; };
-		D77EE46C8BA24667873CA13149F940D6 /* ReplaceMe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReplaceMe.m; path = DRPickerViews/Classes/ReplaceMe.m; sourceTree = "<group>"; };
+		B4D20512AA1A709C771D2FBFFD10F500 /* DRMDWTPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRMDWTPicker.h; path = DRPickerViews/Classes/DatePickers/Classes/DRMDWTPicker/DRMDWTPicker.h; sourceTree = "<group>"; };
+		BF10AC38A75945D9B0A44DB4A173378B /* DRDatePickerFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRDatePickerFactory.h; path = DRPickerViews/Classes/DatePickers/DRDatePickerFactory.h; sourceTree = "<group>"; };
+		CE6C5358D5D358EED43B975FCE236268 /* DRTimeConsumingPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRTimeConsumingPicker.m; path = DRPickerViews/Classes/DatePickers/Classes/DRTimeConsumingPicker/DRTimeConsumingPicker.m; sourceTree = "<group>"; };
+		D1DF8CFD053D5C3750A37176668F713E /* DRHourMinutePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRHourMinutePicker.m; path = DRPickerViews/Classes/DatePickers/Classes/DRHourMinutePicker/DRHourMinutePicker.m; sourceTree = "<group>"; };
+		D4785318DCC4BEF0A6AE7D9231130B41 /* DRYMDWithLunarPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRYMDWithLunarPicker.h; path = DRPickerViews/Classes/DatePickers/Classes/DRYMDWithLunarPicker/DRYMDWithLunarPicker.h; sourceTree = "<group>"; };
+		D54649061A83342F0182ACDC169FF190 /* DRPickerViews-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DRPickerViews-dummy.m"; sourceTree = "<group>"; };
 		DAACBA8918E03E1DDA642225B93AFEE8 /* Pods-DRPickerViews_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DRPickerViews_Tests-Info.plist"; sourceTree = "<group>"; };
+		DC8F9566DC4947C6C933BA300191301D /* DRYearMonthPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRYearMonthPicker.h; path = DRPickerViews/Classes/DatePickers/Classes/DRYearMonthPicker/DRYearMonthPicker.h; sourceTree = "<group>"; };
+		DE37AF62F6347293C7C137D9D9666DFC /* DRYMDWithLunarPickerMonthDayDataSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRYMDWithLunarPickerMonthDayDataSource.m; path = DRPickerViews/Classes/DatePickers/Classes/DRYMDWithLunarPicker/DataSource/DRYMDWithLunarPickerMonthDayDataSource.m; sourceTree = "<group>"; };
+		E288AD887C1EADE730B207CBB9FE4A1F /* DRYearMonthPicker.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRYearMonthPicker.xib; sourceTree = "<group>"; };
 		E2ECFF80DA112C61E00925C08B7882EB /* Pods-DRPickerViews_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DRPickerViews_Example-umbrella.h"; sourceTree = "<group>"; };
+		E49331D0A25DAAEE841C024CD15A5717 /* DRMDWTPicker.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRMDWTPicker.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		00C8DE3BF782EB34D1EF0F6A389D8455 /* Frameworks */ = {
+		12832AAA38490C3FEAB7C35A7E49C49F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				551A3AA56C0F69307CF84E045F888117 /* Foundation.framework in Frameworks */,
+				A0B3B0D43D2409B84AD6157FF8141AC4 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,18 +161,107 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6F36DDB916148B6E797B02D7D86B3655 /* Support Files */ = {
+		08CDA48AAF2C2BAEEBF0C549F04C9C9E /* DRYearMonthPicker */ = {
 			isa = PBXGroup;
 			children = (
-				525A1FD1C466ED8359D29E6EC57CE788 /* DRPickerViews.modulemap */,
-				BD4982CC717AE1EC33A06673F0F16B68 /* DRPickerViews.xcconfig */,
-				BB4F1E7543C5BE1516B77572FF331983 /* DRPickerViews-dummy.m */,
-				5590606EA7D3CBA5B8B8120A839A0DC9 /* DRPickerViews-Info.plist */,
-				B33A4F842AD33F4A20937E3FB291CCD7 /* DRPickerViews-prefix.pch */,
-				B3CCD9C256CBFAE3ED6A4B4677A51767 /* DRPickerViews-umbrella.h */,
+				E288AD887C1EADE730B207CBB9FE4A1F /* DRYearMonthPicker.xib */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/DRPickerViews";
+			name = DRYearMonthPicker;
+			path = DRYearMonthPicker;
+			sourceTree = "<group>";
+		};
+		195649129D8F015C74793DB4CC8E1094 /* DRYearMonthPicker */ = {
+			isa = PBXGroup;
+			children = (
+				DC8F9566DC4947C6C933BA300191301D /* DRYearMonthPicker.h */,
+				8C8AB1142875C55FA134C53C0D38E2BC /* DRYearMonthPicker.m */,
+			);
+			name = DRYearMonthPicker;
+			sourceTree = "<group>";
+		};
+		2FA4304E16FFDE5CA9DA6BE22CA61ECC /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				17FC8DBE5D5C8BC0AB06B31C61CF0D93 /* DRPickerViews.podspec */,
+				90E67D55114AE084AEF03BE84AD5A8F8 /* LICENSE */,
+				5296C919BFE2011B1885C813874CA21F /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		374EB652CF354EB5A195EF333607ACDF /* DRHourMinutePicker */ = {
+			isa = PBXGroup;
+			children = (
+				6A128C704D2D176671684B6CEE7CDE00 /* DRHourMinutePicker.h */,
+				D1DF8CFD053D5C3750A37176668F713E /* DRHourMinutePicker.m */,
+			);
+			name = DRHourMinutePicker;
+			sourceTree = "<group>";
+		};
+		42EE233D9DFDB69A550D2B7B8D964234 /* DRYMDPicker */ = {
+			isa = PBXGroup;
+			children = (
+				A38DC77A5299C934422A54F5FA824F13 /* DRYMDPicker.h */,
+				6EB17017943BAB74732BADE24EF64E30 /* DRYMDPicker.m */,
+			);
+			name = DRYMDPicker;
+			sourceTree = "<group>";
+		};
+		474087432DD710CF7BAF26FF4E43AE07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF925A0465B706A0466857F5859C6C75 /* Classes */,
+				BAEB476AF3257C37A19CE72C36725D59 /* SubViews */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		530C2BBDA2AFE78EC04C93BBE684BDF3 /* DRPickerViews */ = {
+			isa = PBXGroup;
+			children = (
+				D481FE77BCF4D13D672DB417829DF3B4 /* DatePickers */,
+				2FA4304E16FFDE5CA9DA6BE22CA61ECC /* Pod */,
+				474087432DD710CF7BAF26FF4E43AE07 /* Resources */,
+				D81FF2D7847D967D85C1AC106FFEE8EA /* Support Files */,
+			);
+			name = DRPickerViews;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		6831755D250BD85BEFB1BD0645F4C48E /* DRYMDWithLunarPicker */ = {
+			isa = PBXGroup;
+			children = (
+				7973830A5AB799B79E8D37EE896A5340 /* DRYMDWithLunarPicker.xib */,
+			);
+			name = DRYMDWithLunarPicker;
+			path = DRYMDWithLunarPicker;
+			sourceTree = "<group>";
+		};
+		6E107F8E42A68D8CAA6DCE2D59D77843 /* DRTimeConsumingPicker */ = {
+			isa = PBXGroup;
+			children = (
+				0112FED06900481AA2B7CDAD824EC6A1 /* DRTimeConsumingPicker.h */,
+				CE6C5358D5D358EED43B975FCE236268 /* DRTimeConsumingPicker.m */,
+			);
+			name = DRTimeConsumingPicker;
+			sourceTree = "<group>";
+		};
+		77C2C5FE39EC5BF7826DC1B0FBC88CF3 /* DRYMDWithTodayPicker */ = {
+			isa = PBXGroup;
+			children = (
+				33AEF7DF7AB5BF621A4B4280D21B2E93 /* DRYMDWithTodayPicker.h */,
+				2733E93E3153210C030DDF3200F42D8F /* DRYMDWithTodayPicker.m */,
+			);
+			name = DRYMDWithTodayPicker;
+			sourceTree = "<group>";
+		};
+		7EAF72A25470E7C3067149769C5303DC /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				2939FC31C6E85FFC74C2AB08156F1996 /* DRHourMinuteAtomicPickerView.h */,
+				9D4634C3C88FBB8927E36B1A26A7C75E /* DRHourMinuteAtomicPickerView.m */,
+			);
+			name = SubViews;
 			sourceTree = "<group>";
 		};
 		8821C05A29BA64A96AFFE45534A48B85 /* Pods-DRPickerViews_Example */ = {
@@ -130,16 +281,6 @@
 			path = "Target Support Files/Pods-DRPickerViews_Example";
 			sourceTree = "<group>";
 		};
-		8AD33A316A9CF552D7CEC6FC151F27C3 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				5D9DE39FE8BF08CDF8CC13F6A824FBC7 /* DRPickerViews.podspec */,
-				2D13B05813EB538F10312712BBEB70F0 /* LICENSE */,
-				7B375DBB359AD904986F9F1D8CB20315 /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		8B2AF728F05CBDCAA506FCF777094F15 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,23 +291,32 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		952D990DD0A48C2479C34CC92E97A6A1 /* Development Pods */ = {
+		8F384AE8E7AFD32D820685549D7B564D /* DRYMDWithLunarPicker */ = {
 			isa = PBXGroup;
 			children = (
-				9770A9A2B920A34B507897A2F01D7D59 /* DRPickerViews */,
+				D4785318DCC4BEF0A6AE7D9231130B41 /* DRYMDWithLunarPicker.h */,
+				30C8B0EA5F0A30C8E4C22525E8C6F85E /* DRYMDWithLunarPicker.m */,
+				FB13862873751A1477C280C7EA574DF6 /* DataSource */,
 			);
-			name = "Development Pods";
+			name = DRYMDWithLunarPicker;
 			sourceTree = "<group>";
 		};
-		9770A9A2B920A34B507897A2F01D7D59 /* DRPickerViews */ = {
+		A4DDBBA9F38066FE6FC95560B1622A14 /* DRYMDPicker */ = {
 			isa = PBXGroup;
 			children = (
-				D77EE46C8BA24667873CA13149F940D6 /* ReplaceMe.m */,
-				8AD33A316A9CF552D7CEC6FC151F27C3 /* Pod */,
-				6F36DDB916148B6E797B02D7D86B3655 /* Support Files */,
+				67D3EA378C2D48A837B2C2E0CE2ECCAB /* DRYMDPicker.xib */,
 			);
-			name = DRPickerViews;
-			path = ../..;
+			name = DRYMDPicker;
+			path = DRYMDPicker;
+			sourceTree = "<group>";
+		};
+		B70DED52A7B1A8A1A15EF0F70D0E443B /* DRHourMinutePicker */ = {
+			isa = PBXGroup;
+			children = (
+				44E0EFB361B16BB83DAF08D8FD2DE277 /* DRHourMinutePicker.xib */,
+			);
+			name = DRHourMinutePicker;
+			path = DRHourMinutePicker;
 			sourceTree = "<group>";
 		};
 		B809DCB69BD237D3DBBE34DC04941E32 /* Targets Support Files */ = {
@@ -176,6 +326,30 @@
 				D310316ED19CBBF83B2FD4AD47D895FB /* Pods-DRPickerViews_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		BAEB476AF3257C37A19CE72C36725D59 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				0DEEE25CBBB2C1719C7DEEF33283293D /* DRHourMinuteAtomicPickerView.xib */,
+			);
+			name = SubViews;
+			path = DRPickerViews/Classes/DatePickers/SubViews;
+			sourceTree = "<group>";
+		};
+		BF925A0465B706A0466857F5859C6C75 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B70DED52A7B1A8A1A15EF0F70D0E443B /* DRHourMinutePicker */,
+				EDFE608713C78B691C85E43378C0372D /* DRMDWTPicker */,
+				E0B462C81FD34C9F55A453A3AFD41732 /* DRTimeConsumingPicker */,
+				08CDA48AAF2C2BAEEBF0C549F04C9C9E /* DRYearMonthPicker */,
+				A4DDBBA9F38066FE6FC95560B1622A14 /* DRYMDPicker */,
+				6831755D250BD85BEFB1BD0645F4C48E /* DRYMDWithLunarPicker */,
+				FC97DC34636D7760DEB8A870F117D96C /* DRYMDWithTodayPicker */,
+			);
+			name = Classes;
+			path = DRPickerViews/Classes/DatePickers/Classes;
 			sourceTree = "<group>";
 		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
@@ -190,11 +364,27 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				952D990DD0A48C2479C34CC92E97A6A1 /* Development Pods */,
+				D376C04527849E41569950B0B3C91EC6 /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				8B2AF728F05CBDCAA506FCF777094F15 /* Products */,
 				B809DCB69BD237D3DBBE34DC04941E32 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		D1954563DCB14D38F03CED370E11267F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0B08F78B1923C08BD712C0E48C1D845B /* DRBaseDatePicker.h */,
+				71A83400713A0CC49CCB7E97BC9E92CB /* DRBaseDatePicker.m */,
+				374EB652CF354EB5A195EF333607ACDF /* DRHourMinutePicker */,
+				EE6750D0F8549085F5DB8AD4B3D53115 /* DRMDWTPicker */,
+				6E107F8E42A68D8CAA6DCE2D59D77843 /* DRTimeConsumingPicker */,
+				195649129D8F015C74793DB4CC8E1094 /* DRYearMonthPicker */,
+				42EE233D9DFDB69A550D2B7B8D964234 /* DRYMDPicker */,
+				8F384AE8E7AFD32D820685549D7B564D /* DRYMDWithLunarPicker */,
+				77C2C5FE39EC5BF7826DC1B0FBC88CF3 /* DRYMDWithTodayPicker */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
@@ -221,6 +411,86 @@
 			path = "Target Support Files/Pods-DRPickerViews_Tests";
 			sourceTree = "<group>";
 		};
+		D376C04527849E41569950B0B3C91EC6 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				530C2BBDA2AFE78EC04C93BBE684BDF3 /* DRPickerViews */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		D481FE77BCF4D13D672DB417829DF3B4 /* DatePickers */ = {
+			isa = PBXGroup;
+			children = (
+				BF10AC38A75945D9B0A44DB4A173378B /* DRDatePickerFactory.h */,
+				80C0686841C03E54337D186F221D8DBF /* DRDatePickerFactory.m */,
+				D1954563DCB14D38F03CED370E11267F /* Classes */,
+				7EAF72A25470E7C3067149769C5303DC /* SubViews */,
+			);
+			name = DatePickers;
+			sourceTree = "<group>";
+		};
+		D81FF2D7847D967D85C1AC106FFEE8EA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7FD0B959352E4971322645E79B659587 /* DRPickerViews.modulemap */,
+				6B11BCC549E7291A8CDE644B9B2C8C29 /* DRPickerViews.xcconfig */,
+				D54649061A83342F0182ACDC169FF190 /* DRPickerViews-dummy.m */,
+				6809FE194FCC49A5CF14ED38D4AC86D5 /* DRPickerViews-Info.plist */,
+				0A2C1CBC3B2C1BA9F6C88D67061403E4 /* DRPickerViews-prefix.pch */,
+				1194489CCA16001E44ABCFDDBEAAB847 /* DRPickerViews-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/DRPickerViews";
+			sourceTree = "<group>";
+		};
+		E0B462C81FD34C9F55A453A3AFD41732 /* DRTimeConsumingPicker */ = {
+			isa = PBXGroup;
+			children = (
+				73403B9E932E9D1E425CBED0785720BB /* DRTimeConsumingPicker.xib */,
+			);
+			name = DRTimeConsumingPicker;
+			path = DRTimeConsumingPicker;
+			sourceTree = "<group>";
+		};
+		EDFE608713C78B691C85E43378C0372D /* DRMDWTPicker */ = {
+			isa = PBXGroup;
+			children = (
+				E49331D0A25DAAEE841C024CD15A5717 /* DRMDWTPicker.xib */,
+			);
+			name = DRMDWTPicker;
+			path = DRMDWTPicker;
+			sourceTree = "<group>";
+		};
+		EE6750D0F8549085F5DB8AD4B3D53115 /* DRMDWTPicker */ = {
+			isa = PBXGroup;
+			children = (
+				B4D20512AA1A709C771D2FBFFD10F500 /* DRMDWTPicker.h */,
+				8A6C879B13EC99EA55E35F9A34964965 /* DRMDWTPicker.m */,
+			);
+			name = DRMDWTPicker;
+			sourceTree = "<group>";
+		};
+		FB13862873751A1477C280C7EA574DF6 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				643A2A55713E4FD008917DE3911A4F1B /* DRYMDWithLunarPickerMonthDayDataSource.h */,
+				DE37AF62F6347293C7C137D9D9666DFC /* DRYMDWithLunarPickerMonthDayDataSource.m */,
+				6E9CA110E6A67B765206DEA563297F81 /* DRYMDWithLunarPickerOutputObject.h */,
+				40B1F1008738D7BBF175405DAF9C3224 /* DRYMDWithLunarPickerOutputObject.m */,
+			);
+			name = DataSource;
+			sourceTree = "<group>";
+		};
+		FC97DC34636D7760DEB8A870F117D96C /* DRYMDWithTodayPicker */ = {
+			isa = PBXGroup;
+			children = (
+				05B117F0DDD4A9BCE1D255D47FC2945B /* DRYMDWithTodayPicker.xib */,
+			);
+			name = DRYMDWithTodayPicker;
+			path = DRYMDWithTodayPicker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -240,11 +510,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A84B0AF6A70901010657AC7C909F39A /* Headers */ = {
+		32C47F5A963E5679E9521E7525027B81 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5F3C2C315E36BDF5A9D17FCBF706279 /* DRPickerViews-umbrella.h in Headers */,
+				E8DD9263949D6A268C6830FA06996F07 /* DRBaseDatePicker.h in Headers */,
+				CDD559008970DA0BBC4D5482615424BD /* DRDatePickerFactory.h in Headers */,
+				71A3999A14BB529A14171AB7EB615644 /* DRHourMinuteAtomicPickerView.h in Headers */,
+				5C86DE17555800885E99E7D88E524156 /* DRHourMinutePicker.h in Headers */,
+				60DCE6727480A33C4CC6ED2B10BCD846 /* DRMDWTPicker.h in Headers */,
+				DE531653A03D102C13683AD9BF0D1514 /* DRPickerViews-umbrella.h in Headers */,
+				8F7B7545C4451426812A0E99EA8B374D /* DRTimeConsumingPicker.h in Headers */,
+				64077CAB37BE63B61C02433964166991 /* DRYearMonthPicker.h in Headers */,
+				344B38F9887E3BD2C742A5E7D4606DC2 /* DRYMDPicker.h in Headers */,
+				939271558ADB095BA687BCD3D5774C6F /* DRYMDWithLunarPicker.h in Headers */,
+				B4C712F4AFC7EBFE61EF90F8CFEAAF98 /* DRYMDWithLunarPickerMonthDayDataSource.h in Headers */,
+				E2CBC02DF330A32489931BA68107061A /* DRYMDWithLunarPickerOutputObject.h in Headers */,
+				3D63FBEA1344522166D2CAE3E0C85B6E /* DRYMDWithTodayPicker.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,12 +535,12 @@
 /* Begin PBXNativeTarget section */
 		301E8766702F851FCEE1A59A06C82B20 /* DRPickerViews */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D94DD31B0D1012BD118E2854173FCA50 /* Build configuration list for PBXNativeTarget "DRPickerViews" */;
+			buildConfigurationList = 934CEFDDDE914EC7C87D744B3DDBEDE5 /* Build configuration list for PBXNativeTarget "DRPickerViews" */;
 			buildPhases = (
-				1A84B0AF6A70901010657AC7C909F39A /* Headers */,
-				F494E3A29C021AE682C26D56D62477C9 /* Sources */,
-				00C8DE3BF782EB34D1EF0F6A389D8455 /* Frameworks */,
-				F448D7A70E83EA533C7D7B9CE561E981 /* Resources */,
+				32C47F5A963E5679E9521E7525027B81 /* Headers */,
+				02947F8C2D51DDF6F363BC6D18E7E43B /* Sources */,
+				12832AAA38490C3FEAB7C35A7E49C49F /* Frameworks */,
+				629421C2596C4E3239718D4E576896A6 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -343,14 +625,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A8A96E50B4841EB91F243F42AEB1200F /* Resources */ = {
+		629421C2596C4E3239718D4E576896A6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC1CE1E9BF798F36A0CA57E73246930C /* DRHourMinuteAtomicPickerView.xib in Resources */,
+				994492EFBE90643A1522E40C6132856A /* DRHourMinutePicker.xib in Resources */,
+				24797792509ED1D593F749EF1AE1FCB1 /* DRMDWTPicker.xib in Resources */,
+				400FA977A0C56D357DCFFCC84C9DBE7B /* DRTimeConsumingPicker.xib in Resources */,
+				812CEA4A001EF15B06EEB05564467A17 /* DRYearMonthPicker.xib in Resources */,
+				F7369D6B3D42F7C67FB97B080403319C /* DRYMDPicker.xib in Resources */,
+				32DDB8D0D0F82CE88580D4EFDA455433 /* DRYMDWithLunarPicker.xib in Resources */,
+				EDEB3557CED504E9CB8F75308CEA791B /* DRYMDWithTodayPicker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F448D7A70E83EA533C7D7B9CE561E981 /* Resources */ = {
+		A8A96E50B4841EB91F243F42AEB1200F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -360,6 +650,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		02947F8C2D51DDF6F363BC6D18E7E43B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A2AEC3807DAF6721C1CC52966F7AE51 /* DRBaseDatePicker.m in Sources */,
+				4D2FDD37B04317B0ED3C280E36FEBE65 /* DRDatePickerFactory.m in Sources */,
+				7596ADCD3460B279A2FA8BC608D04D50 /* DRHourMinuteAtomicPickerView.m in Sources */,
+				A4439511305096EBA8A6725506715A03 /* DRHourMinutePicker.m in Sources */,
+				8B53E53449045D06478972968134174F /* DRMDWTPicker.m in Sources */,
+				9B039AA6B7C9B23B514E2D0746967296 /* DRPickerViews-dummy.m in Sources */,
+				99D4D9D375DB291095782133E50CE56D /* DRTimeConsumingPicker.m in Sources */,
+				3DD52C9CE7520505A03B5E0A9051567D /* DRYearMonthPicker.m in Sources */,
+				967BFA3CE02F07777DCCB74ECADDF8AA /* DRYMDPicker.m in Sources */,
+				BC14FE6D2402BC654D52F3A56027FD83 /* DRYMDWithLunarPicker.m in Sources */,
+				F0B0F3E97DD4A01B49EB392FA2CAFEBC /* DRYMDWithLunarPickerMonthDayDataSource.m in Sources */,
+				A62CBF399487B728D7AB635F0D990902 /* DRYMDWithLunarPickerOutputObject.m in Sources */,
+				CDC09605016462681DA5F4418AED5087 /* DRYMDWithTodayPicker.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8138E467145850AF8394E19D031F52B6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -373,15 +683,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				78B4290C46D5078D5B6DC56EC35ACF21 /* Pods-DRPickerViews_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F494E3A29C021AE682C26D56D62477C9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E14302C08343061F55BC50143E2F85C3 /* DRPickerViews-dummy.m in Sources */,
-				DA3722F8050FCC9366D0E5AEF4677A9D /* ReplaceMe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,7 +704,137 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		4BE66A09A74FD25164AAB3C2645B9B93 /* Release */ = {
+		18CE323A914E94BC10CCED3EA30E2625 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B11BCC549E7291A8CDE644B9B2C8C29 /* DRPickerViews.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DRPickerViews/DRPickerViews-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DRPickerViews/DRPickerViews-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DRPickerViews/DRPickerViews.modulemap";
+				PRODUCT_MODULE_NAME = DRPickerViews;
+				PRODUCT_NAME = DRPickerViews;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		309853F3181668B254402206A4A70596 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 068459F7E41FE1D4623C8957C7111C5A /* Pods-DRPickerViews_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-DRPickerViews_Tests/Pods-DRPickerViews_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-DRPickerViews_Tests/Pods-DRPickerViews_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6E70E1CF29C368F5CF51D171456910E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B11BCC549E7291A8CDE644B9B2C8C29 /* DRPickerViews.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DRPickerViews/DRPickerViews-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DRPickerViews/DRPickerViews-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DRPickerViews/DRPickerViews.modulemap";
+				PRODUCT_MODULE_NAME = DRPickerViews;
+				PRODUCT_NAME = DRPickerViews;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		799FB6CDE752EA08AACC120BB576CB8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BD3E02D0CB7FBC236FADAF2C79A6444 /* Pods-DRPickerViews_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-DRPickerViews_Example/Pods-DRPickerViews_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-DRPickerViews_Example/Pods-DRPickerViews_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8F17DC3A99F99FBAD606CE6963886315 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -451,7 +882,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -463,41 +894,7 @@
 			};
 			name = Release;
 		};
-		6CEB41B593B0267AA3A9B5F6A71DE5F5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BD3E02D0CB7FBC236FADAF2C79A6444 /* Pods-DRPickerViews_Example.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-DRPickerViews_Example/Pods-DRPickerViews_Example-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-DRPickerViews_Example/Pods-DRPickerViews_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		7EF7227D9B20A1D549000096ACCB23D7 /* Debug */ = {
+		916E0404255105F480DC4950B7625F7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -548,7 +945,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -561,7 +958,41 @@
 			};
 			name = Debug;
 		};
-		97CF7593CE42CBAC839C1E2752B8ED33 /* Debug */ = {
+		B0920E1F507CF71D5F5A822B7BB6782E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6398218C9B2796F79522BE53E9A45B0F /* Pods-DRPickerViews_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-DRPickerViews_Tests/Pods-DRPickerViews_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-DRPickerViews_Tests/Pods-DRPickerViews_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B9111C64A809500C7BE47FC9AC4724E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20A983266DB042FCCCABA27004636DD3 /* Pods-DRPickerViews_Example.debug.xcconfig */;
 			buildSettings = {
@@ -577,7 +1008,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-DRPickerViews_Example/Pods-DRPickerViews_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-DRPickerViews_Example/Pods-DRPickerViews_Example.modulemap";
@@ -594,144 +1025,14 @@
 			};
 			name = Debug;
 		};
-		A85DA00EE3F19D9C85ED54C74F579674 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 068459F7E41FE1D4623C8957C7111C5A /* Pods-DRPickerViews_Tests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-DRPickerViews_Tests/Pods-DRPickerViews_Tests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-DRPickerViews_Tests/Pods-DRPickerViews_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D71F6F41427F78C65E58A8705EE82309 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD4982CC717AE1EC33A06673F0F16B68 /* DRPickerViews.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/DRPickerViews/DRPickerViews-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DRPickerViews/DRPickerViews-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DRPickerViews/DRPickerViews.modulemap";
-				PRODUCT_MODULE_NAME = DRPickerViews;
-				PRODUCT_NAME = DRPickerViews;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		ECFA16A5B6E6A54D45A3CC46197B8EBF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6398218C9B2796F79522BE53E9A45B0F /* Pods-DRPickerViews_Tests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-DRPickerViews_Tests/Pods-DRPickerViews_Tests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-DRPickerViews_Tests/Pods-DRPickerViews_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		F4AA915518E1591E7466C0A66E58D441 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD4982CC717AE1EC33A06673F0F16B68 /* DRPickerViews.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/DRPickerViews/DRPickerViews-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DRPickerViews/DRPickerViews-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DRPickerViews/DRPickerViews.modulemap";
-				PRODUCT_MODULE_NAME = DRPickerViews;
-				PRODUCT_NAME = DRPickerViews;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		068350E2E93AED58788E4C314F93BA2E /* Build configuration list for PBXNativeTarget "Pods-DRPickerViews_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				97CF7593CE42CBAC839C1E2752B8ED33 /* Debug */,
-				6CEB41B593B0267AA3A9B5F6A71DE5F5 /* Release */,
+				B9111C64A809500C7BE47FC9AC4724E2 /* Debug */,
+				799FB6CDE752EA08AACC120BB576CB8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -739,8 +1040,17 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7EF7227D9B20A1D549000096ACCB23D7 /* Debug */,
-				4BE66A09A74FD25164AAB3C2645B9B93 /* Release */,
+				916E0404255105F480DC4950B7625F7A /* Debug */,
+				8F17DC3A99F99FBAD606CE6963886315 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		934CEFDDDE914EC7C87D744B3DDBEDE5 /* Build configuration list for PBXNativeTarget "DRPickerViews" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18CE323A914E94BC10CCED3EA30E2625 /* Debug */,
+				6E70E1CF29C368F5CF51D171456910E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -748,17 +1058,8 @@
 		C64E819BD5B445F8D58D3353C78219A0 /* Build configuration list for PBXNativeTarget "Pods-DRPickerViews_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A85DA00EE3F19D9C85ED54C74F579674 /* Debug */,
-				ECFA16A5B6E6A54D45A3CC46197B8EBF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D94DD31B0D1012BD118E2854173FCA50 /* Build configuration list for PBXNativeTarget "DRPickerViews" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F4AA915518E1591E7466C0A66E58D441 /* Debug */,
-				D71F6F41427F78C65E58A8705EE82309 /* Release */,
+				309853F3181668B254402206A4A70596 /* Debug */,
+				B0920E1F507CF71D5F5A822B7BB6782E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
