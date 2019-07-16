@@ -10,7 +10,7 @@
 #import <JXExtension/JXExtension.h>
 #import <HexColors/HexColors.h>
 #import "NSDate+DRExtension.h"
-#import "DRBasicKitDefine.h"
+#import <DRMacroDefines/DRMacroDefines.h>
 #import "UITabBar+DRExtension.h"
 
 typedef NS_ENUM(NSInteger, DRYMDPickerType) {
@@ -216,8 +216,14 @@ typedef NS_ENUM(NSInteger, DRYMDPickerType) {
 }
 
 - (void)setupPlanEndPickerImages {
-    self.downImageView.image = [DRBundleManager pngImageWithName:@"icon_sanjiao_endtime"];
-    self.tipImageView.image = [DRBundleManager pngImageWithName:@"icon_zz_tj_tishi"];
+    
+    self.downImageView.image = [self pngImageWithName:@"icon_sanjiao_endtime"];
+    self.tipImageView.image = [self pngImageWithName:@"icon_zz_tj_tishi"];
+}
+
+- (UIImage *)pngImageWithName:(NSString *)name {
+    NSString *imageName = [NSString stringWithFormat:@"%@@%ldx", name, (NSInteger)[UIScreen mainScreen].scale];
+    return [UIImage imageWithContentsOfFile:[KDR_CURRENT_BUNDLE pathForResource:imageName ofType:@"png"]];
 }
 
 #pragma mark - api

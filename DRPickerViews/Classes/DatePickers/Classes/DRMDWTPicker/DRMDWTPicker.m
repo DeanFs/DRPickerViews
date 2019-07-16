@@ -7,7 +7,7 @@
 //
 
 #import "DRMDWTPicker.h"
-#import "DRBasicKitDefine.h"
+#import <DRMacroDefines/DRMacroDefines.h>
 #import "NSDate+DRExtension.h"
 #import <JXExtension/JXExtension.h>
 #import <YYText/YYText.h>

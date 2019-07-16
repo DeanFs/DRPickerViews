@@ -6,7 +6,7 @@
 //
 
 #import "DRTimeConsumingPicker.h"
-#import "DRBasicKitDefine.h"
+#import <DRMacroDefines/DRMacroDefines.h>
 #import <HexColors/HexColors.h>
 
 @implementation DRTimeConsumingModel

@@ -6,11 +6,13 @@
 //
 
 #import "DRYMDWithLunarPickerMonthDayDataSource.h"
-#import "FBLFunctional.h"
-#import "DRBundleManager.h"
+#import <FBLFunctional/FBLFunctional.h>
 #import "NSDate+DRExtension.h"
 #import "NSDictionary+DRExtension.h"
 #import <MJExtension/MJExtension.h>
+#import <DRSandboxManager/DRSandboxManager.h>
+#import <DRMacroDefines/DRMacroDefines.h>
+#import <SSZipArchive/SSZipArchive.h>
 
 @implementation DRYMDWithLunarPickerMonthDayDataSource
 
@@ -227,7 +229,7 @@
 
 - (NSDictionary<NSString *,NSArray *> *)lunarDictionary {
     if (!_lunarDictionary) {
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:[[DRBundleManager calendarLunarJson] mj_JSONObject]];
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:[[self calendarLunarJson] mj_JSONObject]];
         for (NSString *key in dictionary.allKeys) {
             NSArray *dateArray = [dictionary[key] fbl_map:^id _Nullable(NSArray *array) {
                 return array;
@@ -280,6 +282,40 @@
     NSDate *date = self.monthArray[__monthIndex];
     self.dayArray = [date dayDateArrayInCurrentMonth];
     [self safeCheck];
+}
+
+#pragma mark - 日历json文件读取操作
++ (void)load {
+    [self unzipCanlendarData];
+}
+
++ (NSString *)baseCalendarPath {
+    __block NSString *baseCalendarPath;
+    [DRSandBoxManager getDirectoryInDocumentWithName:@"DRBasicKit/CalendarData" doneBlock:^(BOOL success, NSError * _Nonnull error, NSString * _Nonnull dirPath) {
+        if (!error) {
+            baseCalendarPath = dirPath;
+        }
+    }];
+    return baseCalendarPath;
+}
+
++ (NSString *)calendarLunarDataPath {
+    return [[[DRYMDWithLunarPickerCanlendarSolarDataSource baseCalendarPath] stringByAppendingPathComponent:@"calendar_lunar"] stringByAppendingPathExtension:@"json"];
+}
+
++ (void)unzipCanlendarData {
+    if ([DRSandBoxManager isExistsFileAtPath:[DRYMDWithLunarPickerCanlendarSolarDataSource calendarLunarDataPath]]) {
+        return;
+    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *tempPath = [KDR_CURRENT_BUNDLE pathForResource:@"calendar_data" ofType:@"zip"];
+        [SSZipArchive unzipFileAtPath:tempPath toDestination:[DRYMDWithLunarPickerCanlendarSolarDataSource baseCalendarPath]];
+    });
+}
+
+- (NSString *)calendarLunarJson {
+    NSString *lunarJsonPath = [DRYMDWithLunarPickerCanlendarSolarDataSource calendarLunarDataPath];
+    return [NSString stringWithContentsOfFile:lunarJsonPath encoding:NSUTF8StringEncoding error:nil];
 }
 
 @end

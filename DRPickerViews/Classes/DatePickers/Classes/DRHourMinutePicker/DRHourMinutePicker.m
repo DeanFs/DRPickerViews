@@ -7,12 +7,11 @@
 //
 
 #import "DRHourMinutePicker.h"
-#import "DRBasicKitDefine.h"
+#import <DRMacroDefines/DRMacroDefines.h>
 #import "NSDate+DRExtension.h"
 #import <JXExtension/JXExtension.h>
 #import <HexColors/HexColors.h>
 #import "DRHourMinuteAtomicPickerView.h"
-#import <Masonry/Masonry.h>
 
 @implementation DRHourMinutePickerPlanWeekConfig
 

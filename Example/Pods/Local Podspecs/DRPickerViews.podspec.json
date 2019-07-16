@@ -22,6 +22,38 @@
     "DRPickerViews/Assets/*",
     "DRPickerViews/Classes/**/*.xib"
   ],
+  "dependencies": {
+    "DRMacroDefines": [
+
+    ],
+    "DRCategories": [
+
+    ],
+    "HexColors": [
+      "4.0.0"
+    ],
+    "YYText": [
+
+    ],
+    "JXExtension": [
+
+    ],
+    "FunctionalObjC": [
+
+    ],
+    "MJExtension": [
+
+    ],
+    "SSZipArchive": [
+
+    ],
+    "DRSandboxManager": [
+
+    ],
+    "Masonry": [
+
+    ]
+  },
   "subspecs": [
     {
       "name": "DatePickers",

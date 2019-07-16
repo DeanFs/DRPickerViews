@@ -82,5 +82,16 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+
+  s.dependency 'DRMacroDefines'
+  s.dependency 'DRCategories'
+  s.dependency 'HexColors', '4.0.0'
+  s.dependency 'YYText'
+  s.dependency 'JXExtension'
+  s.dependency 'FunctionalObjC'
+  s.dependency 'MJExtension'
+  s.dependency 'SSZipArchive'
+  s.dependency 'DRSandboxManager'
+  s.dependency 'Masonry'
+
 end
