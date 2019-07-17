@@ -524,6 +524,25 @@
 				DEVELOPMENT_TEAM = RRKA38P3VU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DRPickerViews/DRPickerViews-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DRCategories/DRCategories.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DRPickerViews/DRPickerViews.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DRSandboxManager/DRSandboxManager.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FunctionalObjC/FBLFunctional.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HexColors/HexColors.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/JXExtension/JXExtension.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MJExtension/MJExtension.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry/Masonry.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDVersion/SDVersion.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SSZipArchive/SSZipArchive.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYModel/YYModel.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYText/YYText.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/pop/pop.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/DRMacroDefines\"",
+					"$(SRCROOT)/**",
+				);
 				INFOPLIST_FILE = "DRPickerViews/DRPickerViews-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
@@ -541,6 +560,25 @@
 				DEVELOPMENT_TEAM = RRKA38P3VU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DRPickerViews/DRPickerViews-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DRCategories/DRCategories.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DRPickerViews/DRPickerViews.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DRSandboxManager/DRSandboxManager.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FunctionalObjC/FBLFunctional.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HexColors/HexColors.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/JXExtension/JXExtension.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MJExtension/MJExtension.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry/Masonry.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDVersion/SDVersion.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SSZipArchive/SSZipArchive.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYModel/YYModel.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYText/YYText.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/pop/pop.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/DRMacroDefines\"",
+					"$(SRCROOT)/**",
+				);
 				INFOPLIST_FILE = "DRPickerViews/DRPickerViews-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
