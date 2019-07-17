@@ -57,53 +57,7 @@
   "subspecs": [
     {
       "name": "DatePickers",
-      "source_files": "DRPickerViews/Classes/DatePickers/*.{h,m}",
-      "subspecs": [
-        {
-          "name": "SubViews",
-          "source_files": "DRPickerViews/Classes/DatePickers/SubViews/*.{h,m}"
-        },
-        {
-          "name": "Pickers",
-          "source_files": "DRPickerViews/Classes/DatePickers/Pickers/*.{h,m}",
-          "subspecs": [
-            {
-              "name": "DRYMDWithLunarPicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRYMDWithLunarPicker/*.{h,m}",
-              "subspecs": [
-                {
-                  "name": "DataSource",
-                  "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRYMDWithLunarPicker/DataSource/*.{h,m}"
-                }
-              ]
-            },
-            {
-              "name": "DRTimeConsumingPicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRTimeConsumingPicker/*.{h,m}"
-            },
-            {
-              "name": "DRYMDPicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRYMDPicker/*.{h,m}"
-            },
-            {
-              "name": "DRYMDWithTodayPicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRYMDWithTodayPicker/*.{h,m}"
-            },
-            {
-              "name": "DRYearMonthPicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRYearMonthPicker/*.{h,m}"
-            },
-            {
-              "name": "DRMDWTPicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRMDWTPicker/*.{h,m}"
-            },
-            {
-              "name": "DRHourMinutePicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRHourMinutePicker/*.{h,m}"
-            }
-          ]
-        }
-      ]
+      "source_files": "DRPickerViews/Classes/DatePickers/**/*.{h,m}"
     }
   ]
 }
