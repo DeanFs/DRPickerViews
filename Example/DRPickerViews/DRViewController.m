@@ -54,7 +54,7 @@
     option.currentTime = @"2211";
     option.forDuration = YES;
     option.currentDuration = 44*60;
-    option.onlyWeekDay = YES;
+//    option.onlyWeekDay = YES;
     
     //    option.autoDismissWhenPicked = NO;
     
