@@ -40,38 +40,38 @@ TODO: Add long description of the pod here.
       sss.source_files = 'DRPickerViews/Classes/DatePickers/SubViews/*.{h,m}'
     end
 
-    ss.subspec 'Classes' do |sss|
-      sss.source_files = 'DRPickerViews/Classes/DatePickers/Classes/*.{h,m}'
+    ss.subspec 'Pickers' do |sss|
+      sss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/*.{h,m}'
 
       sss.subspec 'DRYMDWithLunarPicker' do |ssss|
-        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Classes/DRYMDWithLunarPicker/*.{h,m}'
+        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRYMDWithLunarPicker/*.{h,m}'
         ssss.subspec 'DataSource' do |sssss|
-          sssss.source_files = 'DRPickerViews/Classes/DatePickers/Classes/DRYMDWithLunarPicker/DataSource/*.{h,m}'
+          sssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRYMDWithLunarPicker/DataSource/*.{h,m}'
         end
       end
 
       sss.subspec 'DRTimeConsumingPicker' do |ssss|
-        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Classes/DRTimeConsumingPicker/*.{h,m}'
+        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRTimeConsumingPicker/*.{h,m}'
       end
 
       sss.subspec 'DRYMDPicker' do |ssss|
-        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Classes/DRYMDPicker/*.{h,m}'
+        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRYMDPicker/*.{h,m}'
       end
 
       sss.subspec 'DRYMDWithTodayPicker' do |ssss|
-        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Classes/DRYMDWithTodayPicker/*.{h,m}'
+        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRYMDWithTodayPicker/*.{h,m}'
       end
 
       sss.subspec 'DRYearMonthPicker' do |ssss|
-        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Classes/DRYearMonthPicker/*.{h,m}'
+        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRYearMonthPicker/*.{h,m}'
       end
 
       sss.subspec 'DRMDWTPicker' do |ssss|
-         ssss.source_files = 'DRPickerViews/Classes/DatePickers/Classes/DRMDWTPicker/*.{h,m}'
+         ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRMDWTPicker/*.{h,m}'
       end
 
       sss.subspec 'DRHourMinutePicker' do |ssss|
-        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Classes/DRHourMinutePicker/*.{h,m}'
+        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRHourMinutePicker/*.{h,m}'
       end
     end
   end

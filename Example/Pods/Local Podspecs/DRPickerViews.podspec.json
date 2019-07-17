@@ -64,42 +64,42 @@
           "source_files": "DRPickerViews/Classes/DatePickers/SubViews/*.{h,m}"
         },
         {
-          "name": "Classes",
-          "source_files": "DRPickerViews/Classes/DatePickers/Classes/*.{h,m}",
+          "name": "Pickers",
+          "source_files": "DRPickerViews/Classes/DatePickers/Pickers/*.{h,m}",
           "subspecs": [
             {
               "name": "DRYMDWithLunarPicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRYMDWithLunarPicker/*.{h,m}",
+              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRYMDWithLunarPicker/*.{h,m}",
               "subspecs": [
                 {
                   "name": "DataSource",
-                  "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRYMDWithLunarPicker/DataSource/*.{h,m}"
+                  "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRYMDWithLunarPicker/DataSource/*.{h,m}"
                 }
               ]
             },
             {
               "name": "DRTimeConsumingPicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRTimeConsumingPicker/*.{h,m}"
+              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRTimeConsumingPicker/*.{h,m}"
             },
             {
               "name": "DRYMDPicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRYMDPicker/*.{h,m}"
+              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRYMDPicker/*.{h,m}"
             },
             {
               "name": "DRYMDWithTodayPicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRYMDWithTodayPicker/*.{h,m}"
+              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRYMDWithTodayPicker/*.{h,m}"
             },
             {
               "name": "DRYearMonthPicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRYearMonthPicker/*.{h,m}"
+              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRYearMonthPicker/*.{h,m}"
             },
             {
               "name": "DRMDWTPicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRMDWTPicker/*.{h,m}"
+              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRMDWTPicker/*.{h,m}"
             },
             {
               "name": "DRHourMinutePicker",
-              "source_files": "DRPickerViews/Classes/DatePickers/Classes/DRHourMinutePicker/*.{h,m}"
+              "source_files": "DRPickerViews/Classes/DatePickers/Pickers/DRHourMinutePicker/*.{h,m}"
             }
           ]
         }
