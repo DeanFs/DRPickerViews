@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DRPickerViews'
-  s.version          = '0.1.0'
+  s.version          = '0.1.2'
   s.summary          = '自定义选择器集合'
 
 # This description is used to generate tags and improve search results.
@@ -32,49 +32,10 @@ TODO: Add long description of the pod here.
 
   # 图片，xib等资源文件
   s.resource = 'DRPickerViews/Assets/*', 'DRPickerViews/Classes/**/*.xib'
-
   s.public_header_files = 'DRPickerViews/Classes/**/**/*.h'
+
   s.subspec 'DatePickers' do |ss|
-    ss.source_files = 'DRPickerViews/Classes/DatePickers/*.{h,m}'
-
-    ss.subspec 'SubViews' do |sss|
-      sss.source_files = 'DRPickerViews/Classes/DatePickers/SubViews/*.{h,m}'
-    end
-
-    ss.subspec 'Pickers' do |sss|
-      sss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/*.{h,m}'
-
-      sss.subspec 'DRYMDWithLunarPicker' do |ssss|
-        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRYMDWithLunarPicker/*.{h,m}'
-        ssss.subspec 'DataSource' do |sssss|
-          sssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRYMDWithLunarPicker/DataSource/*.{h,m}'
-        end
-      end
-
-      sss.subspec 'DRTimeConsumingPicker' do |ssss|
-        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRTimeConsumingPicker/*.{h,m}'
-      end
-
-      sss.subspec 'DRYMDPicker' do |ssss|
-        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRYMDPicker/*.{h,m}'
-      end
-
-      sss.subspec 'DRYMDWithTodayPicker' do |ssss|
-        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRYMDWithTodayPicker/*.{h,m}'
-      end
-
-      sss.subspec 'DRYearMonthPicker' do |ssss|
-        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRYearMonthPicker/*.{h,m}'
-      end
-
-      sss.subspec 'DRMDWTPicker' do |ssss|
-         ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRMDWTPicker/*.{h,m}'
-      end
-
-      sss.subspec 'DRHourMinutePicker' do |ssss|
-        ssss.source_files = 'DRPickerViews/Classes/DatePickers/Pickers/DRHourMinutePicker/*.{h,m}'
-      end
-    end
+    ss.source_files = 'DRPickerViews/Classes/**/**/*.{h,m}'
   end
   
   # s.resource_bundles = {
