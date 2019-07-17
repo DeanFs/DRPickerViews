@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DRPickerViews'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = '自定义选择器集合'
 
 # This description is used to generate tags and improve search results.
@@ -32,10 +32,9 @@ TODO: Add long description of the pod here.
 
   # 图片，xib等资源文件
   s.resource = 'DRPickerViews/Assets/*', 'DRPickerViews/Classes/**/*.xib'
-  s.public_header_files = 'DRPickerViews/Classes/**/**/*.h'
 
   s.subspec 'DatePickers' do |ss|
-    ss.source_files = 'DRPickerViews/Classes/**/**/*.{h,m}'
+    ss.source_files = 'DRPickerViews/Classes/DatePickers/*.{h,m}'
   end
   
   # s.resource_bundles = {
