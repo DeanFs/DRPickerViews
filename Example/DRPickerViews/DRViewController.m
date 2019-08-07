@@ -8,7 +8,7 @@
 
 #import "DRViewController.h"
 #import <YYModel/YYModel.h>
-#import <DRPickerViews/DRDatePickerFactory.h>
+#import <DRPickerViews/DRPickerFactory.h>
 #import <DRCategories/NSDate+DRExtension.h>
 
 @interface DRViewController ()
@@ -32,8 +32,8 @@
     [self showPicker:indexPath.row];
 }
 
-- (void)showPicker:(DRDatePickerType)type {
-    DRDatePickerOption *option = [[DRDatePickerOption alloc] init];
+- (void)showPicker:(DRPickerType)type {
+    DRPickerOption *option = [[DRPickerOption alloc] init];
     //    option.isLunar = YES;
     //    option.ignoreYear = YES;
     //    option.month = 3;
@@ -62,7 +62,7 @@
     NSDate *minDate = [NSDate dateWithDateString:@"2018-11-01" dateFormat:@"yyyy-MM-dd"];
     NSDate *maxDate = [NSDate dateWithDateString:@"2019-10-22" dateFormat:@"yyyy-MM-dd"];
     
-    [DRDatePickerFactory showDatePickerWithType:type
+    [DRPickerFactory showDatePickerWithType:type
                                     currentDate:date
                                         minDate:minDate
                                         maxDate:maxDate

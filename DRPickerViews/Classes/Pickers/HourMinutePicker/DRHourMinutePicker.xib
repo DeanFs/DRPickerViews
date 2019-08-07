@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DRHourMinutePicker">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="380"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRg-jC-lpS" customClass="DRPickerTopBar">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="a2h-GF-Rx9"/>
+                    </constraints>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oxw-P5-ake">
+                    <rect key="frame" x="0.0" y="56" width="375" height="132"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8s6-Xp-gaA" customClass="DRSectionTitleView">
+                            <rect key="frame" x="23" y="12" width="329" height="26"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="26" id="klY-FA-mBh"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="请选择提醒日"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLH-af-dIu" customClass="DROptionCardView">
+                            <rect key="frame" x="23" y="50" width="329" height="32"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="iOA-tS-4on"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="columnCount">
+                                    <integer key="value" value="7"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="lineCount">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="maxSelectCount">
+                                    <integer key="value" value="7"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="mutableSelection" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="minSelectCount">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rT-en-tfM" customClass="DRSectionTitleView">
+                            <rect key="frame" x="23" y="106" width="329" height="26"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="26" id="OMX-si-SZT"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="请设置提醒时间"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="iLH-af-dIu" firstAttribute="leading" secondItem="oxw-P5-ake" secondAttribute="leading" constant="23" id="1DW-yU-hgR"/>
+                        <constraint firstItem="2rT-en-tfM" firstAttribute="leading" secondItem="oxw-P5-ake" secondAttribute="leading" constant="23" id="8pY-82-BJH"/>
+                        <constraint firstAttribute="height" constant="132" id="96p-Y4-PSv"/>
+                        <constraint firstAttribute="trailing" secondItem="2rT-en-tfM" secondAttribute="trailing" constant="23" id="BcU-2a-AK7"/>
+                        <constraint firstItem="8s6-Xp-gaA" firstAttribute="top" secondItem="oxw-P5-ake" secondAttribute="top" constant="12" id="C3c-EL-4zq"/>
+                        <constraint firstItem="iLH-af-dIu" firstAttribute="top" secondItem="8s6-Xp-gaA" secondAttribute="bottom" constant="12" id="Dsk-4k-yel"/>
+                        <constraint firstAttribute="trailing" secondItem="8s6-Xp-gaA" secondAttribute="trailing" constant="23" id="Sfb-7P-q61"/>
+                        <constraint firstItem="iLH-af-dIu" firstAttribute="centerX" secondItem="oxw-P5-ake" secondAttribute="centerX" id="XRZ-cF-1gC"/>
+                        <constraint firstAttribute="bottom" secondItem="2rT-en-tfM" secondAttribute="bottom" id="ZSP-bx-SuO"/>
+                        <constraint firstItem="8s6-Xp-gaA" firstAttribute="leading" secondItem="oxw-P5-ake" secondAttribute="leading" constant="23" id="lhj-ju-WvF"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUD-Tg-lR1" customClass="DRHourMinutePickerView">
+                    <rect key="frame" x="0.0" y="188" width="375" height="192"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
+                            <real key="value" value="34"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="pickerFontSize">
+                            <real key="value" value="23"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="toLabelFontSize">
+                            <real key="value" value="21"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="timeScale">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="minDuration">
+                            <integer key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="kUD-Tg-lR1" secondAttribute="trailing" id="4SE-Ep-UL4"/>
+                <constraint firstItem="kUD-Tg-lR1" firstAttribute="top" secondItem="oxw-P5-ake" secondAttribute="bottom" id="Fpc-Z0-9gz"/>
+                <constraint firstItem="kUD-Tg-lR1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="I0b-H3-yDh"/>
+                <constraint firstItem="oxw-P5-ake" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QqY-wS-Yja"/>
+                <constraint firstAttribute="bottom" secondItem="kUD-Tg-lR1" secondAttribute="bottom" id="V15-oe-icL"/>
+                <constraint firstItem="kRg-jC-lpS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aVA-yI-OdM"/>
+                <constraint firstItem="kRg-jC-lpS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="g3D-dL-W8Z"/>
+                <constraint firstAttribute="trailing" secondItem="kRg-jC-lpS" secondAttribute="trailing" id="jYG-5R-NXI"/>
+                <constraint firstItem="oxw-P5-ake" firstAttribute="top" secondItem="kRg-jC-lpS" secondAttribute="bottom" id="mMY-hh-tAv"/>
+                <constraint firstAttribute="trailing" secondItem="oxw-P5-ake" secondAttribute="trailing" id="tIX-tQ-uBW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="picker" destination="kUD-Tg-lR1" id="aaO-ya-ZR1"/>
+                <outlet property="pickerView" destination="kUD-Tg-lR1" id="N0a-2B-8jj"/>
+                <outlet property="timeTitleSectionView" destination="2rT-en-tfM" id="bHb-bR-rhn"/>
+                <outlet property="topBar" destination="kRg-jC-lpS" id="Yt5-wg-jcW"/>
+                <outlet property="weekButtonContainerLeft" destination="1DW-yU-hgR" id="e9n-9b-i1F"/>
+                <outlet property="weekContainerViewHeight" destination="96p-Y4-PSv" id="uHE-fb-61m"/>
+                <outlet property="weekDaySelectView" destination="iLH-af-dIu" id="3Mn-og-aXf"/>
+            </connections>
+            <point key="canvasLocation" x="53.600000000000001" y="48.029556650246306"/>
+        </view>
+    </objects>
+</document>

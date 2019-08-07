@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="d38-en-dca" customClass="DRAheadTimePicker">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YsU-k5-HKQ" customClass="DRPickerTopBar">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="mmx-uG-cdc"/>
+                    </constraints>
+                </view>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcx-FB-Bpj">
+                    <rect key="frame" x="0.0" y="56" width="414" height="204"/>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="YsU-k5-HKQ" firstAttribute="leading" secondItem="d38-en-dca" secondAttribute="leading" id="1kb-VN-I3W"/>
+                <constraint firstItem="YsU-k5-HKQ" firstAttribute="top" secondItem="d38-en-dca" secondAttribute="top" id="HDE-MV-DWf"/>
+                <constraint firstItem="hcx-FB-Bpj" firstAttribute="top" secondItem="YsU-k5-HKQ" secondAttribute="bottom" id="Oby-j6-dlF"/>
+                <constraint firstAttribute="bottom" secondItem="hcx-FB-Bpj" secondAttribute="bottom" id="PAm-cw-Nb6"/>
+                <constraint firstAttribute="trailing" secondItem="YsU-k5-HKQ" secondAttribute="trailing" id="ZQB-ux-R81"/>
+                <constraint firstItem="hcx-FB-Bpj" firstAttribute="trailing" secondItem="KPf-Ou-Fur" secondAttribute="trailing" id="hc1-bp-Luh"/>
+                <constraint firstItem="hcx-FB-Bpj" firstAttribute="leading" secondItem="KPf-Ou-Fur" secondAttribute="leading" id="uE5-nq-68K"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="KPf-Ou-Fur"/>
+            <connections>
+                <outlet property="picker" destination="hcx-FB-Bpj" id="Z4g-uI-8hH"/>
+                <outlet property="pickerView" destination="hcx-FB-Bpj" id="IFy-Uh-As3"/>
+                <outlet property="topBar" destination="YsU-k5-HKQ" id="idc-pb-Y7g"/>
+            </connections>
+        </view>
+    </objects>
+</document>

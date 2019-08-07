@@ -1,6 +1,6 @@
 {
   "name": "DRPickerViews",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "summary": "自定义选择器集合",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/DeanFs/DRPickerViews",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/DeanFs/DRPickerViews.git",
-    "tag": "0.1.3"
+    "tag": "0.1.4"
   },
   "platforms": {
     "ios": "9.0"
@@ -23,41 +23,228 @@
     "DRPickerViews/Classes/**/*.xib"
   ],
   "dependencies": {
+    "DRCategories": [
+
+    ],
     "DRMacroDefines": [
 
     ],
-    "DRCategories": [
+    "Masonry": [
+
+    ],
+    "BlocksKit": [
 
     ],
     "HexColors": [
       "4.0.0"
     ],
-    "YYText": [
-
-    ],
-    "JXExtension": [
-
-    ],
-    "FunctionalObjC": [
-
-    ],
-    "MJExtension": [
-
-    ],
-    "SSZipArchive": [
-
-    ],
-    "DRSandboxManager": [
-
-    ],
-    "Masonry": [
+    "DRToastView": [
 
     ]
   },
   "subspecs": [
     {
-      "name": "DatePickers",
-      "source_files": "DRPickerViews/Classes/DatePickers/*.{h,m}"
+      "name": "UIWidget",
+      "subspecs": [
+        {
+          "name": "Common",
+          "source_files": "DRPickerViews/Classes/UIWidget/Common/*.{h,m}"
+        },
+        {
+          "name": "TopBar",
+          "source_files": "DRPickerViews/Classes/UIWidget/TopBar/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "Segment",
+          "source_files": "DRPickerViews/Classes/UIWidget/Segment/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "SectionView",
+          "source_files": "DRPickerViews/Classes/UIWidget/SectionView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "OptionCard",
+          "source_files": "DRPickerViews/Classes/UIWidget/OptionCard/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "CalendarTitleView",
+          "source_files": "DRPickerViews/Classes/UIWidget/CalendarTitleView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "HourMinutePickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/HourMinutePickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "DatePickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/DatePickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "LunarDatePickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/LunarDatePickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "WeekPickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/WeekPickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "PickerContainerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/PickerContainerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pickers",
+      "subspecs": [
+        {
+          "name": "Common",
+          "source_files": "DRPickerViews/Classes/Pickers/Common/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget": [
+
+            ]
+          }
+        },
+        {
+          "name": "AheadTimePicker",
+          "source_files": "DRPickerViews/Classes/Pickers/AheadTimePicker/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/Pickers/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "ValueSelectPicker",
+          "source_files": "DRPickerViews/Classes/Pickers/ValueSelectPicker/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/Pickers/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "TimeConsumingPicker",
+          "source_files": "DRPickerViews/Classes/Pickers/TimeConsumingPicker/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/Pickers/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "StringOptionPicker",
+          "source_files": "DRPickerViews/Classes/Pickers/StringOptionPicker/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/Pickers/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "HourMinutePicker",
+          "source_files": "DRPickerViews/Classes/Pickers/HourMinutePicker/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/Pickers/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "YearMonthPicker",
+          "source_files": "DRPickerViews/Classes/Pickers/YearMonthPicker/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/Pickers/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "YearMonthDayPicker",
+          "source_files": "DRPickerViews/Classes/Pickers/YearMonthDayPicker/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/Pickers/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "WithLunarPicker",
+          "source_files": "DRPickerViews/Classes/Pickers/WithLunarPicker/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/Pickers/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "OneWeekPicker",
+          "source_files": "DRPickerViews/Classes/Pickers/OneWeekPicker/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/Pickers/Common": [
+
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Factory",
+      "source_files": "DRPickerViews/Classes/Factory/*.{h,m}",
+      "dependencies": {
+        "DRPickerViews/Pickers": [
+
+        ]
+      }
     }
   ]
 }

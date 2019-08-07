@@ -1,34 +1,248 @@
 PODS:
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
   - DRCategories (0.1.1):
     - DRMacroDefines
     - DRSandboxManager
     - pop
   - DRMacroDefines (0.1.2)
-  - DRPickerViews (0.1.3):
+  - DRPickerViews (0.1.4):
+    - BlocksKit
     - DRCategories
     - DRMacroDefines
-    - DRPickerViews/DatePickers (= 0.1.3)
-    - DRSandboxManager
-    - FunctionalObjC
+    - DRPickerViews/Factory (= 0.1.4)
+    - DRPickerViews/Pickers (= 0.1.4)
+    - DRPickerViews/UIWidget (= 0.1.4)
+    - DRToastView
     - HexColors (= 4.0.0)
-    - JXExtension
     - Masonry
-    - MJExtension
-    - SSZipArchive
-    - YYText
-  - DRPickerViews/DatePickers (0.1.3):
+  - DRPickerViews/Factory (0.1.4):
+    - BlocksKit
     - DRCategories
     - DRMacroDefines
-    - DRSandboxManager
-    - FunctionalObjC
+    - DRPickerViews/Pickers
+    - DRToastView
     - HexColors (= 4.0.0)
-    - JXExtension
     - Masonry
-    - MJExtension
-    - SSZipArchive
-    - YYText
+  - DRPickerViews/Pickers (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/Pickers/AheadTimePicker (= 0.1.4)
+    - DRPickerViews/Pickers/Common (= 0.1.4)
+    - DRPickerViews/Pickers/HourMinutePicker (= 0.1.4)
+    - DRPickerViews/Pickers/OneWeekPicker (= 0.1.4)
+    - DRPickerViews/Pickers/StringOptionPicker (= 0.1.4)
+    - DRPickerViews/Pickers/TimeConsumingPicker (= 0.1.4)
+    - DRPickerViews/Pickers/ValueSelectPicker (= 0.1.4)
+    - DRPickerViews/Pickers/WithLunarPicker (= 0.1.4)
+    - DRPickerViews/Pickers/YearMonthDayPicker (= 0.1.4)
+    - DRPickerViews/Pickers/YearMonthPicker (= 0.1.4)
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/Pickers/AheadTimePicker (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/Pickers/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/Pickers/Common (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/Pickers/HourMinutePicker (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/Pickers/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/Pickers/OneWeekPicker (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/Pickers/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/Pickers/StringOptionPicker (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/Pickers/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/Pickers/TimeConsumingPicker (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/Pickers/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/Pickers/ValueSelectPicker (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/Pickers/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/Pickers/WithLunarPicker (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/Pickers/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/Pickers/YearMonthDayPicker (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/Pickers/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/Pickers/YearMonthPicker (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/Pickers/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/UIWidget (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/CalendarTitleView (= 0.1.4)
+    - DRPickerViews/UIWidget/Common (= 0.1.4)
+    - DRPickerViews/UIWidget/DatePickerView (= 0.1.4)
+    - DRPickerViews/UIWidget/HourMinutePickerView (= 0.1.4)
+    - DRPickerViews/UIWidget/LunarDatePickerView (= 0.1.4)
+    - DRPickerViews/UIWidget/OptionCard (= 0.1.4)
+    - DRPickerViews/UIWidget/PickerContainerView (= 0.1.4)
+    - DRPickerViews/UIWidget/SectionView (= 0.1.4)
+    - DRPickerViews/UIWidget/Segment (= 0.1.4)
+    - DRPickerViews/UIWidget/TopBar (= 0.1.4)
+    - DRPickerViews/UIWidget/WeekPickerView (= 0.1.4)
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/UIWidget/CalendarTitleView (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/UIWidget/Common (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/UIWidget/DatePickerView (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/UIWidget/HourMinutePickerView (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/UIWidget/LunarDatePickerView (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/UIWidget/OptionCard (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/UIWidget/PickerContainerView (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/UIWidget/SectionView (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/UIWidget/Segment (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/UIWidget/TopBar (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+  - DRPickerViews/UIWidget/WeekPickerView (0.1.4):
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
   - DRSandboxManager (0.1.0)
-  - FunctionalObjC (1.0.2)
+  - DRToastView (0.1.1):
+    - DRMacroDefines
+    - JXExtension
   - HexColors (4.0.0)
   - JXExtension (0.4.0):
     - JXExtension/Category (= 0.4.0)
@@ -43,12 +257,9 @@ PODS:
     - JXExtension/Category
     - SDVersion
   - Masonry (1.1.0)
-  - MJExtension (3.0.17)
   - pop (1.0.12)
   - SDVersion (4.3.2)
-  - SSZipArchive (2.2.2)
   - YYModel (1.0.4)
-  - YYText (1.0.7)
 
 DEPENDENCIES:
   - DRPickerViews (from `../`)
@@ -56,39 +267,35 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - BlocksKit
     - DRCategories
     - DRMacroDefines
     - DRSandboxManager
-    - FunctionalObjC
+    - DRToastView
     - HexColors
     - JXExtension
     - Masonry
-    - MJExtension
     - pop
     - SDVersion
-    - SSZipArchive
     - YYModel
-    - YYText
 
 EXTERNAL SOURCES:
   DRPickerViews:
     :path: "../"
 
 SPEC CHECKSUMS:
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   DRCategories: 0d8d3733c118b9ebed9bdedbf89410f0472cbdd3
   DRMacroDefines: 58aa271bc1c4170fa09f4f33dcad18fc4f21a57e
-  DRPickerViews: 4f078ee96b7dfc5d33e24e46b14f5f6735be9446
+  DRPickerViews: 238142c85b97d4e36fc02a3a33cf1393513193b5
   DRSandboxManager: 2a48ca41b22edfc39dd2f66abd5a99e777410c61
-  FunctionalObjC: bd6aaa4b69abea0a5ac0e860a052c1ebebd5311c
+  DRToastView: 3e7a5d8c66640ca6c618910c926425c9c0ab3954
   HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379
   JXExtension: c625f6881ae43cb7bbf97d49c0b2202f8f1de898
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   SDVersion: 18f32c835c1543611fcfae3c6accd9a04b90597e
-  SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
-  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
 PODFILE CHECKSUM: 7e849c87eed1762c35dddb8737a38e445e539c20
 

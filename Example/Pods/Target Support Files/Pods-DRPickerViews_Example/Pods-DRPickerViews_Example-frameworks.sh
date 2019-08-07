@@ -153,33 +153,29 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DRCategories/DRCategories.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DRPickerViews/DRPickerViews.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DRSandboxManager/DRSandboxManager.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FunctionalObjC/FBLFunctional.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DRToastView/DRToastView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/HexColors/HexColors.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JXExtension/JXExtension.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDVersion/SDVersion.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/YYText/YYText.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DRCategories/DRCategories.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DRPickerViews/DRPickerViews.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DRSandboxManager/DRSandboxManager.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FunctionalObjC/FBLFunctional.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DRToastView/DRToastView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/HexColors/HexColors.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JXExtension/JXExtension.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDVersion/SDVersion.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/YYText/YYText.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
