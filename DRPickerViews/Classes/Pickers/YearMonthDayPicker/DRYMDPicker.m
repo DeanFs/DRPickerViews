@@ -141,7 +141,7 @@ typedef NS_ENUM(NSInteger, DRYMDPickerType) {
 - (void)setQuickDate:(NSDate *)quickDate {
     _quickDate = quickDate;
     [UIView performWithoutAnimation:^{
-        self.endDateLabel.text = [NSDate stringFromeDate:quickDate formatterString:@"yyyy年M月d日"];
+        self.endDateLabel.text = [NSDate stringFromeDate:quickDate formatterString:@"yyyy/MM/dd"];
     }];
 }
 

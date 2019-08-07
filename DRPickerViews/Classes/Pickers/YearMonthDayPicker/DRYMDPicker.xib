@@ -23,7 +23,7 @@
                         <constraint firstAttribute="height" constant="56" id="2Cv-7I-rLo"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1u-An-zo2">
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m1u-An-zo2">
                     <rect key="frame" x="0.0" y="56" width="375" height="172"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djL-fW-5FM">
@@ -82,13 +82,13 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4s4-gt-ly1">
-                                    <rect key="frame" x="90.5" y="27.5" width="194" height="15"/>
+                                    <rect key="frame" x="86" y="23" width="203" height="24"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_zz_tj_tishi" translatesAutoresizingMaskIntoConstraints="NO" id="Krg-90-4oj">
-                                            <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长期计划仅展示到明年年底" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNY-Hr-8K2">
-                                            <rect key="frame" x="22" y="-1" width="172" height="17"/>
+                                            <rect key="frame" x="31" y="3.5" width="172" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -122,24 +122,14 @@
                                 <constraint firstAttribute="height" constant="0.5" id="7ci-WI-q0e"/>
                             </constraints>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_sanjiao_endtime" translatesAutoresizingMaskIntoConstraints="NO" id="siP-aN-n8o">
-                            <rect key="frame" x="181.5" y="102" width="12" height="7"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="12" id="OsG-cH-ILj"/>
-                                <constraint firstAttribute="height" constant="7" id="Wd8-DB-mGV"/>
-                            </constraints>
-                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="osS-7d-d45" firstAttribute="leading" secondItem="m1u-An-zo2" secondAttribute="leading" id="FvA-Jh-yGL"/>
-                        <constraint firstItem="siP-aN-n8o" firstAttribute="top" secondItem="aQD-bH-Ln5" secondAttribute="top" id="G9w-lM-hVv"/>
-                        <constraint firstItem="siP-aN-n8o" firstAttribute="centerX" secondItem="aQD-bH-Ln5" secondAttribute="centerX" id="L4X-ML-zIr"/>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="osS-7d-d45" secondAttribute="bottom" id="LgM-vq-TFL"/>
                         <constraint firstAttribute="trailing" secondItem="djL-fW-5FM" secondAttribute="trailing" id="QyR-pQ-DYa"/>
                         <constraint firstAttribute="trailing" secondItem="aQD-bH-Ln5" secondAttribute="trailing" constant="15" id="SfJ-qu-5qk"/>
                         <constraint firstItem="aQD-bH-Ln5" firstAttribute="leading" secondItem="m1u-An-zo2" secondAttribute="leading" constant="15" id="bPl-3B-smt"/>
-                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="siP-aN-n8o" secondAttribute="bottom" id="cgF-rE-9Kk"/>
                         <constraint firstAttribute="trailing" secondItem="osS-7d-d45" secondAttribute="trailing" id="gIB-gW-L3v"/>
                         <constraint firstItem="aQD-bH-Ln5" firstAttribute="top" secondItem="djL-fW-5FM" secondAttribute="bottom" id="hd3-7x-JUG"/>
                         <constraint firstItem="djL-fW-5FM" firstAttribute="leading" secondItem="m1u-An-zo2" secondAttribute="leading" id="qc1-32-Wl5"/>
@@ -147,7 +137,7 @@
                         <constraint firstItem="djL-fW-5FM" firstAttribute="top" secondItem="m1u-An-zo2" secondAttribute="top" id="xGJ-Wd-8rB"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8Y-5l-zia" customClass="DRDatePickerView">
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O8Y-5l-zia" customClass="DRDatePickerView">
                     <rect key="frame" x="0.0" y="228" width="375" height="152"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
@@ -170,7 +160,6 @@
             <connections>
                 <outlet property="buttonsContentView" destination="djL-fW-5FM" id="BoA-h6-J4A"/>
                 <outlet property="datePickerView" destination="O8Y-5l-zia" id="GTd-r4-3X2"/>
-                <outlet property="downImageView" destination="siP-aN-n8o" id="rVL-Qo-A2a"/>
                 <outlet property="endDateLabel" destination="xFV-Ch-VW6" id="UUI-3t-kI0"/>
                 <outlet property="endDescLabel" destination="4wp-t7-49v" id="Ask-kc-VkS"/>
                 <outlet property="foreverDescView" destination="4s4-gt-ly1" id="4ib-sr-Rrw"/>
@@ -189,7 +178,6 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_sanjiao_endtime" width="12" height="7.5"/>
-        <image name="icon_zz_tj_tishi" width="15" height="15"/>
+        <image name="icon_zz_tj_tishi" width="24" height="24"/>
     </resources>
 </document>
