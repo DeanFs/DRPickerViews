@@ -94,3 +94,7 @@
 @implementation DRStringOptionValueModel
 
 @end
+
+@implementation DRYMDWithLunarPickerOutputObject
+
+@end
