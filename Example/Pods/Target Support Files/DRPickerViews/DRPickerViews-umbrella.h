@@ -11,6 +11,7 @@
 #endif
 
 #import "DRPickerFactory.h"
+#import "DRPickerViews.h"
 #import "DRAheadTimePicker.h"
 #import "DRBaseDatePicker.h"
 #import "DRDatePickerDataModels.h"
