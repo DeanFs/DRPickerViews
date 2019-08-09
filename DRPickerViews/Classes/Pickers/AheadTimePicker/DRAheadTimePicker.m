@@ -22,24 +22,11 @@
 
 @implementation DRAheadTimePicker
 
-+ (void)showPickerViewWithCurrentDate:(NSDate *)currentDate
-                              minDate:(NSDate *)minDate
-                              maxDate:(NSDate *)maxDate
-                        pickDoneBlock:(DRDatePickerInnerDoneBlock)pickDoneBlock
-                           setupBlock:(DRDatePickerSetupBlock)setupBlock {
-    DRAheadTimePicker *picker = [DRAheadTimePicker pickerView];
-    kDR_SAFE_BLOCK(setupBlock, picker);
-    picker.pickDoneBlock = pickDoneBlock;
-    picker.currentDate = currentDate;
-    [picker show];
-}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
-    self.topBar.centerButtonTitle = @"请选择时间";
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];

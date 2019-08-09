@@ -15,17 +15,12 @@
 @interface DRValueSelectPicker () <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *unitLabel;
 
 @end
 
 @implementation DRValueSelectPicker
-
-+ (void)showPickerViewWithCurrentDate:(NSDate *)currentDate minDate:(NSDate *)minDate maxDate:(NSDate *)maxDate pickDoneBlock:(DRDatePickerInnerDoneBlock)pickDoneBlock setupBlock:(DRDatePickerSetupBlock)setupBlock {
-    DRValueSelectPicker *pickerView = [DRValueSelectPicker pickerView];
-    kDR_SAFE_BLOCK(setupBlock, pickerView);
-    pickerView.pickDoneBlock = pickDoneBlock;
-    [pickerView show];
-}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -36,43 +31,47 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];
     });
+    
+    self.unitLabel.textColor = [DRUIWidgetUtil normalColor];
 }
 
 - (void)prepareToShow {
-    NSInteger row = self.pickOption.currentValue - self.pickOption.minValue;
+    DRPickerValueSelectOption *opt = (DRPickerValueSelectOption *)self.pickerOption;
+    NSInteger row = opt.currentValue - opt.minValue;
     if (row > 0) {
         [self.pickerView selectRow:row inComponent:0 animated:NO];
         [self.pickerView reloadComponent:0];
     }
+    self.unitLabel.text = opt.valueUnit;
+    self.valueLabel.text = [NSString stringWithFormat:@"%ld", opt.maxValue];
 }
 
 - (id)pickedObject {
-    return @(self.pickOption.minValue + [self.pickerView selectedRowInComponent:0]);
+    DRPickerValueSelectOption *opt = (DRPickerValueSelectOption *)self.pickerOption;
+    return @(opt.minValue + [self.pickerView selectedRowInComponent:0]);
+}
+
+- (Class)pickerOptionClass {
+    return [DRPickerValueSelectOption class];
 }
 
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (component == 0) {
-        return self.pickOption.maxValue - self.pickOption.minValue + 1;
-    }
-    return 1;
+    DRPickerValueSelectOption *opt = (DRPickerValueSelectOption *)self.pickerOption;
+    return opt.maxValue - opt.minValue + 1;
 }
 
 #pragma mark - UIPickerViewDelegate
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(nullable UIView *)view {
+    DRPickerValueSelectOption *opt = (DRPickerValueSelectOption *)self.pickerOption;
     UILabel *label = [[UILabel alloc] init];
     label.textAlignment = NSTextAlignmentCenter;
-    if (component == 0) {
-        label.font = [UIFont systemFontOfSize:31];
-        label.text = [NSString stringWithFormat:@"%ld", self.pickOption.minValue + row];
-    } else {
-        label.font = [UIFont dr_PingFangSC_RegularWithSize:18];
-        label.text = self.pickOption.valueUnit;
-    }
+    label.font = [UIFont systemFontOfSize:31];
+    label.text = [NSString stringWithFormat:@"%ld", opt.minValue + row];
     label.textColor = [DRUIWidgetUtil pickerUnSelectColor];
     if (row == [pickerView selectedRowInComponent:component] || component == 1) {
         label.textColor = [DRUIWidgetUtil normalColor];

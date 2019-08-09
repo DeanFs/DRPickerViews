@@ -62,7 +62,9 @@
             
         case DRPickerShowPositionCenter: {
             self.frame = CGRectMake([self xFromSize:size], 0, size.width, size.height);
-            self.centerY = self.backCoverView.centerY;
+            CGPoint center = self.backCoverView.center;
+            center.y -= [self centerTopOffset];
+            self.centerY = center.y;
             self.transform = CGAffineTransformMakeScale(0.1, 0.1);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:kDRAnimationDuration animations:^{
@@ -115,14 +117,14 @@
 }
 
 #pragma mark - 子类根据需要重写
-// 水平方向距离屏幕边缘距离，默认 16
-- (CGFloat)horizontalPadding {
-    return 16;
-}
-
 // 选择器高度 默认 260
 - (CGFloat)picerViewHeight {
     return 260;
+}
+
+// 水平方向距离屏幕边缘距离，默认 16
+- (CGFloat)horizontalPadding {
+    return 16;
 }
 
 // 底部距离安全区域边缘距离 默认 16
@@ -135,9 +137,24 @@
     return 16;
 }
 
+// 从中间弹出时，中心偏离距离，默认向上偏离20，即返回-20
+- (CGFloat)centerTopOffset {
+    return 20;
+}
+
 // 圆角半径，默认 12
 - (CGFloat)cornerRadius {
     return 12;
+}
+
+// 点击空白区域时触发，告知是否dismiss
+- (BOOL)shouldDismissWhenTapSpaceArea {
+    return YES;
+}
+
+// 指定添加到哪个视图，默认keyWindow
+- (UIView *)showInView {
+    return kDRWindow;
 }
 
 #pragma mark - private
@@ -193,7 +210,9 @@
         kDRWeakSelf
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] bk_initWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
             if (state == UIGestureRecognizerStateEnded) {
-                [weakSelf dismiss];
+                if ([weakSelf shouldDismissWhenTapSpaceArea]) {
+                    [weakSelf dismiss];
+                }
             }
         }];
         tap.delegate = self;
@@ -202,7 +221,7 @@
         view.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"0B1222" alpha:0.4];
         view.alpha = 0.0;
         [view addGestureRecognizer:tap];
-        [kDRWindow addSubview:view];
+        [[self showInView] addSubview:view];
         _backCoverView = view;
     }
     return _backCoverView;

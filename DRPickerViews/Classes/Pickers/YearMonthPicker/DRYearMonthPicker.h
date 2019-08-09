@@ -6,9 +6,9 @@
 //  Copyright © 2018 DuoRong Technology Co., Ltd. All rights reserved.
 //
 
-#import "DRBaseDatePicker.h"
+#import "DRBaseAlertPicker.h"
 
-@interface DRYearMonthPicker : DRBaseDatePicker
+@interface DRYearMonthPicker : DRBaseAlertPicker
 
 @property (nonatomic, assign) BOOL withMonthViewFilter;
 

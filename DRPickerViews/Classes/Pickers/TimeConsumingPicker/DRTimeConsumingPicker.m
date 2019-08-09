@@ -24,18 +24,6 @@
 
 @implementation DRTimeConsumingPicker
 
-+ (void)showPickerViewWithCurrentDate:(NSDate *)currentDate
-                              minDate:(NSDate *)minDate
-                              maxDate:(NSDate *)maxDate
-                        pickDoneBlock:(DRDatePickerInnerDoneBlock)pickDoneBlock
-                           setupBlock:(DRDatePickerSetupBlock)setupBlock {
-    DRTimeConsumingPicker *picker = [DRTimeConsumingPicker pickerView];
-    kDR_SAFE_BLOCK(setupBlock, picker);
-    picker.pickDoneBlock = pickDoneBlock;
-    picker.currentDate = currentDate;
-    [picker show];
-}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     
@@ -48,9 +36,10 @@
 }
 
 - (void)prepareToShow {
+    DRPickerTimeConsumingOption *option = (DRPickerTimeConsumingOption *)self.pickerOption;
     NSInteger daySeconds = 24 * 60 *60;
     NSInteger hourSeconds = 60 * 60;
-    int64_t allSeconds = self.pickOption.currentDuration;
+    int64_t allSeconds = option.timeConsuming;
     if (allSeconds >= daySeconds) {
         self.day = allSeconds / daySeconds;
         allSeconds = allSeconds % daySeconds;
@@ -61,7 +50,7 @@
     }
     self.minute = allSeconds / 60;
     
-    NSInteger minuteRow = self.minute / self.pickOption.timeScale + (self.minute % self.pickOption.timeScale > 0);
+    NSInteger minuteRow = self.minute / option.timeScale + (self.minute % option.timeScale > 0);
     if (self.day == 0 && self.hour == 0) {
         minuteRow --;
     }
@@ -84,13 +73,18 @@
     });
 }
 
+- (Class)pickerOptionClass {
+    return [DRPickerTimeConsumingOption class];
+}
+
 #pragma mark - actions
 - (id)pickedObject {
+    DRPickerTimeConsumingOption *option = (DRPickerTimeConsumingOption *)self.pickerOption;
     NSInteger day = [self.pickerView selectedRowInComponent:0];
     NSInteger hour = [self.pickerView selectedRowInComponent:2];
-    NSInteger minute = [self.pickerView selectedRowInComponent:4] * self.pickOption.timeScale;
+    NSInteger minute = [self.pickerView selectedRowInComponent:4] * option.timeScale;
     if (day == 0 && hour == 0) {
-        minute += self.pickOption.timeScale;
+        minute += option.timeScale;
     }
     
     NSMutableString *timeString = [NSMutableString string];
@@ -108,8 +102,8 @@
     }
     int64_t duration = day * 86400 + hour * 3600 + minute * 60;
     
-    return [DRTimeConsumingModel modelWithDuration:duration
-                                        timeString:timeString];
+    return [DRPickerTimeConsumingPickedObj objWithTimeConsuming:duration
+                                                       timeDesc:timeString];
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -118,8 +112,8 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (!self.haveShow) {
-        return 100000;
+    if (!self.haveShow && component % 2 == 0) {
+        return 24;
     }
     if (component % 2) {
         return 1;
@@ -150,6 +144,7 @@
 }
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    DRPickerTimeConsumingOption *option = (DRPickerTimeConsumingOption *)self.pickerOption;
     NSString *text;
     if (component == 0) {
         text = [NSString stringWithFormat:@"%ld", row];
@@ -164,10 +159,10 @@
         text = @"小时";
     }
     if (component == 4) {
-        NSInteger minute = row * self.pickOption.timeScale;
+        NSInteger minute = row * option.timeScale;
         if (self.day == 0 &&
             self.hour == 0) {
-            minute += self.pickOption.timeScale;
+            minute += option.timeScale;
         }
         text = [NSString stringWithFormat:@"%ld", minute];
     }
@@ -202,5 +197,5 @@
     }
     [pickerView reloadAllComponents];
 }
-
+ 
 @end

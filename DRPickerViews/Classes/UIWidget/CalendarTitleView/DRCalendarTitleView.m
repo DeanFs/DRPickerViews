@@ -11,6 +11,7 @@
 #import <DRMacroDefines/DRMacroDefines.h>
 #import "DRUIWidgetUtil.h"
 #import <DRCategories/NSDate+DRExtension.h>
+#import "DRYearMonthPicker.h"
 
 @interface DRCalendarTitleView ()
 
@@ -21,7 +22,6 @@
 
 @property (nonatomic, strong) NSDate *minMonth;
 @property (nonatomic, strong) NSDate *maxMonth;
-@property (nonatomic, strong) NSDate *currentMonth;
 
 @end
 
@@ -37,7 +37,13 @@
 
 - (void)setCurrentMonth:(NSDate *)currentMonth {
     _currentMonth = currentMonth;
-    [self.titleButton setTitle:[currentMonth dateStringFromFormatterString:@"yyyy/MM"]
+    NSString *title;
+    if (currentMonth.isThisYear) {
+        title = [currentMonth dateStringFromFormatterString:@"MM"];
+    } else {
+        title = [currentMonth dateStringFromFormatterString:@"yyyy/MM"];
+    }
+    [self.titleButton setTitle:title
                       forState:UIControlStateNormal];
     if ([currentMonth compare:self.minMonth] == NSOrderedAscending) {
         self.leftMarkImageView.hidden = YES;

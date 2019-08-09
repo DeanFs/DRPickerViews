@@ -18,12 +18,9 @@
 
 @implementation DROneWeekPicker
 
-+ (void)showPickerViewWithCurrentDate:(NSDate *)currentDate minDate:(NSDate *)minDate maxDate:(NSDate *)maxDate pickDoneBlock:(DRDatePickerInnerDoneBlock)pickDoneBlock setupBlock:(DRDatePickerSetupBlock)setupBlock {
-    DROneWeekPicker *picker = [DROneWeekPicker pickerView];
-    kDR_SAFE_BLOCK(setupBlock, picker);
-    picker.pickDoneBlock = pickDoneBlock;
-    [picker.weekPickerView setupWithCurrentDate:currentDate minDate:minDate maxDate:maxDate selectChangeBlock:nil];
-    [picker show];
+- (void)prepareToShow {
+    DRPickerDateOption *opt = (DRPickerDateOption *)self.pickerOption;
+    [self.weekPickerView setupWithCurrentDate:opt.currentDate minDate:opt.minDate maxDate:opt.maxDate selectChangeBlock:nil];
 }
 
 - (id)pickedObject {

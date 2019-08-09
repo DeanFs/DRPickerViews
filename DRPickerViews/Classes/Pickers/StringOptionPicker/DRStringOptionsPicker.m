@@ -20,13 +20,6 @@
 
 @implementation DRStringOptionsPicker
 
-+ (void)showPickerViewWithCurrentDate:(NSDate *)currentDate minDate:(NSDate *)minDate maxDate:(NSDate *)maxDate pickDoneBlock:(DRDatePickerInnerDoneBlock)pickDoneBlock setupBlock:(DRDatePickerSetupBlock)setupBlock {
-    DRStringOptionsPicker *pickerView = [DRStringOptionsPicker pickerView];
-    kDR_SAFE_BLOCK(setupBlock, pickerView);
-    pickerView.pickDoneBlock = pickDoneBlock;
-    [pickerView show];
-}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     
@@ -39,11 +32,12 @@
 }
 
 - (void)prepareToShow {
-    NSInteger row = self.pickOption.currentStringIndex;
-    if (self.pickOption.currentStringOption.length) {
-        for (NSInteger i=0; i<self.pickOption.stringOptions.count; i++) {
-            NSString *option = self.pickOption.stringOptions[i];
-            if ([option isEqualToString:self.pickOption.currentStringOption]) {
+    DRPickerStringSelectOption *opt = (DRPickerStringSelectOption *)self.pickerOption;
+    NSInteger row = opt.currentStringIndex;
+    if (opt.currentStringOption.length) {
+        for (NSInteger i=0; i<opt.stringOptions.count; i++) {
+            NSString *option = opt.stringOptions[i];
+            if ([option isEqualToString:opt.currentStringOption]) {
                 row = i;
                 break;
             }
@@ -54,10 +48,15 @@
 }
 
 - (id)pickedObject {
-    DRStringOptionValueModel *model = [DRStringOptionValueModel new];
-    model.selectedIndex = [self.pickerView selectedRowInComponent:0];
-    model.selectedOption = self.pickOption.stringOptions[model.selectedIndex];
-    return model;
+    DRPickerStringSelectOption *opt = (DRPickerStringSelectOption *)self.pickerOption;
+    DRPickerStringSelectPickedObj *obj = [DRPickerStringSelectPickedObj new];
+    obj.selectedIndex = [self.pickerView selectedRowInComponent:0];
+    obj.selectedOption = opt.stringOptions[obj.selectedIndex];
+    return obj;
+}
+
+- (Class)pickerOptionClass {
+    return [DRPickerStringSelectOption class];
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -66,11 +65,13 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.pickOption.stringOptions.count;
+    DRPickerStringSelectOption *opt = (DRPickerStringSelectOption *)self.pickerOption;
+    return opt.stringOptions.count;
 }
 
 #pragma mark - UIPickerViewDelegate
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(nullable UIView *)view {
+    DRPickerStringSelectOption *opt = (DRPickerStringSelectOption *)self.pickerOption;
     UILabel *label = [[UILabel alloc] init];
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont dr_PingFangSC_MediumWithSize:20];
@@ -78,7 +79,7 @@
     if (row == [pickerView selectedRowInComponent:component]) {
         label.textColor = [DRUIWidgetUtil normalColor];
     }
-    label.text = self.pickOption.stringOptions[row];
+    label.text = opt.stringOptions[row];
     return label;
 }
 
@@ -94,4 +95,5 @@
     return 34;
 }
 
+ 
 @end

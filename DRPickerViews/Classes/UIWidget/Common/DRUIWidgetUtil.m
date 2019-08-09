@@ -119,7 +119,7 @@ static BOOL _weekPickerOnlyCurrentMonth = NO;
  */
 + (void)hideSeparateLineForPickerView:(UIPickerView *)pickerView {
     for (UIView *singleLine in pickerView.subviews) {
-        if (singleLine.frame.size.height < 1) {
+        if (singleLine.frame.size.height > 0 && singleLine.frame.size.height < 1) {
             singleLine.hidden = YES;
         }
     }

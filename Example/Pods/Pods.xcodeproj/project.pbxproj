@@ -22,19 +22,17 @@
 		002B2229A7E57CFE42A7C701EE357605 /* NSMutableIndexSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 98491AC1C90144FE2FC9069EFAAA1265 /* NSMutableIndexSet+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0078C5CCD977D2886E4AF696DF0CE09B /* SDVersion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509028A399BE375241A5CAB677598353 /* SDVersion.framework */; };
 		0096991E327A74A77248854B8C69DDC5 /* JXTransitionObject.h in Headers */ = {isa = PBXBuildFile; fileRef = ECD43C23AB69FF323BB135B22209052C /* JXTransitionObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		00EF8CABA3248577815C12E6138C8FDB /* DRHourMinutePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = BB11C9726F70258C27D951DBF00AFEF0 /* DRHourMinutePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		022C99544516D7C1AD6D81737BD5727C /* UIBarButtonItem+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F23958CDCB7CD318D82BCAECEA9E03F0 /* UIBarButtonItem+BlocksKit.m */; };
 		032A2B53A8D75C1F5F393EFB2B01FE8B /* UINavigationBar+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 103B9882279FDFE58F7F1DDF0FE69212 /* UINavigationBar+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03E91A295BEB79D8C437B6BA2A025D24 /* UINavigationBar+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D8B351CD80638F107F2A8423CA06F1 /* UINavigationBar+DRExtension.m */; };
 		0430145319DFC1AC37EA96255A884274 /* HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = C09EAED99EF572C224B9D1886C3AFE7F /* HexColors.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		053B5FADCA9A0165BFDC9ACC68B5FB79 /* UIImagePickerController+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D3AC3F0C1B8A17ACCCFE1987D4425FD4 /* UIImagePickerController+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05BF0AA3A59D2D9D95F5FC080734672E /* UIView+JXDesign.h in Headers */ = {isa = PBXBuildFile; fileRef = 67597B31824878EE37E3298059B7BA25 /* UIView+JXDesign.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06047B8BD57A0D035F7DB99D58E93887 /* DROptionCardLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = D2E72344EB4562A8FF39E34F40909EFD /* DROptionCardLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06622A5DFD794242D179D556ACA681B0 /* DRHourMinutePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8608B01864DF2DCC89388AD6F41EF53F /* DRHourMinutePickerView.m */; };
 		071AE089AEFC2BC2A35EE30EBD0CFEA0 /* NSObject+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 11CDC7FB7E116F02A94343DA77F92E06 /* NSObject+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07E87A7827E72EC81AC5D53ABC368848 /* UIAlertController+JXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A65708747621501C21BD0F2CEF0E0C23 /* UIAlertController+JXExtension.m */; };
-		08C894A6918687FD794F7CABCFE41738 /* DRPickerContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8B8C5644CB2EAD824B1A5774516F72 /* DRPickerContainerView.m */; };
+		0903189333E4BA856087DF65103C4576 /* DRPickerViews-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0598891B1C846866EA43389F0C3DFA33 /* DRPickerViews-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		09CACC2ADBD3DFDCC39AEFEF98E1C5B9 /* POPCustomAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD501D4D5F01D914187B7D6FA175486 /* POPCustomAnimation.mm */; };
-		09FD11C067D97F8C0B107919DE3EA0EC /* DRSectionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6001DF4C22463BB745969640D6A66046 /* DRSectionTitleView.m */; };
 		0ACD4CD9CD6BC52605F588280873A70F /* UIView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A77AA696EAB10C54B5CEA21C9462A58 /* UIView+BlocksKit.m */; };
 		0AF80DD5EF839FADF144DD1E89D3DC61 /* NSTimer+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3511165174937FCF2F63390A046CCA50 /* NSTimer+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B52B96DC03D4CBF2D63DF078E81B838 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2028A6DAD11344B12452617133D6C010 /* UIKit.framework */; };
@@ -47,7 +45,6 @@
 		0E80E70DDA64CDB3DF8046CBF3381FCF /* POPCustomAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = E26E76CCB9DB3D7C5E38E5EC6A10775E /* POPCustomAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F025164B3E87E01E2E339E7BF6FB3AD /* NSMutableArray+JXSafeAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = FE4A2F8D53DF670283A70F8F8EF2125A /* NSMutableArray+JXSafeAccess.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F2BBA805BBD6963DC7CED475B582A8A /* NSInvocation+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 000BE23DFDB853E8B75FF5B93D6B9308 /* NSInvocation+BlocksKit.m */; };
-		1087450ABC7DFBB1BEFC472894FA3195 /* DRTimeConsumingPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 866A71396397EC381A943B8FCB12F293 /* DRTimeConsumingPicker.m */; };
 		12167F2E49D5C6E65BB24941DF0F5DC9 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AD79355D2E70CAB00F41837EC87B00 /* NSObject+YYModel.m */; };
 		12CB73A75BE137D7F4D25F115F347B5C /* JXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD7937964D07B92CF4D1224A3A07DF9 /* JXLabel.m */; };
 		130B7A3E000A603ACC8812BEAC755D88 /* POPVector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F810F0B27A094D8D4A101E1802E7038 /* POPVector.mm */; };
@@ -57,32 +54,38 @@
 		146C352AC548ABD556861EBD8FFF1876 /* NSUserDefaults+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 04F3D0E6848E2427068C717F08D3E893 /* NSUserDefaults+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		148869AA77ECB44ABCA889544FAC58C2 /* NSObject+A2DynamicDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 62AA9AAF29E150A2D334097C087BA0C0 /* NSObject+A2DynamicDelegate.m */; };
 		1490C7E386B443B13C9C629B70C815FF /* POPAnimationRuntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC02478F2D43987C656311C031F7CAD7 /* POPAnimationRuntime.mm */; };
+		151C9DE930DEEC53DFD7E37759156C39 /* DRCalendarTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6985E8BA2CA05ADE57881654D840902E /* DRCalendarTitleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		156284FE8640305579D6399F22CA9EF4 /* DRValueSelectPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FF069F0BDE3BBB059FCFA9147DEA23 /* DRValueSelectPicker.m */; };
+		15706D6F13515009B4058DA0AF931050 /* DRWeekPickerCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 32DD717E95BA98E3B6E48377504BABA8 /* DRWeekPickerCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		157A8D6430F48DB7BA2C84E0F5F17815 /* NSArray+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0390971086C6544E8B5EA9ED9107C228 /* NSArray+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15A17B7DB9BEB38889347469535AA8EE /* UIScrollView+JXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD9F247915F169C92D842C372F8104E /* UIScrollView+JXExtension.m */; };
+		16220BFEDEE7AE7FEAD04A357F5B9E9F /* DROptionCardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 55667ED6D62C1F196ECF7E9F091F771D /* DROptionCardLayout.m */; };
 		164DD599337C6BD04F3E96B1355F4330 /* YYModel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 069EE2978E8F70070992D249126746BF /* YYModel-dummy.m */; };
 		16FE150DE7978E3BEAC441CD4C30340A /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B5BA7F85007941F724E448752369F501 /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1711E802169E87A858F3DDE58AEAA6C8 /* DRDatePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = F3FC9379BAFAB9AC6C34392A53696346 /* DRDatePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17C42E962347D8EEEA99795FCA706D6E /* DRPickerTopBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FFD1AAF68CDB00C4AA5140019728333 /* DRPickerTopBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		197B95CEA5B254009B6BC59A630D0598 /* HexColors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86A989A48D64D3A770E6E5CDA3FC684 /* HexColors.framework */; };
 		199534249547DA04EC9AD6A248B7BBE6 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E9FB042DCB140B7D5E1E75F0B29BA99 /* MASViewAttribute.m */; };
 		1A192E15483112FC7100EAE2DF8DFAEF /* DRFoundationCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8CA3BB830757CFF82FE5D75AEDE451 /* DRFoundationCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A576EEB31A8078F4D635B7D93A063EE /* DRBaseAlertPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CB135160290756F85ACBA18E30EBDC /* DRBaseAlertPicker.m */; };
 		1BE587CCED2F9CE1BBE9EC15DBBF61D7 /* UITextField+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 662137EA749FE9D057B810371ED14725 /* UITextField+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1CF6B103FDCB7F5DCE486F692D05BD2C /* DRDatePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = F3FC9379BAFAB9AC6C34392A53696346 /* DRDatePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1F0C35DEEC9371E361CDDC908ACAF7C3 /* UIPopoverController+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CB5D70EFE444CA7931C96C3D15B911 /* UIPopoverController+BlocksKit.m */; };
+		1F357E1DCCE1F96C17598E7D6A54395A /* DRSectionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6001DF4C22463BB745969640D6A66046 /* DRSectionTitleView.m */; };
 		1F7D152632F3B8E7D4B8BA13D0095062 /* A2BlockInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC798EDDA20634AF005CAB1622C4621 /* A2BlockInvocation.m */; };
 		208AF5DE15D2119CE89BC1454EEC6C36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A704C9F10FA638A936361C0868E8E30E /* Foundation.framework */; };
 		2170B92A7EE8973BF901E43357BDCD31 /* BlocksKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DF9B1F58C2158E58A0D2027F9ACCA31D /* BlocksKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2296C977CDB98104547551A2524E9A75 /* DRDatePickerDataModels.h in Headers */ = {isa = PBXBuildFile; fileRef = 14355B95ED62B62FC1712E620B647CE9 /* DRDatePickerDataModels.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		22BB7A4A163CFA7C1B43C5519021EFFA /* HexColors-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AE731BD93EFFC2AA2007F18E6C473E /* HexColors-dummy.m */; };
 		23F611941FF3BA308825F0ED2E76ED0B /* DRPickerTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845AF20F83BF4C0DA203526B1467D3A4 /* DRPickerTopBar.xib */; };
 		24BBF5E1138F7A533456ED6BE197BA29 /* UIImage+JXExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B0F4371138496E49BD67715F88D1E1C /* UIImage+JXExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		271A9D24D0AD9DA632340550F52C9CB0 /* NSArray+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1340EFE75486EDE540E54A72D7F69FA3 /* NSArray+BlocksKit.m */; };
 		27B14E3B832F0B794715B52B107CD538 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFECEB1BE15F6C7511CF9BEB63E4A570 /* View+MASAdditions.m */; };
+		28A01279B5BA8A64403A2F18895AA81A /* DRYMDWithLunarPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = A02D5164FE55E4F037BAAE2A99C955EB /* DRYMDWithLunarPicker.m */; };
 		28CD5C62AE257B7D13DE522BE6438F57 /* NSObject+BKBlockExecution.h in Headers */ = {isa = PBXBuildFile; fileRef = 15258ABA3394CB455305C2E21B56B01C /* NSObject+BKBlockExecution.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2B4D8F6F2C508FFB65B4A18D8B60D235 /* JXTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCC24248748671537F184074CFCD3C5 /* JXTextView.m */; };
 		2C25932AC5B108E54B9565BE0E3D6362 /* NSSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B6E91418DD02888569DF288FAC4BBE /* NSSet+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CB2F8653E50A8A2C972AE29776020B5 /* UIScrollView+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E73989B34EC6DE223BF94F5BEF9985BA /* UIScrollView+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DB22F4ACF55C1313CACA75C099308EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A704C9F10FA638A936361C0868E8E30E /* Foundation.framework */; };
-		2E9647C298FE661FBDAD178FB4750726 /* DRYearMonthPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = B30BA222D00BC7BF6F1C39FCB7781453 /* DRYearMonthPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2EDEFABD2640E50529B61446D9A0DAFA /* DRPickerTopBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FFD1AAF68CDB00C4AA5140019728333 /* DRPickerTopBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		30C91ACB067B52D421043655743ABC99 /* DROptionCardCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 265CEC217E2215B043A70D85EB62DA31 /* DROptionCardCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		31C18D92C040AA8CD40F8167CCEACE1E /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0949EEEC9D0CEE69AA76B161152292B0 /* Masonry-dummy.m */; };
 		32F2C8F5E988DF83BB52F374C2F56736 /* UIView+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 016A13B8978FD687FE939F40924BCBA5 /* UIView+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32F3C788A6D36D1D52371435B7478B89 /* NSTimer+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F952A7DD6BFFAA1374C94D5B865C71 /* NSTimer+BlocksKit.m */; };
@@ -95,11 +98,11 @@
 		356F580D38A782DB4DAA2BED158B349A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A704C9F10FA638A936361C0868E8E30E /* Foundation.framework */; };
 		36055928705C3CAA5112F00207A91BFB /* UITableView+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1220C4F1914C9C907686A51DAF550C58 /* UITableView+DRExtension.m */; };
 		366C7D2F381A647E2C7AEF5959008047 /* NSMutableArray+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A573721A89C8FE8601120A4AB54B65D5 /* NSMutableArray+BlocksKit.m */; };
-		37903F2507579DAC78FE20F26EE2A448 /* DRUIWidgetUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC1096F56FFE2893BF694B929DDCE8 /* DRUIWidgetUtil.m */; };
+		371CDD81F13DB725F15A25F2DBCF6182 /* DROptionCardCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 265CEC217E2215B043A70D85EB62DA31 /* DROptionCardCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		37C1DF68D0DDD535935B2D6619CF2640 /* UIView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B57C985BFBA8D12C4A384A4F03004DC5 /* UIView+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		37D55B01B0EC3C956462BF7D8D89F5A6 /* Pods-DRPickerViews_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CB87B2A4F6CEA26D31DBDE5E3BA40F /* Pods-DRPickerViews_Example-dummy.m */; };
 		38DFF3F3381AFAF85BB6511B6F7C5949 /* DRCalendarTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA03CF9BE9CA3E59802A55AE16D506D /* DRCalendarTitleView.xib */; };
-		392C823E827155AB9DE50C46E5114F01 /* DRLunarDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5491C09610232F5186B5875612A2EBC3 /* DRLunarDatePickerView.m */; };
+		393A3BEBF99AD4BE7B315C471BEA0EE7 /* DRHourMinutePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E4715F080BC49BFA2EB70F44302F722 /* DRHourMinutePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A7BD1BA7C918BCAC7EA833B00BF47E5 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7730FA0AC1221EBA5724C7D671D26F67 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B17537C0D47303A27AC89FCE89D7AAF /* UIGestureRecognizer+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A85E36F3F66957EFA9F63F0E7CA88C30 /* UIGestureRecognizer+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B4129D694AFFE371C2A8647F43EA8C0 /* NSString+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBA78EA5E48E3D150CC65D48BA60CA4 /* NSString+DRExtension.m */; };
@@ -108,21 +111,18 @@
 		3E0D897A248B819B2D503847F92A8155 /* MFMailComposeViewController+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4335F41B577EB882E09657CBBCA1E7EE /* MFMailComposeViewController+BlocksKit.m */; };
 		3E13CD31D5B4D619F80E102CCCF7560C /* TransformationMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = AB26B133ABD8520079B071A7553537C0 /* TransformationMatrix.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		3F879E03360EDA472FDF862D10251612 /* UIBarButtonItem+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1454C018540AA8CA20896F834E3DC63D /* UIBarButtonItem+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3FAC8E706F90FC97F7D28B9B07E6B7EF /* DRCalendarTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6985E8BA2CA05ADE57881654D840902E /* DRCalendarTitleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		401F1608711747F64DD80421C6C8CF62 /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AE717673916EF737384BA94574E5ABDD /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4059186DF4FD749816919FF654B8F304 /* DRDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A53E18303C2338BE47D3FC9E7B68A60E /* DRDatePickerView.m */; };
 		416DF47710292340B0CD6B8816BECB7A /* DRStringOptionsPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9608F4694BDBAEC32CA1133B9DD29F /* DRStringOptionsPicker.xib */; };
-		41B4DA3CBD36B93081D476588BABB820 /* DRCalendarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF954EAF4D8C184CA9D53B59E4E8D07F /* DRCalendarTitleView.m */; };
 		422D7BD0037A67D73444D5C7A415CCEE /* NSMutableSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BE04CEC6BE6515F7AD708696B96174A1 /* NSMutableSet+BlocksKit.m */; };
 		42E6C0077B162F8C6F1AD1A08531D7EA /* UIViewController+JXTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 81CD4B0AD20FB4DE293BA47D3239708A /* UIViewController+JXTransition.m */; };
+		4314935A0489FD501F60C9C310EC26D8 /* DRTimeConsumingPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 192019918C3C760BCBA035F950211655 /* DRTimeConsumingPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4338A279DD13340B3B63B645323C3A3D /* DROptionCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7648EA3F770BE01E6F9CC0E5602EAFE /* DROptionCardView.xib */; };
 		43C855FA0563D024C8FC3C35D3B78659 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C0558022F451242607EEC24130612752 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		4597E439655ADCC604DBF14CEB8C40CD /* POPSpringAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2016995C16FE9C887B2B27BA81906864 /* POPSpringAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45D890BCCCDA6D73327C9CB4F8108993 /* POPAnimator.mm in Sources */ = {isa = PBXBuildFile; fileRef = B27068513EE11751A643B4286C5BCD46 /* POPAnimator.mm */; };
+		45DB4B33235EA84518200F47A6AB075C /* DROptionCardView.h in Headers */ = {isa = PBXBuildFile; fileRef = 524BE442C05567F5AAACC40C9642B487 /* DROptionCardView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45E09F4C00AD25963B9F335880D20D1E /* UIBarButtonItem+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B2ACAE4E867453C7CBB0C0B576056129 /* UIBarButtonItem+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4668FF52984BDE25D69AE2BF99B58E55 /* DRDatePickerDataModels.h in Headers */ = {isa = PBXBuildFile; fileRef = 53462AC4EFD21DA1695B47E7F0AFEEED /* DRDatePickerDataModels.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		46FB7651558925D7854C9E565A94F839 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A704C9F10FA638A936361C0868E8E30E /* Foundation.framework */; };
-		47AC0A57BC44C40FA1C9683E82714130 /* DRSegmentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 977640DEB75200FFFA46F28AD7894AAE /* DRSegmentBar.m */; };
 		48060644B9CCE53A138FB1BD49B584F0 /* NSObject+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4CBCCF3545FED22E0A271BF92E04B8 /* NSObject+DRExtension.m */; };
 		48CA8C61A15C29F368CC821396FFA0EA /* DRCategories-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FC5F1AC22F441B4C20085BD9C461F23E /* DRCategories-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		495B19A289E6E02F396D25D413372262 /* NSArray+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = CABECCB45F1622A6A15B06A9F084F498 /* NSArray+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -131,18 +131,17 @@
 		4A48194140568448DD09A60FDE8D62DD /* Pods-DRPickerViews_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 07400D8BFE4FD2EDD2132E0D27647FD4 /* Pods-DRPickerViews_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4ABD8B8EAB0EED165AC05E7BA5B84A9B /* DRUIWidget.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60BE9EDCC757487D26B63221C66DD4C9 /* DRUIWidget.xcassets */; };
 		4CBBCC97349E91F768CC86DC91EBF3A3 /* MFMessageComposeViewController+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D333F8345B231DED6A1E46C3FC5B07B /* MFMessageComposeViewController+BlocksKit.m */; };
+		4DD6F6A87C9D25C842B3EE20B8D4925B /* DRWeekPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8B07558465628E72F0B3C46373E40F /* DRWeekPickerCell.m */; };
 		4DF1B3B517D8C0EA2C3A5E12A9C030AB /* JXTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D6ED7E9F85D96EC6485C00C0BB9E33 /* JXTransitionAnimator.m */; };
 		4EC8950F778CCF934DE02B201420B6BD /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B154157072171FA0AABAD56319FD58 /* MASViewConstraint.m */; };
-		4F964181D1C57457B4D8626D60B969D4 /* DRLunarYearView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A03FB8597868C39D6DF01AD3E764B82 /* DRLunarYearView.m */; };
 		5004B5C55C42C89824B30F2E008732E0 /* POPDecayAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2B2744011370E00C59A59AA9733AB47 /* POPDecayAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		50CBD525E33E59DFD86C4F4275B5B2B4 /* DRValueSelectPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B65E37C3C48F3CAC231FAFFB064B84 /* DRValueSelectPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		514728C1FE886392D9D4CA123EF0E445 /* SDVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA72E44B4639302E31D3C28522136BD /* SDVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52D99C261093ECFE8C019BBD0D46BD08 /* NSString+JXDecimalCalculate.h in Headers */ = {isa = PBXBuildFile; fileRef = 881F0A58E3CD7513F6C528171FBAFBD1 /* NSString+JXDecimalCalculate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		554B01CC1223A17E35B6F894FB8CE793 /* JXTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6EB4B6B343BEEA07893888E9E5CAE1 /* JXTextField.m */; };
 		561BB64772A2E9A1E91A8A6AB2D2A25A /* POPAnimationRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 11085675A31D3E1A95A7F3A9F44AC9A8 /* POPAnimationRuntime.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		567DF24E4390B1D8BF05D5E4768E7607 /* POPPropertyAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = C5B42DE57A8A6CB746293930714584B5 /* POPPropertyAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56B064C5EAAAC5CBC7CB3BC9D8584510 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A704C9F10FA638A936361C0868E8E30E /* Foundation.framework */; };
-		57D58A88C15A48746E22924C5E25D60C /* DRStringOptionsPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 80025EC347F8F1F778763E51478A12E0 /* DRStringOptionsPicker.m */; };
+		57AC5EB734F800D97681A48C58E56800 /* DRYMDWithLunarPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = CA950C264D60A2BADA680E119BD86DC4 /* DRYMDWithLunarPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		57FD602DF64D6109487DB1B99D6F0366 /* DROptionCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55882A6E228E3E7DCD48BA3942A782F0 /* DROptionCardCell.xib */; };
 		585B807C10258BAC327C7577616E5D88 /* UIBarButtonItem+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA0E153AAB05CB7513C5E56BE4C3E64 /* UIBarButtonItem+DRExtension.m */; };
 		586E2F89460A34DC6E2D99A74A93CBDA /* UIView+JXClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 673DAD061908A6C8C2B58A6688B240B7 /* UIView+JXClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -152,39 +151,30 @@
 		5B17D9E19556D2EE85B28CE9C4EBE6FE /* NSString+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6A560975B14494EB26C4E99A8CF9B8 /* NSString+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B18282A3B7172D1E3C78EDB9F33951E /* JXCollectionViewLeftAlignmentFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FE341F97A0F213149259AAA8E4B807A7 /* JXCollectionViewLeftAlignmentFlowLayout.m */; };
 		5C012A439232E461819C6A87B8E690E0 /* UIActionSheet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCA4E164BB6564CD918F4A022CB0966 /* UIActionSheet+BlocksKit.m */; };
-		5C84B373FD65F825D9CA2A2612AE3915 /* DRYMDWithLunarPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = CA950C264D60A2BADA680E119BD86DC4 /* DRYMDWithLunarPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5CCE0313B0AECBC24E61F3072FC73CD0 /* POPAnimationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = FCA153602D0C4D2FCA8B39DBBF94FD9C /* POPAnimationEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DCDC72E6A0714AF67A8CA7B67BB236D /* POPBasicAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 10F806D85AA6D89108FEADE6E520B594 /* POPBasicAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5E0538CD63004976DE3073B9BD94CF25 /* DRPickerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 830B1828920AB519E923214B0359E41C /* DRPickerFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E20740A50FE41C22513C07892D67B34 /* JXDirectionPanGestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC15C92CD692C88EF00DC87714A6326 /* JXDirectionPanGestureRecognizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5E47817B5CFB433637E13C952B1CB6A1 /* DROptionCardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 55667ED6D62C1F196ECF7E9F091F771D /* DROptionCardLayout.m */; };
 		5F12B26C6F436CCC2D841BC5C9E42C15 /* UIAlertController+JXExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E22EE0F69B27A5E64FAD4414B82CC77C /* UIAlertController+JXExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		60D06317D0C0A9764066E100255F7426 /* DROptionCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E018CAFD1FCCE1B993D3BBB5D15B052 /* DROptionCardCell.m */; };
-		613AFDF1D7674A9E1BA7FE7D0F601419 /* DRLunarDatePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 32579F05D378FC24D448E16A5B00B0DF /* DRLunarDatePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		61F32F4D9F97B52E42C36993945067AF /* NSObject+YYModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 74E0E3C61C6B6F0EF3CF2D55EC6BF2F4 /* NSObject+YYModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		61F33A61DE7394052E85D473A6411FB4 /* JXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FE0B6923A67C0E1E5F1C2A43A6DF98 /* JXImageView.m */; };
 		621062AA50FB2258098655E382FC2199 /* UITabBar+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3547003109629E7929FDA77E24E09AF6 /* UITabBar+DRExtension.m */; };
 		62199ED7C791A093638BDFA1C962BDAA /* POPAnimationEventInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E000AC840E64B5D7FE686B285BFAE1 /* POPAnimationEventInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6240E7C54E9831BB27D24C5E42CDDE08 /* UITextField+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 620FE77A71C3BA38164A355B75C9EA93 /* UITextField+DRExtension.m */; };
-		62447A43AC2D3BA3BAA01C1EC3EB9B62 /* DROptionCardView.h in Headers */ = {isa = PBXBuildFile; fileRef = 524BE442C05567F5AAACC40C9642B487 /* DROptionCardView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		637337531452107AFC10F4FFE1B7CCEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A704C9F10FA638A936361C0868E8E30E /* Foundation.framework */; };
-		6410B0F6FD3CDEF01E2A16BA44770B4C /* DRBaseDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = A8BA22CCC884CC570093C5CDA515CAE5 /* DRBaseDatePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		655505712D949E2D62479676425CC781 /* NSObject+BKBlockExecution.m in Sources */ = {isa = PBXBuildFile; fileRef = BE00C530DE21CF5994A19D6E10B7EDA6 /* NSObject+BKBlockExecution.m */; };
 		65B77B17BB915E37FDA193A5B6365375 /* BlocksKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88131C98AAD296A09A222F0590D9E303 /* BlocksKit.framework */; };
-		6605E3AEC5C7E8CB207E83D29E83770B /* DRDatePickerDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCD55D0AE0BBFC1453E29DA4F056AC /* DRDatePickerDataModels.m */; };
 		661E51D0C7F54146214D6CE7237C0169 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A704C9F10FA638A936361C0868E8E30E /* Foundation.framework */; };
 		667F54530D98CB10CCE6EBCF9D7DAF26 /* POPDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B4A27E2963CBCD126C02ABB6C7F5B4F7 /* POPDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6683F1F99B2FD0D5B31914DA6F35EF63 /* DRPickerTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 663321D56D280A4FFB4B556ED47F6A29 /* DRPickerTopBar.m */; };
 		67CE4022B6365C2C830F5BBD129DA072 /* UIActionSheet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3246EEDA5D0ACB3549451CBC29D60B0F /* UIActionSheet+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		681AD75C50E0B3E891AEA9312DEBD589 /* NSString+JXDecimalCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = 236EAC7B2599EFC9ED3183B860220C3B /* NSString+JXDecimalCalculate.m */; };
 		6830DC6415F318AD4141BE81FF83C047 /* NSURLConnection+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A7C1A70B3368EF0E7718FD8E69CC2547 /* NSURLConnection+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		685EE82C0586D09351AE6904B88DF915 /* NSOrderedSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = F0570484852B0DB5842F7029854CB802 /* NSOrderedSet+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68AD8595C943D5B84E0A339AAEA8ED9D /* JXLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 120A26C8243618876EAC3902873DEDD1 /* JXLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		690CCBFB85BAC626E9380B809AE1CBEC /* DRWeekPickerCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 32DD717E95BA98E3B6E48377504BABA8 /* DRWeekPickerCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		69ADD451B89ECF0B20150EC344BB1AA5 /* NSMutableOrderedSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C495C9564B4D0032C0631FBF48A07CB4 /* NSMutableOrderedSet+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		69C2B7F9032A7C0D669AF725B6DD8C62 /* NSObject+BKAssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 8111E6AC34689DAF5A006968554949C3 /* NSObject+BKAssociatedObjects.m */; };
 		6A5244A40AC07ECD58C9410FD58B281B /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = 06911F68A55AE045562F4F0B4A6A1BCD /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A73781E1E3FA984AB3D45DC15BBDD4D /* UITextView+JXLimitText.h in Headers */ = {isa = PBXBuildFile; fileRef = 066595AAB881837BBCD2BC3037FD6C6E /* UITextView+JXLimitText.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C84FAEAE9EC188DED635F3A54245BCE /* DRCalendarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF954EAF4D8C184CA9D53B59E4E8D07F /* DRCalendarTitleView.m */; };
 		6CC533F31473F5FC4759FD79788B5176 /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = E951976D32A4705E00285CFFC50D1C68 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CCE5DDC82686C05EDD5034EC36D1811 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A704C9F10FA638A936361C0868E8E30E /* Foundation.framework */; };
 		6D81D9E46D481AA284FA73A7E461B1E3 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 20782DAD93BFA2A63CE9FDEC0237B222 /* MASCompositeConstraint.m */; };
@@ -193,83 +183,87 @@
 		6E4387261347059CDCC442AA501D5A0C /* NSMutableDictionary+JXSafeAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4A5567B70E7E3F17A8A2FA98B52E03 /* NSMutableDictionary+JXSafeAccess.m */; };
 		6EF346C785538342409FCCD467FBEEFC /* NSArray+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E46ED14BFCE55741875D34ABA1FC125 /* NSArray+DRExtension.m */; };
 		6F09E0414F806B0A3A5755A4CAF18C4A /* CAAnimation+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 42C60B3A87E15352B5EE9759092F77E5 /* CAAnimation+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6F4729401562FAA39B803DAFAF270E4C /* DRAheadTimePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = F7EC597451D2188C7F3D0D40839B5018 /* DRAheadTimePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F8B6D03A161AE6BD6CC1EDABDAEFB80 /* NSMutableSet+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E95C35ECBBB462C55BF59A7C90F2D612 /* NSMutableSet+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FAE76F4292DA7EE7242E6D7D611C108 /* NSString+JXSize.h in Headers */ = {isa = PBXBuildFile; fileRef = F88324407125261F412728CFDFE5A8B8 /* NSString+JXSize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FD989404AD2B2539245183AA5688663 /* UIView+JXFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F71523740360A53D662D8CC47177C6 /* UIView+JXFrame.m */; };
 		7136C632F882C61211B7BBB10638FFD9 /* DRSandboxManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6DE421A56E1E8B8D9FFEC1468E29B8 /* DRSandboxManager.framework */; };
 		7324025DA7BCB64C9CD79697CD755E81 /* NSObject+A2DynamicDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 397CB3A5DC200D019A5CB137B4E1B549 /* NSObject+A2DynamicDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		738C001A94067F68D0D1A3244CE72620 /* DRHourMinutePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8608B01864DF2DCC89388AD6F41EF53F /* DRHourMinutePickerView.m */; };
 		73DB48D159BAAF5E7DCCDDA3D8FFB5C3 /* POPAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FF048FBEE131A7FF5ABA89AECA9335F /* POPAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7425DAC1F8CC88585F1C8F7C8335D63A /* NSMutableArray+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2706EFFE787941021D7894B2A8CC7235 /* NSMutableArray+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		743D914E7603EC98540B5A8C3B1D6AA4 /* JXExtension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D32A79124D89434059F60F7A331D8975 /* JXExtension-dummy.m */; };
 		7577D9D6EEA411F82AEE61CD40477DE1 /* NSCache+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 59C3CD6D0A879D8A98D39CDB5A1C1F66 /* NSCache+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76EC22795E51A0B99D5314102FE99563 /* DRPickerViews-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3613FAA74F2D1DACB15D9836C4A2862B /* DRPickerViews-dummy.m */; };
 		76F9540E21DCD01F89DB75BB4DFE6F2F /* NSObject+BKBlockObservation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C0E5639A9B4D61436461810686E01EE /* NSObject+BKBlockObservation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77FA7A3D277F167A2FE766E173FF93F5 /* MFMessageComposeViewController+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 89F9F584273A3806F18F9EC2D218CCA0 /* MFMessageComposeViewController+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79A63F87F3D6ABEDD085FD6C0E76D1E4 /* DRHourMinutePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E4715F080BC49BFA2EB70F44302F722 /* DRHourMinutePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		787A9874074B3D1A49B049B7D8D83608 /* DRAheadTimePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C879DCF0F3B0FA1502D29AE67CA711 /* DRAheadTimePicker.m */; };
+		796A745E40573FCCD8032A3CEE5475FE /* DRUIWidgetUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC1096F56FFE2893BF694B929DDCE8 /* DRUIWidgetUtil.m */; };
+		7AAFE12457FD36C349DD3DE8562A1D5B /* DRAheadTimePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = F7EC597451D2188C7F3D0D40839B5018 /* DRAheadTimePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B664CFEA10C7CBFC5AA6C0BAA8C11AB /* UIScrollView+JXExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CE2ECA47CF98C11CA26665F3896162 /* UIScrollView+JXExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C0E22B5FB6331386BCC16B71DFBFFA7 /* NSIndexSet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = ECE0005C61C0414CAC5222E8EEEB7E70 /* NSIndexSet+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C22821327CC27599EC5F8221EAB5F8D /* DRPickerTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 663321D56D280A4FFB4B556ED47F6A29 /* DRPickerTopBar.m */; };
 		7C3405976CAAE84A512BA986E5D6E320 /* JXDirectionPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFA727C448213070DFF9061BEB979B8 /* JXDirectionPanGestureRecognizer.m */; };
 		7C5706DBFA3A2B32E737A6D4394DEEC9 /* NSOrderedSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C84AB96212D3BE821F1BC9E0FC7FC3 /* NSOrderedSet+BlocksKit.m */; };
 		7C884550CEB29C17AF828F1BA6F08010 /* JXAlertContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = B393EEA10ADEF0AF275E3C8A4EEB4A40 /* JXAlertContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D90AE6EF74B5F199461F9672F8A1288 /* UIViewController+JXTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = B336EF3802C78D8F8E6D4823ECC5EAE7 /* UIViewController+JXTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7DA9CB7A1BFD92F6FA2BE6FFBD3597C3 /* NSObject+A2BlockDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A14CC0415FADBD1A843570B39266D300 /* NSObject+A2BlockDelegate.m */; };
 		7DC47F439793398227D781EE7A5EC0CF /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = CC6BB6E75031175E2CEF03675AEE42B0 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7DDB0BB14629FBE03565FD913745A314 /* DRYearMonthPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = B30BA222D00BC7BF6F1C39FCB7781453 /* DRYearMonthPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E32978DCDBB96182D8201689B0231C2 /* UIScrollView+JXEmptyDataSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 42553F1988C10E5A2B68EF85EECC12D5 /* UIScrollView+JXEmptyDataSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EC2F2BA55E33E07A048163C32AF0392 /* DRToastView.h in Headers */ = {isa = PBXBuildFile; fileRef = 37AA4026FA14DA5DC202257176AA3CD7 /* DRToastView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F07A70492F73E7DF97295BF76C8DEAD /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C44507E82B0882A0ED224E2779AE2A4 /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FF449F8C71547D546D06AE53CC67484 /* BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EB3E1A2E19B3BAB9AB6DC64D6D62E87E /* BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		803E6779AE4C44D4B4A84772DFC94294 /* DRStringOptionsPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C7F283598CEB6B965A58704247F94A /* DRStringOptionsPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		806AC04DE7443CD232CC221D01770F9E /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C84F06462FCB356E3E50668A1B2503 /* pop.framework */; };
-		82533A0BD584C6DD53AB19C74AC80D71 /* DRLunarYearView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B113FFED205B5831C8F851E19F15A09 /* DRLunarYearView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		81E7BED151D1E0F41A41ADD992A90D0F /* DROptionCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E018CAFD1FCCE1B993D3BBB5D15B052 /* DROptionCardCell.m */; };
 		8296969C26FAC6A888BEFF71714134D6 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 086278198064831295F192626AC24FAB /* NSArray+MASAdditions.m */; };
 		82D4860F96920BE2372A68773CC47098 /* JXButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 78DA1E1CC0F11FAD80B39CC98C14E32B /* JXButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8308222C5F3DAADFFD5E8E73864E443A /* DRTimeConsumingPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B0363D13B74EFD67432D55D55F4D1D /* DRTimeConsumingPicker.xib */; };
 		8349AB675EE76A02091AEBC75393B32A /* POPLayerExtras.mm in Sources */ = {isa = PBXBuildFile; fileRef = F540D6B43751570926619A29186360FD /* POPLayerExtras.mm */; };
 		83C4DA6F7047A4A736EFA90962C1BF33 /* POPAnimationEvent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2885562F8FFDFBD6AE6C26EF7DC534DC /* POPAnimationEvent.mm */; };
+		83FF323B96ECAC7C91D020BE5CC9D735 /* DRYearMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0734FE4128112DFC7500FD7DDDABEFF3 /* DRYearMonthPicker.m */; };
 		84DBE43E5C2A422304CC72D9277C5AFC /* YYClassInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DD1581E94BF20CA8FC6E6E234865686 /* YYClassInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8506F5C3DFF3F04524723C387E557B0E /* Pods-DRPickerViews_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 35ABD9B29732717A727EC6BD1777FB3B /* Pods-DRPickerViews_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		853813D321BADDC5ADFDEEEFC5E1DA19 /* DRYMDPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFD8032D88F7405860066A809BA987B /* DRYMDPicker.xib */; };
 		8583A9993C15E6CF9775F685276DCC38 /* JXAlertContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A4B469E464AE40F66CD3BB7330E17D /* JXAlertContainerView.m */; };
 		859CF541CFCD581FFA49087EA3C0811E /* UIView+JXFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EDFA73CAC399FCD179DD2DD3196C852 /* UIView+JXFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		85AAB40201E8A26169AE79E895958611 /* DROneWeekPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = B9DFB52CC5A74EE506AB9992C18A2F37 /* DROneWeekPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		85DC973955CDF47F8D10FCCCF0BBEF13 /* POPAnimationTracer.h in Headers */ = {isa = PBXBuildFile; fileRef = D84B3911084E49F67E87711707B816A9 /* POPAnimationTracer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		86CDDB5C878879CE4F190488B29C081B /* NSAttributedString+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3ABBCBD5EE242651FE15466D012379 /* NSAttributedString+DRExtension.m */; };
 		87071E3B6AE9BC8406B6C3D34B3FA39C /* NSMutableDictionary+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 838A7516A53FC536277F2859051E03BB /* NSMutableDictionary+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87399CDEE49FAA69B142D40E4E7061F3 /* JXView.h in Headers */ = {isa = PBXBuildFile; fileRef = A721F6021ACA2231D46D0B9B44FC0F92 /* JXView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8846A181662781365ECE68A8B3886E7C /* DRYearMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0734FE4128112DFC7500FD7DDDABEFF3 /* DRYearMonthPicker.m */; };
+		87D7B8D6CE4A04090B3CBDC12102E610 /* DRSegmentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 977640DEB75200FFFA46F28AD7894AAE /* DRSegmentBar.m */; };
 		8849D9EAEE040D6D9C9FCDCD6B99DC93 /* UITextView+JXLimitText.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1354F76AE5F5F5E207DCC8DD2669D /* UITextView+JXLimitText.m */; };
 		88EFC9DF98EE519ACBA6FC74C3F77AE5 /* NSMutableSet+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7540194ECEE8EC0707EB71E8D85100B3 /* NSMutableSet+DRExtension.m */; };
 		8977B74C93CF1FCA1FE4A4213BD44DAE /* POPAction.h in Headers */ = {isa = PBXBuildFile; fileRef = B18BFDA78B99173D8B25F012119B7433 /* POPAction.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8A6D06C18996AD41C61D2C6F144ADF62 /* POPPropertyAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = ADCB7B7C08EA89C702095ECBD71CE1EE /* POPPropertyAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		8AB760554CD8B9F80FC28DFC49A8922D /* DRHourMinutePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 79803287969795C118437A512060BE03 /* DRHourMinutePicker.m */; };
 		8AC8F6AF5009DD79BBF16E60122A48F9 /* UIView+JXClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A64AF712F45B669B3E20CF31CD24E2E1 /* UIView+JXClass.m */; };
 		8BA9F89F506F0F21FD4E41A73B96761C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A704C9F10FA638A936361C0868E8E30E /* Foundation.framework */; };
 		8BCA1DDD792C3BC60CE5C1EB165745F0 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE732FD5B8A48DD7AD52C4EBD692A8C /* MASLayoutConstraint.m */; };
 		8CE1488F983F9CAF91B409918FF6E9B8 /* CALayer+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 41C28A6ED25DC41D6DF2199CB0F86EBC /* CALayer+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D1F03F54710A35F711E70B11397590A /* POPPropertyAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD68F8654205BDFB24605B0C5F30F10F /* POPPropertyAnimation.mm */; };
-		8D4844975944BE61BE9F470D7C899AB9 /* DRValueSelectPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FF069F0BDE3BBB059FCFA9147DEA23 /* DRValueSelectPicker.m */; };
 		8DCE6461032334233A7010AE1918F5E8 /* NSInvocation+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BDA6B38EBF01866C7B7BB5BE43F59C98 /* NSInvocation+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8DD67875D46FA75927BFA90224722C15 /* DRWeekPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 681BCB23DF7E86142EFFA48331423B36 /* DRWeekPickerView.m */; };
 		90085CF69B248A705097EBEA61209CDA /* JXTransitionAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 307DBEA7C0AC24DE7A9796F42F26495E /* JXTransitionAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		902249975FC94679DE4B761B6D021900 /* DRSectionTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = F51CBE9E8DFA652F87368D99076B163E /* DRSectionTitleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		91356809961CAD17805897FB40250C23 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4E7BB48AF94D0777B4644FBF69B169 /* YYClassInfo.m */; };
 		91C7CE8A4DD1A4CA578F73A2505644D5 /* UIImage+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = D4E2750A45254A0FCF54EF3BF5C24DD5 /* UIImage+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		91CD1913A4BFB667096535A8DD833DEB /* DRAheadTimePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C879DCF0F3B0FA1502D29AE67CA711 /* DRAheadTimePicker.m */; };
 		91D4E34592BD6140AD8138B9F26C960D /* JXBordersView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4629F9A9C58ED981CA9D709064B983F9 /* JXBordersView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		91E4CE90BF65F24BF03747883E1A80BD /* DRStringOptionsPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 80025EC347F8F1F778763E51478A12E0 /* DRStringOptionsPicker.m */; };
 		92010C3FB73DBB40080B14641882D8EE /* UIScrollView+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A63422036607BD822465DFE8257EA15 /* UIScrollView+DRExtension.m */; };
 		9297CB6D3663F792A16ED79434BAABD4 /* POPSpringSolver.h in Headers */ = {isa = PBXBuildFile; fileRef = 44463F935F8F21BCFBEC20B0DE4AA48D /* POPSpringSolver.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		92B8C93C448737C2E9ED1E968EED3E08 /* POPAnimatablePropertyTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8B342403D97D6EC65C3C761CE547C9 /* POPAnimatablePropertyTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		930BB226F934AAF6E078E7DDDBE42703 /* DRPickerViews.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DDFFC4E9FC87D09888075E366B3BF25 /* DRPickerViews.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		937808CE1990036F3BE77EECB25D6252 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 26036ADDABD8D75E18D39F866D31C026 /* ViewController+MASAdditions.m */; };
+		938E83CAE25BD5BE483102D8FAA6B90B /* DRPickerContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 93BEB394392397CD19623E00933C2AF2 /* DRPickerContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		94038A6D9B7427A85640693B54CAA6C0 /* POPVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7BA57D21060135225B8065AEC2BF2E /* POPVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		956FE6A40532AFEF844FF7737191732B /* DRUIWidgetUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D2D88FDDB92D015EC4A9B01717AE1063 /* DRUIWidgetUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9591DAA8DA637FF53F4EFEEA79B25860 /* POPDecayAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 15EC5C44C4D13FA0F05F76E0636F9BEF /* POPDecayAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		959B2F8381468C69C6B09F713E09D092 /* JXCollectionViewLeftAlignmentFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = CD557EE7E8C606A7F77F47FC113B76B3 /* JXCollectionViewLeftAlignmentFlowLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9686C3625EF29504082B79D05C2FFD5F /* DRWeekPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D800064F39177BA5F94CDD7766C4D83 /* DRWeekPickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9840E8F63E9BABEBB28C88853C0F74DB /* HexColors.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AFF58BCEB110DF0ECC891D924A06F73 /* HexColors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98A42F82C66E281614C2B66FC81C958D /* BlocksKit+UIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = F6A147B96FFE9D9B347314B795C36CA1 /* BlocksKit+UIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9961A05E0749BA6647DF44C3251D8C65 /* UIScrollView+JXScrollStop.h in Headers */ = {isa = PBXBuildFile; fileRef = C29A99514C0FA299BF92733E2D3233D8 /* UIScrollView+JXScrollStop.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		99C9133535AAE6E4D2F8F599DCDCE243 /* JXExtension-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 364023C684434DC263412EBA58EA550B /* JXExtension-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		99D88EE2A57F768A1DF0F2D1FC614FCC /* POPAnimationTracer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBB2D1CBDC74F1E81927F27F3F43F282 /* POPAnimationTracer.mm */; };
+		9A848AC965E71FA8E61F2D65C7CF9316 /* DRSegmentBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 368CE81F0321952D63BCB9A7CD91DD08 /* DRSegmentBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9AB159E885C361DF1DECE492DE364A34 /* POPCGUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FBB4D9BF878C2667DD389A566E94D29 /* POPCGUtils.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9BFBE5271713DDB817E6C87FE5984594 /* DRPickerContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8B8C5644CB2EAD824B1A5774516F72 /* DRPickerContainerView.m */; };
 		9C2CB2ECFC6D3C438A4587687F9DA326 /* DRSandboxManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 42A513C5BE124F1BDCB1AB4D54CC7C72 /* DRSandboxManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C6B64498AD333F26DD8F73E7CE1DE60 /* JXTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D6E63F43913CD87384CF2B813A033DC /* JXTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C74CCC313F94130FAA362FDBEA167A9 /* POPBasicAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 555D8D81ACCA14013F151871A61D1AC8 /* POPBasicAnimation.mm */; };
@@ -286,7 +280,6 @@
 		A24BDD217D5339E2F50BE884C951A741 /* UIPopoverController+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 77CC820706AF7CA54C0D279DE57110A6 /* UIPopoverController+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A2F01E2C88C793D12AB1D6F58D453479 /* DRSegmentBarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763B78C8CC9BE3F0D9DA1B3072419248 /* DRSegmentBarItem.xib */; };
 		A32026661E6881FF0013798F159631D0 /* DRCategories-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E97039ED9A6F2A5B4AEEE03D235E208F /* DRCategories-dummy.m */; };
-		A325D2D07280B748DA6BD65DED349FFE /* DRWeekPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D800064F39177BA5F94CDD7766C4D83 /* DRWeekPickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A340C0D3F9472345439953D3E0D269F6 /* CALayer+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C44139238DF0D4655878A6DF311531 /* CALayer+DRExtension.m */; };
 		A3930AF759E962E10CA4CE2045A64A73 /* DRWeekPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DC3780BE9C21967C461A6BDEBB57B11 /* DRWeekPickerView.xib */; };
 		A3F5BE024FAE5E0586D38A8D8DA40F52 /* POPSpringAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 788961EA50B29E6CE8CE0DBD8E4095F5 /* POPSpringAnimation.mm */; };
@@ -294,17 +287,19 @@
 		A4142ACEF7E6525346F9193125DC3200 /* NSMutableDictionary+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = AB879FCAA16B11BC0D3BF85EA775771D /* NSMutableDictionary+BlocksKit.m */; };
 		A6542A965B1CCB769537CA448CCA3880 /* POPAnimatableProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 71DB72A3F0185E27B6C242A647EC01E7 /* POPAnimatableProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A68ECE68B51B88AE740213EFAF3D2BC4 /* NSDateComponents+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 292145AD5451FB00577071D0410B8E29 /* NSDateComponents+DRExtension.m */; };
+		A74865F24A2E67112CA091D2F7C34E5A /* DRWeekPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 681BCB23DF7E86142EFFA48331423B36 /* DRWeekPickerView.m */; };
+		A782B48E25BD3F85302441673E0B8A4D /* DRUIWidgetUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D2D88FDDB92D015EC4A9B01717AE1063 /* DRUIWidgetUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A87EB5706B9D3224D811F113721DB257 /* POPDecayAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEE9AEE1134EF81EBEE419621474F74E /* POPDecayAnimation.mm */; };
 		A88C9B43B2C80690F87B2F5083C289FC /* POP.h in Headers */ = {isa = PBXBuildFile; fileRef = A2372DAFD581AED00DA04783D9903377 /* POP.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A9982E737E780109663D8E3D6D584699 /* DRPickerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = E52F40C2A95F65861739BB6CF1E36D83 /* DRPickerFactory.m */; };
 		A9B251198F26515E94B57798702172FD /* CAAnimation+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A6C30514073AEF03E0BA7442D1A135 /* CAAnimation+DRExtension.m */; };
-		AA18EC50E35E76DF75688A061818434A /* DROptionCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = E59BE628C46B75B989D868490C2F1BBF /* DROptionCardView.m */; };
 		AAF384FE4CDC3FCF3E23DC784AD8BACF /* NSMutableIndexSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D12320B4F4B4D321CCEF2602832A5F /* NSMutableIndexSet+BlocksKit.m */; };
+		ACF88BFCEF29267973061B338A9298B1 /* DROptionCardLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = D2E72344EB4562A8FF39E34F40909EFD /* DROptionCardLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD1E68D29F35B9C819FE302A1EF09A86 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AB97D1ECF0F8AD333E4FBEE5FACBE9 /* CoreFoundation.framework */; };
 		AD43A35B58A493196367BECCCC23031E /* JXTransitionConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = DD1641442891006231647A12FC93B310 /* JXTransitionConstant.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ADC015621D7953B89E7EC6A24EBC6304 /* DRTimeConsumingPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 192019918C3C760BCBA035F950211655 /* DRTimeConsumingPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AE2A36489EAC2ED5F6F20A535AF142CD /* DRPickerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 830B1828920AB519E923214B0359E41C /* DRPickerFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AEBEE3FEA6E08C300B822E7FE745A24D /* DRYMDWithLunarPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DDDA98E4E47326EB13D0E79BDE34C5 /* DRYMDWithLunarPicker.xib */; };
 		AECA74455F8D7042DEFA823AA5A0C01E /* NSObject+BKBlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FD3237D171FCA277A16C814D28DEC1 /* NSObject+BKBlockObservation.m */; };
+		AEFDFDA9D8FA13A0DEA7B576AB26E4EF /* DRPickerViews-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3613FAA74F2D1DACB15D9836C4A2862B /* DRPickerViews-dummy.m */; };
 		AFB8DBA8DF02DDA058B8825932F79520 /* FloatConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 22DE8DEF40CC58E26147F7809A8CA827 /* FloatConversion.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		AFE9B75635AD7C0E43994765F4514C99 /* DRSandBoxManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D19DEBB9F50FDB57D402BC30A0001B /* DRSandBoxManager.m */; };
 		B161351B3088D4D323154E1E4C474062 /* DRSandBoxManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5391B4C3F72E43F6B4D8717BF42A762F /* DRSandBoxManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -314,6 +309,7 @@
 		B3DC9AB68CF6AFB4C6D8FABD916D1BF8 /* UIWebView+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9534126949C2F281EB8BAC64533958 /* UIWebView+BlocksKit.m */; };
 		B42485D47B351B2699E4A8FD6252F1DA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E402983CE9A2EA8FAB4FF8450EB09CDA /* MessageUI.framework */; };
 		B46F8FF2CE888A69ED93608E34CD3D6D /* NSURL+JXParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC35C9453A5E3089F277EE784E8CDEE /* NSURL+JXParameters.m */; };
+		B4B457BEFE0148E19DCC26C6EA1941BE /* DRDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A53E18303C2338BE47D3FC9E7B68A60E /* DRDatePickerView.m */; };
 		B511A75E3F0763C22D45EF7CA267B123 /* UIFont+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AF05080669F5E895AA51C87980D6186 /* UIFont+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B52CDECEEEE61A0B2368B450F18FF9F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A704C9F10FA638A936361C0868E8E30E /* Foundation.framework */; };
 		B550E05C42E62D790F1A9E7B7E414B05 /* NSDictionary+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 8878F664A5140CCDD7CD15549A394F57 /* NSDictionary+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -321,24 +317,23 @@
 		B61B83CFA07081FEA74EEB7E5264C15D /* NSMutableOrderedSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA97E81CA687FE2D9923BC34605CBED /* NSMutableOrderedSet+BlocksKit.m */; };
 		B61DCA465D9DA246FC497BEFE652AC20 /* UIWebView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B26EC49DA9594A8C9579F0333140355 /* UIWebView+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B658E493D1C7B041835F804438E30DAB /* UIImage+JXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED2CF332E24191D862F013FEE05903E /* UIImage+JXExtension.m */; };
-		B6E68C75CF61919EE23AF82E59C33814 /* DRPickerViews.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DDFFC4E9FC87D09888075E366B3BF25 /* DRPickerViews.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B70A8CE4ABC1B68A8DA65A713C97D6E7 /* POPAnimatableProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4395B32753290874122ADC8CD3F18D05 /* POPAnimatableProperty.mm */; };
 		B7B07FFBDBC67CC3CA6919FE08F46A8C /* UIAlertView+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F83D99183E2BBDEAB7482B29EF1D891 /* UIAlertView+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8424CADAF211D2BCC623D70A4A4D6BD /* UITabBar+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D9930931F99B01CF6E92968BE9503D6 /* UITabBar+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B856DD2E6249A2DB58FA6CB7E9F63163 /* TransformationMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3575DA643AE434539294E3B480270 /* TransformationMatrix.cpp */; };
+		B89D8A518585B164EFAA04BDC3A6FBA0 /* DRLunarDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5491C09610232F5186B5875612A2EBC3 /* DRLunarDatePickerView.m */; };
 		B8D0CAF4283F44DB5190E46D9E44F2F0 /* NSArray+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 9946CC0243CB9D8DDC7EE352C1BAE415 /* NSArray+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B996CFD79BEC364738E4B2C54F28A3B6 /* JXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EF75C3501560A5FD1C5F70151D715D14 /* JXButton.m */; };
 		BA39FD85F4444F731EDDEB98E43B81AF /* UITextField+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 877A985FAF69BBD3671C330643E41830 /* UITextField+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BAAE7653596294E44C9201ECD90123DE /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 78DAE8F323F04B875EACDA4064681240 /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BAC680F0C85A30F1BB33E57AC07569CC /* NSMutableDictionary+JXSafeAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = E0366B001C84978C8FDEFD59C39E9BB0 /* NSMutableDictionary+JXSafeAccess.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BAD21ED0C9CA2780C8B379AE0FB46383 /* JXBordersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 614F0A692C04ED67ACAFDDDF8B918B56 /* JXBordersView.m */; };
+		BBCF15FB3F3083CFB3235A59CF8271C1 /* DRYMDPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C241F9D51B0A807F1AF5B03982786C /* DRYMDPicker.m */; };
 		BE510D24005EE05F79DCE1338A99244D /* POPAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = D263A0F5F1231EBC8B0DCA28AF90D45B /* POPAnimation.mm */; };
 		BEE2365FDFB5D791FC784AF80534AD92 /* DRWeekPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DEFDF063F2B12A4C20085D87F0ABCBC /* DRWeekPickerCell.xib */; };
 		BF23AE5D27C29C42AEF230144B3C9C5E /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 373126AE84A5AFAFA7B56559C423BD9E /* MASConstraintMaker.m */; };
-		BF2FB30AA93082B863E296143B10E574 /* DRPickerViews-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0598891B1C846866EA43389F0C3DFA33 /* DRPickerViews-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF42718515637E635DF6AD17B9D1F30D /* NSObject+A2BlockDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4488C97FD1FE10FC87477EA7A92C64 /* NSObject+A2BlockDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF5F771FD8FBB581433DA777F0447545 /* POPGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 5862A0DE8BD90B927700526D51750A23 /* POPGeometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFD2A4364E248F80DE8C9C9C8292CB30 /* DRSectionTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = F51CBE9E8DFA652F87368D99076B163E /* DRSectionTitleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C07E967A6993EE2CB31D59FC39C2A644 /* DRToastView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4962633BE86FBD25125F12C2ADDC9688 /* DRToastView.framework */; };
 		C0B4F761B32A22D0771D388340153661 /* DRSegmentBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50484A18623EEE07D03BE4EAE7C43A8 /* DRSegmentBar.xib */; };
 		C25D4A240C3D09EC6F7EB9E7FA89B984 /* JXImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05FCE594BEDA490EA8D683A51453F610 /* JXImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -349,25 +344,27 @@
 		C52117D3A42D87F11768A511B0A3810F /* SDiOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = FA780059BBA12A35849C33202B5979CB /* SDiOSVersion.m */; };
 		C5D5111795A8F373021BDADB9F8BFCCD /* JXImageTextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C132C08DBD424128F3B1B0ED0BF5F08 /* JXImageTextButton.m */; };
 		C646D48B4F537DCE3F8CB1D4EBEE6655 /* UIFont+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D15CCF696A8EB2541710F6FD03247022 /* UIFont+DRExtension.m */; };
+		C796FEDA3C9695D1A83127AE55BFF771 /* DRLunarDatePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 32579F05D378FC24D448E16A5B00B0DF /* DRLunarDatePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8BC34E08FE1F1B81C9E19A39F36E74D /* A2BlockInvocation.h in Headers */ = {isa = PBXBuildFile; fileRef = FCF2A830A35F5A898A2CFB537246AE1C /* A2BlockInvocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9A493B437A72F28B44B68810BEC6633 /* DRUIKitCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = E82778343E06D487AB36FB582ED59D1B /* DRUIKitCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA3A94770D62F1BCDB6E0ACC370702DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A704C9F10FA638A936361C0868E8E30E /* Foundation.framework */; };
 		CA5AB2F69924E31B4723228FB1BA01B2 /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = FCB62F372ED1F35C2DDEAC29089F79ED /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CC52DD28C67F353F291ECD3EF16AB160 /* DRBaseDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E77840FFAADAA4D07F49EB7129AED79D /* DRBaseDatePicker.m */; };
-		CEDE97EBC09748F53A218C72CB67F4F8 /* DRYMDWithLunarPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = A02D5164FE55E4F037BAAE2A99C955EB /* DRYMDWithLunarPicker.m */; };
 		CF0FDC2692E01DB053EE218E3CFBD996 /* pop-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B51CCB5EB0A9D0DA7990A1FBD07E401D /* pop-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFA84087CA4E5354AB631844587FFCBA /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E321AE6794074DCF7C7421F0A0DD2DB /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFA863FE64B2E919D3F8545651AE2D47 /* NSMutableArray+JXSafeAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C9DE6F1A72EA070B213E60E9D1B3EE /* NSMutableArray+JXSafeAccess.m */; };
+		D00A391515D408064BED826B768F8FFF /* DRYMDPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 96C360BF5E3611C2840A82D430194186 /* DRYMDPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D137BFB56911ADACF4234C3A1C99D58C /* POPAnimatorPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC2FFC4BDA13DE87024DF82F6A79F42 /* POPAnimatorPrivate.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D2E361D463828F801B5AA6018A74A2AD /* NSNumber+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CC9C371B31A9DEC643FF55AB715E17D /* NSNumber+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D30867A416234262F6CC19AA332829BF /* DRSegmentBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 368CE81F0321952D63BCB9A7CD91DD08 /* DRSegmentBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D30D7590F25F53052B93AED38E73812D /* POPAnimationExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 516998E6B3E351E199C372EAE9C21886 /* POPAnimationExtras.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D32F3F6A5C41D267DF62B1FBB11EF305 /* DRYMDPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 96C360BF5E3611C2840A82D430194186 /* DRYMDPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3483BFF1596FC1171A99D9A80A571C7 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A720E2BEFA871D3E7F9395A9011DC6 /* MASConstraint.m */; };
 		D4D3507B95AA81CC2E5BBD039E7BF208 /* UIControl+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 61B0F7782217FCA2B0C6FC845496F422 /* UIControl+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D588DC9D116923618BFBF1D055405D28 /* DROneWeekPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE562A6B1B64424D93280CFDF8FA607 /* DROneWeekPicker.m */; };
 		D5DC6B8D4C3CFBE8FC518EDF5E5B66AB /* POPSpringAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 85F07153E0AF75579E0A35EAC9882A08 /* POPSpringAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D5E66C33535574FAF6C0D873B931BB0D /* DRHourMinutePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 79803287969795C118437A512060BE03 /* DRHourMinutePicker.m */; };
 		D73A3998FB2116772D56545A4E04C5BD /* NSSet+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2243B0ED79C92431043D301B81021189 /* NSSet+BlocksKit.m */; };
 		D750836B03A0B758B4B6FFEAD062CE01 /* UIButton+JXCountDown.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AF606D054EC9F6236E3C5899CDA0D8F /* UIButton+JXCountDown.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D804A1A0BBE2376F210D526E18E7737E /* DRLunarYearView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A03FB8597868C39D6DF01AD3E764B82 /* DRLunarYearView.m */; };
+		D81899FE11545023FA5E26CB73B31326 /* DRValueSelectPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B65E37C3C48F3CAC231FAFFB064B84 /* DRValueSelectPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D82836142F0534DF39662D00A54C2633 /* A2DynamicDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CE7ACF52D8B9285F27DED8144F46BD0 /* A2DynamicDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D8ADFFA48713137E913D25D8D921EA2B /* JXPushAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = E80331A7934247CDE1929F9D7128C13B /* JXPushAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D9088845CD12E57DB930B64BA692E33C /* JXExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF037D403ACB34A879CE309C35DDCF8 /* JXExtension.framework */; };
@@ -379,7 +376,6 @@
 		DCAD98BB9EEA4A03C43C1E76B3A0343D /* JXInteractiveDirection.h in Headers */ = {isa = PBXBuildFile; fileRef = 1632195791B4F39B436CD1002C29011D /* JXInteractiveDirection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD270DA6B3C73ADFE78CCD66ED2B9F12 /* DRYearMonthPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3668D3BFF4CEE2E207C2C752C8CA326 /* DRYearMonthPicker.xib */; };
 		DDFC2C86377E382A8C53CDFF3EA89744 /* NSDateComponents+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 8965E8D1B0370A5CE748C06DC8B7F07A /* NSDateComponents+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DFC8373D0DCD596053507C7959E71E36 /* DRPickerContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 93BEB394392397CD19623E00933C2AF2 /* DRPickerContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E0ADD5814F1232F858A1258D9C310309 /* UIImagePickerController+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F30A642AB04F53D1AE1DC79DA716E212 /* UIImagePickerController+BlocksKit.m */; };
 		E0B3932A09D4BC86EED12F513986F187 /* JXPushAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A7B34D79841E5E169B89159F257DC1 /* JXPushAnimator.m */; };
 		E10CF5DBD69B4D950711BD37D563BCF6 /* UIButton+JXCountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 7083F942CC919BC8AF4AFC8FB063BDA7 /* UIButton+JXCountDown.m */; };
@@ -388,38 +384,42 @@
 		E1C1D37034387490971CEEED78A006C2 /* UITableView+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 7081B2E74800F6A67C403B33BD86B473 /* UITableView+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E3A9A7E61B770B83310F8AEC115BBBB8 /* HexColors-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 64469F88773D6519AA14B5A06174BB85 /* HexColors-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E44D1F6ABD152278CBDAFD9CAC1151C2 /* UITextField+JXLimitText.m in Sources */ = {isa = PBXBuildFile; fileRef = 4752053FF9649260544C67CEA7DDA876 /* UITextField+JXLimitText.m */; };
+		E452391AFC42B1AE88A2BCCEA3693FAC /* DRTimeConsumingPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 866A71396397EC381A943B8FCB12F293 /* DRTimeConsumingPicker.m */; };
 		E59EDD5BDAAAE821549DB701464BCDCC /* NSObject+BKAssociatedObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CB965D0FFE698BB1A098F980C53754D /* NSObject+BKAssociatedObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5EBDF4924DBD1F711460A6C2CC9693E /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C69DB448DF186556D7E2E9DFC0914AD /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E69AEE4A2FAB5387B11000A9F87CEB94 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A704C9F10FA638A936361C0868E8E30E /* Foundation.framework */; };
 		E6A12BFDADA63B417D110E1D1C724AB2 /* NSUserDefaults+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2862A8A8B4178FE5B7A877889373D /* NSUserDefaults+DRExtension.m */; };
 		E6B577E6DE882D1383E528841442E493 /* UIView+JXDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = FE623A087ECC1354B2269A51B192A305 /* UIView+JXDesign.m */; };
 		E857150DD6227CE80FFDB77F572DA8D4 /* DRToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AA0150113A67864FE57DA43DD11D72 /* DRToastView.m */; };
-		E8645020554D13A0C794845DDA9B833C /* DRYMDPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C241F9D51B0A807F1AF5B03982786C /* DRYMDPicker.m */; };
 		E934D327D0FF89194664BBF56F31D41A /* UITextField+JXLimitText.h in Headers */ = {isa = PBXBuildFile; fileRef = 2761C2DA7FC14EE272F9E367F509B81C /* UITextField+JXLimitText.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA5235C936FB0B602DFC6B0ED37573B4 /* NSAttributedString+DRExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = D4555B5B6CC8F57CF63779F839EBF4C0 /* NSAttributedString+DRExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ECAD2A39190736C486DE269FD5DFA4BB /* SDiOSVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 57A90D6200BC0D6DD4186C87FEEAEC36 /* SDiOSVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED98CC6AD83F3649B71ABCB68E30CFA0 /* DRValueSelectPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144F272DCFF3F64433CB357E0DFC3898 /* DRValueSelectPicker.xib */; };
+		EE32811B088F87A62B7BE598E6E63AE3 /* DRHourMinutePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = BB11C9726F70258C27D951DBF00AFEF0 /* DRHourMinutePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE4FBA91C4E4FBC7AE77DB16EB7BFD6D /* JXView.m in Sources */ = {isa = PBXBuildFile; fileRef = 305BF367E0BC53C677E0CF75F06D6DF0 /* JXView.m */; };
+		EE5925B5568EE2B97899F2FFFC0E7850 /* DROneWeekPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = B9DFB52CC5A74EE506AB9992C18A2F37 /* DROneWeekPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EF34C96C775B4495E72EDB30F0F2EBBB /* UIView+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 50FFAD1AC0C4A457AD30BC81BC99B811 /* UIView+DRExtension.m */; };
 		EF715754DFDAF51C4E8CA8F3C8E072C9 /* A2DynamicDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E76C0729828266CC93CF0CF09758E54 /* A2DynamicDelegate.m */; };
 		EF7CE695087D6ECED7D13ADC9A4796D8 /* DRLunarYearView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1843531E3F56F1117C78E240A1C0B01C /* DRLunarYearView.xib */; };
 		EFC54ED3302B68D80A815E52E259AB05 /* BlocksKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4186B96B973491EED4DC7A318104DA0A /* BlocksKit-dummy.m */; };
+		F11A6FE53B732503A91502E5F4341FF0 /* DROptionCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = E59BE628C46B75B989D868490C2F1BBF /* DROptionCardView.m */; };
+		F1DBDC211BD56440B21CDDF8D7696262 /* DRLunarYearView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B113FFED205B5831C8F851E19F15A09 /* DRLunarYearView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F1FA1814E06C62B5F923225C7E305C3B /* YYModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 536CC5F26772CF283F4C046B4B1EBAA9 /* YYModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2C173B2D89978ADD38CFA0E41F6535A /* POPGeometry.mm in Sources */ = {isa = PBXBuildFile; fileRef = B77805A5E9EF6EE4A7E74773AEDD9306 /* POPGeometry.mm */; };
 		F42DB0CF70BFA8841AFE3B85066CE0DA /* UIScrollView+JXEmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC52584C678D911B9C601F8BE645576 /* UIScrollView+JXEmptyDataSet.m */; };
 		F47D0A64EC9E2A6A0467C0654EF6B3C5 /* NSString+JXSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73077B5D391A7722B9FB987FF7C4E6 /* NSString+JXSize.m */; };
+		F5104D9FC1F3E888D0FCCA565953B13A /* DRDatePickerDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 5684D833B3F2FA56DD494629229CE365 /* DRDatePickerDataModels.m */; };
 		F5C534264CCAAC694601735A1958B50B /* DRHourMinutePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33FA9DB42E0F76A86CF181103BA82C26 /* DRHourMinutePicker.xib */; };
 		F7D2D5940C82691A417334FEE313D2D8 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 66345C27E04FD8A8FEF1ABE70A892C7A /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F7E34A0FCB4AB9A3359C05A2CAA9E113 /* DRStringOptionsPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C7F283598CEB6B965A58704247F94A /* DRStringOptionsPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F8180D6A6C1567A091BAD317BE45965D /* NSURLConnection+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 40999682369EC6649073CE2FA6B3F5F9 /* NSURLConnection+BlocksKit.m */; };
 		F89C3D5F075E17A0CCD12F1505E7A077 /* POPMath.h in Headers */ = {isa = PBXBuildFile; fileRef = DEA9F1E492039D3F32BD777EF5DAA151 /* POPMath.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		F8A0A7A348E44C66F07B618B273ACBF0 /* DRWeekPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8B07558465628E72F0B3C46373E40F /* DRWeekPickerCell.m */; };
 		F924A4C41F73BF50D602EBFBA2AA2AA8 /* DRCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 15BE813480BAF18D467B60A349A376BD /* DRCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA1D053DB3E427DA88056FD87012F0DB /* DRCategories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9AE724CF780778F3CA6DD33928295B /* DRCategories.framework */; };
 		FA7EBD1519A26232454F425938D0AEE3 /* NSCache+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9353DE03E29616BD845ABD083C99C960 /* NSCache+BlocksKit.m */; };
+		FB0E44D875BD2B6003BCBCA781B7C347 /* DRPickerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = E52F40C2A95F65861739BB6CF1E36D83 /* DRPickerFactory.m */; };
 		FC7E39DDC8E672B8A835BD7994A137B5 /* UIControl+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BC039125A76055BF16EB01AC7E01B0 /* UIControl+BlocksKit.m */; };
+		FD9D0259DCE71CD07B895F7A3529C511 /* DRBaseAlertPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 72DC29DFFBE0D6B53D07C6CBA787D70E /* DRBaseAlertPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FDF1AE1245149345163550705CB957B5 /* JXTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 776DDA6B8AAFE976868FF563CF9BF25D /* JXTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FE24D25B5744A1A2E14D3C4D31EE15A1 /* DROneWeekPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE562A6B1B64424D93280CFDF8FA607 /* DROneWeekPicker.m */; };
 		FF59AC0C735DA524C80E5FA3485B43C9 /* UIImage+DRExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE7A3ECA1A4C509C3F2A664C976975D /* UIImage+DRExtension.m */; };
 /* End PBXBuildFile section */
 
@@ -626,7 +626,6 @@
 		0A4A5567B70E7E3F17A8A2FA98B52E03 /* NSMutableDictionary+JXSafeAccess.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableDictionary+JXSafeAccess.m"; path = "JXExtension/Category/NSMutableDictionary+JXSafeAccess.m"; sourceTree = "<group>"; };
 		0A55E8D1B808A82CA14FD51AE7D9D004 /* pop-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "pop-Info.plist"; sourceTree = "<group>"; };
 		0AC99A475B5211AA410C6F362D4AC394 /* JXExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JXExtension.framework; path = JXExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0AFCD55D0AE0BBFC1453E29DA4F056AC /* DRDatePickerDataModels.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRDatePickerDataModels.m; path = DRPickerViews/Classes/Pickers/Common/DRDatePickerDataModels.m; sourceTree = "<group>"; };
 		0B113FFED205B5831C8F851E19F15A09 /* DRLunarYearView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRLunarYearView.h; path = DRPickerViews/Classes/UIWidget/LunarDatePickerView/DRLunarYearView.h; sourceTree = "<group>"; };
 		0CE7ACF52D8B9285F27DED8144F46BD0 /* A2DynamicDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = A2DynamicDelegate.h; path = BlocksKit/DynamicDelegate/A2DynamicDelegate.h; sourceTree = "<group>"; };
 		0DA105FEBA46D7BC0EADF54869588210 /* DRSandboxManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DRSandboxManager-dummy.m"; sourceTree = "<group>"; };
@@ -642,6 +641,7 @@
 		1220C4F1914C9C907686A51DAF550C58 /* UITableView+DRExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableView+DRExtension.m"; path = "DRCategories/Classes/UIKit/UITableView+DRExtension.m"; sourceTree = "<group>"; };
 		128E5C7BF0F0F0EEA79BF682CF249F2C /* SDVersion-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDVersion-prefix.pch"; sourceTree = "<group>"; };
 		1340EFE75486EDE540E54A72D7F69FA3 /* NSArray+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+BlocksKit.m"; path = "BlocksKit/Core/NSArray+BlocksKit.m"; sourceTree = "<group>"; };
+		14355B95ED62B62FC1712E620B647CE9 /* DRDatePickerDataModels.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRDatePickerDataModels.h; path = DRPickerViews/Classes/Pickers/Common/DRDatePickerDataModels.h; sourceTree = "<group>"; };
 		144F272DCFF3F64433CB357E0DFC3898 /* DRValueSelectPicker.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRValueSelectPicker.xib; sourceTree = "<group>"; };
 		1454C018540AA8CA20896F834E3DC63D /* UIBarButtonItem+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+BlocksKit.h"; path = "BlocksKit/UIKit/UIBarButtonItem+BlocksKit.h"; sourceTree = "<group>"; };
 		15258ABA3394CB455305C2E21B56B01C /* NSObject+BKBlockExecution.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+BKBlockExecution.h"; path = "BlocksKit/Core/NSObject+BKBlockExecution.h"; sourceTree = "<group>"; };
@@ -742,7 +742,6 @@
 		516998E6B3E351E199C372EAE9C21886 /* POPAnimationExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationExtras.h; path = pop/POPAnimationExtras.h; sourceTree = "<group>"; };
 		524BE442C05567F5AAACC40C9642B487 /* DROptionCardView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DROptionCardView.h; path = DRPickerViews/Classes/UIWidget/OptionCard/DROptionCardView.h; sourceTree = "<group>"; };
 		52C44139238DF0D4655878A6DF311531 /* CALayer+DRExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CALayer+DRExtension.m"; path = "DRCategories/Classes/UIKit/CALayer+DRExtension.m"; sourceTree = "<group>"; };
-		53462AC4EFD21DA1695B47E7F0AFEEED /* DRDatePickerDataModels.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRDatePickerDataModels.h; path = DRPickerViews/Classes/Pickers/Common/DRDatePickerDataModels.h; sourceTree = "<group>"; };
 		536CC5F26772CF283F4C046B4B1EBAA9 /* YYModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYModel.h; path = YYModel/YYModel.h; sourceTree = "<group>"; };
 		5391B4C3F72E43F6B4D8717BF42A762F /* DRSandBoxManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRSandBoxManager.h; path = DRSandboxManager/Classes/DRSandBoxManager.h; sourceTree = "<group>"; };
 		53FC1148C413B0A02FA238FDAFAEEEEC /* DRSandboxManager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DRSandboxManager.xcconfig; sourceTree = "<group>"; };
@@ -753,6 +752,7 @@
 		55882A6E228E3E7DCD48BA3942A782F0 /* DROptionCardCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DROptionCardCell.xib; sourceTree = "<group>"; };
 		55C16C6C4ABBF35FA5849620430F7EB1 /* POPAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimator.h; path = pop/POPAnimator.h; sourceTree = "<group>"; };
 		5649836A425835267E3306B8E50A30CC /* Pods-DRPickerViews_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DRPickerViews_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5684D833B3F2FA56DD494629229CE365 /* DRDatePickerDataModels.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRDatePickerDataModels.m; path = DRPickerViews/Classes/Pickers/Common/DRDatePickerDataModels.m; sourceTree = "<group>"; };
 		575690FDF100CBCCADFA93BB0E0A413C /* Pods-DRPickerViews_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DRPickerViews_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		57A90D6200BC0D6DD4186C87FEEAEC36 /* SDiOSVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDiOSVersion.h; path = SDVersion/SDiOSVersion/SDiOSVersion.h; sourceTree = "<group>"; };
 		5862A0DE8BD90B927700526D51750A23 /* POPGeometry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPGeometry.h; path = pop/POPGeometry.h; sourceTree = "<group>"; };
@@ -801,6 +801,7 @@
 		71201ACC669C91729CD489F80C18064E /* SDVersion.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SDVersion.modulemap; sourceTree = "<group>"; };
 		71DB72A3F0185E27B6C242A647EC01E7 /* POPAnimatableProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimatableProperty.h; path = pop/POPAnimatableProperty.h; sourceTree = "<group>"; };
 		7207F51C4F5C3F319E0409FAE70F78DF /* Pods_DRPickerViews_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DRPickerViews_Example.framework; path = "Pods-DRPickerViews_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72DC29DFFBE0D6B53D07C6CBA787D70E /* DRBaseAlertPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRBaseAlertPicker.h; path = DRPickerViews/Classes/Pickers/Common/DRBaseAlertPicker.h; sourceTree = "<group>"; };
 		72F4B88032D86780ACE310577EE0D2B3 /* pop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = pop.framework; path = pop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		732CC5DF5A442CC15A1FAD7063F10535 /* DRSandboxManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DRSandboxManager-prefix.pch"; sourceTree = "<group>"; };
 		7336B5FEB7DC300DC56A123DDAF9EF88 /* JXImageTextButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXImageTextButton.h; path = JXExtension/View/JXImageTextButton.h; sourceTree = "<group>"; };
@@ -867,6 +868,7 @@
 		9353DE03E29616BD845ABD083C99C960 /* NSCache+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSCache+BlocksKit.m"; path = "BlocksKit/DynamicDelegate/Foundation/NSCache+BlocksKit.m"; sourceTree = "<group>"; };
 		93B50C035B45684BE2B0B95113581A2D /* YYModel-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "YYModel-Info.plist"; sourceTree = "<group>"; };
 		93BEB394392397CD19623E00933C2AF2 /* DRPickerContainerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRPickerContainerView.h; path = DRPickerViews/Classes/UIWidget/PickerContainerView/DRPickerContainerView.h; sourceTree = "<group>"; };
+		93CB135160290756F85ACBA18E30EBDC /* DRBaseAlertPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRBaseAlertPicker.m; path = DRPickerViews/Classes/Pickers/Common/DRBaseAlertPicker.m; sourceTree = "<group>"; };
 		94B6E91418DD02888569DF288FAC4BBE /* NSSet+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSSet+BlocksKit.h"; path = "BlocksKit/Core/NSSet+BlocksKit.h"; sourceTree = "<group>"; };
 		95BA403773D594992EF40EB3E6B399DD /* YYModel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YYModel.xcconfig; sourceTree = "<group>"; };
 		96C360BF5E3611C2840A82D430194186 /* DRYMDPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRYMDPicker.h; path = DRPickerViews/Classes/Pickers/YearMonthDayPicker/DRYMDPicker.h; sourceTree = "<group>"; };
@@ -902,7 +904,6 @@
 		A7648EA3F770BE01E6F9CC0E5602EAFE /* DROptionCardView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DROptionCardView.xib; sourceTree = "<group>"; };
 		A7C1A70B3368EF0E7718FD8E69CC2547 /* NSURLConnection+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLConnection+BlocksKit.h"; path = "BlocksKit/DynamicDelegate/Foundation/NSURLConnection+BlocksKit.h"; sourceTree = "<group>"; };
 		A85E36F3F66957EFA9F63F0E7CA88C30 /* UIGestureRecognizer+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIGestureRecognizer+BlocksKit.h"; path = "BlocksKit/UIKit/UIGestureRecognizer+BlocksKit.h"; sourceTree = "<group>"; };
-		A8BA22CCC884CC570093C5CDA515CAE5 /* DRBaseDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRBaseDatePicker.h; path = DRPickerViews/Classes/Pickers/Common/DRBaseDatePicker.h; sourceTree = "<group>"; };
 		AB02B7737E91F568A00D8B640EDF50A2 /* NSNumber+DRExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+DRExtension.m"; path = "DRCategories/Classes/Foundation/NSNumber+DRExtension.m"; sourceTree = "<group>"; };
 		AB26B133ABD8520079B071A7553537C0 /* TransformationMatrix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TransformationMatrix.h; path = pop/WebCore/TransformationMatrix.h; sourceTree = "<group>"; };
 		AB879FCAA16B11BC0D3BF85EA775771D /* NSMutableDictionary+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableDictionary+BlocksKit.m"; path = "BlocksKit/Core/NSMutableDictionary+BlocksKit.m"; sourceTree = "<group>"; };
@@ -1015,7 +1016,6 @@
 		E59BE628C46B75B989D868490C2F1BBF /* DROptionCardView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DROptionCardView.m; path = DRPickerViews/Classes/UIWidget/OptionCard/DROptionCardView.m; sourceTree = "<group>"; };
 		E5B57D723EB8B2B599D131504E55C7F7 /* DRToastView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DRToastView.xib; path = DRToastView/Classes/DRToastView.xib; sourceTree = "<group>"; };
 		E73989B34EC6DE223BF94F5BEF9985BA /* UIScrollView+DRExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+DRExtension.h"; path = "DRCategories/Classes/UIKit/UIScrollView+DRExtension.h"; sourceTree = "<group>"; };
-		E77840FFAADAA4D07F49EB7129AED79D /* DRBaseDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRBaseDatePicker.m; path = DRPickerViews/Classes/Pickers/Common/DRBaseDatePicker.m; sourceTree = "<group>"; };
 		E8006BCC6306411BF7BCED1E48E14496 /* DRSandboxManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DRSandboxManager.framework; path = DRSandboxManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E80331A7934247CDE1929F9D7128C13B /* JXPushAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXPushAnimator.h; path = JXExtension/Transition/JXPushAnimator.h; sourceTree = "<group>"; };
 		E82778343E06D487AB36FB582ED59D1B /* DRUIKitCategories.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRUIKitCategories.h; path = DRCategories/Classes/UIKit/DRUIKitCategories.h; sourceTree = "<group>"; };
@@ -1327,17 +1327,6 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		0F2F496AAC72577F963B15DC6B6B8905 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				A8BA22CCC884CC570093C5CDA515CAE5 /* DRBaseDatePicker.h */,
-				E77840FFAADAA4D07F49EB7129AED79D /* DRBaseDatePicker.m */,
-				53462AC4EFD21DA1695B47E7F0AFEEED /* DRDatePickerDataModels.h */,
-				0AFCD55D0AE0BBFC1453E29DA4F056AC /* DRDatePickerDataModels.m */,
-			);
-			name = Common;
-			sourceTree = "<group>";
-		};
 		1111952BE7A8BB33D277DC02225C5D47 /* Pickers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1626,7 +1615,7 @@
 			isa = PBXGroup;
 			children = (
 				F60E506A5E5FEAF0D89CA04D54F0A9F5 /* AheadTimePicker */,
-				0F2F496AAC72577F963B15DC6B6B8905 /* Common */,
+				9CF1E7C23048AFAB8C2BE59A623C9C30 /* Common */,
 				23174641D8874F1DEE0245021CEC289C /* HourMinutePicker */,
 				B96B723EC82227406E1E85DE62321BA0 /* OneWeekPicker */,
 				0448C8023470F881D03C0DEC92B9DFA1 /* StringOptionPicker */,
@@ -1819,6 +1808,17 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Masonry";
+			sourceTree = "<group>";
+		};
+		9CF1E7C23048AFAB8C2BE59A623C9C30 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				72DC29DFFBE0D6B53D07C6CBA787D70E /* DRBaseAlertPicker.h */,
+				93CB135160290756F85ACBA18E30EBDC /* DRBaseAlertPicker.m */,
+				14355B95ED62B62FC1712E620B647CE9 /* DRDatePickerDataModels.h */,
+				5684D833B3F2FA56DD494629229CE365 /* DRDatePickerDataModels.m */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		A7346EE580E8B4518F9BDF3D170FE36D /* Support Files */ = {
@@ -2417,42 +2417,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6D315AE4B0265E548C5B7B33E8336A8A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6F4729401562FAA39B803DAFAF270E4C /* DRAheadTimePicker.h in Headers */,
-				6410B0F6FD3CDEF01E2A16BA44770B4C /* DRBaseDatePicker.h in Headers */,
-				3FAC8E706F90FC97F7D28B9B07E6B7EF /* DRCalendarTitleView.h in Headers */,
-				4668FF52984BDE25D69AE2BF99B58E55 /* DRDatePickerDataModels.h in Headers */,
-				1711E802169E87A858F3DDE58AEAA6C8 /* DRDatePickerView.h in Headers */,
-				00EF8CABA3248577815C12E6138C8FDB /* DRHourMinutePicker.h in Headers */,
-				79A63F87F3D6ABEDD085FD6C0E76D1E4 /* DRHourMinutePickerView.h in Headers */,
-				613AFDF1D7674A9E1BA7FE7D0F601419 /* DRLunarDatePickerView.h in Headers */,
-				82533A0BD584C6DD53AB19C74AC80D71 /* DRLunarYearView.h in Headers */,
-				85AAB40201E8A26169AE79E895958611 /* DROneWeekPicker.h in Headers */,
-				30C91ACB067B52D421043655743ABC99 /* DROptionCardCell.h in Headers */,
-				06047B8BD57A0D035F7DB99D58E93887 /* DROptionCardLayout.h in Headers */,
-				62447A43AC2D3BA3BAA01C1EC3EB9B62 /* DROptionCardView.h in Headers */,
-				DFC8373D0DCD596053507C7959E71E36 /* DRPickerContainerView.h in Headers */,
-				5E0538CD63004976DE3073B9BD94CF25 /* DRPickerFactory.h in Headers */,
-				2EDEFABD2640E50529B61446D9A0DAFA /* DRPickerTopBar.h in Headers */,
-				BF2FB30AA93082B863E296143B10E574 /* DRPickerViews-umbrella.h in Headers */,
-				B6E68C75CF61919EE23AF82E59C33814 /* DRPickerViews.h in Headers */,
-				BFD2A4364E248F80DE8C9C9C8292CB30 /* DRSectionTitleView.h in Headers */,
-				D30867A416234262F6CC19AA332829BF /* DRSegmentBar.h in Headers */,
-				F7E34A0FCB4AB9A3359C05A2CAA9E113 /* DRStringOptionsPicker.h in Headers */,
-				ADC015621D7953B89E7EC6A24EBC6304 /* DRTimeConsumingPicker.h in Headers */,
-				956FE6A40532AFEF844FF7737191732B /* DRUIWidgetUtil.h in Headers */,
-				50CBD525E33E59DFD86C4F4275B5B2B4 /* DRValueSelectPicker.h in Headers */,
-				690CCBFB85BAC626E9380B809AE1CBEC /* DRWeekPickerCell.h in Headers */,
-				A325D2D07280B748DA6BD65DED349FFE /* DRWeekPickerView.h in Headers */,
-				2E9647C298FE661FBDAD178FB4750726 /* DRYearMonthPicker.h in Headers */,
-				D32F3F6A5C41D267DF62B1FBB11EF305 /* DRYMDPicker.h in Headers */,
-				5C84B373FD65F825D9CA2A2612AE3915 /* DRYMDWithLunarPicker.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7CE69BDA2961A259596BCF87170A7F81 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -2542,6 +2506,42 @@
 				05BF0AA3A59D2D9D95F5FC080734672E /* UIView+JXDesign.h in Headers */,
 				859CF541CFCD581FFA49087EA3C0811E /* UIView+JXFrame.h in Headers */,
 				7D90AE6EF74B5F199461F9672F8A1288 /* UIViewController+JXTransition.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1FFF16C091CDE73BA9A67E346310668 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AAFE12457FD36C349DD3DE8562A1D5B /* DRAheadTimePicker.h in Headers */,
+				FD9D0259DCE71CD07B895F7A3529C511 /* DRBaseAlertPicker.h in Headers */,
+				151C9DE930DEEC53DFD7E37759156C39 /* DRCalendarTitleView.h in Headers */,
+				2296C977CDB98104547551A2524E9A75 /* DRDatePickerDataModels.h in Headers */,
+				1CF6B103FDCB7F5DCE486F692D05BD2C /* DRDatePickerView.h in Headers */,
+				EE32811B088F87A62B7BE598E6E63AE3 /* DRHourMinutePicker.h in Headers */,
+				393A3BEBF99AD4BE7B315C471BEA0EE7 /* DRHourMinutePickerView.h in Headers */,
+				C796FEDA3C9695D1A83127AE55BFF771 /* DRLunarDatePickerView.h in Headers */,
+				F1DBDC211BD56440B21CDDF8D7696262 /* DRLunarYearView.h in Headers */,
+				EE5925B5568EE2B97899F2FFFC0E7850 /* DROneWeekPicker.h in Headers */,
+				371CDD81F13DB725F15A25F2DBCF6182 /* DROptionCardCell.h in Headers */,
+				ACF88BFCEF29267973061B338A9298B1 /* DROptionCardLayout.h in Headers */,
+				45DB4B33235EA84518200F47A6AB075C /* DROptionCardView.h in Headers */,
+				938E83CAE25BD5BE483102D8FAA6B90B /* DRPickerContainerView.h in Headers */,
+				AE2A36489EAC2ED5F6F20A535AF142CD /* DRPickerFactory.h in Headers */,
+				17C42E962347D8EEEA99795FCA706D6E /* DRPickerTopBar.h in Headers */,
+				0903189333E4BA856087DF65103C4576 /* DRPickerViews-umbrella.h in Headers */,
+				930BB226F934AAF6E078E7DDDBE42703 /* DRPickerViews.h in Headers */,
+				902249975FC94679DE4B761B6D021900 /* DRSectionTitleView.h in Headers */,
+				9A848AC965E71FA8E61F2D65C7CF9316 /* DRSegmentBar.h in Headers */,
+				803E6779AE4C44D4B4A84772DFC94294 /* DRStringOptionsPicker.h in Headers */,
+				4314935A0489FD501F60C9C310EC26D8 /* DRTimeConsumingPicker.h in Headers */,
+				A782B48E25BD3F85302441673E0B8A4D /* DRUIWidgetUtil.h in Headers */,
+				D81899FE11545023FA5E26CB73B31326 /* DRValueSelectPicker.h in Headers */,
+				15706D6F13515009B4058DA0AF931050 /* DRWeekPickerCell.h in Headers */,
+				9686C3625EF29504082B79D05C2FFD5F /* DRWeekPickerView.h in Headers */,
+				7DDB0BB14629FBE03565FD913745A314 /* DRYearMonthPicker.h in Headers */,
+				D00A391515D408064BED826B768F8FFF /* DRYMDPicker.h in Headers */,
+				57AC5EB734F800D97681A48C58E56800 /* DRYMDWithLunarPicker.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2683,8 +2683,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1B1EA74138473E371E24D0A6C3DB800 /* Build configuration list for PBXNativeTarget "DRPickerViews" */;
 			buildPhases = (
-				6D315AE4B0265E548C5B7B33E8336A8A /* Headers */,
-				8368379FFA2D4D36E56AF5318CDBF95B /* Sources */,
+				C1FFF16C091CDE73BA9A67E346310668 /* Headers */,
+				FA045B43B04CF04363F38037B3219817 /* Sources */,
 				B455193A9BEC05BD3D7D9D4E255A2444 /* Frameworks */,
 				0F890CECF49BC58622EA0C5B1701F2E1 /* Resources */,
 			);
@@ -3189,41 +3189,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8368379FFA2D4D36E56AF5318CDBF95B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				91CD1913A4BFB667096535A8DD833DEB /* DRAheadTimePicker.m in Sources */,
-				CC52DD28C67F353F291ECD3EF16AB160 /* DRBaseDatePicker.m in Sources */,
-				41B4DA3CBD36B93081D476588BABB820 /* DRCalendarTitleView.m in Sources */,
-				6605E3AEC5C7E8CB207E83D29E83770B /* DRDatePickerDataModels.m in Sources */,
-				4059186DF4FD749816919FF654B8F304 /* DRDatePickerView.m in Sources */,
-				8AB760554CD8B9F80FC28DFC49A8922D /* DRHourMinutePicker.m in Sources */,
-				738C001A94067F68D0D1A3244CE72620 /* DRHourMinutePickerView.m in Sources */,
-				392C823E827155AB9DE50C46E5114F01 /* DRLunarDatePickerView.m in Sources */,
-				4F964181D1C57457B4D8626D60B969D4 /* DRLunarYearView.m in Sources */,
-				FE24D25B5744A1A2E14D3C4D31EE15A1 /* DROneWeekPicker.m in Sources */,
-				60D06317D0C0A9764066E100255F7426 /* DROptionCardCell.m in Sources */,
-				5E47817B5CFB433637E13C952B1CB6A1 /* DROptionCardLayout.m in Sources */,
-				AA18EC50E35E76DF75688A061818434A /* DROptionCardView.m in Sources */,
-				08C894A6918687FD794F7CABCFE41738 /* DRPickerContainerView.m in Sources */,
-				A9982E737E780109663D8E3D6D584699 /* DRPickerFactory.m in Sources */,
-				6683F1F99B2FD0D5B31914DA6F35EF63 /* DRPickerTopBar.m in Sources */,
-				76EC22795E51A0B99D5314102FE99563 /* DRPickerViews-dummy.m in Sources */,
-				09FD11C067D97F8C0B107919DE3EA0EC /* DRSectionTitleView.m in Sources */,
-				47AC0A57BC44C40FA1C9683E82714130 /* DRSegmentBar.m in Sources */,
-				57D58A88C15A48746E22924C5E25D60C /* DRStringOptionsPicker.m in Sources */,
-				1087450ABC7DFBB1BEFC472894FA3195 /* DRTimeConsumingPicker.m in Sources */,
-				37903F2507579DAC78FE20F26EE2A448 /* DRUIWidgetUtil.m in Sources */,
-				8D4844975944BE61BE9F470D7C899AB9 /* DRValueSelectPicker.m in Sources */,
-				F8A0A7A348E44C66F07B618B273ACBF0 /* DRWeekPickerCell.m in Sources */,
-				8DD67875D46FA75927BFA90224722C15 /* DRWeekPickerView.m in Sources */,
-				8846A181662781365ECE68A8B3886E7C /* DRYearMonthPicker.m in Sources */,
-				E8645020554D13A0C794845DDA9B833C /* DRYMDPicker.m in Sources */,
-				CEDE97EBC09748F53A218C72CB67F4F8 /* DRYMDWithLunarPicker.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9D7F9C3BD1379B8B5F3B84AA12AEF2DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3342,6 +3307,41 @@
 			files = (
 				22BB7A4A163CFA7C1B43C5519021EFFA /* HexColors-dummy.m in Sources */,
 				0430145319DFC1AC37EA96255A884274 /* HexColors.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA045B43B04CF04363F38037B3219817 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				787A9874074B3D1A49B049B7D8D83608 /* DRAheadTimePicker.m in Sources */,
+				1A576EEB31A8078F4D635B7D93A063EE /* DRBaseAlertPicker.m in Sources */,
+				6C84FAEAE9EC188DED635F3A54245BCE /* DRCalendarTitleView.m in Sources */,
+				F5104D9FC1F3E888D0FCCA565953B13A /* DRDatePickerDataModels.m in Sources */,
+				B4B457BEFE0148E19DCC26C6EA1941BE /* DRDatePickerView.m in Sources */,
+				D5E66C33535574FAF6C0D873B931BB0D /* DRHourMinutePicker.m in Sources */,
+				06622A5DFD794242D179D556ACA681B0 /* DRHourMinutePickerView.m in Sources */,
+				B89D8A518585B164EFAA04BDC3A6FBA0 /* DRLunarDatePickerView.m in Sources */,
+				D804A1A0BBE2376F210D526E18E7737E /* DRLunarYearView.m in Sources */,
+				D588DC9D116923618BFBF1D055405D28 /* DROneWeekPicker.m in Sources */,
+				81E7BED151D1E0F41A41ADD992A90D0F /* DROptionCardCell.m in Sources */,
+				16220BFEDEE7AE7FEAD04A357F5B9E9F /* DROptionCardLayout.m in Sources */,
+				F11A6FE53B732503A91502E5F4341FF0 /* DROptionCardView.m in Sources */,
+				9BFBE5271713DDB817E6C87FE5984594 /* DRPickerContainerView.m in Sources */,
+				FB0E44D875BD2B6003BCBCA781B7C347 /* DRPickerFactory.m in Sources */,
+				7C22821327CC27599EC5F8221EAB5F8D /* DRPickerTopBar.m in Sources */,
+				AEFDFDA9D8FA13A0DEA7B576AB26E4EF /* DRPickerViews-dummy.m in Sources */,
+				1F357E1DCCE1F96C17598E7D6A54395A /* DRSectionTitleView.m in Sources */,
+				87D7B8D6CE4A04090B3CBDC12102E610 /* DRSegmentBar.m in Sources */,
+				91E4CE90BF65F24BF03747883E1A80BD /* DRStringOptionsPicker.m in Sources */,
+				E452391AFC42B1AE88A2BCCEA3693FAC /* DRTimeConsumingPicker.m in Sources */,
+				796A745E40573FCCD8032A3CEE5475FE /* DRUIWidgetUtil.m in Sources */,
+				156284FE8640305579D6399F22CA9EF4 /* DRValueSelectPicker.m in Sources */,
+				4DD6F6A87C9D25C842B3EE20B8D4925B /* DRWeekPickerCell.m in Sources */,
+				A74865F24A2E67112CA091D2F7C34E5A /* DRWeekPickerView.m in Sources */,
+				83FF323B96ECAC7C91D020BE5CC9D735 /* DRYearMonthPicker.m in Sources */,
+				BBCF15FB3F3083CFB3235A59CF8271C1 /* DRYMDPicker.m in Sources */,
+				28A01279B5BA8A64403A2F18895AA81A /* DRYMDWithLunarPicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

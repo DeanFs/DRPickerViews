@@ -10,6 +10,7 @@
 #import <YYModel/YYModel.h>
 #import <DRPickerViews/DRPickerFactory.h>
 #import <DRCategories/NSDate+DRExtension.h>
+#import <DRMacroDefines/DRMacroDefines.h>
 
 @interface DRViewController ()
 
@@ -19,12 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -33,43 +28,90 @@
 }
 
 - (void)showPicker:(DRPickerType)type {
-    DRPickerOption *option = [[DRPickerOption alloc] init];
-    //    option.isLunar = YES;
-    //    option.ignoreYear = YES;
-    //    option.month = 3;
-    //    option.day = 3;
-    option.cancelBlock = ^{
-        NSLog(@"cancel");
+    DRPickerOptionBase *opt;
+    switch (type) {
+        case DRPickerTypeYMD: {
+            opt = [DRPickerDateOption optionWithTitle:@"选择日期" currentDate:[NSDate date] minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
+        } break;
+            
+        case DRPickerTypeWithLunar: {
+            
+        } break;
+            
+        case DRPickerTypeBirthday: {
+            
+        } break;
+            
+        case DRPickerTypePlanEnd: {
+            opt = [DRPickerPlanEndOption optionWithTitle:@"计划结束时间" currentDate:[NSDate date] startDate:[NSDate date].lastMonth maxDate:[NSDate maxDate]];
+        } break;
+            
+        case DRPickerTypeYearMoth: {
+            opt = [DRPickerDateOption optionWithTitle:@"选择月份" currentDate:[NSDate date] minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
+        } break;
+            
+        case DRPickerTypeYearMothFileter: {
+            opt = [DRPickerYearMonthFilterOption optionWithTitle:@"选择月份" currentDate:[NSDate date] minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
+            ((DRPickerYearMonthFilterOption *)opt).monthViewFilterIndexs = @[@(0), @(2)];
+        } break;
+            
+        case DRPickerTypeOneWeek: {
+            opt = [DRPickerDateOption optionWithTitle:@"选择一周" currentDate:[NSDate date] minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
+        } break;
+            
+        case DRPickerTypeHMForDate: {
+            opt = [DRPickerHMForDateOption optionWithTitle:@"修改小时分钟" currentDate:[NSDate date]];
+        } break;
+            
+        case DRPickerTypeHMOnly: {
+            opt = [DRPickerHMOnlyOption optionWithTitle:@"选择时间点"];
+            ((DRPickerHMOnlyOption *)opt).currentTime = @"1229";
+            ((DRPickerHMOnlyOption *)opt).forDuration = YES;
+            ((DRPickerHMOnlyOption *)opt).canClean = YES;
+            ((DRPickerHMOnlyOption *)opt).onCleanTimeBlock = ^(id deletedObj) {
+                kDR_LOG(@"清除时间： %@", deletedObj);
+            };
+        } break;
+            
+        case DRPickerTypeHMPlanWeek: {
+            opt = [DRPickerHMPlanWeekOption optionWithTitle:@"选择周时间点"];
+//            ((DRPickerHMOnlyOption *)opt).currentTime = @"1229";
+            ((DRPickerHMPlanWeekOption *)opt).forDuration = NO;
+            ((DRPickerHMPlanWeekOption *)opt).weekDays = @[@(1), @(3), @(7)];
+            ((DRPickerHMPlanWeekOption *)opt).onlyWeekDay = NO;
+        } break;
+            
+        case DRPickerTypeTimeConsuming: {
+            opt = [DRPickerTimeConsumingOption optionWithTitle:@"请选择消耗时长" timeConsuming:2*24*3600+5*3600+33*60];
+        } break;
+            
+        case DRPickerTypeRemindAhead: {
+            opt = [DRPickerOptionBase optionWithTitle:@"设置提前提醒"];
+        } break;
+            
+        case DRPickerTypeValueSelect: {
+            opt = [DRPickerValueSelectOption optionWithTitle:@"请选择年龄" currentValue:25 minValue:12 maxValue:99 valueUnit:@"岁"];
+        } break;
+            
+        case DRPickerTypeStringSelect: {
+            opt = [DRPickerStringSelectOption optionWithTitle:@"请选择重复类型" stringOptions:@[@"快速复制", @"每天", @"每周", @"每月", @"自定义"]];
+            ((DRPickerStringSelectOption *)opt).currentStringIndex = 2;
+        } break;
+            
+        default:
+            break;
+    }
+    opt.dismissBlock = ^{
+        kDR_LOG(@"dismiss");
     };
-    option.dismissBlock = ^{
-        NSLog(@"dismiss");
+    opt.cancelBlock = ^{
+        kDR_LOG(@"cancel");
     };
+//    opt.autoDismissWhenPicked = NO;
     
-    //    option.canClean = YES;
-    option.cleanBlock = ^(id _Nonnull deletedObj) {
-        NSLog(@"clean button tapped \nobject: %@", deletedObj);
-    };
-    option.title = @"test title";
-    option.weekDays = @[@2, @4, @7];
-    option.currentTime = @"2211";
-    option.forDuration = YES;
-    option.currentDuration = 44*60;
-//    option.onlyWeekDay = YES;
-    
-    //    option.autoDismissWhenPicked = NO;
-    
-    NSDate *date = [NSDate dateWithDateString:@"2019-04-10 10:56:00" dateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *minDate = [NSDate dateWithDateString:@"2018-11-01" dateFormat:@"yyyy-MM-dd"];
-    NSDate *maxDate = [NSDate dateWithDateString:@"2019-10-22" dateFormat:@"yyyy-MM-dd"];
-    
-    [DRPickerFactory showDatePickerWithType:type
-                                    currentDate:date
-                                        minDate:minDate
-                                        maxDate:maxDate
-                                    otherOption:option
-                                  pickDoneBlock:^(DRBaseDatePicker *picker, id pickedObject) {
-                                      NSLog(@"%@ \n %@", pickedObject, [pickedObject yy_modelToJSONString]);
-                                  }];
+    [DRPickerFactory showPickerViewWithType:type pickerOption:opt pickDoneBlock:^(DRBaseAlertPicker * _Nonnull picker, id  _Nonnull pickedObject) {
+        kDR_LOG(@"%@", pickedObject);
+    }];
 }
 
 @end

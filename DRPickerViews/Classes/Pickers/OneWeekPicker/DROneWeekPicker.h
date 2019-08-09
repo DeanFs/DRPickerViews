@@ -6,11 +6,11 @@
 //  Copyright © 2019 Dean_F. All rights reserved.
 //
 
-#import "DRBaseDatePicker.h"
+#import "DRBaseAlertPicker.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DROneWeekPicker : DRBaseDatePicker
+@interface DROneWeekPicker : DRBaseAlertPicker
 
 @end
 

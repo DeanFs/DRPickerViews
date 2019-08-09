@@ -1,6 +1,6 @@
 {
   "name": "DRPickerViews",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "summary": "自定义选择器集合",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/DeanFs/DRPickerViews",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/DeanFs/DRPickerViews.git",
-    "tag": "0.1.6"
+    "tag": "0.1.7"
   },
   "platforms": {
     "ios": "9.0"
@@ -92,6 +92,9 @@
           "dependencies": {
             "DRPickerViews/UIWidget/Common": [
 
+            ],
+            "DRPickerViews/Pickers/YearMonthPicker": [
+
             ]
           }
         },
@@ -149,7 +152,7 @@
           "name": "Common",
           "source_files": "DRPickerViews/Classes/Pickers/Common/*.{h,m}",
           "dependencies": {
-            "DRPickerViews/UIWidget": [
+            "DRPickerViews/UIWidget/PickerContainerView": [
 
             ]
           }
@@ -160,6 +163,9 @@
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
 
+            ],
+            "DRPickerViews/UIWidget/TopBar": [
+
             ]
           }
         },
@@ -168,6 +174,9 @@
           "source_files": "DRPickerViews/Classes/Pickers/ValueSelectPicker/*.{h,m}",
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
+
+            ],
+            "DRPickerViews/UIWidget/TopBar": [
 
             ]
           }
@@ -178,6 +187,9 @@
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
 
+            ],
+            "DRPickerViews/UIWidget/TopBar": [
+
             ]
           }
         },
@@ -186,6 +198,9 @@
           "source_files": "DRPickerViews/Classes/Pickers/StringOptionPicker/*.{h,m}",
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
+
+            ],
+            "DRPickerViews/UIWidget/TopBar": [
 
             ]
           }
@@ -196,6 +211,15 @@
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
 
+            ],
+            "DRPickerViews/UIWidget/TopBar": [
+
+            ],
+            "DRPickerViews/UIWidget/OptionCard": [
+
+            ],
+            "DRPickerViews/UIWidget/HourMinutePickerView": [
+
             ]
           }
         },
@@ -204,6 +228,18 @@
           "source_files": "DRPickerViews/Classes/Pickers/YearMonthPicker/*.{h,m}",
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
+
+            ],
+            "DRPickerViews/UIWidget/TopBar": [
+
+            ],
+            "DRPickerViews/UIWidget/SectionView": [
+
+            ],
+            "DRPickerViews/UIWidget/OptionCard": [
+
+            ],
+            "DRPickerViews/UIWidget/DatePickerView": [
 
             ]
           }
@@ -214,6 +250,15 @@
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
 
+            ],
+            "DRPickerViews/UIWidget/TopBar": [
+
+            ],
+            "DRPickerViews/UIWidget/SectionView": [
+
+            ],
+            "DRPickerViews/UIWidget/DatePickerView": [
+
             ]
           }
         },
@@ -223,6 +268,18 @@
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
 
+            ],
+            "DRPickerViews/UIWidget/TopBar": [
+
+            ],
+            "DRPickerViews/UIWidget/Segment": [
+
+            ],
+            "DRPickerViews/UIWidget/DatePickerView": [
+
+            ],
+            "DRPickerViews/UIWidget/LunarDatePickerView": [
+
             ]
           }
         },
@@ -231,6 +288,12 @@
           "source_files": "DRPickerViews/Classes/Pickers/OneWeekPicker/*.{h,m}",
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
+
+            ],
+            "DRPickerViews/UIWidget/TopBar": [
+
+            ],
+            "DRPickerViews/UIWidget/WeekPickerView": [
 
             ]
           }

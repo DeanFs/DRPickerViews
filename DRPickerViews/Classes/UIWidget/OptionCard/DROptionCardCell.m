@@ -12,7 +12,7 @@
 
 @interface DROptionCardCell ()
 
-@property (weak, nonatomic) IBOutlet UIButton *titleButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 
 @end
@@ -22,31 +22,15 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.titleButton.layer.borderWidth = 0.5;
-    self.titleButton.layer.cornerRadius = 6;
-    self.titleButton.layer.masksToBounds = YES;
-    _itemCornerRadius = 6;
-    _fontSize = 13;
-}
-
-- (void)setFontSize:(CGFloat)fontSize {
-    if (fontSize != _fontSize) {
-        _fontSize = fontSize;
-        self.titleButton.titleLabel.font = [UIFont dr_PingFangSC_RegularWithSize:fontSize];
-    }
-}
-
-- (void)setItemCornerRadius:(CGFloat)itemCornerRadius {
-    if (itemCornerRadius != _itemCornerRadius) {
-        _itemCornerRadius = itemCornerRadius;
-        self.titleButton.layer.cornerRadius = itemCornerRadius;
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.titleLabel.layer.borderWidth = 0.5;
+        self.titleLabel.layer.cornerRadius = 6;
+        self.titleLabel.layer.masksToBounds = YES;
+    });
 }
 
 - (void)setTitle:(NSString *)title {
-    [UIView performWithoutAnimation:^{
-        [self.titleButton setTitle:title forState:UIControlStateNormal];
-    }];
+    self.titleLabel.text = title;
     [self refresh];
 }
 
@@ -56,14 +40,15 @@
 }
 
 - (void)refresh {
-    [UIView performWithoutAnimation:^{
-        self.titleButton.selected = self.selected;
-        if (self.selected) {
-            self.titleButton.layer.borderColor = [DRUIWidgetUtil highlightColor].CGColor;
-        } else {
-            self.titleButton.layer.borderColor = [DRUIWidgetUtil borderColor].CGColor;
-        }
-    }];
+    if (self.selected) {
+        self.titleLabel.layer.borderColor = [DRUIWidgetUtil highlightColor].CGColor;
+        self.titleLabel.textColor = [DRUIWidgetUtil highlightColor];
+        self.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:self.fontSize];
+    } else {
+        self.titleLabel.layer.borderColor = [DRUIWidgetUtil borderColor].CGColor;
+        self.titleLabel.textColor = [DRUIWidgetUtil normalColor];
+        self.titleLabel.font = [UIFont dr_PingFangSC_RegularWithSize:self.fontSize];
+    }
 }
 
 @end

@@ -120,7 +120,6 @@
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     DROptionCardCell *cardCell = (DROptionCardCell *)cell;
-    cardCell.title = self.allOptions[indexPath.row];
     cardCell.fontSize = self.fontSize;
     cardCell.itemCornerRadius = self.itemCornerRadius;
     if ([self.selectMap objectForKey:self.allOptions[indexPath.row]]) {
@@ -128,6 +127,7 @@
     } else {
         [collectionView deselectItemAtIndexPath:indexPath animated:NO];
     }
+    cardCell.title = self.allOptions[indexPath.row];
     cardCell.selected = [self.selectMap objectForKey:self.allOptions[indexPath.row]] != nil;
 }
 
@@ -179,8 +179,8 @@
             [optionIndexs addObject:self.selectMap[option]];
         }
     }
-    self.selectedOptions = options;
-    self.selectedIndexs = optionIndexs;
+    _selectedOptions = options;
+    _selectedIndexs = optionIndexs;
     kDR_SAFE_BLOCK(self.onSelectionChangeBlock, options, optionIndexs);
 }
 

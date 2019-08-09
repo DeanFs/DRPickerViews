@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DRPickerViews'
-  s.version          = '0.1.6'
+  s.version          = '0.1.7'
   s.summary          = '自定义选择器集合'
 
 # This description is used to generate tags and improve search results.
@@ -61,6 +61,7 @@ TODO: Add long description of the pod here.
     ss.subspec 'CalendarTitleView' do |sss|
       sss.source_files = 'DRPickerViews/Classes/UIWidget/CalendarTitleView/*.{h,m}'
       sss.dependency 'DRPickerViews/UIWidget/Common'
+      sss.dependency 'DRPickerViews/Pickers/YearMonthPicker'
     end
 
     ss.subspec 'HourMinutePickerView' do |sss|
@@ -92,52 +93,72 @@ TODO: Add long description of the pod here.
   s.subspec 'Pickers' do |ss|
     ss.subspec 'Common' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/Common/*.{h,m}'
-      sss.dependency 'DRPickerViews/UIWidget'
+      sss.dependency 'DRPickerViews/UIWidget/PickerContainerView'
     end
 
     ss.subspec 'AheadTimePicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/AheadTimePicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
+      sss.dependency 'DRPickerViews/UIWidget/TopBar'
     end
 
     ss.subspec 'ValueSelectPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/ValueSelectPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
+      sss.dependency 'DRPickerViews/UIWidget/TopBar'
     end
 
     ss.subspec 'TimeConsumingPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/TimeConsumingPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
+      sss.dependency 'DRPickerViews/UIWidget/TopBar'
     end
 
     ss.subspec 'StringOptionPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/StringOptionPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
+      sss.dependency 'DRPickerViews/UIWidget/TopBar'
     end
 
     ss.subspec 'HourMinutePicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/HourMinutePicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
+      sss.dependency 'DRPickerViews/UIWidget/TopBar'
+      sss.dependency 'DRPickerViews/UIWidget/OptionCard'
+      sss.dependency 'DRPickerViews/UIWidget/HourMinutePickerView'
     end
 
     ss.subspec 'YearMonthPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/YearMonthPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
+      sss.dependency 'DRPickerViews/UIWidget/TopBar'
+      sss.dependency 'DRPickerViews/UIWidget/SectionView'
+      sss.dependency 'DRPickerViews/UIWidget/OptionCard'
+      sss.dependency 'DRPickerViews/UIWidget/DatePickerView'
     end
 
     ss.subspec 'YearMonthDayPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/YearMonthDayPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
+      sss.dependency 'DRPickerViews/UIWidget/TopBar'
+      sss.dependency 'DRPickerViews/UIWidget/SectionView'
+      sss.dependency 'DRPickerViews/UIWidget/DatePickerView'
     end
 
     ss.subspec 'WithLunarPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/WithLunarPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
+      sss.dependency 'DRPickerViews/UIWidget/TopBar'
+      sss.dependency 'DRPickerViews/UIWidget/Segment'
+      sss.dependency 'DRPickerViews/UIWidget/DatePickerView'
+      sss.dependency 'DRPickerViews/UIWidget/LunarDatePickerView'
     end
 
     ss.subspec 'OneWeekPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/OneWeekPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
+      sss.dependency 'DRPickerViews/UIWidget/TopBar'
+      sss.dependency 'DRPickerViews/UIWidget/WeekPickerView'
     end
   end
 

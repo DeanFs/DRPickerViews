@@ -14,6 +14,11 @@ IB_DESIGNABLE
 @property (nonatomic, assign) IBInspectable CGFloat fontSize;
 
 /**
+ 当前选中的日期
+ */
+@property (nonatomic, strong) NSDate *currentMonth;
+
+/**
  如果有自定义的年月选择器时，传入该回调，点击标题时呼出自定义年月选择器
  从选择器选择年月确定后，调用didSelectYearMonth(yearMonth)，告知新的年月
  */

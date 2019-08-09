@@ -8,7 +8,7 @@
 
 #import "DRHourMinutePicker.h"
 #import <DRMacroDefines/DRMacroDefines.h>
-#import "NSDate+DRExtension.h"
+#import <DRCategories/NSDate+DRExtension.h>
 #import <JXExtension/JXExtension.h>
 #import <HexColors/HexColors.h>
 #import "DRHourMinutePickerView.h"
@@ -24,27 +24,23 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *weekButtonContainerLeft;
 @property (nonatomic, strong) NSArray *selectedIndex;
 
-@property (nonatomic, assign) DRHourMinutePickerType type;
-
 @end
 
 @implementation DRHourMinutePicker
 
-+ (void)showPickerViewWithType:(DRHourMinutePickerType)type
-                   currentDate:(NSDate *)currentDate
-                 pickDoneBlock:(DRDatePickerInnerDoneBlock)pickDoneBlock
-                    setupBlock:(DRDatePickerSetupBlock)setupBlock {
-    DRHourMinutePicker *picker = [DRHourMinutePicker pickerView];
-    kDR_SAFE_BLOCK(setupBlock, picker);
-    picker.type = type;
-    picker.currentDate = currentDate;
-    picker.pickDoneBlock = pickDoneBlock;
-    [picker show];
+- (Class)pickerOptionClass {
+    if (self.type == DRHourMinutePickerTypeResetDate) {
+        return [DRPickerHMForDateOption class];
+    }
+    if (self.type == DRHourMinutePickerTypeNormal) {
+        return [DRPickerHMOnlyOption class];
+    }
+    return [DRPickerHMPlanWeekOption class];
 }
 
 - (CGFloat)picerViewHeight {
     if (self.type == DRHourMinutePickerTypePlanWeekConfig) {
-        if (self.pickOption.onlyWeekDay) {
+        if (((DRPickerHMPlanWeekOption *)self.pickerOption).onlyWeekDay) {
             return 162;
         }
         return 380;
@@ -53,17 +49,22 @@
 }
 
 - (void)prepareToShow {
-    self.pickerView.timeScale = self.pickOption.timeScale;
+    self.pickerView.timeScale = ((DRPickerHMBaseOption *)self.pickerOption).timeScale;
     
-    // 反显设置
+    if (self.type == DRHourMinutePickerTypeResetDate) {
+        NSDate *currentDate = ((DRPickerHMForDateOption *)self.pickerOption).currentDate;
+        [self.pickerView setCurrentHour:currentDate.hour
+                                 minute:currentDate.minute];
+        self.weekContainerViewHeight.constant = 0;
+        return;
+    }
+    
+    DRPickerHMOnlyOption *hmOption = (DRPickerHMOnlyOption *)self.pickerOption;
     NSInteger hour = 0;
     NSInteger minute = 0;
-    if (self.currentDate) {
-        hour += self.currentDate.hour;
-        minute += self.currentDate.minute;
-    } else if (self.pickOption.currentTime.length == 4) {
-        NSString *hourString = [self.pickOption.currentTime substringToIndex:2];
-        NSString *minuteString = [self.pickOption.currentTime substringFromIndex:2];
+    if (hmOption.currentTime.length == 4) {
+        NSString *hourString = [hmOption.currentTime substringToIndex:2];
+        NSString *minuteString = [hmOption.currentTime substringFromIndex:2];
         hour += [hourString integerValue];
         minute += [minuteString integerValue];
     } else {
@@ -72,33 +73,22 @@
         minute += today.minute;
     }
     
-    if (self.pickOption.forDuration) {
+    if (hmOption.forDuration) {
         self.pickerView.type = DRHourMinutePickerViewTypeDuration;
-        self.pickerView.minDuration = self.pickOption.minDuration;
-        self.pickerView.timeScale = self.pickOption.timeScale;
-        if (self.pickOption.currentDuration < self.pickOption.minDuration*60) {
-            self.pickOption.currentDuration = self.pickOption.minDuration*60;
-        }
+        self.pickerView.minDuration = hmOption.minDuration;
         [self.pickerView setCurrentStartHour:hour
                                  startMimute:minute
-                                    duration:self.pickOption.currentDuration];
+                                    duration:hmOption.currentDuration];
     } else {
         [self.pickerView setCurrentHour:hour
                                  minute:minute];
     }
     
-    // setupCleanButton
     kDRWeakSelf
-    if (self.pickOption.canClean) {
+    if (hmOption.canClean && hmOption.onCleanTimeBlock) {
         self.topBar.centerButtonTitle = @"清除时间";
         self.topBar.centerButtonActionBlock = ^(DRPickerTopBar *topBar, UIButton *tappedButton) {
-            id deletedObj;
-            if (weakSelf.currentDate) {
-                deletedObj = weakSelf.currentDate;
-            } else {
-                deletedObj = weakSelf.pickOption.currentTime;
-            }
-            kDR_SAFE_BLOCK(weakSelf.pickOption.cleanBlock, deletedObj);
+            kDR_SAFE_BLOCK(hmOption.onCleanTimeBlock, hmOption.currentTime);
             [weakSelf dismiss];
         };
     }
@@ -108,7 +98,7 @@
         if (kDRScreenWidth < 375) {
             self.weekButtonContainerLeft.constant = 8;
         }
-        if (self.pickOption.onlyWeekDay) {
+        if (((DRPickerHMPlanWeekOption *)self.pickerOption).onlyWeekDay) {
             self.pickerView.hidden = YES;
             self.timeTitleSectionView.hidden = YES;
             self.weekContainerViewHeight.constant = 106;
@@ -126,7 +116,7 @@
 
 - (NSArray<NSNumber *> *)getSelectedOptionIndexs {
     NSMutableArray *arr = [NSMutableArray array];
-    for (NSNumber *weekDay in self.pickOption.weekDays) {
+    for (NSNumber *weekDay in ((DRPickerHMPlanWeekOption *)self.pickerOption).weekDays) {
         [arr addObject:@(weekDay.integerValue-1)];
     }
     return arr;
@@ -143,12 +133,17 @@
 #pragma mark - actions
 - (id)pickedObject {
     DRHourMinutePickerValueModel *value = [self.pickerView currentSelectedValue];
+    if (self.type == DRHourMinutePickerTypeResetDate) {
+        NSDate *date = ((DRPickerHMForDateOption *)self.pickerOption).currentDate;
+        return [date resetHour:value.hour minute:value.minute];
+    }
+    
     if (self.type == DRHourMinutePickerTypePlanWeekConfig) {
         NSArray<NSNumber *> *weekDays = [self getWeekConfig];
         if (weekDays.count) {
-            DRHourMinutePickerPlanWeekConfig *config = [DRHourMinutePickerPlanWeekConfig new];
+            DRPickerPlanWeekPickedObj *config = [DRPickerPlanWeekPickedObj new];
             NSString *pickedTime = [NSString stringWithFormat:@"%02ld%02ld", value.hour, value.minute];
-            if (self.pickOption.forDuration) {
+            if (((DRPickerHMPlanWeekOption *)self.pickerOption).forDuration) {
                 [config setupWeekDays:weekDays
                            pickedTime:pickedTime
                              duration:value.duration
@@ -166,29 +161,16 @@
         }
     }
     
-    if (self.pickOption.forDuration) {
-        NSDateComponents *cmp = [self dateComponentsFromDate:self.currentDate];
-        cmp.hour = value.hour;
-        cmp.minute = value.minute;
-        
-        DRHourMinutePickerDurationModel *model = [DRHourMinutePickerDurationModel new];
-        [model setupWithDate:[self.calendar dateFromComponents:cmp]
-                  pickedTime:[NSString stringWithFormat:@"%02ld%02ld", value.hour, value.minute]
+    if (((DRPickerHMOnlyOption *)self.pickerOption).forDuration) {
+        DRPickerHMOnlyPickedObj *obj = [DRPickerHMOnlyPickedObj new];
+        [obj setupWithPickedTime:[NSString stringWithFormat:@"%02ld%02ld", value.hour, value.minute]
                     duration:value.duration
                 durationDesc:value.durationDesc
                endHourMinute:value.endHourMinute
                enoughDuation:value.enoughDuration
                 beyondOneDay:value.beyondOneDay];
-        return model;
+        return obj;
     }
-    
-    if (self.currentDate && !self.pickOption.hourMinuteOnly) {
-        NSDateComponents *cmp = [self dateComponentsFromDate:self.currentDate];
-        cmp.hour = value.hour;
-        cmp.minute = value.minute;
-        return [self.calendar dateFromComponents:cmp];
-    }
-    
     return [NSString stringWithFormat:@"%02ld%02ld", value.hour, value.minute];
 }
 

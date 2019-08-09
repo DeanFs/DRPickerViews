@@ -26,13 +26,29 @@
                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAm-wR-rNY">
                     <rect key="frame" x="0.0" y="56" width="414" height="204"/>
                 </pickerView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRg-1E-axU">
+                    <rect key="frame" x="207" y="158" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ViR-3J-Ojp">
+                    <rect key="frame" x="237" y="161" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="pAm-wR-rNY" secondAttribute="bottom" id="2rz-3V-HX9"/>
                 <constraint firstItem="6mn-nW-Znp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3z2-66-2K7"/>
+                <constraint firstItem="ViR-3J-Ojp" firstAttribute="leading" secondItem="uRg-1E-axU" secondAttribute="trailing" constant="30" id="4Cd-dh-a0f"/>
                 <constraint firstItem="pAm-wR-rNY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Eyv-zk-VJT"/>
+                <constraint firstItem="ViR-3J-Ojp" firstAttribute="centerY" secondItem="uRg-1E-axU" secondAttribute="centerY" constant="3" id="Wm3-4I-6VY"/>
+                <constraint firstItem="uRg-1E-axU" firstAttribute="centerX" secondItem="pAm-wR-rNY" secondAttribute="centerX" id="aoP-Ch-2L1"/>
                 <constraint firstAttribute="trailing" secondItem="pAm-wR-rNY" secondAttribute="trailing" id="fVZ-Bq-dew"/>
+                <constraint firstItem="uRg-1E-axU" firstAttribute="centerY" secondItem="pAm-wR-rNY" secondAttribute="centerY" id="nqj-u9-C2n"/>
                 <constraint firstAttribute="trailing" secondItem="6mn-nW-Znp" secondAttribute="trailing" id="r5C-wS-hPG"/>
                 <constraint firstItem="pAm-wR-rNY" firstAttribute="top" secondItem="6mn-nW-Znp" secondAttribute="bottom" id="sLi-3x-enZ"/>
                 <constraint firstItem="6mn-nW-Znp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yAt-OG-3Jl"/>
@@ -43,6 +59,8 @@
                 <outlet property="picker" destination="pAm-wR-rNY" id="V1F-Qu-9ml"/>
                 <outlet property="pickerView" destination="pAm-wR-rNY" id="RN4-eU-7PB"/>
                 <outlet property="topBar" destination="6mn-nW-Znp" id="2XM-1a-QuS"/>
+                <outlet property="unitLabel" destination="ViR-3J-Ojp" id="qes-hi-vx9"/>
+                <outlet property="valueLabel" destination="uRg-1E-axU" id="zCY-Az-t9r"/>
             </connections>
         </view>
     </objects>

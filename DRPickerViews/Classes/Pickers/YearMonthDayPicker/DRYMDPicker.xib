@@ -23,7 +23,7 @@
                         <constraint firstAttribute="height" constant="56" id="2Cv-7I-rLo"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m1u-An-zo2">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1u-An-zo2">
                     <rect key="frame" x="0.0" y="56" width="375" height="172"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djL-fW-5FM">
@@ -42,12 +42,22 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQD-bH-Ln5">
+                                    <rect key="frame" x="15" y="101.5" width="345" height="0.5"/>
+                                    <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="0.5" id="7ci-WI-q0e"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="aQD-bH-Ln5" firstAttribute="leading" secondItem="djL-fW-5FM" secondAttribute="leading" constant="15" id="25i-PL-kct"/>
+                                <constraint firstAttribute="trailing" secondItem="aQD-bH-Ln5" secondAttribute="trailing" constant="15" id="9sX-fy-KeV"/>
                                 <constraint firstAttribute="bottom" secondItem="5GZ-3o-NfF" secondAttribute="bottom" constant="12" id="G27-ff-qHT"/>
                                 <constraint firstItem="5GZ-3o-NfF" firstAttribute="leading" secondItem="djL-fW-5FM" secondAttribute="leading" constant="22" id="RI4-ke-oAV"/>
                                 <constraint firstAttribute="height" constant="102" id="Z4Q-rU-SVW"/>
+                                <constraint firstAttribute="bottom" secondItem="aQD-bH-Ln5" secondAttribute="bottom" id="fA7-gv-Qpk"/>
                                 <constraint firstAttribute="trailing" secondItem="5GZ-3o-NfF" secondAttribute="trailing" constant="22" id="uYy-J7-acV"/>
                                 <constraint firstItem="5GZ-3o-NfF" firstAttribute="top" secondItem="djL-fW-5FM" secondAttribute="top" constant="12" id="zPQ-gc-4ZP"/>
                             </constraints>
@@ -55,6 +65,30 @@
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osS-7d-d45">
                             <rect key="frame" x="0.0" y="102" width="375" height="70"/>
                             <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4s4-gt-ly1">
+                                    <rect key="frame" x="86" y="23" width="203" height="24"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_zz_tj_tishi" translatesAutoresizingMaskIntoConstraints="NO" id="Krg-90-4oj">
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长期计划仅展示到明年年底" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNY-Hr-8K2">
+                                            <rect key="frame" x="31" y="3.5" width="172" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Krg-90-4oj" secondAttribute="bottom" id="4jd-fa-Ef9"/>
+                                        <constraint firstItem="Krg-90-4oj" firstAttribute="leading" secondItem="4s4-gt-ly1" secondAttribute="leading" id="6v9-X2-lej"/>
+                                        <constraint firstAttribute="trailing" secondItem="BNY-Hr-8K2" secondAttribute="trailing" id="CLk-Se-GOR"/>
+                                        <constraint firstItem="Krg-90-4oj" firstAttribute="top" secondItem="4s4-gt-ly1" secondAttribute="top" id="Fdp-OK-UR5"/>
+                                        <constraint firstItem="BNY-Hr-8K2" firstAttribute="leading" secondItem="Krg-90-4oj" secondAttribute="trailing" constant="7" id="RBk-s6-sKi"/>
+                                        <constraint firstItem="BNY-Hr-8K2" firstAttribute="centerY" secondItem="4s4-gt-ly1" secondAttribute="centerY" id="UOV-4b-gXo"/>
+                                        <constraint firstItem="Krg-90-4oj" firstAttribute="centerY" secondItem="4s4-gt-ly1" secondAttribute="centerY" id="aL9-46-90b"/>
+                                    </constraints>
+                                </view>
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcl-3v-VAL">
                                     <rect key="frame" x="115" y="26" width="145" height="18"/>
                                     <subviews>
@@ -81,30 +115,6 @@
                                         <constraint firstItem="xFV-Ch-VW6" firstAttribute="leading" secondItem="qcl-3v-VAL" secondAttribute="leading" id="wNd-uS-Rep"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4s4-gt-ly1">
-                                    <rect key="frame" x="86" y="23" width="203" height="24"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_zz_tj_tishi" translatesAutoresizingMaskIntoConstraints="NO" id="Krg-90-4oj">
-                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长期计划仅展示到明年年底" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNY-Hr-8K2">
-                                            <rect key="frame" x="31" y="3.5" width="172" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="Krg-90-4oj" secondAttribute="bottom" id="4jd-fa-Ef9"/>
-                                        <constraint firstItem="Krg-90-4oj" firstAttribute="leading" secondItem="4s4-gt-ly1" secondAttribute="leading" id="6v9-X2-lej"/>
-                                        <constraint firstAttribute="trailing" secondItem="BNY-Hr-8K2" secondAttribute="trailing" id="CLk-Se-GOR"/>
-                                        <constraint firstItem="Krg-90-4oj" firstAttribute="top" secondItem="4s4-gt-ly1" secondAttribute="top" id="Fdp-OK-UR5"/>
-                                        <constraint firstItem="BNY-Hr-8K2" firstAttribute="leading" secondItem="Krg-90-4oj" secondAttribute="trailing" constant="7" id="RBk-s6-sKi"/>
-                                        <constraint firstItem="BNY-Hr-8K2" firstAttribute="centerY" secondItem="4s4-gt-ly1" secondAttribute="centerY" id="UOV-4b-gXo"/>
-                                        <constraint firstItem="Krg-90-4oj" firstAttribute="centerY" secondItem="4s4-gt-ly1" secondAttribute="centerY" id="aL9-46-90b"/>
-                                    </constraints>
-                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -115,29 +125,19 @@
                                 <constraint firstItem="4s4-gt-ly1" firstAttribute="centerY" secondItem="osS-7d-d45" secondAttribute="centerY" id="sl6-E6-SwQ"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQD-bH-Ln5">
-                            <rect key="frame" x="15" y="102" width="345" height="0.5"/>
-                            <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="0.5" id="7ci-WI-q0e"/>
-                            </constraints>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="osS-7d-d45" firstAttribute="leading" secondItem="m1u-An-zo2" secondAttribute="leading" id="FvA-Jh-yGL"/>
-                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="osS-7d-d45" secondAttribute="bottom" id="LgM-vq-TFL"/>
+                        <constraint firstAttribute="bottom" secondItem="osS-7d-d45" secondAttribute="bottom" id="LgM-vq-TFL"/>
                         <constraint firstAttribute="trailing" secondItem="djL-fW-5FM" secondAttribute="trailing" id="QyR-pQ-DYa"/>
-                        <constraint firstAttribute="trailing" secondItem="aQD-bH-Ln5" secondAttribute="trailing" constant="15" id="SfJ-qu-5qk"/>
-                        <constraint firstItem="aQD-bH-Ln5" firstAttribute="leading" secondItem="m1u-An-zo2" secondAttribute="leading" constant="15" id="bPl-3B-smt"/>
                         <constraint firstAttribute="trailing" secondItem="osS-7d-d45" secondAttribute="trailing" id="gIB-gW-L3v"/>
-                        <constraint firstItem="aQD-bH-Ln5" firstAttribute="top" secondItem="djL-fW-5FM" secondAttribute="bottom" id="hd3-7x-JUG"/>
                         <constraint firstItem="djL-fW-5FM" firstAttribute="leading" secondItem="m1u-An-zo2" secondAttribute="leading" id="qc1-32-Wl5"/>
                         <constraint firstItem="osS-7d-d45" firstAttribute="top" secondItem="djL-fW-5FM" secondAttribute="bottom" id="x4C-l0-ipw"/>
                         <constraint firstItem="djL-fW-5FM" firstAttribute="top" secondItem="m1u-An-zo2" secondAttribute="top" id="xGJ-Wd-8rB"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O8Y-5l-zia" customClass="DRDatePickerView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8Y-5l-zia" customClass="DRDatePickerView">
                     <rect key="frame" x="0.0" y="228" width="375" height="152"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
@@ -158,7 +158,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="buttonsContentView" destination="djL-fW-5FM" id="BoA-h6-J4A"/>
                 <outlet property="datePickerView" destination="O8Y-5l-zia" id="GTd-r4-3X2"/>
                 <outlet property="endDateLabel" destination="xFV-Ch-VW6" id="UUI-3t-kI0"/>
                 <outlet property="endDescLabel" destination="4wp-t7-49v" id="Ask-kc-VkS"/>

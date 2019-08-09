@@ -17,17 +17,22 @@ typedef NS_ENUM(NSInteger, DRPickerShowPosition) {
 @interface DRPickerContainerView : UIView
 
 #pragma mark - 子类根据需要重写
-// 水平方向距离屏幕边缘距离，默认 16
-- (CGFloat)horizontalPadding;
 // 选择器高度 默认 260
 - (CGFloat)picerViewHeight;
+// 水平方向距离屏幕边缘距离，默认 16
+- (CGFloat)horizontalPadding;
 // 底部距离安全区域边缘距离 默认 16
 - (CGFloat)bottomPaddingFromSafeArea;
 // 顶部距离状态栏的距离 默认 16
 - (CGFloat)topPaddingFromStatusBar;
 // 从中间弹出时，中心偏离距离，默认向上偏离20，即返回-20
+- (CGFloat)centerTopOffset;
 // 圆角半径，默认 12
 - (CGFloat)cornerRadius;
+// 点击空白区域时触发，告知是否dismiss
+- (BOOL)shouldDismissWhenTapSpaceArea;
+// 指定添加到哪个视图，默认keyWindow
+- (UIView *)showInView;
 
 #pragma mark - 子类中直接调用
 // 高不调整

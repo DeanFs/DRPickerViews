@@ -19,30 +19,25 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfR-wx-B3W">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZl-d4-LPM">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <state key="normal" title="事项">
-                            <color key="titleColor" red="0.27450980392156865" green="0.35686274509803922" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                        <state key="selected">
-                            <color key="titleColor" red="0.29411764705882354" green="0.63529411764705879" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                    </button>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="dfR-wx-B3W" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8Sn-W5-VLz"/>
-                <constraint firstAttribute="trailing" secondItem="dfR-wx-B3W" secondAttribute="trailing" id="Xny-MF-9Ws"/>
-                <constraint firstItem="dfR-wx-B3W" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dWx-R4-7OK"/>
-                <constraint firstAttribute="bottom" secondItem="dfR-wx-B3W" secondAttribute="bottom" id="pxM-AT-oYi"/>
+                <constraint firstAttribute="bottom" secondItem="RZl-d4-LPM" secondAttribute="bottom" id="1ZX-hq-fb4"/>
+                <constraint firstItem="RZl-d4-LPM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2qS-YC-993"/>
+                <constraint firstItem="RZl-d4-LPM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="D9p-nt-hFm"/>
+                <constraint firstAttribute="trailing" secondItem="RZl-d4-LPM" secondAttribute="trailing" id="u5K-X3-4NY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <connections>
-                <outlet property="titleButton" destination="dfR-wx-B3W" id="FhB-6B-Lcy"/>
+                <outlet property="titleLabel" destination="RZl-d4-LPM" id="Y9M-6E-sk0"/>
             </connections>
         </collectionViewCell>
     </objects>
