@@ -102,21 +102,18 @@
 - (void)setupDataSource:(NSDate *)currentDate {
     NSDate *firstDateInWeek = currentDate.firstDayInThisWeek;
     NSInteger day = [self dayForDate:firstDateInWeek];
-    NSDateComponents *cmp = [[NSDateComponents alloc] init];
     NSInteger dayOffset = [currentDate numberOfDaysDifferenceWithDate:firstDateInWeek];
     DRWeekPickerDateModel *model = [DRWeekPickerDateModel new];
     if (day < 23) {
         for (NSInteger i=0; i<7; i++) {
             [model.daysList addObject:[NSString stringWithFormat:@"%02ld", day+i]];
         }
-        cmp.day = 6;
-        model.lastDateInWeek = [self.solarCalendar dateByAddingComponents:cmp toDate:firstDateInWeek options:0];
+        model.lastDateInWeek = [self dateByAddingDays:6 months:0 fromDate:firstDateInWeek];
     } else {
         NSDate *date;
         [model.daysList addObject:[NSString stringWithFormat:@"%02ld", day]];
         for (NSInteger i=1; i<7; i++) {
-            cmp.day = i;
-            date = [self.solarCalendar dateByAddingComponents:cmp toDate:firstDateInWeek options:0];
+            date = [self dateByAddingDays:i months:0 fromDate:firstDateInWeek];
             [model.daysList addObject:[NSString stringWithFormat:@"%02ld", [self dayForDate:date]]];
         }
         model.lastDateInWeek = date;
@@ -174,9 +171,10 @@
 
 - (DRWeekPickerDateModel *)previousWeekModelFromRow:(NSInteger)row {
     DRWeekPickerDateModel *lastModel = self.weekDataSource[@(row+1)];
-    NSDateComponents *cmp = [[NSDateComponents alloc] init];
-    cmp.day = -7;
-    NSDate *firstDateInWeek = [self.solarCalendar dateByAddingComponents:cmp toDate:lastModel.firstDateInWeek options:0];
+    if (!lastModel) {
+        return nil;
+    }
+    NSDate *firstDateInWeek = [self dateByAddingDays:-7 months:0 fromDate:lastModel.firstDateInWeek];
     NSInteger day = lastModel.daysList.firstObject.integerValue-7;
     NSInteger dayOffset = lastModel.dayOffset - 7;
     DRWeekPickerDateModel *model = [DRWeekPickerDateModel new];
@@ -184,14 +182,12 @@
         for (NSInteger i=0; i<7; i++) {
             [model.daysList addObject:[NSString stringWithFormat:@"%02ld", day+i]];
         }
-        cmp.day = 6;
-        model.lastDateInWeek = [self.solarCalendar dateByAddingComponents:cmp toDate:firstDateInWeek options:0];
+        model.lastDateInWeek = [self dateByAddingDays:6 months:0 fromDate:firstDateInWeek];
     } else {
         NSDate *date;
         [model.daysList addObject:[NSString stringWithFormat:@"%02ld", [self dayForDate:firstDateInWeek]]];
         for (NSInteger i=1; i<7; i++) {
-            cmp.day = i;
-            date = [self.solarCalendar dateByAddingComponents:cmp toDate:firstDateInWeek options:0];
+            date = [self dateByAddingDays:i months:0 fromDate:firstDateInWeek];
             [model.daysList addObject:[NSString stringWithFormat:@"%02ld", [self dayForDate:date]]];
         }
         model.lastDateInWeek = date;
@@ -199,9 +195,7 @@
     model.firstDateInWeek = firstDateInWeek;
     model.month = lastModel.month;
     if (lastModel.weekIndexInMonth == 1) { // 下一个周是下个月的第一周
-        cmp.day = 0;
-        cmp.month = -1;
-        model.month = [self.solarCalendar dateByAddingComponents:cmp toDate:model.month options:0];
+        model.month = [self dateByAddingDays:0 months:-1 fromDate:model.month];
     }
     model.dayOffset = dayOffset;
     if (lastModel.disableSelect || lastModel.firstSelectableWeek) {
@@ -231,9 +225,10 @@
 
 - (DRWeekPickerDateModel *)nextWeekModelFromRow:(NSInteger)row {
     DRWeekPickerDateModel *lastModel = self.weekDataSource[@(row-1)];
-    NSDateComponents *cmp = [[NSDateComponents alloc] init];
-    cmp.day = 1;
-    NSDate *firstDateInWeek = [self.solarCalendar dateByAddingComponents:cmp toDate:lastModel.lastDateInWeek options:0];
+    if (!lastModel) {
+        return nil;
+    }
+    NSDate *firstDateInWeek = [self dateByAddingDays:1 months:0 fromDate:lastModel.lastDateInWeek];
     NSInteger day = lastModel.daysList.lastObject.integerValue+1;
     NSInteger dayOffset = lastModel.dayOffset + 7;
     DRWeekPickerDateModel *model = [DRWeekPickerDateModel new];
@@ -241,14 +236,12 @@
         for (NSInteger i=0; i<7; i++) {
             [model.daysList addObject:[NSString stringWithFormat:@"%02ld", day+i]];
         }
-        cmp.day = 6;
-        model.lastDateInWeek = [self.solarCalendar dateByAddingComponents:cmp toDate:firstDateInWeek options:0];
+        model.lastDateInWeek = [self dateByAddingDays:6 months:0 fromDate:firstDateInWeek];
     } else {
         NSDate *date;
         [model.daysList addObject:[NSString stringWithFormat:@"%02ld", [self dayForDate:firstDateInWeek]]];
         for (NSInteger i=1; i<7; i++) {
-            cmp.day = i;
-            date = [self.solarCalendar dateByAddingComponents:cmp toDate:firstDateInWeek options:0];
+            date = [self dateByAddingDays:i months:0 fromDate:firstDateInWeek];
             [model.daysList addObject:[NSString stringWithFormat:@"%02ld", [self dayForDate:date]]];
         }
         model.lastDateInWeek = date;
@@ -256,9 +249,7 @@
     model.firstDateInWeek = firstDateInWeek;
     model.month = lastModel.month;
     if (model.daysList.firstObject.integerValue == 1) { // 上一周的最后一天，是上个月的最后一天
-        cmp.day = 0;
-        cmp.month = 1;
-        model.month = [self.solarCalendar dateByAddingComponents:cmp toDate:model.month options:0];
+        model.month = [self dateByAddingDays:0 months:1 fromDate:model.month];
     }
     model.dayOffset = dayOffset;
     if (lastModel.disableSelect || lastModel.lastSelectableWeek) {
@@ -276,9 +267,7 @@
             model.lastWeekInMonth = YES;
             DRWeekPickerDateModel *nexWeekModel = [model copy];
             nexWeekModel.weekIndexInMonth = 1;
-            cmp.day = 0;
-            cmp.month = 1;
-            nexWeekModel.month = [self.solarCalendar dateByAddingComponents:cmp toDate:model.month options:0];
+            nexWeekModel.month = [self dateByAddingDays:0 months:-1 fromDate:model.month];
             if (model.lastSelectableWeek) {
                 nexWeekModel.disableSelect = YES;
             }
@@ -288,9 +277,10 @@
     return model;
 }
 
-- (NSDate *)dateByAddingDays:(NSInteger)days fromDate:(NSDate *)date {
+- (NSDate *)dateByAddingDays:(NSInteger)days months:(NSInteger)months fromDate:(NSDate *)date {
     NSDateComponents *cmp = [[NSDateComponents alloc] init];
     cmp.day = days;
+    cmp.month = months;
     return [self.solarCalendar dateByAddingComponents:cmp toDate:date options:0];
 }
 

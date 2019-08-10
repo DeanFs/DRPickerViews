@@ -11,6 +11,7 @@
 #import <DRPickerViews/DRPickerFactory.h>
 #import <DRCategories/NSDate+DRExtension.h>
 #import <DRMacroDefines/DRMacroDefines.h>
+#import "DRPickerContainerView.h"
 
 @interface DRViewController ()
 
@@ -35,15 +36,28 @@
         } break;
             
         case DRPickerTypeWithLunar: {
-            
+            opt = [DRPickerWithLunarOption optionWithTitle:@"农历" minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
+            DRPickerWithLunarOption *lunarOpt = (DRPickerWithLunarOption *)opt;
+            lunarOpt.year = 2018;
+            lunarOpt.month = 12;
+            lunarOpt.day = 4;
+            lunarOpt.isLunar = YES;
+            lunarOpt.leapMonth = NO;
         } break;
             
         case DRPickerTypeBirthday: {
-            
+            opt = [DRPickerBirthdayOption optionWithTitle:@"农历" minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
+            DRPickerBirthdayOption *lunarOpt = (DRPickerBirthdayOption *)opt;
+            lunarOpt.year = 2018;
+            lunarOpt.month = 12;
+            lunarOpt.day = 4;
+            lunarOpt.isLunar = YES;
+            lunarOpt.leapMonth = NO;
+            lunarOpt.ignoreYear = YES;
         } break;
             
         case DRPickerTypePlanEnd: {
-            opt = [DRPickerPlanEndOption optionWithTitle:@"计划结束时间" currentDate:[NSDate date] startDate:[NSDate date].lastMonth maxDate:[NSDate maxDate]];
+            opt = [DRPickerPlanEndOption optionWithTitle:@"计划结束时间" currentDate:nil startDate:[NSDate date].lastMonth maxDate:[NSDate maxDate]];
         } break;
             
         case DRPickerTypeYearMoth: {
@@ -82,7 +96,7 @@
         } break;
             
         case DRPickerTypeTimeConsuming: {
-            opt = [DRPickerTimeConsumingOption optionWithTitle:@"请选择消耗时长" timeConsuming:2*24*3600+5*3600+33*60];
+            opt = [DRPickerTimeConsumingOption optionWithTitle:@"请选择消耗时长" timeConsuming:0/*2*24*3600+5*3600+33*60*/];
         } break;
             
         case DRPickerTypeRemindAhead: {

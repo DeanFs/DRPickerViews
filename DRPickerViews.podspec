@@ -165,6 +165,7 @@ TODO: Add long description of the pod here.
   s.subspec 'Factory' do |ss|
     ss.source_files = 'DRPickerViews/Classes/Factory/*.{h,m}'
     ss.dependency 'DRPickerViews/Pickers'
+    ss.dependency 'DRPickerViews/UIWidget'
   end
   
   # s.resource_bundles = {

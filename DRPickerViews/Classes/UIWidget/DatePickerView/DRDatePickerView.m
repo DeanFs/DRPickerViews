@@ -249,11 +249,13 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.dateMode == DRDatePickerModeMD) {
             self.monthDayCount = [self daysCountInCurrentMonth];
+            [self.pickerView reloadComponent:2];
             [self.pickerView selectRow:self.month-1 + 12 * kDatePickerCentreRow inComponent:0 animated:NO];
             [self.pickerView selectRow:self.day-1 + self.monthDayCount * kDatePickerCentreRow inComponent:2 animated:NO];
         } else {
             if (self.dateMode == DRDatePickerModeYMD) {
                 self.monthDayCount = [self daysCountInCurrentMonth];
+                [self.pickerView reloadComponent:4];
                 [self.pickerView selectRow:self.year inComponent:0 animated:NO];
                 [self.pickerView selectRow:self.month-1 + 12 * kDatePickerCentreRow inComponent:2 animated:NO];
                 [self.pickerView selectRow:self.day-1 + self.monthDayCount * kDatePickerCentreRow inComponent:4 animated:NO];
@@ -262,26 +264,8 @@
                 [self.pickerView selectRow:kDatePickerCentreRow*12 + self.month-1 inComponent:2 animated:NO];
             }
         }
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.pickerView setNeedsDisplay];
-            [self.pickerView reloadAllComponents];
-        });
-        [self reloadAllComponents];
+        [self.pickerView reloadAllComponents];
     });
-}
-
-- (void)reloadComponent:(NSInteger)component {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.pickerView reloadComponent:component];
-    });
-}
-
-- (void)reloadAllComponents {
-    [self reloadComponent:0];
-    [self reloadComponent:2];
-    if (self.dateMode == DRDatePickerModeYMD) {
-        [self reloadComponent:4];
-    }
 }
 
 - (NSInteger)daysCountInCurrentMonth {
@@ -406,6 +390,7 @@
             [self.pickerView selectRow:self.day-1 + daysInMonth * kDatePickerCentreRow inComponent:4 animated:YES];
         }
         self.monthDayCount = daysInMonth;
+        [self.pickerView reloadComponent:4];
     }
     
     // 超限回滚
@@ -473,13 +458,14 @@
             [self.pickerView selectRow:self.day-1 + daysInMonth * kDatePickerCentreRow inComponent:2 animated:YES];
         }
         self.monthDayCount = daysInMonth;
+        [self.pickerView reloadComponent:2];
     }
 }
 
 - (void)whenSelectChange {
     dispatch_async(dispatch_get_main_queue(), ^{
-        _selectedDate = self.dateMode==DRDatePickerModeMD?nil:[self currentDateWithDay:self.day];
-        kDR_SAFE_BLOCK(self.onSelectChangeBlock, _selectedDate, self.month, self.day);
+        self->_selectedDate = self.dateMode==DRDatePickerModeMD?nil:[self currentDateWithDay:self.day];
+        kDR_SAFE_BLOCK(self.onSelectChangeBlock, self->_selectedDate, self.month, self.day);
     });
 }
 
@@ -508,6 +494,8 @@
 - (void)setup {
     UIPickerView *picker = [[UIPickerView alloc] init];
     picker.backgroundColor = [UIColor clearColor];
+    picker.delegate = self;
+    picker.dataSource = self;
     [self addSubview:picker];
     [picker mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.right.mas_offset(0);
@@ -516,17 +504,8 @@
     _dateMode = DRDatePickerModeYMD;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        picker.delegate = self;
-        picker.dataSource = self;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self reloadAllComponents];
-        });
         [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];
     });
-}
-
-- (void)dealloc {
-    kDR_LOG(@"%@ dealloc", NSStringFromClass([self class]));
 }
 
 #pragma mark - lazy load

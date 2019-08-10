@@ -33,7 +33,10 @@
 #pragma mark - left button
 - (void)setLeftButtonTitle:(NSString *)leftButtonTitle {
     _leftButtonTitle = leftButtonTitle;
-    [self.leftButton setTitle:leftButtonTitle forState:UIControlStateNormal];
+    [UIView performWithoutAnimation:^{
+        [self.leftButton setTitle:leftButtonTitle forState:UIControlStateNormal];
+        [self.leftButton layoutIfNeeded];
+    }];
     if (leftButtonTitle.length) {
         self.leftButtonImage = nil;
     }
@@ -41,7 +44,10 @@
 
 - (void)setLeftButtonImage:(UIImage *)leftButtonImage {
     _leftButtonImage = leftButtonImage;
-    [self.leftButton setImage:leftButtonImage forState:UIControlStateNormal];
+    [UIView performWithoutAnimation:^{
+        [self.leftButton setImage:leftButtonImage forState:UIControlStateNormal];
+        [self.leftButton layoutIfNeeded];
+    }];
     if (leftButtonImage) {
         self.leftButtonTitle = nil;
     }
@@ -59,7 +65,10 @@
 #pragma mark - center button
 - (void)setCenterButtonTitle:(NSString *)centerButtonTitle {
     _centerButtonTitle = centerButtonTitle;
-    [self.centerButton setTitle:centerButtonTitle forState:UIControlStateNormal];
+    [UIView performWithoutAnimation:^{
+        [self.centerButton setTitle:centerButtonTitle forState:UIControlStateNormal];
+        [self.leftButton layoutIfNeeded];
+    }];
     if (centerButtonTitle.length) {
         self.centerButton.hidden = NO;
     } else {

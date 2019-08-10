@@ -11,7 +11,8 @@
 IB_DESIGNABLE
 @interface DRCalendarTitleView : UIView
 
-@property (nonatomic, assign) IBInspectable CGFloat fontSize;
+@property (nonatomic, assign) IBInspectable CGFloat fontSize;       // default 13
+@property (nonatomic, assign) IBInspectable BOOL showBottomLine;    // default YES
 
 /**
  当前选中的日期

@@ -20,20 +20,33 @@
 
 @property (nonatomic, strong) DRDatePickerView *solarPickerView;
 @property (nonatomic, strong) DRLunarDatePickerView *lunarPickerView;
-@property (nonatomic, assign) BOOL isLunar;
-@property (nonatomic, assign) BOOL isLeapMonth;
-@property (nonatomic, assign) BOOL isIgnoreYear;
-@property (nonatomic, assign) NSInteger month;
-@property (nonatomic, assign) NSInteger day;
-@property (nonatomic, assign) BOOL isForBirthday;
+@property (nonatomic, strong) DRPickerWithLunarOption *lunarOption;
+@property (nonatomic, strong) DRPickerBirthdayOption *birthdayOption;
 
 @end
 
 @implementation DRYMDWithLunarPicker
 
+- (CGFloat)picerViewHeight {
+    return 303;
+}
+
+- (Class)pickerOptionClass {
+    if (self.isForBirthday) {
+        self.birthdayOption = (DRPickerBirthdayOption *)self.pickerOption;
+        return [DRPickerBirthdayOption class];
+    }
+    self.lunarOption = (DRPickerWithLunarOption *)self.pickerOption;
+    return [DRPickerWithLunarOption class];
+}
+
 //- (void)prepareToShow {
 //    kDRWeakSelf
+//    // 添加日期选择器
+//
+//
 //    if (self.isForBirthday) {
+//
 //        self.topBar.leftButtonActionBlock = ^(DRPickerTopBar *topBar, UIButton *tappedButton) {
 //            weakSelf.isIgnoreYear = !weakSelf.isIgnoreYear;
 //        };
@@ -74,10 +87,6 @@
 //    });
 //}
 //
-//- (CGFloat)picerViewHeight {
-//    return 303;
-//}
-//
 //+ (void)showWithCurrentDate:(NSDate *)currentDate
 //                    minDate:(NSDate *)minDate
 //                    maxDate:(NSDate *)maxDate
@@ -103,19 +112,15 @@
 //    [pickerView show];
 //}
 //
-//- (void)setIsIgnoreYear:(BOOL)isIgnoreYear {
-//    _isIgnoreYear = isIgnoreYear;
-//    [UIView performWithoutAnimation:^{
-//        if (self.isIgnoreYear) {
-//            self.topBar.leftButtonTitle = @"显示年份";
-//            self.solarPickerView.dateMode = DRDatePickerModeMD;
-//        } else {
-//            self.topBar.leftButtonTitle = @"忽略年份";
-//            self.solarPickerView.dateMode = DRDatePickerModeYMD;
-//        }
-//        self.lunarPickerView.ignoreYear = self.isIgnoreYear;
-//        [self layoutIfNeeded];
-//    }];
+//- (void)setupTopLeftButton {
+//    if (self.birthdayOption.ignoreYear) {
+//        self.topBar.leftButtonTitle = @"显示年份";
+//        self.solarPickerView.dateMode = DRDatePickerModeMD;
+//    } else {
+//        self.topBar.leftButtonTitle = @"忽略年份";
+//        self.solarPickerView.dateMode = DRDatePickerModeYMD;
+//    }
+//    self.lunarPickerView.ignoreYear = self.birthdayOption.ignoreYear;
 //}
 //
 ///**

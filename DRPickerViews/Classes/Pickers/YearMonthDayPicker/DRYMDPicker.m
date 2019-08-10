@@ -15,7 +15,6 @@
 
 @interface DRYMDPicker ()
 
-
 @property (weak, nonatomic) IBOutlet UIView *planSettingContentView;
 @property (weak, nonatomic) IBOutlet DROptionCardView *quikOptionView;
 @property (weak, nonatomic) IBOutlet UIView *tipView;
@@ -32,7 +31,7 @@
 // 日期滚轮
 @property (weak, nonatomic) IBOutlet DRDatePickerView *datePickerView;
 
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *optionViewTop;
 // 整个快速选择区高度，包括提示区
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *quickTimeOptionHeight;
 // 快速选择时的底部描述区高度
@@ -135,6 +134,7 @@
     if (self.type == DRYMDPickerTypeNormal) {
         self.quickTimeOptionHeight.constant = 0;
         self.tipViewHeight.constant = 0;
+        self.optionViewTop.constant = 0;
         self.planSettingContentView.hidden = YES;
         return 260;
     }
@@ -149,9 +149,7 @@
 // 快速设置日期：21天，1个月，3个月....
 - (void)setQuickDate:(NSDate *)quickDate {
     _quickDate = quickDate;
-    [UIView performWithoutAnimation:^{
-        self.endDateLabel.text = [NSDate stringFromeDate:quickDate formatterString:@"yyyy/MM/dd"];
-    }];
+    self.endDateLabel.text = [NSDate stringFromeDate:quickDate formatterString:@"yyyy/MM/dd"];
 }
 
 - (Class)pickerOptionClass {

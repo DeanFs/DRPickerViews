@@ -114,14 +114,16 @@
         // 执行完成回调
         BOOL autoDismiss = YES;
         if (weakSelf.pickDoneBlock) {
-            autoDismiss = self.pickDoneBlock(weakSelf, [self pickedObject]);
+            autoDismiss = weakSelf.pickDoneBlock(weakSelf, [weakSelf pickedObject]);
         }
         if (autoDismiss) {
             [weakSelf dismiss];
         }
     };
-    [self prepareToShow];
     [self showFromPostion:self.pickerOption.showFromPosition];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self prepareToShow];
+    });
 }
 
 @end

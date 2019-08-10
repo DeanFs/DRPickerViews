@@ -34,24 +34,20 @@
     switch (type) {
         case DRPickerTypeYMD: {
             [DRYMDPicker showPickerViewWithOption:pickerOption
-                                       setupBlock:^(DRYMDPicker *picker) {
-                                           picker.type = DRYMDPickerTypeNormal;
-                                       }
+                                       setupBlock:nil
                                     pickDoneBlock:innerPickDoneBlock];
         } break;
             
         case DRPickerTypeWithLunar: {
             [DRYMDWithLunarPicker showPickerViewWithOption:pickerOption
-                                                setupBlock:^(DRYMDWithLunarPicker *picker) {
-                                                    
-                                                }
+                                                setupBlock:nil
                                              pickDoneBlock:innerPickDoneBlock];
         } break;
             
         case DRPickerTypeBirthday: {
             [DRYMDWithLunarPicker showPickerViewWithOption:pickerOption
                                                 setupBlock:^(DRYMDWithLunarPicker *picker) {
-                                                    
+                                                    picker.isForBirthday = YES;
                                                 }
                                              pickDoneBlock:innerPickDoneBlock];
         } break;

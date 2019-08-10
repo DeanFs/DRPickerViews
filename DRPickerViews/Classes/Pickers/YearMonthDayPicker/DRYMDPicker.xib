@@ -26,10 +26,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1u-An-zo2">
                     <rect key="frame" x="0.0" y="56" width="375" height="172"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djL-fW-5FM">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djL-fW-5FM">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5GZ-3o-NfF" customClass="DROptionCardView">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5GZ-3o-NfF" customClass="DROptionCardView">
                                     <rect key="frame" x="22" y="12" width="331" height="78"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <userDefinedRuntimeAttributes>
@@ -54,12 +54,12 @@
                             <constraints>
                                 <constraint firstItem="aQD-bH-Ln5" firstAttribute="leading" secondItem="djL-fW-5FM" secondAttribute="leading" constant="15" id="25i-PL-kct"/>
                                 <constraint firstAttribute="trailing" secondItem="aQD-bH-Ln5" secondAttribute="trailing" constant="15" id="9sX-fy-KeV"/>
-                                <constraint firstAttribute="bottom" secondItem="5GZ-3o-NfF" secondAttribute="bottom" constant="12" id="G27-ff-qHT"/>
                                 <constraint firstItem="5GZ-3o-NfF" firstAttribute="leading" secondItem="djL-fW-5FM" secondAttribute="leading" constant="22" id="RI4-ke-oAV"/>
                                 <constraint firstAttribute="height" constant="102" id="Z4Q-rU-SVW"/>
                                 <constraint firstAttribute="bottom" secondItem="aQD-bH-Ln5" secondAttribute="bottom" id="fA7-gv-Qpk"/>
                                 <constraint firstAttribute="trailing" secondItem="5GZ-3o-NfF" secondAttribute="trailing" constant="22" id="uYy-J7-acV"/>
                                 <constraint firstItem="5GZ-3o-NfF" firstAttribute="top" secondItem="djL-fW-5FM" secondAttribute="top" constant="12" id="zPQ-gc-4ZP"/>
+                                <constraint firstItem="5GZ-3o-NfF" firstAttribute="centerY" secondItem="djL-fW-5FM" secondAttribute="centerY" id="ztc-sw-JMM"/>
                             </constraints>
                         </view>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osS-7d-d45">
@@ -163,6 +163,7 @@
                 <outlet property="endDescLabel" destination="4wp-t7-49v" id="Ask-kc-VkS"/>
                 <outlet property="foreverDescView" destination="4s4-gt-ly1" id="4ib-sr-Rrw"/>
                 <outlet property="foreverTipLabel" destination="BNY-Hr-8K2" id="77c-ER-p6c"/>
+                <outlet property="optionViewTop" destination="zPQ-gc-4ZP" id="KAc-pz-aov"/>
                 <outlet property="picker" destination="O8Y-5l-zia" id="7TV-Lj-SRd"/>
                 <outlet property="planSettingContentView" destination="m1u-An-zo2" id="Cw6-3Z-kLO"/>
                 <outlet property="quickTimeOptionHeight" destination="Z4Q-rU-SVW" id="WzH-Vi-DGS"/>

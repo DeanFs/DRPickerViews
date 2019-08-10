@@ -68,6 +68,8 @@
     self.currentMonth = [self findEquelLunarModel:self.currentMonth fromList:self.currentMonthList];
     
     _ignoreYear = ignoreYear;
+    [self.pickerView setNeedsLayout];
+    [self.pickerView reloadAllComponents];
     [self setupPickerView];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self pickerView:self.pickerView didSelectRow:self.day-1 + self.currentMonth.dayCount * kLunarPickerCentreRow inComponent:4];
@@ -108,6 +110,7 @@
         self.currentMonth = self.currentMonthList[cmp.month-1 + cmp.leapMonth];
         self.day = cmp.day;
     }
+    [self.pickerView reloadAllComponents];
     [self setupPickerView];
 }
 
@@ -222,14 +225,12 @@
     } else {
         [self setupWithYearSelectRow:row inComponent:component];
     }
-    [self reloadAllComponents];
+    [self.pickerView reloadAllComponents];
     [self whenSelectChange];
 }
 
 #pragma mark - private
 - (void)setupPickerView {
-    [self.pickerView setNeedsLayout];
-    [self.pickerView reloadAllComponents];
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.ignoreYear) {
             [self.pickerView selectRow:self.currentMonth.index + kLunarPickerCentreRow * 24 inComponent:0 animated:NO];
@@ -239,22 +240,8 @@
             [self.pickerView selectRow:self.currentMonth.index + kLunarPickerCentreRow * self.currentMonthList.count inComponent:2 animated:NO];
             [self.pickerView selectRow:self.day-1 + kLunarPickerCentreRow * self.currentMonth.dayCount inComponent:4 animated:NO];
         }
-        [self reloadAllComponents];
+        [self.pickerView reloadAllComponents];
     });
-}
-
-- (void)reloadComponent:(NSInteger)component {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.pickerView reloadComponent:component];
-    });
-}
-
-- (void)reloadAllComponents {
-    [self reloadComponent:0];
-    [self reloadComponent:2];
-    if (!self.ignoreYear) {
-        [self reloadComponent:4];
-    }
 }
 
 - (void)setupLunarYearView:(DRLunarYearView *)yearView withLunarYear:(NSInteger)lunarYear {
@@ -365,6 +352,7 @@
             needScroll = YES;
         }
         self.currentMonthList = monthList;
+        [self.pickerView reloadComponent:2];
     }
 
     // 检测每月天数改变
@@ -382,6 +370,7 @@
         needScroll = YES;
     }
     self.currentMonth = model;
+    [self.pickerView reloadComponent:4];
 
     // 超限回滚
     if (needScroll) {
@@ -399,6 +388,7 @@
         NSInteger month = row % 24;
         self.currentMonth = self.currentMonthList[month];
         [self.pickerView selectRow:month + kLunarPickerCentreRow*self.currentMonthList.count inComponent:0 animated:NO];
+        [self.pickerView reloadComponent:2];
     }
     if (component == 2) {
         self.day = row % 30 + 1;

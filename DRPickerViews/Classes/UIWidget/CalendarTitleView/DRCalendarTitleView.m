@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *titleButton;
 @property (weak, nonatomic) IBOutlet UIImageView *leftMarkImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *rightMarkImageView;
+@property (weak, nonatomic) IBOutlet UIView *bottomLine;
 
 @property (nonatomic, strong) NSDate *minMonth;
 @property (nonatomic, strong) NSDate *maxMonth;
@@ -62,6 +63,10 @@
     self.titleButton.titleLabel.font = [UIFont systemFontOfSize:fontSize];
 }
 
+- (void)setShowBottomLine:(BOOL)showBottomLine {
+    self.bottomLine.hidden = !showBottomLine;
+}
+
 - (void)setWillShowYearMonthPickerBlock:(void (^)(void (^)(NSDate *)))willShowYearMonthPickerBlock {
     _willShowYearMonthPickerBlock = willShowYearMonthPickerBlock;
     if (willShowYearMonthPickerBlock) {
@@ -77,14 +82,19 @@
 }
 
 - (IBAction)onTitleButtonAction:(id)sender {
+    kDRWeakSelf
     if (self.willShowYearMonthPickerBlock) {
-        kDRWeakSelf
         self.willShowYearMonthPickerBlock(^(NSDate *yearMonth) {
             weakSelf.currentMonth = yearMonth;
             kDR_SAFE_BLOCK(weakSelf.onYearMonthChangeBlock, yearMonth);
         });
     } else {
-        // todo: show date yearMonth picker
+        DRPickerDateOption *opt = [DRPickerDateOption optionWithTitle:@"选择日期" currentDate:self.currentMonth minDate:self.minMonth maxDate:self.maxMonth];
+        [DRYearMonthPicker showPickerViewWithOption:opt setupBlock:nil pickDoneBlock:^BOOL(DRBaseAlertPicker *picker, id pickedObject) {
+            weakSelf.currentMonth = (NSDate *)pickedObject;
+            kDR_SAFE_BLOCK(weakSelf.onYearMonthChangeBlock, weakSelf.currentMonth);
+            return YES;
+        }];
     }
 }
 
@@ -119,6 +129,8 @@
         }];
         
         [self.titleButton setTitleColor:[DRUIWidgetUtil normalColor] forState:UIControlStateNormal];
+        self.showBottomLine = YES;
+        self.fontSize = 13;
     }
 }
 

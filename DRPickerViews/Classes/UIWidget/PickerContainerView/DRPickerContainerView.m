@@ -88,6 +88,8 @@
             [UIView animateWithDuration:kDRAnimationDuration animations:^{
                 self.backCoverView.alpha = 0.0;
                 self.y = kDRScreenHeight;
+            } completion:^(BOOL finished) {
+                [self.backCoverView removeFromSuperview];
             }];
         } break;
             
@@ -96,6 +98,8 @@
             [UIView animateWithDuration:kDRAnimationDuration animations:^{
                 self.backCoverView.alpha = 0.0;
                 self.y = -size.height;
+            } completion:^(BOOL finished) {
+                [self.backCoverView removeFromSuperview];
             }];
         } break;
             
@@ -103,6 +107,8 @@
             [UIView animateWithDuration:kDRAnimationDuration animations:^{
                 self.backCoverView.alpha = 0.0;
                 self.transform = CGAffineTransformMakeScale(0.1, 0.1);
+            } completion:^(BOOL finished) {
+                [self.backCoverView removeFromSuperview];
             }];
         }
             
