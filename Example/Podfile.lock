@@ -98,6 +98,7 @@ PODS:
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRPickerViews/UIWidget/OptionCard
+    - DRPickerViews/UIWidget/SectionView
     - DRToastView
     - HexColors (= 4.0.0)
     - Masonry
@@ -312,7 +313,7 @@ SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   DRCategories: 0d8d3733c118b9ebed9bdedbf89410f0472cbdd3
   DRMacroDefines: 58aa271bc1c4170fa09f4f33dcad18fc4f21a57e
-  DRPickerViews: 84a6e9836577283ee8aa9a8e08d1a5663e6d43ae
+  DRPickerViews: 05192e6da05d5583fdde3c5b29a7779774feaafa
   DRSandboxManager: 2a48ca41b22edfc39dd2f66abd5a99e777410c61
   DRToastView: 3e7a5d8c66640ca6c618910c926425c9c0ab3954
   HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379
