@@ -82,7 +82,7 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     // 选项卡选择器
     // 入参：DRPickerOptionCardOption
     // 出参：DRPickerOptionCardPickedObj
-//    DRPickerTypeOptionCard,
+    DRPickerTypeOptionCard,
 };
 
 
@@ -359,73 +359,73 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 @end
 
 
-//@interface DRPickerOptionCardOption : DRPickerOptionBase
-///**
-// 显示在选项卡头部的书名问题，如果有则传入
-// */
-//@property (nonatomic, copy) NSString *sectionTip;
-//
-///**
-// 传入需要显示的所有选项
-// */
-//@property (nonatomic, strong) NSArray<NSString *> *allOptions;
-//
-///**
-// 传入当前已经选中的选项，用于反显，与selectedIndexs二选一
-// */
-//@property (nonatomic, strong) NSArray<NSString *> *selectedOptions;
-//
-///**
-// 传入当前已经选中的选项下标，用于反显，与selectedOptions二选一
-// */
-//@property (nonatomic, strong) NSArray<NSNumber *> *selectedIndexs;
-//
-///**
-// 显示多少列，默认 3
-// */
-//@property (nonatomic, assign) NSInteger columnCount;
-//
-///**
-// 显示多少行, 默认 3
-// */
-//@property (nonatomic, assign) NSInteger lineCount;
-//
-///**
-// 是否多选，默认 NO
-// */
-//@property (nonatomic, assign) IBInspectable BOOL mutableSelection;
-//
-///**
-// 支持多选时，最多选择数量，默认 3
-// */
-//@property (nonatomic, assign) IBInspectable NSInteger maxSelectCount;
-//
-///**
-// 支持多选时，选择多余最大限制的toast提示文案，默认：最多选择 xx 项
-// */
-//@property (nonatomic, copy) IBInspectable NSString *beyondMaxAlert;
-//
-///**
-// 支持多选时，最少选择数量，默认 1
-// */
-//@property (nonatomic, assign) IBInspectable NSInteger minSelectCount;
-//
-///**
-// 支持多选时，选择少于最小限制的toast提示文案，默认：最少选择 xx 项
-// */
-//@property (nonatomic, assign) IBInspectable NSString *belowMinAlert;
-//
-///**
-// 超过一页时，是否显示分页控制器，默认 NO
-// */
-//@property (nonatomic, assign) IBInspectable BOOL showPageControl;
-//
-///**
-// 显示分页控制器时，分页控制器显示高度，默认 30
-// */
-//@property (nonatomic, assign) IBInspectable CGFloat pageControlHeight;
-//
-//@end
+@interface DRPickerOptionCardOption : DRPickerOptionBase
+/**
+ 显示在选项卡头部的书名问题，如果有则传入
+ */
+@property (nonatomic, copy) NSString *sectionTip;
+
+/**
+ 传入需要显示的所有选项
+ */
+@property (nonatomic, strong) NSArray<NSString *> *allOptions;
+
+/**
+ 传入当前已经选中的选项，用于反显，与selectedIndexs二选一
+ */
+@property (nonatomic, strong) NSArray<NSString *> *selectedOptions;
+
+/**
+ 传入当前已经选中的选项下标，用于反显，与selectedOptions二选一
+ */
+@property (nonatomic, strong) NSArray<NSNumber *> *selectedIndexs;
+
+/**
+ 显示多少列，默认 3
+ */
+@property (nonatomic, assign) NSInteger columnCount;
+
+/**
+ 显示多少行, 默认 3
+ */
+@property (nonatomic, assign) NSInteger lineCount;
+
+/**
+ 是否多选，默认 NO
+ */
+@property (nonatomic, assign) IBInspectable BOOL mutableSelection;
+
+/**
+ 支持多选时，最多选择数量，默认 3
+ */
+@property (nonatomic, assign) IBInspectable NSInteger maxSelectCount;
+
+/**
+ 支持多选时，选择多余最大限制的toast提示文案，默认：最多选择 xx 项
+ */
+@property (nonatomic, copy) IBInspectable NSString *beyondMaxAlert;
+
+/**
+ 支持多选时，最少选择数量，默认 1
+ */
+@property (nonatomic, assign) IBInspectable NSInteger minSelectCount;
+
+/**
+ 支持多选时，选择少于最小限制的toast提示文案，默认：最少选择 xx 项
+ */
+@property (nonatomic, assign) IBInspectable NSString *belowMinAlert;
+
+/**
+ 超过一页时，是否显示分页控制器，默认 NO
+ */
+@property (nonatomic, assign) IBInspectable BOOL showPageControl;
+
+/**
+ 显示分页控制器时，分页控制器显示高度，默认 30
+ */
+@property (nonatomic, assign) IBInspectable CGFloat pageControlHeight;
+
+@end
 
 
 #pragma mark - 选择器选择完成回调返回数据结构定义
@@ -570,15 +570,15 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 @end
 
 
-//@interface DRPickerOptionCardPickedObj : NSObject
-///**
-// 当前已经选中的选项
-// */
-//@property (nonatomic, strong) NSArray<NSString *> *selectedOptions;
-//
-///**
-// 当前已经选中的选项下标
-// */
-//@property (nonatomic, strong) NSArray<NSNumber *> *selectedIndexs;
-//
-//@end
+@interface DRPickerOptionCardPickedObj : NSObject
+/**
+ 当前已经选中的选项
+ */
+@property (nonatomic, strong) NSArray<NSString *> *selectedOptions;
+
+/**
+ 当前已经选中的选项下标
+ */
+@property (nonatomic, strong) NSArray<NSNumber *> *selectedIndexs;
+
+@end

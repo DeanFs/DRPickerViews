@@ -177,23 +177,23 @@
 @end
 
 
-//@implementation DRPickerOptionCardOption
-//
-//- (instancetype)init {
-//    self = [super init];
-//    if (self) {
-//        _columnCount = 3;
-//        _lineCount = 3;
-//        _mutableSelection = NO;
-//        _maxSelectCount = 3;
-//        _minSelectCount = 1;
-//        _showPageControl = NO;
-//        _pageControlHeight = 30;
-//    }
-//    return self;
-//}
-//
-//@end
+@implementation DRPickerOptionCardOption
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _columnCount = 3;
+        _lineCount = 3;
+        _mutableSelection = NO;
+        _maxSelectCount = 3;
+        _minSelectCount = 1;
+        _showPageControl = NO;
+        _pageControlHeight = 30;
+    }
+    return self;
+}
+
+@end
 
 
 #pragma mark - 选择器选择完成回调返回数据结构定义
@@ -282,6 +282,6 @@
 @end
 
 
-//@implementation DRPickerOptionCardPickedObj
-//
-//@end
+@implementation DRPickerOptionCardPickedObj
+
+@end

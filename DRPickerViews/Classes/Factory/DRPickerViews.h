@@ -21,7 +21,7 @@
 #import "DROneWeekPicker.h"
 #import "DRValueSelectPicker.h"
 #import "DRStringOptionsPicker.h"
-//#import "DROptionCardPicker.h"
+#import "DROptionCardPicker.h"
 
 #pragma mark - 组装弹窗用的原件集合，均可在xib中使用，支持xib预览  UIWidget
 #import "DRPickerContainerView.h"   // 弹窗容器基类，支持从底部，中间，顶部弹出
