@@ -17,7 +17,6 @@
 #import "DRDatePickerDataModels.h"
 #import "DRHourMinutePicker.h"
 #import "DROneWeekPicker.h"
-#import "DROptionCardPicker.h"
 #import "DRStringOptionsPicker.h"
 #import "DRTimeConsumingPicker.h"
 #import "DRValueSelectPicker.h"
