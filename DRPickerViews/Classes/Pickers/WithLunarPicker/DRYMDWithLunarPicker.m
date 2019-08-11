@@ -22,6 +22,7 @@
 @property (nonatomic, strong) DRLunarDatePickerView *lunarPickerView;
 @property (nonatomic, strong) NSDate *minDate;
 @property (nonatomic, strong) NSDate *maxDate;
+@property (nonatomic, strong) NSDate *currentDate;
 @property (nonatomic, assign) NSInteger year;
 @property (nonatomic, assign) NSInteger month;
 @property (nonatomic, assign) NSInteger day;
@@ -81,17 +82,18 @@
     }
     
     // 初始化选择器并设置回调
-    NSDate *currentDate;
     if (!self.ignoreYear) {
-        currentDate = [NSDate correctionYear:self.year month:self.month day:self.day hour:0 minute:0 second:0];
+        self.currentDate = [NSDate correctionYear:self.year month:self.month day:self.day hour:0 minute:0 second:0];
     }
-    [self.solarPickerView setupWithCurrentDate:currentDate minDate:self.minDate maxDate:self.maxDate month:self.month day:self.day selectChangeBlock:^(NSDate *date, NSInteger month, NSInteger day) {
+    [self.solarPickerView setupWithCurrentDate:self.currentDate minDate:self.minDate maxDate:self.maxDate month:self.month day:self.day selectChangeBlock:^(NSDate *date, NSInteger month, NSInteger day) {
+        weakSelf.currentDate = date;
         weakSelf.year = date.year;
         weakSelf.month = month;
         weakSelf.day = day;
         [weakSelf.lunarPickerView refreshWithDate:date month:month day:day leapMonth:NO];
     }];
-    [self.lunarPickerView setupWithCurrentDate:currentDate minDate:self.minDate maxDate:self.maxDate month:self.month day:self.day leapMonth:self.leapMonth selectChangeBlock:^(NSDate *date, NSInteger year, NSInteger month, NSInteger day, BOOL leapMonth) {
+    [self.lunarPickerView setupWithCurrentDate:self.currentDate minDate:self.minDate maxDate:self.maxDate month:self.month day:self.day leapMonth:self.leapMonth selectChangeBlock:^(NSDate *date, NSInteger year, NSInteger month, NSInteger day, BOOL leapMonth) {
+        weakSelf.currentDate = date;
         weakSelf.year = year;
         weakSelf.month = month;
         weakSelf.day = day;
@@ -107,6 +109,7 @@
         obj.year = 0;
         if (!self.ignoreYear) {
             obj.year = self.year;
+            obj.date = self.currentDate;
         }
         obj.month = self.month;
         obj.day = self.day;
@@ -115,6 +118,7 @@
         return obj;
     }
     DRPickerWithLunarPickedObj *obj = [DRPickerWithLunarPickedObj new];
+    obj.date = self.currentDate;
     obj.year = self.year;
     obj.month = self.month;
     obj.day = self.day;

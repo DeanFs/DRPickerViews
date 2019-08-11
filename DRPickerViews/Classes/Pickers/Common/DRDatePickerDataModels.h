@@ -431,6 +431,13 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 #pragma mark - 选择器选择完成回调返回数据结构定义
 @interface DRPickerWithLunarPickedObj : NSObject
 /**
+ 不忽略年份时的日期
+ 若选择农历，则date为农历日期
+ 否则为公历日期
+ */
+@property (nonatomic, strong) NSDate *date;
+
+/**
  年
  */
 @property (nonatomic, assign) NSInteger year;
