@@ -16,6 +16,7 @@
 #import "DROneWeekPicker.h"
 #import "DRValueSelectPicker.h"
 #import "DRStringOptionsPicker.h"
+#import "DROptionCardPicker.h"
 
 @implementation DRPickerFactory
 
@@ -127,6 +128,12 @@
             [DRStringOptionsPicker showPickerViewWithOption:pickerOption
                                                  setupBlock:nil
                                               pickDoneBlock:innerPickDoneBlock];
+        } break;
+            
+        case DRPickerTypeOptionCard: {
+            [DROptionCardPicker showPickerViewWithOption:pickerOption
+                                              setupBlock:nil
+                                           pickDoneBlock:innerPickDoneBlock];
         } break;
             
         default:

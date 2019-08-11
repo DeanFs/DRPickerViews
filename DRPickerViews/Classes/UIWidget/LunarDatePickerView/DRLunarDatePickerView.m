@@ -50,6 +50,8 @@
 @property (nonatomic, strong) DRLunarDateModel *currentMonth;
 @property (nonatomic, assign) NSInteger lunarYear;
 @property (nonatomic, assign) NSInteger day;
+@property (nonatomic, assign) BOOL didDrawRect;
+@property (nonatomic, assign) BOOL dateModeChanging;
 
 @end
 
@@ -68,12 +70,16 @@
     self.currentMonth = [self findEquelLunarModel:self.currentMonth fromList:self.currentMonthList];
     
     _ignoreYear = ignoreYear;
-    [self.pickerView setNeedsLayout];
-    [self.pickerView reloadAllComponents];
-    [self setupPickerView];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self pickerView:self.pickerView didSelectRow:self.day-1 + self.currentMonth.dayCount * kLunarPickerCentreRow inComponent:4];
-    });
+    
+    if (self.pickerView.delegate) {
+        [self setupPickerView];
+        [self.pickerView setNeedsLayout];
+        [self.pickerView reloadAllComponents];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.dateModeChanging = YES;
+            [self pickerView:self.pickerView didSelectRow:self.day-1 + self.currentMonth.dayCount * kLunarPickerCentreRow inComponent:4];
+        });
+    }
 }
 
 - (void)setupWithCurrentDate:(NSDate *)currentDate
@@ -82,7 +88,7 @@
                        month:(NSInteger)month
                          day:(NSInteger)day
                    leapMonth:(BOOL)leapMonth
-           selectChangeBlock:(void(^)(NSDate *date, NSInteger month, NSInteger day, BOOL leapMonth))selectChangeBlock {
+           selectChangeBlock:(void(^)(NSDate *date, NSInteger year, NSInteger month, NSInteger day, BOOL leapMonth))selectChangeBlock {
     [DRUIWidgetUtil dateLegalCheckForCurrentDate:&currentDate minDate:&minDate maxDate:&maxDate];
     self.minDate = [self lunarDateCmpModelDate:minDate];
     self.maxDate = [self lunarDateCmpModelDate:maxDate];
@@ -110,8 +116,9 @@
         self.currentMonth = self.currentMonthList[cmp.month-1 + cmp.leapMonth];
         self.day = cmp.day;
     }
-    [self.pickerView reloadAllComponents];
-    [self setupPickerView];
+    if (self.pickerView.delegate) {
+        [self setupPickerView];
+    }
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -125,24 +132,19 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     if (self.ignoreYear) {
         if (component == 0) {
-            NSInteger count = 24 * kLunarPickerRowCount;
             return 24 * kLunarPickerRowCount;
         }
         if (component == 2) {
-            NSInteger count = 30 * kLunarPickerRowCount;
             return 30 * kLunarPickerRowCount;
         }
     } else {
         if (component == 0) {
-            NSInteger count =kLunarPickerRowCount;
             return kLunarPickerRowCount;
         }
         if (component == 2) {
-            NSInteger count = self.currentMonthList.count * kLunarPickerRowCount;
             return self.currentMonthList.count * kLunarPickerRowCount;
         }
         if (component == 4) {
-            NSInteger count = self.currentMonth.dayCount * kLunarPickerRowCount;
             return self.currentMonth.dayCount * kLunarPickerRowCount;
         }
     }
@@ -226,7 +228,10 @@
         [self setupWithYearSelectRow:row inComponent:component];
     }
     [self.pickerView reloadAllComponents];
-    [self whenSelectChange];
+    if (!self.dateModeChanging) {
+        [self whenSelectChange];
+    }
+    self.dateModeChanging = NO;
 }
 
 #pragma mark - private
@@ -399,16 +404,16 @@
 - (void)whenSelectChange {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.ignoreYear) {
-            _selectedDate = nil;
-            kDR_SAFE_BLOCK(self.onSelectChangeBlock, nil, self.currentMonth.cmp.month, self.day, self.currentMonth.cmp.leapMonth);
+            self->_selectedDate = nil;
+            kDR_SAFE_BLOCK(self.onSelectChangeBlock, nil, 0, self.currentMonth.cmp.month, self.day, self.currentMonth.cmp.leapMonth);
         } else {
             NSDateComponents *cmp = [NSDateComponents lunarComponentsWithEra:self.currentMonth.cmp.era
                                                                         year:self.currentMonth.cmp.year
                                                                        month:self.currentMonth.cmp.month
                                                                          day:self.day
                                                                    leapMonth:self.currentMonth.cmp.leapMonth];
-            _selectedDate = [self.lunarCalendar dateFromComponents:cmp];
-            kDR_SAFE_BLOCK(self.onSelectChangeBlock, _selectedDate, -1, -1, cmp.leapMonth);
+            self->_selectedDate = [self.lunarCalendar dateFromComponents:cmp];
+            kDR_SAFE_BLOCK(self.onSelectChangeBlock, self->_selectedDate, self.currentMonth.cmp.year, -1, -1, cmp.leapMonth);
         }
     });
 }
@@ -509,8 +514,6 @@
 - (void)setup {
     UIPickerView *picker = [[UIPickerView alloc] init];
     picker.backgroundColor = [UIColor clearColor];
-    picker.delegate = self;
-    picker.dataSource = self;
     [self addSubview:picker];
     [picker mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.right.mas_offset(0);
@@ -520,6 +523,27 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];
     });
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
+    if (CGRectEqualToRect(rect, CGRectZero)) {
+        return;
+    }
+    if (!self.didDrawRect) {
+        self.didDrawRect = YES;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.pickerView.delegate = self;
+            self.pickerView.dataSource = self;
+            [self.pickerView reloadAllComponents];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self setupPickerView];
+            });
+        });
+    }
 }
 
 #pragma mark - layzy load

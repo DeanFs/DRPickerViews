@@ -83,35 +83,58 @@
                         <constraint firstItem="8s6-Xp-gaA" firstAttribute="leading" secondItem="oxw-P5-ake" secondAttribute="leading" constant="23" id="lhj-ju-WvF"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUD-Tg-lR1" customClass="DRHourMinutePickerView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5d5-wR-DMo">
                     <rect key="frame" x="0.0" y="188" width="375" height="192"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUD-Tg-lR1" customClass="DRHourMinutePickerView">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
+                                    <real key="value" value="34"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="pickerFontSize">
+                                    <real key="value" value="23"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="toLabelFontSize">
+                                    <real key="value" value="21"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="timeScale">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="minDuration">
+                                    <integer key="value" value="30"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间段不能少于30分钟，且不能跨天设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAB-f5-C1C">
+                            <rect key="frame" x="78.333333333333329" y="11" width="218.33333333333337" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="12" id="NAX-b2-RDM"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
+                            <color key="textColor" red="0.91372549020000005" green="0.31764705879999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
-                            <real key="value" value="34"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="pickerFontSize">
-                            <real key="value" value="23"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="toLabelFontSize">
-                            <real key="value" value="21"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="timeScale">
-                            <integer key="value" value="5"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="minDuration">
-                            <integer key="value" value="30"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
+                    <constraints>
+                        <constraint firstItem="qAB-f5-C1C" firstAttribute="centerX" secondItem="5d5-wR-DMo" secondAttribute="centerX" id="Ea5-BB-qtu"/>
+                        <constraint firstItem="kUD-Tg-lR1" firstAttribute="leading" secondItem="5d5-wR-DMo" secondAttribute="leading" id="QEc-FH-Yzm"/>
+                        <constraint firstItem="qAB-f5-C1C" firstAttribute="top" secondItem="5d5-wR-DMo" secondAttribute="top" constant="11" id="Zyq-01-EmO"/>
+                        <constraint firstItem="kUD-Tg-lR1" firstAttribute="top" secondItem="5d5-wR-DMo" secondAttribute="top" id="ffs-ks-4MS"/>
+                        <constraint firstItem="kUD-Tg-lR1" firstAttribute="centerY" secondItem="5d5-wR-DMo" secondAttribute="centerY" id="uYP-7i-zFk"/>
+                        <constraint firstAttribute="trailing" secondItem="kUD-Tg-lR1" secondAttribute="trailing" id="yNT-rX-xtW"/>
+                    </constraints>
                 </view>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="kUD-Tg-lR1" secondAttribute="trailing" id="4SE-Ep-UL4"/>
-                <constraint firstItem="kUD-Tg-lR1" firstAttribute="top" secondItem="oxw-P5-ake" secondAttribute="bottom" id="Fpc-Z0-9gz"/>
-                <constraint firstItem="kUD-Tg-lR1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="I0b-H3-yDh"/>
                 <constraint firstItem="oxw-P5-ake" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QqY-wS-Yja"/>
-                <constraint firstAttribute="bottom" secondItem="kUD-Tg-lR1" secondAttribute="bottom" id="V15-oe-icL"/>
+                <constraint firstItem="5d5-wR-DMo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WFW-8P-17Y"/>
+                <constraint firstAttribute="bottom" secondItem="5d5-wR-DMo" secondAttribute="bottom" id="YoQ-Ix-SxI"/>
+                <constraint firstAttribute="trailing" secondItem="5d5-wR-DMo" secondAttribute="trailing" id="aOR-3g-XMX"/>
                 <constraint firstItem="kRg-jC-lpS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aVA-yI-OdM"/>
+                <constraint firstItem="5d5-wR-DMo" firstAttribute="top" secondItem="oxw-P5-ake" secondAttribute="bottom" id="aVY-4C-0vy"/>
                 <constraint firstItem="kRg-jC-lpS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="g3D-dL-W8Z"/>
                 <constraint firstAttribute="trailing" secondItem="kRg-jC-lpS" secondAttribute="trailing" id="jYG-5R-NXI"/>
                 <constraint firstItem="oxw-P5-ake" firstAttribute="top" secondItem="kRg-jC-lpS" secondAttribute="bottom" id="mMY-hh-tAv"/>
@@ -122,7 +145,9 @@
             <connections>
                 <outlet property="picker" destination="kUD-Tg-lR1" id="aaO-ya-ZR1"/>
                 <outlet property="pickerView" destination="kUD-Tg-lR1" id="N0a-2B-8jj"/>
+                <outlet property="pickerViewTop" destination="ffs-ks-4MS" id="NFG-bC-CXW"/>
                 <outlet property="timeTitleSectionView" destination="2rT-en-tfM" id="bHb-bR-rhn"/>
+                <outlet property="tipLabel" destination="qAB-f5-C1C" id="Ghx-4N-0aN"/>
                 <outlet property="topBar" destination="kRg-jC-lpS" id="Yt5-wg-jcW"/>
                 <outlet property="weekButtonContainerLeft" destination="1DW-yU-hgR" id="e9n-9b-i1F"/>
                 <outlet property="weekContainerViewHeight" destination="96p-Y4-PSv" id="uHE-fb-61m"/>

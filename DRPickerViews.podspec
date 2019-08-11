@@ -160,6 +160,13 @@ TODO: Add long description of the pod here.
       sss.dependency 'DRPickerViews/UIWidget/TopBar'
       sss.dependency 'DRPickerViews/UIWidget/WeekPickerView'
     end
+
+    ss.subspec 'OptionCardPicker' do |sss|
+      sss.source_files = 'DRPickerViews/Classes/Pickers/OptionCardPicker/*.{h,m}'
+      sss.dependency 'DRPickerViews/Pickers/Common'
+      sss.dependency 'DRPickerViews/UIWidget/TopBar'
+      sss.dependency 'DRPickerViews/UIWidget/OptionCard'
+    end
   end
 
   s.subspec 'Factory' do |ss|

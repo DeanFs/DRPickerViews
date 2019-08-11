@@ -80,6 +80,7 @@
                 weakSelf.forever = NO;
                 weakSelf.datePickerView.hidden = NO;
                 [weakSelf pickerViewHeightChange:380];
+                [weakSelf.datePickerView setNeedsDisplay];
                 [UIView animateWithDuration:kDRAnimationDuration animations:^{
                     weakSelf.tipViewHeight.constant = 0;
                     [weakSelf layoutIfNeeded];

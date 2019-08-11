@@ -13,7 +13,7 @@ IB_DESIGNABLE
 
 @property (nonatomic, assign) IBInspectable BOOL ignoreYear; // default NO
 @property (nonatomic, strong, readonly) NSDate *selectedDate;
-@property (nonatomic, copy) void (^onSelectChangeBlock) (NSDate *date, NSInteger month, NSInteger day, BOOL leapMonth);
+@property (nonatomic, copy) void (^onSelectChangeBlock) (NSDate *date, NSInteger year, NSInteger month, NSInteger day, BOOL leapMonth);
 
 /**
  初始化
@@ -33,7 +33,7 @@ IB_DESIGNABLE
                        month:(NSInteger)month
                          day:(NSInteger)day
                    leapMonth:(BOOL)leapMonth
-           selectChangeBlock:(void(^)(NSDate *date, NSInteger month, NSInteger day, BOOL leapMonth))selectChangeBlock;
+           selectChangeBlock:(void(^)(NSDate *date, NSInteger year, NSInteger month, NSInteger day, BOOL leapMonth))selectChangeBlock;
 
 /**
  刷新显示

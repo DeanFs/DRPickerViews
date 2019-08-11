@@ -297,6 +297,21 @@
 
             ]
           }
+        },
+        {
+          "name": "OptionCardPicker",
+          "source_files": "DRPickerViews/Classes/Pickers/OptionCardPicker/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/Pickers/Common": [
+
+            ],
+            "DRPickerViews/UIWidget/TopBar": [
+
+            ],
+            "DRPickerViews/UIWidget/OptionCard": [
+
+            ]
+          }
         }
       ]
     },
@@ -305,6 +320,9 @@
       "source_files": "DRPickerViews/Classes/Factory/*.{h,m}",
       "dependencies": {
         "DRPickerViews/Pickers": [
+
+        ],
+        "DRPickerViews/UIWidget": [
 
         ]
       }

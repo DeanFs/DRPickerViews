@@ -32,6 +32,7 @@
 }
 
 - (void)prepareToShow {
+    [self.pickerView reloadAllComponents];
     DRPickerStringSelectOption *opt = (DRPickerStringSelectOption *)self.pickerOption;
     NSInteger row = opt.currentStringIndex;
     if (opt.currentStringOption.length) {
@@ -44,7 +45,6 @@
         }
     }
     [self.pickerView selectRow:row inComponent:0 animated:NO];
-    [self.pickerView reloadComponent:0];
 }
 
 - (id)pickedObject {

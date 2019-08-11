@@ -22,7 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pageControlH;
 
-@property (nonatomic, strong) NSMutableDictionary<NSString *, NSNumber *> *selectMap;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSString *> *selectMap;
 
 @end
 
@@ -74,8 +74,10 @@
     for (NSString *option in selectedOptions) {
         for (NSInteger i=0; i<self.allOptions.count; i++) {
             if ([option isEqualToString:self.allOptions[i]]) {
-                self.selectMap[option] = @(i);
-                break;
+                if (!self.selectMap[@(i)]) {
+                    self.selectMap[@(i)] = option;
+                    break;
+                }
             }
         }
     }
@@ -84,7 +86,7 @@
 
 - (void)setSelectedIndexs:(NSArray<NSNumber *> *)selectedIndexs {
     for (NSNumber *number in selectedIndexs) {
-        self.selectMap[self.allOptions[number.integerValue]] = number;
+        self.selectMap[number] = self.allOptions[number.integerValue];
     }
     [self.collectionView reloadData];
 }
@@ -122,13 +124,13 @@
     DROptionCardCell *cardCell = (DROptionCardCell *)cell;
     cardCell.fontSize = self.fontSize;
     cardCell.itemCornerRadius = self.itemCornerRadius;
-    if ([self.selectMap objectForKey:self.allOptions[indexPath.row]]) {
+    if ([self.selectMap objectForKey:@(indexPath.item)]) {
         [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     } else {
         [collectionView deselectItemAtIndexPath:indexPath animated:NO];
     }
     cardCell.title = self.allOptions[indexPath.row];
-    cardCell.selected = [self.selectMap objectForKey:self.allOptions[indexPath.row]] != nil;
+    cardCell.selected = [self.selectMap objectForKey:@(indexPath.item)] != nil;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -142,20 +144,19 @@
             }
             [DRToastView showWithMessage:alert complete:nil];
         } else {
-            [self.selectMap setObject:@(indexPath.item) forKey:option];
+            [self.selectMap setObject:option forKey:@(indexPath.item)];
         }
     } else { // 单选
-        [self.selectMap setObject:@(indexPath.item) forKey:option];
+        [self.selectMap setObject:option forKey:@(indexPath.item)];
     }
     [self selectChange];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *option = self.allOptions[indexPath.row];
     if (self.mutableSelection) {
         if (self.selectMap.count > self.minSelectCount) { // 取消选中
             [collectionView deselectItemAtIndexPath:indexPath animated:NO];
-            [self.selectMap removeObjectForKey:option];
+            [self.selectMap removeObjectForKey:@(indexPath.item)];
         } else {
             [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
             NSString *alert = self.belowMinAlert;
@@ -166,17 +167,17 @@
         }
         [self selectChange];
     } else {
-        [self.selectMap removeObjectForKey:option];
+        [self.selectMap removeObjectForKey:@(indexPath.item)];
     }
 }
 
 - (void)selectChange {
     NSMutableArray *options = [NSMutableArray array];
     NSMutableArray *optionIndexs =  [NSMutableArray array];
-    for (NSString *option in self.allOptions) {
-        if (self.selectMap[option]) {
-            [options addObject:option];
-            [optionIndexs addObject:self.selectMap[option]];
+    for (NSInteger i=0; i<self.allOptions.count; i++) {
+        if (self.selectMap[@(i)]) {
+            [options addObject:self.allOptions[i]];
+            [optionIndexs addObject:@(i)];
         }
     }
     _selectedOptions = options;
@@ -239,11 +240,11 @@
             [weakSelf setupPageControl];
         };
         self.pageControl.pageIndicatorTintColor = [DRUIWidgetUtil descColor];
-        self.pageControl.currentPageIndicatorTintColor = [DRUIWidgetUtil normalColor];
+        self.pageControl.currentPageIndicatorTintColor = [DRUIWidgetUtil highlightColor];
     }
 }
 
-- (NSMutableDictionary<NSString *, NSNumber *> *)selectMap {
+- (NSMutableDictionary<NSNumber *, NSString *> *)selectMap {
     if (!_selectMap) {
         _selectMap = [NSMutableDictionary dictionary];
     }

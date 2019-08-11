@@ -41,12 +41,12 @@
             lunarOpt.year = 2018;
             lunarOpt.month = 12;
             lunarOpt.day = 4;
-            lunarOpt.isLunar = YES;
+            lunarOpt.isLunar = NO;
             lunarOpt.leapMonth = NO;
         } break;
             
         case DRPickerTypeBirthday: {
-            opt = [DRPickerBirthdayOption optionWithTitle:@"农历" minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
+            opt = [DRPickerBirthdayOption optionWithTitle:@"生日" minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
             DRPickerBirthdayOption *lunarOpt = (DRPickerBirthdayOption *)opt;
             lunarOpt.year = 2018;
             lunarOpt.month = 12;
@@ -112,19 +112,32 @@
             ((DRPickerStringSelectOption *)opt).currentStringIndex = 2;
         } break;
             
+        case DRPickerTypeOptionCard: {
+            opt = [DRPickerOptionCardOption optionWithTitle:@"选项卡"];
+            DRPickerOptionCardOption *cardOpt = (DRPickerOptionCardOption *)opt;
+            cardOpt.allOptions = @[@"快速复制", @"每天", @"每周", @"每月", @"自定义", @"选项卡", @"选项卡", @"选项卡", @"选项卡"];
+            cardOpt.selectedIndexs = @[@(1), @(3), @(7)];
+            cardOpt.mutableSelection = YES;
+            cardOpt.showPageControl = YES;
+            cardOpt.lineCount = 2;
+            cardOpt.belowMinAlert = @"不能再少啦！";
+            cardOpt.sectionTip = @"最多选择3项";
+        } break;
+            
         default:
             break;
     }
     opt.dismissBlock = ^{
-        kDR_LOG(@"dismiss");
+        kDR_LOG(@"picker dismiss");
     };
     opt.cancelBlock = ^{
-        kDR_LOG(@"cancel");
+        kDR_LOG(@"picker cancel");
     };
-//    opt.autoDismissWhenPicked = NO;
+    opt.autoDismissWhenPicked = NO;
     
     [DRPickerFactory showPickerViewWithType:type pickerOption:opt pickDoneBlock:^(DRBaseAlertPicker * _Nonnull picker, id  _Nonnull pickedObject) {
         kDR_LOG(@"%@", pickedObject);
+        [picker dismiss];
     }];
 }
 

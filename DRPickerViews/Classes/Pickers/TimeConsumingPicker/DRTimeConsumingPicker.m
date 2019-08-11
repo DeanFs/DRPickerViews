@@ -49,27 +49,16 @@
         allSeconds = allSeconds % hourSeconds;
     }
     self.minute = allSeconds / 60;
-    
-    NSInteger minuteRow = self.minute / option.timeScale + (self.minute % option.timeScale > 0);
-    if (self.day == 0 && self.hour == 0) {
-        minuteRow --;
-    }
-    
-    [self.pickerView selectRow:self.day inComponent:0 animated:NO];
-    [self.pickerView selectRow:self.hour inComponent:2 animated:NO];
-    [self.pickerView selectRow:minuteRow inComponent:4 animated:NO];
+    [self.pickerView reloadAllComponents];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.haveShow = YES;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.pickerView reloadComponent:0];
-        });
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.pickerView reloadComponent:2];
-        });
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.pickerView reloadComponent:4];
-        });
+        NSInteger minuteRow = self.minute / option.timeScale + (self.minute % option.timeScale > 0);
+        if (self.day == 0 && self.hour == 0) {
+            minuteRow --;
+        }
+        [self.pickerView selectRow:self.day inComponent:0 animated:NO];
+        [self.pickerView selectRow:self.hour inComponent:2 animated:NO];
+        [self.pickerView selectRow:minuteRow inComponent:4 animated:NO];
     });
 }
 
@@ -112,9 +101,6 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (!self.haveShow && component % 2 == 0) {
-        return 24;
-    }
     if (component % 2) {
         return 1;
     }

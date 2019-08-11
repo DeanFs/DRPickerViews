@@ -13,25 +13,25 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="c9o-W7-lnY" customClass="DRYMDWithLunarPicker">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="303"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="303"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HqV-hm-YdG" customClass="DRPickerTopBar">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="c8t-Tq-I5j"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yp-8U-z1E" customClass="DRSegmentBar">
-                    <rect key="frame" x="0.0" y="56" width="375" height="43"/>
+                    <rect key="frame" x="0.0" y="56" width="320" height="43"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="Ure-pZ-hLI"/>
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G63-Ul-eIr">
-                    <rect key="frame" x="0.0" y="99" width="375" height="204"/>
+                    <rect key="frame" x="0.0" y="99" width="320" height="204"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

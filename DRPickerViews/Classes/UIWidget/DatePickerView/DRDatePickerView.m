@@ -29,6 +29,8 @@
 @property (nonatomic, assign) NSInteger minDate;
 @property (nonatomic, assign) NSInteger maxDate;
 @property (nonatomic, strong) NSCalendar *calendar;
+@property (nonatomic, assign) BOOL didDrawRect;
+@property (nonatomic, assign) BOOL dateModeChanging;
 @property (nonatomic, copy) void (^onSelectChangeBlock) (NSDate *date, NSInteger month, NSInteger day);
 
 @end
@@ -44,12 +46,16 @@
         return;
     }
     _dateMode = dateMode;
-    [self.pickerView setNeedsLayout];
-    [self.pickerView reloadAllComponents];
-    [self setupPickerView];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self pickerView:self.pickerView didSelectRow:[self.pickerView selectedRowInComponent:0] inComponent:0];
-    });
+   
+    if (self.pickerView.delegate) {
+        [self.pickerView setNeedsLayout];
+        [self.pickerView reloadAllComponents];
+        [self setupPickerView];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.dateModeChanging = YES;
+            [self pickerView:self.pickerView didSelectRow:[self.pickerView selectedRowInComponent:0] inComponent:0];
+        });
+    }
 }
 
 - (void)setupWithCurrentDate:(NSDate *)currentDate
@@ -81,7 +87,9 @@
         self.month = month;
         self.day = day;
     }
-    [self setupPickerView];
+    if (self.pickerView.delegate) {
+        [self setupPickerView];
+    }
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -241,7 +249,10 @@
             break;
     }
     [pickerView reloadAllComponents];
-    [self whenSelectChange];
+    if (!self.dateModeChanging) {
+        [self whenSelectChange];
+    }
+    self.dateModeChanging = NO;
 }
 
 #pragma mark - private
@@ -494,8 +505,6 @@
 - (void)setup {
     UIPickerView *picker = [[UIPickerView alloc] init];
     picker.backgroundColor = [UIColor clearColor];
-    picker.delegate = self;
-    picker.dataSource = self;
     [self addSubview:picker];
     [picker mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.right.mas_offset(0);
@@ -506,6 +515,27 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];
     });
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
+    if (CGRectEqualToRect(rect, CGRectZero)) {
+        return;
+    }
+    if (!self.didDrawRect) {
+        self.didDrawRect = YES;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.pickerView.delegate = self;
+            self.pickerView.dataSource = self;
+            [self.pickerView reloadAllComponents];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self setupPickerView];
+            });
+        });
+    }
 }
 
 #pragma mark - lazy load

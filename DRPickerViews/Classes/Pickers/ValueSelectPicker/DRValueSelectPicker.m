@@ -36,11 +36,11 @@
 }
 
 - (void)prepareToShow {
+    [self.pickerView reloadAllComponents];
     DRPickerValueSelectOption *opt = (DRPickerValueSelectOption *)self.pickerOption;
     NSInteger row = opt.currentValue - opt.minValue;
     if (row > 0) {
         [self.pickerView selectRow:row inComponent:0 animated:NO];
-        [self.pickerView reloadComponent:0];
     }
     self.unitLabel.text = opt.valueUnit;
     self.valueLabel.text = [NSString stringWithFormat:@"%ld", opt.maxValue];

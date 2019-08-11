@@ -14,19 +14,28 @@
 #import "DRHourMinutePickerView.h"
 #import "DROptionCardView.h"
 
-@interface DRHourMinutePicker ()
+@interface DRHourMinutePicker ()<DRHourMinutePickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet DRHourMinutePickerView *pickerView;
 @property (weak, nonatomic) IBOutlet UIView *timeTitleSectionView;
 @property (weak, nonatomic) IBOutlet DROptionCardView *weekDaySelectView;
+@property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *weekContainerViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *weekButtonContainerLeft;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pickerViewTop;
+
 @property (nonatomic, strong) NSArray *selectedIndex;
 
 @end
 
 @implementation DRHourMinutePicker
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.pickerView.delegate = self;
+}
 
 - (Class)pickerOptionClass {
     if (self.type == DRHourMinutePickerTypeResetDate) {
@@ -74,6 +83,7 @@
     }
     
     if (hmOption.forDuration) {
+        self.pickerViewTop.constant = 20;
         self.pickerView.type = DRHourMinutePickerViewTypeDuration;
         self.pickerView.minDuration = hmOption.minDuration;
         [self.pickerView setCurrentStartHour:hour
@@ -172,6 +182,21 @@
         return obj;
     }
     return [NSString stringWithFormat:@"%02ld%02ld", value.hour, value.minute];
+}
+
+- (void)hourMinutePickerView:(DRHourMinutePickerView *)hourMinutePickerView
+             didSeletedValue:(DRHourMinutePickerValueModel *)selectedValue {
+    self.tipLabel.hidden = YES;
+    self.topBar.rightButtonEnble = YES;
+    if (selectedValue.beyondOneDay) {
+        self.tipLabel.text = @"时间段设置不能跨天";
+        self.tipLabel.hidden = NO;
+        self.topBar.rightButtonEnble = NO;
+    } else if (!selectedValue.enoughDuration) {
+        self.tipLabel.text = [NSString stringWithFormat:@"时间段设置不能少于%ld分钟", self.pickerView.minDuration];
+        self.tipLabel.hidden = NO;
+        self.topBar.rightButtonEnble = NO;
+    }
 }
 
 @end
