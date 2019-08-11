@@ -7,6 +7,8 @@
 //
 
 #import "DROptionCardPicker.h"
+#import "DRSectionTitleView.h"
+#import "DROptionCardView.h"
 
 @interface DROptionCardPicker ()
 
