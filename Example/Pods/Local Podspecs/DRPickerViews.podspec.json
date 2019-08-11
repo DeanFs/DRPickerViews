@@ -154,6 +154,9 @@
           "dependencies": {
             "DRPickerViews/UIWidget/PickerContainerView": [
 
+            ],
+            "DRPickerViews/UIWidget/TopBar": [
+
             ]
           }
         },
@@ -162,9 +165,6 @@
           "source_files": "DRPickerViews/Classes/Pickers/AheadTimePicker/*.{h,m}",
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
-
-            ],
-            "DRPickerViews/UIWidget/TopBar": [
 
             ]
           }
@@ -175,9 +175,6 @@
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
 
-            ],
-            "DRPickerViews/UIWidget/TopBar": [
-
             ]
           }
         },
@@ -186,9 +183,6 @@
           "source_files": "DRPickerViews/Classes/Pickers/TimeConsumingPicker/*.{h,m}",
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
-
-            ],
-            "DRPickerViews/UIWidget/TopBar": [
 
             ]
           }
@@ -199,9 +193,6 @@
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
 
-            ],
-            "DRPickerViews/UIWidget/TopBar": [
-
             ]
           }
         },
@@ -210,9 +201,6 @@
           "source_files": "DRPickerViews/Classes/Pickers/HourMinutePicker/*.{h,m}",
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
-
-            ],
-            "DRPickerViews/UIWidget/TopBar": [
 
             ],
             "DRPickerViews/UIWidget/OptionCard": [
@@ -228,9 +216,6 @@
           "source_files": "DRPickerViews/Classes/Pickers/YearMonthPicker/*.{h,m}",
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
-
-            ],
-            "DRPickerViews/UIWidget/TopBar": [
 
             ],
             "DRPickerViews/UIWidget/SectionView": [
@@ -251,9 +236,6 @@
             "DRPickerViews/Pickers/Common": [
 
             ],
-            "DRPickerViews/UIWidget/TopBar": [
-
-            ],
             "DRPickerViews/UIWidget/SectionView": [
 
             ],
@@ -270,9 +252,6 @@
           "source_files": "DRPickerViews/Classes/Pickers/WithLunarPicker/*.{h,m}",
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
-
-            ],
-            "DRPickerViews/UIWidget/TopBar": [
 
             ],
             "DRPickerViews/UIWidget/Segment": [
@@ -293,9 +272,6 @@
             "DRPickerViews/Pickers/Common": [
 
             ],
-            "DRPickerViews/UIWidget/TopBar": [
-
-            ],
             "DRPickerViews/UIWidget/WeekPickerView": [
 
             ]
@@ -306,9 +282,6 @@
           "source_files": "DRPickerViews/Classes/Pickers/OptionCardPicker/*.{h,m}",
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
-
-            ],
-            "DRPickerViews/UIWidget/TopBar": [
 
             ],
             "DRPickerViews/UIWidget/OptionCard": [

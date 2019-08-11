@@ -94,36 +94,32 @@ TODO: Add long description of the pod here.
     ss.subspec 'Common' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/Common/*.{h,m}'
       sss.dependency 'DRPickerViews/UIWidget/PickerContainerView'
+      sss.dependency 'DRPickerViews/UIWidget/TopBar'
     end
 
     ss.subspec 'AheadTimePicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/AheadTimePicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
-      sss.dependency 'DRPickerViews/UIWidget/TopBar'
     end
 
     ss.subspec 'ValueSelectPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/ValueSelectPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
-      sss.dependency 'DRPickerViews/UIWidget/TopBar'
     end
 
     ss.subspec 'TimeConsumingPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/TimeConsumingPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
-      sss.dependency 'DRPickerViews/UIWidget/TopBar'
     end
 
     ss.subspec 'StringOptionPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/StringOptionPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
-      sss.dependency 'DRPickerViews/UIWidget/TopBar'
     end
 
     ss.subspec 'HourMinutePicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/HourMinutePicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
-      sss.dependency 'DRPickerViews/UIWidget/TopBar'
       sss.dependency 'DRPickerViews/UIWidget/OptionCard'
       sss.dependency 'DRPickerViews/UIWidget/HourMinutePickerView'
     end
@@ -131,7 +127,6 @@ TODO: Add long description of the pod here.
     ss.subspec 'YearMonthPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/YearMonthPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
-      sss.dependency 'DRPickerViews/UIWidget/TopBar'
       sss.dependency 'DRPickerViews/UIWidget/SectionView'
       sss.dependency 'DRPickerViews/UIWidget/OptionCard'
       sss.dependency 'DRPickerViews/UIWidget/DatePickerView'
@@ -140,7 +135,6 @@ TODO: Add long description of the pod here.
     ss.subspec 'YearMonthDayPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/YearMonthDayPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
-      sss.dependency 'DRPickerViews/UIWidget/TopBar'
       sss.dependency 'DRPickerViews/UIWidget/SectionView'
       sss.dependency 'DRPickerViews/UIWidget/DatePickerView'
       sss.dependency 'DRPickerViews/UIWidget/OptionCard'
@@ -149,7 +143,6 @@ TODO: Add long description of the pod here.
     ss.subspec 'WithLunarPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/WithLunarPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
-      sss.dependency 'DRPickerViews/UIWidget/TopBar'
       sss.dependency 'DRPickerViews/UIWidget/Segment'
       sss.dependency 'DRPickerViews/UIWidget/DatePickerView'
       sss.dependency 'DRPickerViews/UIWidget/LunarDatePickerView'
@@ -158,14 +151,12 @@ TODO: Add long description of the pod here.
     ss.subspec 'OneWeekPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/OneWeekPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
-      sss.dependency 'DRPickerViews/UIWidget/TopBar'
       sss.dependency 'DRPickerViews/UIWidget/WeekPickerView'
     end
 
     ss.subspec 'OptionCardPicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/OptionCardPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
-      sss.dependency 'DRPickerViews/UIWidget/TopBar'
       sss.dependency 'DRPickerViews/UIWidget/OptionCard'
     end
   end
