@@ -143,6 +143,7 @@ TODO: Add long description of the pod here.
       sss.dependency 'DRPickerViews/UIWidget/TopBar'
       sss.dependency 'DRPickerViews/UIWidget/SectionView'
       sss.dependency 'DRPickerViews/UIWidget/DatePickerView'
+      sss.dependency 'DRPickerViews/UIWidget/OptionCard'
     end
 
     ss.subspec 'WithLunarPicker' do |sss|
