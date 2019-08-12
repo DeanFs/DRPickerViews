@@ -27,7 +27,7 @@ IB_DESIGNABLE
                      maxDate:(NSDate *)maxDate
                        month:(NSInteger)month
                          day:(NSInteger)day
-           selectChangeBlock:(void(^)(NSDate *date, NSInteger month, NSInteger day))selectChangeBlock;
+           selectChangeBlock:(void(^)(NSDate *date, NSInteger year, NSInteger month, NSInteger day))selectChangeBlock;
 
 - (void)refreshWithDate:(NSDate *)date
                   month:(NSInteger)month

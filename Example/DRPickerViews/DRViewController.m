@@ -53,7 +53,7 @@
             lunarOpt.day = 4;
             lunarOpt.isLunar = YES;
             lunarOpt.leapMonth = NO;
-            lunarOpt.ignoreYear = YES;
+            lunarOpt.ignoreYear = NO;
         } break;
             
         case DRPickerTypePlanEnd: {

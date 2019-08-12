@@ -162,22 +162,31 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 @property (nonatomic, strong) NSDate *maxDate;
 
 /**
- 年
+ 当前日期(公历)
+ 优先反显，若为空，则尝试反显以下 年，月，日字段
+ 忽略年份时，无效
+ */
+@property (nonatomic, strong) NSDate *currentDate;
+
+/**
+ 年(公历/农历)
+ 忽略年份时，无效
  */
 @property (nonatomic, assign) NSInteger year;
 
 /**
- 月份
+ 月份(公历/农历)
  */
 @property (nonatomic, assign) NSInteger month;
 
 /**
- 日
+ 日(公历/农历)
  */
 @property (nonatomic, assign) NSInteger day;
 
 /**
  是农历
+ 决定 year,month,day字段是否农历
  */
 @property (nonatomic, assign) BOOL isLunar;
 
@@ -196,6 +205,7 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 @interface DRPickerBirthdayOption : DRPickerWithLunarOption
 /**
  忽略年份
+ 若为YES，则仅月日反显信息有效
  */
 @property (nonatomic, assign) BOOL ignoreYear;
 
@@ -431,29 +441,28 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 #pragma mark - 选择器选择完成回调返回数据结构定义
 @interface DRPickerWithLunarPickedObj : NSObject
 /**
- 不忽略年份时的日期
- 若选择农历，则date为农历日期
- 否则为公历日期
+ 当前选中的日期(公历)
  */
 @property (nonatomic, strong) NSDate *date;
 
 /**
- 年
+ 年(公历/农历)
  */
 @property (nonatomic, assign) NSInteger year;
 
 /**
- 忽略年份时的月份
+ 月份(公历/农历)
  */
 @property (nonatomic, assign) NSInteger month;
 
 /**
- 忽略年份时的日
+ 日(公历/农历)
  */
 @property (nonatomic, assign) NSInteger day;
 
 /**
  是农历
+ 决定 year,month,day字段是否农历
  */
 @property (nonatomic, assign) BOOL isLunar;
 

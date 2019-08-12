@@ -70,6 +70,11 @@
     self.collectionView.allowsMultipleSelection = mutableSelection;
 }
 
+- (void)setAllOptions:(NSArray<NSString *> *)allOptions {
+    _allOptions = allOptions;
+    [self.collectionView reloadData];
+}
+
 - (void)setSelectedOptions:(NSArray<NSString *> *)selectedOptions {
     for (NSString *option in selectedOptions) {
         for (NSInteger i=0; i<self.allOptions.count; i++) {

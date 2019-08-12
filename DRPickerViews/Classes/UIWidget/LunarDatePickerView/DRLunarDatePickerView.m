@@ -402,20 +402,18 @@
 }
 
 - (void)whenSelectChange {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.ignoreYear) {
-            self->_selectedDate = nil;
-            kDR_SAFE_BLOCK(self.onSelectChangeBlock, nil, 0, self.currentMonth.cmp.month, self.day, self.currentMonth.cmp.leapMonth);
-        } else {
-            NSDateComponents *cmp = [NSDateComponents lunarComponentsWithEra:self.currentMonth.cmp.era
-                                                                        year:self.currentMonth.cmp.year
-                                                                       month:self.currentMonth.cmp.month
-                                                                         day:self.day
-                                                                   leapMonth:self.currentMonth.cmp.leapMonth];
-            self->_selectedDate = [self.lunarCalendar dateFromComponents:cmp];
-            kDR_SAFE_BLOCK(self.onSelectChangeBlock, self->_selectedDate, self.currentMonth.cmp.year, -1, -1, cmp.leapMonth);
-        }
-    });
+    if (self.ignoreYear) {
+        _selectedDate = nil;
+        kDR_SAFE_BLOCK(self.onSelectChangeBlock, nil, 0, self.currentMonth.cmp.month, self.day, self.currentMonth.cmp.leapMonth);
+    } else {
+        NSDateComponents *cmp = [NSDateComponents lunarComponentsWithEra:self.currentMonth.cmp.era
+                                                                    year:self.currentMonth.cmp.year
+                                                                   month:self.currentMonth.cmp.month
+                                                                     day:self.day
+                                                               leapMonth:self.currentMonth.cmp.leapMonth];
+        _selectedDate = [self.lunarCalendar dateFromComponents:cmp];
+        kDR_SAFE_BLOCK(self.onSelectChangeBlock, _selectedDate, self.currentMonth.cmp.year, self.currentMonth.cmp.month, self.day, self.currentMonth.cmp.leapMonth);
+    }
 }
 
 - (NSArray<DRLunarDateModel *> *)monthListFromLunarYear:(NSInteger)lunarYear {
@@ -549,9 +547,8 @@
 #pragma mark - layzy load
 - (NSCalendar *)lunarCalendar {
     if (!_lunarCalendar) {
-        NSTimeZone *timeZone = [NSTimeZone defaultTimeZone];
         _lunarCalendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierChinese];
-        [_lunarCalendar setTimeZone:timeZone];
+        [_lunarCalendar setTimeZone:[NSTimeZone defaultTimeZone]];
         [_lunarCalendar setFirstWeekday:DRCalendarFirstDay];
     }
     return _lunarCalendar;
@@ -559,9 +556,8 @@
 
 - (NSCalendar *)solarCalendar {
     if (!_solarCalendar) {
-        NSTimeZone *timeZone = [NSTimeZone defaultTimeZone];
-        _solarCalendar = [NSCalendar currentCalendar];
-        [_solarCalendar setTimeZone:timeZone];
+        _solarCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        [_solarCalendar setTimeZone:[NSTimeZone defaultTimeZone]];
         [_solarCalendar setFirstWeekday:DRCalendarFirstDay];
     }
     return _solarCalendar;

@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) NSDate *minMonth;
 @property (nonatomic, strong) NSDate *maxMonth;
+@property (nonatomic, strong) NSCalendar *calendar;
 
 @end
 
@@ -44,15 +45,21 @@
     } else {
         title = [currentMonth dateStringFromFormatterString:@"yyyy/MM"];
     }
-    [self.titleButton setTitle:title
-                      forState:UIControlStateNormal];
-    if ([currentMonth compare:self.minMonth] == NSOrderedAscending) {
+    [UIView performWithoutAnimation:^{
+        [self.titleButton setTitle:title
+                          forState:UIControlStateNormal];
+        [self.titleButton layoutIfNeeded];
+    }];
+    
+    NSComparisonResult result = [self.calendar compareDate:currentMonth toDate:self.minMonth toUnitGranularity:NSCalendarUnitMonth];
+    if (result == NSOrderedAscending || result == NSOrderedSame) {
         self.leftMarkImageView.hidden = YES;
     } else {
         self.leftMarkImageView.hidden = NO;
     }
     
-    if ([currentMonth compare:self.maxMonth] == NSOrderedDescending) {
+    result = [self.calendar compareDate:currentMonth toDate:self.maxMonth toUnitGranularity:NSCalendarUnitMonth];
+    if (result == NSOrderedDescending || result == NSOrderedSame) {
         self.rightMarkImageView.hidden = YES;
     } else {
         self.rightMarkImageView.hidden = NO;
@@ -132,6 +139,15 @@
         self.showBottomLine = YES;
         self.fontSize = 13;
     }
+}
+
+#pragma mark - lazy load
+- (NSCalendar *)calendar {
+    if (!_calendar) {
+        _calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+        [_calendar setTimeZone:[NSTimeZone defaultTimeZone]];
+    }
+    return _calendar;
 }
 
 @end

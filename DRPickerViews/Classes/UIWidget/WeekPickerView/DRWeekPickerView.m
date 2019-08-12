@@ -267,7 +267,7 @@
             model.lastWeekInMonth = YES;
             DRWeekPickerDateModel *nexWeekModel = [model copy];
             nexWeekModel.weekIndexInMonth = 1;
-            nexWeekModel.month = [self dateByAddingDays:0 months:-1 fromDate:model.month];
+            nexWeekModel.month = [self dateByAddingDays:0 months:1 fromDate:model.month];
             if (model.lastSelectableWeek) {
                 nexWeekModel.disableSelect = YES;
             }

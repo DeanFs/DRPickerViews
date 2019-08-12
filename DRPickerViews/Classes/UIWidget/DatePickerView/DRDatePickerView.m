@@ -31,7 +31,7 @@
 @property (nonatomic, strong) NSCalendar *calendar;
 @property (nonatomic, assign) BOOL didDrawRect;
 @property (nonatomic, assign) BOOL dateModeChanging;
-@property (nonatomic, copy) void (^onSelectChangeBlock) (NSDate *date, NSInteger month, NSInteger day);
+@property (nonatomic, copy) void (^onSelectChangeBlock) (NSDate *date, NSInteger year, NSInteger month, NSInteger day);
 
 @end
 
@@ -63,7 +63,7 @@
                      maxDate:(NSDate *)maxDate
                        month:(NSInteger)month
                          day:(NSInteger)day
-           selectChangeBlock:(void(^)(NSDate *date, NSInteger month, NSInteger day))selectChangeBlock {
+           selectChangeBlock:(void(^)(NSDate *date, NSInteger year, NSInteger month, NSInteger day))selectChangeBlock {
     [DRUIWidgetUtil dateLegalCheckForCurrentDate:&currentDate minDate:&minDate maxDate:&maxDate];
     self.minDate = [minDate dateStringFromFormatterString:@"yyyyMMdd"].integerValue;
     self.maxDate = [maxDate dateStringFromFormatterString:@"yyyyMMdd"].integerValue;
@@ -474,10 +474,8 @@
 }
 
 - (void)whenSelectChange {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self->_selectedDate = self.dateMode==DRDatePickerModeMD?nil:[self currentDateWithDay:self.day];
-        kDR_SAFE_BLOCK(self.onSelectChangeBlock, self->_selectedDate, self.month, self.day);
-    });
+    _selectedDate = self.dateMode==DRDatePickerModeMD?nil:[self currentDateWithDay:self.day];
+    kDR_SAFE_BLOCK(self.onSelectChangeBlock, self.selectedDate, self.year, self.month, self.day);
 }
 
 #pragma mark - setup xib
@@ -542,6 +540,7 @@
 - (NSCalendar *)calendar {
     if (!_calendar) {
         _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        [_calendar setTimeZone:[NSTimeZone defaultTimeZone]];
     }
     return _calendar;
 }

@@ -40,6 +40,7 @@
 
 - (Class)pickerOptionClass {
     DRPickerWithLunarOption * lunarOption = (DRPickerWithLunarOption *)self.pickerOption;
+    self.currentDate = lunarOption.currentDate;
     self.minDate = lunarOption.minDate;
     self.maxDate = lunarOption.maxDate;
     self.year = lunarOption.year;
@@ -49,6 +50,9 @@
     self.leapMonth = lunarOption.leapMonth;
     if (self.isForBirthday) {
         self.ignoreYear = ((DRPickerBirthdayOption *)self.pickerOption).ignoreYear;
+        if (self.ignoreYear) {
+            self.currentDate = nil;
+        }
         return [DRPickerBirthdayOption class];
     }
     return [DRPickerWithLunarOption class];
@@ -80,16 +84,20 @@
             [weakSelf setupTopLeftButton];
         };
     }
-    
     // 初始化选择器并设置回调
-    if (!self.ignoreYear) {
+    if (!self.ignoreYear && !self.currentDate) {
         self.currentDate = [NSDate correctionYear:self.year month:self.month day:self.day hour:0 minute:0 second:0];
+        if (self.isLunar) {
+            // 农历转公历
+            self.currentDate = [NSDate dateFromLunarDate:self.currentDate leapMonth:self.leapMonth];
+        }
     }
-    [self.solarPickerView setupWithCurrentDate:self.currentDate minDate:self.minDate maxDate:self.maxDate month:self.month day:self.day selectChangeBlock:^(NSDate *date, NSInteger month, NSInteger day) {
+    [self.solarPickerView setupWithCurrentDate:self.currentDate minDate:self.minDate maxDate:self.maxDate month:self.month day:self.day selectChangeBlock:^(NSDate *date, NSInteger year, NSInteger month, NSInteger day) {
         weakSelf.currentDate = date;
-        weakSelf.year = date.year;
+        weakSelf.year = year;
         weakSelf.month = month;
         weakSelf.day = day;
+        weakSelf.leapMonth = NO;
         [weakSelf.lunarPickerView refreshWithDate:date month:month day:day leapMonth:NO];
     }];
     [self.lunarPickerView setupWithCurrentDate:self.currentDate minDate:self.minDate maxDate:self.maxDate month:self.month day:self.day leapMonth:self.leapMonth selectChangeBlock:^(NSDate *date, NSInteger year, NSInteger month, NSInteger day, BOOL leapMonth) {
@@ -106,7 +114,7 @@
     if (self.isForBirthday) {
         DRPickerBirthdayPickedObj *obj = [DRPickerBirthdayPickedObj new];
         obj.ignoreYear = self.ignoreYear;
-        obj.year = 0;
+        obj.year = -1;
         if (!self.ignoreYear) {
             obj.year = self.year;
             obj.date = self.currentDate;
