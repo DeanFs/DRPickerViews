@@ -21,17 +21,7 @@
 #define kZeroYear 2697
 #define kLunarCycle 60
 
-@interface DRLunarDateModel : NSObject
-
-@property (nonatomic, assign) NSInteger lunarYear;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, strong) NSDateComponents *cmp;
-@property (nonatomic, assign) NSInteger dayCount;
-@property (nonatomic, assign) NSInteger index;
-
-@end
-
-@implementation DRLunarDateModel
+@implementation DRLunarDatePickerMonthModel
 
 @end
 
@@ -39,17 +29,15 @@
 
 @property (weak, nonatomic) UIPickerView *pickerView;
 
-@property (nonatomic, strong) DRLunarDateModel *minDate;
-@property (nonatomic, strong) DRLunarDateModel *maxDate;
+@property (nonatomic, strong) DRLunarDatePickerMonthModel *minDate;
+@property (nonatomic, strong) DRLunarDatePickerMonthModel *maxDate;
 @property (nonatomic, strong) NSCalendar *lunarCalendar;
 @property (nonatomic, strong) NSCalendar *solarCalendar;
 @property (nonatomic, strong) NSArray<NSString *> *lunarDays;
 @property (nonatomic, strong) NSArray<NSString *> *lunarMonths;
-@property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSArray<DRLunarDateModel *> *> *yearMonthListMap;
-@property (nonatomic, strong) NSArray<DRLunarDateModel *> *currentMonthList;
-@property (nonatomic, strong) DRLunarDateModel *currentMonth;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSArray<DRLunarDatePickerMonthModel *> *> *yearMonthListMap;
+@property (nonatomic, strong) NSArray<DRLunarDatePickerMonthModel *> *currentMonthList;
 @property (nonatomic, assign) NSInteger lunarYear;
-@property (nonatomic, assign) NSInteger day;
 @property (nonatomic, assign) BOOL didDrawRect;
 @property (nonatomic, assign) BOOL dateModeChanging;
 
@@ -67,7 +55,7 @@
     } else { // 之前是显示年份的
         self.currentMonthList = [self ignoreYearMonthList];
     }
-    self.currentMonth = [self findEquelLunarModel:self.currentMonth fromList:self.currentMonthList];
+    _selectedMonth = [self findEquelLunarModel:self.selectedMonth fromList:self.currentMonthList];
     
     _ignoreYear = ignoreYear;
     
@@ -77,7 +65,12 @@
         [self.pickerView reloadAllComponents];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.dateModeChanging = YES;
-            [self pickerView:self.pickerView didSelectRow:self.day-1 + self.currentMonth.dayCount * kLunarPickerCentreRow inComponent:4];
+            NSInteger component = 4;
+            if (self.ignoreYear) {
+                component = 2;
+            }
+            NSInteger row = self.selectedDay-1 + self.selectedMonth.dayCount * kLunarPickerCentreRow;
+            [self pickerView:self.pickerView didSelectRow:row inComponent:component];
         });
     }
 }
@@ -87,13 +80,17 @@
                      maxDate:(NSDate *)maxDate
                        month:(NSInteger)month
                          day:(NSInteger)day
-                   leapMonth:(BOOL)leapMonth
-           selectChangeBlock:(void(^)(NSDate *date, NSInteger year, NSInteger month, NSInteger day, BOOL leapMonth))selectChangeBlock {
+                   leapMonth:(BOOL)leapMonth {
     [DRUIWidgetUtil dateLegalCheckForCurrentDate:&currentDate minDate:&minDate maxDate:&maxDate];
     self.minDate = [self lunarDateCmpModelDate:minDate];
     self.maxDate = [self lunarDateCmpModelDate:maxDate];
-    self.onSelectChangeBlock = selectChangeBlock;
     [self refreshWithDate:currentDate month:month day:day leapMonth:leapMonth];
+}
+
+- (void)refreshWithDate:(NSDate *)date
+                  month:(NSInteger)month
+                    day:(NSInteger)day {
+    [self refreshWithDate:date month:month day:day leapMonth:NO];
 }
 
 - (void)refreshWithDate:(NSDate *)date
@@ -109,12 +106,12 @@
     }
     if (self.ignoreYear) {
         self.currentMonthList = [self ignoreYearMonthList];
-        self.currentMonth = self.currentMonthList[(month-1) * 2 + leapMonth];
-        self.day = day;
+        _selectedMonth = self.currentMonthList[(month-1) * 2 + leapMonth];
+        _selectedDay = day;
     } else {
         self.currentMonthList = [self monthListFromLunarYear:self.lunarYear];
-        self.currentMonth = self.currentMonthList[cmp.month-1 + cmp.leapMonth];
-        self.day = cmp.day;
+        _selectedMonth = self.currentMonthList[cmp.month-1 + cmp.leapMonth];
+        _selectedDay = cmp.day;
     }
     if (self.pickerView.delegate) {
         [self setupPickerView];
@@ -145,7 +142,7 @@
             return self.currentMonthList.count * kLunarPickerRowCount;
         }
         if (component == 4) {
-            return self.currentMonth.dayCount * kLunarPickerRowCount;
+            return self.selectedMonth.dayCount * kLunarPickerRowCount;
         }
     }
     return 1;
@@ -214,7 +211,7 @@
             text = self.currentMonthList[row%self.currentMonthList.count].name;
         }
         if (component == 4) {
-            text = self.lunarDays[row%self.currentMonth.dayCount];
+            text = self.lunarDays[row%self.selectedMonth.dayCount];
         }
     }
     label.text = text;
@@ -228,8 +225,19 @@
         [self setupWithYearSelectRow:row inComponent:component];
     }
     [self.pickerView reloadAllComponents];
+    
+    if (self.ignoreYear) {
+        _selectedDate = nil;
+    } else {
+        NSDateComponents *cmp = [NSDateComponents lunarComponentsWithEra:self.selectedMonth.cmp.era
+                                                                    year:self.selectedMonth.cmp.year
+                                                                   month:self.selectedMonth.cmp.month
+                                                                     day:self.selectedDay
+                                                               leapMonth:self.selectedMonth.cmp.leapMonth];
+        _selectedDate = [self.lunarCalendar dateFromComponents:cmp];
+    }
     if (!self.dateModeChanging) {
-        [self whenSelectChange];
+        kDR_SAFE_BLOCK(self.onSelectChangeBlock, self.selectedDate, self.selectedMonth.cmp.month, self.selectedDay);
     }
     self.dateModeChanging = NO;
 }
@@ -238,12 +246,12 @@
 - (void)setupPickerView {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.ignoreYear) {
-            [self.pickerView selectRow:self.currentMonth.index + kLunarPickerCentreRow * 24 inComponent:0 animated:NO];
-            [self.pickerView selectRow:self.day-1 + kLunarPickerCentreRow * 30 inComponent:2 animated:NO];
+            [self.pickerView selectRow:self.selectedMonth.index + kLunarPickerCentreRow * 24 inComponent:0 animated:NO];
+            [self.pickerView selectRow:self.selectedDay-1 + kLunarPickerCentreRow * 30 inComponent:2 animated:NO];
         } else {
-            [self.pickerView selectRow:self.currentMonth.lunarYear inComponent:0 animated:NO];
-            [self.pickerView selectRow:self.currentMonth.index + kLunarPickerCentreRow * self.currentMonthList.count inComponent:2 animated:NO];
-            [self.pickerView selectRow:self.day-1 + kLunarPickerCentreRow * self.currentMonth.dayCount inComponent:4 animated:NO];
+            [self.pickerView selectRow:self.selectedMonth.lunarYear inComponent:0 animated:NO];
+            [self.pickerView selectRow:self.selectedMonth.index + kLunarPickerCentreRow * self.currentMonthList.count inComponent:2 animated:NO];
+            [self.pickerView selectRow:self.selectedDay-1 + kLunarPickerCentreRow * self.selectedMonth.dayCount inComponent:4 animated:NO];
         }
         [self.pickerView reloadAllComponents];
     });
@@ -262,9 +270,9 @@
     [yearView setupName:string year:lunarYear];
 }
 
-- (DRLunarDateModel *)lunarDateCmpModelDate:(NSDate *)date {
+- (DRLunarDatePickerMonthModel *)lunarDateCmpModelDate:(NSDate *)date {
     NSDateComponents *cmp = [self.lunarCalendar components:[NSDate dateComponentsUnitsWithType:DRCalenderUnitsTypeDay]|NSCalendarUnitEra fromDate:date];
-    DRLunarDateModel *model = [DRLunarDateModel new];
+    DRLunarDatePickerMonthModel *model = [DRLunarDatePickerMonthModel new];
     model.cmp = cmp;
     model.lunarYear = cmp.era * kLunarCycle + cmp.year - kZeroYear;
     NSArray *monthList = [self monthListFromLunarYear:model.lunarYear];
@@ -296,16 +304,16 @@
 }
 
 - (NSInteger)compareDateForRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSInteger year = self.currentMonth.lunarYear;
-    NSInteger monthIndex = self.currentMonth.index;
-    NSInteger day = self.day;
+    NSInteger year = self.selectedMonth.lunarYear;
+    NSInteger monthIndex = self.selectedMonth.index;
+    NSInteger day = self.selectedDay;
     if (component == 0) {
         year = row;
     } else if (component == 2) {
-        DRLunarDateModel *model = self.currentMonthList[row % self.currentMonthList.count];
+        DRLunarDatePickerMonthModel *model = self.currentMonthList[row % self.currentMonthList.count];
         monthIndex = model.index;
     } else if (component == 4) {
-        day = row % self.currentMonth.dayCount + 1;
+        day = row % self.selectedMonth.dayCount + 1;
     }
     if (year < self.minDate.lunarYear ||
         (year == self.minDate.lunarYear && monthIndex < self.minDate.index) ||
@@ -322,8 +330,8 @@
 
 - (void)setupWithYearSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     // 获取最新值，及滚动复位
-    NSInteger year = self.currentMonth.lunarYear;
-    NSInteger monthIndex = self.currentMonth.index;
+    NSInteger year = self.selectedMonth.lunarYear;
+    NSInteger monthIndex = self.selectedMonth.index;
     if (component == 0) {
         year = row;
     }
@@ -332,8 +340,8 @@
         [self.pickerView selectRow:monthIndex + kLunarPickerCentreRow*self.currentMonthList.count inComponent:2 animated:NO];
     }
     if (component == 4) {
-        self.day = row % self.currentMonth.dayCount + 1;
-        [self.pickerView selectRow:self.day-1 + self.currentMonth.dayCount * kLunarPickerCentreRow inComponent:4 animated:NO];
+        _selectedDay = row % self.selectedMonth.dayCount + 1;
+        [self.pickerView selectRow:self.selectedDay-1 + self.selectedMonth.dayCount * kLunarPickerCentreRow inComponent:4 animated:NO];
     }
 
     // 超限检查
@@ -341,15 +349,15 @@
     if ([self compareDateForRow:row inComponent:component] < 0) {
         year = self.minDate.lunarYear;
         monthIndex = self.minDate.index;
-        self.day = self.minDate.cmp.day;
+        _selectedDay = self.minDate.cmp.day;
         needScroll = YES;
     } else if ([self compareDateForRow:row inComponent:component] > 0) {
         year = self.maxDate.lunarYear;
         monthIndex = self.maxDate.index;
-        self.day = self.maxDate.cmp.day;
+        _selectedDay = self.maxDate.cmp.day;
         needScroll = YES;
     }
-    if (year != self.currentMonth.lunarYear) {
+    if (year != self.selectedMonth.lunarYear) {
         self.lunarYear = year;
         NSArray *monthList = [self monthListFromLunarYear:self.lunarYear];
         if (monthList.count != self.currentMonthList.count) {
@@ -361,28 +369,28 @@
     }
 
     // 检测每月天数改变
-    DRLunarDateModel *model = self.currentMonthList[monthIndex];
+    DRLunarDatePickerMonthModel *model = self.currentMonthList[monthIndex];
     if (!model) { // 月份变少了，month是最后一个月时会取不到
         model = self.currentMonthList.lastObject;
         needScroll = YES;
     }
     NSInteger daysInMonth = model.dayCount;
-    if (daysInMonth != self.currentMonth.dayCount) {
-        [self.pickerView selectRow:self.day-1 + daysInMonth * kLunarPickerCentreRow inComponent:4 animated:NO]; // 按新的每月天数设置日的行号
+    if (daysInMonth != self.selectedMonth.dayCount) {
+        [self.pickerView selectRow:self.selectedDay-1 + daysInMonth * kLunarPickerCentreRow inComponent:4 animated:NO]; // 按新的每月天数设置日的行号
     }
-    if (self.day > daysInMonth) {
-        self.day = daysInMonth;
+    if (self.selectedDay > daysInMonth) {
+        _selectedDay = daysInMonth;
         needScroll = YES;
     }
-    self.currentMonth = model;
+    _selectedMonth = model;
     [self.pickerView reloadComponent:4];
 
     // 超限回滚
     if (needScroll) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.pickerView selectRow:year inComponent:0 animated:YES];
-            [self.pickerView selectRow:self.currentMonth.index + self.currentMonthList.count*kLunarPickerCentreRow inComponent:2 animated:YES];
-            [self.pickerView selectRow:self.day-1 + self.currentMonth.dayCount*kLunarPickerCentreRow inComponent:4 animated:YES];
+            [self.pickerView selectRow:self.selectedMonth.index + self.currentMonthList.count*kLunarPickerCentreRow inComponent:2 animated:YES];
+            [self.pickerView selectRow:self.selectedDay-1 + self.selectedMonth.dayCount*kLunarPickerCentreRow inComponent:4 animated:YES];
         });
     }
 }
@@ -391,35 +399,20 @@
     // 获取最新值，及滚动复位
     if (component == 0) {
         NSInteger month = row % 24;
-        self.currentMonth = self.currentMonthList[month];
+        _selectedMonth = self.currentMonthList[month];
         [self.pickerView selectRow:month + kLunarPickerCentreRow*self.currentMonthList.count inComponent:0 animated:NO];
         [self.pickerView reloadComponent:2];
     }
     if (component == 2) {
-        self.day = row % 30 + 1;
-        [self.pickerView selectRow:self.day-1 + 30 * kLunarPickerCentreRow inComponent:2 animated:NO];
+        _selectedDay = row % 30 + 1;
+        [self.pickerView selectRow:self.selectedDay-1 + 30 * kLunarPickerCentreRow inComponent:2 animated:NO];
     }
 }
 
-- (void)whenSelectChange {
-    if (self.ignoreYear) {
-        _selectedDate = nil;
-        kDR_SAFE_BLOCK(self.onSelectChangeBlock, nil, 0, self.currentMonth.cmp.month, self.day, self.currentMonth.cmp.leapMonth);
-    } else {
-        NSDateComponents *cmp = [NSDateComponents lunarComponentsWithEra:self.currentMonth.cmp.era
-                                                                    year:self.currentMonth.cmp.year
-                                                                   month:self.currentMonth.cmp.month
-                                                                     day:self.day
-                                                               leapMonth:self.currentMonth.cmp.leapMonth];
-        _selectedDate = [self.lunarCalendar dateFromComponents:cmp];
-        kDR_SAFE_BLOCK(self.onSelectChangeBlock, _selectedDate, self.currentMonth.cmp.year, self.currentMonth.cmp.month, self.day, self.currentMonth.cmp.leapMonth);
-    }
-}
-
-- (NSArray<DRLunarDateModel *> *)monthListFromLunarYear:(NSInteger)lunarYear {
+- (NSArray<DRLunarDatePickerMonthModel *> *)monthListFromLunarYear:(NSInteger)lunarYear {
     NSArray *monthList = self.yearMonthListMap[@(lunarYear)];
     if (!monthList) {
-        NSMutableArray<DRLunarDateModel *> *list = [NSMutableArray array];
+        NSMutableArray<DRLunarDatePickerMonthModel *> *list = [NSMutableArray array];
         monthList = list;
         [self.yearMonthListMap setObject:list forKey:@(lunarYear)];
         
@@ -435,7 +428,7 @@
         for (NSInteger i=0; i<24; i++) {
             NSDateComponents *cmp = [NSDateComponents lunarComponentsWithEra:era year:year month:1+i/2 day:1 leapMonth:i%2];
             if ([cmp isValidDateInCalendar:self.lunarCalendar]) {
-                DRLunarDateModel *model = [DRLunarDateModel new];
+                DRLunarDatePickerMonthModel *model = [DRLunarDatePickerMonthModel new];
                 model.lunarYear = lunarYear;
                 model.cmp = cmp;
                 model.dayCount =  [self.lunarCalendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:[self.lunarCalendar dateFromComponents:cmp]].length;
@@ -453,11 +446,11 @@
     return monthList;
 }
 
-- (NSArray<DRLunarDateModel *> *)ignoreYearMonthList {
-    NSMutableArray<DRLunarDateModel *> *list = [NSMutableArray array];
+- (NSArray<DRLunarDatePickerMonthModel *> *)ignoreYearMonthList {
+    NSMutableArray<DRLunarDatePickerMonthModel *> *list = [NSMutableArray array];
     for (NSInteger i=0; i<24; i++) {
         NSDateComponents *cmp = [NSDateComponents lunarComponentsWithEra:0 year:0 month:1+i/2 day:1 leapMonth:i%2];
-        DRLunarDateModel *model = [DRLunarDateModel new];
+        DRLunarDatePickerMonthModel *model = [DRLunarDatePickerMonthModel new];
         model.cmp = cmp;
         model.dayCount = 30;
         if (cmp.leapMonth) {
@@ -471,9 +464,9 @@
     return list;
 }
 
-- (DRLunarDateModel *)findEquelLunarModel:(DRLunarDateModel *)lunarModel fromList:(NSArray<DRLunarDateModel *> *)monthList {
-    DRLunarDateModel *currentModel = nil;
-    for (DRLunarDateModel *model in monthList) {
+- (DRLunarDatePickerMonthModel *)findEquelLunarModel:(DRLunarDatePickerMonthModel *)lunarModel fromList:(NSArray<DRLunarDatePickerMonthModel *> *)monthList {
+    DRLunarDatePickerMonthModel *currentModel = nil;
+    for (DRLunarDatePickerMonthModel *model in monthList) {
         if (model.cmp.month == lunarModel.cmp.month) {
             currentModel = model;
             if (!lunarModel.cmp.leapMonth) {
@@ -563,7 +556,7 @@
     return _solarCalendar;
 }
 
-- (NSMutableDictionary<NSNumber *, NSArray<DRLunarDateModel *> *> *)yearMonthListMap {
+- (NSMutableDictionary<NSNumber *, NSArray<DRLunarDatePickerMonthModel *> *> *)yearMonthListMap {
     if (!_yearMonthListMap) {
         _yearMonthListMap = [NSMutableDictionary dictionary];
     }

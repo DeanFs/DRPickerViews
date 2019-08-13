@@ -127,8 +127,7 @@
                                       minDate:minDate
                                       maxDate:maxDate
                                         month:1
-                                          day:1
-                            selectChangeBlock:nil];
+                                          day:1];
 }
 
 - (CGFloat)picerViewHeight  {

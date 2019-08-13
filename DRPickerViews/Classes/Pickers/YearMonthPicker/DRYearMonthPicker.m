@@ -45,8 +45,7 @@
                                   minDate:dateOption.minDate
                                   maxDate:dateOption.maxDate
                                     month:1
-                                      day:1
-                        selectChangeBlock:nil];
+                                      day:1];
     
     if (self.withMonthViewFilter) {
         kDRWeakSelf

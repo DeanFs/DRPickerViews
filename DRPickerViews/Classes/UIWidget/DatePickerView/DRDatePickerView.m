@@ -23,15 +23,11 @@
 @property (weak, nonatomic) UIPickerView *pickerView;
 
 @property (nonatomic, assign) NSInteger monthDayCount; // 当月天数
-@property (nonatomic, assign) NSInteger year;
-@property (nonatomic, assign) NSInteger month;
-@property (nonatomic, assign) NSInteger day;
 @property (nonatomic, assign) NSInteger minDate;
 @property (nonatomic, assign) NSInteger maxDate;
 @property (nonatomic, strong) NSCalendar *calendar;
 @property (nonatomic, assign) BOOL didDrawRect;
 @property (nonatomic, assign) BOOL dateModeChanging;
-@property (nonatomic, copy) void (^onSelectChangeBlock) (NSDate *date, NSInteger year, NSInteger month, NSInteger day);
 
 @end
 
@@ -53,7 +49,11 @@
         [self setupPickerView];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.dateModeChanging = YES;
-            [self pickerView:self.pickerView didSelectRow:[self.pickerView selectedRowInComponent:0] inComponent:0];
+            NSInteger row = self.selectedYear;
+            if (self.dateMode == DRDatePickerModeMD) {
+                row = self.selectedMonth;
+            }
+            [self pickerView:self.pickerView didSelectRow:row inComponent:0];
         });
     }
 }
@@ -62,12 +62,10 @@
                      minDate:(NSDate *)minDate
                      maxDate:(NSDate *)maxDate
                        month:(NSInteger)month
-                         day:(NSInteger)day
-           selectChangeBlock:(void(^)(NSDate *date, NSInteger year, NSInteger month, NSInteger day))selectChangeBlock {
+                         day:(NSInteger)day {
     [DRUIWidgetUtil dateLegalCheckForCurrentDate:&currentDate minDate:&minDate maxDate:&maxDate];
     self.minDate = [minDate dateStringFromFormatterString:@"yyyyMMdd"].integerValue;
     self.maxDate = [maxDate dateStringFromFormatterString:@"yyyyMMdd"].integerValue;
-    self.onSelectChangeBlock = selectChangeBlock;
     _selectedDate = currentDate;
     [self refreshWithDate:currentDate month:month day:day];
 }
@@ -78,14 +76,14 @@
     if (date) {
         NSDateComponents *cmp = [self.calendar components:[NSDate dateComponentsUnitsWithType:DRCalenderUnitsTypeDay]
                                                  fromDate:date];
-        self.year = cmp.year;
-        self.month = cmp.month;
-        self.day = cmp.day;
+        _selectedYear = cmp.year;
+        _selectedMonth = cmp.month;
+        _selectedDay = cmp.day;
         _selectedDate = date;
     }
     if (self.dateMode == DRDatePickerModeMD) {
-        self.month = month;
-        self.day = day;
+        _selectedMonth = month;
+        _selectedDay = day;
     }
     if (self.pickerView.delegate) {
         [self setupPickerView];
@@ -249,8 +247,14 @@
             break;
     }
     [pickerView reloadAllComponents];
+    
+    if (self.dateMode == DRDatePickerModeMD) {
+        _selectedDate = nil;
+    } else {
+        _selectedDate = [self currentDateWithDay:self.selectedDay];
+    }
     if (!self.dateModeChanging) {
-        [self whenSelectChange];
+        kDR_SAFE_BLOCK(self.onSelectChangeBlock, self.selectedDate, self.selectedMonth, self.selectedDay);
     }
     self.dateModeChanging = NO;
 }
@@ -261,18 +265,18 @@
         if (self.dateMode == DRDatePickerModeMD) {
             self.monthDayCount = [self daysCountInCurrentMonth];
             [self.pickerView reloadComponent:2];
-            [self.pickerView selectRow:self.month-1 + 12 * kDatePickerCentreRow inComponent:0 animated:NO];
-            [self.pickerView selectRow:self.day-1 + self.monthDayCount * kDatePickerCentreRow inComponent:2 animated:NO];
+            [self.pickerView selectRow:self.selectedMonth-1 + 12 * kDatePickerCentreRow inComponent:0 animated:NO];
+            [self.pickerView selectRow:self.selectedDay-1 + self.monthDayCount * kDatePickerCentreRow inComponent:2 animated:NO];
         } else {
             if (self.dateMode == DRDatePickerModeYMD) {
                 self.monthDayCount = [self daysCountInCurrentMonth];
                 [self.pickerView reloadComponent:4];
-                [self.pickerView selectRow:self.year inComponent:0 animated:NO];
-                [self.pickerView selectRow:self.month-1 + 12 * kDatePickerCentreRow inComponent:2 animated:NO];
-                [self.pickerView selectRow:self.day-1 + self.monthDayCount * kDatePickerCentreRow inComponent:4 animated:NO];
+                [self.pickerView selectRow:self.selectedYear inComponent:0 animated:NO];
+                [self.pickerView selectRow:self.selectedMonth-1 + 12 * kDatePickerCentreRow inComponent:2 animated:NO];
+                [self.pickerView selectRow:self.selectedDay-1 + self.monthDayCount * kDatePickerCentreRow inComponent:4 animated:NO];
             } else {
-                [self.pickerView selectRow:self.year inComponent:0 animated:NO];
-                [self.pickerView selectRow:kDatePickerCentreRow*12 + self.month-1 inComponent:2 animated:NO];
+                [self.pickerView selectRow:self.selectedYear inComponent:0 animated:NO];
+                [self.pickerView selectRow:kDatePickerCentreRow*12 + self.selectedMonth-1 inComponent:2 animated:NO];
             }
         }
         [self.pickerView reloadAllComponents];
@@ -281,16 +285,16 @@
 
 - (NSInteger)daysCountInCurrentMonth {
     if (self.dateMode == DRDatePickerModeMD) {
-        if (self.month < 8) {
-            if (self.month % 2 == 0) {
-                if (self.month == 2) {
+        if (self.selectedMonth < 8) {
+            if (self.selectedMonth % 2 == 0) {
+                if (self.selectedMonth == 2) {
                     return 29;
                 }
                 return 30;
             }
             return 31;
         }
-        if (self.month % 2 == 0) {
+        if (self.selectedMonth % 2 == 0) {
             return 31;
         }
         return 30;
@@ -299,7 +303,7 @@
 }
 
 - (NSDate *)currentDateWithDay:(NSInteger)day {
-    NSDateComponents *cmp = [NSDateComponents componentsWithYear:self.year month:self.month day:day];
+    NSDateComponents *cmp = [NSDateComponents componentsWithYear:self.selectedYear month:self.selectedMonth day:day];
     return [self.calendar dateFromComponents:cmp];
 }
 
@@ -342,17 +346,17 @@
     NSInteger date = 0;
     if (component == 0) {
         date += (row * 10000);
-        date += self.month * 100;
+        date += self.selectedMonth * 100;
     } else if (component == 2) {
-        date += self.year * 10000;
+        date += self.selectedYear * 10000;
         date += ((row % 12 + 1) * 100);
     } else if (component == 4) {
-        date += self.year * 10000;
-        date += self.month * 100;
+        date += self.selectedYear * 10000;
+        date += self.selectedMonth * 100;
         date += (row % self.monthDayCount + 1);
     }
     if (component != 4 && self.dateMode == DRDatePickerModeYMD) {
-        date += self.day;
+        date += self.selectedDay;
     }
     return date;
 }
@@ -361,31 +365,31 @@
     // 获取最新值，及滚动复位
     BOOL monthDayMayChange = NO;
     if (component == 0) {
-        self.year = row;
+        _selectedYear = row;
         monthDayMayChange = YES;
     }
     if (component == 2) {
-        self.month = row % 12 + 1;
-        [self.pickerView selectRow:self.month-1 + kDatePickerCentreRow*12 inComponent:2 animated:NO];
+        _selectedMonth = row % 12 + 1;
+        [self.pickerView selectRow:self.selectedMonth-1 + kDatePickerCentreRow*12 inComponent:2 animated:NO];
         monthDayMayChange = YES;
     }
     if (component == 4) {
-        self.day = row % self.monthDayCount + 1;
-        [self.pickerView selectRow:self.day-1 + self.monthDayCount * kDatePickerCentreRow inComponent:4 animated:NO];
+        _selectedDay = row % self.monthDayCount + 1;
+        [self.pickerView selectRow:self.selectedDay-1 + self.monthDayCount * kDatePickerCentreRow inComponent:4 animated:NO];
     }
     
     // 超限检查
     BOOL beyond = NO;
     NSInteger newDate = [self currentDateIntegerWithRow:row inComponent:component];
     if (newDate < self.minDate) {
-        self.year = self.minDate / 10000;
-        self.month = self.minDate / 100 % 100;
-        self.day = self.minDate % 100;
+        _selectedYear = self.minDate / 10000;
+        _selectedMonth = self.minDate / 100 % 100;
+        _selectedDay = self.minDate % 100;
         beyond = YES;
     } else if (newDate > self.maxDate) {
-        self.year = self.maxDate / 10000;
-        self.month = self.maxDate / 100 % 100;
-        self.day = self.maxDate % 100;
+        _selectedYear = self.maxDate / 10000;
+        _selectedMonth = self.maxDate / 100 % 100;
+        _selectedDay = self.maxDate % 100;
         beyond = YES;
     }
     
@@ -397,8 +401,8 @@
             [self.pickerView selectRow:day-1 + daysInMonth * kDatePickerCentreRow inComponent:4 animated:NO]; // 按新的每月天数设置日的行号
         }
         if (day > daysInMonth) {
-            self.day = daysInMonth;
-            [self.pickerView selectRow:self.day-1 + daysInMonth * kDatePickerCentreRow inComponent:4 animated:YES];
+            _selectedDay = daysInMonth;
+            [self.pickerView selectRow:self.selectedDay-1 + daysInMonth * kDatePickerCentreRow inComponent:4 animated:YES];
         }
         self.monthDayCount = daysInMonth;
         [self.pickerView reloadComponent:4];
@@ -406,20 +410,20 @@
     
     // 超限回滚
     if (beyond) {
-        [self.pickerView selectRow:self.year inComponent:0 animated:YES];
-        [self.pickerView selectRow:self.month-1 + 12*kDatePickerCentreRow inComponent:2 animated:YES];
-        [self.pickerView selectRow:self.day-1 + self.monthDayCount*kDatePickerCentreRow inComponent:4 animated:YES];
+        [self.pickerView selectRow:self.selectedYear inComponent:0 animated:YES];
+        [self.pickerView selectRow:self.selectedMonth-1 + 12*kDatePickerCentreRow inComponent:2 animated:YES];
+        [self.pickerView selectRow:self.selectedDay-1 + self.monthDayCount*kDatePickerCentreRow inComponent:4 animated:YES];
     }
 }
 
 - (void)setupYMSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     // 获取最新值，及滚动复位
     if (component == 0) {
-        self.year = row;
+        _selectedYear = row;
     }
     if (component == 2) {
-        self.month = row % 12 + 1;
-        [self.pickerView selectRow:self.month-1 + kDatePickerCentreRow*12 inComponent:2 animated:NO];
+        _selectedMonth = row % 12 + 1;
+        [self.pickerView selectRow:self.selectedMonth-1 + kDatePickerCentreRow*12 inComponent:2 animated:NO];
     }
     
     // 超限检查
@@ -428,19 +432,19 @@
     NSInteger minDate = self.minDate / 100 * 100;
     NSInteger maxDate = self.maxDate / 100 * 100;
     if (newDate < minDate) {
-        self.year = self.minDate / 10000;
-        self.month = self.minDate / 100 % 100;
+        _selectedYear = self.minDate / 10000;
+        _selectedMonth = self.minDate / 100 % 100;
         beyond = YES;
     } else if (newDate > maxDate) {
-        self.year = self.maxDate / 10000;
-        self.month = self.maxDate / 100 % 100;
+        _selectedYear = self.maxDate / 10000;
+        _selectedMonth = self.maxDate / 100 % 100;
         beyond = YES;
     }
     
     // 超限回滚
     if (beyond) {
-        [self.pickerView selectRow:self.year inComponent:0 animated:YES];
-        [self.pickerView selectRow:self.month-1 + 12*kDatePickerCentreRow inComponent:2 animated:YES];
+        [self.pickerView selectRow:self.selectedYear inComponent:0 animated:YES];
+        [self.pickerView selectRow:self.selectedMonth-1 + 12*kDatePickerCentreRow inComponent:2 animated:YES];
     }
 }
 
@@ -448,13 +452,13 @@
     // 获取最新值，及滚动复位
     BOOL monthDayMayChange = NO;
     if (component == 0) {
-        self.month = row % 12 + 1;
-        [self.pickerView selectRow:self.month-1 + kDatePickerCentreRow*12 inComponent:0 animated:NO];
+        _selectedMonth = row % 12 + 1;
+        [self.pickerView selectRow:self.selectedMonth-1 + kDatePickerCentreRow*12 inComponent:0 animated:NO];
         monthDayMayChange = YES;
     }
     if (component == 2) {
-        self.day = row % self.monthDayCount + 1;
-        [self.pickerView selectRow:self.day-1 + self.monthDayCount * kDatePickerCentreRow inComponent:2 animated:NO];
+        _selectedDay = row % self.monthDayCount + 1;
+        [self.pickerView selectRow:self.selectedDay-1 + self.monthDayCount * kDatePickerCentreRow inComponent:2 animated:NO];
     }
     
     // 检测每月天数改变
@@ -465,17 +469,12 @@
             [self.pickerView selectRow:day-1 + daysInMonth * kDatePickerCentreRow inComponent:2 animated:NO]; // 按新的每月天数设置日的行号
         }
         if (day > daysInMonth) {
-            self.day = daysInMonth;
-            [self.pickerView selectRow:self.day-1 + daysInMonth * kDatePickerCentreRow inComponent:2 animated:YES];
+            _selectedDay = daysInMonth;
+            [self.pickerView selectRow:self.selectedDay-1 + daysInMonth * kDatePickerCentreRow inComponent:2 animated:YES];
         }
         self.monthDayCount = daysInMonth;
         [self.pickerView reloadComponent:2];
     }
-}
-
-- (void)whenSelectChange {
-    _selectedDate = self.dateMode==DRDatePickerModeMD?nil:[self currentDateWithDay:self.day];
-    kDR_SAFE_BLOCK(self.onSelectChangeBlock, self.selectedDate, self.year, self.month, self.day);
 }
 
 #pragma mark - setup xib

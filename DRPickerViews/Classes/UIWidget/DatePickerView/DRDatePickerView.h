@@ -17,17 +17,21 @@ typedef NS_ENUM(NSInteger, DRDatePickerMode) {
 IB_DESIGNABLE
 @interface DRDatePickerView : UIView
 
-@property (nonatomic, assign) DRDatePickerMode dateMode; // default DRDatePickerModeYMD
 @property (nonatomic, assign) IBInspectable NSInteger dateModeXib;
+@property (nonatomic, assign) DRDatePickerMode dateMode; // default DRDatePickerModeYMD
+
+@property (nonatomic, copy) void (^onSelectChangeBlock) (NSDate *date, NSInteger month, NSInteger day);
 @property (nonatomic, strong, readonly) NSDate *selectedDate;
+@property (nonatomic, assign, readonly) NSInteger selectedYear;
+@property (nonatomic, assign, readonly) NSInteger selectedMonth;
+@property (nonatomic, assign, readonly) NSInteger selectedDay;
 
 // 在执行该方法前先设置dateMode
 - (void)setupWithCurrentDate:(NSDate *)currentDate
                      minDate:(NSDate *)minDate
                      maxDate:(NSDate *)maxDate
                        month:(NSInteger)month
-                         day:(NSInteger)day
-           selectChangeBlock:(void(^)(NSDate *date, NSInteger year, NSInteger month, NSInteger day))selectChangeBlock;
+                         day:(NSInteger)day;
 
 - (void)refreshWithDate:(NSDate *)date
                   month:(NSInteger)month

@@ -48,12 +48,12 @@
         case DRPickerTypeBirthday: {
             opt = [DRPickerBirthdayOption optionWithTitle:@"生日" minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
             DRPickerBirthdayOption *lunarOpt = (DRPickerBirthdayOption *)opt;
-            lunarOpt.year = 2018;
+            lunarOpt.year = -1;
             lunarOpt.month = 12;
             lunarOpt.day = 4;
             lunarOpt.isLunar = YES;
             lunarOpt.leapMonth = NO;
-            lunarOpt.ignoreYear = NO;
+            lunarOpt.ignoreYear = YES;
         } break;
             
         case DRPickerTypePlanEnd: {
