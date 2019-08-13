@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     
     // 数值带单位选择器，如xx天  xx岁
     // 入参：DRPickerValueSelectOption
-    // 出参：NSNumber
+    // 出参：NSNumber，选中的数值，如选择15天，则number为15
     DRPickerTypeValueSelect,
     
     // 简单字符串选项
@@ -342,10 +342,29 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 
 
 @interface DRPickerValueSelectOption : DRPickerOptionBase
-
+/**
+ 滚动显示的最小值
+ */
 @property (nonatomic, assign) NSInteger minValue;
+
+/**
+ 滚动显示的最大值
+ */
 @property (nonatomic, assign) NSInteger maxValue;
+
+/**
+ 显示单位
+ */
 @property (nonatomic, copy) NSString *valueUnit;
+
+/**
+ 前缀
+ */
+@property (nonatomic, copy) NSString *prefixUnit;
+
+/**
+ 当前值
+ */
 @property (nonatomic, assign) NSInteger currentValue;
 
 + (instancetype)optionWithTitle:(NSString *)title

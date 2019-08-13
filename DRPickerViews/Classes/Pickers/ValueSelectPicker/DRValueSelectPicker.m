@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unitLabel;
+@property (weak, nonatomic) IBOutlet UILabel *prefixUnitLabel;
 
 @end
 
@@ -33,6 +34,7 @@
     });
     
     self.unitLabel.textColor = [DRUIWidgetUtil normalColor];
+    self.prefixUnitLabel.textColor = [DRUIWidgetUtil normalColor];
 }
 
 - (void)prepareToShow {
@@ -43,6 +45,7 @@
         [self.pickerView selectRow:row inComponent:0 animated:NO];
     }
     self.unitLabel.text = opt.valueUnit;
+    self.prefixUnitLabel.text = opt.prefixUnit;
     self.valueLabel.text = [NSString stringWithFormat:@"%ld", opt.maxValue];
 }
 
