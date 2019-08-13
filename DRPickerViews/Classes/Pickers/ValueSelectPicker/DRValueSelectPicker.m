@@ -47,6 +47,9 @@
     self.unitLabel.text = opt.valueUnit;
     self.prefixUnitLabel.text = opt.prefixUnit;
     self.valueLabel.text = [NSString stringWithFormat:@"%ld", opt.maxValue];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.pickerView reloadAllComponents];
+    });
 }
 
 - (id)pickedObject {

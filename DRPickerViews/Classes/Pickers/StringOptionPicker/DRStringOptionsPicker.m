@@ -45,6 +45,9 @@
         }
     }
     [self.pickerView selectRow:row inComponent:0 animated:NO];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.pickerView reloadAllComponents];
+    });
 }
 
 - (id)pickedObject {

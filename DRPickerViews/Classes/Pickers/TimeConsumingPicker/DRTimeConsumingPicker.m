@@ -59,6 +59,9 @@
         [self.pickerView selectRow:self.day inComponent:0 animated:NO];
         [self.pickerView selectRow:self.hour inComponent:2 animated:NO];
         [self.pickerView selectRow:minuteRow inComponent:4 animated:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.pickerView reloadAllComponents];
+        });
     });
 }
 

@@ -35,6 +35,9 @@
 
 - (void)prepareToShow {
     [self.pickerView selectRow:6 inComponent:3 animated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.pickerView reloadAllComponents];
+    });
 }
 
 - (id)pickedObject {
