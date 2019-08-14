@@ -84,6 +84,11 @@
     return self.pickerOption.showInView;
 }
 
+- (BOOL)shouldDismissWhenTapSpaceArea {
+    kDR_SAFE_BLOCK(self.pickerOption.cancelBlock);
+    return YES;
+}
+
 #pragma mark - private
 /**
  动画显示选择器
