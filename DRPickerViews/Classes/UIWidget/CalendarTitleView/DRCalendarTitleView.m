@@ -40,14 +40,8 @@
 
 - (void)setCurrentMonth:(NSDate *)currentMonth {
     _currentMonth = currentMonth;
-    NSString *title;
-    if (currentMonth.isThisYear) {
-        title = [currentMonth dateStringFromFormatterString:@"MM"];
-    } else {
-        title = [currentMonth dateStringFromFormatterString:@"yyyy/MM"];
-    }
     [UIView performWithoutAnimation:^{
-        [self.titleButton setTitle:title
+        [self.titleButton setTitle:[currentMonth dateStringFromFormatterString:@"yyyy/MM"]
                           forState:UIControlStateNormal];
         [self.titleButton layoutIfNeeded];
     }];
