@@ -18,8 +18,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIButton *titleButton;
-@property (weak, nonatomic) IBOutlet UIImageView *leftMarkImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *rightMarkImageView;
+@property (weak, nonatomic) IBOutlet UIButton *lastMonthButton;
+@property (weak, nonatomic) IBOutlet UIButton *nextMonthButton;
 @property (weak, nonatomic) IBOutlet UIView *bottomLine;
 
 @property (nonatomic, strong) NSDate *minMonth;
@@ -54,16 +54,16 @@
     
     NSComparisonResult result = [self.calendar compareDate:currentMonth toDate:self.minMonth toUnitGranularity:NSCalendarUnitMonth];
     if (result == NSOrderedAscending || result == NSOrderedSame) {
-        self.leftMarkImageView.hidden = YES;
+        self.lastMonthButton.hidden = YES;
     } else {
-        self.leftMarkImageView.hidden = NO;
+        self.lastMonthButton.hidden = NO;
     }
     
     result = [self.calendar compareDate:currentMonth toDate:self.maxMonth toUnitGranularity:NSCalendarUnitMonth];
     if (result == NSOrderedDescending || result == NSOrderedSame) {
-        self.rightMarkImageView.hidden = YES;
+        self.nextMonthButton.hidden = YES;
     } else {
-        self.rightMarkImageView.hidden = NO;
+        self.nextMonthButton.hidden = NO;
     }
 }
 
@@ -104,6 +104,16 @@
     }
 }
 
+- (IBAction)onLastMonthAction:(id)sender {
+    self.currentMonth = self.currentMonth.lastMonth;
+    kDR_SAFE_BLOCK(self.onYearMonthChangeBlock, self.currentMonth);
+}
+
+- (IBAction)onNextMonthAction:(id)sender {
+    self.currentMonth = self.currentMonth.nextMonth;
+    kDR_SAFE_BLOCK(self.onYearMonthChangeBlock, self.currentMonth);
+}
+
 #pragma mark - setup xib
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
@@ -137,17 +147,6 @@
         [self.titleButton setTitleColor:[DRUIWidgetUtil normalColor] forState:UIControlStateNormal];
         self.showBottomLine = YES;
         self.fontSize = 13;
-        
-        kDRWeakSelf
-        [self.leftMarkImageView bk_whenTapped:^{
-            weakSelf.currentMonth = weakSelf.currentMonth.lastMonth;
-            kDR_SAFE_BLOCK(weakSelf.onYearMonthChangeBlock, weakSelf.currentMonth);
-        }];
-        
-        [self.rightMarkImageView bk_whenTapped:^{
-            weakSelf.currentMonth = weakSelf.currentMonth.nextMonth;
-            kDR_SAFE_BLOCK(weakSelf.onYearMonthChangeBlock, weakSelf.currentMonth);
-        }];
     }
 }
 

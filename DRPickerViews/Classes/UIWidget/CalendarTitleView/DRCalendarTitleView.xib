@@ -14,8 +14,8 @@
             <connections>
                 <outlet property="bottomLine" destination="tbW-Z0-Y9t" id="vH7-ul-NCL"/>
                 <outlet property="containerView" destination="iN0-l3-epB" id="YZC-8t-kEG"/>
-                <outlet property="leftMarkImageView" destination="puD-aS-fM8" id="sYQ-i1-TIL"/>
-                <outlet property="rightMarkImageView" destination="jJL-5W-du2" id="h8G-ZY-j6V"/>
+                <outlet property="lastMonthButton" destination="j9G-Gu-Ec7" id="2T6-uj-ryi"/>
+                <outlet property="nextMonthButton" destination="GcV-eq-DdD" id="bWT-cR-2Eh"/>
                 <outlet property="titleButton" destination="KAM-Ff-re6" id="PGu-cq-fr3"/>
             </connections>
         </placeholder>
@@ -24,12 +24,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popups_icon_left_nor" translatesAutoresizingMaskIntoConstraints="NO" id="puD-aS-fM8">
-                    <rect key="frame" x="57" y="0.0" width="50" height="43.5"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9G-Gu-Ec7">
+                    <rect key="frame" x="57" y="0.0" width="50" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="50" id="tgJ-AU-KYn"/>
+                        <constraint firstAttribute="width" constant="50" id="PWa-te-am9"/>
                     </constraints>
-                </imageView>
+                    <state key="normal" image="popups_icon_left_nor"/>
+                    <connections>
+                        <action selector="onLastMonthAction:" destination="-1" eventType="touchUpInside" id="nsr-cn-hsU"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAM-Ff-re6">
                     <rect key="frame" x="120" y="0.0" width="80" height="44"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -43,12 +47,6 @@
                         <action selector="onTitleButtonAction:" destination="-1" eventType="touchUpInside" id="trn-X6-DGG"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popups_icon_right_nor" translatesAutoresizingMaskIntoConstraints="NO" id="jJL-5W-du2">
-                    <rect key="frame" x="213" y="0.0" width="50" height="43.5"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="50" id="KCl-Yh-qMl"/>
-                    </constraints>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbW-Z0-Y9t">
                     <rect key="frame" x="16" y="43.5" width="288" height="0.5"/>
                     <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -57,25 +55,35 @@
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="6tK-Br-aAO"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GcV-eq-DdD">
+                    <rect key="frame" x="213" y="0.0" width="50" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="0l1-qU-a32"/>
+                    </constraints>
+                    <state key="normal" image="popups_icon_right_nor"/>
+                    <connections>
+                        <action selector="onNextMonthAction:" destination="-1" eventType="touchUpInside" id="8L5-lM-WOS"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="GcV-eq-DdD" firstAttribute="leading" secondItem="KAM-Ff-re6" secondAttribute="trailing" constant="13" id="2B8-n6-8Xd"/>
+                <constraint firstItem="GcV-eq-DdD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="414-6Z-jGv"/>
+                <constraint firstAttribute="bottom" secondItem="GcV-eq-DdD" secondAttribute="bottom" id="D8l-Yj-5TS"/>
+                <constraint firstAttribute="bottom" secondItem="j9G-Gu-Ec7" secondAttribute="bottom" id="E7G-CX-yQI"/>
                 <constraint firstItem="KAM-Ff-re6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Egn-Wt-IVk"/>
-                <constraint firstItem="jJL-5W-du2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GWK-H8-3es"/>
-                <constraint firstItem="jJL-5W-du2" firstAttribute="leading" secondItem="KAM-Ff-re6" secondAttribute="trailing" constant="13" id="HW0-jW-PqW"/>
+                <constraint firstItem="j9G-Gu-Ec7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KB6-vn-szw"/>
                 <constraint firstAttribute="bottom" secondItem="KAM-Ff-re6" secondAttribute="bottom" id="Scx-lC-1hu"/>
+                <constraint firstItem="KAM-Ff-re6" firstAttribute="leading" secondItem="j9G-Gu-Ec7" secondAttribute="trailing" constant="13" id="aUY-01-bEe"/>
                 <constraint firstAttribute="bottom" secondItem="tbW-Z0-Y9t" secondAttribute="bottom" id="dev-Vj-OOk"/>
                 <constraint firstAttribute="trailing" secondItem="tbW-Z0-Y9t" secondAttribute="trailing" constant="16" id="dvL-XM-OBe"/>
                 <constraint firstItem="tbW-Z0-Y9t" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="e17-hR-RbA"/>
-                <constraint firstItem="tbW-Z0-Y9t" firstAttribute="top" secondItem="jJL-5W-du2" secondAttribute="bottom" id="hBZ-3G-EvR"/>
-                <constraint firstItem="KAM-Ff-re6" firstAttribute="leading" secondItem="puD-aS-fM8" secondAttribute="trailing" constant="13" id="hcC-ah-zTa"/>
-                <constraint firstItem="tbW-Z0-Y9t" firstAttribute="top" secondItem="puD-aS-fM8" secondAttribute="bottom" id="oPR-QN-cD5"/>
                 <constraint firstItem="KAM-Ff-re6" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="piY-Bt-Sh6"/>
-                <constraint firstItem="puD-aS-fM8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xcf-bI-GFg"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="47.826086956521742" y="35.491071428571423"/>
+            <point key="canvasLocation" x="47.826086956521742" y="34.821428571428569"/>
         </view>
     </objects>
     <resources>
