@@ -64,9 +64,6 @@
     
     if (self.scrollView.subviews.count == 0) {
         kDRWeakSelf
-        // 分段选择器设置
-        self.segmentBar.selectedIndex = self.isLunar;
-        
         // 获取当前反显日期
         DRPickerWithLunarOption * lunarOption = (DRPickerWithLunarOption *)self.pickerOption;
         NSDate *minDate = lunarOption.minDate;
@@ -132,6 +129,7 @@
                 [self.scrollView addSubview:self.lunarPickerView];
             }
         });
+        self.segmentBar.selectedIndex = self.isLunar;
     }
 }
 

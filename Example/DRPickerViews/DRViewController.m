@@ -48,7 +48,7 @@
         case DRPickerTypeBirthday: {
             opt = [DRPickerBirthdayOption optionWithTitle:@"生日" minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
             DRPickerBirthdayOption *lunarOpt = (DRPickerBirthdayOption *)opt;
-            lunarOpt.year = -1;
+            lunarOpt.year = 2019;
             lunarOpt.month = 12;
             lunarOpt.day = 4;
             lunarOpt.isLunar = YES;
