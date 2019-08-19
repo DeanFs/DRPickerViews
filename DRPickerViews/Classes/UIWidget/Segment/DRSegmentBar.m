@@ -37,6 +37,7 @@
     DRSegmentBarItem *item = kDR_LOAD_XIB_NAMED(NSStringFromClass([self class]));
     item.titleLabel.text = title;
     item.onTapBlock = whenTapBlock;
+    item.selected = NO;
     return item;
 }
 

@@ -9,10 +9,12 @@
 #import "DRHourMinutePicker.h"
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/NSDate+DRExtension.h>
+#import <DRCategories/NSString+DRExtension.h>
 #import <JXExtension/JXExtension.h>
 #import <HexColors/HexColors.h>
 #import "DRHourMinutePickerView.h"
 #import "DROptionCardView.h"
+#import "DRUIWidgetUtil.h"
 
 @interface DRHourMinutePicker ()<DRHourMinutePickerViewDelegate>
 
@@ -186,16 +188,16 @@
 
 - (void)hourMinutePickerView:(DRHourMinutePickerView *)hourMinutePickerView
              didSeletedValue:(DRHourMinutePickerValueModel *)selectedValue {
-    self.tipLabel.hidden = YES;
-    self.topBar.rightButtonEnble = YES;
+    self.topBar.rightButtonEnble = NO;
+    self.tipLabel.textColor = [UIColor hx_colorWithHexRGBAString:@"E95157"];
     if (selectedValue.beyondOneDay) {
         self.tipLabel.text = @"时间段设置不能跨天";
-        self.tipLabel.hidden = NO;
-        self.topBar.rightButtonEnble = NO;
     } else if (!selectedValue.enoughDuration) {
         self.tipLabel.text = [NSString stringWithFormat:@"时间段设置不能少于%ld分钟", self.pickerView.minDuration];
-        self.tipLabel.hidden = NO;
-        self.topBar.rightButtonEnble = NO;
+    } else {
+        self.tipLabel.text = [NSString stringWithFormat:@"持续%@", [NSString descForTimeDuration:selectedValue.duration]];
+        self.tipLabel.textColor = [DRUIWidgetUtil descColor];
+        self.topBar.rightButtonEnble = YES;
     }
 }
 

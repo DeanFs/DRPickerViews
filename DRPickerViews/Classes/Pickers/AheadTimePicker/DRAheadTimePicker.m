@@ -103,20 +103,19 @@
     if (component == 3 && row == 0 && component1SelectedRow == 0) {
         self.topBar.rightButtonEnble = NO;
         [pickerView selectRow:1 inComponent:3 animated:YES];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kDRAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.topBar.rightButtonEnble = YES;
+            [pickerView reloadComponent:3];
         });
         return;
     }
     
     if (component == 1 && row >= 1) {
-        
         NSMutableArray *newDataSouce = self.dataSouce.mutableCopy;
         newDataSouce[3] = @[@"0", @"30"];
         self.dataSouce = newDataSouce;
         [pickerView reloadComponent:3];
-    }
-    else if (component == 1 && row == 0) {
+    } else if (component == 1 && row == 0) {
         NSMutableArray *newDataSouce = self.dataSouce.mutableCopy;
         NSMutableArray *mins = @[].mutableCopy;
         for (int i = 0; i < 12; i++) {

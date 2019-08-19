@@ -11,6 +11,7 @@
 #import <DRMacroDefines/DRMacroDefines.h>
 #import "DRUIWidgetUtil.h"
 #import <DRCategories/NSDate+DRExtension.h>
+#import <BlocksKit/UIView+BlocksKit.h>
 #import "DRYearMonthPicker.h"
 
 @interface DRCalendarTitleView ()
@@ -74,7 +75,7 @@
     self.bottomLine.hidden = !showBottomLine;
 }
 
-- (void)setWillShowYearMonthPickerBlock:(void (^)(void (^)(NSDate *)))willShowYearMonthPickerBlock {
+- (void)setWillShowYearMonthPickerBlock:(dispatch_block_t)willShowYearMonthPickerBlock {
     _willShowYearMonthPickerBlock = willShowYearMonthPickerBlock;
     if (willShowYearMonthPickerBlock) {
         self.titleButton.enabled = YES;
@@ -88,13 +89,11 @@
     }
 }
 
+#pragma mark - actions
 - (IBAction)onTitleButtonAction:(id)sender {
     kDRWeakSelf
     if (self.willShowYearMonthPickerBlock) {
-        self.willShowYearMonthPickerBlock(^(NSDate *yearMonth) {
-            weakSelf.currentMonth = yearMonth;
-            kDR_SAFE_BLOCK(weakSelf.onYearMonthChangeBlock, yearMonth);
-        });
+        self.willShowYearMonthPickerBlock();
     } else {
         DRPickerDateOption *opt = [DRPickerDateOption optionWithTitle:@"选择日期" currentDate:self.currentMonth minDate:self.minMonth maxDate:self.maxMonth];
         [DRYearMonthPicker showPickerViewWithOption:opt setupBlock:nil pickDoneBlock:^BOOL(DRBaseAlertPicker *picker, id pickedObject) {
@@ -138,6 +137,17 @@
         [self.titleButton setTitleColor:[DRUIWidgetUtil normalColor] forState:UIControlStateNormal];
         self.showBottomLine = YES;
         self.fontSize = 13;
+        
+        kDRWeakSelf
+        [self.leftMarkImageView bk_whenTapped:^{
+            weakSelf.currentMonth = weakSelf.currentMonth.lastMonth;
+            kDR_SAFE_BLOCK(weakSelf.onYearMonthChangeBlock, weakSelf.currentMonth);
+        }];
+        
+        [self.rightMarkImageView bk_whenTapped:^{
+            weakSelf.currentMonth = weakSelf.currentMonth.nextMonth;
+            kDR_SAFE_BLOCK(weakSelf.onYearMonthChangeBlock, weakSelf.currentMonth);
+        }];
     }
 }
 
