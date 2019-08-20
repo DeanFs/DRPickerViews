@@ -60,6 +60,7 @@
 }
 
 - (void)prepareToShow {
+    self.tipLabel.hidden = YES;
     self.pickerView.timeScale = ((DRPickerHMBaseOption *)self.pickerOption).timeScale;
     
     if (self.type == DRHourMinutePickerTypeResetDate) {
@@ -85,6 +86,7 @@
     }
     
     if (hmOption.forDuration) {
+        self.tipLabel.hidden = NO;
         self.pickerViewTop.constant = 20;
         self.pickerView.type = DRHourMinutePickerViewTypeDuration;
         self.pickerView.minDuration = hmOption.minDuration;
