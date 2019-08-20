@@ -32,7 +32,7 @@
         columnSpace *= (kDRScreenWidth / 375);
     }
     self.width = CGRectGetWidth(self.collectionView.frame);
-    CGFloat itemWidth = (self.width - (self.columnCount - 1) * columnSpace) / self.columnCount;
+    CGFloat itemWidth = floor((self.width - (self.columnCount - 1) * columnSpace) / self.columnCount);
     self.itemSize = CGSizeMake(itemWidth, self.lineHeight);
 }
 

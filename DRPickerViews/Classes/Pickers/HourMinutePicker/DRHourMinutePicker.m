@@ -117,7 +117,7 @@
             self.timeTitleSectionView.hidden = YES;
             self.weekContainerViewHeight.constant = 106;
         }
-        self.weekDaySelectView.allOptions = @[@"一", @"二", @"三", @"四", @"五", @"六", @"七"];
+        self.weekDaySelectView.allOptions = @[@"一", @"二", @"三", @"四", @"五", @"六", @"日"];
         self.weekDaySelectView.selectedIndexs = [self getSelectedOptionIndexs];
         self.selectedIndex = [self getSelectedOptionIndexs];
         self.weekDaySelectView.onSelectionChangeBlock = ^(NSArray<NSString *> *selectedOptions, NSArray<NSNumber *> *selectedIndexs) {
