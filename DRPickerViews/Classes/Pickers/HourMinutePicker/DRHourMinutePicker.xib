@@ -90,8 +90,8 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间段不能少于30分钟，且不能跨天设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAB-f5-C1C">
-                            <rect key="frame" x="78.333333333333329" y="11" width="218.33333333333337" height="12"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAB-f5-C1C">
+                            <rect key="frame" x="187.66666666666666" y="11" width="0.0" height="12"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="12" id="NAX-b2-RDM"/>
                             </constraints>
