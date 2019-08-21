@@ -42,6 +42,8 @@
                     self.backCoverView.alpha = 1.0;
                     self.alpha = 1.0;
                     self.y = [self yFromSize:size];
+                } completion:^(BOOL finished) {
+                    [self viewDidShow];
                 }];
             });
         } break;
@@ -56,6 +58,8 @@
                     self.backCoverView.alpha = 1.0;
                     self.alpha = 1.0;
                     self.y = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame) + [self topPaddingFromStatusBar];
+                } completion:^(BOOL finished) {
+                    [self viewDidShow];
                 }];
             });
         } break;
@@ -71,6 +75,8 @@
                     self.backCoverView.alpha = 1.0;
                     self.alpha = 1.0;
                     self.transform = CGAffineTransformIdentity;
+                } completion:^(BOOL finished) {
+                    [self viewDidShow];
                 }];
             });
         }
@@ -90,6 +96,7 @@
                 self.y = kDRScreenHeight;
             } completion:^(BOOL finished) {
                 [self.backCoverView removeFromSuperview];
+                [self viewDidDismiss];
             }];
         } break;
             
@@ -100,6 +107,7 @@
                 self.y = -size.height;
             } completion:^(BOOL finished) {
                 [self.backCoverView removeFromSuperview];
+                [self viewDidDismiss];
             }];
         } break;
             
@@ -109,6 +117,7 @@
                 self.transform = CGAffineTransformMakeScale(0.1, 0.1);
             } completion:^(BOOL finished) {
                 [self.backCoverView removeFromSuperview];
+                [self viewDidDismiss];
             }];
         }
             
@@ -161,6 +170,16 @@
 // 指定添加到哪个视图，默认keyWindow
 - (UIView *)showInView {
     return kDRWindow;
+}
+
+// 显示动画已经执行完成
+- (void)viewDidShow {
+    
+}
+
+// 隐藏动画执行完成
+- (void)viewDidDismiss {
+    
 }
 
 #pragma mark - private

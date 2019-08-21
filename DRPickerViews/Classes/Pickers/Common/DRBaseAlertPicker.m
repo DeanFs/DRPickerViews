@@ -38,14 +38,6 @@
     [pickerView show];
 }
 
-/**
- 动画隐藏选择器
- */
-- (void)dismiss {
-    [super dismiss];
-    kDR_SAFE_BLOCK(self.pickerOption.dismissBlock);
-}
-
 #pragma mark - 子类中可能需要重写的方法
 + (instancetype)pickerView {
     return kDR_LOAD_XIB_NAMED(NSStringFromClass([self class]));
@@ -87,6 +79,14 @@
 - (BOOL)shouldDismissWhenTapSpaceArea {
     kDR_SAFE_BLOCK(self.pickerOption.cancelBlock);
     return YES;
+}
+
+- (void)viewDidShow {
+    kDR_SAFE_BLOCK(self.pickerOption.didShowBlock);
+}
+
+- (void)viewDidDismiss {
+    kDR_SAFE_BLOCK(self.pickerOption.dismissBlock);
 }
 
 #pragma mark - private

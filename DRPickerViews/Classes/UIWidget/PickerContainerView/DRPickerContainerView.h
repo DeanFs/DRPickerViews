@@ -33,6 +33,10 @@ typedef NS_ENUM(NSInteger, DRPickerShowPosition) {
 - (BOOL)shouldDismissWhenTapSpaceArea;
 // 指定添加到哪个视图，默认keyWindow
 - (UIView *)showInView;
+// 显示动画已经执行完成
+- (void)viewDidShow;
+// 隐藏动画执行完成
+- (void)viewDidDismiss;
 
 #pragma mark - 子类中直接调用
 // 高不调整

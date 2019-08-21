@@ -116,6 +116,11 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 @property (nonatomic, copy) dispatch_block_t cancelBlock;
 
 /**
+ 显示动画执行完成的回调
+ */
+@property (nonatomic, copy) dispatch_block_t didShowBlock;
+
+/**
  选择器隐藏时的回调
  */
 @property (nonatomic, copy) dispatch_block_t dismissBlock;
