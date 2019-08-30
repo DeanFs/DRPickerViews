@@ -504,7 +504,7 @@
 
 - (void)setup {
     UIPickerView *picker = [[UIPickerView alloc] init];
-    picker.backgroundColor = [UIColor clearColor];
+    picker.backgroundColor = [UIColor whiteColor];
     [self addSubview:picker];
     [picker mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.right.mas_offset(0);
