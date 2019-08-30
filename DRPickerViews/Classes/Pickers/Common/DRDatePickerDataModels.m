@@ -187,6 +187,10 @@
         _mutableSelection = NO;
         _maxSelectCount = 3;
         _minSelectCount = 1;
+        _columnSpace = 13;
+        _lineHeight = 32;
+        _fontSize = 13;
+        _itemCornerRadius = 6;
         _showPageControl = NO;
         _pageControlHeight = 30;
     }

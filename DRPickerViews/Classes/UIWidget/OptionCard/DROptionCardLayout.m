@@ -12,8 +12,8 @@
 @interface DROptionCardLayout ()
 
 @property (nonatomic, assign) CGFloat height;
-@property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat lineSpace;
+@property (nonatomic, assign) CGFloat columnGap;
 @property (nonatomic, assign) NSInteger itemCount;
 
 @end
@@ -27,12 +27,15 @@
     if (self.showPageControl) {
         self.height -= self.pageControlHeight;
     }
-    CGFloat columnSpace = self.columnSpace;
+    self.columnGap = self.columnSpace;
+    CGFloat pixel = 1.0 / [UIScreen mainScreen].scale;
     if (kDRScreenWidth < 375) {
-        columnSpace *= (kDRScreenWidth / 375);
+        CGFloat rate = kDRScreenWidth / 375;
+        self.columnGap = floor(self.columnSpace * rate / pixel) * pixel;
     }
-    self.width = CGRectGetWidth(self.collectionView.frame);
-    CGFloat itemWidth = floor((self.width - (self.columnCount - 1) * columnSpace) / self.columnCount);
+    CGFloat boundsWidth = CGRectGetWidth(self.collectionView.bounds);
+    CGFloat itemWidth = floor(((boundsWidth - (self.columnCount - 1) * self.columnGap) / self.columnCount) / pixel) * pixel;
+    _pageWidth = (self.columnGap + itemWidth) * self.columnCount;
     self.itemSize = CGSizeMake(itemWidth, self.lineHeight);
 }
 
@@ -45,7 +48,7 @@
         self.lineSpace = (self.height - self.lineCount * self.lineHeight) / (self.lineCount - 1);
     }
     [self.collectionView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-    return CGSizeMake(self.pageCount * self.width, self.height);
+    return CGSizeMake(self.pageCount * self.pageWidth - self.columnGap, self.height);
 }
 
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
@@ -72,7 +75,7 @@
     NSInteger col = itemInPage % self.columnCount;
     NSInteger row = itemInPage / self.columnCount;
     
-    CGFloat x = (self.itemSize.width + self.columnSpace)*col + pageNumber * self.collectionView.bounds.size.width;
+    CGFloat x = (self.itemSize.width + self.columnGap)*col + pageNumber * self.pageWidth;
     CGFloat y = (self.itemSize.height + self.lineSpace)*row ;
     
     attri.frame = CGRectMake(x, y, self.itemSize.width, self.itemSize.height);

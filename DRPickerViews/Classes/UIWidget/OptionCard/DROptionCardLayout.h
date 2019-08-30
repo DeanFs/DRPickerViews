@@ -16,6 +16,7 @@
 @property (nonatomic, assign) CGFloat lineHeight;
 @property (nonatomic, assign) BOOL showPageControl;
 @property (nonatomic, assign) CGFloat pageControlHeight;
+@property (nonatomic, assign, readonly) CGFloat pageWidth;
 @property (nonatomic, assign, readonly) NSInteger pageCount;
 @property (nonatomic, copy) dispatch_block_t layoutDoneBlock;
 

@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pageControlH;
 
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSString *> *selectMap;
+@property (nonatomic, assign) CGPoint startPoint;
+@property (nonatomic, assign) CGFloat velocity;
+
 
 @end
 
@@ -190,6 +193,63 @@
     kDR_SAFE_BLOCK(self.onSelectionChangeBlock, options, optionIndexs);
 }
 
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    self.startPoint = scrollView.contentOffset;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetX = self.collectionView.contentOffset.x;
+    DROptionCardLayout *layout = (DROptionCardLayout *)self.collectionView.collectionViewLayout;
+    
+    if (fabs(offsetX - self.startPoint.x) >= layout.pageWidth) {
+        if (offsetX < self.startPoint.x) {
+            offsetX += (self.startPoint.x - offsetX - layout.pageWidth) + layout.pageWidth / 3;
+        }
+        CGFloat x = (floor(offsetX / layout.pageWidth)) * layout.pageWidth;
+        scrollView.contentOffset = CGPointMake(x, 0);
+    } else if (fabs(self.velocity) > 0 && fabs(self.velocity) < 3) {
+        CGFloat postion = self.velocity / fabs(self.velocity);
+        CGFloat x = self.startPoint.x + layout.pageWidth * postion;
+        [scrollView setContentOffset:CGPointMake(x, 0) animated:YES];
+        self.velocity = 0;
+    }
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    if (scrollView.contentOffset.x == self.startPoint.x) {
+        if (self.startPoint.x == 0 || self.startPoint.x == scrollView.contentSize.width - CGRectGetWidth(scrollView.frame)) {
+            return;
+        }
+    }
+    self.velocity = velocity.x;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate) {
+        [self resetContentOffset];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self resetContentOffset];
+}
+
+- (void)resetContentOffset {
+    CGFloat offsetX = self.collectionView.contentOffset.x;
+    DROptionCardLayout *layout = (DROptionCardLayout *)self.collectionView.collectionViewLayout;
+    
+    NSInteger passCount = (NSInteger)floor(offsetX / layout.pageWidth);
+    CGFloat restX = offsetX - passCount * layout.pageWidth;
+    CGPoint targetOffset;
+    if (restX < layout.pageWidth / 2) {
+        targetOffset = CGPointMake(layout.pageWidth * passCount, 0);
+    } else {
+        targetOffset = CGPointMake(layout.pageWidth * (passCount + 1), 0);
+    }
+    [self.collectionView setContentOffset:targetOffset animated:YES];
+}
+
 #pragma mark - setup xib
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
@@ -238,6 +298,7 @@
         self.minSelectCount = 1;
         self.showPageControl = NO;
         self.pageControlHeight = 30;
+        self.velocity = 0;
         
         kDRWeakSelf
         DROptionCardLayout *layout = (DROptionCardLayout *)self.collectionView.collectionViewLayout;

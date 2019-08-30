@@ -71,6 +71,10 @@
     self.optionCardView.beyondMaxAlert = self.cardOption.beyondMaxAlert;
     self.optionCardView.minSelectCount = self.cardOption.minSelectCount;
     self.optionCardView.belowMinAlert = self.cardOption.belowMinAlert;
+    self.optionCardView.columnSpace = self.cardOption.columnSpace;
+    self.optionCardView.lineHeight = self.cardOption.lineHeight;
+    self.optionCardView.fontSize = self.cardOption.fontSize;
+    self.optionCardView.itemCornerRadius = self.cardOption.itemCornerRadius;
     self.optionCardView.showPageControl = self.cardOption.showPageControl;
     self.optionCardView.pageControlHeight = self.cardOption.pageControlHeight;
 }

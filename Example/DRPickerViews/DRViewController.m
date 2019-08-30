@@ -115,7 +115,7 @@
         case DRPickerTypeOptionCard: {
             opt = [DRPickerOptionCardOption optionWithTitle:@"选项卡"];
             DRPickerOptionCardOption *cardOpt = (DRPickerOptionCardOption *)opt;
-            cardOpt.allOptions = @[@"快速复制", @"每天", @"每周", @"每月", @"自定义", @"选项卡", @"选项卡", @"选项卡", @"选项卡"];
+            cardOpt.allOptions = @[@"快速复制", @"每天", @"每周", @"每月", @"自定义", @"选项卡", @"选项卡", @"选项卡", @"选项卡", @"快速复制", @"每天", @"每周", @"每月", @"自定义", @"选项卡", @"选项卡", @"选项卡", @"选项卡"];
             cardOpt.selectedIndexs = @[@(1), @(3), @(7)];
             cardOpt.mutableSelection = YES;
             cardOpt.showPageControl = YES;

@@ -450,6 +450,26 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 @property (nonatomic, assign) IBInspectable NSString *belowMinAlert;
 
 /**
+ 每列间距，默认：13
+ */
+@property (nonatomic, assign) CGFloat columnSpace;
+
+/**
+ 每行高度，默认：32
+ */
+@property (nonatomic, assign) IBInspectable CGFloat lineHeight;
+
+/**
+ item 字号(平方字体)，默认：13
+ */
+@property (nonatomic, assign) IBInspectable CGFloat fontSize;
+
+/**
+ item的圆角半径，默认6
+ */
+@property (nonatomic, assign) IBInspectable CGFloat itemCornerRadius;
+
+/**
  超过一页时，是否显示分页控制器，默认 NO
  */
 @property (nonatomic, assign) IBInspectable BOOL showPageControl;
