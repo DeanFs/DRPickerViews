@@ -508,10 +508,6 @@
     }];
     self.pickerView = picker;
     _dateMode = DRDatePickerModeYMD;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];
-    });
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -531,6 +527,8 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self setupPickerView];
             });
+            
+            [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];
         });
     }
 }

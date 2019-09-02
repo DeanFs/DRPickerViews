@@ -510,10 +510,6 @@
         make.top.left.bottom.right.mas_offset(0);
     }];
     self.pickerView = picker;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];
-    });
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -533,6 +529,8 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self setupPickerView];
             });
+            
+            [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];
         });
     }
 }
