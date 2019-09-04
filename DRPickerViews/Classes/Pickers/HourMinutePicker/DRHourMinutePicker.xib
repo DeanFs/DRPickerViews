@@ -129,12 +129,15 @@
                 <outlet property="picker" destination="kUD-Tg-lR1" id="aaO-ya-ZR1"/>
                 <outlet property="pickerView" destination="kUD-Tg-lR1" id="N0a-2B-8jj"/>
                 <outlet property="pickerViewTop" destination="ffs-ks-4MS" id="NFG-bC-CXW"/>
+                <outlet property="timeSectionViewHeight" destination="OMX-si-SZT" id="HT2-AO-lF9"/>
                 <outlet property="timeTitleSectionView" destination="2rT-en-tfM" id="bHb-bR-rhn"/>
                 <outlet property="tipLabel" destination="qAB-f5-C1C" id="Ghx-4N-0aN"/>
                 <outlet property="topBar" destination="kRg-jC-lpS" id="Yt5-wg-jcW"/>
                 <outlet property="weekButtonContainerLeft" destination="1DW-yU-hgR" id="e9n-9b-i1F"/>
                 <outlet property="weekContainerViewHeight" destination="96p-Y4-PSv" id="uHE-fb-61m"/>
                 <outlet property="weekDaySelectView" destination="iLH-af-dIu" id="3Mn-og-aXf"/>
+                <outlet property="weekdaySectionTitleHeight" destination="klY-FA-mBh" id="WXe-xx-fHd"/>
+                <outlet property="weekdaySectionView" destination="8s6-Xp-gaA" id="aF3-WU-Lyx"/>
             </connections>
             <point key="canvasLocation" x="53.600000000000001" y="48.029556650246306"/>
         </view>

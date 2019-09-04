@@ -92,8 +92,8 @@
             
         case DRPickerTypeHMPlanWeek: {
             opt = [DRPickerHMPlanWeekOption optionWithTitle:@"选择周时间点"];
-//            ((DRPickerHMOnlyOption *)opt).currentTime = @"1229";
-            ((DRPickerHMPlanWeekOption *)opt).forDuration = NO;
+            ((DRPickerHMOnlyOption *)opt).currentTime = @"1229";
+            ((DRPickerHMPlanWeekOption *)opt).forDuration = YES;
             ((DRPickerHMPlanWeekOption *)opt).weekDays = @[@(1), @(3), @(7)];
             ((DRPickerHMPlanWeekOption *)opt).onlyWeekDay = NO;
         } break;

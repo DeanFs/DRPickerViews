@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DRPickerViews'
-  s.version          = '0.2.10'
+  s.version          = '0.2.11'
   s.summary          = '自定义选择器集合'
 
 # This description is used to generate tags and improve search results.
@@ -120,6 +120,7 @@ TODO: Add long description of the pod here.
     ss.subspec 'HourMinutePicker' do |sss|
       sss.source_files = 'DRPickerViews/Classes/Pickers/HourMinutePicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
+      sss.dependency 'DRPickerViews/UIWidget/SectionView'
       sss.dependency 'DRPickerViews/UIWidget/OptionCard'
       sss.dependency 'DRPickerViews/UIWidget/HourMinutePickerView'
     end

@@ -15,17 +15,21 @@
 #import "DRHourMinutePickerView.h"
 #import "DROptionCardView.h"
 #import "DRUIWidgetUtil.h"
+#import "DRSectionTitleView.h"
 
 @interface DRHourMinutePicker ()<DRHourMinutePickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet DRHourMinutePickerView *pickerView;
-@property (weak, nonatomic) IBOutlet UIView *timeTitleSectionView;
+@property (weak, nonatomic) IBOutlet DRSectionTitleView *weekdaySectionView;
+@property (weak, nonatomic) IBOutlet DRSectionTitleView *timeTitleSectionView;
 @property (weak, nonatomic) IBOutlet DROptionCardView *weekDaySelectView;
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *weekContainerViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *weekButtonContainerLeft;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pickerViewTop;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *weekdaySectionTitleHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *timeSectionViewHeight;
 
 @property (nonatomic, strong) NSArray *selectedIndex;
 
@@ -46,7 +50,7 @@
 - (CGFloat)picerViewHeight {
     if (self.type == DRHourMinutePickerTypePlanWeekConfig) {
         if (((DRPickerHMPlanWeekOption *)self.pickerOption).onlyWeekDay) {
-            return 162;
+            return 136;
         }
         return 380;
     }
@@ -110,7 +114,10 @@
         if (((DRPickerHMPlanWeekOption *)self.pickerOption).onlyWeekDay) {
             self.pickerView.hidden = YES;
             self.timeTitleSectionView.hidden = YES;
-            self.weekContainerViewHeight.constant = 106;
+            self.weekdaySectionView.hidden = YES;
+            self.weekContainerViewHeight.constant = 80;
+            self.weekdaySectionTitleHeight.constant = 0;
+            self.timeSectionViewHeight.constant = 0;
         }
         self.weekDaySelectView.allOptions = @[@"一", @"二", @"三", @"四", @"五", @"六", @"日"];
         self.weekDaySelectView.selectedIndexs = [self getSelectedOptionIndexs];
