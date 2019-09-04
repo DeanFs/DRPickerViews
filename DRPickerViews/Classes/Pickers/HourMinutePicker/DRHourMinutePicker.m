@@ -33,12 +33,6 @@
 
 @implementation DRHourMinutePicker
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    self.pickerView.delegate = self;
-}
-
 - (Class)pickerOptionClass {
     if (self.type == DRHourMinutePickerTypeResetDate) {
         return [DRPickerHMForDateOption class];
@@ -86,7 +80,8 @@
     }
     
     if (hmOption.forDuration) {
-        self.tipLabel.hidden = NO;
+        self.pickerView.delegate = self;
+        self.tipLabel.hidden = !hmOption.showDurationTip;
         self.pickerViewTop.constant = 20;
         self.pickerView.type = DRHourMinutePickerViewTypeDuration;
         self.pickerView.minDuration = hmOption.minDuration;
@@ -194,6 +189,7 @@
     self.tipLabel.textColor = [UIColor hx_colorWithHexRGBAString:@"E95157"];
     if (selectedValue.beyondOneDay) {
         self.tipLabel.text = @"时间段设置不能跨天";
+        self.topBar.rightButtonEnble = ((DRPickerHMOnlyOption *)self.pickerOption).allowBeyondDay;
     } else if (!selectedValue.enoughDuration) {
         self.tipLabel.text = [NSString stringWithFormat:@"时间段设置不能少于%ld分钟", self.pickerView.minDuration];
     } else {

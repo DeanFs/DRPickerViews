@@ -82,6 +82,9 @@
             ((DRPickerHMOnlyOption *)opt).currentTime = @"1229";
             ((DRPickerHMOnlyOption *)opt).forDuration = YES;
             ((DRPickerHMOnlyOption *)opt).canClean = YES;
+//            ((DRPickerHMOnlyOption *)opt).showDurationTip = NO;
+            ((DRPickerHMOnlyOption *)opt).minDuration = ((DRPickerHMOnlyOption *)opt).timeScale;
+            ((DRPickerHMOnlyOption *)opt).allowBeyondDay = YES;
             ((DRPickerHMOnlyOption *)opt).onCleanTimeBlock = ^(id deletedObj) {
                 kDR_LOG(@"清除时间： %@", deletedObj);
             };

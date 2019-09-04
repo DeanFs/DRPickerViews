@@ -122,6 +122,8 @@
     self = [super init];
     if (self) {
         _minDuration = kDefaultMinDuration;
+        _allowBeyondDay = NO;
+        _showDurationTip = YES;
     }
     return self;
 }

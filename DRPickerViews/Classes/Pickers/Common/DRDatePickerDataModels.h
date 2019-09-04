@@ -285,6 +285,16 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 @property (nonatomic, assign) BOOL forDuration;
 
 /**
+ 在滚轮顶部显示持续时长、小于最小时长或跨天的错误提示，默认：YES
+ */
+@property (nonatomic, assign) BOOL showDurationTip;
+
+/**
+ 允许跨天，默认：NO
+ */
+@property (nonatomic, assign) BOOL allowBeyondDay;
+
+/**
  当前小时分钟，HHmm
  */
 @property (nonatomic, copy) NSString *currentTime;
