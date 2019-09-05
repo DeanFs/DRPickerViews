@@ -79,23 +79,34 @@
 }
 
 - (void)setSelectedOptions:(NSArray<NSString *> *)selectedOptions {
+    _selectedOptions = selectedOptions;
+    NSMutableArray *indexs = [NSMutableArray array];
     for (NSString *option in selectedOptions) {
         for (NSInteger i=0; i<self.allOptions.count; i++) {
             if ([option isEqualToString:self.allOptions[i]]) {
                 if (!self.selectMap[@(i)]) {
                     self.selectMap[@(i)] = option;
+                    [indexs addObject:@(i)];
                     break;
                 }
             }
         }
     }
+    _selectedIndexs = indexs;
     [self.collectionView reloadData];
 }
 
 - (void)setSelectedIndexs:(NSArray<NSNumber *> *)selectedIndexs {
+    _selectedIndexs = selectedIndexs;
+    NSMutableArray *options = [NSMutableArray array];
     for (NSNumber *number in selectedIndexs) {
-        self.selectMap[number] = self.allOptions[number.integerValue];
+        NSString *option = self.allOptions[number.integerValue];
+        if (option.length > 0) {
+            [options addObject:option];
+        }
+        self.selectMap[number] = option;
     }
+    _selectedOptions = options;
     [self.collectionView reloadData];
 }
 
