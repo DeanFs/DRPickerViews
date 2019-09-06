@@ -252,6 +252,7 @@
 
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    [DRUIWidgetUtil hideSeparateLineForPickerView:pickerView];
     if (self.type == DRHourMinutePickerViewTypeDuration) {
         return 5;
     }
@@ -384,10 +385,6 @@
     self.timeScale = 1;
     self.minDuration = 1;
     self.backgroundColor = [UIColor whiteColor];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];
-    });
 }
 
 @end

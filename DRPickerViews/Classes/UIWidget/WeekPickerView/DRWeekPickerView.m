@@ -56,6 +56,7 @@
 
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    [DRUIWidgetUtil hideSeparateLineForPickerView:pickerView];
     return 1;
 }
 
@@ -339,10 +340,6 @@
     
     self.minSelectableRow = 0;
     self.maxSeletableRow = kRowCount-1;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];
-    });
 }
 
 #pragma mark - lazy load

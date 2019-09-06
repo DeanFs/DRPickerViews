@@ -120,6 +120,7 @@
 
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    [DRUIWidgetUtil hideSeparateLineForPickerView:pickerView];
     if (self.ignoreYear) {
         return 3;
     }
@@ -529,8 +530,6 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self setupPickerView];
             });
-            
-            [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];
         });
     }
 }

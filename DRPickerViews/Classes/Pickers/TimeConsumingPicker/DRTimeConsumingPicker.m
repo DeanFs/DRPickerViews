@@ -29,10 +29,6 @@
     
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];
-    });
 }
 
 - (void)prepareToShow {
@@ -100,6 +96,7 @@
 
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    [DRUIWidgetUtil hideSeparateLineForPickerView:pickerView];
     return 6;
 }
 

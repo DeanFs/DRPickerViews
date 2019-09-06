@@ -92,6 +92,7 @@
 
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    [DRUIWidgetUtil hideSeparateLineForPickerView:pickerView];
     if (self.dateMode == DRDatePickerModeYMD) {
         return 5;
     }
@@ -527,8 +528,6 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self setupPickerView];
             });
-            
-            [DRUIWidgetUtil hideSeparateLineForPickerView:self.pickerView];
         });
     }
 }
