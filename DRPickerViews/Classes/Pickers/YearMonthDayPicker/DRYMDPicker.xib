@@ -66,13 +66,13 @@
                             <rect key="frame" x="0.0" y="102" width="375" height="70"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4s4-gt-ly1">
-                                    <rect key="frame" x="86" y="23" width="203" height="24"/>
+                                    <rect key="frame" x="122" y="23" width="131" height="24"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_zz_tj_tishi" translatesAutoresizingMaskIntoConstraints="NO" id="Krg-90-4oj">
                                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长期计划仅展示到明年年底" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNY-Hr-8K2">
-                                            <rect key="frame" x="31" y="3.5" width="172" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="重复将长期进行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNY-Hr-8K2">
+                                            <rect key="frame" x="31" y="3.5" width="100" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>

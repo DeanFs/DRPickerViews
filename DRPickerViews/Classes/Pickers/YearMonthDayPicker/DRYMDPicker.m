@@ -39,7 +39,6 @@
 
 @property (nonatomic, strong) NSDate *quickDate; // 选择快速日期按钮计算出来的日期
 @property (nonatomic, assign) BOOL forever; // 选择长期
-//@property (nonatomic, weak) JXButton *selectedButton;
 @property (nonatomic, assign) CGFloat tipViewH;
 @property (nonatomic, assign) CGFloat buttonContainerH;
 @property (nonatomic, assign) CGFloat wholeH;
