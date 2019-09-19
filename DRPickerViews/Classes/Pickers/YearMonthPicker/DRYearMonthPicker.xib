@@ -43,7 +43,7 @@
                                 <constraint firstAttribute="height" constant="26" id="DE5-vN-DLL"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="请选择提醒日"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="请选择月份"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sLa-Sm-OKv" customClass="DROptionCardView">
