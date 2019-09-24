@@ -49,7 +49,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         NSInteger minuteRow = self.minute / option.timeScale + (self.minute % option.timeScale > 0);
-        if (self.day == 0 && self.hour == 0) {
+        if (self.day == 0 && self.hour == 0 && minuteRow > 0) {
             minuteRow --;
         }
         [self.pickerView selectRow:self.day inComponent:0 animated:NO];
