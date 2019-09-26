@@ -330,6 +330,9 @@
 }
 
 - (void)setupWithYearSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if (component % 2) {
+        return;
+    }
     // 获取最新值，及滚动复位
     NSInteger year = self.selectedMonth.lunarYear;
     NSInteger monthIndex = self.selectedMonth.index;
@@ -397,6 +400,9 @@
 }
 
 - (void)setupIgnoreYearSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if (component % 2) {
+        return;
+    }
     // 获取最新值，及滚动复位
     if (component == 0) {
         NSInteger month = row % 24;

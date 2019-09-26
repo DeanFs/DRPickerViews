@@ -7,6 +7,7 @@
 //
 
 #import "DRWeekPickerCell.h"
+#import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/NSDate+DRExtension.h>
 #import <DRCategories/NSArray+DRExtension.h>
 #import "DRUIWidgetUtil.h"
@@ -47,6 +48,20 @@
 
 @implementation DRWeekPickerCell
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    if (kDRScreenWidth < 375) {
+        self.weekLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:15];
+        for (NSInteger i=0; i<7; i++) {
+            UILabel *label = [self.dayContentView viewWithTag:1001+i];
+            if ([label isKindOfClass:[UILabel class]]) {
+                label.font = [UIFont systemFontOfSize:18];
+            }
+        }
+    }
+}
+
 - (void)setupWeekCellWithModel:(DRWeekPickerDateModel *)weekModel selected:(BOOL)selected {
     if (!weekModel) {
         return;
@@ -61,6 +76,9 @@
     }
     for (NSInteger i=0; i<7; i++) {
         UILabel *label = [self.dayContentView viewWithTag:1001+i];
+        if (![label isKindOfClass:[UILabel class]]) {
+            continue;
+        }
         label.text = weekModel.daysList[i];
         label.textColor = [DRUIWidgetUtil pickerUnSelectColor];
         if (selected) {

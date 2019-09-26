@@ -363,6 +363,9 @@
 }
 
 - (void)setupYMDSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if (component % 2) {
+        return;
+    }
     // 获取最新值，及滚动复位
     BOOL monthDayMayChange = NO;
     if (component == 0) {
@@ -418,6 +421,9 @@
 }
 
 - (void)setupYMSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if (component % 2) {
+        return;
+    }
     // 获取最新值，及滚动复位
     if (component == 0) {
         _selectedYear = row;
@@ -450,6 +456,9 @@
 }
 
 - (void)setupMDSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if (component % 2) {
+        return;
+    }
     // 获取最新值，及滚动复位
     BOOL monthDayMayChange = NO;
     if (component == 0) {
