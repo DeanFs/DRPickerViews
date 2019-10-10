@@ -7,7 +7,7 @@
 //
 
 #import "DROneWeekPicker.h"
-#import "DRWeekPickerView.h"
+#import <DRUIWidget/DRWeekPickerView.h>
 #import <DRMacroDefines/DRMacroDefines.h>
 
 @interface DROneWeekPicker ()

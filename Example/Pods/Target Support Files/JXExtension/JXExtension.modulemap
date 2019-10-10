@@ -1,0 +1,6 @@
+framework module JXExtension {
+  umbrella header "JXExtension-umbrella.h"
+
+  export *
+  module * { export * }
+}

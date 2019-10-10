@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DRYearOrYearMonthPicker">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="303"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="py2-Am-tIA" customClass="DRPickerTopBar">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="cjt-NW-LKY"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ap-OV-7iS" customClass="DRSegmentBar">
+                    <rect key="frame" x="0.0" y="56" width="414" height="56"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="Ezz-Jf-V1m"/>
+                        <constraint firstAttribute="height" constant="56" id="cwa-BY-6ys"/>
+                    </constraints>
+                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YFW-6N-EmD">
+                    <rect key="frame" x="0.0" y="112" width="414" height="191"/>
+                    <viewLayoutGuide key="contentLayoutGuide" id="YMG-hO-mlN"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="BcQ-PQ-KwR"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="py2-Am-tIA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="2MQ-8Q-hUW"/>
+                <constraint firstItem="YFW-6N-EmD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FyH-E0-oQi"/>
+                <constraint firstItem="YFW-6N-EmD" firstAttribute="top" secondItem="8ap-OV-7iS" secondAttribute="bottom" id="HUO-ja-Rz0"/>
+                <constraint firstItem="8ap-OV-7iS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OMC-qe-L1c"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="py2-Am-tIA" secondAttribute="trailing" id="VKN-d7-fvy"/>
+                <constraint firstAttribute="trailing" secondItem="YFW-6N-EmD" secondAttribute="trailing" id="fEV-9y-h5u"/>
+                <constraint firstItem="py2-Am-tIA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mof-Yn-zFr"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8ap-OV-7iS" secondAttribute="trailing" id="n2c-8x-Usl"/>
+                <constraint firstItem="8ap-OV-7iS" firstAttribute="top" secondItem="py2-Am-tIA" secondAttribute="bottom" id="xGa-Ea-vgj"/>
+                <constraint firstAttribute="bottom" secondItem="YFW-6N-EmD" secondAttribute="bottom" id="zTf-Ut-L42"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="picker" destination="YFW-6N-EmD" id="KCD-9P-jiT"/>
+                <outlet property="scrollView" destination="YFW-6N-EmD" id="Odn-Ta-R9W"/>
+                <outlet property="segmentBar" destination="8ap-OV-7iS" id="xWN-4d-A17"/>
+                <outlet property="topBar" destination="py2-Am-tIA" id="flo-IB-qnF"/>
+            </connections>
+            <point key="canvasLocation" x="-1762" y="59"/>
+        </view>
+    </objects>
+</document>

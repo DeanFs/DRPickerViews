@@ -52,6 +52,11 @@
 @end
 
 
+@implementation DRPickerYearOrYearMonthOption
+
+@end
+
+
 @implementation DRPickerWithLunarOption
 
 + (instancetype)optionWithTitle:(NSString *)title
@@ -289,5 +294,10 @@
 
 
 @implementation DRPickerOptionCardPickedObj
+
+@end
+
+
+@implementation DRPickerYearOrYearMonthPickedObj
 
 @end

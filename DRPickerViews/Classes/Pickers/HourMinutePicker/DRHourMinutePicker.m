@@ -12,10 +12,10 @@
 #import <DRCategories/NSString+DRExtension.h>
 #import <JXExtension/JXExtension.h>
 #import <HexColors/HexColors.h>
-#import "DRHourMinutePickerView.h"
-#import "DROptionCardView.h"
-#import "DRUIWidgetUtil.h"
-#import "DRSectionTitleView.h"
+#import <DRUIWidget/DRHourMinutePickerView.h>
+#import <DRUIWidget/DROptionCardView.h>
+#import <DRUIWidget/DRUIWidgetUtil.h>
+#import <DRUIWidget/DRSectionTitleView.h>
 
 @interface DRHourMinutePicker ()<DRHourMinutePickerViewDelegate>
 

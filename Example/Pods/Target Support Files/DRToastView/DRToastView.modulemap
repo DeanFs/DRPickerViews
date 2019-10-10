@@ -1,0 +1,6 @@
+framework module DRToastView {
+  umbrella header "DRToastView-umbrella.h"
+
+  export *
+  module * { export * }
+}

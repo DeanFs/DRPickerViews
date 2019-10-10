@@ -6,9 +6,9 @@
 //
 
 #import "DRBaseAlertPicker.h"
-#import "UITabBar+DRExtension.h"
-#import "UIView+DRExtension.h"
-#import "NSDate+DRExtension.h"
+#import <DRCategories/UITabBar+DRExtension.h>
+#import <DRCategories/UIView+DRExtension.h>
+#import <DRCategories/NSDate+DRExtension.h>
 #import <DRMacroDefines/DRMacroDefines.h>
 
 @interface DRBaseAlertPicker ()

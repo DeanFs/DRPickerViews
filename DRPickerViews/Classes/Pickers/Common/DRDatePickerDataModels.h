@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DRPickerContainerView.h"
+#import <DRUIWidget/DRPickerContainerView.h>
 
 #pragma mark - 选择器类型定义
 typedef NS_ENUM(NSInteger, DRPickerType) {
@@ -32,8 +32,13 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     
     // 年月选择器
     // 入参：DRPickerDateOption
-    // 出参(完成回调中的pickedObject，下同)：NSDate
+    // 出参：NSDate
     DRPickerTypeYearMoth,
+
+    // 年月或者年选择器
+    // 入参：DRPickerYearOrYearMonthOption
+    // 出参：DRPickerYearOrYearMonthPickedObj
+    DRPickerTypeYearOrYearMoth,
     
     // 年月选择器带筛选，月视图中使用
     // 入参：DRPickerYearMonthFilterOption
@@ -151,6 +156,12 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
                     currentDate:(NSDate *)currentDate
                         minDate:(NSDate *)minDate
                         maxDate:(NSDate *)maxDate;
+
+@end
+
+@interface DRPickerYearOrYearMonthOption : DRPickerDateOption
+
+@property (nonatomic, assign) BOOL isOnlyYear;
 
 @end
 
@@ -650,5 +661,12 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
  当前已经选中的选项下标
  */
 @property (nonatomic, strong) NSArray<NSNumber *> *selectedIndexs;
+
+@end
+
+@interface DRPickerYearOrYearMonthPickedObj : NSObject
+
+@property (nonatomic, assign) BOOL isOnlyYear;
+@property (nonatomic, strong) NSDate *yearMonth;
 
 @end

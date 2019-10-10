@@ -5,8 +5,8 @@
 //  Created by 冯生伟 on 2019/3/18.
 //
 
-#import "DRPickerContainerView.h"
-#import "DRPickerTopBar.h"
+#import <DRUIWidget/DRPickerContainerView.h>
+#import <DRUIWidget/DRPickerTopBar.h>
 #import "DRDatePickerDataModels.h"
 
 @class DRBaseAlertPicker;
@@ -45,11 +45,6 @@ typedef void (^DRPickerSetupBlock)(__kindof DRBaseAlertPicker *picker);
 + (void)showPickerViewWithOption:(DRPickerOptionBase *)pickerOption
                       setupBlock:(DRPickerSetupBlock)setupBlock
                    pickDoneBlock:(DRPickerInnerDoneBlock)pickDoneBlock;
-
-/**
- 动画隐藏时间选择器
- */
-- (void)dismiss;
 
 #pragma mark - 子类中可能需要重写的方法
 /**

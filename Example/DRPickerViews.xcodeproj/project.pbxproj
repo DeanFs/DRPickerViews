@@ -65,7 +65,7 @@
 		8F40CA8BDA297C5320EE556A /* Pods-DRPickerViews_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRPickerViews_Tests.debug.xcconfig"; path = "Target Support Files/Pods-DRPickerViews_Tests/Pods-DRPickerViews_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		962383468E3BE17A2AF20FA7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C289CB6368DE7ABF91072549 /* Pods_DRPickerViews_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DRPickerViews_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6891944E3A7DE42DBA03111 /* DRPickerViews.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DRPickerViews.podspec; path = ../DRPickerViews.podspec; sourceTree = "<group>"; };
+		C6891944E3A7DE42DBA03111 /* DRPickerViews.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DRPickerViews.podspec; path = ../DRPickerViews.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		ED36938946654132B991B6B2 /* Pods-DRPickerViews_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRPickerViews_Example.debug.xcconfig"; path = "Target Support Files/Pods-DRPickerViews_Example/Pods-DRPickerViews_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -332,6 +332,7 @@
 				"${BUILT_PRODUCTS_DIR}/DRPickerViews/DRPickerViews.framework",
 				"${BUILT_PRODUCTS_DIR}/DRSandboxManager/DRSandboxManager.framework",
 				"${BUILT_PRODUCTS_DIR}/DRToastView/DRToastView.framework",
+				"${BUILT_PRODUCTS_DIR}/DRUIWidget/DRUIWidget.framework",
 				"${BUILT_PRODUCTS_DIR}/HexColors/HexColors.framework",
 				"${BUILT_PRODUCTS_DIR}/JXExtension/JXExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
@@ -346,6 +347,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DRPickerViews.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DRSandboxManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DRToastView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DRUIWidget.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HexColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JXExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
