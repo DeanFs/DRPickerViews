@@ -98,6 +98,7 @@
         kDR_LOG(@"error: 请传入正确的参数类型【%@】", NSStringFromClass([self pickerOptionClass]));
         return;
     }
+    [self prepareToShow];
     
     kDRWeakSelf
     self.topBar.leftButtonActionBlock = ^(DRPickerTopBar *topBar, UIButton *tappedButton) {
@@ -126,9 +127,6 @@
         }
     };
     [self showFromPostion:self.pickerOption.showFromPosition];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self prepareToShow];
-    });
 }
 
 @end
