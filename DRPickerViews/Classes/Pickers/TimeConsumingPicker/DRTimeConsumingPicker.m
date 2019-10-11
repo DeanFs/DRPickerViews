@@ -9,8 +9,8 @@
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/UIView+DRExtension.h>
 #import <DRCategories/UIFont+DRExtension.h>
-#import <DRUIWidget/DRUIWidgetUtil.h>
-#import <DRUIWidget/DRTimeConsumePickerView.h>
+#import <DRUIWidgetKit/DRUIWidgetUtil.h>
+#import <DRUIWidgetKit/DRTimeConsumePickerView.h>
 
 @interface DRTimeConsumingPicker ()
 

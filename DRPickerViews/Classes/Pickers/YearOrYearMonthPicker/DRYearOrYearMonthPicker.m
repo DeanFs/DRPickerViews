@@ -6,9 +6,9 @@
 //
 
 #import "DRYearOrYearMonthPicker.h"
-#import <DRUIWidget/DRSegmentBar.h>
+#import <DRUIWidgetKit/DRSegmentBar.h>
 #import <DRMacroDefines/DRMacroDefines.h>
-#import <DRUIWidget/DRDatePickerView.h>
+#import <DRUIWidgetKit/DRDatePickerView.h>
 #import <DRCategories/UIView+DRExtension.h>
 
 @interface DRYearOrYearMonthPicker ()
@@ -25,7 +25,7 @@
 
 @implementation DRYearOrYearMonthPicker
 
-- (CGFloat)picerViewHeight {
+- (CGFloat)pickerViewHeight {
     return 303;
 }
 

@@ -6,9 +6,9 @@
 //
 
 #import "DRYMDWithLunarPicker.h"
-#import <DRUIWidget/DRSegmentBar.h>
-#import <DRUIWidget/DRDatePickerView.h>
-#import <DRUIWidget/DRLunarDatePickerView.h>
+#import <DRUIWidgetKit/DRSegmentBar.h>
+#import <DRUIWidgetKit/DRDatePickerView.h>
+#import <DRUIWidgetKit/DRLunarDatePickerView.h>
 #import <DRCategories/NSDate+DRExtension.h>
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/UIView+DRExtension.h>
@@ -27,7 +27,7 @@
 
 @implementation DRYMDWithLunarPicker
 
-- (CGFloat)picerViewHeight {
+- (CGFloat)pickerViewHeight {
     return 303;
 }
 

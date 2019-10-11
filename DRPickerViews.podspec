@@ -92,6 +92,31 @@ TODO: Add long description of the pod here.
       sss.source_files = 'DRPickerViews/Classes/Pickers/OptionCardPicker/*.{h,m}'
       sss.dependency 'DRPickerViews/Pickers/Common'
     end
+
+    ss.subspec 'CityPicker' do |sss|
+        sss.source_files = 'DRPickerViews/Classes/Pickers/CityPicker/*.{h,m}'
+        sss.dependency 'DRPickerViews/Pickers/Common'
+    end
+
+    ss.subspec 'ClassTableWeekPicker' do |sss|
+        sss.source_files = 'DRPickerViews/Classes/Pickers/ClassTableWeekPicker/*.{h,m}'
+        sss.dependency 'DRPickerViews/Pickers/Common'
+    end
+
+    ss.subspec 'ClassDurationPicker' do |sss|
+        sss.source_files = 'DRPickerViews/Classes/Pickers/ClassDurationPicker/*.{h,m}'
+        sss.dependency 'DRPickerViews/Pickers/Common'
+    end
+
+    ss.subspec 'ClassTimeRemindPicker' do |sss|
+        sss.source_files = 'DRPickerViews/Classes/Pickers/ClassTimeRemindPicker/*.{h,m}'
+        sss.dependency 'DRPickerViews/Pickers/Common'
+    end
+
+    ss.subspec 'WeekOrTermPicker' do |sss|
+        sss.source_files = 'DRPickerViews/Classes/Pickers/WeekOrTermPicker/*.{h,m}'
+        sss.dependency 'DRPickerViews/Pickers/Common'
+    end
   end
 
   s.subspec 'Factory' do |ss|
@@ -109,6 +134,6 @@ TODO: Add long description of the pod here.
   s.dependency 'DRCategories'
   s.dependency 'DRMacroDefines'
   s.dependency 'HexColors', '4.0.0'
-  s.dependency 'DRUIWidget'
+  s.dependency 'DRUIWidgetKit'
 
 end

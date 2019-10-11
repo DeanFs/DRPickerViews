@@ -10,9 +10,9 @@
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/UIFont+DRExtension.h>
 #import <DRCategories/UIView+DRExtension.h>
-#import <DRUIWidget/DRUIWidgetUtil.h>
-#import <DRUIWidget/DRValuePickerView.h>
-#import <DRUIWidget/DRSectionTitleView.h>
+#import <DRUIWidgetKit/DRUIWidgetUtil.h>
+#import <DRUIWidgetKit/DRValuePickerView.h>
+#import <DRUIWidgetKit/DRSectionTitleView.h>
 
 @interface DRValueSelectPicker ()
 
@@ -26,14 +26,14 @@
 
 @implementation DRValueSelectPicker
 
-- (CGFloat)picerViewHeight {
+- (CGFloat)pickerViewHeight {
     DRPickerValueSelectOption *opt = (DRPickerValueSelectOption *)self.pickerOption;
     if (opt.tipText.length > 0) {
         return 303;
     }
     self.tipViewTop.constant = 0;
     self.tipViewHeight.constant = 0;
-    return [super picerViewHeight];
+    return [super pickerViewHeight];
 }
 
 - (void)prepareToShow {

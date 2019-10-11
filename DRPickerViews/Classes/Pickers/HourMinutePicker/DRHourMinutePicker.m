@@ -12,10 +12,10 @@
 #import <DRCategories/NSString+DRExtension.h>
 #import <JXExtension/JXExtension.h>
 #import <HexColors/HexColors.h>
-#import <DRUIWidget/DRHourMinutePickerView.h>
-#import <DRUIWidget/DROptionCardView.h>
-#import <DRUIWidget/DRUIWidgetUtil.h>
-#import <DRUIWidget/DRSectionTitleView.h>
+#import <DRUIWidgetKit/DRHourMinutePickerView.h>
+#import <DRUIWidgetKit/DROptionCardView.h>
+#import <DRUIWidgetKit/DRUIWidgetUtil.h>
+#import <DRUIWidgetKit/DRSectionTitleView.h>
 
 @interface DRHourMinutePicker ()<DRHourMinutePickerViewDelegate>
 
@@ -47,7 +47,7 @@
     return [DRPickerHMPlanWeekOption class];
 }
 
-- (CGFloat)picerViewHeight {
+- (CGFloat)pickerViewHeight {
     if (self.type == DRHourMinutePickerTypePlanWeekConfig) {
         if (((DRPickerHMPlanWeekOption *)self.pickerOption).onlyWeekDay) {
             return 136;

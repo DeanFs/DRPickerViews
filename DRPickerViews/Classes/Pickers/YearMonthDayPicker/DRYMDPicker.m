@@ -9,9 +9,9 @@
 #import "DRYMDPicker.h"
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/NSDate+DRExtension.h>
-#import <DRUIWidget/DRDatePickerView.h>
-#import <DRUIWidget/DROptionCardView.h>
-#import <DRUIWidget/DRUIWidgetUtil.h>
+#import <DRUIWidgetKit/DRDatePickerView.h>
+#import <DRUIWidgetKit/DROptionCardView.h>
+#import <DRUIWidgetKit/DRUIWidgetUtil.h>
 
 @interface DRYMDPicker ()
 
@@ -129,7 +129,7 @@
                                           day:1];
 }
 
-- (CGFloat)picerViewHeight  {
+- (CGFloat)pickerViewHeight  {
     if (self.type == DRYMDPickerTypeNormal) {
         self.quickTimeOptionHeight.constant = 0;
         self.tipViewHeight.constant = 0;

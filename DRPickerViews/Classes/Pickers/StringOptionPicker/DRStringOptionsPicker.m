@@ -11,11 +11,11 @@
 #import <DRCategories/UIFont+DRExtension.h>
 #import <DRCategories/UIView+DRExtension.h>
 #import <DRCategories/NSArray+DRExtension.h>
-#import <DRUIWidget/DRUIWidgetUtil.h>
-#import <DRUIWidget/DRSectionTitleView.h>
-#import <DRUIWidget/DRNormalDataPickerView.h>
+#import <DRUIWidgetKit/DRUIWidgetUtil.h>
+#import <DRUIWidgetKit/DRSectionTitleView.h>
+#import <DRUIWidgetKit/DRNormalDataPickerView.h>
 
-@interface DRStringOptionsPicker ()<UIPickerViewDelegate, UIPickerViewDataSource>
+@interface DRStringOptionsPicker ()
 
 @property (weak, nonatomic) IBOutlet DRNormalDataPickerView *pickerView;
 @property (weak, nonatomic) IBOutlet DRSectionTitleView *tipView;
@@ -27,14 +27,14 @@
 
 @implementation DRStringOptionsPicker
 
-- (CGFloat)picerViewHeight {
+- (CGFloat)pickerViewHeight {
     DRPickerStringSelectOption *opt = (DRPickerStringSelectOption *)self.pickerOption;
     if (opt.tipText.length > 0) {
         return 303;
     }
     self.tipViewTop.constant = 0;
     self.tipViewHeight.constant = 0;
-    return [super picerViewHeight];
+    return [super pickerViewHeight];
 }
 
 - (void)prepareToShow {

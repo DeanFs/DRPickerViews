@@ -208,6 +208,57 @@
 @end
 
 
+@implementation DRPickerCityOption
+
++ (instancetype)optionWithTitle:(NSString *)title province:(NSString *)province city:(NSString *)city {
+    DRPickerCityOption *opt = [DRPickerCityOption optionWithTitle:title];
+    opt.province = province;
+    opt.city = city;
+    return opt;
+}
+
+@end
+
+
+@implementation DRPickerClassTableOption
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _wholeWeekCount = 25;
+    }
+    return self;
+}
+
+@end
+
+
+@implementation DRPickerWeekOrTermOption
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _maxWeek = 25;
+        _minYear = 2014;
+        _maxGrade = 8;
+        _maxTerm = 3;
+    }
+    return self;
+}
+
+@end
+
+
+@implementation DRPickerClassDurationOption
+
+@end
+
+
+@implementation DRPickerClassRemindTimeOption
+
+@end
+
+
 #pragma mark - 选择器选择完成回调返回数据结构定义
 @implementation DRPickerWithLunarPickedObj
 
@@ -300,5 +351,29 @@
 
 
 @implementation DRPickerYearOrYearMonthPickedObj
+
+@end
+
+
+@implementation DRPickerCityPickedObj
+
+@end
+
+@implementation DRPickerClassTablePickedObj
+
+@end
+
+
+@implementation DRPickerWeekOrTermPickedObj
+
+@end
+
+
+@implementation DRPickerClassDurationPickedObj
+
+@end
+
+
+@implementation DRPickerClassRemindTimePickedObj
 
 @end

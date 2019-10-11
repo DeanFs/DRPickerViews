@@ -12,6 +12,10 @@
 
 #import "DRPickerFactory.h"
 #import "DRAheadTimePicker.h"
+#import "DRCityPicker.h"
+#import "DRClassDurationPicker.h"
+#import "DRClassTableWeekPicker.h"
+#import "DRClassRemindTimePicker.h"
 #import "DRBaseAlertPicker.h"
 #import "DRDatePickerDataModels.h"
 #import "DRHourMinutePicker.h"
@@ -20,6 +24,7 @@
 #import "DRStringOptionsPicker.h"
 #import "DRTimeConsumingPicker.h"
 #import "DRValueSelectPicker.h"
+#import "DRWeekOrTermPicker.h"
 #import "DRYMDWithLunarPicker.h"
 #import "DRYMDPicker.h"
 #import "DRYearMonthPicker.h"

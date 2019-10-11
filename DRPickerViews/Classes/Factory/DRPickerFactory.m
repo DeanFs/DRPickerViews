@@ -18,6 +18,11 @@
 #import "DRStringOptionsPicker.h"
 #import "DROptionCardPicker.h"
 #import "DRYearOrYearMonthPicker.h"
+#import "DRCityPicker.h"
+#import "DRClassTableWeekPicker.h"
+#import "DRClassDurationPicker.h"
+#import "DRClassRemindTimePicker.h"
+#import "DRWeekOrTermPicker.h"
 
 @implementation DRPickerFactory
 
@@ -141,6 +146,36 @@
             [DROptionCardPicker showPickerViewWithOption:pickerOption
                                               setupBlock:nil
                                            pickDoneBlock:innerPickDoneBlock];
+        } break;
+
+        case DRPickerTypeCity: {
+            [DRCityPicker showPickerViewWithOption:pickerOption
+                                        setupBlock:nil
+                                     pickDoneBlock:innerPickDoneBlock];
+        } break;
+
+        case DRPickerTypeClassTable: {
+            [DRClassTableWeekPicker showPickerViewWithOption:pickerOption
+                                                  setupBlock:nil
+                                               pickDoneBlock:innerPickDoneBlock];
+        } break;
+
+        case DRPickerTypeWeekOrTerm: {
+            [DRWeekOrTermPicker showPickerViewWithOption:pickerOption
+                                              setupBlock:nil
+                                           pickDoneBlock:innerPickDoneBlock];
+        } break;
+
+        case DRPickerTypeClassDuration: {
+            [DRClassDurationPicker showPickerViewWithOption:pickerOption
+                                                 setupBlock:nil
+                                              pickDoneBlock:innerPickDoneBlock];
+        } break;
+
+        case DRPickerTypeClassRemindTime: {
+            [DRClassRemindTimePicker showPickerViewWithOption:pickerOption
+                                                   setupBlock:nil
+                                                pickDoneBlock:innerPickDoneBlock];
         } break;
             
         default:

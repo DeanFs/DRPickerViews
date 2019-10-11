@@ -133,6 +133,39 @@
             cardOpt.belowMinAlert = @"不能再少啦！";
             cardOpt.sectionTip = @"最多选择3项";
         } break;
+
+        case DRPickerTypeCity: {
+            opt = [DRPickerCityOption optionWithTitle:@"选项卡" province:@"广东" city:@"广州"];
+        } break;
+
+        case DRPickerTypeClassTable: {
+            opt = [DRPickerClassTableOption optionWithTitle:@"选择课程周数"];
+            ((DRPickerClassTableOption *)opt).classWeeks = @[@(2), @(4)];
+        } break;
+
+        case DRPickerTypeWeekOrTerm: {
+            opt = [DRPickerWeekOrTermOption new];
+            ((DRPickerWeekOrTermOption *)opt).currentWeek = 1;
+            ((DRPickerWeekOrTermOption *)opt).startYear = 2019;
+            ((DRPickerWeekOrTermOption *)opt).toYear = 2020;
+            ((DRPickerWeekOrTermOption *)opt).grade = 1;
+            ((DRPickerWeekOrTermOption *)opt).term = 1;
+        } break;
+
+        case DRPickerTypeClassDuration: {
+            opt = [DRPickerClassDurationOption optionWithTitle:@"选择课程节数"];
+            ((DRPickerClassDurationOption *)opt).weekDay = 1;
+            ((DRPickerClassDurationOption *)opt).startClass = 1;
+            ((DRPickerClassDurationOption *)opt).endClass = 2;
+        } break;
+
+        case DRPickerTypeClassRemindTime: {
+            opt = [DRPickerClassRemindTimeOption optionWithTitle:@"每日提醒时间"];
+            ((DRPickerClassRemindTimeOption *)opt).isThisDay = YES;
+            ((DRPickerClassRemindTimeOption *)opt).hour = 8;
+            ((DRPickerClassRemindTimeOption *)opt).minute = 0;
+//            ((DRPickerClassRemindTimeOption *)opt).hourMinute @"0800";
+        } break;
             
         default:
             break;

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <DRUIWidget/DRPickerContainerView.h>
+#import <DRUIWidgetKit/DRPickerContainerView.h>
 
 #pragma mark - 选择器类型定义
 typedef NS_ENUM(NSInteger, DRPickerType) {
@@ -88,6 +88,31 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     // 入参：DRPickerOptionCardOption
     // 出参：DRPickerOptionCardPickedObj
     DRPickerTypeOptionCard,
+
+    // 城市选择
+    // 入参：DRPickerCityOption
+    // 出参：DRPickerCityPickedObj
+    DRPickerTypeCity,
+
+    // 课程表周数选择
+    // 入参：DRPickerClassTableOption
+    // 出参：DRPickerClassTablePickedObj
+    DRPickerTypeClassTable,
+
+    // 课程表周或学期选择
+    // 入参：DRPickerWeekOrTermOption
+    // 出参：DRPickerWeekOrTermPickedObj
+    DRPickerTypeWeekOrTerm,
+
+    // 课程表课程时长选择
+    // 入参：DRPickerClassDurationOption
+    // 出参：DRPickerClassDurationPickedObj
+    DRPickerTypeClassDuration,
+
+    // 课程表上课提醒时间选择
+    // 入参：DRPickerClassRemindTimeOption
+    // 出参：DRPickerClassRemindTimePickedObj
+    DRPickerTypeClassRemindTime,
 };
 
 
@@ -512,6 +537,62 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 @end
 
 
+@interface DRPickerCityOption : DRPickerOptionBase
+
+@property (nonatomic, copy) NSString *province;
+@property (nonatomic, copy) NSString *city;
+
++ (instancetype)optionWithTitle:(NSString *)title province:(NSString *)province city:(NSString *)city;
+
+@end
+
+
+@interface DRPickerClassTableOption : DRPickerOptionBase
+
+@property (nonatomic, assign) NSInteger wholeWeekCount; // 总周数，默认：25
+@property (nonatomic, strong) NSArray<NSNumber *> *classWeeks;
+
+@end
+
+
+@interface DRPickerWeekOrTermOption : DRPickerOptionBase
+
+@property (nonatomic, assign) NSInteger maxWeek; // default 25
+@property (nonatomic, assign) NSInteger minYear; // default 2014
+@property (nonatomic, assign) NSInteger maxGrade; // deault 8
+@property (nonatomic, assign) NSInteger maxTerm; // default 3
+
+/// 反显
+@property (nonatomic, assign) NSInteger currentWeek; // 1 ~ 25
+@property (nonatomic, assign) NSInteger startYear; // 2014 ~ 当前年
+@property (nonatomic, assign) NSInteger toYear; // 2015 ~ 明年
+@property (nonatomic, assign) NSInteger grade; // 1~8，对应：大一 ~ 研三
+@property (nonatomic, assign) NSInteger term; // 学期 1~3 学期
+
+@end
+
+
+@interface DRPickerClassDurationOption : DRPickerOptionBase
+
+@property (nonatomic, assign) NSInteger weekDay; // 1 ~ 7 对应：周一 ~ 周日
+@property (nonatomic, assign) NSInteger startClass; // 开始节数 1~17
+@property (nonatomic, assign) NSInteger endClass; // 节数结束
+
+@end
+
+
+@interface DRPickerClassRemindTimeOption : DRPickerOptionBase
+
+@property (nonatomic, assign) BOOL isThisDay; // 是当天
+@property (nonatomic, copy) NSString *hourMinute; // HHmm
+
+// 通过hourMinute或者分别传入小时分钟
+@property (nonatomic, assign) NSInteger hour;
+@property (nonatomic, assign) NSInteger minute;
+
+@end
+
+
 #pragma mark - 选择器选择完成回调返回数据结构定义
 @interface DRPickerWithLunarPickedObj : NSObject
 /**
@@ -677,5 +758,49 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 
 @property (nonatomic, assign) BOOL isOnlyYear;
 @property (nonatomic, strong) NSDate *yearMonth;
+
+@end
+
+@interface DRPickerCityPickedObj : NSObject
+
+@property (nonatomic, copy) NSString *province;
+@property (nonatomic, copy) NSString *city;
+
+@end
+
+
+@interface DRPickerClassTablePickedObj : NSObject
+
+@property (nonatomic, strong) NSArray<NSNumber *> *classWeeks;
+
+@end
+
+
+@interface DRPickerWeekOrTermPickedObj : NSObject
+
+@property (nonatomic, assign) NSInteger currentWeek;
+@property (nonatomic, assign) NSInteger startYear;
+@property (nonatomic, assign) NSInteger toYear;
+@property (nonatomic, assign) NSInteger grade;
+@property (nonatomic, assign) NSInteger term;
+
+@end
+
+
+@interface DRPickerClassDurationPickedObj : NSObject
+
+@property (nonatomic, assign) NSInteger weekDay; // 1 ~ 7 对应：周一 ~ 周日
+@property (nonatomic, assign) NSInteger startClass; // 开始节数 1~17
+@property (nonatomic, assign) NSInteger endClass; // 节数结束
+
+@end
+
+
+@interface DRPickerClassRemindTimePickedObj : NSObject
+
+@property (nonatomic, assign) BOOL isThisDay; // 是当天
+@property (nonatomic, copy) NSString *hourMinute; // HHmm
+@property (nonatomic, assign) NSInteger hour;
+@property (nonatomic, assign) NSInteger minute;
 
 @end

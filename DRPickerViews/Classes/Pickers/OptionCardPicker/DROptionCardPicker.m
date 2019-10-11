@@ -7,8 +7,8 @@
 //
 
 #import "DROptionCardPicker.h"
-#import <DRUIWidget/DRSectionTitleView.h>
-#import <DRUIWidget/DROptionCardView.h>
+#import <DRUIWidgetKit/DRSectionTitleView.h>
+#import <DRUIWidgetKit/DROptionCardView.h>
 
 @interface DROptionCardPicker ()
 
@@ -29,7 +29,7 @@
     return [DRPickerOptionCardOption class];
 }
 
-- (CGFloat)picerViewHeight {
+- (CGFloat)pickerViewHeight {
     CGFloat height = 80;
     NSInteger itemCount = self.cardOption.allOptions.count;
     NSInteger columnCount = self.cardOption.columnCount;

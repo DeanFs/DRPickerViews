@@ -7,7 +7,7 @@
 //
 
 #import "DROneWeekPicker.h"
-#import <DRUIWidget/DRWeekPickerView.h>
+#import <DRUIWidgetKit/DRWeekPickerView.h>
 #import <DRMacroDefines/DRMacroDefines.h>
 
 @interface DROneWeekPicker ()
@@ -27,7 +27,7 @@
     return self.weekPickerView.selectedDate;
 }
 
-- (CGFloat)picerViewHeight {
+- (CGFloat)pickerViewHeight {
     return 303;
 }
 
