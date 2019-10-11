@@ -8,12 +8,14 @@
 
 #import "DRClassTableWeekPicker.h"
 #import <DRUIWidgetKit/DROptionCardView.h>
+#import "DRCheckboxGroupView.h"
 #import <DRCategories/UIView+DRExtension.h>
+#import <DRMacroDefines/DRMacroDefines.h>
 
 @interface DRClassTableWeekPicker ()
 
 @property (weak, nonatomic) IBOutlet DROptionCardView *optionCardView;
-@property (weak, nonatomic) IBOutlet UIView *quickSelectView;
+@property (weak, nonatomic) IBOutlet DRCheckboxGroupView *quickSelectView;
 
 @property (nonatomic, assign) BOOL didDrawRect;
 
@@ -33,8 +35,8 @@
         [options addObject:[NSString stringWithFormat:@"%ld", i+1]];
     }
     NSMutableArray *selectedIndexs = [NSMutableArray array];
-    BOOL allEvenNumbers = YES; // 全偶数
-    BOOL allOddNumber = YES; // 全奇数
+    BOOL allEvenNumbers = opt.classWeeks.count == opt.wholeWeekCount / 2; // 全偶数
+    BOOL allOddNumber = opt.classWeeks.count == (opt.wholeWeekCount / 2 + (opt.wholeWeekCount % 2 > 0)); // 全奇数
     BOOL allSelected = opt.classWeeks.count == opt.wholeWeekCount; // 全选
     for (NSNumber *week in opt.classWeeks) {
         NSInteger value = week.integerValue;
@@ -45,10 +47,49 @@
             allEvenNumbers = NO;
         }
     }
+
+    kDRWeakSelf
     self.optionCardView.allOptions = options;
     self.optionCardView.selectedIndexs = selectedIndexs;
+    self.optionCardView.onSelectionChangeBlock = ^(NSArray<NSString *> *selectedOptions, NSArray<NSNumber *> *selectedIndexs) {
+        weakSelf.quickSelectView.selectedIndexs = @[];
+    };
 
-    // TODO: 设置选中quickSelectView
+    self.quickSelectView.optionTitles = @[@"单周", @"双周", @"每周"];
+    if (allOddNumber) {
+        self.quickSelectView.selectedIndexs = @[@(0)];
+    } else if (allEvenNumbers) {
+        self.quickSelectView.selectedIndexs = @[@(1)];
+    } else if (allSelected) {
+        self.quickSelectView.selectedIndexs = @[@(2)];
+    }
+    self.quickSelectView.onSelectedChangeBlock = ^(NSArray<NSNumber *> * _Nonnull selectedIndexs, NSArray<NSString *> * _Nonnull selectedOptions) {
+        if (selectedIndexs.count == 0) {
+            weakSelf.optionCardView.selectedIndexs = @[];
+            return;
+        }
+
+        DRPickerClassTableOption *opt = (DRPickerClassTableOption *)weakSelf.pickerOption;
+        NSInteger index = selectedIndexs.firstObject.integerValue;
+        NSMutableArray *values = [NSMutableArray array];
+
+        for (NSInteger i=0; i<opt.wholeWeekCount; i++) {
+            if (index == 2) {
+                [values addObject:@(i)];
+            } else {
+                if (i % 2 == 0) {
+                    if (index == 0) {
+                        [values addObject:@(i)];
+                    }
+                } else {
+                    if (index == 1) {
+                        [values addObject:@(i)];
+                    }
+                }
+            }
+        }
+        weakSelf.optionCardView.selectedIndexs = values;
+    };
 }
 
 - (void)drawRect:(CGRect)rect {

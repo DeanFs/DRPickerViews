@@ -56,7 +56,7 @@
                 <outlet property="tipViewTop" destination="8PK-5W-dJm" id="5Wu-HS-wET"/>
                 <outlet property="topBar" destination="bQj-uE-vwU" id="Oxo-lD-fbR"/>
             </connections>
-            <point key="canvasLocation" x="140.57971014492756" y="140.95982142857142"/>
+            <point key="canvasLocation" x="-1872" y="45"/>
         </view>
     </objects>
 </document>

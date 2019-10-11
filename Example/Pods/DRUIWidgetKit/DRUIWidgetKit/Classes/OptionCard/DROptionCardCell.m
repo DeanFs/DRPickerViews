@@ -71,9 +71,9 @@
             self.gradientLayer.hidden = YES;
         }
         if (!self.gradientLayer.superlayer) {
-            self.gradientLayer.frame = CGRectMake(0, 0, self.itemSize.width, self.itemSize.height);
             [self.layer insertSublayer:self.gradientLayer atIndex:0];
         }
+        self.gradientLayer.frame = CGRectMake(0, 0, self.itemSize.width, self.itemSize.height);
         self.gradientLayer.cornerRadius = self.itemCornerRadius;
     }
     self.titleLabel.layer.cornerRadius = self.itemCornerRadius;

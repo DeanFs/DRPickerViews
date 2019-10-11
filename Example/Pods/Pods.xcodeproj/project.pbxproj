@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = DRMacroDefines;
+			productName = DRMacroDefines;
 		};
 /* End PBXAggregateTarget section */
 
@@ -95,6 +96,14 @@
 		24094356DA67C3608421559E1CD81B74 /* DRPickerTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CC0D321D80F30770858ABD609369A56 /* DRPickerTopBar.xib */; };
 		242F6B477B0DC58394C5131B1DDA9239 /* YYModel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E13A328C897AC958008FC26D56A13406 /* YYModel-dummy.m */; };
 		24676E7D78BB48F4386B5D90FE1668D9 /* DRSectionTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = C6B0AC08CBA493C9657C1A74808AC222 /* DRSectionTitleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		247A61722350E67300D076C8 /* DRClassRemindTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 247A61672350E67100D076C8 /* DRClassRemindTimePickerView.m */; };
+		247A61732350E67300D076C8 /* DRClassRemindTimePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 247A61682350E67100D076C8 /* DRClassRemindTimePickerView.h */; };
+		247A61742350E67300D076C8 /* DRCheckboxGroupView.h in Headers */ = {isa = PBXBuildFile; fileRef = 247A616A2350E67100D076C8 /* DRCheckboxGroupView.h */; };
+		247A61752350E67300D076C8 /* DRCheckboxGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 247A616B2350E67100D076C8 /* DRCheckboxGroupView.m */; };
+		247A61762350E67300D076C8 /* DRClassTermPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 247A616D2350E67200D076C8 /* DRClassTermPickerView.m */; };
+		247A61772350E67300D076C8 /* DRClassTermPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 247A616E2350E67200D076C8 /* DRClassTermPickerView.h */; };
+		247A61782350E67300D076C8 /* DRClassDurationPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 247A61702350E67200D076C8 /* DRClassDurationPickerView.m */; };
+		247A61792350E67300D076C8 /* DRClassDurationPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 247A61712350E67200D076C8 /* DRClassDurationPickerView.h */; };
 		2616EE29DFFBAE0D0CAA3CAFF14677FA /* UIActionSheet+BlocksKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 917F3E09771EB3E427A359FC17C66D68 /* UIActionSheet+BlocksKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2622CDF19F1B004532194E813C209802 /* UIView+JXDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = A444486AB6A02D3276B1E33487DC1276 /* UIView+JXDesign.m */; };
 		27166BC06ED8537323206B65885FC3E0 /* POPDecayAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 179C8AAC8C0340DA3297B3591D3D11CC /* POPDecayAnimation.mm */; };
@@ -712,13 +721,13 @@
 		088931CDCA5FC0A2C7DDDF4558640426 /* DRClassRemindTimePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRClassRemindTimePicker.m; path = DRPickerViews/Classes/Pickers/ClassTimeRemindPicker/DRClassRemindTimePicker.m; sourceTree = "<group>"; };
 		091EBF639000F91CFBED10451570B80B /* JXImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXImageView.h; path = JXExtension/View/JXImageView.h; sourceTree = "<group>"; };
 		0A7FD3B52B9915F0750AA6D715B9744F /* UIBarButtonItem+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+BlocksKit.m"; path = "BlocksKit/UIKit/UIBarButtonItem+BlocksKit.m"; sourceTree = "<group>"; };
-		0B7FC86B52328FC37ED14E00105F173C /* POPAnimator.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimator.mm; path = pop/POPAnimator.mm; sourceTree = "<group>"; };
+		0B7FC86B52328FC37ED14E00105F173C /* POPAnimator.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimator.mm; path = pop/POPAnimator.mm; sourceTree = "<group>"; };
 		0BB6C03C66E2694394B433491B8E1A97 /* Pods-DRPickerViews_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DRPickerViews_Example.modulemap"; sourceTree = "<group>"; };
 		0BFFF6856EE9D82B351A09E662C48B96 /* Pods-DRPickerViews_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DRPickerViews_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		0C18A74293669E9853E1FB11ADDE8785 /* NSObject+YYModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+YYModel.m"; path = "YYModel/NSObject+YYModel.m"; sourceTree = "<group>"; };
 		0D02D1CF5611E05B3FC2899E08E6B7A7 /* UITextField+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextField+BlocksKit.m"; path = "BlocksKit/UIKit/UITextField+BlocksKit.m"; sourceTree = "<group>"; };
 		0D2E47108B67822DDD8FE53782B19432 /* JXButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXButton.m; path = JXExtension/View/JXButton.m; sourceTree = "<group>"; };
-		0D3C081B81E5E61CCC0D46ABA01F4559 /* POPBasicAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPBasicAnimation.mm; path = pop/POPBasicAnimation.mm; sourceTree = "<group>"; };
+		0D3C081B81E5E61CCC0D46ABA01F4559 /* POPBasicAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPBasicAnimation.mm; path = pop/POPBasicAnimation.mm; sourceTree = "<group>"; };
 		0E28A37480A4B2F1680F894D3672AA07 /* YYModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYModel.h; path = YYModel/YYModel.h; sourceTree = "<group>"; };
 		0EE6BD73904F9E02ABFC36F7756CB9DA /* DRStarRateView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRStarRateView.h; path = DRUIWidgetKit/Classes/StarRateView/DRStarRateView.h; sourceTree = "<group>"; };
 		0F0093689EA5F26689DF0F42526D5250 /* NSArray+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+BlocksKit.m"; path = "BlocksKit/Core/NSArray+BlocksKit.m"; sourceTree = "<group>"; };
@@ -731,7 +740,7 @@
 		1209E993A766E343E1CF326624E073C2 /* SDiOSVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDiOSVersion.h; path = SDVersion/SDiOSVersion/SDiOSVersion.h; sourceTree = "<group>"; };
 		1286AFD90DBB9B36A2E040B42CF8CEFB /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		135ACF82262ED415E61DA87F6CF1F1E2 /* JXExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXExtension.h; path = JXExtension/JXExtension.h; sourceTree = "<group>"; };
-		136E7304A62D5A2325E6B8492403D2AE /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		136E7304A62D5A2325E6B8492403D2AE /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		143AFAF410AD21CF37FA8F6831FAFFAE /* BlocksKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BlocksKit.modulemap; sourceTree = "<group>"; };
 		1447D77869CE55E03EABA1E4320D58E3 /* JXPushAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXPushAnimator.h; path = JXExtension/Transition/JXPushAnimator.h; sourceTree = "<group>"; };
 		1458B459797E608D9932A3C73249B9F7 /* NSMutableIndexSet+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableIndexSet+BlocksKit.h"; path = "BlocksKit/Core/NSMutableIndexSet+BlocksKit.h"; sourceTree = "<group>"; };
@@ -741,15 +750,15 @@
 		168E8C5FDFFEF6936CBAC722ACD2B45E /* POPLayerExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPLayerExtras.h; path = pop/POPLayerExtras.h; sourceTree = "<group>"; };
 		1763F474839D1BFB68FCACBC0C6CF487 /* DRLunarYearView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRLunarYearView.m; path = DRUIWidgetKit/Classes/LunarDatePickerView/DRLunarYearView.m; sourceTree = "<group>"; };
 		1773F80B3C1B8CB9A44F42CD0B2208C6 /* HexColors-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HexColors-umbrella.h"; sourceTree = "<group>"; };
-		179C8AAC8C0340DA3297B3591D3D11CC /* POPDecayAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPDecayAnimation.mm; path = pop/POPDecayAnimation.mm; sourceTree = "<group>"; };
+		179C8AAC8C0340DA3297B3591D3D11CC /* POPDecayAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPDecayAnimation.mm; path = pop/POPDecayAnimation.mm; sourceTree = "<group>"; };
 		18736813D72A6527DC5B26EDC2F30767 /* DRToastView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DRToastView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		189F2722B951B0D47AC2F67DFA88F6BB /* NSDate+DRExtension.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = "NSDate+DRExtension.mm"; path = "DRCategories/Classes/Foundation/NSDate+DRExtension.mm"; sourceTree = "<group>"; };
+		189F2722B951B0D47AC2F67DFA88F6BB /* NSDate+DRExtension.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = "NSDate+DRExtension.mm"; path = "DRCategories/Classes/Foundation/NSDate+DRExtension.mm"; sourceTree = "<group>"; };
 		19CE163D1A3E84C307994F2CA55CBA6C /* UIScrollView+JXExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+JXExtension.h"; path = "JXExtension/Category/UIScrollView+JXExtension.h"; sourceTree = "<group>"; };
 		19E45A53CA143EF83CEE8741830BCA9F /* NSMutableArray+JXSafeAccess.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+JXSafeAccess.h"; path = "JXExtension/Category/NSMutableArray+JXSafeAccess.h"; sourceTree = "<group>"; };
 		1A98B2237D4E8458398B3C0CBE76BE8E /* UIScrollView+JXScrollStop.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+JXScrollStop.h"; path = "JXExtension/Category/UIScrollView+JXScrollStop.h"; sourceTree = "<group>"; };
 		1B5506850E70A9671821C9A4B243C85A /* NSTimer+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSTimer+BlocksKit.h"; path = "BlocksKit/Core/NSTimer+BlocksKit.h"; sourceTree = "<group>"; };
 		1BAAD53157EE83085F4F7C348DF2D978 /* DRWeekPickerCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRWeekPickerCell.h; path = DRUIWidgetKit/Classes/WeekPickerView/DRWeekPickerCell.h; sourceTree = "<group>"; };
-		1C6ED660AEA48E40E2DD5604E1A5C39D /* POPAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimation.mm; path = pop/POPAnimation.mm; sourceTree = "<group>"; };
+		1C6ED660AEA48E40E2DD5604E1A5C39D /* POPAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimation.mm; path = pop/POPAnimation.mm; sourceTree = "<group>"; };
 		1C895D8AF37B6AC05329B800C58A1AD9 /* MFMessageComposeViewController+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MFMessageComposeViewController+BlocksKit.h"; path = "BlocksKit/MessageUI/MFMessageComposeViewController+BlocksKit.h"; sourceTree = "<group>"; };
 		1D459D87F43FD14C658D46309EBA8EF3 /* DRCategories-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DRCategories-prefix.pch"; sourceTree = "<group>"; };
 		1D5061C5E9B2C9BE917A19CB87E06B55 /* UITabBar+DRExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITabBar+DRExtension.m"; path = "DRCategories/Classes/UIKit/UITabBar+DRExtension.m"; sourceTree = "<group>"; };
@@ -761,13 +770,21 @@
 		1F0F2B50C8D3D1B78696132968DA0189 /* UIView+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+BlocksKit.h"; path = "BlocksKit/UIKit/UIView+BlocksKit.h"; sourceTree = "<group>"; };
 		1F9A61825B0CE8F5B400C1F71A8A562E /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
 		1FFC6DF5B4AB71516925C1F6621A367B /* DRStringOptionsPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRStringOptionsPicker.h; path = DRPickerViews/Classes/Pickers/StringOptionPicker/DRStringOptionsPicker.h; sourceTree = "<group>"; };
-		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Masonry.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A983266DB042FCCCABA27004636DD3 /* Pods-DRPickerViews_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DRPickerViews_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		21B4A9D810893DEC6B422892B653D444 /* UIAlertView+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+BlocksKit.m"; path = "BlocksKit/UIKit/UIAlertView+BlocksKit.m"; sourceTree = "<group>"; };
 		229ACE470C5A5483E44EC872909FF853 /* DRPickerTopBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRPickerTopBar.h; path = DRUIWidgetKit/Classes/TopBar/DRPickerTopBar.h; sourceTree = "<group>"; };
 		22A94D9B74F086958E6B217A08353DA2 /* JXLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXLabel.m; path = JXExtension/View/JXLabel.m; sourceTree = "<group>"; };
 		2361F48D9F03BD2FF43416F2CAE414B4 /* DRClassRemindTimePicker.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRClassRemindTimePicker.xib; sourceTree = "<group>"; };
 		23D765FED6AAEFF85B52F0B4D9C6CE2B /* DRWeekPickerCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRWeekPickerCell.m; path = DRUIWidgetKit/Classes/WeekPickerView/DRWeekPickerCell.m; sourceTree = "<group>"; };
+		247A61672350E67100D076C8 /* DRClassRemindTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRClassRemindTimePickerView.m; sourceTree = "<group>"; };
+		247A61682350E67100D076C8 /* DRClassRemindTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRClassRemindTimePickerView.h; sourceTree = "<group>"; };
+		247A616A2350E67100D076C8 /* DRCheckboxGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRCheckboxGroupView.h; sourceTree = "<group>"; };
+		247A616B2350E67100D076C8 /* DRCheckboxGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRCheckboxGroupView.m; sourceTree = "<group>"; };
+		247A616D2350E67200D076C8 /* DRClassTermPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRClassTermPickerView.m; sourceTree = "<group>"; };
+		247A616E2350E67200D076C8 /* DRClassTermPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRClassTermPickerView.h; sourceTree = "<group>"; };
+		247A61702350E67200D076C8 /* DRClassDurationPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRClassDurationPickerView.m; sourceTree = "<group>"; };
+		247A61712350E67200D076C8 /* DRClassDurationPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRClassDurationPickerView.h; sourceTree = "<group>"; };
 		24AD63E772685087A59DF09AFAE68BD3 /* DRHourMinutePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRHourMinutePicker.m; path = DRPickerViews/Classes/Pickers/HourMinutePicker/DRHourMinutePicker.m; sourceTree = "<group>"; };
 		25A2CA18182BD511ADFDF5478854C271 /* DRYearOrYearMonthPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRYearOrYearMonthPicker.m; path = DRPickerViews/Classes/Pickers/YearOrYearMonthPicker/DRYearOrYearMonthPicker.m; sourceTree = "<group>"; };
 		25A5EA1970DD64677A9C7031EF343860 /* CAAnimation+DRExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CAAnimation+DRExtension.m"; path = "DRCategories/Classes/UIKit/CAAnimation+DRExtension.m"; sourceTree = "<group>"; };
@@ -829,7 +846,7 @@
 		3FED75F00AD20812159EC05D779914A1 /* DRPickerViews.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DRPickerViews.xcconfig; sourceTree = "<group>"; };
 		3FF412E9999A69468E5E82D0F2BDFA85 /* DRUIWidgetKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DRUIWidgetKit-umbrella.h"; sourceTree = "<group>"; };
 		40B46FA20800451A54D50F4A4E7632FA /* DRUIKitCategories.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRUIKitCategories.h; path = DRCategories/Classes/UIKit/DRUIKitCategories.h; sourceTree = "<group>"; };
-		41DEAEDA29386496E923A06DA2E942FB /* POPMath.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPMath.mm; path = pop/POPMath.mm; sourceTree = "<group>"; };
+		41DEAEDA29386496E923A06DA2E942FB /* POPMath.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPMath.mm; path = pop/POPMath.mm; sourceTree = "<group>"; };
 		41DFF0E6CA55A25788A62FA1A7555683 /* DRSegmentBarItem.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DRSegmentBarItem.xib; path = DRUIWidgetKit/Classes/Segment/DRSegmentBarItem.xib; sourceTree = "<group>"; };
 		442F05B11284F903EF88BF413A6E7BF6 /* Pods-DRPickerViews_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DRPickerViews_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		44393E9AA1A51F87BB9DBCB2DE1CC52C /* Masonry.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Masonry.modulemap; sourceTree = "<group>"; };
@@ -859,8 +876,8 @@
 		4F5571F620FACBE761F6523E3B951533 /* DRYMDPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRYMDPicker.h; path = DRPickerViews/Classes/Pickers/YearMonthDayPicker/DRYMDPicker.h; sourceTree = "<group>"; };
 		4F5A48E376D7F44550CDA5A175A49153 /* HexColors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HexColors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FFA29C470DC5D1964BB54CEC5D4ECFD /* DRTimeConsumingPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRTimeConsumingPicker.h; path = DRPickerViews/Classes/Pickers/TimeConsumingPicker/DRTimeConsumingPicker.h; sourceTree = "<group>"; };
-		512ABFD08B218F4F72E4616997C4E4C7 /* DRPickerViews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DRPickerViews.framework; path = DRPickerViews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		51305B2D9D8DA36D89CC277D729083D2 /* pop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = pop.framework; path = pop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		512ABFD08B218F4F72E4616997C4E4C7 /* DRPickerViews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DRPickerViews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51305B2D9D8DA36D89CC277D729083D2 /* pop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = pop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		513118D38AEDEA13CFF7511128148CEB /* NSMutableArray+JXSafeAccess.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+JXSafeAccess.m"; path = "JXExtension/Category/NSMutableArray+JXSafeAccess.m"; sourceTree = "<group>"; };
 		523113DD8B4BA0FCE155A7B8C9B8D83F /* HexColors-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HexColors-dummy.m"; sourceTree = "<group>"; };
 		530671542B89B2785C6D832DC7B4E54E /* DRClassRemindTimePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRClassRemindTimePicker.h; path = DRPickerViews/Classes/Pickers/ClassTimeRemindPicker/DRClassRemindTimePicker.h; sourceTree = "<group>"; };
@@ -872,7 +889,7 @@
 		5573D4FB9E21B52CCCBF86E5B5A15143 /* NSOrderedSet+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSOrderedSet+BlocksKit.h"; path = "BlocksKit/Core/NSOrderedSet+BlocksKit.h"; sourceTree = "<group>"; };
 		55CC1213EA394A7B5E1C942B7598397C /* UIScrollView+JXEmptyDataSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+JXEmptyDataSet.m"; path = "JXExtension/Category/UIScrollView+JXEmptyDataSet.m"; sourceTree = "<group>"; };
 		560A7187B8C50CEB1D7BBD5B2C03DBE4 /* JXInteractiveTransition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXInteractiveTransition.h; path = JXExtension/Transition/JXInteractiveTransition.h; sourceTree = "<group>"; };
-		56DD0C21EFBF3308675EFE22968437E7 /* POPAnimationExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationExtras.mm; path = pop/POPAnimationExtras.mm; sourceTree = "<group>"; };
+		56DD0C21EFBF3308675EFE22968437E7 /* POPAnimationExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationExtras.mm; path = pop/POPAnimationExtras.mm; sourceTree = "<group>"; };
 		59C3E0F25C2425CF09A32C4E1BC1E769 /* UnitBezier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UnitBezier.h; path = pop/WebCore/UnitBezier.h; sourceTree = "<group>"; };
 		5AEB7270E206DDE610A7E1EE25B86EC1 /* POPVector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPVector.h; path = pop/POPVector.h; sourceTree = "<group>"; };
 		5B9E4E0B9A7D2057783049E3003A85E9 /* NSDictionary+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+BlocksKit.m"; path = "BlocksKit/Core/NSDictionary+BlocksKit.m"; sourceTree = "<group>"; };
@@ -902,7 +919,7 @@
 		676C6036152CBE4A350B9870C6FCF0C0 /* DRUIWidgetKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = DRUIWidgetKit.modulemap; sourceTree = "<group>"; };
 		6834F376D85D2C1D9AD6E8AB5E8E08AB /* NSURL+JXParameters.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURL+JXParameters.m"; path = "JXExtension/Category/NSURL+JXParameters.m"; sourceTree = "<group>"; };
 		685BBEBD7062316C82AD2CF2BDC120BF /* SDVersion-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SDVersion-Info.plist"; sourceTree = "<group>"; };
-		688C6F5FA611CCB5DEB5A2A32379DE6E /* POPAnimationEvent.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationEvent.mm; path = pop/POPAnimationEvent.mm; sourceTree = "<group>"; };
+		688C6F5FA611CCB5DEB5A2A32379DE6E /* POPAnimationEvent.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationEvent.mm; path = pop/POPAnimationEvent.mm; sourceTree = "<group>"; };
 		68B681D415EF1584137FF10B56CE748B /* POPAnimationTracerInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationTracerInternal.h; path = pop/POPAnimationTracerInternal.h; sourceTree = "<group>"; };
 		69647CBB4C36D177720D14B9ED5347C9 /* NSObject+BKBlockExecution.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+BKBlockExecution.m"; path = "BlocksKit/Core/NSObject+BKBlockExecution.m"; sourceTree = "<group>"; };
 		69EA4642ACAF19F79237F52A2575FAD4 /* HexColors.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HexColors.xcconfig; sourceTree = "<group>"; };
@@ -918,13 +935,13 @@
 		6EABF411B0008FAABAC4630A8AFF5884 /* DRLunarDatePickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRLunarDatePickerView.h; path = DRUIWidgetKit/Classes/LunarDatePickerView/DRLunarDatePickerView.h; sourceTree = "<group>"; };
 		6F3BAF48F5FEC713FF9562C419F0B290 /* UIView+JXFrame.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+JXFrame.m"; path = "JXExtension/Category/UIView+JXFrame.m"; sourceTree = "<group>"; };
 		6F6842E7B3EE89C293CE46A0CEFE5C5A /* DRClassTableWeekPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRClassTableWeekPicker.h; path = DRPickerViews/Classes/Pickers/ClassTableWeekPicker/DRClassTableWeekPicker.h; sourceTree = "<group>"; };
-		6F70BF603CE98579EE97E286801E741E /* BlocksKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BlocksKit.framework; path = BlocksKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FF1080EEEB8B424322EF9000D26A4B5 /* DRSandboxManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DRSandboxManager.framework; path = DRSandboxManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F70BF603CE98579EE97E286801E741E /* BlocksKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlocksKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FF1080EEEB8B424322EF9000D26A4B5 /* DRSandboxManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DRSandboxManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		723642ABFC2DF5B0E60DF365BABE926A /* DROptionCardView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DROptionCardView.m; path = DRUIWidgetKit/Classes/OptionCard/DROptionCardView.m; sourceTree = "<group>"; };
 		7298F26FCA89FA14670DFB2FEAA59ECA /* NSObject+DRExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+DRExtension.m"; path = "DRCategories/Classes/Foundation/NSObject+DRExtension.m"; sourceTree = "<group>"; };
 		7336E4F234AA345BE4D1069356D03A61 /* DRYMDPicker.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRYMDPicker.xib; sourceTree = "<group>"; };
 		734061EA88B5B4A8A81D278CBA873E88 /* UICollectionView+DRExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UICollectionView+DRExtension.m"; path = "DRCategories/Classes/UIKit/UICollectionView+DRExtension.m"; sourceTree = "<group>"; };
-		7350B247CE345D198416FCCE17761066 /* HexColors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HexColors.framework; path = HexColors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7350B247CE345D198416FCCE17761066 /* HexColors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HexColors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73C92AF35C7514EBF19CD93A8CB67611 /* NSMutableOrderedSet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableOrderedSet+BlocksKit.m"; path = "BlocksKit/Core/NSMutableOrderedSet+BlocksKit.m"; sourceTree = "<group>"; };
 		745BE61D95334A7A52E237A3059A1516 /* DRUIWidget.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = DRUIWidget.xcassets; sourceTree = "<group>"; };
 		749E69AEF1240CC11F5CDE973BF64234 /* DROptionCardView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DROptionCardView.xib; path = DRUIWidgetKit/Classes/OptionCard/DROptionCardView.xib; sourceTree = "<group>"; };
@@ -935,7 +952,7 @@
 		763F3D7C842C66BBC5846FC5584069B0 /* UIImage+JXExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+JXExtension.m"; path = "JXExtension/Category/UIImage+JXExtension.m"; sourceTree = "<group>"; };
 		77371F62DCD66DC1DB425738558EB22D /* JXLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXLabel.h; path = JXExtension/View/JXLabel.h; sourceTree = "<group>"; };
 		77D8D0F759BED004313007EDCAC015C2 /* DRCityPickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRCityPickerView.h; path = DRUIWidgetKit/Classes/CityPickerView/DRCityPickerView.h; sourceTree = "<group>"; };
-		784BAC0C548FBDB8598780FA60F97BD9 /* POPVector.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPVector.mm; path = pop/POPVector.mm; sourceTree = "<group>"; };
+		784BAC0C548FBDB8598780FA60F97BD9 /* POPVector.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPVector.mm; path = pop/POPVector.mm; sourceTree = "<group>"; };
 		788A2C83BFD7501A5903B92576A4E445 /* NSMutableSet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableSet+BlocksKit.m"; path = "BlocksKit/Core/NSMutableSet+BlocksKit.m"; sourceTree = "<group>"; };
 		7A9DAD6B04376AFB51EE744FAC610F1B /* DRPickerFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRPickerFactory.m; path = DRPickerViews/Classes/Factory/DRPickerFactory.m; sourceTree = "<group>"; };
 		7BBBEF2A4CF0CD6B124DF60F7E0FA306 /* DRUIWidgetKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DRUIWidgetKit-dummy.m"; sourceTree = "<group>"; };
@@ -954,10 +971,10 @@
 		851D0B73720E884F3E2D6D518BC7B381 /* DRValuePickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRValuePickerView.m; path = DRUIWidgetKit/Classes/ValuePickerView/DRValuePickerView.m; sourceTree = "<group>"; };
 		86061A11247098C33E64DD49AE134325 /* DRToastView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DRToastView.xib; path = DRToastView/Classes/DRToastView.xib; sourceTree = "<group>"; };
 		886179059F7CD83FD7E176A53D082D2F /* NSURL+JXParameters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURL+JXParameters.h"; path = "JXExtension/Category/NSURL+JXParameters.h"; sourceTree = "<group>"; };
-		88C05A3A1C61ED7E23AEEE692835C92E /* POPGeometry.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPGeometry.mm; path = pop/POPGeometry.mm; sourceTree = "<group>"; };
+		88C05A3A1C61ED7E23AEEE692835C92E /* POPGeometry.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPGeometry.mm; path = pop/POPGeometry.mm; sourceTree = "<group>"; };
 		88EA044781E3B16B154AD5C708828B52 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		893A6885AB21F9D5D61C537E4C790CCB /* NSCache+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSCache+BlocksKit.h"; path = "BlocksKit/DynamicDelegate/Foundation/NSCache+BlocksKit.h"; sourceTree = "<group>"; };
-		899ECADF59F46B84E81441EF20CB90AA /* POPSpringAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPSpringAnimation.mm; path = pop/POPSpringAnimation.mm; sourceTree = "<group>"; };
+		899ECADF59F46B84E81441EF20CB90AA /* POPSpringAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPSpringAnimation.mm; path = pop/POPSpringAnimation.mm; sourceTree = "<group>"; };
 		8BF8134EB237E26F2BD070F6CA9DB4E7 /* POPBasicAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPBasicAnimationInternal.h; path = pop/POPBasicAnimationInternal.h; sourceTree = "<group>"; };
 		8C16335339BEA7181201555BEA22EB1F /* NSIndexSet+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSIndexSet+BlocksKit.h"; path = "BlocksKit/Core/NSIndexSet+BlocksKit.h"; sourceTree = "<group>"; };
 		8C1F73B93CD3A92E91E43CBD4419AE3C /* DRSandBoxManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRSandBoxManager.m; path = DRSandboxManager/Classes/DRSandBoxManager.m; sourceTree = "<group>"; };
@@ -973,7 +990,7 @@
 		917F3E09771EB3E427A359FC17C66D68 /* UIActionSheet+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActionSheet+BlocksKit.h"; path = "BlocksKit/UIKit/UIActionSheet+BlocksKit.h"; sourceTree = "<group>"; };
 		925EE58A0D27CC9DF75D89D51759819B /* NSNumber+DRExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNumber+DRExtension.h"; path = "DRCategories/Classes/Foundation/NSNumber+DRExtension.h"; sourceTree = "<group>"; };
 		92A633750EE1EFCE1D41805658C55376 /* JXInteractiveTransition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXInteractiveTransition.m; path = JXExtension/Transition/JXInteractiveTransition.m; sourceTree = "<group>"; };
-		92D2E80007D93EF48B286BF0CDFF3143 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		92D2E80007D93EF48B286BF0CDFF3143 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		9306A58E38E6B1239BC1EECBBD38C1CE /* POPMath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPMath.h; path = pop/POPMath.h; sourceTree = "<group>"; };
 		938FEE7D5722321380EAA830B99C7761 /* POPDecayAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDecayAnimationInternal.h; path = pop/POPDecayAnimationInternal.h; sourceTree = "<group>"; };
 		93BED686D6628B8BA165B74DE124F2FB /* DRTimeConsumingPicker.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRTimeConsumingPicker.xib; sourceTree = "<group>"; };
@@ -988,16 +1005,16 @@
 		99EBDC407A15F5630E1493BBD6FBA22D /* POPAnimationTracer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationTracer.h; path = pop/POPAnimationTracer.h; sourceTree = "<group>"; };
 		9A58FFDB5E681A79FC426B40049335A9 /* NSSet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSSet+BlocksKit.m"; path = "BlocksKit/Core/NSSet+BlocksKit.m"; sourceTree = "<group>"; };
 		9AA5B18CAC6247281EFE2F57D4C80C57 /* DRWeekPickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRWeekPickerView.m; path = DRUIWidgetKit/Classes/WeekPickerView/DRWeekPickerView.m; sourceTree = "<group>"; };
-		9AD0B916DD122B0F2EAD856B80E2DFDE /* Pods_DRPickerViews_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DRPickerViews_Example.framework; path = "Pods-DRPickerViews_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AD0B916DD122B0F2EAD856B80E2DFDE /* Pods_DRPickerViews_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DRPickerViews_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0F8DBB56CAA53FFE3F0A99CEE3DCA3 /* NSArray+DRExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+DRExtension.h"; path = "DRCategories/Classes/Foundation/NSArray+DRExtension.h"; sourceTree = "<group>"; };
 		9B400B1C7DA93237192FFA526A80DBC9 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
 		9CB150AA19C9E525A70C413C7A8BDF7A /* NSTimer+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSTimer+BlocksKit.m"; path = "BlocksKit/Core/NSTimer+BlocksKit.m"; sourceTree = "<group>"; };
 		9CBB32D2ED3671843441456E0A0114FE /* JXExtension-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JXExtension-prefix.pch"; sourceTree = "<group>"; };
 		9CC51293540D7B1DD1282785D502C18A /* A2DynamicDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = A2DynamicDelegate.m; path = BlocksKit/DynamicDelegate/A2DynamicDelegate.m; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E6881F199D4C52B5813970335EE6EAB /* TransformationMatrix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TransformationMatrix.h; path = pop/WebCore/TransformationMatrix.h; sourceTree = "<group>"; };
 		9EFCFCF72ECABCE7FB1C1BDD194C5224 /* DRLunarYearView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DRLunarYearView.xib; path = DRUIWidgetKit/Classes/LunarDatePickerView/DRLunarYearView.xib; sourceTree = "<group>"; };
-		9EFE13C42C32AA8F1D5062870DF24930 /* POPAnimationRuntime.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationRuntime.mm; path = pop/POPAnimationRuntime.mm; sourceTree = "<group>"; };
+		9EFE13C42C32AA8F1D5062870DF24930 /* POPAnimationRuntime.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationRuntime.mm; path = pop/POPAnimationRuntime.mm; sourceTree = "<group>"; };
 		9F1C0F771E13D061DEBA2DD293E5E35A /* Pods-DRPickerViews_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DRPickerViews_Example-frameworks.sh"; sourceTree = "<group>"; };
 		9F62B84907946853E7A2F521A8AB7087 /* DRUIWidgetKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DRUIWidgetKit-Info.plist"; sourceTree = "<group>"; };
 		9FD05CDA21F7AF0B6F3407B9D691AE48 /* HexColors.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = HexColors.modulemap; sourceTree = "<group>"; };
@@ -1043,14 +1060,14 @@
 		AC6DD8493632DEED1FA64DA87171526A /* NSMutableIndexSet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableIndexSet+BlocksKit.m"; path = "BlocksKit/Core/NSMutableIndexSet+BlocksKit.m"; sourceTree = "<group>"; };
 		ACA7C160E461792A47D5D3AA6023F731 /* DRSandboxManager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DRSandboxManager-Info.plist"; sourceTree = "<group>"; };
 		ACB90041F5EE79970265C6844350FA0D /* UITableView+DRExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITableView+DRExtension.h"; path = "DRCategories/Classes/UIKit/UITableView+DRExtension.h"; sourceTree = "<group>"; };
-		ACD8CCCF865760EA1CF4C1D94ABCE469 /* TransformationMatrix.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = TransformationMatrix.cpp; path = pop/WebCore/TransformationMatrix.cpp; sourceTree = "<group>"; };
+		ACD8CCCF865760EA1CF4C1D94ABCE469 /* TransformationMatrix.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = TransformationMatrix.cpp; path = pop/WebCore/TransformationMatrix.cpp; sourceTree = "<group>"; };
 		AD82AA4EFF9BCE27DD085111BAB54BA7 /* POP.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POP.h; path = pop/POP.h; sourceTree = "<group>"; };
 		ADA68344B084565BC061A8FE1E31CF3D /* UIImagePickerController+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImagePickerController+BlocksKit.m"; path = "BlocksKit/UIKit/UIImagePickerController+BlocksKit.m"; sourceTree = "<group>"; };
-		ADA6CE84DEAB83EFDEAC94B03A14D06E /* POPAnimationTracer.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationTracer.mm; path = pop/POPAnimationTracer.mm; sourceTree = "<group>"; };
+		ADA6CE84DEAB83EFDEAC94B03A14D06E /* POPAnimationTracer.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationTracer.mm; path = pop/POPAnimationTracer.mm; sourceTree = "<group>"; };
 		ADE8C916426D708E345427D01EA5E913 /* Pods-DRPickerViews_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DRPickerViews_Tests.modulemap"; sourceTree = "<group>"; };
 		AE61628F13B12FC46747CA24BA5294BB /* JXPushAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXPushAnimator.m; path = JXExtension/Transition/JXPushAnimator.m; sourceTree = "<group>"; };
 		AE660CAAB3F4D8CED0D129ACD77B726C /* UIView+JXClass.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+JXClass.m"; path = "JXExtension/Category/UIView+JXClass.m"; sourceTree = "<group>"; };
-		AFFCCC119656E618B30054F9B0FC4D52 /* DRUIWidgetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DRUIWidgetKit.framework; path = DRUIWidgetKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFFCCC119656E618B30054F9B0FC4D52 /* DRUIWidgetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DRUIWidgetKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0253CF29C15A2CB889D277AEFFD00B1 /* DRClassTableWeekPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRClassTableWeekPicker.m; path = DRPickerViews/Classes/Pickers/ClassTableWeekPicker/DRClassTableWeekPicker.m; sourceTree = "<group>"; };
 		B085F1B806B58A4B394052D7BE2D657A /* DRTimeConsumePickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRTimeConsumePickerView.h; path = DRUIWidgetKit/Classes/TimeConsumePickerView/DRTimeConsumePickerView.h; sourceTree = "<group>"; };
 		B0DCFD0AA5AC674CA3365E8E7137C3C7 /* DRWeekPickerCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DRWeekPickerCell.xib; path = DRUIWidgetKit/Classes/WeekPickerView/DRWeekPickerCell.xib; sourceTree = "<group>"; };
@@ -1081,7 +1098,7 @@
 		BC791949B9548E07A95F9EF062D432DA /* UITextField+JXLimitText.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextField+JXLimitText.h"; path = "JXExtension/Category/UITextField+JXLimitText.h"; sourceTree = "<group>"; };
 		BDADF938316E01413681446B57C28291 /* DROptionCardCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DROptionCardCell.m; path = DRUIWidgetKit/Classes/OptionCard/DROptionCardCell.m; sourceTree = "<group>"; };
 		BDC9AA600D3756289ECE52A0D9EA0B5E /* NSObject+BKBlockObservation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+BKBlockObservation.m"; path = "BlocksKit/Core/NSObject+BKBlockObservation.m"; sourceTree = "<group>"; };
-		BE670FF34A1B2EFDDEF5D778D0A22EDA /* POPCGUtils.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPCGUtils.mm; path = pop/POPCGUtils.mm; sourceTree = "<group>"; };
+		BE670FF34A1B2EFDDEF5D778D0A22EDA /* POPCGUtils.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPCGUtils.mm; path = pop/POPCGUtils.mm; sourceTree = "<group>"; };
 		BECA89A1B349E892577780F6C2918E5B /* UIWebView+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWebView+BlocksKit.h"; path = "BlocksKit/UIKit/UIWebView+BlocksKit.h"; sourceTree = "<group>"; };
 		BFCB69D30C3BFCFA791636B5B3071289 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASShorthandAdditions.h"; path = "Masonry/NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		C0A05C51DC75D5CC47C3D3AB9D7F76A8 /* UIViewController+JXTransition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+JXTransition.h"; path = "JXExtension/Transition/UIViewController+JXTransition.h"; sourceTree = "<group>"; };
@@ -1096,11 +1113,11 @@
 		C30C3200BCCC92CBFF8ED8984D84E9ED /* Masonry-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-umbrella.h"; sourceTree = "<group>"; };
 		C35CED3D094EAD6D8AE97582A5D311FB /* DROptionCardPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DROptionCardPicker.h; path = DRPickerViews/Classes/Pickers/OptionCardPicker/DROptionCardPicker.h; sourceTree = "<group>"; };
 		C3B21C1E39444C19D9DFD8F9F8A6253C /* NSArray+DRExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+DRExtension.m"; path = "DRCategories/Classes/Foundation/NSArray+DRExtension.m"; sourceTree = "<group>"; };
-		C3BDF636E49E9C2D534074DACBCFEF16 /* POPCustomAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPCustomAnimation.mm; path = pop/POPCustomAnimation.mm; sourceTree = "<group>"; };
+		C3BDF636E49E9C2D534074DACBCFEF16 /* POPCustomAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPCustomAnimation.mm; path = pop/POPCustomAnimation.mm; sourceTree = "<group>"; };
 		C44F65F60D9F6E393C9247D445C37605 /* NSDate+JXExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDate+JXExtension.m"; path = "JXExtension/Category/NSDate+JXExtension.m"; sourceTree = "<group>"; };
 		C477D0C9FCAF44F6F980C22C76430583 /* POPDecayAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDecayAnimation.h; path = pop/POPDecayAnimation.h; sourceTree = "<group>"; };
 		C48DFB0F16CD8C246F5C8002994E0D38 /* DRUIWidgetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DRUIWidgetKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C55C2FD9D9959A9D7E418DC2C77C0505 /* JXExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JXExtension.framework; path = JXExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C55C2FD9D9959A9D7E418DC2C77C0505 /* JXExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JXExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5D574445C64611397D09E149601B187 /* DRBaseAlertPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRBaseAlertPicker.h; path = DRPickerViews/Classes/Pickers/Common/DRBaseAlertPicker.h; sourceTree = "<group>"; };
 		C67D860FA900C8CBCDA0488B650C93BA /* DRValuePickerView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DRValuePickerView.xib; path = DRUIWidgetKit/Classes/ValuePickerView/DRValuePickerView.xib; sourceTree = "<group>"; };
 		C6B0AC08CBA493C9657C1A74808AC222 /* DRSectionTitleView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRSectionTitleView.h; path = DRUIWidgetKit/Classes/SectionView/DRSectionTitleView.h; sourceTree = "<group>"; };
@@ -1129,7 +1146,7 @@
 		D5507F7CE0F89B9C99FE6F89804E805F /* pop-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "pop-Info.plist"; sourceTree = "<group>"; };
 		D57E5620A7DEE4DE9762415A30FC920A /* Masonry.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.xcconfig; sourceTree = "<group>"; };
 		D58CC4C98F1084BC2E6E41C3E2750BD1 /* POPAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAction.h; path = pop/POPAction.h; sourceTree = "<group>"; };
-		D5BC76764086A69CCD293E923FA61A00 /* DRCategories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DRCategories.framework; path = DRCategories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5BC76764086A69CCD293E923FA61A00 /* DRCategories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DRCategories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D2DA3BCEBCBA77C3B5E8747344AC95 /* SDVersion.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SDVersion.modulemap; sourceTree = "<group>"; };
 		D646EBC5EC9073BB26791533451EBDC8 /* YYClassInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYClassInfo.m; path = YYModel/YYClassInfo.m; sourceTree = "<group>"; };
 		D75D301D5352C12F9DE2EDB5B7A907C2 /* DRHorizenPageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRHorizenPageView.m; path = DRUIWidgetKit/Classes/HorizenPageView/DRHorizenPageView.m; sourceTree = "<group>"; };
@@ -1157,20 +1174,20 @@
 		E13A328C897AC958008FC26D56A13406 /* YYModel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YYModel-dummy.m"; sourceTree = "<group>"; };
 		E15DB69A41E9C35A615C2906DDC4967E /* DRPickerContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRPickerContainerView.m; path = DRUIWidgetKit/Classes/PickerContainerView/DRPickerContainerView.m; sourceTree = "<group>"; };
 		E1E735255DE770AB3446A8E30953D4A2 /* JXBordersView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXBordersView.m; path = JXExtension/View/JXBordersView.m; sourceTree = "<group>"; };
-		E1EB76A391A379173CEFF4660D498BCC /* SDVersion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SDVersion.framework; path = SDVersion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1EB76A391A379173CEFF4660D498BCC /* SDVersion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SDVersion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20512978F0B5CBA7A0DF6266D8D9A54 /* NSOrderedSet+BlocksKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSOrderedSet+BlocksKit.m"; path = "BlocksKit/Core/NSOrderedSet+BlocksKit.m"; sourceTree = "<group>"; };
 		E2469DEC1423382D28500E2C103A0660 /* DRWeekOrTermPicker.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRWeekOrTermPicker.xib; sourceTree = "<group>"; };
 		E286F15CEA0447CE30DAFE3468D3988B /* DRClassDurationPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRClassDurationPicker.m; path = DRPickerViews/Classes/Pickers/ClassDurationPicker/DRClassDurationPicker.m; sourceTree = "<group>"; };
 		E28E3AD75426DED5AD9C6FED105BE6C0 /* DRToastView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DRToastView-prefix.pch"; sourceTree = "<group>"; };
 		E2ECFF80DA112C61E00925C08B7882EB /* Pods-DRPickerViews_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DRPickerViews_Example-umbrella.h"; sourceTree = "<group>"; };
 		E36A82DF2DD9467C74B1677F10075FB1 /* DRUIWidgetUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRUIWidgetUtil.m; path = DRUIWidgetKit/Classes/Common/DRUIWidgetUtil.m; sourceTree = "<group>"; };
-		E460D5B0416D36F66EE8EC89E5D2FA0A /* YYModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = YYModel.framework; path = YYModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E460D5B0416D36F66EE8EC89E5D2FA0A /* YYModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YYModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4CD24DBCF4A9745934E649AA9580DA0 /* YYModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YYModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58E453AA4B2F16351E594EED3F36A15 /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
 		E596C34044C56BBEB760BB7D22BBBB3D /* POPAnimationEventInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationEventInternal.h; path = pop/POPAnimationEventInternal.h; sourceTree = "<group>"; };
 		E7141D3BC8DDAD6E1EF59B1F03521AEB /* UIView+JXDesign.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+JXDesign.h"; path = "JXExtension/Category/UIView+JXDesign.h"; sourceTree = "<group>"; };
 		E783DF21AADC71B97C0927864BA98991 /* NSDictionary+DRExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+DRExtension.m"; path = "DRCategories/Classes/Foundation/NSDictionary+DRExtension.m"; sourceTree = "<group>"; };
-		E87DCA71294D5567C9E8BCC54AE1E668 /* POPPropertyAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPPropertyAnimation.mm; path = pop/POPPropertyAnimation.mm; sourceTree = "<group>"; };
+		E87DCA71294D5567C9E8BCC54AE1E668 /* POPPropertyAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPPropertyAnimation.mm; path = pop/POPPropertyAnimation.mm; sourceTree = "<group>"; };
 		E92D8A1D6BB0C23B423275F987EE2459 /* NSMutableDictionary+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableDictionary+BlocksKit.h"; path = "BlocksKit/Core/NSMutableDictionary+BlocksKit.h"; sourceTree = "<group>"; };
 		E9781C9D3DF5B9F34300B1F83BD7895E /* JXExtension.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JXExtension.modulemap; sourceTree = "<group>"; };
 		E9E25301442598F1B66C6F1F9C730D3B /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
@@ -1183,7 +1200,7 @@
 		EC8EA303654FD7C6AE1151A76D7A5E4B /* UIImage+JXExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+JXExtension.h"; path = "JXExtension/Category/UIImage+JXExtension.h"; sourceTree = "<group>"; };
 		ED423988888E4B33FFAC91A56E559408 /* DRYearOrYearMonthPicker.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = DRYearOrYearMonthPicker.xib; sourceTree = "<group>"; };
 		ED595B2AD258E6EE7B69697C28928BB6 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
-		EE3008C3AA5A365124BD96269F6722C4 /* Pods_DRPickerViews_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DRPickerViews_Tests.framework; path = "Pods-DRPickerViews_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE3008C3AA5A365124BD96269F6722C4 /* Pods_DRPickerViews_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DRPickerViews_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEB666CA78B5799057F27F6EC1C4A02F /* UITextField+DRExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextField+DRExtension.m"; path = "DRCategories/Classes/UIKit/UITextField+DRExtension.m"; sourceTree = "<group>"; };
 		EF74730F3EE5F726EFA6E22530A2E57B /* DRSandboxManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DRSandboxManager-umbrella.h"; sourceTree = "<group>"; };
 		EFB4BA5DDF5E5326E0FD7CAF6550759B /* DRCategories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DRCategories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1194,7 +1211,7 @@
 		F2ECEACBD4927BF0532629AEF84C9761 /* JXTransitionObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXTransitionObject.m; path = JXExtension/Transition/JXTransitionObject.m; sourceTree = "<group>"; };
 		F330161964F848303E7A081B39493B75 /* BKMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BKMacros.h; path = BlocksKit/Core/BKMacros.h; sourceTree = "<group>"; };
 		F3BE9BB09A408DE710E663012A669C05 /* UIPopoverController+BlocksKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIPopoverController+BlocksKit.h"; path = "BlocksKit/UIKit/UIPopoverController+BlocksKit.h"; sourceTree = "<group>"; };
-		F643B6D604D4D7DB775844AEA6F9F8B7 /* DRPickerViews.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = DRPickerViews.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F643B6D604D4D7DB775844AEA6F9F8B7 /* DRPickerViews.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = DRPickerViews.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F6DE18C57F1F54051518FF3E7BE13CBA /* CAAnimation+DRExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CAAnimation+DRExtension.h"; path = "DRCategories/Classes/UIKit/CAAnimation+DRExtension.h"; sourceTree = "<group>"; };
 		F7FE9C3FC4B3C7C63D62A4461E60CE1E /* NSDictionary+DRExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+DRExtension.h"; path = "DRCategories/Classes/Foundation/NSDictionary+DRExtension.h"; sourceTree = "<group>"; };
 		F81ACBEFACBC17189695650319F094BC /* POPPropertyAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPPropertyAnimationInternal.h; path = pop/POPPropertyAnimationInternal.h; sourceTree = "<group>"; };
@@ -1204,18 +1221,18 @@
 		FA165B91DD6E74F33CC0B0638252B10C /* POPCGUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPCGUtils.h; path = pop/POPCGUtils.h; sourceTree = "<group>"; };
 		FA6530C2DF3F128A02DC32CD8D721C8C /* DRUIWidgetUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRUIWidgetUtil.h; path = DRUIWidgetKit/Classes/Common/DRUIWidgetUtil.h; sourceTree = "<group>"; };
 		FAB2EEB9A869F03BE0D720DBA6E0595F /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
-		FB9A8AC0DB778E80216890251D2B40AA /* city_list.json */ = {isa = PBXFileReference; includeInIndex = 1; name = city_list.json; path = DRUIWidgetKit/Assets/city_list.json; sourceTree = "<group>"; };
+		FB9A8AC0DB778E80216890251D2B40AA /* city_list.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = city_list.json; path = DRUIWidgetKit/Assets/city_list.json; sourceTree = "<group>"; };
 		FBE6818BE9035B47A65358A02C88A41E /* JXTransitionAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXTransitionAnimator.m; path = JXExtension/Transition/JXTransitionAnimator.m; sourceTree = "<group>"; };
 		FC0AFE82DB34BB2669B005AE39DAA96E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		FCD3B9968F9AE119DEE951AC199DDF72 /* POPAnimationPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationPrivate.h; path = pop/POPAnimationPrivate.h; sourceTree = "<group>"; };
-		FCFC7B1013696EBBE055FCB2C80B5402 /* DRToastView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DRToastView.framework; path = DRToastView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCFDD1B5756959765044D68AD30E3909 /* POPAnimatableProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimatableProperty.mm; path = pop/POPAnimatableProperty.mm; sourceTree = "<group>"; };
+		FCFC7B1013696EBBE055FCB2C80B5402 /* DRToastView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DRToastView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCFDD1B5756959765044D68AD30E3909 /* POPAnimatableProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimatableProperty.mm; path = pop/POPAnimatableProperty.mm; sourceTree = "<group>"; };
 		FDF9C26EDEF7D4AFC060FB877D9B42DD /* DRToastView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRToastView.m; path = DRToastView/Classes/DRToastView.m; sourceTree = "<group>"; };
 		FE2EB096706DADF4B20C00D4CDA3E9EE /* NSMutableSet+DRExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableSet+DRExtension.h"; path = "DRCategories/Classes/Foundation/NSMutableSet+DRExtension.h"; sourceTree = "<group>"; };
 		FE34A0407181B24833EF214875FA1543 /* NSString+JXSize.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+JXSize.m"; path = "JXExtension/Category/NSString+JXSize.m"; sourceTree = "<group>"; };
 		FE60D49C14D9E66B4B394AA3D5E3EFB5 /* NSObject+A2DynamicDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+A2DynamicDelegate.h"; path = "BlocksKit/DynamicDelegate/NSObject+A2DynamicDelegate.h"; sourceTree = "<group>"; };
 		FE69415E3679166C8A693A76ABCA5BE3 /* POPAnimatablePropertyTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimatablePropertyTypes.h; path = pop/POPAnimatablePropertyTypes.h; sourceTree = "<group>"; };
-		FEA01E691085F56B1491CD8963EFD6A0 /* POPLayerExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPLayerExtras.mm; path = pop/POPLayerExtras.mm; sourceTree = "<group>"; };
+		FEA01E691085F56B1491CD8963EFD6A0 /* POPLayerExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPLayerExtras.mm; path = pop/POPLayerExtras.mm; sourceTree = "<group>"; };
 		FF219793723A26669AEEBD3F3019E3FD /* SDVersion-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDVersion-umbrella.h"; sourceTree = "<group>"; };
 		FF525D7EF68B76C67A002646BCB971BD /* JXTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXTextView.h; path = JXExtension/View/JXTextView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1368,7 +1385,6 @@
 				8C1F73B93CD3A92E91E43CBD4419AE3C /* DRSandBoxManager.m */,
 				324855E98EC267AE46BB98C0FCA117A0 /* Support Files */,
 			);
-			name = DRSandboxManager;
 			path = DRSandboxManager;
 			sourceTree = "<group>";
 		};
@@ -1396,7 +1412,6 @@
 			children = (
 				2B87114EC750041D00BB7F88B422BD1C /* DRClassDurationPicker.xib */,
 			);
-			name = ClassDurationPicker;
 			path = ClassDurationPicker;
 			sourceTree = "<group>";
 		};
@@ -1496,7 +1511,6 @@
 				5C0AB7E9E7B37FA6E3B48549B6D0CA41 /* SDVersion.h */,
 				524428D3BE5A5F5587EFBB8777323AAA /* Support Files */,
 			);
-			name = SDVersion;
 			path = SDVersion;
 			sourceTree = "<group>";
 		};
@@ -1530,6 +1544,10 @@
 		24649E5F3DE7CCF60E747FFCAABEC0CF /* DRUIWidgetKit */ = {
 			isa = PBXGroup;
 			children = (
+				247A61692350E67100D076C8 /* CheckboxGroupView */,
+				247A616F2350E67200D076C8 /* ClassDurationPickerView */,
+				247A61662350E67100D076C8 /* ClassRemindTimePickerView */,
+				247A616C2350E67200D076C8 /* ClassTermPickerView */,
 				91A2791416DAFED5A351CB15197D620A /* CityPickerView */,
 				710D29DA1AF1D34EAD0D43AAAEE1C705 /* Common */,
 				2DCDDD060B920BBECF6B2B8C2C3CB2CE /* CustomLayout */,
@@ -1552,8 +1570,43 @@
 				51FFB6DA2AFB79CBE4EC99B02661A8ED /* VoiceWaveView */,
 				BBAD606C90AFE553D0382CD13E9BA294 /* WeekPickerView */,
 			);
-			name = DRUIWidgetKit;
 			path = DRUIWidgetKit;
+			sourceTree = "<group>";
+		};
+		247A61662350E67100D076C8 /* ClassRemindTimePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				247A61672350E67100D076C8 /* DRClassRemindTimePickerView.m */,
+				247A61682350E67100D076C8 /* DRClassRemindTimePickerView.h */,
+			);
+			path = ClassRemindTimePickerView;
+			sourceTree = "<group>";
+		};
+		247A61692350E67100D076C8 /* CheckboxGroupView */ = {
+			isa = PBXGroup;
+			children = (
+				247A616A2350E67100D076C8 /* DRCheckboxGroupView.h */,
+				247A616B2350E67100D076C8 /* DRCheckboxGroupView.m */,
+			);
+			path = CheckboxGroupView;
+			sourceTree = "<group>";
+		};
+		247A616C2350E67200D076C8 /* ClassTermPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				247A616D2350E67200D076C8 /* DRClassTermPickerView.m */,
+				247A616E2350E67200D076C8 /* DRClassTermPickerView.h */,
+			);
+			path = ClassTermPickerView;
+			sourceTree = "<group>";
+		};
+		247A616F2350E67200D076C8 /* ClassDurationPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				247A61702350E67200D076C8 /* DRClassDurationPickerView.m */,
+				247A61712350E67200D076C8 /* DRClassDurationPickerView.h */,
+			);
+			path = ClassDurationPickerView;
 			sourceTree = "<group>";
 		};
 		26F7C6238F0C68D852A582D7CB9D96ED /* WithLunarPicker */ = {
@@ -1635,7 +1688,6 @@
 				9B06EE33A57EED7CEFE4284799450F02 /* YearMonthPicker */,
 				809737F27B7463A0661E6B3483E50123 /* YearOrYearMonthPicker */,
 			);
-			name = Pickers;
 			path = Pickers;
 			sourceTree = "<group>";
 		};
@@ -1644,7 +1696,6 @@
 			children = (
 				34A103DEDC7BAACFD6929D90C960FD18 /* DRValueSelectPicker.xib */,
 			);
-			name = ValueSelectPicker;
 			path = ValueSelectPicker;
 			sourceTree = "<group>";
 		};
@@ -1692,7 +1743,6 @@
 			children = (
 				93BED686D6628B8BA165B74DE124F2FB /* DRTimeConsumingPicker.xib */,
 			);
-			name = TimeConsumingPicker;
 			path = TimeConsumingPicker;
 			sourceTree = "<group>";
 		};
@@ -1779,7 +1829,6 @@
 				7CAA28E79772CA450C02787F7052E194 /* Transition */,
 				5C038F020C810C02E5540E2B6118115A /* View */,
 			);
-			name = JXExtension;
 			path = JXExtension;
 			sourceTree = "<group>";
 		};
@@ -1800,7 +1849,6 @@
 				5C663358062A3FBA0F1B793A2A6DD7B2 /* DRMacroDefines.h */,
 				490D4B0755D60D0949AEF7621B63224B /* Support Files */,
 			);
-			name = DRMacroDefines;
 			path = DRMacroDefines;
 			sourceTree = "<group>";
 		};
@@ -1843,7 +1891,6 @@
 			children = (
 				035EE2D1E011732C86FF65598F0E9DE2 /* DRHourMinutePicker.xib */,
 			);
-			name = HourMinutePicker;
 			path = HourMinutePicker;
 			sourceTree = "<group>";
 		};
@@ -1900,7 +1947,6 @@
 			children = (
 				31F7CF8A384B42AE3BB56272712E4DEA /* DRYMDWithLunarPicker.xib */,
 			);
-			name = WithLunarPicker;
 			path = WithLunarPicker;
 			sourceTree = "<group>";
 		};
@@ -1918,7 +1964,6 @@
 			children = (
 				E2469DEC1423382D28500E2C103A0660 /* DRWeekOrTermPicker.xib */,
 			);
-			name = WeekOrTermPicker;
 			path = WeekOrTermPicker;
 			sourceTree = "<group>";
 		};
@@ -1957,7 +2002,6 @@
 			children = (
 				0268355C60EC04EB44605D321E4F29EB /* DRAheadTimePicker.xib */,
 			);
-			name = AheadTimePicker;
 			path = AheadTimePicker;
 			sourceTree = "<group>";
 		};
@@ -2011,7 +2055,6 @@
 				9685ABB0CE423E128A66A6EECF794C3B /* Support Files */,
 				4F2587DDBFB5F0E5D250B49D86D85004 /* UIKit */,
 			);
-			name = BlocksKit;
 			path = BlocksKit;
 			sourceTree = "<group>";
 		};
@@ -2020,7 +2063,6 @@
 			children = (
 				967CB9B45C3DC6672864E4CEE85A4C2B /* DROneWeekPicker.xib */,
 			);
-			name = OneWeekPicker;
 			path = OneWeekPicker;
 			sourceTree = "<group>";
 		};
@@ -2085,7 +2127,6 @@
 			children = (
 				ED423988888E4B33FFAC91A56E559408 /* DRYearOrYearMonthPicker.xib */,
 			);
-			name = YearOrYearMonthPicker;
 			path = YearOrYearMonthPicker;
 			sourceTree = "<group>";
 		};
@@ -2128,7 +2169,6 @@
 				8F025DEC07BD2EF8EA2B72CC16C2E8F3 /* Support Files */,
 				461CD9BBB44DD5DB84F94BE017FA71F6 /* UIKit */,
 			);
-			name = DRCategories;
 			path = DRCategories;
 			sourceTree = "<group>";
 		};
@@ -2222,7 +2262,6 @@
 			children = (
 				5DD1F6A966A2064255295783B46A6CFB /* DRYearMonthPicker.xib */,
 			);
-			name = YearMonthPicker;
 			path = YearMonthPicker;
 			sourceTree = "<group>";
 		};
@@ -2231,7 +2270,6 @@
 			children = (
 				1D8920E503DD495C5BF64A7AC10BB016 /* DRCityPicker.xib */,
 			);
-			name = CityPicker;
 			path = CityPicker;
 			sourceTree = "<group>";
 		};
@@ -2290,7 +2328,6 @@
 			children = (
 				6A00FAE6F955983847ADECB1D70702D8 /* DROptionCardPicker.xib */,
 			);
-			name = OptionCardPicker;
 			path = OptionCardPicker;
 			sourceTree = "<group>";
 		};
@@ -2365,7 +2402,6 @@
 			children = (
 				2361F48D9F03BD2FF43416F2CAE414B4 /* DRClassRemindTimePicker.xib */,
 			);
-			name = ClassTimeRemindPicker;
 			path = ClassTimeRemindPicker;
 			sourceTree = "<group>";
 		};
@@ -2474,7 +2510,6 @@
 				59C3E0F25C2425CF09A32C4E1BC1E769 /* UnitBezier.h */,
 				834094E884EE414E623324CDE707009B /* Support Files */,
 			);
-			name = pop;
 			path = pop;
 			sourceTree = "<group>";
 		};
@@ -2483,7 +2518,6 @@
 			children = (
 				7336E4F234AA345BE4D1069356D03A61 /* DRYMDPicker.xib */,
 			);
-			name = YearMonthDayPicker;
 			path = YearMonthDayPicker;
 			sourceTree = "<group>";
 		};
@@ -2525,7 +2559,6 @@
 				0E28A37480A4B2F1680F894D3672AA07 /* YYModel.h */,
 				789CF622760CAF8FF43CCC4EAB79BA7B /* Support Files */,
 			);
-			name = YYModel;
 			path = YYModel;
 			sourceTree = "<group>";
 		};
@@ -2620,7 +2653,6 @@
 			children = (
 				82363A8995D9BD5DE5585A157EFAE572 /* DRStringOptionsPicker.xib */,
 			);
-			name = StringOptionPicker;
 			path = StringOptionPicker;
 			sourceTree = "<group>";
 		};
@@ -2662,7 +2694,6 @@
 				150481C98635A67CE74F0DC39FBD72C7 /* HexColors.m */,
 				C6E8751A42BF0465A59C54E54BDF1D0F /* Support Files */,
 			);
-			name = HexColors;
 			path = HexColors;
 			sourceTree = "<group>";
 		};
@@ -2705,7 +2736,6 @@
 				88EA044781E3B16B154AD5C708828B52 /* ViewController+MASAdditions.m */,
 				13AB9F4948DDBB00B7B972A68B05F081 /* Support Files */,
 			);
-			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -2714,7 +2744,6 @@
 			children = (
 				CFB6CF6A022FD2A2DCF9A064C9B265D2 /* DRClassTableWeekPicker.xib */,
 			);
-			name = ClassTableWeekPicker;
 			path = ClassTableWeekPicker;
 			sourceTree = "<group>";
 		};
@@ -2726,7 +2755,6 @@
 				12BF551E0105079E5B75CF829C06BA2E /* Resources */,
 				BE914D390010DA59402DC4F125ECAD0A /* Support Files */,
 			);
-			name = DRToastView;
 			path = DRToastView;
 			sourceTree = "<group>";
 		};
@@ -2798,12 +2826,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6C24123C16772DDE6BF14DA3C990E79 /* DRCityPickerView.h in Headers */,
+				247A61742350E67300D076C8 /* DRCheckboxGroupView.h in Headers */,
 				7A52874DA2AEF520F84F6C6F62F9E29C /* DRCustomPageControl.h in Headers */,
 				F69357F753CE4A452BB812505E047B4B /* DRCustomVerticalLayout.h in Headers */,
 				B572E836F3D6E3B5A84638C77D0A4EDB /* DRDatePickerView.h in Headers */,
 				4A3B238CD34A51768E2CBE7B4A77228C /* DRFocusEnlargeLayout.h in Headers */,
 				411C4369455E836BA9652D5EF0341EC5 /* DRHorizenPageLayout.h in Headers */,
 				818D9766E86D33B1662E688A3D0EF97C /* DRHorizenPageView.h in Headers */,
+				247A61772350E67300D076C8 /* DRClassTermPickerView.h in Headers */,
 				2B0D421E4D788665462E17342A00F0F9 /* DRHourMinutePickerView.h in Headers */,
 				53E254A91B8B980AAB901D1801360262 /* DRLunarDatePickerView.h in Headers */,
 				F3A9093C2927FB51CCE46251EA262FAA /* DRLunarYearView.h in Headers */,
@@ -2817,8 +2847,10 @@
 				1FCB608D7F0E47C201CB745C46841C69 /* DRSegmentBar.h in Headers */,
 				90C8DAD26EDCEC55FB8CD11F441270D7 /* DRStarRateView.h in Headers */,
 				651B790CE60613290F7B27F290A752A3 /* DRTimeConsumePickerView.h in Headers */,
+				247A61792350E67300D076C8 /* DRClassDurationPickerView.h in Headers */,
 				CC402ABD9C5815187609BA630BF90CC3 /* DRUIWidgetKit-umbrella.h in Headers */,
 				69874256BFBE8B575DAF065ED960FDB0 /* DRUIWidgetUtil.h in Headers */,
+				247A61732350E67300D076C8 /* DRClassRemindTimePickerView.h in Headers */,
 				140AE60AA3F7AA5842261D3434390095 /* DRValuePickerView.h in Headers */,
 				64135847A23C923B1A3A5D0A6B7E61C4 /* DRWaveView.h in Headers */,
 				DC969722971E05078CF71F02F006F678 /* DRWeekPickerCell.h in Headers */,
@@ -3574,6 +3606,7 @@
 				4BFA662C36F26EE4C29641030236B302 /* DRCustomPageControl.m in Sources */,
 				2CD23A395B3FB1BAF6A095A3C7502F78 /* DRCustomVerticalLayout.m in Sources */,
 				00F52465B4794CEF7EF33E6C2B2AC3C0 /* DRDatePickerView.m in Sources */,
+				247A61752350E67300D076C8 /* DRCheckboxGroupView.m in Sources */,
 				9E1FE07CFEEFADC540F1B696050665C2 /* DRFocusEnlargeLayout.m in Sources */,
 				B8C6C9F47F2F7D16F023EE0B03A89671 /* DRHorizenPageLayout.m in Sources */,
 				0E10F4BFF62F4DA98A45AD044A704CAF /* DRHorizenPageView.m in Sources */,
@@ -3585,12 +3618,15 @@
 				D7147958B8590C91D894ACBBD88157C4 /* DROptionCardLayout.m in Sources */,
 				E6C237C7C475E97F7542FF59B26DBC43 /* DROptionCardView.m in Sources */,
 				F37B2765BA6C0A6ACFE47A6A9C750754 /* DRPickerContainerView.m in Sources */,
+				247A61782350E67300D076C8 /* DRClassDurationPickerView.m in Sources */,
 				5336B731267E6761E12A859AD56E7B91 /* DRPickerTopBar.m in Sources */,
 				5617AB12274A80D97EE23736BB8DDB3B /* DRSectionTitleView.m in Sources */,
 				BFB07540BA63C350A37575CEA00BA908 /* DRSegmentBar.m in Sources */,
 				2B8529077679267DBAD418243C05B877 /* DRStarRateView.m in Sources */,
+				247A61722350E67300D076C8 /* DRClassRemindTimePickerView.m in Sources */,
 				B914CA5D431818D421CE57A1E85FC686 /* DRTimeConsumePickerView.m in Sources */,
 				34D39B9FDEC2C721D2B723AF9296B407 /* DRUIWidgetKit-dummy.m in Sources */,
+				247A61762350E67300D076C8 /* DRClassTermPickerView.m in Sources */,
 				BB6957B6C9B074DE4FDE35622E48EC1C /* DRUIWidgetUtil.m in Sources */,
 				6E957EFB359235F6875DC522BA45283D /* DRValuePickerView.m in Sources */,
 				23E168D509281220A9D73F24B4B1A232 /* DRWaveView.m in Sources */,
@@ -4720,8 +4756,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

@@ -51,4 +51,7 @@
  */
 + (void)hideSeparateLineForPickerView:(UIPickerView *)pickerView;
 
++ (UIImage *)pngImageWithName:(NSString *)imageName
+                     inBundle:(NSBundle *)bundle;
+
 @end
