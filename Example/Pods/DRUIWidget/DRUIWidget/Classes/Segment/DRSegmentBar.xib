@@ -11,10 +11,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DRSegmentBar">
             <connections>
                 <outlet property="containerView" destination="iN0-l3-epB" id="dxu-fO-2Sg"/>
+                <outlet property="flagViewBottomConst" destination="AaB-Kb-HdT" id="miJ-vy-phS"/>
                 <outlet property="selectFlagView" destination="fld-GA-kwU" id="BTJ-VP-8W4"/>
                 <outlet property="selectMarkView" destination="Apk-ah-t0V" id="rax-mR-X8e"/>
                 <outlet property="selectMarkViewLeft" destination="dbE-T0-i0c" id="Eld-9u-tgX"/>
                 <outlet property="selectMarkViewWidth" destination="4sz-28-FIu" id="jbo-mc-zC7"/>
+                <outlet property="sepratorLine" destination="T9c-dA-zin" id="VhB-DM-GrJ"/>
                 <outlet property="stackView" destination="6Xd-Zd-61r" id="zlg-K6-L4Q"/>
             </connections>
         </placeholder>

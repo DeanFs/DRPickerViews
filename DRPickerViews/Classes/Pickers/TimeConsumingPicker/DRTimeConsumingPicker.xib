@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,28 +21,29 @@
                         <constraint firstAttribute="height" constant="56" id="6LP-QP-xli"/>
                     </constraints>
                 </view>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDH-OQ-aAA">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Pv-Eu-FHB" customClass="DRTimeConsumePickerView">
                     <rect key="frame" x="0.0" y="56" width="414" height="204"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </pickerView>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="gDH-OQ-aAA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7ee-tW-qaT"/>
-                <constraint firstItem="gDH-OQ-aAA" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="H0j-XW-bve"/>
+                <constraint firstItem="9Pv-Eu-FHB" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="EbZ-MJ-tD4"/>
+                <constraint firstItem="9Pv-Eu-FHB" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Pqa-2U-zp9"/>
                 <constraint firstItem="g44-Mq-kcu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="U2z-8X-f4p"/>
-                <constraint firstAttribute="bottom" secondItem="gDH-OQ-aAA" secondAttribute="bottom" id="bh6-2f-h5q"/>
+                <constraint firstItem="9Pv-Eu-FHB" firstAttribute="top" secondItem="g44-Mq-kcu" secondAttribute="bottom" id="ZO5-gy-jjD"/>
                 <constraint firstItem="g44-Mq-kcu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lhz-7A-Mrc"/>
                 <constraint firstAttribute="trailing" secondItem="g44-Mq-kcu" secondAttribute="trailing" id="s8H-IH-5AX"/>
-                <constraint firstItem="gDH-OQ-aAA" firstAttribute="top" secondItem="g44-Mq-kcu" secondAttribute="bottom" id="t5c-ac-fAz"/>
+                <constraint firstItem="9Pv-Eu-FHB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sHP-kj-a7l"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="picker" destination="gDH-OQ-aAA" id="7Wx-T9-ecM"/>
-                <outlet property="pickerView" destination="gDH-OQ-aAA" id="a0y-nt-7Mn"/>
+                <outlet property="picker" destination="9Pv-Eu-FHB" id="lss-y2-ZoE"/>
+                <outlet property="pickerView" destination="9Pv-Eu-FHB" id="qfj-Xu-CaS"/>
                 <outlet property="topBar" destination="g44-Mq-kcu" id="buH-0z-6db"/>
             </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="100.44642857142857"/>
         </view>
     </objects>
 </document>

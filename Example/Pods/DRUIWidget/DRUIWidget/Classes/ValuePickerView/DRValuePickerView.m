@@ -27,7 +27,6 @@
 
 - (void)setupPickerView {
     if (self.currentValue < self.minValue || self.currentValue > self.maxValue) {
-        NSAssert(NO, @"当前反显值不在设定范围内");
         return;
     }
 

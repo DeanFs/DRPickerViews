@@ -11,87 +11,50 @@
 #import <DRCategories/UIFont+DRExtension.h>
 #import <DRCategories/UIView+DRExtension.h>
 #import <DRUIWidget/DRUIWidgetUtil.h>
+#import <DRUIWidget/DRValuePickerView.h>
+#import <DRUIWidget/DRSectionTitleView.h>
 
-@interface DRValueSelectPicker () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface DRValueSelectPicker ()
 
-@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
-@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *unitLabel;
-@property (weak, nonatomic) IBOutlet UILabel *prefixUnitLabel;
+@property (weak, nonatomic) IBOutlet DRValuePickerView *pickerView;
+@property (weak, nonatomic) IBOutlet DRSectionTitleView *tipView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipViewTop;
 
 @end
 
 @implementation DRValueSelectPicker
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    self.pickerView.delegate = self;
-    self.pickerView.dataSource = self;
-    
-    self.unitLabel.textColor = [DRUIWidgetUtil normalColor];
-    self.prefixUnitLabel.textColor = [DRUIWidgetUtil normalColor];
+- (CGFloat)picerViewHeight {
+    DRPickerValueSelectOption *opt = (DRPickerValueSelectOption *)self.pickerOption;
+    if (opt.tipText.length > 0) {
+        return 303;
+    }
+    self.tipViewTop.constant = 0;
+    self.tipViewHeight.constant = 0;
+    return [super picerViewHeight];
 }
 
 - (void)prepareToShow {
-    [self.pickerView reloadAllComponents];
     DRPickerValueSelectOption *opt = (DRPickerValueSelectOption *)self.pickerOption;
-    NSInteger row = opt.currentValue - opt.minValue;
-    if (row > 0) {
-        [self.pickerView selectRow:row inComponent:0 animated:NO];
+    self.pickerView.minValue = opt.minValue;
+    self.pickerView.maxValue = opt.maxValue;
+    self.pickerView.currentValue = opt.currentValue;
+    self.pickerView.valueUnit = opt.valueUnit;
+    self.pickerView.prefixUnit = opt.prefixUnit;
+
+    if (opt.tipText.length > 0) {
+        self.tipView.title = opt.tipText;
     }
-    self.unitLabel.text = opt.valueUnit;
-    self.prefixUnitLabel.text = opt.prefixUnit;
-    self.valueLabel.text = [NSString stringWithFormat:@"%ld", opt.maxValue];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.pickerView reloadAllComponents];
-    });
 }
 
 - (id)pickedObject {
-    DRPickerValueSelectOption *opt = (DRPickerValueSelectOption *)self.pickerOption;
-    return @(opt.minValue + [self.pickerView selectedRowInComponent:0]);
+    return @(self.pickerView.currentValue);
 }
 
 - (Class)pickerOptionClass {
     return [DRPickerValueSelectOption class];
-}
-
-#pragma mark - UIPickerViewDataSource
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    [DRUIWidgetUtil hideSeparateLineForPickerView:pickerView];
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    DRPickerValueSelectOption *opt = (DRPickerValueSelectOption *)self.pickerOption;
-    return opt.maxValue - opt.minValue + 1;
-}
-
-#pragma mark - UIPickerViewDelegate
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(nullable UIView *)view {
-    DRPickerValueSelectOption *opt = (DRPickerValueSelectOption *)self.pickerOption;
-    UILabel *label = [[UILabel alloc] init];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont systemFontOfSize:31];
-    label.text = [NSString stringWithFormat:@"%ld", opt.minValue + row];
-    label.textColor = [DRUIWidgetUtil pickerUnSelectColor];
-    if (row == [pickerView selectedRowInComponent:component] || component == 1) {
-        label.textColor = [DRUIWidgetUtil normalColor];
-    }
-    return label;
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    [pickerView reloadComponent:component];
-}
-
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    return pickerView.width;
-}
-
-- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
-    return 34;
 }
 
 @end

@@ -18,6 +18,8 @@ typedef NS_ENUM(NSUInteger, DRSegmentBarShowType) {
 IB_DESIGNABLE
 @interface DRSegmentBar : UIView
 
+@property (weak, nonatomic) IBOutlet UIView *sepratorLine;
+
 /**
  配置不同的样式类型, 使用枚举没法展示出来，所以使用整型
  默认是普通样式
@@ -28,6 +30,10 @@ IB_DESIGNABLE
  如果使用第三种样式，使用图片
  */
 @property (nonatomic, strong) IBInspectable UIImage * flagImage;
+/**
+ 偏移位置，标签图片底部展示偏移
+ */
+@property (nonatomic, assign) CGFloat flagImageOffsetBottom;
 
 /**
  字体大小，如果不设置使用13

@@ -63,6 +63,11 @@
         case DRPickerTypeYearMoth: {
             opt = [DRPickerDateOption optionWithTitle:@"选择月份" currentDate:[NSDate date] minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
         } break;
+
+        case DRPickerTypeYearOrYearMoth: {
+            opt = [DRPickerYearOrYearMonthOption optionWithTitle:@"选择时间段" currentDate:[NSDate date] minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
+            ((DRPickerYearOrYearMonthOption *)opt).isOnlyYear = YES;
+        } break;
             
         case DRPickerTypeYearMothFileter: {
             opt = [DRPickerYearMonthFilterOption optionWithTitle:@"选择月份" currentDate:[NSDate date] minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
@@ -100,6 +105,7 @@
             
         case DRPickerTypeTimeConsuming: {
             opt = [DRPickerTimeConsumingOption optionWithTitle:@"请选择消耗时长" timeConsuming:0/*2*24*3600+5*3600+33*60*/];
+            ((DRPickerTimeConsumingOption*)opt).maxTimeConsume = 39;
         } break;
             
         case DRPickerTypeRemindAhead: {
@@ -108,6 +114,7 @@
             
         case DRPickerTypeValueSelect: {
             opt = [DRPickerValueSelectOption optionWithTitle:@"请选择年龄" currentValue:25 minValue:12 maxValue:99 valueUnit:@"岁"];
+            ((DRPickerValueSelectOption *)opt).tipText = @"测试一下";
         } break;
             
         case DRPickerTypeStringSelect: {

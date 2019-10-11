@@ -1,50 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DRStringOptionsPicker">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
+        <view contentMode="scaleToFill" id="r65-Uq-cHh" customClass="DRStringOptionsPicker">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="303"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bcs-O3-cNF" customClass="DRPickerTopBar">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQj-uE-vwU" customClass="DRPickerTopBar">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="56" id="pVI-5Q-jiF"/>
+                        <constraint firstAttribute="height" constant="56" id="uJv-Vg-0z8"/>
                     </constraints>
                 </view>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsw-a0-Izy">
-                    <rect key="frame" x="0.0" y="56" width="414" height="204"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </pickerView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpK-j0-c8q" customClass="DRSectionTitleView">
+                    <rect key="frame" x="22" y="60" width="370" height="26"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="TQF-TB-1ZW"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRJ-II-Es7" customClass="DRNormalDataPickerView">
+                    <rect key="frame" x="0.0" y="86" width="414" height="217"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Bcs-O3-cNF" secondAttribute="trailing" id="3zz-DF-G8g"/>
-                <constraint firstItem="gsw-a0-Izy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BpT-C9-9NX"/>
-                <constraint firstAttribute="bottom" secondItem="gsw-a0-Izy" secondAttribute="bottom" id="FfT-jE-cry"/>
-                <constraint firstItem="Bcs-O3-cNF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Hwq-Om-FTu"/>
-                <constraint firstItem="gsw-a0-Izy" firstAttribute="top" secondItem="Bcs-O3-cNF" secondAttribute="bottom" id="cUB-UD-dfw"/>
-                <constraint firstAttribute="trailing" secondItem="gsw-a0-Izy" secondAttribute="trailing" id="fqT-Az-8UB"/>
-                <constraint firstItem="Bcs-O3-cNF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yqR-Yf-1Z1"/>
+                <constraint firstItem="qpK-j0-c8q" firstAttribute="top" secondItem="bQj-uE-vwU" secondAttribute="bottom" constant="16" id="8PK-5W-dJm"/>
+                <constraint firstItem="bQj-uE-vwU" firstAttribute="leading" secondItem="r65-Uq-cHh" secondAttribute="leading" id="ExG-gc-9e6"/>
+                <constraint firstItem="bQj-uE-vwU" firstAttribute="top" secondItem="r65-Uq-cHh" secondAttribute="top" id="Nek-hV-dRd"/>
+                <constraint firstItem="BGn-yt-9mr" firstAttribute="trailing" secondItem="qpK-j0-c8q" secondAttribute="trailing" constant="22" id="ewo-au-2oq"/>
+                <constraint firstItem="BGn-yt-9mr" firstAttribute="trailing" secondItem="aRJ-II-Es7" secondAttribute="trailing" id="hcd-4O-xY3"/>
+                <constraint firstItem="aRJ-II-Es7" firstAttribute="leading" secondItem="BGn-yt-9mr" secondAttribute="leading" id="if1-5M-1iZ"/>
+                <constraint firstItem="qpK-j0-c8q" firstAttribute="leading" secondItem="BGn-yt-9mr" secondAttribute="leading" constant="22" id="mh6-n7-7WY"/>
+                <constraint firstItem="aRJ-II-Es7" firstAttribute="top" secondItem="qpK-j0-c8q" secondAttribute="bottom" id="nK9-QC-bcz"/>
+                <constraint firstAttribute="trailing" secondItem="bQj-uE-vwU" secondAttribute="trailing" id="w5E-rE-6jC"/>
+                <constraint firstItem="BGn-yt-9mr" firstAttribute="bottom" secondItem="aRJ-II-Es7" secondAttribute="bottom" id="weK-GC-aFw"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="BGn-yt-9mr"/>
             <connections>
-                <outlet property="picker" destination="gsw-a0-Izy" id="Bcy-Be-5Li"/>
-                <outlet property="pickerView" destination="gsw-a0-Izy" id="G6O-Lv-s1q"/>
-                <outlet property="topBar" destination="Bcs-O3-cNF" id="AKa-6H-E8k"/>
+                <outlet property="picker" destination="aRJ-II-Es7" id="LgN-Gu-GFQ"/>
+                <outlet property="pickerView" destination="aRJ-II-Es7" id="y64-X6-btY"/>
+                <outlet property="tipView" destination="qpK-j0-c8q" id="ngL-q5-NNz"/>
+                <outlet property="tipViewHeight" destination="TQF-TB-1ZW" id="D9k-dC-W3E"/>
+                <outlet property="tipViewTop" destination="8PK-5W-dJm" id="5Wu-HS-wET"/>
+                <outlet property="topBar" destination="bQj-uE-vwU" id="Oxo-lD-fbR"/>
             </connections>
+            <point key="canvasLocation" x="140.57971014492756" y="140.95982142857142"/>
         </view>
     </objects>
 </document>

@@ -125,6 +125,7 @@
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
 @property (weak, nonatomic) IBOutlet UIView *selectMarkView;
 @property (weak, nonatomic) IBOutlet UIImageView *selectFlagView;   // 图片，默认隐藏
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *flagViewBottomConst;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectMarkViewLeft;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectMarkViewWidth;
@@ -161,6 +162,9 @@
         }
         
         [self.stackView addArrangedSubview:item];
+    }
+    if (self.selectColor) {
+        self.selectMarkView.backgroundColor = self.selectColor;
     }
     
     // 默认选中第0个
@@ -291,5 +295,12 @@
     
 }
 
-
+- (void)setFlagImage:(UIImage *)flagImage {
+    _flagImage = flagImage;
+    self.selectFlagView.image = _flagImage;
+}
+- (void)setFlagImageOffsetBottom:(CGFloat)flagImageOffsetBottom {
+    _flagImageOffsetBottom = flagImageOffsetBottom;
+    self.flagViewBottomConst.constant = _flagImageOffsetBottom;
+}
 @end

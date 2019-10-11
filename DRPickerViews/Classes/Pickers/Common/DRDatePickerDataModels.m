@@ -147,6 +147,7 @@
     self = [super init];
     if (self) {
         _timeScale = kDefaultTimeScale;
+        _maxTimeConsume = 14399;
     }
     return self;
 }

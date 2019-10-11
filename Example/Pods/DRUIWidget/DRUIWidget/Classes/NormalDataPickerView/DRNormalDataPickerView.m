@@ -62,7 +62,9 @@
 
 - (void)getSelectedValueForSection:(NSInteger)section
                          withBlock:(void (^)(NSInteger index, NSString *selectedString))block {
-
+    NSArray *values = self.dataSource[section];
+    NSInteger index = [self.pickerView selectedRowInComponent:section * 2];
+    kDR_SAFE_BLOCK(block, index, values[index]);
 }
 
 #pragma mark - UIPickerViewDataSource

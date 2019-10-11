@@ -17,6 +17,7 @@
 #import "DRValueSelectPicker.h"
 #import "DRStringOptionsPicker.h"
 #import "DROptionCardPicker.h"
+#import "DRYearOrYearMonthPicker.h"
 
 @implementation DRPickerFactory
 
@@ -65,6 +66,12 @@
             [DRYearMonthPicker showPickerViewWithOption:pickerOption
                                              setupBlock:nil
                                           pickDoneBlock:innerPickDoneBlock];
+        } break;
+
+        case DRPickerTypeYearOrYearMoth: {
+            [DRYearOrYearMonthPicker showPickerViewWithOption:pickerOption
+                                                   setupBlock:nil
+                                                pickDoneBlock:innerPickDoneBlock];
         } break;
             
         case DRPickerTypeYearMothFileter: {

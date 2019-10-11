@@ -356,6 +356,9 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
  */
 @property (nonatomic, assign) int64_t timeConsuming;
 
+/// 最大时长，默认：10 * 24 * 60 - 1 = 14399
+@property (nonatomic, assign) int64_t maxTimeConsume;
+
 /**
  时间步长，默认5分钟
  */
@@ -388,6 +391,9 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
  */
 @property (nonatomic, copy) NSString *prefixUnit;
 
+/// 提示语
+@property (nonatomic, copy) NSString *tipText;
+
 /**
  当前值
  */
@@ -407,6 +413,9 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 @property (nonatomic, strong) NSArray<NSString *> *stringOptions;
 @property (nonatomic, copy) NSString *currentStringOption;
 @property (nonatomic, assign) NSInteger currentStringIndex;
+
+/// 提示语
+@property (nonatomic, copy) NSString *tipText;
 
 + (instancetype)optionWithTitle:(NSString *)title
                   stringOptions:(NSArray<NSString *> *)stringOptions;

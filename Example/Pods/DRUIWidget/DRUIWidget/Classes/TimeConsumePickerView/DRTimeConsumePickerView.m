@@ -19,9 +19,6 @@
 @property (nonatomic, assign) NSInteger maxDayRow;
 @property (nonatomic, assign) NSInteger maxHourRow;
 @property (nonatomic, assign) NSInteger maxMinuteRow;
-@property (nonatomic, assign) NSInteger day;
-@property (nonatomic, assign) NSInteger hour;
-@property (nonatomic, assign) NSInteger minute;
 
 @end
 
@@ -62,14 +59,14 @@
     NSInteger dayMinute = 24 * 60;
     NSInteger timeConsume = self.currentTimeConsume;
     if (timeConsume >= dayMinute) {
-        self.day = timeConsume / dayMinute;
+        _day = timeConsume / dayMinute;
         timeConsume = timeConsume % dayMinute;
     }
     if (timeConsume >= 60) {
-        self.hour = timeConsume / 60;
+        _hour = timeConsume / 60;
         timeConsume = timeConsume % 60;
     }
-    self.minute = timeConsume;
+    _minute = timeConsume;
 
     NSInteger minuteRow = self.minute / self.timeScale + (self.minute % self.timeScale > 0);
     if (self.day == 0 && self.hour == 0 && minuteRow > 0) {
@@ -226,22 +223,22 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (component == 0) {
         if (self.maxDayRow > 0) {
-            self.day = row;
+            _day = row;
         } else if (self.maxHourRow > 0) {
-            self.hour = row;
+            _hour = row;
         } else {
-            self.minute = (row + 1) * self.timeScale;
+            _minute = (row + 1) * self.timeScale;
         }
     }
     if (component == 2) {
         if (self.maxDayRow > 0) {
-            self.hour = row;
+            _hour = row;
         } else {
-            self.minute = (row + (self.hour == 0)) * self.timeScale;
+            _minute = (row + (self.hour == 0)) * self.timeScale;
         }
     }
     if (component == 4) {
-        self.minute = (row + (self.day == 0 && self.hour == 0)) * self.timeScale;
+        _minute = (row + (self.day == 0 && self.hour == 0)) * self.timeScale;
     }
     _currentTimeConsume = self.day * 24 * 60 + self.hour * 60 + self.minute;
     kDR_SAFE_BLOCK(self.onTimeConsumeChangeBlock, self.currentTimeConsume);
@@ -291,9 +288,9 @@
     self.maxDayRow = 0;
     self.maxHourRow = 0;
     self.maxMinuteRow = 0;
-    self.day = 0;
-    self.hour = 0;
-    self.minute = 0;
+    _day = 0;
+    _hour = 0;
+    _minute = 0;
 }
 
 - (void)setCurrentTimeConsume:(NSInteger)currentTimeConsume {
