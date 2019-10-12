@@ -111,7 +111,7 @@ static BOOL _weekPickerOnlyCurrentMonth = NO;
     } else {
         *minDate = (*minDate).midnight;
     }
-
+    
     // 当前时间不能比最小日期小
     if ([*currentDate compare:*minDate] == NSOrderedAscending) {
         if (*maxDate && [*minDate compare:*maxDate] == NSOrderedDescending) {
@@ -122,7 +122,7 @@ static BOOL _weekPickerOnlyCurrentMonth = NO;
             *currentDate = *minDate;
         }
     }
-
+    
     // 最大日期默认y100年后最后一天最后一秒
     if (!*maxDate || [*minDate compare:*maxDate] == NSOrderedDescending) {
         *maxDate = [NSDate maxDate];
@@ -130,7 +130,7 @@ static BOOL _weekPickerOnlyCurrentMonth = NO;
     } else {
         *maxDate = (*maxDate).midnight;
     }
-
+    
     if ([*currentDate compare:*maxDate] == NSOrderedDescending) {
         *currentDate = *maxDate;
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,27 +20,16 @@
                     <color key="textColor" red="0.27450980392156865" green="0.35686274509803922" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbQ-b1-MBd">
-                    <rect key="frame" x="31.5" y="34.5" width="40" height="2"/>
-                    <color key="backgroundColor" red="0.27450980390000002" green="0.35686274509999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="2" id="j9u-71-Zbh"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="J2h-pD-4O3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="3dx-sq-neV"/>
                 <constraint firstItem="J2h-pD-4O3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ib7-ib-TL4"/>
-                <constraint firstItem="lbQ-b1-MBd" firstAttribute="leading" secondItem="J2h-pD-4O3" secondAttribute="leading" id="hRW-Zt-3RU"/>
-                <constraint firstItem="lbQ-b1-MBd" firstAttribute="top" secondItem="J2h-pD-4O3" secondAttribute="bottom" constant="3" id="iGd-xX-7a4"/>
-                <constraint firstItem="lbQ-b1-MBd" firstAttribute="trailing" secondItem="J2h-pD-4O3" secondAttribute="trailing" id="lKS-RM-Ad3"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="bottomLine" destination="lbQ-b1-MBd" id="Red-Gv-h6M"/>
                 <outlet property="titleLabel" destination="J2h-pD-4O3" id="LVp-Dp-Fkb"/>
             </connections>
             <point key="canvasLocation" x="136.95652173913044" y="153.34821428571428"/>

@@ -104,8 +104,8 @@
         } break;
             
         case DRPickerTypeTimeConsuming: {
-            opt = [DRPickerTimeConsumingOption optionWithTitle:@"请选择消耗时长" timeConsuming:0/*2*24*3600+5*3600+33*60*/];
-            ((DRPickerTimeConsumingOption*)opt).maxTimeConsume = 39;
+            opt = [DRPickerTimeConsumingOption optionWithTitle:@"请选择消耗时长" timeConsuming:11*60/*2*24*3600+5*3600+33*60*/];
+            ((DRPickerTimeConsumingOption*)opt).maxTimeConsume = 24*60-1;
         } break;
             
         case DRPickerTypeRemindAhead: {
@@ -120,6 +120,7 @@
         case DRPickerTypeStringSelect: {
             opt = [DRPickerStringSelectOption optionWithTitle:@"请选择重复类型" stringOptions:@[@"快速复制", @"每天", @"每周", @"每月", @"自定义"]];
             ((DRPickerStringSelectOption *)opt).currentStringIndex = 2;
+            ((DRPickerStringSelectOption *)opt).tipText = @"哈哈哈哈哈";
         } break;
             
         case DRPickerTypeOptionCard: {

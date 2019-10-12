@@ -17,7 +17,6 @@
 #import "DRUIWidgetUtil.h"
 
 @interface DRSegmentBarItem : UIView
-@property (weak, nonatomic) IBOutlet UIView *bottomLine;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (nonatomic, copy) void (^onTapBlock) (DRSegmentBarItem *barItem);
@@ -89,17 +88,13 @@
  更新状态
  */
 - (void)updateItemSubviewState {
-    self.bottomLine.hidden = YES;
-       
-       if (self.selected) {
-           self.bottomLine.hidden = self.showType != DRSegmentBarShowTypeLineStick;
-           self.bottomLine.backgroundColor = self.selectColor ?: [DRUIWidgetUtil highlightColor];
-           self.titleLabel.textColor = self.selectColor ?: [DRUIWidgetUtil highlightColor];
-           self.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:self.titleFontSize > 0 ? self.titleFontSize : 13];
-       } else {
-           self.titleLabel.textColor = self.normalColor ?: [DRUIWidgetUtil normalColor];
-           self.titleLabel.font = [UIFont dr_PingFangSC_RegularWithSize:self.titleFontSize > 0 ? self.titleFontSize : 13];
-       }
+    if (self.selected) {
+       self.titleLabel.textColor = self.selectColor ?: [DRUIWidgetUtil highlightColor];
+       self.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:self.titleFontSize > 0 ? self.titleFontSize : 13];
+   } else {
+       self.titleLabel.textColor = self.normalColor ?: [DRUIWidgetUtil normalColor];
+       self.titleLabel.font = [UIFont dr_PingFangSC_RegularWithSize:self.titleFontSize > 0 ? self.titleFontSize : 13];
+   }
 }
 
 - (void)setSelectColor:(UIColor *)selectColor {

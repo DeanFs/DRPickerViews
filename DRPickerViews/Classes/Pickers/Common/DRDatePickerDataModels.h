@@ -375,7 +375,7 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 @end
 
 
-@interface DRPickerTimeConsumingOption : DRPickerOptionBase
+@interface DRPickerTimeConsumingOption : DRPickerHMBaseOption
 /**
  当前消耗时长，反显
  */
@@ -383,11 +383,6 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 
 /// 最大时长，默认：10 * 24 * 60 - 1 = 14399
 @property (nonatomic, assign) int64_t maxTimeConsume;
-
-/**
- 时间步长，默认5分钟
- */
-@property (nonatomic, assign) NSInteger timeScale;
 
 + (instancetype)optionWithTitle:(NSString *)title
                   timeConsuming:(int64_t)timeConsuming;
@@ -581,7 +576,7 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 @end
 
 
-@interface DRPickerClassRemindTimeOption : DRPickerOptionBase
+@interface DRPickerClassRemindTimeOption : DRPickerHMBaseOption
 
 @property (nonatomic, assign) BOOL isThisDay; // 是当天
 @property (nonatomic, copy) NSString *hourMinute; // HHmm

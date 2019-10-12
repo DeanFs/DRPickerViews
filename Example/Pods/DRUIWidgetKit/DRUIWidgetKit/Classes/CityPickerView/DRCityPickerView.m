@@ -39,6 +39,9 @@
 @implementation DRCityPickerView
 
 - (void)setupPickerView {
+    if (self.province.length == 0 || self.city.length == 0) {
+        return;
+    }
     for (DRCityPickerInfoModel *province in self.provinceList) {
         if ([province.name isEqualToString:self.province]) {
             [self.pickerView selectRow:province.code - 1 inComponent:0 animated:NO];

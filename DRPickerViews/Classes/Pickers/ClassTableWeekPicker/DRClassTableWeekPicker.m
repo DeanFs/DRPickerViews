@@ -8,7 +8,7 @@
 
 #import "DRClassTableWeekPicker.h"
 #import <DRUIWidgetKit/DROptionCardView.h>
-#import "DRCheckboxGroupView.h"
+#import <DRUIWidgetKit/DRCheckboxGroupView.h>
 #import <DRCategories/UIView+DRExtension.h>
 #import <DRMacroDefines/DRMacroDefines.h>
 

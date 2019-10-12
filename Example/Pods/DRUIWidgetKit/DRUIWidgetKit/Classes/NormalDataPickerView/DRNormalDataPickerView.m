@@ -98,7 +98,7 @@
     }
     CGFloat separateLineWidth = 0;
     if (self.dataSource.count > 1) {
-        separateLineWidth = 8 * (self.dataSource.count - 1);
+        separateLineWidth = 18 * (self.dataSource.count - 1) + 40 * kDRScreenWidth / 414;
     }
     return (CGRectGetWidth(pickerView.frame)-separateLineWidth) / self.dataSource.count;
 }

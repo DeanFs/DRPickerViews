@@ -16,9 +16,13 @@
 @property (weak, nonatomic) UIPickerView *pickerView;
 @property (nonatomic, assign) BOOL didDrawRect;
 
-@property (nonatomic, assign) NSInteger maxDayRow;
-@property (nonatomic, assign) NSInteger maxHourRow;
-@property (nonatomic, assign) NSInteger maxMinuteRow;
+@property (nonatomic, assign) NSInteger componentCount;
+@property (nonatomic, assign) NSInteger minDay;
+@property (nonatomic, assign) NSInteger maxDay;
+@property (nonatomic, assign) NSInteger minHour;
+@property (nonatomic, assign) NSInteger maxHour;
+@property (nonatomic, assign) NSInteger minMinute;
+@property (nonatomic, assign) NSInteger maxMinute;
 
 @end
 
@@ -26,29 +30,49 @@
 
 - (void)setupPickerView {
     [self initAll];
-    if (self.currentTimeConsume < self.timeScale) {
-        _currentTimeConsume = self.timeScale;
+    if (self.minTimeConsume < self.timeScale) {
+        _minTimeConsume = self.timeScale;
     }
     if (self.maxTimeConsume < self.timeScale) {
         _maxTimeConsume = self.timeScale;
     }
-
-    if (self.maxTimeConsume < self.timeScale) {
-        kDR_LOG(@"最大时长不能小于步长");
-        return;
+    if (self.minTimeConsume > self.maxTimeConsume) {
+        _minTimeConsume = self.maxTimeConsume;
     }
-    if (self.currentTimeConsume > self.maxTimeConsume) {
-        kDR_LOG(@"当前返现时长不在限定范围内");
-        return;
+    if (self.currentTimeConsume < self.timeScale || self.currentTimeConsume > self.maxTimeConsume) {
+        _currentTimeConsume = self.minTimeConsume;
     }
+    _minTimeConsume = (_minTimeConsume / self.timeScale + (_minTimeConsume % self.timeScale > 0)) * self.timeScale;
 
-    NSInteger dayMinute = 24 * 60;
-    if (self.maxTimeConsume >= dayMinute) {
-        self.maxDayRow = self.maxTimeConsume / dayMinute + 1;
-    } else if (self.maxTimeConsume >= 60) {
-        self.maxHourRow = self.maxTimeConsume / 60 + 1;
+    // 最小时长解析
+    int64_t minTimeConsume = self.minTimeConsume;
+    if (minTimeConsume >= 1440) {
+        _minDay = (NSInteger)(minTimeConsume / 1440);
+        minTimeConsume %= 1440;
+    }
+    if (minTimeConsume >= 60) {
+        _minHour = (NSInteger)(minTimeConsume / 60);
+        minTimeConsume %= 60;
+    }
+    _minMinute = (NSInteger)minTimeConsume;
+
+    // 最大时长解析
+    int64_t maxTimeConsume = self.maxTimeConsume;
+    if (maxTimeConsume >= 1440) {
+        _componentCount = 6;
+        _maxDay = (NSInteger)(maxTimeConsume / 1440);
+        maxTimeConsume %= 1440;
+        _maxHour = (NSInteger)(maxTimeConsume / 60);
+        maxTimeConsume %= 60;
+        _maxMinute = (NSInteger)maxTimeConsume;
+    } else if (maxTimeConsume >= 60) {
+        _componentCount = 4;
+        _maxHour = (NSInteger)(maxTimeConsume / 60);
+        maxTimeConsume %= 60;
+        _maxMinute = (NSInteger)maxTimeConsume;
     } else {
-        self.maxMinuteRow = self.maxTimeConsume / self.timeScale + (self.maxTimeConsume % self.timeScale > 0);
+        _componentCount = 2;
+        _maxMinute = (NSInteger)maxTimeConsume;
     }
     [self.pickerView reloadAllComponents];
 
@@ -56,28 +80,23 @@
 }
 
 - (void)renderTimeConsume {
-    NSInteger dayMinute = 24 * 60;
-    NSInteger timeConsume = self.currentTimeConsume;
-    if (timeConsume >= dayMinute) {
-        _day = timeConsume / dayMinute;
-        timeConsume = timeConsume % dayMinute;
+    int64_t timeConsume = self.currentTimeConsume;
+    if (timeConsume >= 1440) {
+        _day = (NSInteger)(timeConsume / 1440);
+        timeConsume = timeConsume % 1440;
     }
     if (timeConsume >= 60) {
-        _hour = timeConsume / 60;
+        _hour = (NSInteger)(timeConsume / 60);
         timeConsume = timeConsume % 60;
     }
-    _minute = timeConsume;
-
+    _minute = (NSInteger)timeConsume;
     NSInteger minuteRow = self.minute / self.timeScale + (self.minute % self.timeScale > 0);
-    if (self.day == 0 && self.hour == 0 && minuteRow > 0) {
-        minuteRow --;
-    }
 
-    if (self.maxDayRow > 0) {
+    if (self.componentCount == 6) {
         [self.pickerView selectRow:self.day inComponent:0 animated:NO];
         [self.pickerView selectRow:self.hour inComponent:2 animated:NO];
         [self.pickerView selectRow:minuteRow inComponent:4 animated:NO];
-    } else if (self.maxHourRow > 0) {
+    } else if (self.componentCount == 4) {
         [self.pickerView selectRow:self.hour inComponent:0 animated:NO];
         [self.pickerView selectRow:minuteRow inComponent:2 animated:NO];
     } else {
@@ -91,13 +110,7 @@
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     [DRUIWidgetUtil hideSeparateLineForPickerView:pickerView];
-    if (self.maxDayRow > 0) {
-        return 6;
-    }
-    if (self.maxHourRow > 0) {
-        return 4;
-    }
-    return 2;
+    return self.componentCount;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
@@ -105,54 +118,23 @@
         return 1;
     }
     if (component == 0) {
-        if (self.maxDayRow > 0) {
-            return self.maxDayRow;
+        if (self.componentCount == 6) {
+            return self.maxDay - self.minDay + 1;
         }
-        if (self.maxHourRow > 0) {
-            return self.maxHourRow;
+        if (self.componentCount == 4) {
+            return 24;
         }
-        return self.maxMinuteRow;
+        return 12;
     }
     NSInteger rowCount;
     if (component == 2) {
-        if (self.maxDayRow > 0) {
-            if (self.maxDayRow - 1 == [self.pickerView selectedRowInComponent:0]) {
-                rowCount = (self.maxTimeConsume % 1440) / 60 + 1;
-            } else {
-                rowCount = 24;
-            }
+        if (self.componentCount == 6) {
+            return 24;
         } else {
-            NSInteger maxMinute = 60;
-            if (self.hour == 0) {
-                rowCount = maxMinute / self.timeScale - 1;
-            } else {
-                if (self.maxHourRow - 1 == [self.pickerView selectedRowInComponent:0]) {
-                    maxMinute = self.maxTimeConsume % 60;
-                    maxMinute = (maxMinute / self.timeScale + (maxMinute % self.timeScale > 0)) * self.timeScale;
-                }
-                rowCount = maxMinute / self.timeScale;
-            }
-        }
-    } else { // component == 4
-        NSInteger maxMinute = 60;
-        if (self.day == 0 &&
-            self.hour == 0) {
-            rowCount = maxMinute / self.timeScale - 1;
-        } else {
-            if (self.maxDayRow - 1 == [self.pickerView selectedRowInComponent:0]) {
-                NSInteger maxHour = self.maxTimeConsume % 1440 / 60;
-                if (maxHour == [self.pickerView selectedRowInComponent:2]) {
-                    maxMinute = self.maxTimeConsume % 1440 % 60;
-                    maxMinute = (maxMinute / self.timeScale + (maxMinute % self.timeScale > 0)) * self.timeScale;
-                }
-            }
-            rowCount = maxMinute / self.timeScale;
+            return 12;
         }
     }
-    if ([pickerView selectedRowInComponent:component] >= rowCount) {
-        [pickerView selectRow:rowCount-1 inComponent:component animated:YES];
-    }
-    return rowCount;
+    return 12;
 }
 
 #pragma mark - UIPickerViewDelegate
@@ -170,16 +152,18 @@
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
     NSString *text;
     if (component == 0) {
-        // 天或者小时
-        text = [NSString stringWithFormat:@"%ld", row];
-        if (self.maxMinuteRow > 0) { // 仅可选分钟
-            text = [NSString stringWithFormat:@"%ld", (row + 1) * self.timeScale];
+        if (self.componentCount == 6) {
+            text = [NSString stringWithFormat:@"%ld", self.minDay + row];
+        } else if (self.componentCount == 4) {
+            text = [NSString stringWithFormat:@"%ld", row];
+        } else {
+            text = [NSString stringWithFormat:@"%ld", row * self.timeScale];
         }
     }
     if (component == 1) {
-        if (self.maxDayRow > 0) {
+        if (self.componentCount == 6) {
             text = @"天";
-        } else if (self.maxHourRow > 0) {
+        } else if (self.componentCount == 4) {
             text = @"小时";
         } else {
             text = @"分钟";
@@ -187,24 +171,18 @@
     }
     if (component == 2) {
         text = [NSString stringWithFormat:@"%ld", row];
-        if (self.maxHourRow > 0) {
-            NSInteger minute = (row + (self.hour == 0)) * self.timeScale;
-            text = [NSString stringWithFormat:@"%ld", minute];
+        if (self.componentCount == 4) {
+            text = [NSString stringWithFormat:@"%ld", row * self.timeScale];
         }
     }
     if (component == 3) {
         text = @"小时";
-        if (self.maxHourRow > 0) {
+        if (self.componentCount == 4) {
             text = @"分钟";
         }
     }
     if (component == 4) {
-        NSInteger minute = row * self.timeScale;
-        if (self.day == 0 &&
-            self.hour == 0) {
-            minute += self.timeScale;
-        }
-        text = [NSString stringWithFormat:@"%ld", minute];
+        text = [NSString stringWithFormat:@"%ld", row * self.timeScale];
     }
     if (component == 5) {
         text = @"分钟";
@@ -229,28 +207,82 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if (component == 0) {
-        if (self.maxDayRow > 0) {
-            _day = row;
-        } else if (self.maxHourRow > 0) {
-            _hour = row;
-        } else {
-            _minute = (row + 1) * self.timeScale;
-        }
+    if (component % 2 > 0) {
+        return;
     }
-    if (component == 2) {
-        if (self.maxDayRow > 0) {
-            _hour = row;
-        } else {
-            _minute = (row + (self.hour == 0)) * self.timeScale;
-        }
+
+    if (self.componentCount == 6) {
+        _currentTimeConsume = [self dayLevelDidSelectRow:row inComponent:component];
+    } else if (self.componentCount == 4) {
+        _currentTimeConsume = [self hourLevelDidSelecRow:row inComponent:component];
+    } else {
+        _currentTimeConsume = [self minuteLevelDidSelectRow:row inComponent:component];
     }
-    if (component == 4) {
-        _minute = (row + (self.day == 0 && self.hour == 0)) * self.timeScale;
-    }
-    _currentTimeConsume = self.day * 24 * 60 + self.hour * 60 + self.minute;
     kDR_SAFE_BLOCK(self.onTimeConsumeChangeBlock, self.currentTimeConsume);
     [pickerView reloadAllComponents];
+}
+
+- (int64_t)dayLevelDidSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if (component == 0) {
+        _day = self.minDay + row;
+    } else if (component == 2) {
+        _hour = row;
+    } else {
+        _minute = row * self.timeScale;
+    }
+    int64_t currentMinuts = self.day * 1440 + self.hour * 60 + self.minute;
+    if (currentMinuts < self.minTimeConsume) {
+        currentMinuts = self.minTimeConsume;
+        _hour = self.minHour;
+        _minute = self.minMinute;
+        [self.pickerView selectRow:self.hour inComponent:2 animated:YES];
+        [self.pickerView selectRow:self.minute / self.timeScale inComponent:4 animated:YES];
+    } else if (currentMinuts > self.maxTimeConsume) {
+        currentMinuts = self.maxTimeConsume / self.timeScale * self.timeScale;
+        _hour = self.maxHour;
+        _minute = self.maxMinute;
+        [self.pickerView selectRow:self.hour inComponent:2 animated:YES];
+        [self.pickerView selectRow:self.minute / self.timeScale inComponent:4 animated:YES];
+    }
+    return currentMinuts;
+}
+
+- (int64_t)hourLevelDidSelecRow:(NSInteger)row inComponent:(NSInteger)component {
+    if (component == 0) {
+        _hour = row;
+    } else {
+        _minute = row * self.timeScale;
+    }
+    int64_t currentMinuts = self.hour * 60 + self.minute;
+    if (currentMinuts < self.minTimeConsume) {
+        currentMinuts = self.minTimeConsume;
+        _hour = self.minHour;
+        _minute = self.minMinute;
+        [self.pickerView selectRow:self.hour inComponent:0 animated:YES];
+        [self.pickerView selectRow:self.minute / self.timeScale inComponent:2 animated:YES];
+    } else if (currentMinuts > self.maxTimeConsume) {
+        currentMinuts = self.maxTimeConsume / self.timeScale * self.timeScale;
+        _hour = self.maxHour;
+        _minute = self.maxMinute;
+        [self.pickerView selectRow:self.hour inComponent:0 animated:YES];
+        [self.pickerView selectRow:self.minute / self.timeScale inComponent:2 animated:YES];
+    }
+    return currentMinuts;
+}
+
+- (int64_t)minuteLevelDidSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    _minute = row * self.timeScale;
+    int64_t currentMinuts = self.minute;
+    if (currentMinuts < self.minTimeConsume) {
+        currentMinuts = self.minTimeConsume;
+        _minute = self.minMinute;
+        [self.pickerView selectRow:self.minute / self.timeScale inComponent:0 animated:YES];
+    } else if (currentMinuts > self.maxTimeConsume) {
+        currentMinuts = self.maxTimeConsume / self.timeScale * self.timeScale;
+        _minute = self.maxMinute;
+        [self.pickerView selectRow:self.minute / self.timeScale inComponent:0 animated:YES];
+    }
+    return currentMinuts;
 }
 
 #pragma mark - setup xib
@@ -291,9 +323,13 @@
 
 - (void)initAll {
     _didDrawRect = NO;
-    _maxDayRow = 0;
-    _maxHourRow = 0;
-    _maxMinuteRow = 0;
+    _componentCount = 0;
+    _minDay = 0;
+    _maxDay = 0;
+    _minHour = 0;
+    _maxHour = 0;
+    _minMinute = 0;
+    _maxMinute = 0;
     [self initDayTime];
 }
 
@@ -314,6 +350,14 @@
 
 - (void)setTimeScale:(NSInteger)timeScale {
     _timeScale = timeScale;
+
+    if (self.didDrawRect) {
+        [self setupPickerView];
+    }
+}
+
+- (void)setMinTimeConsume:(int64_t)minTimeConsume {
+    _minTimeConsume = minTimeConsume;
 
     if (self.didDrawRect) {
         [self setupPickerView];

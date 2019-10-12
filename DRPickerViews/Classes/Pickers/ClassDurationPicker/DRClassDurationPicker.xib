@@ -1,18 +1,49 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DRClassDurationPicker">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oem-sx-iLT" customClass="DRPickerTopBar">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="uxA-e7-AF9"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0kd-d2-iAU" customClass="DRClassDurationPickerView">
+                    <rect key="frame" x="0.0" y="56" width="414" height="204"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0kd-d2-iAU" firstAttribute="top" secondItem="Oem-sx-iLT" secondAttribute="bottom" id="0je-dS-84n"/>
+                <constraint firstItem="Oem-sx-iLT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Mpf-hw-Vf9"/>
+                <constraint firstItem="Oem-sx-iLT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OX7-z0-MvI"/>
+                <constraint firstItem="0kd-d2-iAU" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="POI-UB-ehk"/>
+                <constraint firstItem="0kd-d2-iAU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="bB6-Z7-y05"/>
+                <constraint firstItem="0kd-d2-iAU" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="ij1-mU-gyB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Oem-sx-iLT" secondAttribute="trailing" id="tey-7s-euv"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="picker" destination="0kd-d2-iAU" id="PWn-Hq-H0t"/>
+                <outlet property="pickerView" destination="0kd-d2-iAU" id="XWK-rt-K66"/>
+                <outlet property="topBar" destination="Oem-sx-iLT" id="Ubt-BW-WfT"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="136.60714285714286"/>
         </view>
     </objects>
 </document>
