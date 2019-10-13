@@ -51,14 +51,6 @@
                                              pickDoneBlock:innerPickDoneBlock];
         } break;
             
-        case DRPickerTypeBirthday: {
-            [DRYMDWithLunarPicker showPickerViewWithOption:pickerOption
-                                                setupBlock:^(DRYMDWithLunarPicker *picker) {
-                                                    picker.isForBirthday = YES;
-                                                }
-                                             pickDoneBlock:innerPickDoneBlock];
-        } break;
-            
         case DRPickerTypePlanEnd: {
             [DRYMDPicker showPickerViewWithOption:pickerOption
                                        setupBlock:^(DRYMDPicker *picker) {

@@ -20,11 +20,6 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     // 出参：DRPickerWithLunarPickedObj
     DRPickerTypeWithLunar,
     
-    // 生日设置时间选择器，可切换显示农历，可忽略年份
-    // 入参：DRPickerBirthdayOption
-    // 出参：DRPickerBirthdayPickedObj
-    DRPickerTypeBirthday,
-    
     // 计划结束日期设置
     // 入参：DRPickerPlanEndOption
     // 出参：NSDate
@@ -191,23 +186,15 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 @end
 
 
-@interface DRPickerWithLunarOption : DRPickerOptionBase
-/**
- 最小可选日期(公历)，默认：NSDate扩展中的最小日期
- */
-@property (nonatomic, strong) NSDate *minDate;
+typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
+    DRYMDWithLunarPickerTypeNormal,         // 年月日，不可忽略年份
+    DRYMDWithLunarPickerTypeCanIngnoreYear, // 年月日，可忽略年份
+    DRYMDWithLunarPickerTypeMonthDayOnly,   // 月日
+};
+@interface DRPickerWithLunarOption : DRPickerDateOption
 
-/**
- 最大可选日期(公历)，默认：NSDate扩展中的最大日期
- */
-@property (nonatomic, strong) NSDate *maxDate;
-
-/**
- 当前日期(公历)
- 优先反显，若为空，则尝试反显以下 年，月，日字段
- 忽略年份时，无效
- */
-@property (nonatomic, strong) NSDate *currentDate;
+/// 类型，默认：DRYMDWithLunarPickerTypeNormal
+@property (nonatomic, assign) DRYMDWithLunarPickerType type;
 
 /**
  年(公历/农历)
@@ -236,19 +223,15 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
  */
 @property (nonatomic, assign) BOOL leapMonth;
 
-+ (instancetype)optionWithTitle:(NSString *)title
-                        minDate:(NSDate *)minDate
-                        maxDate:(NSDate *)maxDate;
-
-@end
-
-
-@interface DRPickerBirthdayOption : DRPickerWithLunarOption
 /**
  忽略年份
  若为YES，则仅月日反显信息有效
  */
 @property (nonatomic, assign) BOOL ignoreYear;
+
++ (instancetype)optionWithTitle:(NSString *)title
+                        minDate:(NSDate *)minDate
+                        maxDate:(NSDate *)maxDate;
 
 @end
 
@@ -621,12 +604,9 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
  */
 @property (nonatomic, assign) BOOL leapMonth;
 
-@end
-
-
-@interface DRPickerBirthdayPickedObj : DRPickerWithLunarPickedObj
 /**
  忽略年份
+ 若为YES，则仅月日反显信息有效
  */
 @property (nonatomic, assign) BOOL ignoreYear;
 

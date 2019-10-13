@@ -38,20 +38,11 @@
         case DRPickerTypeWithLunar: {
             opt = [DRPickerWithLunarOption optionWithTitle:@"农历" minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
             DRPickerWithLunarOption *lunarOpt = (DRPickerWithLunarOption *)opt;
+            lunarOpt.type = DRYMDWithLunarPickerTypeNormal;
             lunarOpt.year = 2018;
             lunarOpt.month = 12;
             lunarOpt.day = 4;
             lunarOpt.isLunar = NO;
-            lunarOpt.leapMonth = NO;
-        } break;
-            
-        case DRPickerTypeBirthday: {
-            opt = [DRPickerBirthdayOption optionWithTitle:@"生日" minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
-            DRPickerBirthdayOption *lunarOpt = (DRPickerBirthdayOption *)opt;
-            lunarOpt.year = 2019;
-            lunarOpt.month = 12;
-            lunarOpt.day = 4;
-            lunarOpt.isLunar = YES;
             lunarOpt.leapMonth = NO;
             lunarOpt.ignoreYear = NO;
         } break;

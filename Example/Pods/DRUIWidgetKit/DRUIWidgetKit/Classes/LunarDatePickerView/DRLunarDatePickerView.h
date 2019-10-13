@@ -18,10 +18,20 @@
 
 @end
 
+
+typedef NS_ENUM(NSInteger, DRLunarDatePickerMode) {
+    DRLunarDatePickerModeYMD,           // 年月日
+    DRLunarDatePickerModeMD,            // 月日，无闰月
+    DRLunarDatePickerModeMDLeapMonth    // 月日，每个月都有闰月
+};
+
 IB_DESIGNABLE
 @interface DRLunarDatePickerView : UIView
 
-@property (nonatomic, assign) IBInspectable BOOL ignoreYear; // default NO
+@property (nonatomic, assign) IBInspectable NSInteger dateModeXib;
+@property (nonatomic, assign) DRLunarDatePickerMode dateMode;
+// 底部显示农历日期，DRDatePickerModeYMD模式有效，默认 NO
+@property (nonatomic, assign) BOOL showSolarTip;
 
 /**
  date：公历日期

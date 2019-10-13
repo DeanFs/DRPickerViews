@@ -126,7 +126,6 @@
         }
         return 12;
     }
-    NSInteger rowCount;
     if (component == 2) {
         if (self.componentCount == 6) {
             return 24;

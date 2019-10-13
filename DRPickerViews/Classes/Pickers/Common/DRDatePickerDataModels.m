@@ -62,16 +62,19 @@
 + (instancetype)optionWithTitle:(NSString *)title
                         minDate:(NSDate *)minDate
                         maxDate:(NSDate *)maxDate {
-    DRPickerWithLunarOption *opt = [super optionWithTitle:title];
+    DRPickerWithLunarOption *opt = [DRPickerWithLunarOption optionWithTitle:title];
     opt.minDate = minDate;
     opt.maxDate = maxDate;
     return opt;
 }
 
-@end
-
-
-@implementation DRPickerBirthdayOption
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _type = DRYMDWithLunarPickerTypeNormal;
+    }
+    return self;
+}
 
 @end
 
@@ -268,11 +271,6 @@
 
 #pragma mark - 选择器选择完成回调返回数据结构定义
 @implementation DRPickerWithLunarPickedObj
-
-@end
-
-
-@implementation DRPickerBirthdayPickedObj
 
 @end
 

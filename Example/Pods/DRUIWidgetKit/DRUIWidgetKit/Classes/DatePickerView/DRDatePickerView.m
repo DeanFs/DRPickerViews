@@ -20,7 +20,13 @@
 
 @interface DRDatePickerView ()<UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property (weak, nonatomic) UIPickerView *pickerView;
+@property (strong, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UIView *lunarDateContentView;
+@property (weak, nonatomic) IBOutlet UIImageView *lunarIcon;
+@property (weak, nonatomic) IBOutlet UILabel *lunarDateLabel;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lunarDateContentViewHeight;
 
 @property (nonatomic, assign) NSInteger monthDayCount; // 当月天数
 @property (nonatomic, assign) NSInteger minDate;
@@ -56,6 +62,17 @@
             [self pickerView:self.pickerView didSelectRow:row inComponent:0];
         });
     }
+    [self setupLunarTip];
+}
+
+- (void)setupLunarTip {
+    if (self.dateMode == DRDatePickerModeYMD && self.showLunarTip) {
+        self.lunarDateContentView.hidden = NO;
+        self.lunarDateContentViewHeight.constant = 42;
+    } else {
+        self.lunarDateContentView.hidden = YES;
+        self.lunarDateContentViewHeight.constant = 0;
+    }
 }
 
 - (void)setupWithCurrentDate:(NSDate *)currentDate
@@ -80,6 +97,7 @@
         _selectedMonth = cmp.month;
         _selectedDay = cmp.day;
         _selectedDate = date;
+        self.lunarDateLabel.text = [NSString stringWithFormat:@"%@年 %@%@", date.lunarYear, date.lunarMonth, date.lunarDay];
     }
     if (self.dateMode == DRDatePickerModeMD) {
         _selectedMonth = month;
@@ -260,6 +278,7 @@
         _selectedDate = nil;
     } else {
         _selectedDate = [self currentDateWithDay:self.selectedDay];
+        self.lunarDateLabel.text = [NSString stringWithFormat:@"%@年 %@%@", _selectedDate.lunarYear, _selectedDate.lunarMonth, _selectedDate.lunarDay];
     }
     if (!self.dateModeChanging) {
         kDR_SAFE_BLOCK(self.onSelectChangeBlock, self.selectedDate, self.selectedMonth, self.selectedDay);
@@ -327,9 +346,6 @@
 }
 
 - (void)setupTextColorForLabel:(UILabel *)label inComponent:(NSInteger)component forRow:(NSInteger)row {
-    if (component % 2 > 0) {
-        return;
-    }
     NSInteger selectedRow = [self.pickerView selectedRowInComponent:component];
     if (row == selectedRow) {
         label.textColor = [DRUIWidgetUtil normalColor];
@@ -516,14 +532,20 @@
 }
 
 - (void)setup {
-    UIPickerView *picker = [[UIPickerView alloc] init];
-    picker.backgroundColor = [UIColor whiteColor];
-    [self addSubview:picker];
-    [picker mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.bottom.right.mas_offset(0);
-    }];
-    self.pickerView = picker;
-    _dateMode = DRDatePickerModeYMD;
+    if (!self.containerView) {
+        self.containerView = kDR_LOAD_XIB_NAMED(NSStringFromClass([self class]));
+        [self addSubview:self.containerView];
+        [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.bottom.right.mas_offset(0);
+        }];
+
+        self.lunarDateLabel.textColor = [DRUIWidgetUtil highlightColor];
+        self.lunarIcon.image = [DRUIWidgetUtil pngImageWithName:@"icon_birth_lunar"
+                                                       inBundle:KDR_CURRENT_BUNDLE];
+        _dateMode = DRDatePickerModeYMD;
+        self.lunarDateContentView.hidden = YES;
+        self.lunarDateContentViewHeight.constant = 0;
+    }
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -539,7 +561,8 @@
             self.pickerView.delegate = self;
             self.pickerView.dataSource = self;
             [self.pickerView reloadAllComponents];
-            
+            [self setupLunarTip];
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self setupPickerView];
             });

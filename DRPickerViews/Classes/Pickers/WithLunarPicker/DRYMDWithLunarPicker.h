@@ -9,6 +9,4 @@
 
 @interface DRYMDWithLunarPicker : DRBaseAlertPicker
 
-@property (nonatomic, assign) BOOL isForBirthday;
-
 @end

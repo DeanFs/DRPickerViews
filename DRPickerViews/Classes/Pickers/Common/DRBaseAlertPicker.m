@@ -98,18 +98,15 @@
         kDR_LOG(@"error: 请传入正确的参数类型【%@】", NSStringFromClass([self pickerOptionClass]));
         return;
     }
-    [self prepareToShow];
+    if (self.pickerOption.title.length) {
+        self.topBar.centerButtonTitle = self.pickerOption.title;
+    }
     
     kDRWeakSelf
     self.topBar.leftButtonActionBlock = ^(DRPickerTopBar *topBar, UIButton *tappedButton) {
         kDR_SAFE_BLOCK(weakSelf.pickerOption.cancelBlock);
         [weakSelf dismiss];
     };
-    
-    if (self.pickerOption.title.length) {
-        self.topBar.centerButtonTitle = self.pickerOption.title;
-    }
-    
     self.topBar.rightButtonActionBlock = ^(DRPickerTopBar *topBar, UIButton *tappedButton) {
         // 未停止滚动时，不执行完成回调
         if ([weakSelf anySubViewScrolling:weakSelf.picker]) {
@@ -126,6 +123,7 @@
             [weakSelf dismiss];
         }
     };
+    [self prepareToShow];
     [self showFromPostion:self.pickerOption.showFromPosition];
 }
 

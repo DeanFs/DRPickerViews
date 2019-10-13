@@ -202,12 +202,6 @@
     associatedScrollView.delegate = self;
 }
 
-//- (void)setBackgroundColor:(UIColor *)backgroundColor {
-//    [super setBackgroundColor:backgroundColor];
-//    self.containerView.backgroundColor = backgroundColor;
-//    self.stackView.backgroundColor = UIColor.clearColor;
-//}
-
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (!self.haveDrag) {

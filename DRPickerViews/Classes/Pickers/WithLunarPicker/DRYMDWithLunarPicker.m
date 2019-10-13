@@ -18,10 +18,18 @@
 @property (weak, nonatomic) IBOutlet DRSegmentBar *segmentBar;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (nonatomic, assign) DRYMDWithLunarPickerType type;
+@property (nonatomic, strong) NSDate *currentDate;
+@property (nonatomic, strong) NSDate *minDate;
+@property (nonatomic, strong) NSDate *maxDate;
+@property (nonatomic, assign) NSInteger year;
+@property (nonatomic, assign) NSInteger month;
+@property (nonatomic, assign) NSInteger day;
+@property (nonatomic, assign) BOOL isLunar;
+@property (nonatomic, assign) BOOL leapMonth;
+@property (nonatomic, assign) BOOL ignoreYear;
 @property (nonatomic, strong) DRDatePickerView *solarPickerView;
 @property (nonatomic, strong) DRLunarDatePickerView *lunarPickerView;
-@property (nonatomic, assign) BOOL isLunar;
-@property (nonatomic, assign) BOOL ignoreYear;
 
 @end
 
@@ -32,9 +40,6 @@
 }
 
 - (Class)pickerOptionClass {
-    if (self.isForBirthday) {
-        return [DRPickerBirthdayOption class];
-    }
     return [DRPickerWithLunarOption class];
 }
 
@@ -50,12 +55,39 @@
 
 - (void)prepareToShow {
     kDRWeakSelf
-    if (self.isForBirthday) {
+    DRPickerWithLunarOption *lunarOpt = (DRPickerWithLunarOption *)self.pickerOption;
+    self.type = lunarOpt.type;
+    self.currentDate =   lunarOpt.currentDate;
+    self.minDate = lunarOpt.minDate;
+    self.maxDate = lunarOpt.maxDate;
+    self.year = lunarOpt.year;
+    self.month = lunarOpt.month;
+    self.day = lunarOpt.day;
+    self.isLunar = lunarOpt.isLunar;
+    self.leapMonth = lunarOpt.leapMonth;
+    self.ignoreYear = lunarOpt.ignoreYear;
+
+    if (self.currentDate == nil) {
+        if (!self.ignoreYear) {
+            self.currentDate = [NSDate correctionYear:self.year month:self.month day:self.day hour:0 minute:0 second:0];
+            if (self.isLunar) {
+                self.currentDate = [NSDate dateFromLunarDate:self.currentDate leapMonth:self.leapMonth];
+            }
+        }
+    }
+
+    if (self.type == DRYMDWithLunarPickerTypeNormal) {
+        self.solarPickerView.dateMode = DRDatePickerModeYMD;
+        self.lunarPickerView.dateMode = DRLunarDatePickerModeYMD;
+    } else if (self.type == DRYMDWithLunarPickerTypeCanIngnoreYear) {
         [self setupTopLeftButton];
         self.topBar.leftButtonActionBlock = ^(DRPickerTopBar *topBar, UIButton *tappedButton) {
             weakSelf.ignoreYear = !weakSelf.ignoreYear;
             [weakSelf setupTopLeftButton];
         };
+    } else if (self.type == DRYMDWithLunarPickerTypeMonthDayOnly) {
+        self.solarPickerView.dateMode = DRDatePickerModeMD;
+        self.lunarPickerView.dateMode = DRLunarDatePickerModeMD;
     }
 }
 
@@ -63,32 +95,6 @@
     [super drawRect:rect];
     
     if (self.scrollView.subviews.count == 0) {
-        kDRWeakSelf
-        // 获取当前反显日期
-        DRPickerWithLunarOption * lunarOption = (DRPickerWithLunarOption *)self.pickerOption;
-        NSDate *minDate = lunarOption.minDate;
-        NSDate *maxDate = lunarOption.maxDate;
-        NSDate *currentDate = lunarOption.currentDate;
-        NSInteger year = lunarOption.year;
-        NSInteger month = lunarOption.month;
-        NSInteger day = lunarOption.day;
-        BOOL leapMonth = lunarOption.leapMonth;
-        self.isLunar = lunarOption.isLunar;
-        if (self.isForBirthday) {
-            self.ignoreYear = ((DRPickerBirthdayOption *)self.pickerOption).ignoreYear;
-            [self setupTopLeftButton];
-            if (self.ignoreYear) {
-                currentDate = nil;
-            }
-        }
-        if (!self.ignoreYear && !currentDate) {
-            currentDate = [NSDate correctionYear:year month:month day:day hour:0 minute:0 second:0];
-            if (self.isLunar) {
-                // 农历转公历
-                currentDate = [NSDate dateFromLunarDate:currentDate leapMonth:leapMonth];
-            }
-        }
-        
         // 设置选择器容器scrollView
         CGFloat width = self.scrollView.width;
         CGFloat height = self.scrollView.height;
@@ -96,26 +102,20 @@
         
         // 初始化并添加公历选择器
         self.solarPickerView.frame = CGRectMake(0, 0, width, height);
-        self.solarPickerView.onSelectChangeBlock = ^(NSDate *date, NSInteger month, NSInteger day) {
-            [weakSelf.lunarPickerView refreshWithDate:date month:month day:day];
-        };
-        [self.solarPickerView setupWithCurrentDate:currentDate
-                                           minDate:minDate
-                                           maxDate:maxDate
-                                             month:month
-                                               day:day];
+        [self.solarPickerView setupWithCurrentDate:self.currentDate
+                                           minDate:self.minDate
+                                           maxDate:self.maxDate
+                                             month:self.month
+                                               day:self.day];
         
         // 初始化并添加农历选择器
         self.lunarPickerView.frame = CGRectMake(width, 0, width, height);
-        self.lunarPickerView.onSelectChangeBlock = ^(NSDate *date, NSInteger month, NSInteger day) {
-            [weakSelf.solarPickerView refreshWithDate:date month:month day:day];
-        };
-        [self.lunarPickerView setupWithCurrentDate:currentDate
-                                           minDate:minDate
-                                           maxDate:maxDate
-                                             month:month
-                                               day:day
-                                         leapMonth:leapMonth];
+        [self.lunarPickerView setupWithCurrentDate:self.currentDate
+                                           minDate:self.minDate
+                                           maxDate:self.maxDate
+                                             month:self.month
+                                               day:self.day
+                                         leapMonth:self.leapMonth];
         
         if (self.isLunar) {
             [self.scrollView addSubview:self.lunarPickerView];
@@ -134,18 +134,14 @@
 }
 
 - (id)pickedObject {
-    DRPickerWithLunarPickedObj *obj;
-    if (self.isForBirthday) {
-        obj = [DRPickerBirthdayPickedObj new];
-        ((DRPickerBirthdayPickedObj *)obj).ignoreYear = self.ignoreYear;
-        [self setupObj:obj];
+    DRPickerWithLunarPickedObj *obj = [DRPickerWithLunarPickedObj new];
+    [self setupObj:obj];
+    if (self.type == DRYMDWithLunarPickerTypeCanIngnoreYear) {
+        obj.ignoreYear =  self.ignoreYear;
         if (self.ignoreYear) {
             obj.year = -1;
             obj.date = nil;
         }
-    } else {
-        obj = [DRPickerWithLunarPickedObj new];
-        [self setupObj:obj];
     }
     return obj;
 }
@@ -171,24 +167,35 @@
     if (self.ignoreYear) {
         self.topBar.leftButtonTitle = @"显示年份";
         self.solarPickerView.dateMode = DRDatePickerModeMD;
+        self.lunarPickerView.dateMode = DRLunarDatePickerModeMDLeapMonth;
     } else {
         self.topBar.leftButtonTitle = @"忽略年份";
         self.solarPickerView.dateMode = DRDatePickerModeYMD;
+        self.lunarPickerView.dateMode = DRLunarDatePickerModeYMD;
     }
-    self.lunarPickerView.ignoreYear = self.ignoreYear;
 }
 
 #pragma mark - lazy load
 - (DRDatePickerView *)solarPickerView {
     if (!_solarPickerView) {
+        kDRWeakSelf
         _solarPickerView = [[DRDatePickerView alloc] init];
+        _solarPickerView.showLunarTip = YES;
+        _solarPickerView.onSelectChangeBlock = ^(NSDate *date, NSInteger month, NSInteger day) {
+            [weakSelf.lunarPickerView refreshWithDate:date month:month day:day];
+        };
     }
     return _solarPickerView;
 }
 
 - (DRLunarDatePickerView *)lunarPickerView {
     if (!_lunarPickerView) {
+        kDRWeakSelf
         _lunarPickerView = [[DRLunarDatePickerView alloc] init];
+        _lunarPickerView.showSolarTip = YES;
+        _lunarPickerView.onSelectChangeBlock = ^(NSDate *date, NSInteger month, NSInteger day) {
+            [weakSelf.solarPickerView refreshWithDate:date month:month day:day];
+        };
     }
     return _lunarPickerView;
 }

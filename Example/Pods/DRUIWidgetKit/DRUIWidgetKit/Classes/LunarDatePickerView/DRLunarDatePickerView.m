@@ -27,7 +27,13 @@
 
 @interface DRLunarDatePickerView () <UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property (weak, nonatomic) UIPickerView *pickerView;
+@property (strong, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UIView *solarDateContentView;
+@property (weak, nonatomic) IBOutlet UIImageView *solarIcon;
+@property (weak, nonatomic) IBOutlet UILabel *solarDateLabel;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *solarDateContentViewHeight;
 
 @property (nonatomic, strong) DRLunarDatePickerMonthModel *minDate;
 @property (nonatomic, strong) DRLunarDatePickerMonthModel *maxDate;
@@ -45,20 +51,25 @@
 
 @implementation DRLunarDatePickerView
 
-- (void)setIgnoreYear:(BOOL)ignoreYear {
-    if (ignoreYear == _ignoreYear) {
+- (void)setDateModeXib:(NSInteger)dateModeXib {
+    self.dateMode = dateModeXib;
+}
+
+- (void)setDateMode:(DRLunarDatePickerMode)dateMode {
+    if (dateMode == _dateMode) {
         return;
     }
-    
-    if (_ignoreYear) { // 之前是忽略年份的
+    _dateMode = dateMode;
+
+    if (dateMode == DRLunarDatePickerModeYMD) {
         self.currentMonthList = [self monthListFromLunarYear:self.lunarYear];
-    } else { // 之前是显示年份的
-        self.currentMonthList = [self ignoreYearMonthList];
+    } else if (dateMode == DRLunarDatePickerModeMD) {
+        self.currentMonthList = [self ignoreYearMonthListWithLeapMonth:NO];
+    } else {
+        self.currentMonthList = [self ignoreYearMonthListWithLeapMonth:YES];
     }
     _selectedMonth = [self findEquelLunarModel:self.selectedMonth fromList:self.currentMonthList];
-    
-    _ignoreYear = ignoreYear;
-    
+
     if (self.pickerView.delegate) {
         [self setupPickerView];
         [self.pickerView setNeedsLayout];
@@ -66,12 +77,23 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             self.dateModeChanging = YES;
             NSInteger component = 4;
-            if (self.ignoreYear) {
+            if (self.dateMode != DRLunarDatePickerModeYMD) {
                 component = 2;
             }
             NSInteger row = self.selectedDay-1 + self.selectedMonth.dayCount * kLunarPickerCentreRow;
             [self pickerView:self.pickerView didSelectRow:row inComponent:component];
         });
+    }
+    [self setupSolarTip];
+}
+
+- (void)setupSolarTip {
+    if (self.dateMode == DRLunarDatePickerModeYMD && self.showSolarTip) {
+        self.solarDateContentView.hidden = NO;
+        self.solarDateContentViewHeight.constant = 42;
+    } else {
+        self.solarDateContentView.hidden = YES;
+        self.solarDateContentViewHeight.constant = 0;
     }
 }
 
@@ -102,16 +124,21 @@
         cmp = [self.lunarCalendar components:[NSDate dateComponentsUnitsWithType:DRCalenderUnitsTypeDay]|NSCalendarUnitEra
                                     fromDate:date];
         self.lunarYear = cmp.era * kLunarCycle + cmp.year - kZeroYear;
+        self.solarDateLabel.text = [date dateStringFromFormatterString:@"yyyy年MM月dd日"];
         _selectedDate = date;
     }
-    if (self.ignoreYear) {
-        self.currentMonthList = [self ignoreYearMonthList];
-        _selectedMonth = self.currentMonthList[(month-1) * 2 + leapMonth];
-        _selectedDay = day;
-    } else {
+    if (self.dateMode == DRLunarDatePickerModeYMD) {
         self.currentMonthList = [self monthListFromLunarYear:self.lunarYear];
         _selectedMonth = self.currentMonthList[cmp.month-1 + cmp.leapMonth];
         _selectedDay = cmp.day;
+    } else if (self.dateMode == DRLunarDatePickerModeMD) {
+        self.currentMonthList = [self ignoreYearMonthListWithLeapMonth:NO];
+        _selectedMonth = self.currentMonthList[month-1];
+        _selectedDay = day;
+    } else {
+        self.currentMonthList = [self ignoreYearMonthListWithLeapMonth:YES];
+        _selectedMonth = self.currentMonthList[(month-1) * 2 + leapMonth];
+        _selectedDay = day;
     }
     if (self.pickerView.delegate) {
         [self setupPickerView];
@@ -121,15 +148,18 @@
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     [DRUIWidgetUtil hideSeparateLineForPickerView:pickerView];
-    if (self.ignoreYear) {
+    if (self.dateMode != DRLunarDatePickerModeYMD) {
         return 3;
     }
     return 5;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (self.ignoreYear) {
+    if (self.dateMode != DRLunarDatePickerModeYMD) {
         if (component == 0) {
+            if (self.dateMode == DRLunarDatePickerModeMD) {
+                return 12 * kLunarPickerRowCount;
+            }
             return 24 * kLunarPickerRowCount;
         }
         if (component == 2) {
@@ -151,7 +181,7 @@
 
 #pragma mark - UIPickerViewDelegate
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    if (self.ignoreYear) {
+    if (self.dateMode != DRLunarDatePickerModeYMD) {
         if (component == 1) {
             return 8;
         }
@@ -175,7 +205,7 @@
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
     UILabel *label;
     DRLunarYearView *yearView;
-    if (!self.ignoreYear && component == 0) {
+    if (self.dateMode == DRLunarDatePickerModeYMD && component == 0) {
         yearView = (DRLunarYearView *)view;
         if (!yearView) {
             yearView = kDR_LOAD_XIB_NAMED(NSStringFromClass([DRLunarYearView class]));
@@ -197,9 +227,13 @@
     [self setupTextColorForLabel:label yearView:yearView inComponent:component forRow:row];
 
     NSString *text = @"/";
-    if (self.ignoreYear) {
+    if (self.dateMode != DRLunarDatePickerModeYMD) {
         if (component == 0) {
-            text = self.currentMonthList[row%24].name;
+            if (self.dateMode == DRLunarDatePickerModeMD) {
+                text = self.currentMonthList[row%12].name;
+            } else {
+                text = self.currentMonthList[row%24].name;
+            }
         } else if (component == 2) {
             text = self.lunarDays[row%30];
         }
@@ -215,19 +249,22 @@
             text = self.lunarDays[row%self.selectedMonth.dayCount];
         }
     }
+    if (text.length == 0) {
+        NSLog(@"dflakdflka");
+    }
     label.text = text;
     return label;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if (self.ignoreYear) {
+    if (self.dateMode != DRLunarDatePickerModeYMD) {
         [self setupIgnoreYearSelectRow:row inComponent:component];
     } else {
         [self setupWithYearSelectRow:row inComponent:component];
     }
     [self.pickerView reloadAllComponents];
-    
-    if (self.ignoreYear) {
+
+    if (self.dateMode != DRLunarDatePickerModeYMD) {
         _selectedDate = nil;
     } else {
         NSDateComponents *cmp = [NSDateComponents lunarComponentsWithEra:self.selectedMonth.cmp.era
@@ -236,6 +273,7 @@
                                                                      day:self.selectedDay
                                                                leapMonth:self.selectedMonth.cmp.leapMonth];
         _selectedDate = [self.lunarCalendar dateFromComponents:cmp];
+        self.solarDateLabel.text = [self.selectedDate dateStringFromFormatterString:@"yyyy年MM月dd日"];
     }
     if (!self.dateModeChanging) {
         kDR_SAFE_BLOCK(self.onSelectChangeBlock, self.selectedDate, self.selectedMonth.cmp.month, self.selectedDay);
@@ -245,9 +283,14 @@
 
 #pragma mark - private
 - (void)setupPickerView {
+    [self.pickerView reloadAllComponents];
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.ignoreYear) {
-            [self.pickerView selectRow:self.selectedMonth.index + kLunarPickerCentreRow * 24 inComponent:0 animated:NO];
+        if (self.dateMode != DRLunarDatePickerModeYMD) {
+            if (self.dateMode == DRLunarDatePickerModeMD) {
+                [self.pickerView selectRow:self.selectedMonth.index + kLunarPickerCentreRow * 12 inComponent:0 animated:NO];
+            } else {
+                [self.pickerView selectRow:self.selectedMonth.index + kLunarPickerCentreRow * 24 inComponent:0 animated:NO];
+            }
             [self.pickerView selectRow:self.selectedDay-1 + kLunarPickerCentreRow * 30 inComponent:2 animated:NO];
         } else {
             [self.pickerView selectRow:self.selectedMonth.lunarYear inComponent:0 animated:NO];
@@ -282,16 +325,13 @@
 }
 
 - (void)setupTextColorForLabel:(UILabel *)label yearView:(DRLunarYearView *)yearView inComponent:(NSInteger)component forRow:(NSInteger)row {
-    if (component % 2 > 0) {
-        return;
-    }
     NSInteger selectedRow = [self.pickerView selectedRowInComponent:component];
     if (row == selectedRow) {
         label.textColor = [DRUIWidgetUtil normalColor];
         yearView.textColor = [DRUIWidgetUtil normalColor];
     }
 
-    if (!self.ignoreYear && [self isDisableForRow:row inComponent:component]) {
+    if (self.dateMode == DRLunarDatePickerModeYMD && [self isDisableForRow:row inComponent:component]) {
         label.textColor = [DRUIWidgetUtil pickerDisableColor];
         yearView.textColor = [DRUIWidgetUtil pickerDisableColor];
     }
@@ -406,6 +446,9 @@
     // 获取最新值，及滚动复位
     if (component == 0) {
         NSInteger month = row % 24;
+        if (self.dateMode == DRLunarDatePickerModeMD) {
+            month = row % 12;
+        }
         _selectedMonth = self.currentMonthList[month];
         [self.pickerView selectRow:month + kLunarPickerCentreRow*self.currentMonthList.count inComponent:0 animated:NO];
         [self.pickerView reloadComponent:2];
@@ -422,7 +465,7 @@
         NSMutableArray<DRLunarDatePickerMonthModel *> *list = [NSMutableArray array];
         monthList = list;
         [self.yearMonthListMap setObject:list forKey:@(lunarYear)];
-        
+
         NSInteger wholeYear = lunarYear + kZeroYear;
         NSInteger era = wholeYear / kLunarCycle;
         NSInteger year = wholeYear % kLunarCycle;
@@ -430,7 +473,7 @@
             year = 60;
             era--;
         }
-        
+
         NSInteger index = 0;
         for (NSInteger i=0; i<24; i++) {
             NSDateComponents *cmp = [NSDateComponents lunarComponentsWithEra:era year:year month:1+i/2 day:1 leapMonth:i%2];
@@ -453,10 +496,15 @@
     return monthList;
 }
 
-- (NSArray<DRLunarDatePickerMonthModel *> *)ignoreYearMonthList {
+- (NSArray<DRLunarDatePickerMonthModel *> *)ignoreYearMonthListWithLeapMonth:(BOOL)withLeapMonth {
     NSMutableArray<DRLunarDatePickerMonthModel *> *list = [NSMutableArray array];
-    for (NSInteger i=0; i<24; i++) {
-        NSDateComponents *cmp = [NSDateComponents lunarComponentsWithEra:0 year:0 month:1+i/2 day:1 leapMonth:i%2];
+    NSInteger count = 12 * (1+withLeapMonth);
+    for (NSInteger i=0; i<count; i++) {
+        NSDateComponents *cmp = [NSDateComponents lunarComponentsWithEra:0
+                                                                    year:0
+                                                                   month:1+i/(1+withLeapMonth)
+                                                                     day:1
+                                                               leapMonth:withLeapMonth*(i%2)];
         DRLunarDatePickerMonthModel *model = [DRLunarDatePickerMonthModel new];
         model.cmp = cmp;
         model.dayCount = 30;
@@ -510,29 +558,36 @@
 }
 
 - (void)setup {
-    UIPickerView *picker = [[UIPickerView alloc] init];
-    picker.backgroundColor = [UIColor whiteColor];
-    [self addSubview:picker];
-    [picker mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.bottom.right.mas_offset(0);
-    }];
-    self.pickerView = picker;
+    if (!self.containerView) {
+        self.containerView = kDR_LOAD_XIB_NAMED(NSStringFromClass([self class]));
+        [self addSubview:self.containerView];
+        [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.bottom.right.mas_offset(0);
+        }];
+        self.solarDateContentView.hidden = YES;
+        self.solarDateContentViewHeight.constant = 0;
+
+        self.solarDateLabel.textColor = [DRUIWidgetUtil highlightColor];
+        self.solarIcon.image = [DRUIWidgetUtil pngImageWithName:@"icon_birth_solar"
+                                                       inBundle:KDR_CURRENT_BUNDLE];
+    }
 }
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    
+
     if (CGRectEqualToRect(rect, CGRectZero)) {
         return;
     }
     if (!self.didDrawRect) {
         self.didDrawRect = YES;
-        
+
         dispatch_async(dispatch_get_main_queue(), ^{
             self.pickerView.delegate = self;
             self.pickerView.dataSource = self;
             [self.pickerView reloadAllComponents];
-            
+            [self setupSolarTip];
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self setupPickerView];
             });

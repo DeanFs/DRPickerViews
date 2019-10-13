@@ -19,7 +19,9 @@ IB_DESIGNABLE
 @interface DRDatePickerView : UIView
 
 @property (nonatomic, assign) IBInspectable NSInteger dateModeXib;
-@property (nonatomic, assign) DRDatePickerMode dateMode; // default DRDatePickerModeYMD
+@property (nonatomic, assign) DRDatePickerMode dateMode;
+// 底部显示农历日期，DRDatePickerModeYMD模式有效，默认 NO
+@property (nonatomic, assign) BOOL showLunarTip;
 
 @property (nonatomic, copy) void (^onSelectChangeBlock) (NSDate *date, NSInteger month, NSInteger day);
 @property (nonatomic, strong, readonly) NSDate *selectedDate;
