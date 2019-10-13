@@ -149,6 +149,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        _minTimeConsume = 5;
         _maxTimeConsume = 14399;
     }
     return self;

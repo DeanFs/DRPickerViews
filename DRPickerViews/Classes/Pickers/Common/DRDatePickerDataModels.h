@@ -364,6 +364,9 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
  */
 @property (nonatomic, assign) int64_t timeConsuming;
 
+/// 最小时长，默认：5
+@property (nonatomic, assign) int64_t minTimeConsume;
+
 /// 最大时长，默认：10 * 24 * 60 - 1 = 14399
 @property (nonatomic, assign) int64_t maxTimeConsume;
 

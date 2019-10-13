@@ -95,8 +95,9 @@
         } break;
             
         case DRPickerTypeTimeConsuming: {
-            opt = [DRPickerTimeConsumingOption optionWithTitle:@"请选择消耗时长" timeConsuming:11*60/*2*24*3600+5*3600+33*60*/];
+            opt = [DRPickerTimeConsumingOption optionWithTitle:@"请选择消耗时长" timeConsuming:10*60/*2*24*3600+5*3600+33*60*/];
             ((DRPickerTimeConsumingOption*)opt).maxTimeConsume = 24*60-1;
+            ((DRPickerTimeConsumingOption*)opt).minTimeConsume = 30;
         } break;
             
         case DRPickerTypeRemindAhead: {

@@ -28,6 +28,7 @@
 - (void)prepareToShow {
     DRPickerTimeConsumingOption *option = (DRPickerTimeConsumingOption *)self.pickerOption;
     self.pickerView.timeScale = option.timeScale;
+    self.pickerView.minTimeConsume = option.minTimeConsume;
     self.pickerView.maxTimeConsume = option.maxTimeConsume;
     self.pickerView.currentTimeConsume = option.timeConsuming / 60;
 }
