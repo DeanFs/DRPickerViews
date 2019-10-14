@@ -56,6 +56,9 @@ IB_DESIGNABLE
 @property (nonatomic, assign) DRHourMinutePickerViewType type;
 @property (nonatomic, assign) IBInspectable NSInteger typeXib; // 在xib中指定type时使用
 
+/// 文字颜色
+@property (nonatomic, strong) IBInspectable UIColor *textColor;
+
 /// 时间步长，1~59，默认1分钟
 @property (nonatomic, assign) IBInspectable NSInteger timeScale;
 

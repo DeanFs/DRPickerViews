@@ -85,6 +85,8 @@
 @property (nonatomic, assign) NSInteger minute;
 @property (nonatomic, assign) int64_t duration;
 @property (nonatomic, assign) BOOL setupWaiting;
+@property (nonatomic, strong) UIColor *normalColor;
+@property (nonatomic, strong) UIColor *unSelectedColor;
 
 @end
 
@@ -301,12 +303,12 @@
     UILabel *label = (UILabel *)view;
     if (!label) {
         label = [[UILabel alloc] init];
-        label.textColor = [DRUIWidgetUtil pickerUnSelectColor];
+        label.textColor = self.unSelectedColor;
         label.font = [UIFont systemFontOfSize:31];
         if (self.type == DRHourMinutePickerViewTypeDuration) {
             label.font = [UIFont systemFontOfSize:26];
             if (component == 2) {
-                label.textColor = [DRUIWidgetUtil normalColor];
+                label.textColor = self.normalColor;
                 label.font = [UIFont dr_PingFangSC_RegularWithSize:15];
             }
         }
@@ -316,7 +318,7 @@
     
     NSInteger selectedRow = [pickerView selectedRowInComponent:component];
     if (row == selectedRow) {
-        label.textColor = [DRUIWidgetUtil normalColor];
+        label.textColor = self.normalColor;
     }
     
     if (self.type == DRHourMinutePickerViewTypeDuration) {
@@ -373,7 +375,6 @@
 
 - (void)setup {
     UIPickerView *picker = [[UIPickerView alloc] init];
-    picker.backgroundColor = [UIColor whiteColor];
     picker.delegate = self;
     picker.dataSource = self;
     [self addSubview:picker];
@@ -384,7 +385,18 @@
     
     self.timeScale = 1;
     self.minDuration = 1;
-    self.backgroundColor = [UIColor whiteColor];
+    self.normalColor = [DRUIWidgetUtil normalColor];
+    self.unSelectedColor = [DRUIWidgetUtil pickerUnSelectColor];
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+    self.normalColor = textColor;
+    self.unSelectedColor = [textColor colorWithAlphaComponent:0.4];
+}
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    [super setBackgroundColor:backgroundColor];
+    self.pickerView.backgroundColor = backgroundColor;
 }
 
 @end
