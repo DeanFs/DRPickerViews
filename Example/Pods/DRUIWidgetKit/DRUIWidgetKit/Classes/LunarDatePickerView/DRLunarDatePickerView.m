@@ -249,9 +249,6 @@
             text = self.lunarDays[row%self.selectedMonth.dayCount];
         }
     }
-    if (text.length == 0) {
-        NSLog(@"dflakdflka");
-    }
     label.text = text;
     return label;
 }

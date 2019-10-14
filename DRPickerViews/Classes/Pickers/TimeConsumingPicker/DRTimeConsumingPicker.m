@@ -57,9 +57,13 @@
         [timeString appendFormat:@"0分钟"];
     }
     int64_t duration = day * 86400 + hour * 3600 + minute * 60;
-    
-    return [DRPickerTimeConsumingPickedObj objWithTimeConsuming:duration
-                                                       timeDesc:timeString];
+
+    DRPickerTimeConsumingPickedObj *obj = [DRPickerTimeConsumingPickedObj objWithTimeConsuming:duration
+                                                                                      timeDesc:timeString];
+    obj.day = day;
+    obj.hour = hour;
+    obj.minute = minute;
+    return obj;
 }
 
 @end

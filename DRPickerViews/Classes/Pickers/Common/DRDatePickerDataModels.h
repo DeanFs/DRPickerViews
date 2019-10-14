@@ -697,6 +697,10 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
  */
 @property (nonatomic, assign) int64_t timeConsuming;
 
+@property (nonatomic, assign) NSInteger day;
+@property (nonatomic, assign) NSInteger hour;
+@property (nonatomic, assign) NSInteger minute;
+
 /**
  xx天xx小时xx分钟
  */

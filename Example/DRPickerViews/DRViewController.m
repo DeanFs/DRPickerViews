@@ -36,15 +36,15 @@
         } break;
             
         case DRPickerTypeWithLunar: {
-            opt = [DRPickerWithLunarOption optionWithTitle:@"农历" minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
+            opt = [DRPickerWithLunarOption optionWithTitle:@"农历"];
             DRPickerWithLunarOption *lunarOpt = (DRPickerWithLunarOption *)opt;
-            lunarOpt.type = DRYMDWithLunarPickerTypeNormal;
-            lunarOpt.year = 2018;
+            lunarOpt.type = DRYMDWithLunarPickerTypeMonthDayOnly;
+//            lunarOpt.year = 2018;
             lunarOpt.month = 12;
             lunarOpt.day = 4;
             lunarOpt.isLunar = NO;
-            lunarOpt.leapMonth = NO;
-            lunarOpt.ignoreYear = NO;
+//            lunarOpt.leapMonth = NO;
+//            lunarOpt.ignoreYear = NO;
         } break;
             
         case DRPickerTypePlanEnd: {
