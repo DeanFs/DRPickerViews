@@ -10,8 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DRWeekOrTermPicker">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="303"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DRClassTermPicker">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTt-3b-ufZ" customClass="DRPickerTopBar">
@@ -21,38 +21,25 @@
                         <constraint firstAttribute="height" constant="56" id="FtN-s5-x6G"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T93-7H-kLN" customClass="DRSegmentBar">
-                    <rect key="frame" x="17" y="56" width="380" height="43"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ax-8e-sBr" customClass="DRClassTermPickerView">
+                    <rect key="frame" x="0.0" y="56" width="414" height="204"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="43" id="4g0-xF-dvX"/>
-                    </constraints>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tq9-wC-m23">
-                    <rect key="frame" x="0.0" y="126" width="414" height="177"/>
-                    <viewLayoutGuide key="contentLayoutGuide" id="0Fa-L4-sUX"/>
-                    <viewLayoutGuide key="frameLayoutGuide" id="Z8U-D5-TvE"/>
-                </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="T93-7H-kLN" secondAttribute="trailing" constant="17" id="E9L-eI-xGh"/>
-                <constraint firstItem="Tq9-wC-m23" firstAttribute="top" secondItem="T93-7H-kLN" secondAttribute="bottom" id="GgR-WF-SXh"/>
-                <constraint firstItem="T93-7H-kLN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="17" id="KWB-nT-cvJ"/>
+                <constraint firstItem="3ax-8e-sBr" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="CYr-HT-f0s"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PTt-3b-ufZ" secondAttribute="trailing" id="MJc-7U-Y49"/>
-                <constraint firstItem="Tq9-wC-m23" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Qyc-OR-U9d"/>
-                <constraint firstItem="T93-7H-kLN" firstAttribute="top" secondItem="PTt-3b-ufZ" secondAttribute="bottom" id="Rcl-MC-snJ"/>
+                <constraint firstItem="3ax-8e-sBr" firstAttribute="top" secondItem="PTt-3b-ufZ" secondAttribute="bottom" id="bVJ-En-mNl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3ax-8e-sBr" secondAttribute="trailing" id="fkq-JP-p7b"/>
                 <constraint firstItem="PTt-3b-ufZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="glE-5y-czL"/>
-                <constraint firstItem="Tq9-wC-m23" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="kKg-qw-hUL"/>
                 <constraint firstItem="PTt-3b-ufZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="uas-fq-QOR"/>
-                <constraint firstItem="Tq9-wC-m23" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="zWQ-s8-os4"/>
+                <constraint firstItem="3ax-8e-sBr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xSp-GJ-8V0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="picker" destination="Tq9-wC-m23" id="zcr-gJ-Yhg"/>
-                <outlet property="scrollView" destination="Tq9-wC-m23" id="suk-ay-bjW"/>
-                <outlet property="segmentBar" destination="T93-7H-kLN" id="1KT-Jn-MyG"/>
+                <outlet property="pickerView" destination="3ax-8e-sBr" id="TNQ-HF-MnB"/>
                 <outlet property="topBar" destination="PTt-3b-ufZ" id="2wM-aR-nbk"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="136.94196428571428"/>

@@ -16,9 +16,14 @@ static UIColor *_descColor;
 static UIColor *_gradientLightColor;
 static UIColor *_gradientDarkColor;
 static BOOL _weekPickerOnlyCurrentMonth = NO;
+static NSString *_cityJsonFileName;
 
 @implementation DRUIWidgetUtil
 
+/// 设置通用颜色，跟随主题
+/// @param highlightColor 高亮色
+/// @param normalColor 普通文字颜色（一级）
+/// @param descColor 描述文字颜色 （二级）
 + (void)setupHighlightColor:(UIColor *)highlightColor
                 normalColor:(UIColor *)normalColor
                   descColor:(UIColor *)descColor {
@@ -27,10 +32,19 @@ static BOOL _weekPickerOnlyCurrentMonth = NO;
     _descColor = descColor;
 }
 
+/// 设置渐变色，跟随主题
+/// @param lightColor 渐变相对浅色值
+/// @param darkColor 渐变相对深色值
 + (void)setupGradientLightColor:(UIColor *)lightColor
                       darkColor:(UIColor *)darkColor {
     _gradientLightColor = lightColor;
     _gradientDarkColor = darkColor;
+}
+
+/// 设置城市列表json文件，放到mainBundle中
+/// @param fileName json文件名
++ (void)setupCityListJsonFileName:(NSString *)fileName {
+    _cityJsonFileName = fileName;
 }
 
 + (UIColor *)highlightColor {
@@ -90,6 +104,13 @@ static BOOL _weekPickerOnlyCurrentMonth = NO;
 
 + (void)setWeekPickerOnlyCurrentMonth:(BOOL)only {
     _weekPickerOnlyCurrentMonth = only;
+}
+
++ (NSString *)cityJsonFileName {
+    if (!_cityJsonFileName) {
+        _cityJsonFileName = @"city_list";
+    }
+    return _cityJsonFileName;
 }
 
 /**

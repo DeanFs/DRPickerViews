@@ -14,16 +14,18 @@
 
 @interface DRCityPickerInfoModel : NSObject <YYModel>
 
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, assign) NSInteger code;
-@property (nonatomic, strong) NSArray<DRCityPickerInfoModel *> *child;
+@property (nonatomic, copy) NSString *shengji;
+@property (nonatomic, copy) NSString *diji;
+@property (nonatomic, assign) NSInteger quHuaDaiMa;
+@property (nonatomic, assign) NSInteger zoning_code; // 父级code
+@property (nonatomic, strong) NSArray<DRCityPickerInfoModel *> *children;
 
 @end
 
 @implementation DRCityPickerInfoModel
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"child": [DRCityPickerInfoModel class]};
+    return @{@"children": [DRCityPickerInfoModel class]};
 }
 
 @end
@@ -39,22 +41,34 @@
 @implementation DRCityPickerView
 
 - (void)setupPickerView {
-    if (self.province.length == 0 || self.city.length == 0) {
+    if (self.cityCode <= 0) {
         return;
     }
+    [self.pickerView reloadAllComponents];
+
+    NSInteger provinceIndex = 0;
+    NSInteger cityIndex = 0;
     for (DRCityPickerInfoModel *province in self.provinceList) {
-        if ([province.name isEqualToString:self.province]) {
-            [self.pickerView selectRow:province.code - 1 inComponent:0 animated:NO];
-            [self.pickerView reloadComponent:1];
-            for (DRCityPickerInfoModel *city in province.child) {
-                if ([city.name isEqualToString:self.city]) {
-                    [self.pickerView selectRow:city.code - 1 inComponent:1 animated:NO];
-                    break;
-                }
+        cityIndex = 0;
+        BOOL find = NO;
+        for (DRCityPickerInfoModel *city in province.children) {
+            if (city.quHuaDaiMa == self.cityCode) {
+                _province = city.shengji;
+                _city = city.diji;
+                find = YES;
+                break;
             }
+            cityIndex += 1;
+        }
+        if (find) {
             break;
         }
+        provinceIndex += 1;
     }
+    [self.pickerView selectRow:provinceIndex inComponent:0 animated:NO];
+    [self.pickerView reloadComponent:1];
+    [self.pickerView selectRow:cityIndex inComponent:1 animated:NO];
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.pickerView reloadAllComponents];
     });
@@ -70,7 +84,7 @@
     if (component == 0) {
         return self.provinceList.count;
     }
-    return self.provinceList[[pickerView selectedRowInComponent:0]].child.count;
+    return self.provinceList[[pickerView selectedRowInComponent:0]].children.count;
 }
 
 #pragma mark - UIPickerViewDelegate
@@ -88,10 +102,10 @@
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
     NSString *text;
     if (component == 0) {
-        text = self.provinceList[row].name;
+        text = self.provinceList[row].shengji;
     }
     if (component == 1) {
-        text = self.provinceList[[pickerView selectedRowInComponent:0]].child[row].name;
+        text = self.provinceList[[pickerView selectedRowInComponent:0]].children[row].diji;
     }
 
     UILabel *label = (UILabel *)view;
@@ -109,13 +123,10 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if (component == 0) {
-        _province = self.provinceList[row].name;
-    }
-    if (component == 1) {
-        _city = self.provinceList[[pickerView selectedRowInComponent:0]].child[row].name;
-    }
-    kDR_SAFE_BLOCK(self.onSelectedChangeBlock, self.province, self.city);
+    DRCityPickerInfoModel *model = self.provinceList[[pickerView selectedRowInComponent:0]].children[row];
+    _province = model.shengji;
+    _city = model.diji;
+    kDR_SAFE_BLOCK(self.onSelectedChangeBlock, model.quHuaDaiMa, model.shengji, model.diji);
     [pickerView reloadAllComponents];
 }
 
@@ -143,7 +154,7 @@
 
 - (void)setup {
     if (!self.pickerView) {
-        NSData *data = [NSData dataWithContentsOfFile:[KDR_CURRENT_BUNDLE pathForResource:@"city_list" ofType:@"json"]];
+        NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"city_list" ofType:@"json"]];
         self.provinceList = [NSArray yy_modelArrayWithClass:[DRCityPickerInfoModel class] json:data];
 
         UIPickerView *pickerView = [[UIPickerView alloc] init];
@@ -155,6 +166,7 @@
         [self.pickerView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.bottom.right.mas_offset(0);
         }];
+        _cityCode = -1;
     }
 }
 
@@ -173,16 +185,8 @@
     }
 }
 
-- (void)setProvince:(NSString *)province {
-    _province = province;
-
-    if (self.didDrawRect) {
-        [self setupPickerView];
-    }
-}
-
-- (void)setCity:(NSString *)city {
-    _city = city;
+- (void)setCityCode:(NSInteger)cityCode {
+    _cityCode = cityCode;
 
     if (self.didDrawRect) {
         [self setupPickerView];

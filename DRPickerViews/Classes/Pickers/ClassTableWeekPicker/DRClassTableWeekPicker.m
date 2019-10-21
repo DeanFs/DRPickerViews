@@ -24,7 +24,7 @@
 @implementation DRClassTableWeekPicker
 
 - (CGFloat)pickerViewHeight {
-    return 323;
+    return 304;
 }
 
 - (void)prepareToShow {

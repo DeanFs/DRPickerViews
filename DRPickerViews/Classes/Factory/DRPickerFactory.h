@@ -22,7 +22,7 @@ typedef void (^DRPickerDoneBlock)(DRBaseAlertPicker *picker, id pickedObject);
 @interface DRPickerFactory : NSObject
 
 /**
- 显示选择器
+ 显示Dialog
  
  @param type 选择器类型
  @param pickerOption 选择器参数

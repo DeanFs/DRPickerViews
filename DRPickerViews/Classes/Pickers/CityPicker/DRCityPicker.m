@@ -19,12 +19,12 @@
 
 - (void)prepareToShow {
     DRPickerCityOption *opt = (DRPickerCityOption *)self.pickerOption;
-    self.cityPickerView.province = opt.province;
-    self.cityPickerView.city = opt.city;
+    self.cityPickerView.cityCode = opt.cityCode;
 }
 
 - (id)pickedObject {
     DRPickerCityPickedObj *obj = [DRPickerCityPickedObj new];
+    obj.cityCode = self.cityPickerView.cityCode;
     obj.province = self.cityPickerView.province;
     obj.city = self.cityPickerView.city;
     return obj;

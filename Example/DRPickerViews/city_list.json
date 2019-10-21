@@ -1,0 +1,2249 @@
+[
+    {
+        "quHuaDaiMa": "110000",
+        "shengji": "北京市",
+        "children": [
+            {
+                "diji": "北京市",
+                "quHuaDaiMa": "110000",
+                "shengji": "北京市",
+                "zoning_code": "110000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "120000",
+        "shengji": "天津市",
+        "children": [
+            {
+                "diji": "天津市",
+                "quHuaDaiMa": "120000",
+                "shengji": "天津市",
+                "zoning_code": "120000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "130000",
+        "shengji": "河北省",
+        "children": [
+            {
+                "diji": "石家庄市",
+                "quHuaDaiMa": "130100",
+                "shengji": "河北省",
+                "zoning_code": "130000"
+            },
+            {
+                "diji": "唐山市",
+                "quHuaDaiMa": "130200",
+                "shengji": "河北省",
+                "zoning_code": "130000"
+            },
+            {
+                "diji": "秦皇岛市",
+                "quHuaDaiMa": "130300",
+                "shengji": "河北省",
+                "zoning_code": "130000"
+            },
+            {
+                "diji": "邯郸市",
+                "quHuaDaiMa": "130400",
+                "shengji": "河北省",
+                "zoning_code": "130000"
+            },
+            {
+                "diji": "邢台市",
+                "quHuaDaiMa": "130500",
+                "shengji": "河北省",
+                "zoning_code": "130000"
+            },
+            {
+                "diji": "保定市",
+                "quHuaDaiMa": "130600",
+                "shengji": "河北省",
+                "zoning_code": "130000"
+            },
+            {
+                "diji": "张家口市",
+                "quHuaDaiMa": "130700",
+                "shengji": "河北省",
+                "zoning_code": "130000"
+            },
+            {
+                "diji": "承德市",
+                "quHuaDaiMa": "130800",
+                "shengji": "河北省",
+                "zoning_code": "130000"
+            },
+            {
+                "diji": "沧州市",
+                "quHuaDaiMa": "130900",
+                "shengji": "河北省",
+                "zoning_code": "130000"
+            },
+            {
+                "diji": "廊坊市",
+                "quHuaDaiMa": "131000",
+                "shengji": "河北省",
+                "zoning_code": "130000"
+            },
+            {
+                "diji": "衡水市",
+                "quHuaDaiMa": "131100",
+                "shengji": "河北省",
+                "zoning_code": "130000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "140000",
+        "shengji": "山西省",
+        "children": [
+            {
+                "diji": "太原市",
+                "quHuaDaiMa": "140100",
+                "shengji": "山西省",
+                "zoning_code": "140000"
+            },
+            {
+                "diji": "大同市",
+                "quHuaDaiMa": "140200",
+                "shengji": "山西省",
+                "zoning_code": "140000"
+            },
+            {
+                "diji": "阳泉市",
+                "quHuaDaiMa": "140300",
+                "shengji": "山西省",
+                "zoning_code": "140000"
+            },
+            {
+                "diji": "长治市",
+                "quHuaDaiMa": "140400",
+                "shengji": "山西省",
+                "zoning_code": "140000"
+            },
+            {
+                "diji": "晋城市",
+                "quHuaDaiMa": "140500",
+                "shengji": "山西省",
+                "zoning_code": "140000"
+            },
+            {
+                "diji": "朔州市",
+                "quHuaDaiMa": "140600",
+                "shengji": "山西省",
+                "zoning_code": "140000"
+            },
+            {
+                "diji": "晋中市",
+                "quHuaDaiMa": "140700",
+                "shengji": "山西省",
+                "zoning_code": "140000"
+            },
+            {
+                "diji": "运城市",
+                "quHuaDaiMa": "140800",
+                "shengji": "山西省",
+                "zoning_code": "140000"
+            },
+            {
+                "diji": "忻州市",
+                "quHuaDaiMa": "140900",
+                "shengji": "山西省",
+                "zoning_code": "140000"
+            },
+            {
+                "diji": "临汾市",
+                "quHuaDaiMa": "141000",
+                "shengji": "山西省",
+                "zoning_code": "140000"
+            },
+            {
+                "diji": "吕梁市",
+                "quHuaDaiMa": "141100",
+                "shengji": "山西省",
+                "zoning_code": "140000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "150000",
+        "shengji": "内蒙古自治区",
+        "children": [
+            {
+                "diji": "呼和浩特市",
+                "quHuaDaiMa": "150100",
+                "shengji": "内蒙古自治区",
+                "zoning_code": "150000"
+            },
+            {
+                "diji": "包头市",
+                "quHuaDaiMa": "150200",
+                "shengji": "内蒙古自治区",
+                "zoning_code": "150000"
+            },
+            {
+                "diji": "乌海市",
+                "quHuaDaiMa": "150300",
+                "shengji": "内蒙古自治区",
+                "zoning_code": "150000"
+            },
+            {
+                "diji": "赤峰市",
+                "quHuaDaiMa": "150400",
+                "shengji": "内蒙古自治区",
+                "zoning_code": "150000"
+            },
+            {
+                "diji": "通辽市",
+                "quHuaDaiMa": "150500",
+                "shengji": "内蒙古自治区",
+                "zoning_code": "150000"
+            },
+            {
+                "diji": "鄂尔多斯市",
+                "quHuaDaiMa": "150600",
+                "shengji": "内蒙古自治区",
+                "zoning_code": "150000"
+            },
+            {
+                "diji": "呼伦贝尔市",
+                "quHuaDaiMa": "150700",
+                "shengji": "内蒙古自治区",
+                "zoning_code": "150000"
+            },
+            {
+                "diji": "巴彦淖尔市",
+                "quHuaDaiMa": "150800",
+                "shengji": "内蒙古自治区",
+                "zoning_code": "150000"
+            },
+            {
+                "diji": "乌兰察布市",
+                "quHuaDaiMa": "150900",
+                "shengji": "内蒙古自治区",
+                "zoning_code": "150000"
+            },
+            {
+                "diji": "兴安盟",
+                "quHuaDaiMa": "152200",
+                "shengji": "内蒙古自治区",
+                "zoning_code": "150000"
+            },
+            {
+                "diji": "锡林郭勒盟",
+                "quHuaDaiMa": "152500",
+                "shengji": "内蒙古自治区",
+                "zoning_code": "150000"
+            },
+            {
+                "diji": "阿拉善盟",
+                "quHuaDaiMa": "152900",
+                "shengji": "内蒙古自治区",
+                "zoning_code": "150000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "210000",
+        "shengji": "辽宁省",
+        "children": [
+            {
+                "diji": "沈阳市",
+                "quHuaDaiMa": "210100",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            },
+            {
+                "diji": "大连市",
+                "quHuaDaiMa": "210200",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            },
+            {
+                "diji": "鞍山市",
+                "quHuaDaiMa": "210300",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            },
+            {
+                "diji": "抚顺市",
+                "quHuaDaiMa": "210400",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            },
+            {
+                "diji": "本溪市",
+                "quHuaDaiMa": "210500",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            },
+            {
+                "diji": "丹东市",
+                "quHuaDaiMa": "210600",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            },
+            {
+                "diji": "锦州市",
+                "quHuaDaiMa": "210700",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            },
+            {
+                "diji": "营口市",
+                "quHuaDaiMa": "210800",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            },
+            {
+                "diji": "阜新市",
+                "quHuaDaiMa": "210900",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            },
+            {
+                "diji": "辽阳市",
+                "quHuaDaiMa": "211000",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            },
+            {
+                "diji": "盘锦市",
+                "quHuaDaiMa": "211100",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            },
+            {
+                "diji": "铁岭市",
+                "quHuaDaiMa": "211200",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            },
+            {
+                "diji": "朝阳市",
+                "quHuaDaiMa": "211300",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            },
+            {
+                "diji": "葫芦岛市",
+                "quHuaDaiMa": "211400",
+                "shengji": "辽宁省",
+                "zoning_code": "210000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "220000",
+        "shengji": "吉林省",
+        "children": [
+            {
+                "diji": "长春市",
+                "quHuaDaiMa": "220100",
+                "shengji": "吉林省",
+                "zoning_code": "220000"
+            },
+            {
+                "diji": "吉林市",
+                "quHuaDaiMa": "220200",
+                "shengji": "吉林省",
+                "zoning_code": "220000"
+            },
+            {
+                "diji": "四平市",
+                "quHuaDaiMa": "220300",
+                "shengji": "吉林省",
+                "zoning_code": "220000"
+            },
+            {
+                "diji": "辽源市",
+                "quHuaDaiMa": "220400",
+                "shengji": "吉林省",
+                "zoning_code": "220000"
+            },
+            {
+                "diji": "通化市",
+                "quHuaDaiMa": "220500",
+                "shengji": "吉林省",
+                "zoning_code": "220000"
+            },
+            {
+                "diji": "白山市",
+                "quHuaDaiMa": "220600",
+                "shengji": "吉林省",
+                "zoning_code": "220000"
+            },
+            {
+                "diji": "松原市",
+                "quHuaDaiMa": "220700",
+                "shengji": "吉林省",
+                "zoning_code": "220000"
+            },
+            {
+                "diji": "白城市",
+                "quHuaDaiMa": "220800",
+                "shengji": "吉林省",
+                "zoning_code": "220000"
+            },
+            {
+                "diji": "延边朝鲜族自治州",
+                "quHuaDaiMa": "222400",
+                "shengji": "吉林省",
+                "zoning_code": "220000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "230000",
+        "shengji": "黑龙江省",
+        "children": [
+            {
+                "diji": "哈尔滨市",
+                "quHuaDaiMa": "230100",
+                "shengji": "黑龙江省",
+                "zoning_code": "230000"
+            },
+            {
+                "diji": "齐齐哈尔市",
+                "quHuaDaiMa": "230200",
+                "shengji": "黑龙江省",
+                "zoning_code": "230000"
+            },
+            {
+                "diji": "鸡西市",
+                "quHuaDaiMa": "230300",
+                "shengji": "黑龙江省",
+                "zoning_code": "230000"
+            },
+            {
+                "diji": "鹤岗市",
+                "quHuaDaiMa": "230400",
+                "shengji": "黑龙江省",
+                "zoning_code": "230000"
+            },
+            {
+                "diji": "双鸭山市",
+                "quHuaDaiMa": "230500",
+                "shengji": "黑龙江省",
+                "zoning_code": "230000"
+            },
+            {
+                "diji": "大庆市",
+                "quHuaDaiMa": "230600",
+                "shengji": "黑龙江省",
+                "zoning_code": "230000"
+            },
+            {
+                "diji": "伊春市",
+                "quHuaDaiMa": "230700",
+                "shengji": "黑龙江省",
+                "zoning_code": "230000"
+            },
+            {
+                "diji": "佳木斯市",
+                "quHuaDaiMa": "230800",
+                "shengji": "黑龙江省",
+                "zoning_code": "230000"
+            },
+            {
+                "diji": "七台河市",
+                "quHuaDaiMa": "230900",
+                "shengji": "黑龙江省",
+                "zoning_code": "230000"
+            },
+            {
+                "diji": "牡丹江市",
+                "quHuaDaiMa": "231000",
+                "shengji": "黑龙江省",
+                "zoning_code": "230000"
+            },
+            {
+                "diji": "黑河市",
+                "quHuaDaiMa": "231100",
+                "shengji": "黑龙江省",
+                "zoning_code": "230000"
+            },
+            {
+                "diji": "绥化市",
+                "quHuaDaiMa": "231200",
+                "shengji": "黑龙江省",
+                "zoning_code": "230000"
+            },
+            {
+                "diji": "大兴安岭地区",
+                "quHuaDaiMa": "232700",
+                "shengji": "黑龙江省",
+                "zoning_code": "230000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "310000",
+        "shengji": "上海市",
+        "children": [
+            {
+                "diji": "上海市",
+                "quHuaDaiMa": "310000",
+                "shengji": "上海市",
+                "zoning_code": "310000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "320000",
+        "shengji": "江苏省",
+        "children": [
+            {
+                "diji": "南京市",
+                "quHuaDaiMa": "320100",
+                "shengji": "江苏省",
+                "zoning_code": "320000"
+            },
+            {
+                "diji": "无锡市",
+                "quHuaDaiMa": "320200",
+                "shengji": "江苏省",
+                "zoning_code": "320000"
+            },
+            {
+                "diji": "徐州市",
+                "quHuaDaiMa": "320300",
+                "shengji": "江苏省",
+                "zoning_code": "320000"
+            },
+            {
+                "diji": "常州市",
+                "quHuaDaiMa": "320400",
+                "shengji": "江苏省",
+                "zoning_code": "320000"
+            },
+            {
+                "diji": "苏州市",
+                "quHuaDaiMa": "320500",
+                "shengji": "江苏省",
+                "zoning_code": "320000"
+            },
+            {
+                "diji": "南通市",
+                "quHuaDaiMa": "320600",
+                "shengji": "江苏省",
+                "zoning_code": "320000"
+            },
+            {
+                "diji": "连云港市",
+                "quHuaDaiMa": "320700",
+                "shengji": "江苏省",
+                "zoning_code": "320000"
+            },
+            {
+                "diji": "淮安市",
+                "quHuaDaiMa": "320800",
+                "shengji": "江苏省",
+                "zoning_code": "320000"
+            },
+            {
+                "diji": "盐城市",
+                "quHuaDaiMa": "320900",
+                "shengji": "江苏省",
+                "zoning_code": "320000"
+            },
+            {
+                "diji": "扬州市",
+                "quHuaDaiMa": "321000",
+                "shengji": "江苏省",
+                "zoning_code": "320000"
+            },
+            {
+                "diji": "镇江市",
+                "quHuaDaiMa": "321100",
+                "shengji": "江苏省",
+                "zoning_code": "320000"
+            },
+            {
+                "diji": "泰州市",
+                "quHuaDaiMa": "321200",
+                "shengji": "江苏省",
+                "zoning_code": "320000"
+            },
+            {
+                "diji": "宿迁市",
+                "quHuaDaiMa": "321300",
+                "shengji": "江苏省",
+                "zoning_code": "320000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "330000",
+        "shengji": "浙江省",
+        "children": [
+            {
+                "diji": "杭州市",
+                "quHuaDaiMa": "330100",
+                "shengji": "浙江省",
+                "zoning_code": "330000"
+            },
+            {
+                "diji": "宁波市",
+                "quHuaDaiMa": "330200",
+                "shengji": "浙江省",
+                "zoning_code": "330000"
+            },
+            {
+                "diji": "温州市",
+                "quHuaDaiMa": "330300",
+                "shengji": "浙江省",
+                "zoning_code": "330000"
+            },
+            {
+                "diji": "嘉兴市",
+                "quHuaDaiMa": "330400",
+                "shengji": "浙江省",
+                "zoning_code": "330000"
+            },
+            {
+                "diji": "湖州市",
+                "quHuaDaiMa": "330500",
+                "shengji": "浙江省",
+                "zoning_code": "330000"
+            },
+            {
+                "diji": "绍兴市",
+                "quHuaDaiMa": "330600",
+                "shengji": "浙江省",
+                "zoning_code": "330000"
+            },
+            {
+                "diji": "金华市",
+                "quHuaDaiMa": "330700",
+                "shengji": "浙江省",
+                "zoning_code": "330000"
+            },
+            {
+                "diji": "衢州市",
+                "quHuaDaiMa": "330800",
+                "shengji": "浙江省",
+                "zoning_code": "330000"
+            },
+            {
+                "diji": "舟山市",
+                "quHuaDaiMa": "330900",
+                "shengji": "浙江省",
+                "zoning_code": "330000"
+            },
+            {
+                "diji": "台州市",
+                "quHuaDaiMa": "331000",
+                "shengji": "浙江省",
+                "zoning_code": "330000"
+            },
+            {
+                "diji": "丽水市",
+                "quHuaDaiMa": "331100",
+                "shengji": "浙江省",
+                "zoning_code": "330000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "340000",
+        "shengji": "安徽省",
+        "children": [
+            {
+                "diji": "合肥市",
+                "quHuaDaiMa": "340100",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "芜湖市",
+                "quHuaDaiMa": "340200",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "蚌埠市",
+                "quHuaDaiMa": "340300",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "淮南市",
+                "quHuaDaiMa": "340400",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "马鞍山市",
+                "quHuaDaiMa": "340500",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "淮北市",
+                "quHuaDaiMa": "340600",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "铜陵市",
+                "quHuaDaiMa": "340700",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "安庆市",
+                "quHuaDaiMa": "340800",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "黄山市",
+                "quHuaDaiMa": "341000",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "滁州市",
+                "quHuaDaiMa": "341100",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "阜阳市",
+                "quHuaDaiMa": "341200",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "宿州市",
+                "quHuaDaiMa": "341300",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "六安市",
+                "quHuaDaiMa": "341500",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "亳州市",
+                "quHuaDaiMa": "341600",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "池州市",
+                "quHuaDaiMa": "341700",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            },
+            {
+                "diji": "宣城市",
+                "quHuaDaiMa": "341800",
+                "shengji": "安徽省",
+                "zoning_code": "340000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "350000",
+        "shengji": "福建省",
+        "children": [
+            {
+                "diji": "福州市",
+                "quHuaDaiMa": "350100",
+                "shengji": "福建省",
+                "zoning_code": "350000"
+            },
+            {
+                "diji": "厦门市",
+                "quHuaDaiMa": "350200",
+                "shengji": "福建省",
+                "zoning_code": "350000"
+            },
+            {
+                "diji": "莆田市",
+                "quHuaDaiMa": "350300",
+                "shengji": "福建省",
+                "zoning_code": "350000"
+            },
+            {
+                "diji": "三明市",
+                "quHuaDaiMa": "350400",
+                "shengji": "福建省",
+                "zoning_code": "350000"
+            },
+            {
+                "diji": "泉州市",
+                "quHuaDaiMa": "350500",
+                "shengji": "福建省",
+                "zoning_code": "350000"
+            },
+            {
+                "diji": "漳州市",
+                "quHuaDaiMa": "350600",
+                "shengji": "福建省",
+                "zoning_code": "350000"
+            },
+            {
+                "diji": "南平市",
+                "quHuaDaiMa": "350700",
+                "shengji": "福建省",
+                "zoning_code": "350000"
+            },
+            {
+                "diji": "龙岩市",
+                "quHuaDaiMa": "350800",
+                "shengji": "福建省",
+                "zoning_code": "350000"
+            },
+            {
+                "diji": "宁德市",
+                "quHuaDaiMa": "350900",
+                "shengji": "福建省",
+                "zoning_code": "350000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "360000",
+        "shengji": "江西省",
+        "children": [
+            {
+                "diji": "南昌市",
+                "quHuaDaiMa": "360100",
+                "shengji": "江西省",
+                "zoning_code": "360000"
+            },
+            {
+                "diji": "景德镇市",
+                "quHuaDaiMa": "360200",
+                "shengji": "江西省",
+                "zoning_code": "360000"
+            },
+            {
+                "diji": "萍乡市",
+                "quHuaDaiMa": "360300",
+                "shengji": "江西省",
+                "zoning_code": "360000"
+            },
+            {
+                "diji": "九江市",
+                "quHuaDaiMa": "360400",
+                "shengji": "江西省",
+                "zoning_code": "360000"
+            },
+            {
+                "diji": "新余市",
+                "quHuaDaiMa": "360500",
+                "shengji": "江西省",
+                "zoning_code": "360000"
+            },
+            {
+                "diji": "鹰潭市",
+                "quHuaDaiMa": "360600",
+                "shengji": "江西省",
+                "zoning_code": "360000"
+            },
+            {
+                "diji": "赣州市",
+                "quHuaDaiMa": "360700",
+                "shengji": "江西省",
+                "zoning_code": "360000"
+            },
+            {
+                "diji": "吉安市",
+                "quHuaDaiMa": "360800",
+                "shengji": "江西省",
+                "zoning_code": "360000"
+            },
+            {
+                "diji": "宜春市",
+                "quHuaDaiMa": "360900",
+                "shengji": "江西省",
+                "zoning_code": "360000"
+            },
+            {
+                "diji": "抚州市",
+                "quHuaDaiMa": "361000",
+                "shengji": "江西省",
+                "zoning_code": "360000"
+            },
+            {
+                "diji": "上饶市",
+                "quHuaDaiMa": "361100",
+                "shengji": "江西省",
+                "zoning_code": "360000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "370000",
+        "shengji": "山东省",
+        "children": [
+            {
+                "diji": "济南市",
+                "quHuaDaiMa": "370100",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "青岛市",
+                "quHuaDaiMa": "370200",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "淄博市",
+                "quHuaDaiMa": "370300",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "枣庄市",
+                "quHuaDaiMa": "370400",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "东营市",
+                "quHuaDaiMa": "370500",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "烟台市",
+                "quHuaDaiMa": "370600",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "潍坊市",
+                "quHuaDaiMa": "370700",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "济宁市",
+                "quHuaDaiMa": "370800",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "泰安市",
+                "quHuaDaiMa": "370900",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "威海市",
+                "quHuaDaiMa": "371000",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "日照市",
+                "quHuaDaiMa": "371100",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "临沂市",
+                "quHuaDaiMa": "371300",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "德州市",
+                "quHuaDaiMa": "371400",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "聊城市",
+                "quHuaDaiMa": "371500",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "滨州市",
+                "quHuaDaiMa": "371600",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            },
+            {
+                "diji": "菏泽市",
+                "quHuaDaiMa": "371700",
+                "shengji": "山东省",
+                "zoning_code": "370000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "410000",
+        "shengji": "河南省",
+        "children": [
+            {
+                "diji": "郑州市",
+                "quHuaDaiMa": "410100",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "开封市",
+                "quHuaDaiMa": "410200",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "洛阳市",
+                "quHuaDaiMa": "410300",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "平顶山市",
+                "quHuaDaiMa": "410400",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "安阳市",
+                "quHuaDaiMa": "410500",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "鹤壁市",
+                "quHuaDaiMa": "410600",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "新乡市",
+                "quHuaDaiMa": "410700",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "焦作市",
+                "quHuaDaiMa": "410800",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "濮阳市",
+                "quHuaDaiMa": "410900",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "许昌市",
+                "quHuaDaiMa": "411000",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "漯河市",
+                "quHuaDaiMa": "411100",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "三门峡市",
+                "quHuaDaiMa": "411200",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "南阳市",
+                "quHuaDaiMa": "411300",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "商丘市",
+                "quHuaDaiMa": "411400",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "信阳市",
+                "quHuaDaiMa": "411500",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "周口市",
+                "quHuaDaiMa": "411600",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "驻马店市",
+                "quHuaDaiMa": "411700",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            },
+            {
+                "diji": "省直辖县级行政单位",
+                "quHuaDaiMa": "",
+                "shengji": "河南省",
+                "zoning_code": "410000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "420000",
+        "shengji": "湖北省",
+        "children": [
+            {
+                "diji": "武汉市",
+                "quHuaDaiMa": "420100",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            },
+            {
+                "diji": "黄石市",
+                "quHuaDaiMa": "420200",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            },
+            {
+                "diji": "十堰市",
+                "quHuaDaiMa": "420300",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            },
+            {
+                "diji": "宜昌市",
+                "quHuaDaiMa": "420500",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            },
+            {
+                "diji": "襄阳市",
+                "quHuaDaiMa": "420600",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            },
+            {
+                "diji": "鄂州市",
+                "quHuaDaiMa": "420700",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            },
+            {
+                "diji": "荆门市",
+                "quHuaDaiMa": "420800",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            },
+            {
+                "diji": "孝感市",
+                "quHuaDaiMa": "420900",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            },
+            {
+                "diji": "荆州市",
+                "quHuaDaiMa": "421000",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            },
+            {
+                "diji": "黄冈市",
+                "quHuaDaiMa": "421100",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            },
+            {
+                "diji": "咸宁市",
+                "quHuaDaiMa": "421200",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            },
+            {
+                "diji": "随州市",
+                "quHuaDaiMa": "421300",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            },
+            {
+                "diji": "恩施土家族苗族自治州",
+                "quHuaDaiMa": "422800",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            },
+            {
+                "diji": "省直辖县级行政单位",
+                "quHuaDaiMa": "",
+                "shengji": "湖北省",
+                "zoning_code": "420000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "430000",
+        "shengji": "湖南省",
+        "children": [
+            {
+                "diji": "长沙市",
+                "quHuaDaiMa": "430100",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            },
+            {
+                "diji": "株洲市",
+                "quHuaDaiMa": "430200",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            },
+            {
+                "diji": "湘潭市",
+                "quHuaDaiMa": "430300",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            },
+            {
+                "diji": "衡阳市",
+                "quHuaDaiMa": "430400",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            },
+            {
+                "diji": "邵阳市",
+                "quHuaDaiMa": "430500",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            },
+            {
+                "diji": "岳阳市",
+                "quHuaDaiMa": "430600",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            },
+            {
+                "diji": "常德市",
+                "quHuaDaiMa": "430700",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            },
+            {
+                "diji": "张家界市",
+                "quHuaDaiMa": "430800",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            },
+            {
+                "diji": "益阳市",
+                "quHuaDaiMa": "430900",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            },
+            {
+                "diji": "郴州市",
+                "quHuaDaiMa": "431000",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            },
+            {
+                "diji": "永州市",
+                "quHuaDaiMa": "431100",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            },
+            {
+                "diji": "怀化市",
+                "quHuaDaiMa": "431200",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            },
+            {
+                "diji": "娄底市",
+                "quHuaDaiMa": "431300",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            },
+            {
+                "diji": "湘西土家族苗族自治州",
+                "quHuaDaiMa": "433100",
+                "shengji": "湖南省",
+                "zoning_code": "430000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "440000",
+        "shengji": "广东省",
+        "children": [
+            {
+                "diji": "广州市",
+                "quHuaDaiMa": "440100",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "韶关市",
+                "quHuaDaiMa": "440200",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "深圳市",
+                "quHuaDaiMa": "440300",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "珠海市",
+                "quHuaDaiMa": "440400",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "汕头市",
+                "quHuaDaiMa": "440500",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "佛山市",
+                "quHuaDaiMa": "440600",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "江门市",
+                "quHuaDaiMa": "440700",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "湛江市",
+                "quHuaDaiMa": "440800",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "茂名市",
+                "quHuaDaiMa": "440900",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "肇庆市",
+                "quHuaDaiMa": "441200",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "惠州市",
+                "quHuaDaiMa": "441300",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "梅州市",
+                "quHuaDaiMa": "441400",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "汕尾市",
+                "quHuaDaiMa": "441500",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "河源市",
+                "quHuaDaiMa": "441600",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "阳江市",
+                "quHuaDaiMa": "441700",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "清远市",
+                "quHuaDaiMa": "441800",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "东莞市",
+                "quHuaDaiMa": "441900",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "中山市",
+                "quHuaDaiMa": "442000",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "潮州市",
+                "quHuaDaiMa": "445100",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "揭阳市",
+                "quHuaDaiMa": "445200",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            },
+            {
+                "diji": "云浮市",
+                "quHuaDaiMa": "445300",
+                "shengji": "广东省",
+                "zoning_code": "440000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "450000",
+        "shengji": "广西壮族自治区",
+        "children": [
+            {
+                "diji": "南宁市",
+                "quHuaDaiMa": "450100",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            },
+            {
+                "diji": "柳州市",
+                "quHuaDaiMa": "450200",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            },
+            {
+                "diji": "桂林市",
+                "quHuaDaiMa": "450300",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            },
+            {
+                "diji": "梧州市",
+                "quHuaDaiMa": "450400",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            },
+            {
+                "diji": "北海市",
+                "quHuaDaiMa": "450500",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            },
+            {
+                "diji": "防城港市",
+                "quHuaDaiMa": "450600",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            },
+            {
+                "diji": "钦州市",
+                "quHuaDaiMa": "450700",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            },
+            {
+                "diji": "贵港市",
+                "quHuaDaiMa": "450800",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            },
+            {
+                "diji": "玉林市",
+                "quHuaDaiMa": "450900",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            },
+            {
+                "diji": "百色市",
+                "quHuaDaiMa": "451000",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            },
+            {
+                "diji": "贺州市",
+                "quHuaDaiMa": "451100",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            },
+            {
+                "diji": "河池市",
+                "quHuaDaiMa": "451200",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            },
+            {
+                "diji": "来宾市",
+                "quHuaDaiMa": "451300",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            },
+            {
+                "diji": "崇左市",
+                "quHuaDaiMa": "451400",
+                "shengji": "广西壮族自治区",
+                "zoning_code": "450000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "460000",
+        "shengji": "海南省",
+        "children": [
+            {
+                "diji": "海口市",
+                "quHuaDaiMa": "460100",
+                "shengji": "海南省",
+                "zoning_code": "460000"
+            },
+            {
+                "diji": "三亚市",
+                "quHuaDaiMa": "460200",
+                "shengji": "海南省",
+                "zoning_code": "460000"
+            },
+            {
+                "diji": "三沙市☆",
+                "quHuaDaiMa": "460300",
+                "shengji": "海南省",
+                "zoning_code": "460000"
+            },
+            {
+                "diji": "儋州市",
+                "quHuaDaiMa": "460400",
+                "shengji": "海南省",
+                "zoning_code": "460000"
+            },
+            {
+                "diji": "省直辖县级行政单位",
+                "quHuaDaiMa": "",
+                "shengji": "海南省",
+                "zoning_code": "460000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "500000",
+        "shengji": "重庆市",
+        "children": [
+            {
+                "diji": "重庆市",
+                "quHuaDaiMa": "500000",
+                "shengji": "重庆市",
+                "zoning_code": "500000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "510000",
+        "shengji": "四川省",
+        "children": [
+            {
+                "diji": "成都市",
+                "quHuaDaiMa": "510100",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "自贡市",
+                "quHuaDaiMa": "510300",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "攀枝花市",
+                "quHuaDaiMa": "510400",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "泸州市",
+                "quHuaDaiMa": "510500",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "德阳市",
+                "quHuaDaiMa": "510600",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "绵阳市",
+                "quHuaDaiMa": "510700",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "广元市",
+                "quHuaDaiMa": "510800",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "遂宁市",
+                "quHuaDaiMa": "510900",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "内江市",
+                "quHuaDaiMa": "511000",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "乐山市",
+                "quHuaDaiMa": "511100",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "南充市",
+                "quHuaDaiMa": "511300",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "眉山市",
+                "quHuaDaiMa": "511400",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "宜宾市",
+                "quHuaDaiMa": "511500",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "广安市",
+                "quHuaDaiMa": "511600",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "达州市",
+                "quHuaDaiMa": "511700",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "雅安市",
+                "quHuaDaiMa": "511800",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "巴中市",
+                "quHuaDaiMa": "511900",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "资阳市",
+                "quHuaDaiMa": "512000",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "阿坝藏族羌族自治州",
+                "quHuaDaiMa": "513200",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "甘孜藏族自治州",
+                "quHuaDaiMa": "513300",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            },
+            {
+                "diji": "凉山彝族自治州",
+                "quHuaDaiMa": "513400",
+                "shengji": "四川省",
+                "zoning_code": "510000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "520000",
+        "shengji": "贵州省",
+        "children": [
+            {
+                "diji": "贵阳市",
+                "quHuaDaiMa": "520100",
+                "shengji": "贵州省",
+                "zoning_code": "520000"
+            },
+            {
+                "diji": "六盘水市",
+                "quHuaDaiMa": "520200",
+                "shengji": "贵州省",
+                "zoning_code": "520000"
+            },
+            {
+                "diji": "遵义市",
+                "quHuaDaiMa": "520300",
+                "shengji": "贵州省",
+                "zoning_code": "520000"
+            },
+            {
+                "diji": "安顺市",
+                "quHuaDaiMa": "520400",
+                "shengji": "贵州省",
+                "zoning_code": "520000"
+            },
+            {
+                "diji": "毕节市",
+                "quHuaDaiMa": "520500",
+                "shengji": "贵州省",
+                "zoning_code": "520000"
+            },
+            {
+                "diji": "铜仁市",
+                "quHuaDaiMa": "520600",
+                "shengji": "贵州省",
+                "zoning_code": "520000"
+            },
+            {
+                "diji": "黔西南布依族苗族自治州",
+                "quHuaDaiMa": "522300",
+                "shengji": "贵州省",
+                "zoning_code": "520000"
+            },
+            {
+                "diji": "黔东南苗族侗族自治州",
+                "quHuaDaiMa": "522600",
+                "shengji": "贵州省",
+                "zoning_code": "520000"
+            },
+            {
+                "diji": "黔南布依族苗族自治州",
+                "quHuaDaiMa": "522700",
+                "shengji": "贵州省",
+                "zoning_code": "520000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "530000",
+        "shengji": "云南省",
+        "children": [
+            {
+                "diji": "昆明市",
+                "quHuaDaiMa": "530100",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "曲靖市",
+                "quHuaDaiMa": "530300",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "玉溪市",
+                "quHuaDaiMa": "530400",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "保山市",
+                "quHuaDaiMa": "530500",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "昭通市",
+                "quHuaDaiMa": "530600",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "丽江市",
+                "quHuaDaiMa": "530700",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "普洱市",
+                "quHuaDaiMa": "530800",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "临沧市",
+                "quHuaDaiMa": "530900",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "楚雄彝族自治州",
+                "quHuaDaiMa": "532300",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "红河哈尼族彝族自治州",
+                "quHuaDaiMa": "532500",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "文山壮族苗族自治州",
+                "quHuaDaiMa": "532600",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "西双版纳傣族自治州",
+                "quHuaDaiMa": "532800",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "大理白族自治州",
+                "quHuaDaiMa": "532900",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "德宏傣族景颇族自治州",
+                "quHuaDaiMa": "533100",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "怒江傈僳族自治州",
+                "quHuaDaiMa": "533300",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            },
+            {
+                "diji": "迪庆藏族自治州",
+                "quHuaDaiMa": "533400",
+                "shengji": "云南省",
+                "zoning_code": "530000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "540000",
+        "shengji": "西藏自治区",
+        "children": [
+            {
+                "diji": "拉萨市",
+                "quHuaDaiMa": "540100",
+                "shengji": "西藏自治区",
+                "zoning_code": "540000"
+            },
+            {
+                "diji": "日喀则市",
+                "quHuaDaiMa": "540200",
+                "shengji": "西藏自治区",
+                "zoning_code": "540000"
+            },
+            {
+                "diji": "昌都市",
+                "quHuaDaiMa": "540300",
+                "shengji": "西藏自治区",
+                "zoning_code": "540000"
+            },
+            {
+                "diji": "林芝市",
+                "quHuaDaiMa": "540400",
+                "shengji": "西藏自治区",
+                "zoning_code": "540000"
+            },
+            {
+                "diji": "山南市",
+                "quHuaDaiMa": "540500",
+                "shengji": "西藏自治区",
+                "zoning_code": "540000"
+            },
+            {
+                "diji": "那曲市",
+                "quHuaDaiMa": "540600",
+                "shengji": "西藏自治区",
+                "zoning_code": "540000"
+            },
+            {
+                "diji": "阿里地区",
+                "quHuaDaiMa": "542500",
+                "shengji": "西藏自治区",
+                "zoning_code": "540000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "610000",
+        "shengji": "陕西省",
+        "children": [
+            {
+                "diji": "西安市",
+                "quHuaDaiMa": "610100",
+                "shengji": "陕西省",
+                "zoning_code": "610000"
+            },
+            {
+                "diji": "铜川市",
+                "quHuaDaiMa": "610200",
+                "shengji": "陕西省",
+                "zoning_code": "610000"
+            },
+            {
+                "diji": "宝鸡市",
+                "quHuaDaiMa": "610300",
+                "shengji": "陕西省",
+                "zoning_code": "610000"
+            },
+            {
+                "diji": "咸阳市",
+                "quHuaDaiMa": "610400",
+                "shengji": "陕西省",
+                "zoning_code": "610000"
+            },
+            {
+                "diji": "渭南市",
+                "quHuaDaiMa": "610500",
+                "shengji": "陕西省",
+                "zoning_code": "610000"
+            },
+            {
+                "diji": "延安市",
+                "quHuaDaiMa": "610600",
+                "shengji": "陕西省",
+                "zoning_code": "610000"
+            },
+            {
+                "diji": "汉中市",
+                "quHuaDaiMa": "610700",
+                "shengji": "陕西省",
+                "zoning_code": "610000"
+            },
+            {
+                "diji": "榆林市",
+                "quHuaDaiMa": "610800",
+                "shengji": "陕西省",
+                "zoning_code": "610000"
+            },
+            {
+                "diji": "安康市",
+                "quHuaDaiMa": "610900",
+                "shengji": "陕西省",
+                "zoning_code": "610000"
+            },
+            {
+                "diji": "商洛市",
+                "quHuaDaiMa": "611000",
+                "shengji": "陕西省",
+                "zoning_code": "610000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "620000",
+        "shengji": "甘肃省",
+        "children": [
+            {
+                "diji": "兰州市",
+                "quHuaDaiMa": "620100",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            },
+            {
+                "diji": "嘉峪关市",
+                "quHuaDaiMa": "620200",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            },
+            {
+                "diji": "金昌市",
+                "quHuaDaiMa": "620300",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            },
+            {
+                "diji": "白银市",
+                "quHuaDaiMa": "620400",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            },
+            {
+                "diji": "天水市",
+                "quHuaDaiMa": "620500",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            },
+            {
+                "diji": "武威市",
+                "quHuaDaiMa": "620600",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            },
+            {
+                "diji": "张掖市",
+                "quHuaDaiMa": "620700",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            },
+            {
+                "diji": "平凉市",
+                "quHuaDaiMa": "620800",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            },
+            {
+                "diji": "酒泉市",
+                "quHuaDaiMa": "620900",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            },
+            {
+                "diji": "庆阳市",
+                "quHuaDaiMa": "621000",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            },
+            {
+                "diji": "定西市",
+                "quHuaDaiMa": "621100",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            },
+            {
+                "diji": "陇南市",
+                "quHuaDaiMa": "621200",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            },
+            {
+                "diji": "临夏回族自治州",
+                "quHuaDaiMa": "622900",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            },
+            {
+                "diji": "甘南藏族自治州",
+                "quHuaDaiMa": "623000",
+                "shengji": "甘肃省",
+                "zoning_code": "620000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "630000",
+        "shengji": "青海省",
+        "children": [
+            {
+                "diji": "西宁市",
+                "quHuaDaiMa": "630100",
+                "shengji": "青海省",
+                "zoning_code": "630000"
+            },
+            {
+                "diji": "海东市",
+                "quHuaDaiMa": "630200",
+                "shengji": "青海省",
+                "zoning_code": "630000"
+            },
+            {
+                "diji": "海北藏族自治州",
+                "quHuaDaiMa": "632200",
+                "shengji": "青海省",
+                "zoning_code": "630000"
+            },
+            {
+                "diji": "黄南藏族自治州",
+                "quHuaDaiMa": "632300",
+                "shengji": "青海省",
+                "zoning_code": "630000"
+            },
+            {
+                "diji": "海南藏族自治州",
+                "quHuaDaiMa": "632500",
+                "shengji": "青海省",
+                "zoning_code": "630000"
+            },
+            {
+                "diji": "果洛藏族自治州",
+                "quHuaDaiMa": "632600",
+                "shengji": "青海省",
+                "zoning_code": "630000"
+            },
+            {
+                "diji": "玉树藏族自治州",
+                "quHuaDaiMa": "632700",
+                "shengji": "青海省",
+                "zoning_code": "630000"
+            },
+            {
+                "diji": "海西蒙古族藏族自治州",
+                "quHuaDaiMa": "632800",
+                "shengji": "青海省",
+                "zoning_code": "630000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "640000",
+        "shengji": "宁夏回族自治区",
+        "children": [
+            {
+                "diji": "银川市",
+                "quHuaDaiMa": "640100",
+                "shengji": "宁夏回族自治区",
+                "zoning_code": "640000"
+            },
+            {
+                "diji": "石嘴山市",
+                "quHuaDaiMa": "640200",
+                "shengji": "宁夏回族自治区",
+                "zoning_code": "640000"
+            },
+            {
+                "diji": "吴忠市",
+                "quHuaDaiMa": "640300",
+                "shengji": "宁夏回族自治区",
+                "zoning_code": "640000"
+            },
+            {
+                "diji": "固原市",
+                "quHuaDaiMa": "640400",
+                "shengji": "宁夏回族自治区",
+                "zoning_code": "640000"
+            },
+            {
+                "diji": "中卫市",
+                "quHuaDaiMa": "640500",
+                "shengji": "宁夏回族自治区",
+                "zoning_code": "640000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "650000",
+        "shengji": "新疆维吾尔自治区",
+        "children": [
+            {
+                "diji": "乌鲁木齐市",
+                "quHuaDaiMa": "650100",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "克拉玛依市",
+                "quHuaDaiMa": "650200",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "吐鲁番市",
+                "quHuaDaiMa": "650400",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "哈密市",
+                "quHuaDaiMa": "650500",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "阿克苏地区",
+                "quHuaDaiMa": "652900",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "喀什地区",
+                "quHuaDaiMa": "653100",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "和田地区",
+                "quHuaDaiMa": "653200",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "昌吉回族自治州",
+                "quHuaDaiMa": "652300",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "博尔塔拉蒙古自治州",
+                "quHuaDaiMa": "652700",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "巴音郭楞蒙古自治州",
+                "quHuaDaiMa": "652800",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "克孜勒苏柯尔克孜自治州",
+                "quHuaDaiMa": "653000",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "伊犁哈萨克自治州☆",
+                "quHuaDaiMa": "654000",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "塔城地区",
+                "quHuaDaiMa": "654200",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "阿勒泰地区",
+                "quHuaDaiMa": "654300",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            },
+            {
+                "diji": "自治区直辖县级行政单位",
+                "quHuaDaiMa": "",
+                "shengji": "新疆维吾尔自治区",
+                "zoning_code": "650000"
+            }
+        ]
+    },
+    {
+        "quHuaDaiMa": "810000",
+        "shengji": "香港特别行政区",
+        "children": []
+    },
+    {
+        "quHuaDaiMa": "820000",
+        "shengji": "澳门特别行政区",
+        "children": []
+    },
+    {
+        "quHuaDaiMa": "710000",
+        "shengji": "台湾省",
+        "children": []
+    }
+]

@@ -22,7 +22,7 @@
 #import "DRClassTableWeekPicker.h"
 #import "DRClassDurationPicker.h"
 #import "DRClassRemindTimePicker.h"
-#import "DRWeekOrTermPicker.h"
+#import "DRClassTermPicker.h"
 
 @implementation DRPickerFactory
 
@@ -152,8 +152,8 @@
                                                pickDoneBlock:innerPickDoneBlock];
         } break;
 
-        case DRPickerTypeWeekOrTerm: {
-            [DRWeekOrTermPicker showPickerViewWithOption:pickerOption
+        case DRPickerTypeClassTerm: {
+            [DRClassTermPicker showPickerViewWithOption:pickerOption
                                               setupBlock:nil
                                            pickDoneBlock:innerPickDoneBlock];
         } break;

@@ -1,5 +1,5 @@
 //
-//  DRWeekOrTermPicker.h
+//  DRClassTermPicker.h
 //  DRPickerViews_Example
 //
 //  Created by 冯生伟 on 2019/10/11.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DRWeekOrTermPicker : DRBaseAlertPicker
+@interface DRClassTermPicker : DRBaseAlertPicker
 
 @end
 

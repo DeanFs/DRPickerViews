@@ -128,7 +128,7 @@
         } break;
 
         case DRPickerTypeCity: {
-            opt = [DRPickerCityOption optionWithTitle:@"选项卡" province:@"广东" city:@"广州"];
+            opt = [DRPickerCityOption optionWithTitle:@"选择城市" cityCode:222400];
         } break;
 
         case DRPickerTypeClassTable: {
@@ -136,13 +136,12 @@
             ((DRPickerClassTableOption *)opt).classWeeks = @[@(2), @(4)];
         } break;
 
-        case DRPickerTypeWeekOrTerm: {
-            opt = [DRPickerWeekOrTermOption new];
-            ((DRPickerWeekOrTermOption *)opt).currentWeek = 1;
-            ((DRPickerWeekOrTermOption *)opt).startYear = 2019;
-            ((DRPickerWeekOrTermOption *)opt).toYear = 2020;
-            ((DRPickerWeekOrTermOption *)opt).grade = 1;
-            ((DRPickerWeekOrTermOption *)opt).term = 1;
+        case DRPickerTypeClassTerm: {
+            opt = [DRPickerClassTermOption new];
+            ((DRPickerClassTermOption *)opt).currentTerm = 2;
+            ((DRPickerClassTermOption *)opt).currentYear = 2019;
+            ((DRPickerClassTermOption *)opt).enterYear = 2017;
+            ((DRPickerClassTermOption *)opt).education = 1;
         } break;
 
         case DRPickerTypeClassDuration: {

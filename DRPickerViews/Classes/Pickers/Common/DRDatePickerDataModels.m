@@ -213,10 +213,9 @@
 
 @implementation DRPickerCityOption
 
-+ (instancetype)optionWithTitle:(NSString *)title province:(NSString *)province city:(NSString *)city {
++ (instancetype)optionWithTitle:(NSString *)title cityCode:(NSInteger)cityCode {
     DRPickerCityOption *opt = [DRPickerCityOption optionWithTitle:title];
-    opt.province = province;
-    opt.city = city;
+    opt.cityCode = cityCode;
     return opt;
 }
 
@@ -236,15 +235,12 @@
 @end
 
 
-@implementation DRPickerWeekOrTermOption
+@implementation DRPickerClassTermOption
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _maxWeek = 25;
-        _minYear = 2014;
-        _maxGrade = 8;
-        _maxTerm = 3;
+        _termCount = 3;
     }
     return self;
 }
@@ -370,7 +366,7 @@
 @end
 
 
-@implementation DRPickerWeekOrTermPickedObj
+@implementation DRPickerClassTermPickedObj
 
 @end
 

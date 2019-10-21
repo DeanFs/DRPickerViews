@@ -24,6 +24,10 @@
 + (void)setupGradientLightColor:(UIColor *)lightColor
                       darkColor:(UIColor *)darkColor;
 
+/// 设置城市列表json文件，放到mainBundle中
+/// @param fileName json文件名
++ (void)setupCityListJsonFileName:(NSString *)fileName;
+
 + (UIColor *)highlightColor;
 + (UIColor *)normalColor;
 + (UIColor *)descColor;
@@ -36,6 +40,9 @@
 
 + (BOOL)weekPickerOnlyCurrentMonth;
 + (void)setWeekPickerOnlyCurrentMonth:(BOOL)only;
+
+// 城市列表json文件
++ (NSString *)cityJsonFileName;
 
 /**
  工具方法

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+// Dialog弹出方向定义
 typedef NS_ENUM(NSInteger, DRPickerShowPosition) {
-    DRPickerShowPositionBottom,
-    DRPickerShowPositionCenter,
-    DRPickerShowPositionTop
+    DRPickerShowPositionBottom, // 从屏幕底部弹出
+    DRPickerShowPositionCenter, // 从屏幕中心弹出
+    DRPickerShowPositionTop     // 从屏幕顶部弹出
 };
 
 @interface DRPickerContainerView : UIView
@@ -39,7 +40,7 @@ typedef NS_ENUM(NSInteger, DRPickerShowPosition) {
 - (void)viewDidDismiss;
 
 #pragma mark - 子类中直接调用
-// 高不调整
+// 高度变更，调用该方法，动画调整容器高度
 - (void)pickerViewHeightChange:(CGFloat)newHeight;
 // 弹出显示
 - (void)showFromPostion:(DRPickerShowPosition)position;

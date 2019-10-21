@@ -95,9 +95,9 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     DRPickerTypeClassTable,
 
     // 课程表周或学期选择
-    // 入参：DRPickerWeekOrTermOption
-    // 出参：DRPickerWeekOrTermPickedObj
-    DRPickerTypeWeekOrTerm,
+    // 入参：DRPickerClassTermOption
+    // 出参：DRPickerClassTermPickedObj
+    DRPickerTypeClassTerm,
 
     // 课程表课程时长选择
     // 入参：DRPickerClassDurationOption
@@ -314,6 +314,11 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 @property (nonatomic, assign) BOOL allowBeyondDay;
 
 /**
+ 忽略错误，durationTip 不显示红色，不合法时隐藏tip
+ */
+@property (nonatomic, assign) BOOL ignoreError;
+
+/**
  当前小时分钟，HHmm
  */
 @property (nonatomic, copy) NSString *currentTime;
@@ -520,10 +525,10 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 
 @interface DRPickerCityOption : DRPickerOptionBase
 
-@property (nonatomic, copy) NSString *province;
-@property (nonatomic, copy) NSString *city;
+/// 民政部指定code
+@property (nonatomic, assign) NSInteger cityCode;
 
-+ (instancetype)optionWithTitle:(NSString *)title province:(NSString *)province city:(NSString *)city;
++ (instancetype)optionWithTitle:(NSString *)title cityCode:(NSInteger)cityCode;
 
 @end
 
@@ -536,19 +541,16 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 @end
 
 
-@interface DRPickerWeekOrTermOption : DRPickerOptionBase
+@interface DRPickerClassTermOption : DRPickerOptionBase
 
-@property (nonatomic, assign) NSInteger maxWeek; // default 25
-@property (nonatomic, assign) NSInteger minYear; // default 2014
-@property (nonatomic, assign) NSInteger maxGrade; // deault 8
-@property (nonatomic, assign) NSInteger maxTerm; // default 3
+// 数据源控制
+@property (nonatomic, assign) NSInteger enterYear; // 入学年份
+@property (nonatomic, assign) NSInteger education; // 学历 1：本科/大专  2：硕士
+@property (nonatomic, assign) NSInteger termCount; // 学期数量，默认：3
 
-/// 反显
-@property (nonatomic, assign) NSInteger currentWeek; // 1 ~ 25
-@property (nonatomic, assign) NSInteger startYear; // 2014 ~ 当前年
-@property (nonatomic, assign) NSInteger toYear; // 2015 ~ 明年
-@property (nonatomic, assign) NSInteger grade; // 1~8，对应：大一 ~ 研三
-@property (nonatomic, assign) NSInteger term; // 学期 1~3 学期
+// 反显
+@property (nonatomic, assign) NSInteger currentYear;
+@property (nonatomic, assign) NSInteger currentTerm;
 
 @end
 
@@ -745,6 +747,7 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 
 @interface DRPickerCityPickedObj : NSObject
 
+@property (nonatomic, assign) NSInteger cityCode;
 @property (nonatomic, copy) NSString *province;
 @property (nonatomic, copy) NSString *city;
 
@@ -758,13 +761,10 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 @end
 
 
-@interface DRPickerWeekOrTermPickedObj : NSObject
+@interface DRPickerClassTermPickedObj : NSObject
 
-@property (nonatomic, assign) NSInteger currentWeek;
-@property (nonatomic, assign) NSInteger startYear;
-@property (nonatomic, assign) NSInteger toYear;
-@property (nonatomic, assign) NSInteger grade;
-@property (nonatomic, assign) NSInteger term;
+@property (nonatomic, assign) NSInteger currentYear;
+@property (nonatomic, assign) NSInteger currentTerm;
 
 @end
 

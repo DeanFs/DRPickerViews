@@ -1,6 +1,6 @@
 {
   "name": "DRPickerViews",
-  "version": "0.2.20",
+  "version": "0.2.21",
   "summary": "自定义选择器集合",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/DeanFs/DRPickerViews",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/DeanFs/DRPickerViews.git",
-    "tag": "0.2.20"
+    "tag": "0.2.21"
   },
   "platforms": {
     "ios": "9.0"
@@ -180,8 +180,8 @@
           }
         },
         {
-          "name": "WeekOrTermPicker",
-          "source_files": "DRPickerViews/Classes/Pickers/WeekOrTermPicker/*.{h,m}",
+          "name": "ClassTermPicker",
+          "source_files": "DRPickerViews/Classes/Pickers/ClassTermPicker/*.{h,m}",
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
 

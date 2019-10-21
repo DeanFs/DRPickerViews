@@ -39,7 +39,7 @@
         NSArray *values = self.dataSource[section];
         NSString *aValue = arr[section];
         BOOL isLoop = NO;
-        if (self.getIsLoopForSectionBlock) {
+        if (self.getIsLoopForSectionBlock != nil) {
             isLoop = self.getIsLoopForSectionBlock(section);
         }
         for (NSInteger row=0; row<values.count; row++) {
@@ -78,7 +78,7 @@
         return 1;
     }
     BOOL isLoop = NO;
-    if (self.getIsLoopForSectionBlock) {
+    if (self.getIsLoopForSectionBlock != nil) {
         isLoop = self.getIsLoopForSectionBlock(component/2);
     }
     NSInteger count = self.dataSource[component/2].count;
@@ -93,7 +93,7 @@
     if (component % 2 > 0) {
         return 8;
     }
-    if (self.getWidthForSectionWithBlock) {
+    if (self.getWidthForSectionWithBlock != nil) {
         return self.getWidthForSectionWithBlock(component/2);
     }
     CGFloat separateLineWidth = 0;
@@ -115,31 +115,40 @@
             label.font = [UIFont dr_PingFangSC_RegularWithSize:15];
             label.textAlignment = NSTextAlignmentCenter;
         } else {
-            if (self.getFontForSectionWithBlock) {
+            if (self.getFontForSectionWithBlock != nil) {
                 label.font = self.getFontForSectionWithBlock(component/2);
             } else {
                 label.font = [UIFont dr_PingFangSC_MediumWithSize:17];
             }
-            if (self.getTextAlignmentForSectionBlock) {
+            if (self.getTextAlignmentForSectionBlock != nil) {
                 label.textAlignment = self.getTextAlignmentForSectionBlock(component/2);
             } else {
                 label.textAlignment = NSTextAlignmentCenter;
             }
         }
     }
+    
     label.textColor = [DRUIWidgetUtil pickerUnSelectColor];
+    if (row == [pickerView selectedRowInComponent:component]) {
+        label.textColor = [DRUIWidgetUtil normalColor];
+    }
+
     if (component % 2 > 0) {
-        if (self.getSeparateTextBeforeSectionBlock) {
+        if (self.getSeparateTextBeforeSectionBlock != nil) {
             label.text = self.getSeparateTextBeforeSectionBlock((component+1)/2);
         } else {
             label.text = @"/";
         }
     } else {
         NSArray *sectionList = self.dataSource[component/2];
-        label.text = sectionList[row%sectionList.count];
-    }
-    if (row == [pickerView selectedRowInComponent:component]) {
-        label.textColor = [DRUIWidgetUtil normalColor];
+        NSString *text = sectionList[row%sectionList.count];
+        if (self.getCustonCellViewBlock != nil) {
+            UIView *customView = self.getCustonCellViewBlock(component/2, row, text, label.textColor);
+            if (customView) {
+                return customView;
+            }
+        }
+        label.text = text;
     }
     return label;
 }
@@ -158,7 +167,7 @@
     kDR_SAFE_BLOCK(self.onSelectedChangeBlock, section, index, selectedString);
 
     BOOL isLoop = NO;
-    if (self.getIsLoopForSectionBlock) {
+    if (self.getIsLoopForSectionBlock != nil) {
         isLoop = self.getIsLoopForSectionBlock(section);
     }
     if (isLoop) {

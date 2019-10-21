@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DRPickerViews'
-  s.version          = '0.2.20'
+  s.version          = '0.2.21'
   s.summary          = '自定义选择器集合'
 
 # This description is used to generate tags and improve search results.
@@ -113,8 +113,8 @@ TODO: Add long description of the pod here.
         sss.dependency 'DRPickerViews/Pickers/Common'
     end
 
-    ss.subspec 'WeekOrTermPicker' do |sss|
-        sss.source_files = 'DRPickerViews/Classes/Pickers/WeekOrTermPicker/*.{h,m}'
+    ss.subspec 'ClassTermPicker' do |sss|
+        sss.source_files = 'DRPickerViews/Classes/Pickers/ClassTermPicker/*.{h,m}'
         sss.dependency 'DRPickerViews/Pickers/Common'
     end
   end
