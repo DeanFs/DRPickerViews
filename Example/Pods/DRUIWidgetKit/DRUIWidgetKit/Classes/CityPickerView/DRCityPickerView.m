@@ -123,9 +123,10 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    DRCityPickerInfoModel *model = self.provinceList[[pickerView selectedRowInComponent:0]].children[row];
+    DRCityPickerInfoModel *model = self.provinceList[[pickerView selectedRowInComponent:0]].children[[pickerView selectedRowInComponent:1]];
     _province = model.shengji;
     _city = model.diji;
+    _cityCode = model.quHuaDaiMa;
     kDR_SAFE_BLOCK(self.onSelectedChangeBlock, model.quHuaDaiMa, model.shengji, model.diji);
     [pickerView reloadAllComponents];
 }

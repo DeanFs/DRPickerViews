@@ -241,6 +241,8 @@
     self = [super init];
     if (self) {
         _termCount = 3;
+        _edudationSource = @[@[@"大一", @"大二", @"大三", @"大四", @"大五"],
+                             @[@"研一", @"研二", @"研三", @"研四", @"研五"]];
     }
     return self;
 }

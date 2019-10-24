@@ -544,6 +544,7 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 @interface DRPickerClassTermOption : DRPickerOptionBase
 
 // 数据源控制
+@property (nonatomic, strong) NSArray<NSArray *> *edudationSource;
 @property (nonatomic, assign) NSInteger enterYear; // 入学年份
 @property (nonatomic, assign) NSInteger education; // 学历 1：本科/大专  2：硕士
 @property (nonatomic, assign) NSInteger termCount; // 学期数量，默认：3

@@ -140,7 +140,7 @@
             opt = [DRPickerClassTermOption new];
             ((DRPickerClassTermOption *)opt).currentTerm = 2;
             ((DRPickerClassTermOption *)opt).currentYear = 2019;
-            ((DRPickerClassTermOption *)opt).enterYear = 2017;
+            ((DRPickerClassTermOption *)opt).enterYear = 2014;
             ((DRPickerClassTermOption *)opt).education = 1;
         } break;
 

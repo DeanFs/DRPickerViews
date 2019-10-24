@@ -29,6 +29,7 @@
     self.pickerView.termCount = opt.termCount;
     self.pickerView.currentYear = opt.currentYear;
     self.pickerView.currentTerm = opt.currentTerm;
+    self.pickerView.edudationSource = opt.edudationSource;
 }
 
 - (id)pickedObject {
