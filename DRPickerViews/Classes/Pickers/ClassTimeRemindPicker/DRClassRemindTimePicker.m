@@ -21,6 +21,7 @@
     self.pickerView.isThisDay = opt.isThisDay;
     self.pickerView.hour = opt.hour;
     self.pickerView.minute = opt.minute;
+    self.pickerView.hourMinute = opt.hourMinute;
     self.pickerView.timeScale = opt.timeScale;
 }
 

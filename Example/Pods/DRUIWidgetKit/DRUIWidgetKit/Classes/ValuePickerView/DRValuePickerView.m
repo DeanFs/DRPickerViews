@@ -27,6 +27,7 @@
 
 - (void)setupPickerView {
     if (self.currentValue < self.minValue || self.currentValue > self.maxValue) {
+        self.currentValue = self.minValue;
         kDR_LOG(@"当前反显值不在设定范围内");
         return;
     }
