@@ -10,11 +10,7 @@
 #endif
 #endif
 
-#import "DRCheckboxGroupView.h"
 #import "DRCityPickerView.h"
-#import "DRClassDurationPickerView.h"
-#import "DRClassRemindTimePickerView.h"
-#import "DRClassTermPickerView.h"
 #import "DRUIWidgetUtil.h"
 #import "DRFocusEnlargeLayout.h"
 #import "DRHorizenPageLayout.h"
