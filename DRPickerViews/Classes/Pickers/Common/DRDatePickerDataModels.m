@@ -28,6 +28,7 @@
         _autoDismissWhenPicked = YES;
         _showInView = kDRWindow;
         _showFromPosition = DRPickerShowPositionBottom;
+        _shouldDismissWhenTapSpaceArea = YES;
     }
     return self;
 }

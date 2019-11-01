@@ -37,9 +37,9 @@
     [super awakeFromNib];
 
     kDRWeakSelf
-    [self.segmentBar setupWithAssociatedScrollView:self.scrollView titles:@[@"月份", @"年份"]];
+    [self.segmentBar setupWithAssociatedScrollView:self.scrollView titles:@[@"年份", @"月份"]];
     self.segmentBar.onSelectChangeBlock = ^(NSInteger index) {
-        weakSelf.isOnlyYear = (index == 1);
+        weakSelf.isOnlyYear = (index == 0);
     };
 }
 
@@ -60,19 +60,8 @@
         CGFloat height = self.scrollView.height;
         self.scrollView.contentSize = CGSizeMake(width*2, height);
 
-        // 初始化并添加公历选择器
-        self.yearMonthPicker.frame = CGRectMake(0, 0, width, height);
-        self.yearMonthPicker.onSelectChangeBlock = ^(NSDate *date, NSInteger month, NSInteger day) {
-            [weakSelf.yearPicker refreshWithDate:date month:month day:day];
-        };
-        [self.yearMonthPicker setupWithCurrentDate:currentDate
-                                           minDate:minDate
-                                           maxDate:maxDate
-                                             month:1
-                                               day:1];
-
         // 初始化并添加农历选择器
-        self.yearPicker.frame = CGRectMake(width, 0, width, height);
+        self.yearPicker.frame = CGRectMake(0, 0, width, height);
         self.yearPicker.onSelectChangeBlock = ^(NSDate *date, NSInteger month, NSInteger day) {
             [weakSelf.yearMonthPicker refreshWithDate:date month:month day:day];
         };
@@ -81,6 +70,17 @@
                                       maxDate:maxDate
                                         month:1
                                           day:1];
+
+        // 初始化并添加公历选择器
+        self.yearMonthPicker.frame = CGRectMake(width, 0, width, height);
+        self.yearMonthPicker.onSelectChangeBlock = ^(NSDate *date, NSInteger month, NSInteger day) {
+            [weakSelf.yearPicker refreshWithDate:date month:month day:day];
+        };
+        [self.yearMonthPicker setupWithCurrentDate:currentDate
+                                           minDate:minDate
+                                           maxDate:maxDate
+                                             month:1
+                                               day:1];
 
         if (self.isOnlyYear) {
             [self.scrollView addSubview:self.yearPicker];
@@ -94,7 +94,7 @@
                 [self.scrollView addSubview:self.yearPicker];
             }
         });
-        self.segmentBar.selectedIndex = self.isOnlyYear;
+        self.segmentBar.selectedIndex = !self.isOnlyYear;
     }
 }
 

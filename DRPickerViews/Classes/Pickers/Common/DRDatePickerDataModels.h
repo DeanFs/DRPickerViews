@@ -119,6 +119,12 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
  */
 @property (nonatomic, copy) NSString *title;
 
+/// 取消文字颜色
+@property (nonatomic, copy) NSString *cancelButtonTitle;
+
+/// 点击空白区域是否隐藏选择器，默认YES
+@property (nonatomic, assign) BOOL shouldDismissWhenTapSpaceArea;
+
 /**
  指定在某个UI显示，默认显示到 keyWindow
  */
@@ -149,6 +155,9 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
  选择器隐藏时的回调
  */
 @property (nonatomic, copy) dispatch_block_t dismissBlock;
+
+/// 点击了空白区域的回调
+@property (nonatomic, copy) dispatch_block_t tappedSpaceAreaBlock;
 
 + (instancetype)optionWithTitle:(NSString *)title;
 
@@ -228,6 +237,9 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
  若为YES，则仅月日反显信息有效
  */
 @property (nonatomic, assign) BOOL ignoreYear;
+
+/// 开启 农历在底部显示公历，公历在底部显示农历
+@property (nonatomic, assign) BOOL showDoubleCalendarTip;
 
 + (instancetype)optionWithTitle:(NSString *)title
                         minDate:(NSDate *)minDate

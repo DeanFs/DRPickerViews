@@ -38,8 +38,9 @@
         case DRPickerTypeWithLunar: {
             opt = [DRPickerWithLunarOption optionWithTitle:@"农历"];
             DRPickerWithLunarOption *lunarOpt = (DRPickerWithLunarOption *)opt;
-            lunarOpt.type = DRYMDWithLunarPickerTypeMonthDayOnly;
-//            lunarOpt.year = 2018;
+            lunarOpt.type = DRYMDWithLunarPickerTypeCanIngnoreYear;
+            lunarOpt.showDoubleCalendarTip = YES;
+            lunarOpt.year = 2018;
             lunarOpt.month = 12;
             lunarOpt.day = 4;
             lunarOpt.isLunar = NO;
@@ -77,13 +78,14 @@
             opt = [DRPickerHMOnlyOption optionWithTitle:@"选择时间点"];
             ((DRPickerHMOnlyOption *)opt).currentTime = @"1229";
             ((DRPickerHMOnlyOption *)opt).forDuration = YES;
-            ((DRPickerHMOnlyOption *)opt).canClean = YES;
+//            ((DRPickerHMOnlyOption *)opt).canClean = YES;
 //            ((DRPickerHMOnlyOption *)opt).showDurationTip = NO;
             ((DRPickerHMOnlyOption *)opt).minDuration = ((DRPickerHMOnlyOption *)opt).timeScale;
             ((DRPickerHMOnlyOption *)opt).allowBeyondDay = YES;
             ((DRPickerHMOnlyOption *)opt).onCleanTimeBlock = ^(id deletedObj) {
                 kDR_LOG(@"清除时间： %@", deletedObj);
             };
+            opt.cancelButtonTitle = @"清除";
         } break;
             
         case DRPickerTypeHMPlanWeek: {
@@ -111,8 +113,9 @@
             
         case DRPickerTypeStringSelect: {
             opt = [DRPickerStringSelectOption optionWithTitle:@"请选择重复类型" stringOptions:@[@"快速复制", @"每天", @"每周", @"每月", @"自定义"]];
-            ((DRPickerStringSelectOption *)opt).currentStringIndex = 2;
-            ((DRPickerStringSelectOption *)opt).tipText = @"哈哈哈哈哈";
+//            ((DRPickerStringSelectOption *)opt).currentStringIndex = 2;
+            ((DRPickerStringSelectOption *)opt).currentStringOption = @"dlfkalfj";
+//            ((DRPickerStringSelectOption *)opt).tipText = @"哈哈哈哈哈";
         } break;
             
         case DRPickerTypeOptionCard: {
@@ -167,6 +170,7 @@
     };
     opt.cancelBlock = ^{
         kDR_LOG(@"picker cancel");
+        kDR_LOG(@"清除");
     };
     opt.autoDismissWhenPicked = NO;
     

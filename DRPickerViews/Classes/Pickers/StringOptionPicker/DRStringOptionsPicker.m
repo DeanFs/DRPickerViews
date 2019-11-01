@@ -39,8 +39,11 @@
 
 - (void)prepareToShow {
     DRPickerStringSelectOption *opt = (DRPickerStringSelectOption *)self.pickerOption;
+    if (opt.stringOptions.count == 0) {
+        return;
+    }
     self.pickerView.dataSource = @[opt.stringOptions];
-    if (opt.currentStringOption) {
+    if (opt.currentStringOption.length > 0) {
         self.pickerView.currentSelectedStrings = @[opt.currentStringOption];
     } else {
         self.pickerView.currentSelectedStrings = @[[opt.stringOptions safeGetObjectWithIndex:opt.currentStringIndex]];

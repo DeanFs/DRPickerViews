@@ -77,8 +77,8 @@
 }
 
 - (BOOL)shouldDismissWhenTapSpaceArea {
-    kDR_SAFE_BLOCK(self.pickerOption.cancelBlock);
-    return YES;
+    kDR_SAFE_BLOCK(self.pickerOption.tappedSpaceAreaBlock);
+    return self.pickerOption.shouldDismissWhenTapSpaceArea;
 }
 
 - (void)viewDidShow {

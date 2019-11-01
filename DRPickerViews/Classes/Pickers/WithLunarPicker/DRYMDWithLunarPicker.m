@@ -89,6 +89,11 @@
         self.solarPickerView.dateMode = DRDatePickerModeMD;
         self.lunarPickerView.dateMode = DRLunarDatePickerModeMD;
     }
+
+    if (lunarOpt.showDoubleCalendarTip) {
+        self.solarPickerView.showLunarTip = YES;
+        self.lunarPickerView.showSolarTip = YES;
+    }
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -180,7 +185,6 @@
     if (!_solarPickerView) {
         kDRWeakSelf
         _solarPickerView = [[DRDatePickerView alloc] init];
-        _solarPickerView.showLunarTip = YES;
         _solarPickerView.onSelectChangeBlock = ^(NSDate *date, NSInteger month, NSInteger day) {
             [weakSelf.lunarPickerView refreshWithDate:date month:month day:day];
         };
@@ -192,7 +196,6 @@
     if (!_lunarPickerView) {
         kDRWeakSelf
         _lunarPickerView = [[DRLunarDatePickerView alloc] init];
-        _lunarPickerView.showSolarTip = YES;
         _lunarPickerView.onSelectChangeBlock = ^(NSDate *date, NSInteger month, NSInteger day) {
             [weakSelf.solarPickerView refreshWithDate:date month:month day:day];
         };
