@@ -1,6 +1,6 @@
 {
   "name": "DRPickerViews",
-  "version": "0.2.24",
+  "version": "0.2.25",
   "summary": "自定义选择器集合",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/DeanFs/DRPickerViews",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/DeanFs/DRPickerViews.git",
-    "tag": "0.2.24"
+    "tag": "0.2.25"
   },
   "platforms": {
     "ios": "9.0"
