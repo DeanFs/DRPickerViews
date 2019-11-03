@@ -114,7 +114,7 @@
         case DRPickerTypeStringSelect: {
             opt = [DRPickerStringSelectOption optionWithTitle:@"请选择重复类型" stringOptions:@[@"快速复制", @"每天", @"每周", @"每月", @"自定义"]];
 //            ((DRPickerStringSelectOption *)opt).currentStringIndex = 2;
-            ((DRPickerStringSelectOption *)opt).currentStringOption = @"dlfkalfj";
+            ((DRPickerStringSelectOption *)opt).currentStringOption = @"每天";
 //            ((DRPickerStringSelectOption *)opt).tipText = @"哈哈哈哈哈";
         } break;
             

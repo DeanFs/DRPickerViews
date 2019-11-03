@@ -49,7 +49,7 @@
         BOOL find = NO;
         for (NSInteger j=0; j<arr.count; j++) {
             NSString *string = arr[j];
-            if ([string isKindOfClass:[NSString class]]) {
+            if (![string isKindOfClass:[NSString class]]) {
                 kDR_LOG(@"传入数据有误");
                 return;
             }
@@ -64,7 +64,7 @@
             stringIndexMap[arr.firstObject] = @(0);
         }
     }
-    self.currentSelectedStrings = currentSelectedStrings;
+    _currentSelectedStrings = currentSelectedStrings;
     [self.pickerView reloadAllComponents];
 
     for (NSInteger i=0; i<self.currentSelectedStrings.count; i++) {
