@@ -98,8 +98,11 @@
         kDR_LOG(@"error: 请传入正确的参数类型【%@】", NSStringFromClass([self pickerOptionClass]));
         return;
     }
-    if (self.pickerOption.title.length) {
+    if (self.pickerOption.title.length > 0) {
         self.topBar.centerButtonTitle = self.pickerOption.title;
+    }
+    if (self.pickerOption.cancelButtonTitle.length > 0) {
+        self.topBar.leftButtonTitle = self.pickerOption.cancelButtonTitle;
     }
     
     kDRWeakSelf

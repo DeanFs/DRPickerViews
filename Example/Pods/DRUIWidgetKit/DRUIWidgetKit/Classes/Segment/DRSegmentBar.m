@@ -172,24 +172,7 @@
     }
     
     _selectedIndex = selectedIndex;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        DRSegmentBarItem *barItem = [self.stackView viewWithTag:selectedIndex];
-        barItem.selected = YES;
-        
-        self.currentItemTitleRect = [barItem titleRect];
-        [UIView animateWithDuration:self.currentItem?kDRAnimationDuration:0 animations:^{
-            self.selectMarkViewLeft.constant = self.currentItemTitleRect.origin.x;
-            self.selectMarkViewWidth.constant = self.currentItemTitleRect.size.width;
-            [self layoutIfNeeded];
-        }];
-        CGPoint offset = CGPointMake(barItem.tag * self.associatedScrollView.width, 0);
-        [self.associatedScrollView setContentOffset:offset
-                                           animated:self.currentItem!=nil];
-        
-        self.currentItem.selected = NO;
-        self.currentItem = barItem;
-    });
-    kDR_SAFE_BLOCK(self.onSelectChangeBlock, selectedIndex);
+    [self setNeedsDisplay];
 }
 
 - (void)setAssociatedScrollView:(UIScrollView *)associatedScrollView {
@@ -273,6 +256,32 @@
         _selectedIndex = -1;
         self.selectMarkView.backgroundColor = [DRUIWidgetUtil highlightColor];
     }
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+
+    if (self.selectedIndex == -1) {
+        return;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        DRSegmentBarItem *barItem = [self.stackView viewWithTag:self.selectedIndex];
+        barItem.selected = YES;
+
+        self.currentItemTitleRect = [barItem titleRect];
+        [UIView animateWithDuration:self.currentItem?kDRAnimationDuration:0 animations:^{
+            self.selectMarkViewLeft.constant = self.currentItemTitleRect.origin.x;
+            self.selectMarkViewWidth.constant = self.currentItemTitleRect.size.width;
+            [self layoutIfNeeded];
+        }];
+        CGPoint offset = CGPointMake(barItem.tag * self.associatedScrollView.width, 0);
+        [self.associatedScrollView setContentOffset:offset
+                                           animated:self.currentItem!=nil];
+
+        self.currentItem.selected = NO;
+        self.currentItem = barItem;
+    });
+    kDR_SAFE_BLOCK(self.onSelectChangeBlock, self.selectedIndex);
 }
 
 #pragma mark - setter & getter

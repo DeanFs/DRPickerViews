@@ -9,6 +9,7 @@
 #import <Masonry/Masonry.h>
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/UIFont+DRExtension.h>
+#import <DRCategories/NSArray+DRExtension.h>
 #import "DRUIWidgetUtil.h"
 
 #define kLoopRowCount 10000   // 总行数，即可显示的总天数
@@ -24,37 +25,53 @@
 @implementation DRNormalDataPickerView
 
 - (void)setupPickerView {
-    [self.pickerView reloadAllComponents];
+    if (![self.dataSource isKindOfClass:[NSArray class]] || self.dataSource.count == 0) {
+        kDR_LOG(@"传入数据有误");
+        return;
+    }
 
-    NSMutableArray *arr = [NSMutableArray array];
-    if (self.currentSelectedStrings.count > 0) {
-        [arr addObjectsFromArray:self.currentSelectedStrings];
-    }
-    if (arr.count < self.dataSource.count) {
-        for (NSInteger i=arr.count; i<self.dataSource.count; i++) {
-            [arr addObject:self.dataSource[i][0]];
+    NSMutableArray<NSString *> *currentSelectedStrings = [NSMutableArray array];
+    NSMutableDictionary<NSString *, NSNumber *> *stringIndexMap = [NSMutableDictionary dictionary];
+    for (NSInteger i=0; i<self.dataSource.count; i++) {
+        NSArray *arr = self.dataSource[i];
+        if (![arr isKindOfClass:[NSArray class]]) {
+            kDR_LOG(@"传入数据有误");
+            return;
         }
-    }
-    for (NSInteger section=0; section<self.dataSource.count; section++) {
-        NSArray *values = self.dataSource[section];
-        NSString *aValue = arr[section];
-        BOOL isLoop = NO;
-        if (self.getIsLoopForSectionBlock != nil) {
-            isLoop = self.getIsLoopForSectionBlock(section);
+
+        NSString *current = [self.currentSelectedStrings safeGetObjectWithIndex:i];
+        if (![current isKindOfClass:[NSString class]] || current.length == 0) {
+            [currentSelectedStrings addObject:arr.firstObject];
+            stringIndexMap[arr.firstObject] = @(0);
+            continue;
         }
-        for (NSInteger row=0; row<values.count; row++) {
-            if ([aValue isEqualToString:values[row]]) {
-                NSInteger component = section * 2;
-                NSInteger index = row;
-                if (isLoop) {
-                    index += (kLoopCentreRow * values.count);
-                }
-                [self.pickerView selectRow:index inComponent:component animated:NO];
-                break;
+
+        BOOL find = NO;
+        for (NSInteger j=0; j<arr.count; j++) {
+            NSString *string = arr[j];
+            if ([string isKindOfClass:[NSString class]]) {
+                kDR_LOG(@"传入数据有误");
+                return;
+            }
+            if ([string isEqualToString:current]) {
+                find = YES;
+                [currentSelectedStrings addObject:string];
+                stringIndexMap[string] = @(j);
             }
         }
+        if (!find) {
+            [currentSelectedStrings addObject:arr.firstObject];
+            stringIndexMap[arr.firstObject] = @(0);
+        }
     }
-    _currentSelectedStrings = arr;
+    self.currentSelectedStrings = currentSelectedStrings;
+    [self.pickerView reloadAllComponents];
+
+    for (NSInteger i=0; i<self.currentSelectedStrings.count; i++) {
+        NSInteger index = stringIndexMap[self.currentSelectedStrings[i]].integerValue;
+        [self.pickerView selectRow:index inComponent:i*2 animated:NO];
+    }
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.pickerView reloadAllComponents];
     });
