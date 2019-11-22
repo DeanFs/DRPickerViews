@@ -37,6 +37,21 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) IBInspectable NSInteger currentValue;
 
 /**
+ 步长默认1.0
+ */
+@property (nonatomic, assign) IBInspectable CGFloat valueScale;
+
+/**
+ 显示小数位数 默认0
+ */
+@property (nonatomic, assign) IBInspectable int digitCount;
+
+/**
+ 是否强制显示指定小数位数 默认NO
+ */
+@property (nonatomic, assign) IBInspectable NSUInteger isForceDigit;
+
+/**
  选择的值变化
  */
 @property (nonatomic, copy) void (^onSelectedChangeBlock) (NSInteger value);

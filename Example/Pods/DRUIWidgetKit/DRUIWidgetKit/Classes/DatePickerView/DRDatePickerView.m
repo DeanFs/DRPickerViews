@@ -551,21 +551,17 @@
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
-    if (CGRectEqualToRect(rect, CGRectZero)) {
+    if (CGRectIsEmpty(rect)) {
         return;
     }
     if (!self.didDrawRect) {
         self.didDrawRect = YES;
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             self.pickerView.delegate = self;
             self.pickerView.dataSource = self;
             [self.pickerView reloadAllComponents];
             [self setupLunarTip];
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self setupPickerView];
-            });
+            [self setupPickerView];
         });
     }
 }

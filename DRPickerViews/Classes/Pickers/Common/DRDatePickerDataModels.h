@@ -108,6 +108,16 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     // 入参：DRPickerClassRemindTimeOption
     // 出参：DRPickerClassRemindTimePickedObj
     DRPickerTypeClassRemindTime,
+    
+    // 课程表上课提醒时间选择
+    // 入参：DRPickerLinkageOption
+    // 出参：DRPickerLinkagePickedObj
+    DRPickerTypeLinkage,
+    
+    // 课程表上课提醒时间选择
+    // 入参：DRPickerMultipleColumnOption
+    // 出参：DRPickerMultipleColumnPickedObj
+    DRPickerTypeMultipleColumn,
 };
 
 
@@ -418,6 +428,21 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 @property (nonatomic, copy) NSString *tipText;
 
 /**
+ 步长默认1.0
+ */
+@property (nonatomic, assign) CGFloat valueScale;
+
+/**
+ 显示小数位数 默认0
+ */
+@property (nonatomic, assign) IBInspectable int digitCount;
+
+/**
+ 是否强制显示指定小数位数 默认NO
+ */
+@property (nonatomic, assign) IBInspectable NSUInteger isForceDigit;
+
+/**
  当前值
  */
 @property (nonatomic, assign) NSInteger currentValue;
@@ -585,6 +610,40 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 // 通过hourMinute或者分别传入小时分钟
 @property (nonatomic, assign) NSInteger hour;
 @property (nonatomic, assign) NSInteger minute;
+
+@end
+
+
+@interface DRPickerLinkageOption : DRPickerOptionBase
+
+/// 单位数组
+@property (strong, nonatomic) NSArray *unitArray;
+
+/// 选项数组
+@property (strong, nonatomic) NSArray <NSArray *>*optionArray;
+
+/// 选择单位
+@property (strong, nonatomic) NSString *currentSelectUnit;
+
+/// 选择值
+@property (strong, nonatomic) NSString *currentSelectValue;
+
+/// 提示语
+@property (nonatomic, copy) NSString *tipText;
+
+@end
+
+
+@interface DRPickerMultipleColumnOption : DRPickerOptionBase
+
+/// 选项数组
+@property (strong, nonatomic) NSArray <NSArray *>*optionArray;
+
+/// 选择值
+@property (strong, nonatomic) NSArray <NSString *> *currentSelectedStrings;
+
+/// 提示语
+@property (nonatomic, copy) NSString *tipText;
 
 @end
 
@@ -797,5 +856,33 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 @property (nonatomic, copy) NSString *hourMinute; // HHmm
 @property (nonatomic, assign) NSInteger hour;
 @property (nonatomic, assign) NSInteger minute;
+
+@end
+
+
+@interface DRPickerLinkagePickedObj : NSObject
+
+/// 选择单位
+@property (strong, nonatomic) NSString *currentSelectUnit;
+
+/// 选中下标
+@property (assign, nonatomic) NSUInteger selectUnitIndex;
+
+/// 选择值
+@property (strong, nonatomic) NSString *currentSelectValue;
+
+/// 选中下标
+@property (assign, nonatomic) NSUInteger selectValueIndex;
+
+@end
+
+
+@interface DRPickerMultipleColumnPickedObj : NSObject
+
+/// 选择值
+@property (strong, nonatomic) NSArray <NSString *> *selectedStrings;
+
+/// 选择DRPickerViews
+@property (strong, nonatomic) NSArray <NSNumber *> *selectedIndexs;
 
 @end

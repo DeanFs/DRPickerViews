@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSString *> *selectMap;
 @property (nonatomic, assign) CGPoint startPoint;
 @property (nonatomic, assign) CGFloat velocity;
-
+@property (nonatomic, assign) BOOL didRrawRect;
 
 @end
 
@@ -330,6 +330,20 @@
         };
         self.pageControl.pageIndicatorTintColor = [DRUIWidgetUtil descColor];
         self.pageControl.currentPageIndicatorTintColor = [DRUIWidgetUtil highlightColor];
+    }
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+
+    if (CGRectIsEmpty(rect)) {
+        return;
+    }
+    if (!self.didRrawRect) {
+        self.didRrawRect = YES;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView reloadData];
+        });
     }
 }
 

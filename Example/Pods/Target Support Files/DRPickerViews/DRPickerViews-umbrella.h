@@ -20,6 +20,8 @@
 #import "DRBaseAlertPicker.h"
 #import "DRDatePickerDataModels.h"
 #import "DRHourMinutePicker.h"
+#import "DRLinkagePicker.h"
+#import "DRMultipleColumnPicker.h"
 #import "DROneWeekPicker.h"
 #import "DROptionCardPicker.h"
 #import "DRStringOptionsPicker.h"

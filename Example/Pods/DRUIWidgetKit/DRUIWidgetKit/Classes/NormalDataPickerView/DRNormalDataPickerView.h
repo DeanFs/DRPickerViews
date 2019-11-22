@@ -22,4 +22,6 @@
 - (void)getSelectedValueForSection:(NSInteger)section
                          withBlock:(void (^)(NSInteger index, NSString *selectedString))block;
 
+- (void)reloadData;
+
 @end

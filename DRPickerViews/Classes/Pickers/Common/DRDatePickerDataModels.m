@@ -268,6 +268,15 @@
 
 @end
 
+@implementation DRPickerLinkageOption
+
+@end
+
+
+@implementation DRPickerMultipleColumnOption
+
+@end
+
 
 #pragma mark - 选择器选择完成回调返回数据结构定义
 @implementation DRPickerWithLunarPickedObj
@@ -380,5 +389,14 @@
 
 
 @implementation DRPickerClassRemindTimePickedObj
+
+@end
+
+
+@implementation DRPickerLinkagePickedObj
+
+@end
+
+@implementation DRPickerMultipleColumnPickedObj
 
 @end

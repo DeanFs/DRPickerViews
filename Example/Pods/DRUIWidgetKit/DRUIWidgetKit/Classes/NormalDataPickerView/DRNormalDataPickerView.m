@@ -19,69 +19,42 @@
 
 @property (weak, nonatomic) UIPickerView *pickerView;
 @property (nonatomic, assign) BOOL didDrawRect;
+@property (nonatomic, assign) BOOL didChangeSelect;
+
 
 @end
 
 @implementation DRNormalDataPickerView
-
-- (void)setupPickerView {
-    if (![self.dataSource isKindOfClass:[NSArray class]] || self.dataSource.count == 0) {
-        kDR_LOG(@"传入数据有误");
-        return;
-    }
-
-    NSMutableArray<NSString *> *currentSelectedStrings = [NSMutableArray array];
-    NSMutableDictionary<NSString *, NSNumber *> *stringIndexMap = [NSMutableDictionary dictionary];
-    for (NSInteger i=0; i<self.dataSource.count; i++) {
-        NSArray *arr = self.dataSource[i];
-        if (![arr isKindOfClass:[NSArray class]]) {
-            kDR_LOG(@"传入数据有误");
-            return;
-        }
-
-        NSString *current = [self.currentSelectedStrings safeGetObjectWithIndex:i];
-        if (![current isKindOfClass:[NSString class]] || current.length == 0) {
-            [currentSelectedStrings addObject:arr.firstObject];
-            stringIndexMap[arr.firstObject] = @(0);
-            continue;
-        }
-
-        BOOL find = NO;
-        for (NSInteger j=0; j<arr.count; j++) {
-            NSString *string = arr[j];
-            if (![string isKindOfClass:[NSString class]]) {
-                kDR_LOG(@"传入数据有误");
-                return;
-            }
-            if ([string isEqualToString:current]) {
-                find = YES;
-                [currentSelectedStrings addObject:string];
-                stringIndexMap[string] = @(j);
-            }
-        }
-        if (!find) {
-            [currentSelectedStrings addObject:arr.firstObject];
-            stringIndexMap[arr.firstObject] = @(0);
-        }
-    }
-    _currentSelectedStrings = currentSelectedStrings;
-    [self.pickerView reloadAllComponents];
-
-    for (NSInteger i=0; i<self.currentSelectedStrings.count; i++) {
-        NSInteger index = stringIndexMap[self.currentSelectedStrings[i]].integerValue;
-        [self.pickerView selectRow:index inComponent:i*2 animated:NO];
-    }
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.pickerView reloadAllComponents];
-    });
-}
 
 - (void)getSelectedValueForSection:(NSInteger)section
                          withBlock:(void (^)(NSInteger index, NSString *selectedString))block {
     NSArray *values = self.dataSource[section];
     NSInteger index = [self.pickerView selectedRowInComponent:section * 2];
     kDR_SAFE_BLOCK(block, index, values[index]);
+}
+
+- (void)reloadData {
+    if (self.didDrawRect) {
+        if (self.didChangeSelect) {
+            [self setupPickerView];
+        } else {
+            [self.pickerView reloadAllComponents];
+            for (NSInteger i=0; i<self.dataSource.count; i++) {
+                NSArray *arr = self.dataSource[i];
+                if (![arr isKindOfClass:[NSArray class]]) {
+                    kDR_LOG(@"传入数据有误");
+                    return;
+                }
+                NSInteger row = [self.pickerView selectedRowInComponent:i*2];
+                if (row > arr.count - 1) {
+                    row = arr.count -1;
+                }
+                [self.pickerView selectRow:row inComponent:i*2 animated:NO];
+                [self pickerView:self.pickerView didSelectRow:row inComponent:i*2];
+            }
+            [self.pickerView reloadAllComponents];
+        }
+    }
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -144,7 +117,7 @@
             }
         }
     }
-    
+
     label.textColor = [DRUIWidgetUtil pickerUnSelectColor];
     if (row == [pickerView selectedRowInComponent:component]) {
         label.textColor = [DRUIWidgetUtil normalColor];
@@ -216,9 +189,25 @@
     return self;
 }
 
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+
+    if (CGRectEqualToRect(rect, CGRectZero)) {
+        return;
+    }
+    if (!self.didDrawRect) {
+        self.didDrawRect = YES;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self setupPickerView];
+        });
+    }
+}
+
+#pragma mark - private
 - (void)setup {
     if (!self.pickerView) {
         UIPickerView *pickerView = [[UIPickerView alloc] init];
+        pickerView.backgroundColor = [UIColor whiteColor];
         pickerView.delegate = self;
         pickerView.dataSource = self;
 
@@ -230,34 +219,65 @@
     }
 }
 
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-
-    if (CGRectEqualToRect(rect, CGRectZero)) {
+- (void)setupPickerView {
+    if (![self.dataSource isKindOfClass:[NSArray class]] || self.dataSource.count == 0) {
+        kDR_LOG(@"传入数据有误");
         return;
     }
-    if (!self.didDrawRect) {
-        self.didDrawRect = YES;
 
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self setupPickerView];
-        });
+    NSMutableArray<NSString *> *currentSelectedStrings = [NSMutableArray array];
+    NSMutableArray<NSNumber *> *rows = [NSMutableArray array];
+    for (NSInteger i=0; i<self.dataSource.count; i++) {
+        NSArray *arr = self.dataSource[i];
+        if (![arr isKindOfClass:[NSArray class]]) {
+            kDR_LOG(@"传入数据有误");
+            return;
+        }
+
+        NSString *current = [self.currentSelectedStrings safeGetObjectWithIndex:i];
+        if (![current isKindOfClass:[NSString class]] || current.length == 0) {
+            [currentSelectedStrings addObject:arr.firstObject];
+            [rows addObject:@(0)];
+            continue;
+        }
+
+        BOOL find = NO;
+        for (NSInteger j=0; j<arr.count; j++) {
+            NSString *string = arr[j];
+            if (![string isKindOfClass:[NSString class]]) {
+                kDR_LOG(@"传入数据有误");
+                return;
+            }
+            if ([string isEqualToString:current]) {
+                find = YES;
+                [currentSelectedStrings addObject:string];
+                [rows addObject:@(j)];
+            }
+        }
+        if (!find) {
+            [currentSelectedStrings addObject:arr.firstObject];
+            [rows addObject:@(0)];
+        }
     }
-}
+    _currentSelectedStrings = currentSelectedStrings;
+    [self.pickerView reloadAllComponents];
 
-- (void)setDataSource:(NSArray<NSArray<NSString *> *> *)dataSource {
-    _dataSource = dataSource;
-
-    if (self.didDrawRect) {
-        [self setupPickerView];
+    for (NSInteger i=0; i<rows.count; i++) {
+        NSInteger index = rows[i].integerValue;
+        [self.pickerView selectRow:index inComponent:i*2 animated:NO];
     }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.pickerView reloadAllComponents];
+    });
+    self.didChangeSelect = NO;
 }
 
 - (void)setCurrentSelectedStrings:(NSArray<NSString *> *)currentSelectedStrings {
     _currentSelectedStrings = currentSelectedStrings;
 
     if (self.didDrawRect) {
-        [self setupPickerView];
+        self.didChangeSelect = YES;
     }
 }
 

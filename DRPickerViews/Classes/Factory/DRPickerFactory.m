@@ -23,6 +23,8 @@
 #import "DRClassDurationPicker.h"
 #import "DRClassRemindTimePicker.h"
 #import "DRClassTermPicker.h"
+#import "DRLinkagePicker.h"
+#import "DRMultipleColumnPicker.h"
 
 @implementation DRPickerFactory
 
@@ -168,6 +170,18 @@
             [DRClassRemindTimePicker showPickerViewWithOption:pickerOption
                                                    setupBlock:nil
                                                 pickDoneBlock:innerPickDoneBlock];
+        } break;
+            
+        case DRPickerTypeLinkage: {
+            [DRLinkagePicker showPickerViewWithOption:pickerOption
+                                           setupBlock:nil
+                                        pickDoneBlock:innerPickDoneBlock];
+        } break;
+            
+        case DRPickerTypeMultipleColumn: {
+            [DRMultipleColumnPicker showPickerViewWithOption:pickerOption
+                                                  setupBlock:nil
+                                               pickDoneBlock:innerPickDoneBlock];
         } break;
             
         default:

@@ -43,6 +43,15 @@
     self.pickerView.currentValue = opt.currentValue;
     self.pickerView.valueUnit = opt.valueUnit;
     self.pickerView.prefixUnit = opt.prefixUnit;
+    if (opt.valueScale <= 0) {
+        self.pickerView.valueScale = 1;
+    }else{
+        self.pickerView.valueScale = opt.valueScale;
+        if (opt.valueScale <= 1.0) {
+            self.pickerView.isForceDigit = NO;
+            self.pickerView.digitCount = 2;
+        }
+    }
 
     if (opt.tipText.length > 0) {
         self.tipView.title = opt.tipText;

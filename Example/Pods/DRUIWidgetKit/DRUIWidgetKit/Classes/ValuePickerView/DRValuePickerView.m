@@ -10,6 +10,7 @@
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/UIFont+DRExtension.h>
 #import "DRUIWidgetUtil.h"
+#import <DRCategories/NSNumber+DRExtension.h>
 
 @interface DRValuePickerView () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -31,14 +32,12 @@
         kDR_LOG(@"当前反显值不在设定范围内");
         return;
     }
-
     [self.pickerView reloadAllComponents];
 
     NSInteger row = self.currentValue - self.minValue;
     if (row > 0) {
         [self.pickerView selectRow:row inComponent:0 animated:NO];
     }
-    self.valueLabel.text = [NSString stringWithFormat:@"%ld", self.maxValue];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.pickerView reloadAllComponents];
     });
@@ -51,7 +50,7 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.maxValue - self.minValue + 1;
+    return (self.maxValue - self.minValue) / self.valueScale + 1;
 }
 
 #pragma mark - UIPickerViewDelegate
@@ -59,7 +58,7 @@
     UILabel *label = [[UILabel alloc] init];
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:31];
-    label.text = [NSString stringWithFormat:@"%ld", self.minValue + row];
+    label.text = [@(self.minValue + row * self.valueScale) stringValueWithDigit:self.digitCount isForce:self.isForceDigit block:nil];
     label.textColor = [DRUIWidgetUtil pickerUnSelectColor];
     if (row == [pickerView selectedRowInComponent:component] || component == 1) {
         label.textColor = [DRUIWidgetUtil normalColor];
@@ -68,7 +67,8 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    _currentValue = self.minValue + row;
+    _currentValue = self.minValue + row * self.valueScale;
+    self.valueLabel.text = [@(self.currentValue) stringValueWithDigit:self.digitCount isForce:self.isForceDigit block:nil];
     kDR_SAFE_BLOCK(self.onSelectedChangeBlock, _currentValue);
     [pickerView reloadComponent:component];
 }
@@ -115,6 +115,9 @@
         self.pickerView.dataSource = self;
         self.unitLabel.textColor = [DRUIWidgetUtil normalColor];
         self.prefixUnitLabel.textColor = [DRUIWidgetUtil normalColor];
+        self.valueScale = 1;
+        self.digitCount = 0;
+        self.isForceDigit = NO;
     }
 }
 
@@ -126,7 +129,6 @@
     }
     if (!self.didDrawRect) {
         self.didDrawRect = YES;
-
         dispatch_async(dispatch_get_main_queue(), ^{
             [self setupPickerView];
         });

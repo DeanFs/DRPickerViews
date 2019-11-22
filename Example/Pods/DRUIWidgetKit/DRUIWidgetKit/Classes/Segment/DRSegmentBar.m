@@ -78,7 +78,7 @@
 }
 
 - (CGRect)titleRect {
-    if (CGRectEqualToRect(_titleRect, CGRectZero)) {
+    if (CGRectIsEmpty(_titleRect)) {
         _titleRect = [self convertRect:self.titleLabel.frame toView:self.superview];
     }
     return _titleRect;
@@ -129,6 +129,7 @@
 @property (nonatomic, assign) CGRect currentItemTitleRect;
 @property (nonatomic, weak) UIScrollView *associatedScrollView;
 @property (nonatomic, assign) BOOL haveDrag;
+@property (nonatomic, assign) BOOL didDrawRect;
 
 @end
 
@@ -170,9 +171,30 @@
     if (selectedIndex == _selectedIndex) {
         return;
     }
-    
     _selectedIndex = selectedIndex;
-    [self setNeedsDisplay];
+
+    if (!self.didDrawRect) {
+        return;
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        DRSegmentBarItem *barItem = [self.stackView viewWithTag:self.selectedIndex];
+        barItem.selected = YES;
+
+        self.currentItemTitleRect = [barItem titleRect];
+        [UIView animateWithDuration:self.currentItem?kDRAnimationDuration:0 animations:^{
+            self.selectMarkViewLeft.constant = self.currentItemTitleRect.origin.x;
+            self.selectMarkViewWidth.constant = self.currentItemTitleRect.size.width;
+            [self layoutIfNeeded];
+        }];
+        CGPoint offset = CGPointMake(barItem.tag * self.associatedScrollView.width, 0);
+        [self.associatedScrollView setContentOffset:offset
+                                           animated:self.currentItem!=nil];
+
+        self.currentItem.selected = NO;
+        self.currentItem = barItem;
+    });
+    kDR_SAFE_BLOCK(self.onSelectChangeBlock, self.selectedIndex);
 }
 
 - (void)setAssociatedScrollView:(UIScrollView *)associatedScrollView {
@@ -264,24 +286,22 @@
     if (self.selectedIndex == -1) {
         return;
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        DRSegmentBarItem *barItem = [self.stackView viewWithTag:self.selectedIndex];
-        barItem.selected = YES;
+    if (!self.didDrawRect) {
+        self.didDrawRect = YES;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            DRSegmentBarItem *barItem = [self.stackView viewWithTag:self.selectedIndex];
+            barItem.selected = YES;
 
-        self.currentItemTitleRect = [barItem titleRect];
-        [UIView animateWithDuration:self.currentItem?kDRAnimationDuration:0 animations:^{
+            self.currentItemTitleRect = [barItem titleRect];
             self.selectMarkViewLeft.constant = self.currentItemTitleRect.origin.x;
             self.selectMarkViewWidth.constant = self.currentItemTitleRect.size.width;
-            [self layoutIfNeeded];
-        }];
-        CGPoint offset = CGPointMake(barItem.tag * self.associatedScrollView.width, 0);
-        [self.associatedScrollView setContentOffset:offset
-                                           animated:self.currentItem!=nil];
 
-        self.currentItem.selected = NO;
-        self.currentItem = barItem;
-    });
-    kDR_SAFE_BLOCK(self.onSelectChangeBlock, self.selectedIndex);
+            CGPoint offset = CGPointMake(barItem.tag * self.associatedScrollView.width, 0);
+            [self.associatedScrollView setContentOffset:offset
+                                               animated:NO];
+            self.currentItem = barItem;
+        });
+    }
 }
 
 #pragma mark - setter & getter
