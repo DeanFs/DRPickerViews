@@ -43,6 +43,7 @@
     self.pickerView.currentValue = opt.currentValue;
     self.pickerView.valueUnit = opt.valueUnit;
     self.pickerView.prefixUnit = opt.prefixUnit;
+    self.pickerView.isLoop = opt.isLoop;
     if (opt.valueScale <= 0) {
         self.pickerView.valueScale = 1;
     }else{

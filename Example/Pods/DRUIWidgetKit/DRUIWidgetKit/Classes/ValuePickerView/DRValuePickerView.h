@@ -52,6 +52,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) IBInspectable NSUInteger isForceDigit;
 
 /**
+ 是否循环滚动 默认NO
+ */
+@property (nonatomic, assign) IBInspectable BOOL isLoop;
+
+/**
  选择的值变化
  */
 @property (nonatomic, copy) void (^onSelectedChangeBlock) (NSInteger value);

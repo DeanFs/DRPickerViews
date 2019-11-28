@@ -447,6 +447,11 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
  */
 @property (nonatomic, assign) NSInteger currentValue;
 
+/**
+ 是否循环滚动 默认NO
+ */
+@property (nonatomic, assign) IBInspectable BOOL isLoop;
+
 + (instancetype)optionWithTitle:(NSString *)title
                    currentValue:(NSInteger)currentValue
                        minValue:(NSInteger)minValue

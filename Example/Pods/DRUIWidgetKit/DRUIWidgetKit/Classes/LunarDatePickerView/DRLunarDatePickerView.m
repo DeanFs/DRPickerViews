@@ -60,7 +60,7 @@
         return;
     }
     _dateMode = dateMode;
-
+    
     if (dateMode == DRLunarDatePickerModeYMD) {
         self.currentMonthList = [self monthListFromLunarYear:self.lunarYear];
     } else if (dateMode == DRLunarDatePickerModeMD) {
@@ -69,7 +69,7 @@
         self.currentMonthList = [self ignoreYearMonthListWithLeapMonth:YES];
     }
     _selectedMonth = [self findEquelLunarModel:self.selectedMonth fromList:self.currentMonthList];
-
+    
     if (self.pickerView.delegate) {
         [self setupPickerView];
         [self.pickerView setNeedsLayout];
@@ -231,7 +231,7 @@
         }
     }
     [self setupTextColorForLabel:label yearView:yearView inComponent:component forRow:row];
-
+    
     NSString *text = @"/";
     if (self.dateMode != DRLunarDatePickerModeYMD) {
         if (component == 0) {
@@ -269,7 +269,7 @@
         [self setupWithYearSelectRow:row inComponent:component];
     }
     [self.pickerView reloadAllComponents];
-
+    
     if (self.dateMode != DRLunarDatePickerModeYMD) {
         _selectedDate = nil;
     } else {
@@ -336,7 +336,7 @@
         label.textColor = [DRUIWidgetUtil normalColor];
         yearView.textColor = [DRUIWidgetUtil normalColor];
     }
-
+    
     if (self.dateMode == DRLunarDatePickerModeYMD && [self isDisableForRow:row inComponent:component]) {
         label.textColor = [DRUIWidgetUtil pickerDisableColor];
         yearView.textColor = [DRUIWidgetUtil pickerDisableColor];
@@ -393,7 +393,7 @@
         _selectedDay = row % self.selectedMonth.dayCount + 1;
         [self.pickerView selectRow:self.selectedDay-1 + self.selectedMonth.dayCount * kLunarPickerCentreRow inComponent:4 animated:NO];
     }
-
+    
     // 超限检查
     BOOL needScroll = NO;
     if ([self compareDateForRow:row inComponent:component] < 0) {
@@ -410,14 +410,14 @@
     if (year != self.selectedMonth.lunarYear) {
         self.lunarYear = year;
         NSArray *monthList = [self monthListFromLunarYear:self.lunarYear];
-        if (monthList.count != self.currentMonthList.count) {
+        if (monthList.count != self.currentMonthList.count || self.selectedMonth.index != monthIndex) {
             [self.pickerView selectRow:monthIndex + monthList.count * kLunarPickerCentreRow inComponent:2 animated:NO];
             needScroll = YES;
         }
         self.currentMonthList = monthList;
         [self.pickerView reloadComponent:2];
     }
-
+    
     // 检测每月天数改变
     DRLunarDatePickerMonthModel *model = self.currentMonthList[monthIndex];
     if (!model) { // 月份变少了，month是最后一个月时会取不到
@@ -434,7 +434,7 @@
     }
     _selectedMonth = model;
     [self.pickerView reloadComponent:4];
-
+    
     // 超限回滚
     if (needScroll) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -471,7 +471,7 @@
         NSMutableArray<DRLunarDatePickerMonthModel *> *list = [NSMutableArray array];
         monthList = list;
         [self.yearMonthListMap setObject:list forKey:@(lunarYear)];
-
+        
         NSInteger wholeYear = lunarYear + kZeroYear;
         NSInteger era = wholeYear / kLunarCycle;
         NSInteger year = wholeYear % kLunarCycle;
@@ -479,7 +479,7 @@
             year = 60;
             era--;
         }
-
+        
         NSInteger index = 0;
         for (NSInteger i=0; i<24; i++) {
             NSDateComponents *cmp = [NSDateComponents lunarComponentsWithEra:era year:year month:1+i/2 day:1 leapMonth:i%2];
@@ -572,7 +572,7 @@
         }];
         self.solarDateContentView.hidden = YES;
         self.solarDateContentViewHeight.constant = 0;
-
+        
         self.solarDateLabel.textColor = [DRUIWidgetUtil highlightColor];
         self.solarIcon.image = [DRUIWidgetUtil pngImageWithName:@"icon_birth_solar"
                                                        inBundle:KDR_CURRENT_BUNDLE];
@@ -581,7 +581,7 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-
+    
     if (CGRectIsEmpty(rect)) {
         return;
     }
