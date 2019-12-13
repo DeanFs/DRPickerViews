@@ -33,6 +33,10 @@
     return self;
 }
 
+- (void)dealloc {
+    kDR_LOG(@"%@ dealloc", NSStringFromClass([self class]));
+}
+
 @end
 
 

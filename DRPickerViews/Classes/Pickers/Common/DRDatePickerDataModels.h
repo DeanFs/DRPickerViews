@@ -120,7 +120,7 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     DRPickerTypeMultipleColumn,
 };
 
-
+@class DRBaseAlertPicker;
 #pragma mark - 选择器参数定义
 #pragma mark 基类
 @interface DRPickerOptionBase : NSObject
@@ -168,6 +168,12 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 
 /// 点击了空白区域的回调
 @property (nonatomic, copy) dispatch_block_t tappedSpaceAreaBlock;
+
+/// 具体的弹出Picker对象
+@property (weak, nonatomic) DRBaseAlertPicker *pickerView;
+
+/// 底部自定义视图
+@property (strong, nonatomic) UIView *customBottomView;
 
 + (instancetype)optionWithTitle:(NSString *)title;
 

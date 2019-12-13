@@ -12,6 +12,7 @@
 #import <DRCategories/NSDate+DRExtension.h>
 #import <DRMacroDefines/DRMacroDefines.h>
 #import "DRPickerContainerView.h"
+#import <BlocksKit/UIView+BlocksKit.h>
 
 @interface DRViewController ()
 
@@ -192,6 +193,14 @@
         kDR_LOG(@"清除");
     };
     opt.autoDismissWhenPicked = NO;
+    
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDRScreenWidth - 40, 70)];
+    customView.backgroundColor = [UIColor whiteColor];
+    customView.userInteractionEnabled = YES;
+    opt.customBottomView = customView;
+    [customView bk_whenTapped:^{
+        [opt.pickerView dismiss];
+    }];
     
     [DRPickerFactory showPickerViewWithType:type pickerOption:opt pickDoneBlock:^(DRBaseAlertPicker * _Nonnull picker, id  _Nonnull pickedObject) {
         kDR_LOG(@"%@", pickedObject);

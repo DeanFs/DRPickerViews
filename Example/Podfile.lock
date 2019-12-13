@@ -29,151 +29,151 @@ PODS:
     - DRSandboxManager
     - pop
   - DRMacroDefines (0.1.2)
-  - DRPickerViews (0.2.27):
+  - DRPickerViews (0.2.28):
     - DRCategories
     - DRMacroDefines
-    - DRPickerViews/Factory (= 0.2.27)
-    - DRPickerViews/Pickers (= 0.2.27)
+    - DRPickerViews/Factory (= 0.2.28)
+    - DRPickerViews/Pickers (= 0.2.28)
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Factory (0.2.27):
+  - DRPickerViews/Factory (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers (0.2.27):
+  - DRPickerViews/Pickers (0.2.28):
     - DRCategories
     - DRMacroDefines
-    - DRPickerViews/Pickers/AheadTimePicker (= 0.2.27)
-    - DRPickerViews/Pickers/CityPicker (= 0.2.27)
-    - DRPickerViews/Pickers/ClassDurationPicker (= 0.2.27)
-    - DRPickerViews/Pickers/ClassTableWeekPicker (= 0.2.27)
-    - DRPickerViews/Pickers/ClassTermPicker (= 0.2.27)
-    - DRPickerViews/Pickers/ClassTimeRemindPicker (= 0.2.27)
-    - DRPickerViews/Pickers/Common (= 0.2.27)
-    - DRPickerViews/Pickers/HourMinutePicker (= 0.2.27)
-    - DRPickerViews/Pickers/LinkagePicker (= 0.2.27)
-    - DRPickerViews/Pickers/MultipleColumnPicker (= 0.2.27)
-    - DRPickerViews/Pickers/OneWeekPicker (= 0.2.27)
-    - DRPickerViews/Pickers/OptionCardPicker (= 0.2.27)
-    - DRPickerViews/Pickers/StringOptionPicker (= 0.2.27)
-    - DRPickerViews/Pickers/TimeConsumingPicker (= 0.2.27)
-    - DRPickerViews/Pickers/ValueSelectPicker (= 0.2.27)
-    - DRPickerViews/Pickers/WithLunarPicker (= 0.2.27)
-    - DRPickerViews/Pickers/YearMonthDayPicker (= 0.2.27)
-    - DRPickerViews/Pickers/YearMonthPicker (= 0.2.27)
-    - DRPickerViews/Pickers/YearOrYearMonthPicker (= 0.2.27)
+    - DRPickerViews/Pickers/AheadTimePicker (= 0.2.28)
+    - DRPickerViews/Pickers/CityPicker (= 0.2.28)
+    - DRPickerViews/Pickers/ClassDurationPicker (= 0.2.28)
+    - DRPickerViews/Pickers/ClassTableWeekPicker (= 0.2.28)
+    - DRPickerViews/Pickers/ClassTermPicker (= 0.2.28)
+    - DRPickerViews/Pickers/ClassTimeRemindPicker (= 0.2.28)
+    - DRPickerViews/Pickers/Common (= 0.2.28)
+    - DRPickerViews/Pickers/HourMinutePicker (= 0.2.28)
+    - DRPickerViews/Pickers/LinkagePicker (= 0.2.28)
+    - DRPickerViews/Pickers/MultipleColumnPicker (= 0.2.28)
+    - DRPickerViews/Pickers/OneWeekPicker (= 0.2.28)
+    - DRPickerViews/Pickers/OptionCardPicker (= 0.2.28)
+    - DRPickerViews/Pickers/StringOptionPicker (= 0.2.28)
+    - DRPickerViews/Pickers/TimeConsumingPicker (= 0.2.28)
+    - DRPickerViews/Pickers/ValueSelectPicker (= 0.2.28)
+    - DRPickerViews/Pickers/WithLunarPicker (= 0.2.28)
+    - DRPickerViews/Pickers/YearMonthDayPicker (= 0.2.28)
+    - DRPickerViews/Pickers/YearMonthPicker (= 0.2.28)
+    - DRPickerViews/Pickers/YearOrYearMonthPicker (= 0.2.28)
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/AheadTimePicker (0.2.27):
-    - DRCategories
-    - DRMacroDefines
-    - DRPickerViews/Pickers/Common
-    - DRUIWidgetKit
-    - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/CityPicker (0.2.27):
+  - DRPickerViews/Pickers/AheadTimePicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/ClassDurationPicker (0.2.27):
+  - DRPickerViews/Pickers/CityPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/ClassTableWeekPicker (0.2.27):
+  - DRPickerViews/Pickers/ClassDurationPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/ClassTermPicker (0.2.27):
+  - DRPickerViews/Pickers/ClassTableWeekPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/ClassTimeRemindPicker (0.2.27):
+  - DRPickerViews/Pickers/ClassTermPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/Common (0.2.27):
-    - DRCategories
-    - DRMacroDefines
-    - DRUIWidgetKit
-    - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/HourMinutePicker (0.2.27):
+  - DRPickerViews/Pickers/ClassTimeRemindPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/LinkagePicker (0.2.27):
+  - DRPickerViews/Pickers/Common (0.2.28):
+    - DRCategories
+    - DRMacroDefines
+    - DRUIWidgetKit
+    - HexColors (= 4.0.0)
+  - DRPickerViews/Pickers/HourMinutePicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/MultipleColumnPicker (0.2.27):
+  - DRPickerViews/Pickers/LinkagePicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/OneWeekPicker (0.2.27):
+  - DRPickerViews/Pickers/MultipleColumnPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/OptionCardPicker (0.2.27):
+  - DRPickerViews/Pickers/OneWeekPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/StringOptionPicker (0.2.27):
+  - DRPickerViews/Pickers/OptionCardPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/TimeConsumingPicker (0.2.27):
+  - DRPickerViews/Pickers/StringOptionPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/ValueSelectPicker (0.2.27):
+  - DRPickerViews/Pickers/TimeConsumingPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/WithLunarPicker (0.2.27):
+  - DRPickerViews/Pickers/ValueSelectPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/YearMonthDayPicker (0.2.27):
+  - DRPickerViews/Pickers/WithLunarPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/YearMonthPicker (0.2.27):
+  - DRPickerViews/Pickers/YearMonthDayPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/YearOrYearMonthPicker (0.2.27):
+  - DRPickerViews/Pickers/YearMonthPicker (0.2.28):
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/Pickers/Common
+    - DRUIWidgetKit
+    - HexColors (= 4.0.0)
+  - DRPickerViews/Pickers/YearOrYearMonthPicker (0.2.28):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
@@ -441,6 +441,7 @@ PODS:
   - YYModel (1.0.4)
 
 DEPENDENCIES:
+  - BlocksKit
   - DRPickerViews (from `../`)
   - YYModel
 
@@ -467,7 +468,7 @@ SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   DRCategories: 9dc993a28182d13716de8b47c1626d90d317108e
   DRMacroDefines: 58aa271bc1c4170fa09f4f33dcad18fc4f21a57e
-  DRPickerViews: 597db18d5f6e030f2f394d2aa706dfe53754b07d
+  DRPickerViews: 0cd22a48a325433f6affd44b217fa568481c680e
   DRSandboxManager: 2a48ca41b22edfc39dd2f66abd5a99e777410c61
   DRToastView: 3e7a5d8c66640ca6c618910c926425c9c0ab3954
   DRUIWidgetKit: 0f7ca02b4156885893d2e04966f10f3c5b074b45
@@ -478,6 +479,6 @@ SPEC CHECKSUMS:
   SDVersion: 18f32c835c1543611fcfae3c6accd9a04b90597e
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 7e849c87eed1762c35dddb8737a38e445e539c20
+PODFILE CHECKSUM: ad5c5ae183157645d67499b43970e3920496657a
 
 COCOAPODS: 1.8.4

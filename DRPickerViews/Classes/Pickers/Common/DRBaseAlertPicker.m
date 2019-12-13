@@ -89,6 +89,18 @@
     kDR_SAFE_BLOCK(self.pickerOption.dismissBlock);
 }
 
+- (CGFloat)bottomPaddingFromSafeArea {
+    CGFloat padding = [super bottomPaddingFromSafeArea];
+    if (self.pickerOption.customBottomView != nil) {
+        padding += (6 + self.pickerOption.customBottomView.height);
+    }
+    return padding;
+}
+
+- (void)dealloc {
+    kDR_LOG(@"%@ dealloc", NSStringFromClass([self class]));
+}
+
 #pragma mark - private
 /**
  动画显示选择器
@@ -128,6 +140,25 @@
     };
     [self prepareToShow];
     [self showFromPostion:self.pickerOption.showFromPosition];
+    
+    if (self.pickerOption.customBottomView != nil) {
+        self.pickerOption.customBottomView.x = (kDRScreenWidth - self.pickerOption.customBottomView.width) / 2;
+        self.pickerOption.customBottomView.y = kDRScreenHeight + [self pickerViewHeight] + 6;
+        [self.superview addSubview:self.pickerOption.customBottomView];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:kDRAnimationDuration animations:^{
+                self.pickerOption.customBottomView.y = kDRScreenHeight - self.pickerOption.customBottomView.height - [super bottomPaddingFromSafeArea];
+            } completion:^(BOOL finished) {
+                self.pickerOption.customBottomView = nil;
+            }];
+        });
+    }
+}
+
+- (void)setPickerOption:(DRPickerOptionBase *)pickerOption {
+    _pickerOption = pickerOption;
+    pickerOption.pickerView = self;
 }
 
 @end
