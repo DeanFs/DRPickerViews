@@ -148,7 +148,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:kDRAnimationDuration animations:^{
-                self.pickerOption.customBottomView.y = kDRScreenHeight - self.pickerOption.customBottomView.height - [super bottomPaddingFromSafeArea];
+                self.pickerOption.customBottomView.y = kDRScreenHeight - self.pickerOption.customBottomView.height - [super bottomPaddingFromSafeArea] - [UITabBar safeHeight];
             } completion:^(BOOL finished) {
                 self.pickerOption.customBottomView = nil;
             }];
