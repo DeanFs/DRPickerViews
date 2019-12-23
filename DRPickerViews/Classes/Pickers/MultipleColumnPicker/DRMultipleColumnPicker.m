@@ -51,7 +51,7 @@
         return @"";
     };
     self.pickerView.getFontForSectionWithBlock = ^UIFont *(NSInteger section) {
-        return [UIFont dr_PingFangSC_MediumWithSize:20];
+        return [UIFont dr_PingFangSC_RegularWithSize:20];
     };
     self.pickerView.onSelectedChangeBlock = ^(NSInteger section, NSInteger index, NSString *selectedString) {
         NSMutableArray *stringArray = [NSMutableArray arrayWithArray:opt.currentSelectedStrings];

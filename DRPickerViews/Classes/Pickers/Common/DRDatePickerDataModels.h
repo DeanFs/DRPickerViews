@@ -473,6 +473,16 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 @property (nonatomic, copy) NSString *currentStringOption;
 @property (nonatomic, assign) NSInteger currentStringIndex;
 
+/**
+ 显示单位
+ */
+@property (nonatomic, copy) NSString *valueUnit;
+
+/**
+ 前缀
+ */
+@property (nonatomic, copy) NSString *prefixUnit;
+
 /// 提示语
 @property (nonatomic, copy) NSString *tipText;
 

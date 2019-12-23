@@ -184,6 +184,15 @@
 
 @implementation DRPickerStringSelectOption
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _valueUnit = @"";
+        _prefixUnit = @"";
+    }
+    return self;
+}
+
 + (instancetype)optionWithTitle:(NSString *)title stringOptions:(NSArray<NSString *> *)stringOptions {
     DRPickerStringSelectOption *opt = [DRPickerStringSelectOption optionWithTitle:title];
     opt.stringOptions = stringOptions;

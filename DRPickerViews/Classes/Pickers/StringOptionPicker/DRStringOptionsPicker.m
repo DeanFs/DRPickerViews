@@ -38,18 +38,61 @@
 }
 
 - (void)prepareToShow {
+    kDRWeakSelf
     DRPickerStringSelectOption *opt = (DRPickerStringSelectOption *)self.pickerOption;
     if (opt.stringOptions.count == 0) {
         return;
     }
-    self.pickerView.dataSource = @[opt.stringOptions];
+    NSMutableArray *dataSouce = [NSMutableArray array];
+    [dataSouce addObject:opt.stringOptions];
+    CGFloat valueWidth = kDRScreenWidth - 2*[self horizontalPadding];
+    if (opt.valueUnit.length || opt.prefixUnit) {
+        valueWidth = 0;
+        for (NSString *value in opt.stringOptions) {
+            CGFloat width = 20 * value.length;
+            if (width > valueWidth) {
+                valueWidth = width;
+            }
+        }
+        [dataSouce insertObject:@[opt.prefixUnit] atIndex:0];
+        [dataSouce addObject:@[opt.valueUnit]];
+    }
+    self.pickerView.dataSource = dataSouce;
     if (opt.currentStringOption.length > 0) {
         self.pickerView.currentSelectedStrings = @[opt.currentStringOption];
     } else {
         self.pickerView.currentSelectedStrings = @[[opt.stringOptions safeGetObjectWithIndex:opt.currentStringIndex]];
     }
     self.pickerView.getFontForSectionWithBlock = ^UIFont *(NSInteger section) {
-        return [UIFont dr_PingFangSC_MediumWithSize:20];
+        if (dataSouce.count > 1) {
+            if (section == 0 || section == 2) {
+                return [UIFont dr_PingFangSC_RegularWithSize:18];
+            }
+        }
+        return [UIFont dr_PingFangSC_RegularWithSize:20];
+    };
+    self.pickerView.getWidthForSectionWithBlock = ^CGFloat(NSInteger section) {
+        CGFloat wholeWidth = kDRScreenWidth - 2*[weakSelf horizontalPadding];
+        if (dataSouce.count > 1) {
+            if (section == 0 || section == 2) {
+                return (wholeWidth - valueWidth - 18) / 2;
+            }
+        }
+        return valueWidth;
+    };
+    self.pickerView.getSeparateTextBeforeSectionBlock = ^NSString *(NSInteger section) {
+        return @"";
+    };
+    self.pickerView.getTextAlignmentForSectionBlock = ^NSTextAlignment(NSInteger section) {
+        if (dataSouce.count > 1) {
+            if (section == 0) {
+                return NSTextAlignmentRight;
+            }
+            if (section == 2) {
+                return NSTextAlignmentLeft;
+            }
+        }
+        return NSTextAlignmentCenter;
     };
 
     if (opt.tipText.length > 0) {
