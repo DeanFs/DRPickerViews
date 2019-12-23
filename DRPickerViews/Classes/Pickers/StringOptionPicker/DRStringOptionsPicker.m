@@ -46,7 +46,7 @@
     NSMutableArray *dataSouce = [NSMutableArray array];
     [dataSouce addObject:opt.stringOptions];
     CGFloat valueWidth = kDRScreenWidth - 2*[self horizontalPadding];
-    if (opt.valueUnit.length || opt.prefixUnit) {
+    if (opt.valueUnit.length > 0 || opt.prefixUnit.length > 0) {
         valueWidth = 0;
         for (NSString *value in opt.stringOptions) {
             CGFloat width = 20 * value.length;
@@ -101,9 +101,14 @@
 }
 
 - (id)pickedObject {
-    DRPickerStringSelectPickedObj *obj = [DRPickerStringSelectPickedObj new];
+    DRPickerStringSelectOption *opt = (DRPickerStringSelectOption *)self.pickerOption;
     NSString *option = self.pickerView.currentSelectedStrings.firstObject;
     NSInteger index = [self.pickerView.dataSource[0] indexOfObject:option];
+    if (opt.valueUnit.length > 0 || opt.prefixUnit.length > 0) {
+        option = self.pickerView.currentSelectedStrings[1];
+        index = [self.pickerView.dataSource[1] indexOfObject:option];
+    }
+    DRPickerStringSelectPickedObj *obj = [DRPickerStringSelectPickedObj new];
     obj.selectedIndex = index;
     obj.selectedOption = option;
     return obj;

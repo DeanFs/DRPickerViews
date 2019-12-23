@@ -118,6 +118,7 @@
             ((DRPickerStringSelectOption *)opt).currentStringOption = @"每天";
 //            ((DRPickerStringSelectOption *)opt).tipText = @"哈哈哈哈哈";
             ((DRPickerStringSelectOption *)opt).valueUnit = @"定期";
+            ((DRPickerStringSelectOption *)opt).prefixUnit = @"每个";
         } break;
             
         case DRPickerTypeOptionCard: {
