@@ -222,7 +222,7 @@
         if (!label) {
             label = [[UILabel alloc] init];
             label.textColor = [DRUIWidgetUtil pickerUnSelectColor];
-            label.font = [UIFont dr_PingFangSC_MediumWithSize:17];
+            label.font = [UIFont dr_PingFangSC_RegularWithSize:17];
             label.textAlignment = NSTextAlignmentCenter;
             if (component % 2 > 0) {
                 label.textColor = [DRUIWidgetUtil normalColor];
@@ -441,6 +441,7 @@
             [self.pickerView selectRow:year inComponent:0 animated:YES];
             [self.pickerView selectRow:self.selectedMonth.index + self.currentMonthList.count*kLunarPickerCentreRow inComponent:2 animated:YES];
             [self.pickerView selectRow:self.selectedDay-1 + self.selectedMonth.dayCount*kLunarPickerCentreRow inComponent:4 animated:YES];
+            [self.pickerView reloadAllComponents];
         });
     }
 }

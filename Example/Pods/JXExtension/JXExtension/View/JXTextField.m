@@ -29,6 +29,12 @@
 
 #pragma mark - Property method
 
+- (void)setPlaceholder:(NSString *)placeholder {
+    [super setPlaceholder:placeholder];
+    [self setPlaceholderFont:self.placeholderFont];
+    [self setPlaceholderColor:self.placeholderColor];
+}
+
 - (void)setMasksToBounds:(BOOL)masksToBounds {
     _masksToBounds = masksToBounds;
     self.layer.masksToBounds = masksToBounds;
@@ -41,12 +47,20 @@
 
 - (void)setPlaceholderColor:(UIColor *)placeholderColor {
     _placeholderColor = placeholderColor;
-    [self setValue:placeholderColor forKeyPath:@"_placeholderLabel.textColor"];
+    if (self.placeholder.length && placeholderColor) {
+        NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithDictionary:[self.attributedPlaceholder attributesAtIndex:0 effectiveRange:NULL]];
+        [attributes setObject:placeholderColor forKey:NSForegroundColorAttributeName];
+        self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder attributes:attributes];
+    }
 }
 
-- (void)setPlacehoderFont:(UIFont *)placehoderFont {
-    _placehoderFont = placehoderFont;
-    [self setValue:placehoderFont forKeyPath:@"_placeholderLabel.font"];
+- (void)setPlaceholderFont:(UIFont *)placeholderFont {
+    _placeholderFont = placeholderFont;
+    if (self.placeholder.length && placeholderFont) {
+        NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithDictionary:[self.attributedPlaceholder attributesAtIndex:0 effectiveRange:NULL]];
+        [attributes setObject:placeholderFont forKey:NSFontAttributeName];
+        self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder attributes:attributes];
+    }
 }
 
 @end

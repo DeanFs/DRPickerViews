@@ -90,7 +90,7 @@
 - (void)updateItemSubviewState {
     if (self.selected) {
        self.titleLabel.textColor = self.selectColor ?: [DRUIWidgetUtil highlightColor];
-       self.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:self.titleFontSize > 0 ? self.titleFontSize : 13];
+       self.titleLabel.font = [UIFont dr_PingFangSC_RegularWithSize:self.titleFontSize > 0 ? self.titleFontSize : 13];
    } else {
        self.titleLabel.textColor = self.normalColor ?: [DRUIWidgetUtil normalColor];
        self.titleLabel.font = [UIFont dr_PingFangSC_RegularWithSize:self.titleFontSize > 0 ? self.titleFontSize : 13];

@@ -12,6 +12,9 @@
 
 @property (nonatomic, strong) UILabel *placeHolderLabel;
 
+@property (nonatomic, assign) CGFloat maxHeight;
+@property (nonatomic, assign) CGFloat currentHeight;
+
 @end
 
 @implementation JXTextView
@@ -21,9 +24,17 @@
 
 #pragma mark - LifeCycle
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
+    [self setup];
 }
 
 - (void)layoutSubviews {
@@ -37,6 +48,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)setup {
+    self.enablesReturnKeyAutomatically = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
+}
+
 #pragma mark - Event Response
 
 - (void)textChanged:(NSNotification *)notification {
@@ -47,6 +63,18 @@
         [self.placeHolderLabel setAlpha:1];
     } else {
         [self.placeHolderLabel setAlpha:0];
+    }
+    
+    if (self.changeBlcok) {
+        CGFloat height = ceil([self.text boundingRectWithSize:CGSizeMake(self.bounds.size.width - 10, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : self.font} context:nil].size.height);
+        height = height + self.textContainerInset.top + self.textContainerInset.bottom;
+        if (self.currentHeight != height) {
+            self.currentHeight = height;
+            self.scrollEnabled = height > self.maxHeight && self.maxHeight > 0;
+            if (!self.scrollEnabled) {
+                self.changeBlcok(self.text, height);
+            }
+        }
     }
 }
 
@@ -107,6 +135,13 @@
         [self addConstraints:constraintArray];
     }
     return _placeHolderLabel;
+}
+
+- (void)setIsFixed:(BOOL)isFixed {
+    _isFixed = isFixed;
+    self.scrollEnabled = !isFixed;
+    self.scrollsToTop = !isFixed;
+    self.showsHorizontalScrollIndicator = !isFixed;
 }
 
 @end

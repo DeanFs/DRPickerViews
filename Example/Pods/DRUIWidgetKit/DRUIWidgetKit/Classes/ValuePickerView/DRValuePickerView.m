@@ -29,7 +29,7 @@
     }
     [self.pickerView reloadAllComponents];
     
-    NSInteger row = self.currentValue - self.minValue;
+    NSInteger row = (self.currentValue - self.minValue) / self.valueScale;
     if (row > 0) {
         if (self.isLoop) {
             [self.pickerView selectRow:row + (self.maxValue - self.minValue + 1) * kLoopMaxCount *.5   inComponent:0 animated:NO];

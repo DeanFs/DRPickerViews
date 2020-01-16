@@ -108,7 +108,7 @@
             if (self.getFontForSectionWithBlock != nil) {
                 label.font = self.getFontForSectionWithBlock(component/2);
             } else {
-                label.font = [UIFont dr_PingFangSC_MediumWithSize:17];
+                label.font = [UIFont dr_PingFangSC_RegularWithSize:17];
             }
             if (self.getTextAlignmentForSectionBlock != nil) {
                 label.textAlignment = self.getTextAlignmentForSectionBlock(component/2);

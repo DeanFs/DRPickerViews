@@ -23,7 +23,7 @@
 @property (nonatomic) IBInspectable CGFloat bottomInset;
 @property (nonatomic) IBInspectable CGFloat rightInset;
 @property (nonatomic) IBInspectable UIColor *placeholderColor;
-@property (nonatomic) UIFont  *placehoderFont;
+@property (nonatomic) UIFont *placeholderFont;
 
 @property (nonatomic, weak) IBOutlet id <JXKeyInputTextFieldDelegate> keyInputDelegate;
 

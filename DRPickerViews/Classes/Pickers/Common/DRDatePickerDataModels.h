@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     
     // 周选择器，周视图中使用
     // 入参：DRPickerDateOption
-    // 出参：NSDate
+    // 出参：DRPickerOneWeekPickedObj
     DRPickerTypeOneWeek,
     
     // 传入date，修改其小时分钟
@@ -721,6 +721,18 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
  选择的筛选条件
  */
 @property (nonatomic, strong) NSArray<NSNumber *> *filterOptionIndexs;
+
+@end
+
+
+@interface DRPickerOneWeekPickedObj : NSObject
+
+@property (nonatomic, strong) NSDate *firstDateInWeek;
+@property (nonatomic, strong) NSDate *lastDateInWeek;
+@property (nonatomic, assign) int weekIndexInMonth; // 这个月的第几周
+@property (nonatomic, strong) NSDate *month; // 当前所在月
+@property (nonatomic, assign) BOOL lastWeekInMonth; // 这个月的最后一周，仅这周内包含下个月日期时标记
+@property (copy, nonatomic) NSString *weekTitle; // 中文周次
 
 @end
 

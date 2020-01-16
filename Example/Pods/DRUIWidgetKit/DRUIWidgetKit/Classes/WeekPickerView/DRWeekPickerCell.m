@@ -35,6 +35,14 @@
     return _daysList;
 }
 
+- (NSString *)weekTitle {
+    if (!_weekTitle) {
+        NSArray *arr = @[@"一", @"二", @"三", @"四", @"五", @"六"];
+        _weekTitle = [NSString stringWithFormat:@"第%@周", [arr safeGetObjectWithIndex:self.weekIndexInMonth-1]];
+    }
+    return _weekTitle;
+}
+
 @end
 
 @interface DRWeekPickerCell ()
@@ -66,7 +74,7 @@
     if (!weekModel) {
         return;
     }
-    self.weekLabel.text = [NSString stringWithFormat:@"第%@周", [self.weekTitles safeGetObjectWithIndex:weekModel.weekIndexInMonth-1]];
+    self.weekLabel.text = weekModel.weekTitle;
     self.weekLabel.textColor = [DRUIWidgetUtil pickerUnSelectColor];
     if (selected) {
         self.weekLabel.textColor = [DRUIWidgetUtil normalColor];
@@ -104,13 +112,6 @@
             }
         }
     }
-}
-
-- (NSArray<NSString *> *)weekTitles {
-    if (!_weekTitles) {
-        _weekTitles = @[@"一", @"二", @"三", @"四", @"五", @"六"];
-    }
-    return _weekTitles;
 }
 
 @end

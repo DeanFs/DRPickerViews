@@ -20,11 +20,21 @@
 
 - (void)prepareToShow {
     DRPickerDateOption *opt = (DRPickerDateOption *)self.pickerOption;
-    [self.weekPickerView setupWithCurrentDate:opt.currentDate minDate:opt.minDate maxDate:opt.maxDate selectChangeBlock:nil];
+    [self.weekPickerView setupWithCurrentDate:opt.currentDate
+                                      minDate:opt.minDate
+                                      maxDate:opt.maxDate
+                            selectChangeBlock:nil];
 }
 
 - (id)pickedObject {
-    return self.weekPickerView.selectedDate;
+    DRPickerOneWeekPickedObj *obj = [DRPickerOneWeekPickedObj new];
+    obj.firstDateInWeek = self.weekPickerView.currentWeek.firstDateInWeek;
+    obj.lastDateInWeek = self.weekPickerView.currentWeek.lastDateInWeek;
+    obj.weekIndexInMonth = self.weekPickerView.currentWeek.weekIndexInMonth;
+    obj.month = self.weekPickerView.currentWeek.month;
+    obj.lastWeekInMonth = self.weekPickerView.currentWeek.lastWeekInMonth;
+    obj.weekTitle = self.weekPickerView.currentWeek.weekTitle;
+    return obj;
 }
 
 - (CGFloat)pickerViewHeight {

@@ -53,7 +53,7 @@
         if (self.selected) {
             self.titleLabel.layer.borderColor = [DRUIWidgetUtil highlightColor].CGColor;
             self.titleLabel.textColor = [DRUIWidgetUtil highlightColor];
-            self.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:self.fontSize];
+            self.titleLabel.font = [UIFont dr_PingFangSC_RegularWithSize:self.fontSize];
         } else {
             self.titleLabel.layer.borderColor = [DRUIWidgetUtil borderColor].CGColor;
             self.titleLabel.textColor = [DRUIWidgetUtil normalColor];

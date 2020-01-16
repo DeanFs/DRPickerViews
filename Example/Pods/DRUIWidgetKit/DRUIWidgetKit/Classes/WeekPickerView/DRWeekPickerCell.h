@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSDate *month; // 当前所在月
 @property (nonatomic, assign) int weekIndexInMonth; // 这个月的第几周
 @property (nonatomic, assign) BOOL lastWeekInMonth; // 这个月的最后一周，仅这周内包含下个月日期时标记
+@property (copy, nonatomic) NSString *weekTitle; // 中文周次
 
 // 与最大最小日期比较结果
 @property (nonatomic, assign) BOOL disableSelect; // 不可选的周，超出了最大最小限制

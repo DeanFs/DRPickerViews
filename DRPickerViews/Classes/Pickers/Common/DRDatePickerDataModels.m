@@ -302,6 +302,11 @@
 @end
 
 
+@implementation DRPickerOneWeekPickedObj
+
+@end
+
+
 @implementation DRPickerHMOnlyPickedObj
 
 - (void)setupWithPickedTime:(NSString *)pickedTime

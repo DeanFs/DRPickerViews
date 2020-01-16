@@ -12,7 +12,6 @@
 #import <DRCategories/UIView+DRExtension.h>
 #import <DRCategories/NSDate+DRExtension.h>
 #import "DRUIWidgetUtil.h"
-#import "DRWeekPickerCell.h"
 
 #define kRowCount 20001  // 能跨两百多年
 #define kCenterRow 10000
@@ -31,7 +30,7 @@
 @property (nonatomic, assign) NSInteger maxSeletableRow;
 @property (nonatomic, strong) NSCalendar *solarCalendar;
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, DRWeekPickerDateModel *> *weekDataSource;
-@property (nonatomic, copy) void (^onSelecteChangeBlock)(NSDate *date);
+@property (nonatomic, copy) void (^onSelecteChangeBlock)(DRWeekPickerDateModel *currentWeek);
 
 @end
 
@@ -40,7 +39,7 @@
 - (void)setupWithCurrentDate:(NSDate *)currentDate
                      minDate:(NSDate *)minDate
                      maxDate:(NSDate *)maxDate
-           selectChangeBlock:(void(^)(NSDate *date))selectChangeBlock {
+           selectChangeBlock:(void(^)(DRWeekPickerDateModel *currentWeek))selectChangeBlock {
     [DRUIWidgetUtil dateLegalCheckForCurrentDate:&currentDate minDate:&minDate maxDate:&maxDate];
     self.minOffset = [currentDate numberOfDaysDifferenceWithDate:minDate];
     self.maxOffset = [currentDate numberOfDaysDifferenceWithDate:maxDate];
@@ -94,8 +93,8 @@
         model = self.weekDataSource[@(self.maxSeletableRow)];
     }
     self.yearMonthLabel.text = [model.month dateStringFromFormatterString:@"yyyy/MM"];
-    _selectedDate = model.firstDateInWeek;
-    kDR_SAFE_BLOCK(self.onSelecteChangeBlock, model.firstDateInWeek);
+    _currentWeek = model;
+    kDR_SAFE_BLOCK(self.onSelecteChangeBlock, model);
     [pickerView reloadAllComponents];
 }
 
@@ -105,7 +104,7 @@
     NSInteger day = [self dayForDate:firstDateInWeek];
     NSInteger dayOffset = [currentDate numberOfDaysDifferenceWithDate:firstDateInWeek];
     DRWeekPickerDateModel *model = [DRWeekPickerDateModel new];
-    if (day < 23) {
+    if (day < 23) { // 本周一定不跨月
         for (NSInteger i=0; i<7; i++) {
             [model.daysList addObject:[NSString stringWithFormat:@"%02ld", day+i]];
         }
@@ -138,12 +137,33 @@
     }
     [self.weekDataSource setObject:model forKey:@(kCenterRow)];
     
+    if (![model.firstDateInWeek isEqualMonthToDate:model.lastDateInWeek]) { // 当前周跨月
+        if (model.lastWeekInMonth) { // 是本月最后一周
+            DRWeekPickerDateModel *nexWeekModel = [model copy];
+            nexWeekModel.weekIndexInMonth = 1;
+            nexWeekModel.month = [self dateByAddingDays:0 months:1 fromDate:model.month];
+            if (model.lastSelectableWeek) {
+                nexWeekModel.disableSelect = YES;
+            }
+            self.weekDataSource[@(kCenterRow+1)] = nexWeekModel;
+        } else { // 是本月第一周
+            DRWeekPickerDateModel *lastWeekModel = [model copy];
+            lastWeekModel.weekIndexInMonth = (int)[self.solarCalendar component:NSCalendarUnitWeekOfMonth fromDate:firstDateInWeek];
+            lastWeekModel.month = firstDateInWeek;
+            lastWeekModel.lastWeekInMonth = YES;
+            if (model.firstSelectableWeek) {
+                lastWeekModel.disableSelect = YES;
+            }
+            self.weekDataSource[@(kCenterRow-1)] = lastWeekModel;
+        }
+    }
+    
     for (NSInteger i=1; i< kFirstLoadCount; i++) {
         [self weekModelForRow:kCenterRow-i];
         [self weekModelForRow:kCenterRow+i];
     }
     [self loadMore];
-    _selectedDate = model.firstDateInWeek;
+    _currentWeek = model;
 }
 
 - (void)loadMore {
@@ -211,14 +231,14 @@
     model.weekIndexInMonth = (int)[self.solarCalendar component:NSCalendarUnitWeekOfMonth fromDate:model.lastDateInWeek];
     if (model.weekIndexInMonth == 1) {
         if (model.daysList.firstObject.integerValue > 7) { // 是本月第一个周，且包含上个月日期
-            DRWeekPickerDateModel *nexWeekModel = [model copy];
-            nexWeekModel.weekIndexInMonth = (int)[self.solarCalendar component:NSCalendarUnitWeekOfMonth fromDate:firstDateInWeek];
-            nexWeekModel.month = firstDateInWeek;
-            nexWeekModel.lastWeekInMonth = YES;
+            DRWeekPickerDateModel *lastWeekModel = [model copy];
+            lastWeekModel.weekIndexInMonth = (int)[self.solarCalendar component:NSCalendarUnitWeekOfMonth fromDate:firstDateInWeek];
+            lastWeekModel.month = firstDateInWeek;
+            lastWeekModel.lastWeekInMonth = YES;
             if (model.firstSelectableWeek) {
-                nexWeekModel.disableSelect = YES;
+                lastWeekModel.disableSelect = YES;
             }
-            self.weekDataSource[@(row-1)] = nexWeekModel;
+            self.weekDataSource[@(row-1)] = lastWeekModel;
         }
     }
     return model;
@@ -265,7 +285,6 @@
     model.weekIndexInMonth = (int)[self.solarCalendar component:NSCalendarUnitWeekOfMonth fromDate:firstDateInWeek];
     if (model.weekIndexInMonth > 4) {
         if (model.daysList.lastObject.integerValue < 7) { // 是本月最后一个周，且包含下个月日期
-            model.lastWeekInMonth = YES;
             DRWeekPickerDateModel *nexWeekModel = [model copy];
             nexWeekModel.weekIndexInMonth = 1;
             nexWeekModel.month = [self dateByAddingDays:0 months:1 fromDate:model.month];
@@ -273,6 +292,7 @@
                 nexWeekModel.disableSelect = YES;
             }
             self.weekDataSource[@(row+1)] = nexWeekModel;
+            model.lastWeekInMonth = YES;
         }
     }
     return model;

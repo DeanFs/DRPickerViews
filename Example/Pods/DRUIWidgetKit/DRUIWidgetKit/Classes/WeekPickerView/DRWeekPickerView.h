@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DRWeekPickerCell.h"
 
 IB_DESIGNABLE
 @interface DRWeekPickerView : UIView
 
-@property (nonatomic, strong, readonly) NSDate *selectedDate;
+@property (nonatomic, strong, readonly) DRWeekPickerDateModel *currentWeek;
 
 - (void)setupWithCurrentDate:(NSDate *)currentDate
                      minDate:(NSDate *)minDate
                      maxDate:(NSDate *)maxDate
-           selectChangeBlock:(void(^)(NSDate *date))selectChangeBlock;
+           selectChangeBlock:(void(^)(DRWeekPickerDateModel *currentWeek))selectChangeBlock;
 
 @end
