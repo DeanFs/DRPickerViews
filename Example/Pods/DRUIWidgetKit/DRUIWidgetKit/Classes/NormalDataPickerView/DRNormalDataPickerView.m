@@ -20,7 +20,7 @@
 @property (weak, nonatomic) UIPickerView *pickerView;
 @property (nonatomic, assign) BOOL didDrawRect;
 @property (nonatomic, assign) BOOL didChangeSelect;
-
+@property (assign, nonatomic) BOOL reloading;
 
 @end
 
@@ -34,11 +34,11 @@
 }
 
 - (void)reloadData {
+    self.reloading = YES;
     if (self.didDrawRect) {
         if (self.didChangeSelect) {
             [self setupPickerView];
         } else {
-            [self.pickerView reloadAllComponents];
             for (NSInteger i=0; i<self.dataSource.count; i++) {
                 NSArray *arr = self.dataSource[i];
                 if (![arr isKindOfClass:[NSArray class]]) {
@@ -46,8 +46,12 @@
                     return;
                 }
                 NSInteger row = [self.pickerView selectedRowInComponent:i*2];
-                if (row > arr.count - 1) {
-                    row = arr.count -1;
+                NSInteger maxIndex = arr.count - 1;
+                if (row > maxIndex) {
+                    row = maxIndex;
+                }
+                if (row < 0) {
+                    row = 0;
                 }
                 [self.pickerView selectRow:row inComponent:i*2 animated:NO];
                 [self pickerView:self.pickerView didSelectRow:row inComponent:i*2];
@@ -55,6 +59,7 @@
             [self.pickerView reloadAllComponents];
         }
     }
+    self.reloading = NO;
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -106,7 +111,7 @@
             label.textAlignment = NSTextAlignmentCenter;
         } else {
             if (self.getFontForSectionWithBlock != nil) {
-                label.font = self.getFontForSectionWithBlock(component/2);
+                label.font = self.getFontForSectionWithBlock(component/2, row);
             } else {
                 label.font = [UIFont dr_PingFangSC_RegularWithSize:17];
             }
@@ -151,11 +156,16 @@
     NSArray *sectionList = self.dataSource[section];
     NSInteger index = row % sectionList.count;
     NSString *selectedString = sectionList[index];
+    if (selectedString == nil) {
+        selectedString = @"";
+    }
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.currentSelectedStrings];
     [arr replaceObjectAtIndex:section withObject:selectedString];
     _currentSelectedStrings = arr;
-    kDR_SAFE_BLOCK(self.onSelectedChangeBlock, section, index, selectedString);
-
+    if (!self.reloading) {
+        kDR_SAFE_BLOCK(self.onSelectedChangeBlock, section, index, selectedString);
+    }
+    
     BOOL isLoop = NO;
     if (self.getIsLoopForSectionBlock != nil) {
         isLoop = self.getIsLoopForSectionBlock(section);

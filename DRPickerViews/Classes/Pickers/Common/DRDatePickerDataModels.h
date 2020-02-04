@@ -118,6 +118,11 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     // 入参：DRPickerMultipleColumnOption
     // 出参：DRPickerMultipleColumnPickedObj
     DRPickerTypeMultipleColumn,
+    
+    // 时间选择“至今”
+    // 入参：DRPickerDateOption
+    // 出参：NSDate
+    DRPickerTypeDateToNow,
 };
 
 @class DRBaseAlertPicker;

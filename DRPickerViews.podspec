@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DRPickerViews'
-  s.version          = '0.3.0'
+  s.version          = '0.3.1'
   s.summary          = '自定义选择器集合'
 
 # This description is used to generate tags and improve search results.
@@ -125,6 +125,11 @@ TODO: Add long description of the pod here.
     
     ss.subspec 'MultipleColumnPicker' do |sss|
         sss.source_files = 'DRPickerViews/Classes/Pickers/MultipleColumnPicker/*.{h,m}'
+        sss.dependency 'DRPickerViews/Pickers/Common'
+    end
+    
+    ss.subspec 'DateToNowPicker' do |sss|
+        sss.source_files = 'DRPickerViews/Classes/Pickers/DateToNowPicker/*.{h,m}'
         sss.dependency 'DRPickerViews/Pickers/Common'
     end
   end

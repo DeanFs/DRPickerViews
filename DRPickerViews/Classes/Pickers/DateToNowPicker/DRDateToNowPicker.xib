@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DRDateToNowPicker">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5t-dh-9rO" customClass="DRPickerTopBar">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="xBe-7C-XTD"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzc-08-XbS" customClass="DRNormalDataPickerView">
+                    <rect key="frame" x="0.0" y="56" width="414" height="204"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="k5t-dh-9rO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DR7-kj-FZN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="k5t-dh-9rO" secondAttribute="trailing" id="RMr-p6-CJk"/>
+                <constraint firstItem="fzc-08-XbS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bkb-1b-iyG"/>
+                <constraint firstItem="k5t-dh-9rO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hmp-QM-g62"/>
+                <constraint firstItem="fzc-08-XbS" firstAttribute="top" secondItem="k5t-dh-9rO" secondAttribute="bottom" id="jlq-i4-ciS"/>
+                <constraint firstAttribute="bottom" secondItem="fzc-08-XbS" secondAttribute="bottom" id="oEQ-Wt-Cgx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fzc-08-XbS" secondAttribute="trailing" id="six-EU-Niq"/>
+                <constraint firstItem="fzc-08-XbS" firstAttribute="top" secondItem="k5t-dh-9rO" secondAttribute="bottom" id="zwi-v8-t7F"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="picker" destination="fzc-08-XbS" id="Av7-zn-MXl"/>
+                <outlet property="pickerView" destination="fzc-08-XbS" id="kSe-tm-A8e"/>
+                <outlet property="topBar" destination="k5t-dh-9rO" id="vI3-TI-Jw2"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="153"/>
+        </view>
+    </objects>
+</document>

@@ -59,7 +59,7 @@
     self.pickerView.getSeparateTextBeforeSectionBlock = ^NSString *(NSInteger section) {
         return @"";
     };
-    self.pickerView.getFontForSectionWithBlock = ^UIFont *(NSInteger section) {
+    self.pickerView.getFontForSectionWithBlock = ^UIFont *(NSInteger section, NSInteger row) {
         return [UIFont dr_PingFangSC_RegularWithSize:20];
     };
     kDRWeakSelf

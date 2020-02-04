@@ -1,6 +1,6 @@
 {
   "name": "DRPickerViews",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "summary": "自定义选择器集合",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/DeanFs/DRPickerViews",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/DeanFs/DRPickerViews.git",
-    "tag": "0.3.0"
+    "tag": "0.3.1"
   },
   "platforms": {
     "ios": "9.0"
@@ -200,6 +200,15 @@
         {
           "name": "MultipleColumnPicker",
           "source_files": "DRPickerViews/Classes/Pickers/MultipleColumnPicker/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/Pickers/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "DateToNowPicker",
+          "source_files": "DRPickerViews/Classes/Pickers/DateToNowPicker/*.{h,m}",
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
 

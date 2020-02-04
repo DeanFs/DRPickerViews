@@ -25,6 +25,7 @@
 #import "DRClassTermPicker.h"
 #import "DRLinkagePicker.h"
 #import "DRMultipleColumnPicker.h"
+#import "DRDateToNowPicker.h"
 
 @implementation DRPickerFactory
 
@@ -182,6 +183,12 @@
             [DRMultipleColumnPicker showPickerViewWithOption:pickerOption
                                                   setupBlock:nil
                                                pickDoneBlock:innerPickDoneBlock];
+        } break;
+            
+        case DRPickerTypeDateToNow: {
+            [DRDateToNowPicker showPickerViewWithOption:pickerOption
+                                             setupBlock:nil
+                                          pickDoneBlock:innerPickDoneBlock];
         } break;
             
         default:

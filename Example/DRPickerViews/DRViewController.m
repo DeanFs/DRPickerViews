@@ -184,6 +184,10 @@
             ((DRPickerMultipleColumnOption *)opt).tipText = @"测试一下";
         } break;
             
+        case DRPickerTypeDateToNow: {
+            opt = [DRPickerDateOption optionWithTitle:@"选择日期" currentDate:[NSDate dateWithString:@"20191212" dateFormat:@"yyyyMMdd"] minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
+        } break;
+            
         default:
             break;
     }
@@ -196,13 +200,13 @@
     };
     opt.autoDismissWhenPicked = NO;
     
-    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDRScreenWidth - 40, 70)];
-    customView.backgroundColor = [UIColor whiteColor];
-    customView.userInteractionEnabled = YES;
-    opt.customBottomView = customView;
-    [customView bk_whenTapped:^{
-        [opt.pickerView dismiss];
-    }];
+//    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDRScreenWidth - 40, 70)];
+//    customView.backgroundColor = [UIColor whiteColor];
+//    customView.userInteractionEnabled = YES;
+//    opt.customBottomView = customView;
+//    [customView bk_whenTapped:^{
+//        [opt.pickerView dismiss];
+//    }];
     
     [DRPickerFactory showPickerViewWithType:type pickerOption:opt pickDoneBlock:^(DRBaseAlertPicker * _Nonnull picker, id  _Nonnull pickedObject) {
         kDR_LOG(@"%@", pickedObject);

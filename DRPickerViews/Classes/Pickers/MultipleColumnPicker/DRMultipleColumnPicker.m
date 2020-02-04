@@ -15,9 +15,8 @@
 #import <DRUIWidgetKit/DRSectionTitleView.h>
 #import <DRUIWidgetKit/DRNormalDataPickerView.h>
 
-@interface DRMultipleColumnPicker (){
-    
-}
+@interface DRMultipleColumnPicker ()
+
 @property (weak, nonatomic) IBOutlet DRNormalDataPickerView *pickerView;
 @property (weak, nonatomic) IBOutlet DRSectionTitleView *tipView;
 
@@ -50,7 +49,7 @@
     self.pickerView.getSeparateTextBeforeSectionBlock = ^NSString *(NSInteger section) {
         return @"";
     };
-    self.pickerView.getFontForSectionWithBlock = ^UIFont *(NSInteger section) {
+    self.pickerView.getFontForSectionWithBlock = ^UIFont *(NSInteger section, NSInteger row) {
         return [UIFont dr_PingFangSC_RegularWithSize:20];
     };
     self.pickerView.onSelectedChangeBlock = ^(NSInteger section, NSInteger index, NSString *selectedString) {

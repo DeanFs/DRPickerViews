@@ -11,7 +11,6 @@
 #import <DRCategories/UIFont+DRExtension.h>
 #import <DRCategories/UIView+DRExtension.h>
 #import <DRCategories/NSArray+DRExtension.h>
-#import <DRUIWidgetKit/DRUIWidgetUtil.h>
 #import <DRUIWidgetKit/DRSectionTitleView.h>
 #import <DRUIWidgetKit/DRNormalDataPickerView.h>
 
@@ -63,7 +62,7 @@
     } else {
         self.pickerView.currentSelectedStrings = @[[opt.stringOptions safeGetObjectWithIndex:opt.currentStringIndex]];
     }
-    self.pickerView.getFontForSectionWithBlock = ^UIFont *(NSInteger section) {
+    self.pickerView.getFontForSectionWithBlock = ^UIFont *(NSInteger section, NSInteger row) {
         if (dataSouce.count > 1) {
             if (section == 0 || section == 2) {
                 return [UIFont dr_PingFangSC_RegularWithSize:18];
