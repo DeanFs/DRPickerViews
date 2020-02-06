@@ -32,158 +32,158 @@ PODS:
     - pop
     - RegExCategories
   - DRMacroDefines (0.1.2)
-  - DRPickerViews (0.3.1):
+  - DRPickerViews (0.3.2):
     - DRCategories
     - DRMacroDefines
-    - DRPickerViews/Factory (= 0.3.1)
-    - DRPickerViews/Pickers (= 0.3.1)
+    - DRPickerViews/Factory (= 0.3.2)
+    - DRPickerViews/Pickers (= 0.3.2)
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Factory (0.3.1):
+  - DRPickerViews/Factory (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers (0.3.1):
+  - DRPickerViews/Pickers (0.3.2):
     - DRCategories
     - DRMacroDefines
-    - DRPickerViews/Pickers/AheadTimePicker (= 0.3.1)
-    - DRPickerViews/Pickers/CityPicker (= 0.3.1)
-    - DRPickerViews/Pickers/ClassDurationPicker (= 0.3.1)
-    - DRPickerViews/Pickers/ClassTableWeekPicker (= 0.3.1)
-    - DRPickerViews/Pickers/ClassTermPicker (= 0.3.1)
-    - DRPickerViews/Pickers/ClassTimeRemindPicker (= 0.3.1)
-    - DRPickerViews/Pickers/Common (= 0.3.1)
-    - DRPickerViews/Pickers/DateToNowPicker (= 0.3.1)
-    - DRPickerViews/Pickers/HourMinutePicker (= 0.3.1)
-    - DRPickerViews/Pickers/LinkagePicker (= 0.3.1)
-    - DRPickerViews/Pickers/MultipleColumnPicker (= 0.3.1)
-    - DRPickerViews/Pickers/OneWeekPicker (= 0.3.1)
-    - DRPickerViews/Pickers/OptionCardPicker (= 0.3.1)
-    - DRPickerViews/Pickers/StringOptionPicker (= 0.3.1)
-    - DRPickerViews/Pickers/TimeConsumingPicker (= 0.3.1)
-    - DRPickerViews/Pickers/ValueSelectPicker (= 0.3.1)
-    - DRPickerViews/Pickers/WithLunarPicker (= 0.3.1)
-    - DRPickerViews/Pickers/YearMonthDayPicker (= 0.3.1)
-    - DRPickerViews/Pickers/YearMonthPicker (= 0.3.1)
-    - DRPickerViews/Pickers/YearOrYearMonthPicker (= 0.3.1)
+    - DRPickerViews/Pickers/AheadTimePicker (= 0.3.2)
+    - DRPickerViews/Pickers/CityPicker (= 0.3.2)
+    - DRPickerViews/Pickers/ClassDurationPicker (= 0.3.2)
+    - DRPickerViews/Pickers/ClassTableWeekPicker (= 0.3.2)
+    - DRPickerViews/Pickers/ClassTermPicker (= 0.3.2)
+    - DRPickerViews/Pickers/ClassTimeRemindPicker (= 0.3.2)
+    - DRPickerViews/Pickers/Common (= 0.3.2)
+    - DRPickerViews/Pickers/DateToNowPicker (= 0.3.2)
+    - DRPickerViews/Pickers/HourMinutePicker (= 0.3.2)
+    - DRPickerViews/Pickers/LinkagePicker (= 0.3.2)
+    - DRPickerViews/Pickers/MultipleColumnPicker (= 0.3.2)
+    - DRPickerViews/Pickers/OneWeekPicker (= 0.3.2)
+    - DRPickerViews/Pickers/OptionCardPicker (= 0.3.2)
+    - DRPickerViews/Pickers/StringOptionPicker (= 0.3.2)
+    - DRPickerViews/Pickers/TimeConsumingPicker (= 0.3.2)
+    - DRPickerViews/Pickers/ValueSelectPicker (= 0.3.2)
+    - DRPickerViews/Pickers/WithLunarPicker (= 0.3.2)
+    - DRPickerViews/Pickers/YearMonthDayPicker (= 0.3.2)
+    - DRPickerViews/Pickers/YearMonthPicker (= 0.3.2)
+    - DRPickerViews/Pickers/YearOrYearMonthPicker (= 0.3.2)
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/AheadTimePicker (0.3.1):
-    - DRCategories
-    - DRMacroDefines
-    - DRPickerViews/Pickers/Common
-    - DRUIWidgetKit
-    - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/CityPicker (0.3.1):
+  - DRPickerViews/Pickers/AheadTimePicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/ClassDurationPicker (0.3.1):
+  - DRPickerViews/Pickers/CityPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/ClassTableWeekPicker (0.3.1):
+  - DRPickerViews/Pickers/ClassDurationPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/ClassTermPicker (0.3.1):
+  - DRPickerViews/Pickers/ClassTableWeekPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/ClassTimeRemindPicker (0.3.1):
+  - DRPickerViews/Pickers/ClassTermPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/Common (0.3.1):
-    - DRCategories
-    - DRMacroDefines
-    - DRUIWidgetKit
-    - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/DateToNowPicker (0.3.1):
+  - DRPickerViews/Pickers/ClassTimeRemindPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/HourMinutePicker (0.3.1):
+  - DRPickerViews/Pickers/Common (0.3.2):
+    - DRCategories
+    - DRMacroDefines
+    - DRUIWidgetKit
+    - HexColors (= 4.0.0)
+  - DRPickerViews/Pickers/DateToNowPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/LinkagePicker (0.3.1):
+  - DRPickerViews/Pickers/HourMinutePicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/MultipleColumnPicker (0.3.1):
+  - DRPickerViews/Pickers/LinkagePicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/OneWeekPicker (0.3.1):
+  - DRPickerViews/Pickers/MultipleColumnPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/OptionCardPicker (0.3.1):
+  - DRPickerViews/Pickers/OneWeekPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/StringOptionPicker (0.3.1):
+  - DRPickerViews/Pickers/OptionCardPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/TimeConsumingPicker (0.3.1):
+  - DRPickerViews/Pickers/StringOptionPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/ValueSelectPicker (0.3.1):
+  - DRPickerViews/Pickers/TimeConsumingPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/WithLunarPicker (0.3.1):
+  - DRPickerViews/Pickers/ValueSelectPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/YearMonthDayPicker (0.3.1):
+  - DRPickerViews/Pickers/WithLunarPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/YearMonthPicker (0.3.1):
+  - DRPickerViews/Pickers/YearMonthDayPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
     - DRUIWidgetKit
     - HexColors (= 4.0.0)
-  - DRPickerViews/Pickers/YearOrYearMonthPicker (0.3.1):
+  - DRPickerViews/Pickers/YearMonthPicker (0.3.2):
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/Pickers/Common
+    - DRUIWidgetKit
+    - HexColors (= 4.0.0)
+  - DRPickerViews/Pickers/YearOrYearMonthPicker (0.3.2):
     - DRCategories
     - DRMacroDefines
     - DRPickerViews/Pickers/Common
@@ -480,7 +480,7 @@ SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   DRCategories: 5ce7e79748e3cbfd8813f34431c36f44eed0fd09
   DRMacroDefines: 58aa271bc1c4170fa09f4f33dcad18fc4f21a57e
-  DRPickerViews: 44949c4d8102c3304f67b5d037895b5efeeed46d
+  DRPickerViews: 8aa6652e01f9868e4960663c66cff6dae883494b
   DRSandboxManager: dc4c6a07a6ab2b0f01aac05ab2d1c128587e91a7
   DRToastView: 3e7a5d8c66640ca6c618910c926425c9c0ab3954
   DRUIWidgetKit: 48134b0c926cf5d135dc96c490def432bdf8e39f

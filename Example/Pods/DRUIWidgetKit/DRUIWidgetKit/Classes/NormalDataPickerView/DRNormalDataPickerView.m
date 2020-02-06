@@ -20,7 +20,7 @@
 @property (weak, nonatomic) UIPickerView *pickerView;
 @property (nonatomic, assign) BOOL didDrawRect;
 @property (nonatomic, assign) BOOL didChangeSelect;
-@property (assign, nonatomic) BOOL reloading;
+@property (assign, nonatomic) BOOL reloading; // 用于避免死循环
 
 @end
 
@@ -39,6 +39,7 @@
         if (self.didChangeSelect) {
             [self setupPickerView];
         } else {
+            [self.pickerView reloadAllComponents];
             for (NSInteger i=0; i<self.dataSource.count; i++) {
                 NSArray *arr = self.dataSource[i];
                 if (![arr isKindOfClass:[NSArray class]]) {
@@ -122,12 +123,12 @@
             }
         }
     }
-
+    
     label.textColor = [DRUIWidgetUtil pickerUnSelectColor];
     if (row == [pickerView selectedRowInComponent:component]) {
         label.textColor = [DRUIWidgetUtil normalColor];
     }
-
+    
     if (component % 2 > 0) {
         if (self.getSeparateTextBeforeSectionBlock != nil) {
             label.text = self.getSeparateTextBeforeSectionBlock((component+1)/2);
@@ -154,15 +155,22 @@
     }
     NSInteger section = component / 2;
     NSArray *sectionList = self.dataSource[section];
-    NSInteger index = row % sectionList.count;
-    NSString *selectedString = sectionList[index];
-    if (selectedString == nil) {
-        selectedString = @"";
+    NSString *selectedString = @"";
+    NSInteger index = -1;
+    if (sectionList.count > 0) {
+        index = row % sectionList.count;
+        selectedString = sectionList[index];
+        if (selectedString == nil) {
+            selectedString = @"";
+        }
     }
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.currentSelectedStrings];
     [arr replaceObjectAtIndex:section withObject:selectedString];
     _currentSelectedStrings = arr;
     if (!self.reloading) {
+        if (index < 0) {
+            index = 0;
+        }
         kDR_SAFE_BLOCK(self.onSelectedChangeBlock, section, index, selectedString);
     }
     
@@ -170,7 +178,7 @@
     if (self.getIsLoopForSectionBlock != nil) {
         isLoop = self.getIsLoopForSectionBlock(section);
     }
-    if (isLoop) {
+    if (isLoop && index >= 0) {
         index += (kLoopCentreRow * sectionList.count);
         [self.pickerView selectRow:index inComponent:component animated:NO];
     }
@@ -201,7 +209,7 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-
+    
     if (CGRectEqualToRect(rect, CGRectZero)) {
         return;
     }
@@ -220,7 +228,7 @@
         pickerView.backgroundColor = [UIColor whiteColor];
         pickerView.delegate = self;
         pickerView.dataSource = self;
-
+        
         self.pickerView = pickerView;
         [self addSubview:self.pickerView];
         [self.pickerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -234,7 +242,7 @@
         kDR_LOG(@"传入数据有误");
         return;
     }
-
+    
     NSMutableArray<NSString *> *currentSelectedStrings = [NSMutableArray array];
     NSMutableArray<NSNumber *> *rows = [NSMutableArray array];
     for (NSInteger i=0; i<self.dataSource.count; i++) {
@@ -243,14 +251,14 @@
             kDR_LOG(@"传入数据有误");
             return;
         }
-
+        
         NSString *current = [self.currentSelectedStrings safeGetObjectWithIndex:i];
         if (![current isKindOfClass:[NSString class]] || current.length == 0) {
             [currentSelectedStrings addObject:arr.firstObject];
             [rows addObject:@(0)];
             continue;
         }
-
+        
         BOOL find = NO;
         for (NSInteger j=0; j<arr.count; j++) {
             NSString *string = arr[j];
@@ -271,12 +279,12 @@
     }
     _currentSelectedStrings = currentSelectedStrings;
     [self.pickerView reloadAllComponents];
-
+    
     for (NSInteger i=0; i<rows.count; i++) {
         NSInteger index = rows[i].integerValue;
         [self.pickerView selectRow:index inComponent:i*2 animated:NO];
     }
-
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.pickerView reloadAllComponents];
     });
@@ -285,7 +293,7 @@
 
 - (void)setCurrentSelectedStrings:(NSArray<NSString *> *)currentSelectedStrings {
     _currentSelectedStrings = currentSelectedStrings;
-
+    
     if (self.didDrawRect) {
         self.didChangeSelect = YES;
     }

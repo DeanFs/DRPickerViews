@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSArray<NSString *> *months;
 @property (strong, nonatomic) NSArray<NSString *> *days;
 @property (assign, nonatomic) NSInteger maxYearIndex;
+@property (assign, nonatomic) BOOL isToNow;
 
 @end
 
@@ -75,15 +76,22 @@
     };
     self.pickerView.onSelectedChangeBlock = ^(NSInteger section, NSInteger index, NSString *selectedString) {
         if (section < 2) {
-            if (section == 0 && index == weakSelf.maxYearIndex) {
-                weakSelf.pickerView.dataSource = @[weakSelf.years, @[], @[]];
-                [weakSelf.pickerView reloadData];
-                return;
+            if (section == 0) {
+                if (index == weakSelf.maxYearIndex) {
+                    weakSelf.pickerView.dataSource = @[weakSelf.years, @[], @[]];
+                    [weakSelf.pickerView reloadData];
+                    weakSelf.isToNow = YES;
+                    return;
+                } else {
+                    weakSelf.isToNow = NO;
+                }
             }
-            [weakSelf setupDaysWithYear:weakSelf.pickerView.currentSelectedStrings[0].intValue
-                                  month:weakSelf.pickerView.currentSelectedStrings[1].intValue];
-            weakSelf.pickerView.dataSource = @[weakSelf.years, weakSelf.months, weakSelf.days];
-            [weakSelf.pickerView reloadData];
+            if (!weakSelf.isToNow) {
+                [weakSelf setupDaysWithYear:weakSelf.pickerView.currentSelectedStrings[0].intValue
+                                      month:weakSelf.pickerView.currentSelectedStrings[1].intValue];
+                weakSelf.pickerView.dataSource = @[weakSelf.years, weakSelf.months, weakSelf.days];
+                [weakSelf.pickerView reloadData];
+            }
         }
     };
 }
