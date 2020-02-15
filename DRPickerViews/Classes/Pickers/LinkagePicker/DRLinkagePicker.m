@@ -23,10 +23,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipViewTop;
 
-@property (assign, nonatomic) NSUInteger currentUnitIndex;
-
-@property (assign, nonatomic) NSUInteger currentValueIndex;
-
 @end
 
 
@@ -48,13 +44,9 @@
         return;
     }
     //数据构建
-    self.currentUnitIndex = [opt.unitArray indexOfObject:opt.currentSelectUnit];
-    
-    NSArray *currentQuantityArray = [opt.optionArray safeGetObjectWithIndex:self.currentUnitIndex];
+    NSInteger index = [opt.unitArray indexOfObject:opt.currentSelectUnit];
+    NSArray *currentQuantityArray = [opt.optionArray safeGetObjectWithIndex:index];
     self.pickerView.dataSource = @[currentQuantityArray,opt.unitArray];
-    
-    self.currentValueIndex = [currentQuantityArray indexOfObject:opt.currentSelectValue];
-   
     self.pickerView.currentSelectedStrings = @[opt.currentSelectValue,opt.currentSelectUnit];
     self.pickerView.getSeparateTextBeforeSectionBlock = ^NSString *(NSInteger section) {
         return @"";
@@ -65,15 +57,8 @@
     kDRWeakSelf
     self.pickerView.onSelectedChangeBlock = ^(NSInteger section, NSInteger index, NSString *selectedString) {
         if (section == 1) {
-            if (index != weakSelf.currentUnitIndex) {
-                weakSelf.currentUnitIndex = index;
-                opt.currentSelectUnit = [opt.unitArray safeGetObjectWithIndex:weakSelf.currentUnitIndex];
-                weakSelf.pickerView.dataSource = @[[opt.optionArray safeGetObjectWithIndex:index],opt.unitArray];
-                [weakSelf.pickerView reloadData];
-            }
-        }else{
-            opt.currentSelectValue = selectedString;
-            weakSelf.currentValueIndex = index;
+            weakSelf.pickerView.dataSource = @[[opt.optionArray safeGetObjectWithIndex:index], opt.unitArray];
+            [weakSelf.pickerView reloadData];
         }
     };
     self.pickerView.getWidthForSectionWithBlock = ^CGFloat(NSInteger section) {
@@ -82,19 +67,22 @@
     self.pickerView.getTextAlignmentForSectionBlock = ^NSTextAlignment(NSInteger section) {
         return NSTextAlignmentCenter;
     };
-
+    
     if (opt.tipText.length > 0) {
         self.tipView.title = opt.tipText;
     }
 }
 
 - (id)pickedObject {
-    DRPickerLinkageOption *opt = (DRPickerLinkageOption *)self.pickerOption;
     DRPickerLinkagePickedObj *obj = [DRPickerLinkagePickedObj new];
-    obj.currentSelectUnit = opt.currentSelectUnit;
-    obj.selectUnitIndex = self.currentUnitIndex;
-    obj.currentSelectValue = opt.currentSelectValue;
-    obj.selectValueIndex = self.currentValueIndex;
+    [self.pickerView getSelectedValueForSection:0 withBlock:^(NSInteger index, NSString *selectedString) {
+        obj.selectValueIndex = index;
+        obj.currentSelectValue = selectedString;
+    }];
+    [self.pickerView getSelectedValueForSection:1 withBlock:^(NSInteger index, NSString *selectedString) {
+        obj.currentSelectUnit = selectedString;
+        obj.selectUnitIndex = index;
+    }];
     return obj;
 }
 

@@ -8,7 +8,6 @@
 
 #import "DRStringOptionsPicker.h"
 #import <DRMacroDefines/DRMacroDefines.h>
-#import <DRCategories/UIFont+DRExtension.h>
 #import <DRCategories/UIView+DRExtension.h>
 #import <DRCategories/NSArray+DRExtension.h>
 #import <DRUIWidgetKit/DRSectionTitleView.h>
@@ -42,8 +41,15 @@
     if (opt.stringOptions.count == 0) {
         return;
     }
-    NSMutableArray *dataSouce = [NSMutableArray array];
-    [dataSouce addObject:opt.stringOptions];
+    NSString *value = opt.currentStringOption;
+    if (value.length == 0) {
+        value = [opt.stringOptions safeGetObjectWithIndex:opt.currentStringIndex];
+    }
+    if (value == nil) {
+        value = @"";
+    }
+    NSMutableArray *stringValues = [NSMutableArray arrayWithObject:value];
+    NSMutableArray *dataSouce = [NSMutableArray arrayWithObject:opt.stringOptions];
     CGFloat valueWidth = kDRScreenWidth - 2*[self horizontalPadding];
     if (opt.valueUnit.length > 0 || opt.prefixUnit.length > 0) {
         valueWidth = 0;
@@ -53,22 +59,24 @@
                 valueWidth = width;
             }
         }
-        [dataSouce insertObject:@[opt.prefixUnit] atIndex:0];
-        [dataSouce addObject:@[opt.valueUnit]];
+        if (opt.prefixUnit.length > 0) {
+            [dataSouce insertObject:@[opt.prefixUnit] atIndex:0];
+            [stringValues insertObject:opt.prefixUnit atIndex:0];
+        }
+        if (opt.valueUnit.length > 0) {
+            [dataSouce addObject:@[opt.valueUnit]];
+            [stringValues addObject:opt.valueUnit];
+        }
     }
     self.pickerView.dataSource = dataSouce;
-    if (opt.currentStringOption.length > 0) {
-        self.pickerView.currentSelectedStrings = @[opt.currentStringOption];
-    } else {
-        self.pickerView.currentSelectedStrings = @[[opt.stringOptions safeGetObjectWithIndex:opt.currentStringIndex]];
-    }
+    
     self.pickerView.getFontForSectionWithBlock = ^UIFont *(NSInteger section, NSInteger row) {
         if (dataSouce.count > 1) {
             if (section == 0 || section == 2) {
-                return [UIFont dr_PingFangSC_RegularWithSize:18];
+                return opt.unitFont;
             }
         }
-        return [UIFont dr_PingFangSC_RegularWithSize:20];
+        return opt.valueFont;
     };
     self.pickerView.getWidthForSectionWithBlock = ^CGFloat(NSInteger section) {
         CGFloat wholeWidth = kDRScreenWidth - 2*[weakSelf horizontalPadding];
@@ -93,7 +101,7 @@
         }
         return NSTextAlignmentCenter;
     };
-
+    
     if (opt.tipText.length > 0) {
         self.tipView.title = opt.tipText;
     }

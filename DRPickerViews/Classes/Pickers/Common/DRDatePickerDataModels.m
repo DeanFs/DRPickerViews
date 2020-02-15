@@ -8,6 +8,7 @@
 
 #import "DRDatePickerDataModels.h"
 #import <DRMacroDefines/DRMacroDefines.h>
+#import <DRCategories/UIFont+DRExtension.h>
 
 #define kDefaultTimeScale 5
 #define kDefaultMinDuration 30
@@ -189,6 +190,8 @@
     if (self) {
         _valueUnit = @"";
         _prefixUnit = @"";
+        _valueFont = [UIFont dr_PingFangSC_RegularWithSize:20];
+        _unitFont = [UIFont dr_PingFangSC_RegularWithSize:18];
     }
     return self;
 }

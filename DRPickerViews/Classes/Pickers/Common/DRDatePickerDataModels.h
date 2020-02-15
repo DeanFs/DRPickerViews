@@ -477,6 +477,8 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 @property (nonatomic, strong) NSArray<NSString *> *stringOptions;
 @property (nonatomic, copy) NSString *currentStringOption;
 @property (nonatomic, assign) NSInteger currentStringIndex;
+@property (strong, nonatomic) UIFont *valueFont;
+@property (strong, nonatomic) UIFont *unitFont;
 
 /**
  显示单位
