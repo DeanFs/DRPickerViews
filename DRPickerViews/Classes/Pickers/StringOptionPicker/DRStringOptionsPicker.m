@@ -69,6 +69,7 @@
         }
     }
     self.pickerView.dataSource = dataSouce;
+    self.pickerView.currentSelectedStrings = stringValues;
     
     self.pickerView.getFontForSectionWithBlock = ^UIFont *(NSInteger section, NSInteger row) {
         if (dataSouce.count > 1) {
