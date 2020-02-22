@@ -112,7 +112,7 @@
     DRPickerStringSelectOption *opt = (DRPickerStringSelectOption *)self.pickerOption;
     NSString *option = self.pickerView.currentSelectedStrings.firstObject;
     NSInteger index = [self.pickerView.dataSource[0] indexOfObject:option];
-    if (opt.valueUnit.length > 0 || opt.prefixUnit.length > 0) {
+    if (opt.prefixUnit.length > 0) {
         option = self.pickerView.currentSelectedStrings[1];
         index = [self.pickerView.dataSource[1] indexOfObject:option];
     }
