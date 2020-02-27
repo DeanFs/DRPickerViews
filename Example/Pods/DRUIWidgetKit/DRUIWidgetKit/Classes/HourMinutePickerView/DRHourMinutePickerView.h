@@ -62,7 +62,7 @@ IB_DESIGNABLE
 /// 时间步长，1~59，默认1分钟
 @property (nonatomic, assign) IBInspectable NSInteger timeScale;
 
-/// 最小时间跨度，1~1439，时间段类型时可用，默认1分钟
+/// 最小时间跨度，1~1439，时间段类型时可用
 @property (nonatomic, assign) IBInspectable NSInteger minDuration;
 
 /// 代理

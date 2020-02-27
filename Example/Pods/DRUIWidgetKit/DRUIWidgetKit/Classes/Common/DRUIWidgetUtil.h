@@ -24,6 +24,12 @@
 + (void)setupGradientLightColor:(UIColor *)lightColor
                       darkColor:(UIColor *)darkColor;
 
+
+/// 设置时间步长
+/// @param timeScale 步长，默认5
++ (void)setTimeScale:(NSInteger)timeScale;
++ (NSInteger)defaultTimeScale;
+
 /// 设置城市列表json文件，放到mainBundle中
 /// @param fileName json文件名
 + (void)setupCityListJsonFileName:(NSString *)fileName;

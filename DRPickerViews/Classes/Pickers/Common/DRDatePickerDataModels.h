@@ -64,8 +64,8 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     // 出参：DRPickerTimeConsumingPickedObj
     DRPickerTypeTimeConsuming,
     
-    // 提前提醒0~6小时，小时为0时，分5~55，否则分为0或30, 刻度为5分钟
-    // 入参：DRPickerOptionBase
+    // 提前提醒0~6,12,24,48小时，小时为0时，分5~55，否则分为0或30, 刻度为5分钟
+    // 入参：DRPickerRemindAheadOption
     // 出参：NSNumber
     DRPickerTypeRemindAhead,
     
@@ -398,18 +398,26 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 
 @interface DRPickerTimeConsumingOption : DRPickerHMBaseOption
 /**
- 当前消耗时长，反显
+ 当前消耗时长，反显，单位：秒
  */
 @property (nonatomic, assign) int64_t timeConsuming;
 
-/// 最小时长，默认：5
+/// 最小时长，单位：分钟，默认：5
 @property (nonatomic, assign) int64_t minTimeConsume;
 
-/// 最大时长，默认：10 * 24 * 60 - 1 = 14399
+/// 最大时长，单位：分钟，默认：10 * 24 * 60 - 1 = 14399
 @property (nonatomic, assign) int64_t maxTimeConsume;
 
 + (instancetype)optionWithTitle:(NSString *)title
                   timeConsuming:(int64_t)timeConsuming;
+
+@end
+
+
+@interface DRPickerRemindAheadOption : DRPickerHMBaseOption
+
+/// 最小提前提醒时间，单位：分钟，默认5
+@property (assign, nonatomic) NSInteger minAheadTime;
 
 @end
 
@@ -807,7 +815,7 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 
 @interface DRPickerTimeConsumingPickedObj : NSObject
 /**
- 耗时时长
+ 耗时时长，单位：秒
  */
 @property (nonatomic, assign) int64_t timeConsuming;
 

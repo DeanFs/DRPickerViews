@@ -9,8 +9,8 @@
 #import "DRDatePickerDataModels.h"
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/UIFont+DRExtension.h>
+#import <DRUIWidgetKit/DRUIWidgetUtil.h>
 
-#define kDefaultTimeScale 5
 #define kDefaultMinDuration 30
 
 #pragma mark - 选择器参数定义
@@ -111,7 +111,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _timeScale = kDefaultTimeScale;
+        _timeScale = [DRUIWidgetUtil defaultTimeScale];
     }
     return self;
 }
@@ -165,6 +165,18 @@
     DRPickerTimeConsumingOption *opt = [DRPickerTimeConsumingOption optionWithTitle:title];
     opt.timeConsuming = timeConsuming;
     return opt;
+}
+
+@end
+
+
+@implementation DRPickerRemindAheadOption
+
+- (instancetype)init {
+    if (self = [super init]) {
+        _minAheadTime = 5;
+    }
+    return self;
 }
 
 @end

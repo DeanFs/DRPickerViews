@@ -33,7 +33,6 @@
 #import "DRSectionTitleView.h"
 #import "DRSegmentBar.h"
 #import "DRStarRateView.h"
-#import "DRTimeConsumePickerView.h"
 #import "DRPickerTopBar.h"
 #import "DRValuePickerView.h"
 #import "DRWaveView.h"

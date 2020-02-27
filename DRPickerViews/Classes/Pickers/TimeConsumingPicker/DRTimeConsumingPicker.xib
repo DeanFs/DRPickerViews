@@ -21,7 +21,7 @@
                         <constraint firstAttribute="height" constant="56" id="6LP-QP-xli"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Pv-Eu-FHB" customClass="DRTimeConsumePickerView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Pv-Eu-FHB" customClass="DRNormalDataPickerView">
                     <rect key="frame" x="0.0" y="56" width="414" height="204"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
@@ -39,8 +39,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="picker" destination="9Pv-Eu-FHB" id="lss-y2-ZoE"/>
-                <outlet property="pickerView" destination="9Pv-Eu-FHB" id="qfj-Xu-CaS"/>
+                <outlet property="picker" destination="9Pv-Eu-FHB" id="qTe-Lx-r4b"/>
+                <outlet property="pickerView" destination="9Pv-Eu-FHB" id="Ewn-bb-Qjz"/>
                 <outlet property="topBar" destination="g44-Mq-kcu" id="buH-0z-6db"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="100.44642857142857"/>

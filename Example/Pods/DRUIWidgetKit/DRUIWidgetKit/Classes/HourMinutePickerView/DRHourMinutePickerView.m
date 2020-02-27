@@ -383,7 +383,7 @@
     }];
     self.pickerView = picker;
     
-    self.timeScale = 1;
+    self.timeScale = [DRUIWidgetUtil defaultTimeScale];
     self.minDuration = 1;
     self.normalColor = [DRUIWidgetUtil normalColor];
     self.unSelectedColor = [DRUIWidgetUtil pickerUnSelectColor];

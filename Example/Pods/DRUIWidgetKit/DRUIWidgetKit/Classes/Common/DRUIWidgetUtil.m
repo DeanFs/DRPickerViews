@@ -9,6 +9,7 @@
 #import "DRUIWidgetUtil.h"
 #import <HexColors/HexColors.h>
 #import <DRCategories/NSDate+DRExtension.h>
+#import <DRCategories/NSUserDefaults+DRExtension.h>
 
 static UIColor *_highlightColor;
 static UIColor *_normalColor;
@@ -39,6 +40,21 @@ static NSString *_cityJsonFileName;
                       darkColor:(UIColor *)darkColor {
     _gradientLightColor = lightColor;
     _gradientDarkColor = darkColor;
+}
+
+/// 设置时间步长
+/// @param timeScale 步长，默认5
++ (void)setTimeScale:(NSInteger)timeScale {
+    [NSUserDefaults setInteger:timeScale forKey:@"global_default_time_scale"];
+}
+
++ (NSInteger)defaultTimeScale {
+    NSInteger timeScale = [NSUserDefaults integerForKey:@"global_default_time_scale"];
+    if (timeScale == 0) {
+        timeScale = 5;
+        [self setTimeScale:5];
+    }
+    return timeScale;
 }
 
 /// 设置城市列表json文件，放到mainBundle中

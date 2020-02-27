@@ -13,6 +13,7 @@
 #import <DRMacroDefines/DRMacroDefines.h>
 #import "DRPickerContainerView.h"
 #import <BlocksKit/UIView+BlocksKit.h>
+#import <DRUIWidgetKit/DRUIWidgetUtil.h>
 
 @interface DRViewController ()
 
@@ -21,6 +22,7 @@
 @implementation DRViewController
 
 - (void)viewDidLoad {
+    [DRUIWidgetUtil setTimeScale:5];
     [super viewDidLoad];
 }
 
@@ -98,13 +100,13 @@
         } break;
             
         case DRPickerTypeTimeConsuming: {
-            opt = [DRPickerTimeConsumingOption optionWithTitle:@"请选择消耗时长" timeConsuming:10*60/*2*24*3600+5*3600+33*60*/];
-            ((DRPickerTimeConsumingOption*)opt).maxTimeConsume = 24*60-1;
-            ((DRPickerTimeConsumingOption*)opt).minTimeConsume = 30;
+            opt = [DRPickerTimeConsumingOption optionWithTitle:@"请选择消耗时长" timeConsuming:50*60/*2*24*3600+5*3600+33*60*/];
+            ((DRPickerTimeConsumingOption*)opt).maxTimeConsume = 3 * 24 * 60 + 3*60+29;
+            ((DRPickerTimeConsumingOption*)opt).minTimeConsume = 5 * 60 + 20;
         } break;
             
         case DRPickerTypeRemindAhead: {
-            opt = [DRPickerOptionBase optionWithTitle:@"设置提前提醒"];
+            opt = [DRPickerRemindAheadOption optionWithTitle:@"设置提前提醒"];
         } break;
             
         case DRPickerTypeValueSelect: {
