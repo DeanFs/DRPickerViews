@@ -102,7 +102,7 @@
     NSInteger hour = self.minHour;
     NSInteger minute = self.minMinute;
     int64_t timeConsume = option.timeConsuming / 60;
-    if (timeConsume == 0 || timeConsume > maxTimeConsume || timeConsume < minTimeConsume) {
+    if (timeConsume == 0 || timeConsume > option.maxTimeConsume || timeConsume < option.minTimeConsume) {
         timeConsume = minTimeConsume;
     } else {
         if (timeConsume >= 1440) {
