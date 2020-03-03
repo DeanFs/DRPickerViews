@@ -121,7 +121,7 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     
     // 时间选择“至今”
     // 入参：DRPickerDateOption
-    // 出参：NSDate
+    // 出参：DRPickerDateToNowPickedObj
     DRPickerTypeDateToNow,
 };
 
@@ -932,5 +932,15 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 
 /// 选择DRPickerViews
 @property (strong, nonatomic) NSArray <NSNumber *> *selectedIndexs;
+
+@end
+
+
+@interface DRPickerDateToNowPickedObj : NSObject
+
+/// 选择日期
+@property (strong, nonatomic) NSDate *date;
+/// 至今
+@property (assign, nonatomic) BOOL isToNow;
 
 @end

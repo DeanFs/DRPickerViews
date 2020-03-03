@@ -97,15 +97,17 @@
 }
 
 - (id)pickedObject {
-    if ([self.pickerView.currentSelectedStrings.firstObject isEqualToString:@"至今"]) {
-        return [NSDate date].midnight;
+    DRPickerDateToNowPickedObj *obj = [DRPickerDateToNowPickedObj new];
+    obj.isToNow = self.isToNow;
+    if (!self.isToNow) {
+        obj.date = [NSDate correctionYear:self.pickerView.currentSelectedStrings[0].integerValue
+                                    month:self.pickerView.currentSelectedStrings[1].integerValue
+                                      day:self.pickerView.currentSelectedStrings[2].integerValue
+                                     hour:0
+                                   minute:0
+                                   second:0];
     }
-    return [NSDate correctionYear:self.pickerView.currentSelectedStrings[0].integerValue
-                            month:self.pickerView.currentSelectedStrings[1].integerValue
-                              day:self.pickerView.currentSelectedStrings[2].integerValue
-                             hour:0
-                           minute:0
-                           second:0];
+    return obj;
 }
 
 - (Class)pickerOptionClass {
