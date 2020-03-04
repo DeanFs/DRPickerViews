@@ -340,9 +340,9 @@
     }
     
     // 回滚设置，无限滚动支持
-    if (component % 2 == 0) {
+    if (component == 0 || component == 3) {
         [pickerView selectRow:kHourCenterRow + row % 24 inComponent:component animated:NO];
-    } else {
+    } else if (component == 1 || component == 4) {
         NSInteger minuteRow = ((row * self.timeScale) % 60) / self.timeScale;
         [pickerView selectRow:kMinuteCenterRow + minuteRow inComponent:component animated:NO];
     }

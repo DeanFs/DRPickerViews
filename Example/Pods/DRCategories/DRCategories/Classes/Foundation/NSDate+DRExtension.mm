@@ -10,8 +10,9 @@
 #import "NSDate+DRExtension.h"
 #import "NSObject+DRExtension.h"
 #import <DRMacroDefines/DRMacroDefines.h>
-#include <mutex>
 #import "NSDateComponents+DRExtension.h"
+#import "NSUserDefaults+DRExtension.h"
+#include <mutex>
 
 using namespace std;
 static mutex _mutex;
@@ -39,7 +40,6 @@ static mutex _mutex;
 }
 
 @end
-
 
 
 @implementation NSDate (DRExtension)
@@ -176,13 +176,12 @@ static mutex _mutex;
     return date;
 }
 
--(NSString *)dateWithFormatterString:(NSString *)formatterStr{
+-(NSString *)dateWithFormatterString:(NSString *)formatterStr {
     DRExtensionLock
     NSDateFormatter *formatter = [NSDateFormatter dr_dateFormatter];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setCalendar: [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
+    [formatter setCalendar:NSDate.calendar];
     [formatter setDateFormat:formatterStr];
     NSString *DateTime = [formatter stringFromDate:self];
     
@@ -224,8 +223,7 @@ static mutex _mutex;
     NSDateFormatter *formatter = [NSDateFormatter dr_dateFormatter];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setCalendar: [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
+    [formatter setCalendar:NSDate.calendar];
     [formatter setDateFormat:@"YYYY年MM月dd日"];
     NSString *DateTime = [formatter stringFromDate:date];
     
@@ -238,8 +236,7 @@ static mutex _mutex;
     NSDateFormatter *formatter = [NSDateFormatter dr_dateFormatter];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setCalendar: [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
+    [formatter setCalendar:NSDate.calendar];
     [formatter setDateFormat:@"yyyy"];
     NSString *DateTime = [formatter stringFromDate:date];
     
@@ -252,8 +249,7 @@ static mutex _mutex;
     NSDateFormatter *formatter = [NSDateFormatter dr_dateFormatter];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setCalendar: [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
+    [formatter setCalendar:NSDate.calendar];
     [formatter setDateFormat:@"YYYY-MM"];
     NSString *DateTime = [formatter stringFromDate:date];
     
@@ -266,8 +262,7 @@ static mutex _mutex;
     NSDateFormatter *formatter = [NSDateFormatter dr_dateFormatter];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setCalendar: [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
+    [formatter setCalendar:NSDate.calendar];
     [formatter setDateFormat:@"YYYY-MM-dd"];
     NSString *DateTime = [formatter stringFromDate:date];
     
@@ -280,8 +275,7 @@ static mutex _mutex;
     NSDateFormatter *formatter = [NSDateFormatter dr_dateFormatter];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setCalendar: [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
+    [formatter setCalendar:NSDate.calendar];
     [formatter setDateFormat:@"HH"];
     NSString *DateTime = [formatter stringFromDate:date];
     
@@ -293,8 +287,7 @@ static mutex _mutex;
     NSDateFormatter *formatter = [NSDateFormatter dr_dateFormatter];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setCalendar: [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
+    [formatter setCalendar:NSDate.calendar];
     [formatter setDateFormat:@"mm"];
     NSString *DateTime = [formatter stringFromDate:self];
     
@@ -306,8 +299,7 @@ static mutex _mutex;
     NSDateFormatter *formatter = [NSDateFormatter dr_dateFormatter];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setCalendar: [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
+    [formatter setCalendar:NSDate.calendar];
     [formatter setDateFormat:@"HH"];
     NSString *DateTime = [formatter stringFromDate:self];
     
@@ -324,8 +316,7 @@ static mutex _mutex;
     NSDateFormatter *formatter = [NSDateFormatter dr_dateFormatter];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setCalendar: [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
+    [formatter setCalendar:NSDate.calendar];
     [formatter setDateFormat:@"MM-dd"];
     NSString *DateTime = [formatter stringFromDate:date];
     
@@ -337,8 +328,7 @@ static mutex _mutex;
     NSDateFormatter *formatter = [NSDateFormatter dr_dateFormatter];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setCalendar: [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
+    [formatter setCalendar:NSDate.calendar];
     [formatter setDateFormat:@"HH:mm"];
     NSString *DateTime = [formatter stringFromDate:date];
     
@@ -351,31 +341,23 @@ static mutex _mutex;
     NSDateFormatter *formatter = [NSDateFormatter dr_dateFormatter];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setCalendar: [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
+    [formatter setCalendar:NSDate.calendar];
     [formatter setDateFormat:@"HHmm"];
     NSString *DateTime = [formatter stringFromDate:self];
     
     return DateTime;
 }
 
-//+(NSInteger )getHourWithStart:(NSDate *)start withEnd:(NSDate *)end{
-//    NSCalendar* chineseClendar  = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-//    NSUInteger unitFlags        = NSCalendarUnitHour | NSCalendarUnitDay  ;
-//    NSDateComponents *cps       = [chineseClendar components:unitFlags fromDate:start toDate:end  options:0];
-//    return [cps hour];
-//}
-
 +(NSInteger )getHourWithStart:(NSDate *)start withEnd:(NSDate *)end{
     if ([NSDate compareDate:start withDate:end]==-1) {
-        NSCalendar* chineseClendar  = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSCalendar* chineseClendar  = NSDate.calendar;
         NSUInteger unitFlags        = NSCalendarUnitHour | NSCalendarUnitDay  ;
         NSDateComponents *cps       = [chineseClendar components:unitFlags fromDate:start toDate:end  options:0];
         return [cps hour]+24;
     }else if([NSDate compareDate:start withDate:end]==0){
         return 0;
     }else{
-        NSCalendar* chineseClendar  = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSCalendar* chineseClendar  = NSDate.calendar;
         NSUInteger unitFlags        = NSCalendarUnitHour | NSCalendarUnitDay  ;
         NSDateComponents *cps       = [chineseClendar components:unitFlags fromDate:start toDate:end  options:0];
         return [cps hour];
@@ -445,7 +427,7 @@ static mutex _mutex;
 +(NSArray *)getRecently7Day{
     NSMutableArray *days=[NSMutableArray array];
     NSDate *mydate=[NSDate date];
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     for (int i=0; i<7; i++) {
         NSDateComponents *adcomps = [[NSDateComponents alloc] init];
         [adcomps setYear:0];
@@ -460,7 +442,7 @@ static mutex _mutex;
 +(NSArray *)getRecentlyOneYear{
     NSMutableArray *days=[NSMutableArray array];
     NSDate *mydate=[[NSDate date]dateFormaterWithFormatterString:@"yyyy-MM-dd"];
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     
     for (int i=-200; i<165; i++) {
         NSDateComponents *adcomps = [[NSDateComponents alloc] init];
@@ -477,7 +459,7 @@ static mutex _mutex;
 
 
 -(NSDate *)getDateWithNextWeek:(NSString *)week{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     for (int i=0; i<7; i++) {
         NSDateComponents *adcomps = [[NSDateComponents alloc] init];
         [adcomps setYear:0];
@@ -499,7 +481,7 @@ static mutex _mutex;
 
 #pragma mark -当前时间后一天
 +(NSDate *)getBehindOneDayWithDate:(NSDate *)date{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *adcomps = [[NSDateComponents alloc] init];
     [adcomps setYear:0];
     [adcomps setMonth:0];
@@ -509,7 +491,7 @@ static mutex _mutex;
 }
 
 -(NSDate *)getFrontOneDay{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *adcomps = [[NSDateComponents alloc] init];
     [adcomps setYear:0];
     [adcomps setMonth:0];
@@ -520,7 +502,7 @@ static mutex _mutex;
 
 #pragma mark -当前时间后一天
 -(NSDate *)getBehindOneDay{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *adcomps = [[NSDateComponents alloc] init];
     [adcomps setYear:0];
     [adcomps setMonth:0];
@@ -534,7 +516,7 @@ static mutex _mutex;
 
 #pragma mark -当前时间前一分
 -(NSDate *)getFrontMinte{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *adcomps = [[NSDateComponents alloc] init];
     [adcomps setYear:0];
     [adcomps setMonth:0];
@@ -547,7 +529,7 @@ static mutex _mutex;
 }
 
 -(NSDate *)getFront3S{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *adcomps = [[NSDateComponents alloc] init];
     [adcomps setYear:0];
     [adcomps setMonth:0];
@@ -561,7 +543,7 @@ static mutex _mutex;
 
 #pragma mark -当前时间后几个分钟
 +(NSDate *)getBehindOneMinuteWithMinute:(NSInteger)minute{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *adcomps = [[NSDateComponents alloc] init];
     [adcomps setYear:0];
     [adcomps setMonth:0];
@@ -575,7 +557,7 @@ static mutex _mutex;
 
 #pragma mark -当前时间前几个分钟
 -(NSDate *)getFontDateWithMinute:(NSInteger)minute{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *adcomps = [[NSDateComponents alloc] init];
     [adcomps setYear:0];
     [adcomps setMonth:0];
@@ -589,7 +571,7 @@ static mutex _mutex;
 
 #pragma mark -当前时间后半个小时时间搓
 + (NSInteger)getBehindCurrentTimeHalfAnHourTimeInterval {
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *adcomps = [[NSDateComponents alloc] init];
     [adcomps setYear:0];
     [adcomps setMonth:0];
@@ -604,7 +586,7 @@ static mutex _mutex;
 +(NSArray *)get24HourWithDate:(NSDate *)date{
     NSMutableArray *array=[NSMutableArray array];
     for (int i=0; i<24; i++) {
-        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSCalendar *calendar = NSDate.calendar;
         
         NSDateComponents *adcomps = [[NSDateComponents alloc] init];
         [adcomps setYear:0];
@@ -618,7 +600,7 @@ static mutex _mutex;
 }
 
 -(NSDate *)getDate7Day{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *adcomps = [[NSDateComponents alloc] init];
     [adcomps setYear:0];
     [adcomps setMonth:0];
@@ -652,7 +634,7 @@ static mutex _mutex;
 }
 
 -(NSDate *)getRecentlyDateWithDay:(NSInteger)day{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *adcomps = [[NSDateComponents alloc] init];
     [adcomps setYear:0];
     [adcomps setMonth:0];
@@ -663,7 +645,7 @@ static mutex _mutex;
 
 +(NSString *)returnIntervalWithCurentDate:(NSString *)time{
     // 当前日历
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     
     // 需要对比的时间数据
     NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth
@@ -693,7 +675,7 @@ static mutex _mutex;
 
 -(NSString *)differenceCurrentDateString{
     // 当前日历
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     
     // 需要对比的时间数据
     NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth
@@ -723,7 +705,7 @@ static mutex _mutex;
 
 -(NSString *)differenceCurrentDateCalendarUnitWithDate:(NSDate *)date{
     // 当前日历
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     
     // 需要对比的时间数据
     NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth
@@ -758,7 +740,7 @@ static mutex _mutex;
 
 -(NSString *)differenceCurrentDate{
     // 当前日历
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     
     // 需要对比的时间数据
     NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth
@@ -790,7 +772,7 @@ static mutex _mutex;
 #pragma mark - 距离当前时间
 - (NSString *)countDownToCurrentDate{
     // 当前日历
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     
     // 需要对比的时间数据
     NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth
@@ -856,7 +838,7 @@ static mutex _mutex;
 
 #pragma mark -对比时间差
 -(NSDateComponents *)differenceTimeToDate:(NSDate *)toDate{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     
     // 需要对比的时间数据
     NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth
@@ -868,7 +850,7 @@ static mutex _mutex;
 
 + (NSString*)getCurrentWeekDay{
     NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], @"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六", nil];
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *calendar = NSDate.calendar;
     
     NSCalendarUnit calendarUnit = NSCalendarUnitWeekday;
     NSDateComponents *theComponents = [calendar components:calendarUnit fromDate:[NSDate new]];
@@ -878,7 +860,7 @@ static mutex _mutex;
 + (NSString*)getWeekDayWithDate:(NSDate *)date{
     if (date) {
         NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], @"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六", nil];
-        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSCalendar *calendar = NSDate.calendar;
         
         NSCalendarUnit calendarUnit = NSCalendarUnitWeekday;
         NSDateComponents *theComponents = [calendar components:calendarUnit fromDate:date];
@@ -890,7 +872,7 @@ static mutex _mutex;
 
 - (NSInteger)getWeekDay{
     if (self) {
-        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSCalendar *calendar = NSDate.calendar;
         
         NSCalendarUnit calendarUnit = NSCalendarUnitWeekday;
         NSDateComponents *theComponents = [calendar components:calendarUnit fromDate:self];
@@ -903,7 +885,7 @@ static mutex _mutex;
 + (NSString*)getWeekWithDate:(NSDate *)date{
     if (date) {
         NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], @"日", @"一", @"二", @"三", @"四", @"五", @"六", nil];
-        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSCalendar *calendar = NSDate.calendar;
         
         NSCalendarUnit calendarUnit = NSCalendarUnitWeekday;
         NSDateComponents *theComponents = [calendar components:calendarUnit fromDate:date];
@@ -950,7 +932,7 @@ static mutex _mutex;
 #pragma mark -返回当前周是时间
 +(NSArray *)getWeekDays{
     NSDate *now = [NSDate date];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *comp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitWeekday|NSCalendarUnitDay fromDate:now];
     // 得到星期几
     // 1(星期天) 2(星期二) 3(星期三) 4(星期四) 5(星期五) 6(星期六) 7(星期天)
@@ -992,7 +974,7 @@ static mutex _mutex;
     
     // 需要对比的时间数据
     for (int i=0; i<7; i++) {
-        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSCalendar *calendar = NSDate.calendar;
         NSDateComponents *adcomps = [[NSDateComponents alloc] init];
         [adcomps setYear:0];
         [adcomps setMonth:0];
@@ -1006,7 +988,7 @@ static mutex _mutex;
 
 #pragma mark -返回当前时间指定点
 -(NSDate *)getAppointDateWithHour:(NSInteger)hour{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:self];
     NSDate *startDate = [calendar dateFromComponents:components];
     NSDate *newDate = [calendar dateByAddingUnit:NSCalendarUnitHour value:hour toDate:startDate options:0];
@@ -1088,7 +1070,7 @@ static mutex _mutex;
  如 201809100810
  */
 - (int64_t)yyyyMMddHHmm {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *comp = [calendar components:[NSDate dateComponentsUnitsWithType:DRCalenderUnitsTypeMinte]
                                          fromDate:self];
     
@@ -1106,7 +1088,7 @@ static mutex _mutex;
 }
 
 - (NSInteger)yyyyMMddNumber {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *comp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay
                                          fromDate:self];
     
@@ -1114,7 +1096,7 @@ static mutex _mutex;
 }
 
 - (int64_t)yyyyMMddHHNumber {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *comp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay
                                          fromDate:self];
     
@@ -1122,7 +1104,7 @@ static mutex _mutex;
 }
 
 - (int64_t)yyyyMMddHHMMTimestamp {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *comp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute
                                          fromDate:self];
     
@@ -1135,15 +1117,15 @@ static mutex _mutex;
     NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierChinese];
     NSTimeZone *timeZone = [NSTimeZone defaultTimeZone];
     [calendar setTimeZone:timeZone];
-    [calendar setFirstWeekday:DRCalendarFirstDay];
+    [calendar setFirstWeekday:[self weekFirstday]];
     return calendar;
 }
 
 + (NSCalendar *)calendar {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSTimeZone *timeZone = [NSTimeZone defaultTimeZone];
     [calendar setTimeZone:timeZone];
-    [calendar setFirstWeekday:DRCalendarFirstDay];
+    [calendar setFirstWeekday:[self weekFirstday]];
     return calendar;
 }
 
@@ -1206,7 +1188,21 @@ static mutex _mutex;
 
 @end
 
+#define kDRCalendarWeekFirstdayKey @"kDRCalendarWeekFirstdayKey"
 @implementation NSDate (DRCalendar)
+
+//1.Sun. 2.Mon. 3.Thes. 4.Wed. 5.Thur. 6.Fri. 7.Sat.
++ (void)setCalendarWeekFirstday:(NSInteger)weekFirstday {
+    [NSUserDefaults setInteger:weekFirstday forKey:kDRCalendarWeekFirstdayKey];
+}
+
++ (NSInteger)weekFirstday {
+    NSInteger weekFirstday = [[NSUserDefaults groupDefaults] integerForKey:kDRCalendarWeekFirstdayKey];
+    if (weekFirstday < 1 || weekFirstday > 7) {
+        weekFirstday = 2; // 默认周一
+    }
+    return weekFirstday;
+}
 
 //日期相等
 - (BOOL)dateEqualTo:(NSDate *)date {
@@ -1393,52 +1389,6 @@ static mutex _mutex;
     return components.isLeapMonth;
 }
 
-- (void)solarToLunarWithComplelte:(void (^)(NSInteger, NSInteger, NSInteger, BOOL leapMonth))complete {
-    NSCalendar *localeCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierChinese];
-    unsigned unitFlags = NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay;
-    NSDateComponents *localeComp = [localeCalendar components:unitFlags fromDate:self];
-    
-    if(complete) {
-        if(self.month < localeComp.month) {
-            [localeComp setYear:self.year - 1];
-        }else {
-            [localeComp setYear:self.year];
-        }
-        
-        complete(localeComp.year, localeComp.month, localeComp.day, localeComp.leapMonth);
-    }
-    
-}
-
-- (NSDate *)lunarToSolarWithLeap:(BOOL)isLeap{
-    NSInteger lyear = self.year, lmonth = self.month, lday = self.day;
-    NSDate *date = [self nextDayWithCount:-90];
-    NSInteger index = 0;
-    __block BOOL isTarget = false;
-    
-    while(index < 180) {
-        [date solarToLunarWithComplelte:^(NSInteger year, NSInteger month, NSInteger day, BOOL leapMonth) {
-            if(lmonth == month && lday == day && isLeap == leapMonth) {
-                isTarget = true;
-            }
-        }];
-        
-        if(isTarget) {
-            break;
-        }
-        
-        date = [date nextDay];
-        index++;
-    }
-    
-    if(isTarget) {
-        return date;
-    }else {
-        return [NSDate dateWithString:[NSString stringWithFormat:@"%04ld-%02ld-%02ld", lyear, lmonth, lday]
-                           dateFormat:@"yyyy-MM-dd"];
-    }
-}
-
 //年 - 农历
 - (NSString *)lunarYear {
     NSCalendar *calendar = NSDate.lunarCalendar;
@@ -1453,7 +1403,6 @@ static mutex _mutex;
 }
 
 // 2019年
-
 - (NSString *)lunarYearNumber {
     unsigned unitFlags = NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay;
     NSDateComponents *localeComp = [NSDate.lunarCalendar components:unitFlags fromDate:self];
@@ -1677,7 +1626,11 @@ static mutex _mutex;
 
 @implementation NSDate (DRSolarCalendar)
 #pragma mark - 判断
-
+// 是否周末
+- (BOOL)isWeekend {
+    NSInteger weekday = [self weekday];
+    return weekday == 1 || weekday == 7;
+}
 //是否今天
 - (BOOL)isToday {
     return [self isEqualDayToDate:[NSDate date]];
@@ -1814,19 +1767,29 @@ static mutex _mutex;
     return [NSDate.calendar component:NSCalendarUnitDay fromDate:self];
 }
 
-//星期几
+//  1.周日. 2.周一. 3.周二. 4.周三. 5.周四. 6.周五. 7.周六.
 - (NSInteger)weekday {
     return [NSDate.calendar component:NSCalendarUnitWeekday fromDate:self];
 }
 
-//中国式星期几
+//中国式星期几 1.周一，2.周二，3.周三，4.周四，5.周五，6.周六，7.周日
 - (NSInteger)chinaWeekday {
-    NSInteger weekDay = [NSDate.calendar component:NSCalendarUnitWeekday fromDate:self] - 1;
+    NSInteger weekDay = [self weekday] - 1;
     if(weekDay == 0) {
         return 7;
     }else {
         return weekDay;
     }
+}
+
+//相对周起始日的序号，周起始日为1，取值1~7
+- (NSInteger)weekdayIndex {
+    NSInteger weekDay = [self weekday];
+    NSInteger weekFirstday = [NSDate weekFirstday];
+    if (weekDay >= weekFirstday) {
+        return weekDay - weekFirstday + 1;
+    }
+    return 8 - (weekFirstday - weekDay);
 }
 
 //星期几 - 中文
@@ -2448,10 +2411,25 @@ static mutex _mutex;
     return dayArray.copy;
 }
 
-//获取星期几标题数组
-+ (NSArray<NSString *> *)weekDayTitleArray {
+// 获取星期几标题数组，如“一”，以周起始日开始排序
++ (NSArray<NSString *> *)weekDayNumberTitleArray {
     NSArray *titleArray = @[@"日", @"一", @"二", @"三", @"四", @"五", @"六",];
-    NSInteger firstWeekDay = DRCalendarFirstDay - 1;
+    NSInteger firstWeekDay = [self weekFirstday] - 1;
+    NSMutableArray *restltArray = [NSMutableArray array];
+    for (NSInteger i = firstWeekDay; i < titleArray.count; i++) {
+        [restltArray addObject:titleArray[i]];
+    }
+    NSInteger count = titleArray.count - restltArray.count;
+    for (NSInteger i = 0; i < count; i++) {
+        [restltArray addObject:titleArray[i]];
+    }
+    return restltArray;
+}
+
+// 获取周标题，如“周一”，以周起始日开始排序
++ (NSArray<NSString *> *)weekdayTitleArray {
+    NSArray *titleArray = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六",];
+    NSInteger firstWeekDay = [self weekFirstday] - 1;
     NSMutableArray *restltArray = [NSMutableArray array];
     for (NSInteger i = firstWeekDay; i < titleArray.count; i++) {
         [restltArray addObject:titleArray[i]];
@@ -2471,7 +2449,7 @@ static mutex _mutex;
  @return 设置小十分钟后的date
  */
 - (NSDate *)resetHour:(NSInteger)hour minute:(NSInteger)minute {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *cmp = [calendar components:[NSDate dateComponentsUnitsWithType:DRCalenderUnitsTypeMinte] fromDate:self];
     cmp.hour = hour;
     cmp.minute = minute;
@@ -2485,7 +2463,7 @@ static mutex _mutex;
  @return 新的date
  */
 - (NSDate *)resetHourMinuteWithDate:(NSDate *)date {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = NSDate.calendar;
     NSDateComponents *dayCmp = [calendar components:[NSDate dateComponentsUnitsWithType:DRCalenderUnitsTypeDay] fromDate:self];
     NSDateComponents *timeCmp = [calendar components:[NSDate dateComponentsUnitsWithType:DRCalenderUnitsTypeMinte] fromDate:date];
     dayCmp.hour = timeCmp.hour;

@@ -11,6 +11,50 @@
 #import <DRSandboxManager/DRSandboxManager.h>
 #import "CALayer+DRExtension.h"
 
+@implementation DRImageAppendImageView
+
++ (instancetype)appendImageViewWithView:(UIView *)view
+                                      x:(CGFloat)x
+                                      y:(CGFloat)y {
+    DRImageAppendImageView *appendView = [DRImageAppendImageView new];
+    appendView.image = [UIImage imageFromView:view];
+    appendView.point = CGPointMake(x, y);
+    return appendView;
+}
+
++ (instancetype)appendImageViewWithView:(UIView *)view
+                                originX:(CGFloat)originX
+                                originY:(CGFloat)originY {
+    CGFloat x = originX + view.frame.origin.x;
+    CGFloat y = originY + view.frame.origin.y;
+    DRImageAppendImageView *appendView = [DRImageAppendImageView new];
+    appendView.image = [UIImage imageFromView:view];
+    appendView.point = CGPointMake(x, y);
+    return appendView;
+}
+
++ (instancetype)appendImageViewWithLayer:(CALayer *)layer
+                                 originX:(CGFloat)originX
+                                 originY:(CGFloat)originY {
+    CGFloat x = originX + layer.frame.origin.x;
+    CGFloat y = originY + layer.frame.origin.y;
+    DRImageAppendImageView *appendView = [DRImageAppendImageView new];
+    appendView.image = [UIImage imageFromLayer:layer];
+    appendView.point = CGPointMake(x, y);
+    return appendView;
+}
+
++ (instancetype)appendImageViewWithImage:(UIImage *)image
+                                       x:(CGFloat)x
+                                       y:(CGFloat)y {
+    DRImageAppendImageView *appendView = [DRImageAppendImageView new];
+    appendView.image = image;
+    appendView.point = CGPointMake(x, y);
+    return appendView;
+}
+
+@end
+
 @implementation UIImage (DRExtension)
 
 #pragma mark - 创建图片
@@ -60,34 +104,6 @@
         image = [self imageFromLayer:layer];
         [self cacheImage:image forKey:key];
     }
-    return image;
-}
-
-/**
- 将layer绘制成图片
- 
- @param layer 要绘制的layer
- @return 返回图片
- */
-+ (UIImage *)imageFromLayer:(CALayer *)layer {
-    UIGraphicsBeginImageContextWithOptions(layer.bounds.size, NO, 0);
-    [layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *outputImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return outputImage;
-}
-
-/**
- 将view绘制成图片
- 
- @param view 要绘制成图片的UIview
- @return 返回图片
- */
-+ (UIImage *)imageFromView:(UIView *)view {
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 0);
-    [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:true];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
     return image;
 }
 
@@ -267,7 +283,7 @@
     return image;
 }
 
-#pragma mark - 按scale比例截取屏幕
+#pragma mark - 截图
 // scale = 0.0
 + (UIImage *)screenshot {
     return [UIImage screenshotWithScale:0.0f];
@@ -292,6 +308,333 @@
     }
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    return image;
+}
+
+/**
+ 将layer绘制成图片
+ 
+ @param layer 要绘制的layer
+ @return 返回图片
+ */
++ (UIImage *)imageFromLayer:(CALayer *)layer {
+    return [self imageFromLayer:layer bgColor:nil];
+}
+
++ (UIImage *)imageFromLayer:(CALayer *)layer bgColor:(UIColor *)bgColor {
+    CGSize imageSize = layer.bounds.size;
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, [UIScreen mainScreen].scale);
+    
+    if (bgColor != nil) {
+        // 绘制纯色背景
+        CALayer *layer = [CALayer layer];
+        layer.frame = CGRectMake(0, 0, imageSize.width, imageSize.height);
+        layer.backgroundColor = bgColor.CGColor;
+        [layer renderInContext:UIGraphicsGetCurrentContext()];
+    }
+    
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
+/**
+ 将view绘制成图片
+ 
+ @param view 要绘制成图片的UIview
+ @return 返回图片
+ */
++ (UIImage *)imageFromView:(UIView *)view {
+    return [self imageFromView:view bgColor:nil];
+}
+
++ (UIImage *)imageFromView:(UIView *)view bgColor:(UIColor *)bgColor {
+    if (view == nil || CGSizeEqualToSize(view.bounds.size, CGSizeZero)) {
+        return [[UIImage alloc] init];
+    }
+    return [self imageFromLayer:view.layer bgColor:bgColor];
+}
+
+/// 对scrollView内容截图（UITableView，UICollectionView）图片尺寸与ScrollView内容相等
+/// @param scrollView scrollView
+/// @param color 截出图片背景色
+/// @param complete 完成回调
++ (void)imageWithWithScrollView:(UIScrollView *)scrollView
+                        bgColor:(UIColor *)color
+                       complete:(void(^)(UIImage *image))complete {
+    [self imageWithWithScrollView:scrollView
+                          bgColor:color
+                            inset:UIEdgeInsetsZero
+                         complete:complete];
+}
+
+/// 对scrollView内容截图（UITableView，UICollectionView）
+/// @param scrollView scrollView
+/// @param bgColor 截出图片背景色
+/// @param inset 截出图片与ScrollView的边缘的边距，正数表示比scrollView大
+/// @param complete 完成回调
++ (void)imageWithWithScrollView:(UIScrollView *)scrollView
+                        bgColor:(UIColor *)bgColor
+                          inset:(UIEdgeInsets)inset
+                       complete:(void(^)(UIImage *image))complete {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+        UIImageView *coverView = [[UIImageView alloc] initWithImage:[UIImage imageFromView:keyWindow]];
+        coverView.userInteractionEnabled = YES;
+        coverView.frame = keyWindow.bounds;
+        [keyWindow addSubview:coverView];
+        CGPoint oldOffset = scrollView.contentOffset;
+        
+        CGSize contentSize = scrollView.contentSize;
+        CGFloat height = CGRectGetHeight(scrollView.bounds);
+        if (contentSize.height < height) {
+            contentSize.height = height;
+        }
+        CGFloat insetWidth = inset.left + inset.right;
+        CGFloat top, left, bottom, right;
+        if (@available(iOS 11.0, *)) {
+            left = inset.left + scrollView.adjustedContentInset.left;
+            right = inset.right + scrollView.adjustedContentInset.right;
+            insetWidth += (scrollView.adjustedContentInset.left + scrollView.adjustedContentInset.right);
+        } else {
+            left = inset.left + scrollView.contentInset.left;
+            right = inset.right + scrollView.contentInset.right;
+            insetWidth += (scrollView.contentInset.left + scrollView.contentInset.right);
+        }
+        CGFloat insetHeight = inset.top + inset.bottom;
+        if (@available(iOS 11.0, *)) {
+            top = inset.top + scrollView.adjustedContentInset.top;
+            bottom = inset.bottom + scrollView.adjustedContentInset.bottom;
+            insetHeight += (scrollView.adjustedContentInset.top + scrollView.adjustedContentInset.bottom);
+        } else {
+            top = inset.top + scrollView.contentInset.top;
+            bottom = inset.bottom + scrollView.contentInset.bottom;
+            insetHeight += (scrollView.contentInset.top + scrollView.contentInset.bottom);
+        }
+        UIEdgeInsets imageInset = UIEdgeInsetsMake(top, left, bottom, right);
+        CGSize imageSize = CGSizeMake(contentSize.width + insetWidth, contentSize.height + insetHeight);
+        
+        void(^appendAction)(NSArray<DRImageAppendImageView *> *appendViews) = ^(NSArray<DRImageAppendImageView *> *appendViews){
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                UIImage *image = [self imageAppendedFromViews:appendViews
+                                                    imageSize:imageSize
+                                                      bgColor:bgColor];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    scrollView.contentOffset = oldOffset;
+                    [coverView removeFromSuperview];
+                    kDR_SAFE_BLOCK(complete, image);
+                });
+            });
+        };
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            scrollView.contentOffset = CGPointZero;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([scrollView isKindOfClass:[UICollectionView class]]) {
+                    UICollectionView *collectionView = (UICollectionView *)scrollView;
+                    if ([collectionView numberOfSections] > 0) {
+                        [self collectionViewAppendViewCells:collectionView inset:imageInset complete:^(NSArray<DRImageAppendImageView *> *collectionViewAppendViews) {
+                            appendAction(collectionViewAppendViews);
+                        }];
+                        return;
+                    }
+                } else if ([scrollView isKindOfClass:[UITableView class]]) {
+                    UITableView *tableView = (UITableView *)scrollView;
+                    if ([tableView numberOfSections] > 0) {
+                        appendAction([self tableViewAppendViewCells:tableView
+                                                              inset:imageInset]);
+                        return;
+                    }
+                }
+                appendAction([self scrollViewAppendViewCells:scrollView
+                                                       inset:imageInset]);
+            });
+        });
+    });
+}
+
++ (NSArray<DRImageAppendImageView *> *)tableViewAppendViewCells:(UITableView *)tableView inset:(UIEdgeInsets)inset {
+    CGFloat x = inset.left;
+    CGFloat y = inset.top;
+    NSMutableArray<DRImageAppendImageView *> *appendViews = [NSMutableArray array];
+    
+    if (tableView.tableHeaderView != nil) {
+        DRImageAppendImageView *tableViewHeader = [DRImageAppendImageView appendImageViewWithView:tableView.tableHeaderView x:x y:y];
+        [appendViews addObject:tableViewHeader];
+        y += CGRectGetHeight(tableView.tableHeaderView.bounds);
+    }
+    for (int section=0; section<tableView.numberOfSections; section++) {
+        UIView *sectionHeaderView = [tableView headerViewForSection:section];
+        if (sectionHeaderView != nil) {
+            DRImageAppendImageView *sectionHeaderAppendView = [DRImageAppendImageView appendImageViewWithView:sectionHeaderView x:x y:y];
+            [appendViews addObject:sectionHeaderAppendView];
+            y += CGRectGetHeight(sectionHeaderView.bounds);
+        }
+        
+        for (int row=0; row<[tableView numberOfRowsInSection:section]; row++) {
+            NSIndexPath *cellIndexPath = [NSIndexPath indexPathForRow:row inSection:section];
+            [tableView beginUpdates];
+            [tableView scrollToRowAtIndexPath:cellIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+            [tableView endUpdates];
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:cellIndexPath];
+            DRImageAppendImageView *cellAppendView = [DRImageAppendImageView appendImageViewWithView:cell x:x y:y];
+            [appendViews addObject:cellAppendView];
+            y += CGRectGetHeight(cell.bounds);
+        }
+        
+        UIView *sectionFooterView = [tableView footerViewForSection:section];
+        if (sectionFooterView != nil) {
+            DRImageAppendImageView *sectionFooterAppendView = [DRImageAppendImageView appendImageViewWithView:sectionFooterView x:x y:y];
+            [appendViews addObject:sectionFooterAppendView];
+            y += CGRectGetHeight(sectionFooterView.bounds);
+        }
+    }
+    
+    if (tableView.tableFooterView != nil) {
+        DRImageAppendImageView *tableViewFooter = [DRImageAppendImageView appendImageViewWithView:tableView.tableFooterView x:x y:y];
+        [appendViews addObject:tableViewFooter];
+        y += CGRectGetHeight(tableView.tableFooterView.bounds);
+    }
+    return appendViews;
+}
+
++ (void)collectionViewAppendViewCells:(UICollectionView *)collectionView inset:(UIEdgeInsets)inset complete:(void(^)(NSArray<DRImageAppendImageView *> *collectionViewAppendViews))complete {
+    CGFloat x = inset.left;
+    CGFloat y = inset.top;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSMutableArray *sections = [NSMutableArray array];
+        NSMutableArray *headerFooters = [NSMutableArray array];
+        [self getSectionsWithCollectionView:collectionView sectionCount:[collectionView numberOfSections] sections:sections headerFooters:headerFooters x:x y:y complete:^{
+            NSMutableArray *appedViews = [NSMutableArray array];
+            [appedViews addObjectsFromArray:headerFooters];
+            for (NSArray *arr in sections) {
+                [appedViews addObjectsFromArray:arr];
+            }
+            complete(appedViews);
+        }];
+    });
+}
+
++ (void)getSectionsWithCollectionView:(UICollectionView *)collectionView
+                         sectionCount:(NSInteger)sectionCount
+                             sections:(NSMutableArray *)sections
+                        headerFooters:(NSMutableArray<DRImageAppendImageView *> *)headerFooters
+                                    x:(CGFloat)x
+                                    y:(CGFloat)y
+                             complete:(dispatch_block_t)complete {
+    if (sectionCount == sections.count) {
+        complete();
+        return;
+    }
+    NSInteger section = sections.count;
+    
+    UIView *sectionHeaderView = [collectionView supplementaryViewForElementKind:UICollectionElementKindSectionHeader atIndexPath:[NSIndexPath indexPathForItem:0 inSection:section]];
+    if (sectionHeaderView != nil) {
+        DRImageAppendImageView *sectionHeaderAppendView = [DRImageAppendImageView appendImageViewWithView:sectionHeaderView
+                                                                                                  originX:x
+                                                                                                  originY:y];
+        [headerFooters addObject:sectionHeaderAppendView];
+    }
+    
+    NSMutableArray *cells = [NSMutableArray array];
+    [self getCellsInSection:section collectionView:collectionView count:[collectionView numberOfItemsInSection:section] cellsArr:cells x:x y:y complete:^{
+        [sections addObject:cells];
+        
+        UIView *sectionFooterView = [collectionView supplementaryViewForElementKind:UICollectionElementKindSectionFooter atIndexPath:[NSIndexPath indexPathForItem:0 inSection:section]];
+        if (sectionFooterView != nil) {
+            DRImageAppendImageView *sectionFooterAppendView = [DRImageAppendImageView appendImageViewWithView:sectionFooterView
+                                                                                                      originX:x
+                                                                                                      originY:y];
+            [headerFooters addObject:sectionFooterAppendView];
+        }
+        
+        [self getSectionsWithCollectionView:collectionView
+                               sectionCount:sectionCount
+                                   sections:sections
+                              headerFooters:headerFooters
+                                          x:x
+                                          y:y
+                                   complete:complete];
+    }];
+}
+
++ (void)getCellsInSection:(NSInteger)section
+           collectionView:(UICollectionView *)collectionView
+                    count:(NSInteger)count
+                 cellsArr:(NSMutableArray<DRImageAppendImageView *> *)cells
+                        x:(CGFloat)x
+                        y:(CGFloat)y
+                 complete:(dispatch_block_t)complete {
+    if (count == cells.count) {
+        complete();
+        return;
+    }
+    NSIndexPath *cellIndexPath = [NSIndexPath indexPathForItem:cells.count inSection:section];
+    [collectionView performBatchUpdates:^{
+        [collectionView scrollToItemAtIndexPath:cellIndexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:cellIndexPath];
+            DRImageAppendImageView *cellAppendView = [DRImageAppendImageView appendImageViewWithView:cell
+                                                                                             originX:x
+                                                                                             originY:y];
+            [cells addObject:cellAppendView];
+            [self getCellsInSection:section collectionView:collectionView
+                              count:count
+                           cellsArr:cells
+                                  x:x
+                                  y:y
+                           complete:complete];
+        }
+    }];
+}
+
++ (NSArray<DRImageAppendImageView *> *)scrollViewAppendViewCells:(UIScrollView *)scrollView inset:(UIEdgeInsets)inset {
+    CGFloat x = inset.left;
+    CGFloat y = inset.top;
+    NSMutableArray<DRImageAppendImageView *> *appendViews = [NSMutableArray array];
+    
+    for (UIView *view in scrollView.subviews) {
+        DRImageAppendImageView *appendView = [DRImageAppendImageView appendImageViewWithView:view
+                                                                                     originX:x
+                                                                                     originY:y];
+        [appendViews addObject:appendView];
+    }
+    for (CALayer *layer in scrollView.layer.sublayers) {
+        DRImageAppendImageView *appendView = [DRImageAppendImageView appendImageViewWithLayer:layer
+                                                                                      originX:x
+                                                                                      originY:y];
+        [appendViews addObject:appendView];
+    }
+    
+    return appendViews;
+}
+
+/// 将视图拼接到一张图，透明背景，0边距
+/// @param appendViews 视图数组
+/// @param imageSize 图片尺寸
+/// @param color 指定图片背景色
++ (UIImage *)imageAppendedFromViews:(NSArray<DRImageAppendImageView *> *)appendViews
+                          imageSize:(CGSize)imageSize
+                            bgColor:(UIColor *)color {
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, [UIScreen mainScreen].scale);
+    
+    // 绘制纯色背景
+    CALayer *layer = [CALayer layer];
+    layer.frame = CGRectMake(0, 0, imageSize.width, imageSize.height);
+    layer.backgroundColor = color.CGColor;
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    // 图片拼接
+    for (DRImageAppendImageView *appendView in appendViews) {
+        [appendView.image drawAtPoint:appendView.point];
+    }
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
     return image;
 }
 
@@ -350,10 +693,10 @@
     [DRSandBoxManager getDirectoryInDocumentWithName:@"DRBasicKit/ImageCache" doneBlock:^(BOOL success, NSError * _Nonnull error, NSString * _Nonnull dirPath) {
         [DRSandBoxManager deleteFileAtPath:dirPath
                                  doneBlock:^(NSString * _Nonnull filePath, BOOL success, NSError * _Nonnull error) {
-                                     if (success) {
-                                         kDR_LOG(@"已清除图片缓存");
-                                     }
-                                 }];
+            if (success) {
+                kDR_LOG(@"已清除图片缓存");
+            }
+        }];
     }];
 }
 
@@ -363,10 +706,10 @@
     [DRSandBoxManager getFilePathWithName:[NSString stringWithFormat:@"icon_%@@%dx.png", key, (int)[UIScreen mainScreen].scale]
                                     inDir:@"DRBasicKit/ImageCache"
                                 doneBlock:^(NSError * _Nonnull error, NSString * _Nonnull filePath) {
-                                    if (!error && filePath) {
-                                        cachePath = filePath;
-                                    }
-                                }];
+        if (!error && filePath) {
+            cachePath = filePath;
+        }
+    }];
     return cachePath;
 }
 

@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *weekdaySectionTitleHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *timeSectionViewHeight;
 
-@property (nonatomic, strong) NSArray *selectedIndex;
+@property (nonatomic, strong) NSArray *selectedWeekdays;
 
 @end
 
@@ -119,29 +119,33 @@
             self.weekdaySectionTitleHeight.constant = 0;
             self.timeSectionViewHeight.constant = 0;
         }
-        self.weekDaySelectView.allOptions = @[@"一", @"二", @"三", @"四", @"五", @"六", @"日"];
-        self.weekDaySelectView.selectedIndexs = [self getSelectedOptionIndexs];
-        self.selectedIndex = [self getSelectedOptionIndexs];
-        self.weekDaySelectView.onSelectionChangeBlock = ^(NSArray<NSString *> *selectedOptions, NSArray<NSNumber *> *selectedIndexs) {
-            weakSelf.selectedIndex = selectedIndexs;
+        self.weekDaySelectView.allOptions = [NSDate weekDayNumberTitleArray];
+        self.weekDaySelectView.selectedOptions = [self getSelectedOptionIndexs];
+        self.selectedWeekdays = [self getSelectedOptionIndexs];
+        NSDictionary<NSString *, NSNumber *> *titleTagMap = @{@"一": @(1),
+                                                              @"二": @(2),
+                                                              @"三": @(3),
+                                                              @"四": @(4),
+                                                              @"五": @(5),
+                                                              @"六": @(6),
+                                                              @"日": @(7)};
+        self.weekDaySelectView.onSelectionChangeBlock = ^(NSArray<NSString *> *selectedOptions, NSArray<NSNumber *> *selectedWeekdayss) {
+            NSMutableArray *indexs = [NSMutableArray array];
+            for (NSString *title in selectedOptions) {
+                [indexs addObject:titleTagMap[title]];
+            }
+            weakSelf.selectedWeekdays = indexs;
         };
     } else {
         self.weekContainerViewHeight.constant = 0;
     }
 }
 
-- (NSArray<NSNumber *> *)getSelectedOptionIndexs {
+- (NSArray<NSString *> *)getSelectedOptionIndexs {
     NSMutableArray *arr = [NSMutableArray array];
+    NSArray *titles = @[@"一", @"二", @"三", @"四", @"五", @"六", @"日"];
     for (NSNumber *weekDay in ((DRPickerHMPlanWeekOption *)self.pickerOption).weekDays) {
-        [arr addObject:@(weekDay.integerValue-1)];
-    }
-    return arr;
-}
-
-- (NSArray<NSNumber *> *)getWeekConfig {
-    NSMutableArray *arr = [NSMutableArray array];
-    for (NSNumber *index in self.selectedIndex) {
-        [arr addObject:@(index.integerValue+1)];
+        [arr addObject:titles[weekDay.integerValue-1]];
     }
     return arr;
 }
@@ -155,12 +159,11 @@
     }
     
     if (self.type == DRHourMinutePickerTypePlanWeekConfig) {
-        NSArray<NSNumber *> *weekDays = [self getWeekConfig];
-        if (weekDays.count) {
+        if (self.selectedWeekdays.count) {
             DRPickerPlanWeekPickedObj *config = [DRPickerPlanWeekPickedObj new];
             NSString *pickedTime = [NSString stringWithFormat:@"%02ld%02ld", value.hour, value.minute];
             if (((DRPickerHMPlanWeekOption *)self.pickerOption).forDuration) {
-                [config setupWeekDays:weekDays
+                [config setupWeekDays:self.selectedWeekdays
                            pickedTime:pickedTime
                              duration:value.duration
                          durationDesc:value.durationDesc
@@ -168,7 +171,7 @@
                        enoughDuration:value.enoughDuration
                          beyondOneDay:value.beyondOneDay];
             } else {
-                [config setupWeekDays:weekDays
+                [config setupWeekDays:self.selectedWeekdays
                            pickedTime:pickedTime];
             }
             return config;

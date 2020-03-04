@@ -571,6 +571,7 @@
     if (!_calendar) {
         _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         [_calendar setTimeZone:[NSTimeZone defaultTimeZone]];
+        [_calendar setFirstWeekday:[NSDate weekFirstday]];
     }
     return _calendar;
 }

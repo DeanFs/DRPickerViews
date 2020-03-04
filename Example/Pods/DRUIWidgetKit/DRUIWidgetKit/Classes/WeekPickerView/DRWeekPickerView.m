@@ -352,12 +352,15 @@
     self.pickerView = picker;
     
     self.yearMonthLabel.textColor = [DRUIWidgetUtil descColor];
-    for (UILabel *label in self.weekTitleContanerView.subviews) {
+    NSArray *weekTitles = [NSDate weekDayNumberTitleArray];
+    for (NSInteger i=0; i<weekTitles.count; i++) {
+        NSString *title = weekTitles[i];
+        UILabel *label = [self.weekTitleContanerView viewWithTag:i+100];
         if ([label isKindOfClass:[UILabel class]]) {
             label.textColor = [DRUIWidgetUtil descColor];
+            label.text = title;
         }
     }
-    
     self.minSelectableRow = 0;
     self.maxSeletableRow = kRowCount-1;
 }
@@ -368,7 +371,7 @@
         NSTimeZone *timeZone = [NSTimeZone defaultTimeZone];
         _solarCalendar = [NSCalendar currentCalendar];
         [_solarCalendar setTimeZone:timeZone];
-        [_solarCalendar setFirstWeekday:2];
+        [_solarCalendar setFirstWeekday:[NSDate weekFirstday]];
     }
     return _solarCalendar;
 }

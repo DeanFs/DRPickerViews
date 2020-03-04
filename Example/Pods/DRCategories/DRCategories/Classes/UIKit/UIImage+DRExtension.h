@@ -8,6 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@interface DRImageAppendImageView : NSObject
+
+@property (assign, nonatomic) CGPoint point;
+@property (strong, nonatomic) UIImage *image;
+
++ (instancetype)appendImageViewWithView:(UIView *)view
+                                      x:(CGFloat)x
+                                      y:(CGFloat)y;
+
++ (instancetype)appendImageViewWithImage:(UIImage *)image
+                                       x:(CGFloat)x
+                                       y:(CGFloat)y;
+
+@end
+
 @interface UIImage (DRExtension)
 
 #pragma mark - 创建图片
@@ -15,7 +30,7 @@
 /**
  创建纯色图片
  size:(1,1)
-
+ 
  @param color 图片颜色
  @return 返回图片
  */
@@ -24,7 +39,7 @@
 /**
  创建纯色图片
  size:(screenWidth, 0.25)
-
+ 
  @param color 图片颜色
  @return 返回图片
  */
@@ -32,7 +47,7 @@
 
 /**
  创建纯色图片
-
+ 
  @param color 图片颜色
  @param size 图片尺寸
  @param cornerRadius 图片圆角半径
@@ -41,22 +56,6 @@
 + (UIImage *)pureImageWithColor:(UIColor *)color
                            size:(CGSize)size
                    cornerRadius:(CGFloat)cornerRadius;
-
-/**
- 将layer绘制成图片
-
- @param layer 要绘制的layer
- @return 返回图片
- */
-+ (UIImage *)imageFromLayer:(CALayer *)layer;
-
-/**
- 将view绘制成图片
-
- @param view 要绘制成图片的UIview
- @return 返回图片
- */
-+ (UIImage *)imageFromView:(UIView *)view;
 
 /**
  给icon设置圆形背景色，大小和圆角生成新图片
@@ -72,7 +71,7 @@
 
 /**
  给icon设置背景色，大小和圆角生成新图片
-
+ 
  @param icon 待合成图片
  @param color 待添加的背景色
  @param size 生成图片的尺寸
@@ -86,7 +85,7 @@
 
 /**
  创建圆圈图片
-
+ 
  @param color 圆圈颜色
  @param size 圆圈大小
  @param borderWidth 圆圈线宽
@@ -99,7 +98,7 @@
 
 /**
  构建圆圈中带勾的图片
-
+ 
  @param size 圆圈大小
  @param checkColor 勾线条颜色
  @param checkWidth 勾线条宽度
@@ -115,7 +114,7 @@
 
 /**
  构建纯色圆圈背景中带勾的图片
-
+ 
  @param size 纯色圆圈背景大小
  @param checkColor 勾线条颜色
  @param checkWidth 勾线条宽度
@@ -129,7 +128,7 @@
 
 /**
  圆圈进度图片
-
+ 
  @param size 圆圈大小
  @param progressColor 进图条颜色
  @param trackColor 进度底色
@@ -145,7 +144,7 @@
 
 /**
  构建勾图片
-
+ 
  @param size 勾外围尺寸
  @param lineWidth 勾线条宽度
  @param lineColor 勾线条颜色
@@ -155,9 +154,54 @@
                           lineWidth:(CGFloat)lineWidth
                           lineColor:(UIColor *)lineColor;
 
-#pragma mark - 按scale比例截取屏幕
-+ (UIImage *)screenshot; // scale = 0.0，截出屏幕大小的图
+#pragma mark - 截图
+// 对当前屏幕截图截出屏幕大小的图
++ (UIImage *)screenshot;
+// 对当前屏幕截图并按指定比例缩放
 + (UIImage *)screenshotWithScale:(float)scale;
+
+/**
+ 将layer绘制成图片
+ 
+ @param layer 要绘制的layer
+ @return 返回图片
+ */
++ (UIImage *)imageFromLayer:(CALayer *)layer;
+
+/**
+ 将view绘制成图片
+ 
+ @param view 要绘制成图片的UIview
+ @return 返回图片
+ */
++ (UIImage *)imageFromView:(UIView *)view;
++ (UIImage *)imageFromView:(UIView *)view bgColor:(UIColor *)bgColor;
+
+/// 对scrollView内容截图（UITableView，UICollectionView）图片尺寸与ScrollView内容相等
+/// @param scrollView scrollView
+/// @param color 截出图片背景色
+/// @param complete 完成回调
++ (void)imageWithWithScrollView:(UIScrollView *)scrollView
+                        bgColor:(UIColor *)color
+                       complete:(void(^)(UIImage *image))complete;
+
+/// 对scrollView内容截图（UITableView，UICollectionView）
+/// @param scrollView scrollView
+/// @param bgColor 截出图片背景色
+/// @param inset 截出图片与ScrollView的边缘的边距，正数表示比scrollView大
+/// @param complete 完成回调
++ (void)imageWithWithScrollView:(UIScrollView *)scrollView
+                        bgColor:(UIColor *)bgColor
+                          inset:(UIEdgeInsets)inset
+                       complete:(void(^)(UIImage *image))complete;
+
+/// 将视图拼接到一张图，透明背景，0边距
+/// @param appendViews 视图数组
+/// @param imageSize 图片尺寸
+/// @param color 指定图片背景色
++ (UIImage *)imageAppendedFromViews:(NSArray<DRImageAppendImageView *> *)appendViews
+                          imageSize:(CGSize)imageSize
+                            bgColor:(UIColor *)color;
 
 #pragma mark - utils
 // 按比例压缩图片大小

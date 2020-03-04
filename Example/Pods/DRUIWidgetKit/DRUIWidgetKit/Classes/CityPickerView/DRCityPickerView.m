@@ -42,7 +42,7 @@
 
 - (void)setupPickerView {
     [self.pickerView reloadAllComponents];
-    
+
     NSInteger provinceIndex = 0;
     NSInteger cityIndex = 0;
     BOOL find = NO;
@@ -71,7 +71,7 @@
     [self.pickerView selectRow:provinceIndex inComponent:0 animated:NO];
     [self.pickerView reloadComponent:1];
     [self.pickerView selectRow:cityIndex inComponent:1 animated:NO];
-    
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.pickerView reloadAllComponents];
     });
@@ -110,7 +110,7 @@
     if (component == 1) {
         text = self.provinceList[[pickerView selectedRowInComponent:0]].children[row].diji;
     }
-    
+
     UILabel *label = (UILabel *)view;
     if (!label) {
         label = [[UILabel alloc] init];
@@ -160,11 +160,11 @@
     if (!self.pickerView) {
         NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"city_list" ofType:@"json"]];
         self.provinceList = [NSArray yy_modelArrayWithClass:[DRCityPickerInfoModel class] json:data];
-        
+
         UIPickerView *pickerView = [[UIPickerView alloc] init];
         pickerView.delegate = self;
         pickerView.dataSource = self;
-        
+
         self.pickerView = pickerView;
         [self addSubview:self.pickerView];
         [self.pickerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -176,7 +176,7 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    
+
     if (CGRectIsEmpty(rect)) {
         return;
     }
@@ -190,7 +190,7 @@
 
 - (void)setCityCode:(NSInteger)cityCode {
     _cityCode = cityCode;
-    
+
     if (self.didDrawRect) {
         [self setupPickerView];
     }

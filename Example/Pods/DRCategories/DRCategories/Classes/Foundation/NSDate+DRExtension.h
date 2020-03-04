@@ -208,9 +208,11 @@ typedef NS_ENUM(NSInteger, DRCalenderUnitsType) {
 
 
 #pragma mark - 基于日历扩展
-//1.Sun. 2.Mon. 3.Thes. 4.Wed. 5.Thur. 6.Fri. 7.Sat.
-static const NSInteger DRCalendarFirstDay = 2;
 @interface NSDate (DRCalendar)
+
+//1.Sun. 2.Mon. 3.Thes. 4.Wed. 5.Thur. 6.Fri. 7.Sat.
++ (void)setCalendarWeekFirstday:(NSInteger)weekFirstday;
++ (NSInteger)weekFirstday;
 
 //日期相等
 - (BOOL)dateEqualTo:(NSDate *)date;
@@ -288,11 +290,6 @@ static const NSInteger DRCalendarFirstDay = 2;
 //获取当前日期前后N个月 - 农历
 - (NSArray<NSDate *> *)lunarMonthDateArrayWithCount:(NSInteger)count;
 
-//公历转农历
-- (void)solarToLunarWithComplelte:(void (^)(NSInteger year, NSInteger month, NSInteger , BOOL leapMonth))complete;
-
-//农历转公历
-- (NSDate *)lunarToSolarWithLeap:(BOOL)isLeap;
 @end
 
 
@@ -301,7 +298,8 @@ static const NSInteger DRCalendarFirstDay = 2;
 
 //时间戳 从1970年开始
 - (int64_t)timestamp;
-
+// 是否周末
+- (BOOL)isWeekend;
 //是否今天
 - (BOOL)isToday;
 //是否今个星期
@@ -341,10 +339,12 @@ static const NSInteger DRCalendarFirstDay = 2;
 - (NSInteger)hour;
 //日
 - (NSInteger)day;
-//星期几
+// 星期几 1.周日. 2.周一. 3.周二. 4.周三. 5.周四. 6.周五. 7.周六.
 - (NSInteger)weekday;
-//中国式星期几
+// 中国式星期几，1.周一，2.周二，3.周三，4.周四，5.周五，6.周六，7.周日
 - (NSInteger)chinaWeekday;
+//相对周起始日的序号，周起始日为1，取值1~7
+- (NSInteger)weekdayIndex;
 //星期几 - 中文
 - (NSString *)weekdayString;
 //第几星期 - 月份
@@ -472,8 +472,11 @@ static const NSInteger DRCalendarFirstDay = 2;
 //获取某一日期之后(含该月份)的N个月 - 公历
 - (NSArray<NSDate *> *)monthDateArrayNextWithCount:(NSInteger)count;
 
-//获取星期几标题数组
-+ (NSArray<NSString *> *)weekDayTitleArray;
+// 获取星期几标题数组，如“一”，以周起始日开始排序
++ (NSArray<NSString *> *)weekDayNumberTitleArray;
+
+// 获取周标题，如“周一”，以周起始日开始排序
++ (NSArray<NSString *> *)weekdayTitleArray;
 
 + (NSArray<NSDate *> *)monthDateArrayWithStartYear:(NSInteger)startYear
                                            endYear:(NSInteger)endYear;

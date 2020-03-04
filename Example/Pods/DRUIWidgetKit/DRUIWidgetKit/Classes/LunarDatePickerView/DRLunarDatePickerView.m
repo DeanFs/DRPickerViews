@@ -603,7 +603,7 @@
     if (!_lunarCalendar) {
         _lunarCalendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierChinese];
         [_lunarCalendar setTimeZone:[NSTimeZone defaultTimeZone]];
-        [_lunarCalendar setFirstWeekday:DRCalendarFirstDay];
+        [_lunarCalendar setFirstWeekday:[NSDate weekFirstday]];
     }
     return _lunarCalendar;
 }
@@ -612,7 +612,7 @@
     if (!_solarCalendar) {
         _solarCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         [_solarCalendar setTimeZone:[NSTimeZone defaultTimeZone]];
-        [_solarCalendar setFirstWeekday:DRCalendarFirstDay];
+        [_solarCalendar setFirstWeekday:[NSDate weekFirstday]];
     }
     return _solarCalendar;
 }
