@@ -19,7 +19,11 @@
 
 - (void)prepareToShow {
     DRPickerCityOption *opt = (DRPickerCityOption *)self.pickerOption;
-    self.cityPickerView.cityCode = opt.cityCode;
+    if (opt.cityCode == nil) {
+        self.cityPickerView.cityCode = -1;
+    } else {
+        self.cityPickerView.cityCode = opt.cityCode.integerValue;
+    }
 }
 
 - (id)pickedObject {

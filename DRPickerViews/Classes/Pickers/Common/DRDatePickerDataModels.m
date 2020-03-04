@@ -242,7 +242,7 @@
 
 @implementation DRPickerCityOption
 
-+ (instancetype)optionWithTitle:(NSString *)title cityCode:(NSInteger)cityCode {
++ (instancetype)optionWithTitle:(NSString *)title cityCode:(NSNumber *)cityCode {
     DRPickerCityOption *opt = [DRPickerCityOption optionWithTitle:title];
     opt.cityCode = cityCode;
     return opt;

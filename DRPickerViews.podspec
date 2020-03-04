@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DRPickerViews'
-  s.version          = '0.3.9'
+  s.version          = '0.3.10'
   s.summary          = '自定义选择器集合'
 
 # This description is used to generate tags and improve search results.

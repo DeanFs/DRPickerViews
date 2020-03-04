@@ -599,9 +599,9 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 @interface DRPickerCityOption : DRPickerOptionBase
 
 /// 民政部指定code
-@property (nonatomic, assign) NSInteger cityCode;
+@property (nonatomic, strong) NSNumber *cityCode;
 
-+ (instancetype)optionWithTitle:(NSString *)title cityCode:(NSInteger)cityCode;
++ (instancetype)optionWithTitle:(NSString *)title cityCode:(NSNumber *)cityCode;
 
 @end
 

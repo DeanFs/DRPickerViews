@@ -136,7 +136,7 @@
         } break;
 
         case DRPickerTypeCity: {
-            opt = [DRPickerCityOption optionWithTitle:@"选择城市" cityCode:222400];
+            opt = [DRPickerCityOption optionWithTitle:@"选择城市" cityCode:nil];
         } break;
 
         case DRPickerTypeClassTable: {
