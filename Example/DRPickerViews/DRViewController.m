@@ -14,6 +14,7 @@
 #import "DRPickerContainerView.h"
 #import <BlocksKit/UIView+BlocksKit.h>
 #import <DRUIWidgetKit/DRUIWidgetUtil.h>
+#import <DRCategories/UIFont+DRExtension.h>
 
 @interface DRViewController ()
 
@@ -170,21 +171,25 @@
             
         case DRPickerTypeLinkage: {
             opt = [DRPickerLinkageOption optionWithTitle:@"选择计量"];
-            ((DRPickerLinkageOption *)opt).unitArray = @[@"片", @"颗", @"毫升"];
-            ((DRPickerLinkageOption *)opt).optionArray = @[@[@"1", @"1.5", @"2", @"2.5", @"3", @"4", @"5", @"6", @"7", @"8", @"7", @"10"],
-                                                           @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"],
-                                                           @[@"10", @"20", @"30", @"40", @"50", @"60", @"70", @"80", @"90", @"100"]];
-            ((DRPickerLinkageOption *)opt).currentSelectUnit = @"颗";
+            ((DRPickerLinkageOption *)opt).unitArray = @[@"片打飞机埃里克", @"颗理发", @"毫升"];
+            ((DRPickerLinkageOption *)opt).valuesArray = @[@[@"1", @"1.5", @"2", @"2.5", @"3", @"4", @"5", @"6", @"7", @"8", @"7", @"10"],
+                                                           @[@"1", @"288888", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"],
+                                                           @[@"10", @"9999920", @"30", @"40", @"50", @"60", @"70", @"80", @"90", @"100"]];
+            ((DRPickerLinkageOption *)opt).currentSelectUnit = @"颗理发";
             ((DRPickerLinkageOption *)opt).currentSelectValue = @"5";
+            ((DRPickerLinkageOption *)opt).separateText = @"-";
+            ((DRPickerLinkageOption *)opt).leftToRith = YES;
         } break;
             
         case DRPickerTypeMultipleColumn: {
             opt = [DRPickerMultipleColumnOption optionWithTitle:@"随便选"];
-            ((DRPickerMultipleColumnOption *)opt).optionArray = @[@[@"1", @"1.5", @"2", @"2.5", @"3", @"4", @"5", @"6", @"7", @"8", @"7", @"10"],
-                                                                  @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"],
-                                                                  @[@"10", @"20", @"30", @"40", @"50", @"60", @"70", @"80", @"90", @"100"]];;
+            ((DRPickerMultipleColumnOption *)opt).optionArray = @[@[@"1788", @"1.5", @"2", @"2.5", @"3", @"4", @"5", @"6", @"7", @"8", @"7", @"10"],
+                                                                  @[@"1", @"6777772", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"],
+                                                                  @[@"10", @"20", @"30", @"40", @"50", @"60", @"70", @"80", @"90", @"1087870"]];;
             ((DRPickerMultipleColumnOption *)opt).currentSelectedStrings = @[@"2.5", @"8", @"100"];
             ((DRPickerMultipleColumnOption *)opt).tipText = @"测试一下";
+            ((DRPickerMultipleColumnOption *)opt).separateTexts = @[@"-"];
+            ((DRPickerMultipleColumnOption *)opt).columnsFont = @[[UIFont dr_PingFangSC_RegularWithSize:25]];
         } break;
             
         case DRPickerTypeDateToNow: {

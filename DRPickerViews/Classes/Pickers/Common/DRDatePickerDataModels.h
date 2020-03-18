@@ -656,7 +656,7 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 @property (strong, nonatomic) NSArray *unitArray;
 
 /// 选项数组
-@property (strong, nonatomic) NSArray <NSArray *>*optionArray;
+@property (strong, nonatomic) NSArray <NSArray *>*valuesArray;
 
 /// 选择单位
 @property (strong, nonatomic) NSString *currentSelectUnit;
@@ -667,16 +667,34 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 /// 提示语
 @property (nonatomic, copy) NSString *tipText;
 
+/// 左边一列影响右边一列，即unitArray在左边，optionArray在右边
+@property (assign, nonatomic) BOOL leftToRith;
+
+/// 主动列字体
+@property (strong, nonatomic) UIFont *unitFont;
+
+/// 被动影响数据源列字体
+@property (strong, nonatomic) UIFont *valueFont;
+
+/// 分隔符
+@property (copy, nonatomic) NSString *separateText;
+
 @end
 
 
 @interface DRPickerMultipleColumnOption : DRPickerOptionBase
 
 /// 选项数组
-@property (strong, nonatomic) NSArray <NSArray *>*optionArray;
+@property (strong, nonatomic) NSArray <NSArray<NSString *> *>*optionArray;
 
 /// 选择值
 @property (strong, nonatomic) NSArray <NSString *> *currentSelectedStrings;
+
+/// 按顺序指定每一列的字体字号，默认平方常规20pt
+@property (strong, nonatomic) NSArray<UIFont *> *columnsFont;
+
+/// 按顺序设置列与列之间的分隔符，如“/”，“-”，默认@""空字符
+@property (strong, nonatomic) NSArray<NSString *> *separateTexts;
 
 /// 提示语
 @property (nonatomic, copy) NSString *tipText;

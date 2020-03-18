@@ -298,6 +298,16 @@
 
 @implementation DRPickerLinkageOption
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _unitFont = [UIFont dr_PingFangSC_RegularWithSize:20];
+        _valueFont = [UIFont dr_PingFangSC_RegularWithSize:20];
+        _separateText = @"";
+    }
+    return self;
+}
+
 @end
 
 
