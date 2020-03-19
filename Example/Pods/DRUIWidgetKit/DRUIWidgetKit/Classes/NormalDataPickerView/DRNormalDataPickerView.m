@@ -34,6 +34,7 @@
 }
 
 - (void)reloadData {
+    [self.pickerView setNeedsLayout];
     self.reloading = YES;
     if (self.didDrawRect) {
         if (self.didChangeSelect) {

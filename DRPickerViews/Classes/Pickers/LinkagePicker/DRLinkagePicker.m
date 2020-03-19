@@ -126,7 +126,7 @@
         if (width != nil && width.floatValue > 40) {
             return width.floatValue;
         }
-        return 40;
+        return 50;
     };
     self.pickerView.getTextAlignmentForSectionBlock = ^NSTextAlignment(NSInteger section) {
         return NSTextAlignmentCenter;
@@ -193,6 +193,9 @@
             if (width > maxWidth) {
                 maxWidth = width;
             }
+        }
+        if (maxWidth < 50) {
+            maxWidth = 50;
         }
         [arr addObject:@(maxWidth)];
     }
