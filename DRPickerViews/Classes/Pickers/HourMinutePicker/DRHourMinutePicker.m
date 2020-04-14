@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *weekdaySectionTitleHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *timeSectionViewHeight;
 
-@property (nonatomic, strong) NSArray *selectedWeekdays;
+@property (nonatomic, strong) NSArray<NSNumber *> *selectedWeekdays;
 
 @end
 
@@ -121,7 +121,7 @@
         }
         self.weekDaySelectView.allOptions = [NSDate weekDayNumberTitleArray];
         self.weekDaySelectView.selectedOptions = [self getSelectedOptionIndexs];
-        self.selectedWeekdays = [self getSelectedOptionIndexs];
+        self.selectedWeekdays = ((DRPickerHMPlanWeekOption *)self.pickerOption).weekDays;
         NSDictionary<NSString *, NSNumber *> *titleTagMap = @{@"一": @(1),
                                                               @"二": @(2),
                                                               @"三": @(3),
