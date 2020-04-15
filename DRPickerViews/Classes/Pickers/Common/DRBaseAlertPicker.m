@@ -124,10 +124,10 @@
         }
         if (weakSelf.pickerOption.autoDismissWhenPicked) {
             [weakSelf dismissComplete:^{
-                kDR_SAFE_BLOCK(weakSelf.pickDoneBlock, weakSelf, [weakSelf pickDoneBlock]);
+                kDR_SAFE_BLOCK(weakSelf.pickDoneBlock, weakSelf, [weakSelf pickedObject]);
             }];
         } else {
-            kDR_SAFE_BLOCK(weakSelf.pickDoneBlock, weakSelf, [weakSelf pickDoneBlock]);
+            kDR_SAFE_BLOCK(weakSelf.pickDoneBlock, weakSelf, [weakSelf pickedObject]);
         }
     };
     [self prepareToShow];

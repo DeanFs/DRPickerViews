@@ -43,7 +43,7 @@
 
 - (void)pickerViewHeightChange:(CGFloat)newHeight {
     if (self.position == QCCardContentPositionBottom) {
-        self.cardContainerVc.minTopSpaceInSafeArea = kDRScreenHeight - newHeight - CGRectGetHeight([UIApplication sharedApplication].statusBarFrame) - [UITabBar safeHeight];
+        [self setupTopSpaceInSafeAreaWithHeight:newHeight];
         [self.cardContainerVc onContentHeightChange];
     } else {
         self.changeToHeight = newHeight;
@@ -94,7 +94,7 @@
         return [self shouldDismissWhenTapSpaceArea];
     };
     if (self.position == DRPickerShowPositionBottom) {
-        cardContainerVc.minTopSpaceInSafeArea = kDRScreenHeight - [self pickerViewHeight] - CGRectGetHeight([UIApplication sharedApplication].statusBarFrame) - [UITabBar safeHeight];
+        [self setupTopSpaceInSafeAreaWithHeight:[self pickerViewHeight]];
     }
     self.changeToHeight = -1;
 }
@@ -115,6 +115,16 @@
 /// 从中间弹出时，纵向居中向上偏移量，不实现默认：0
 - (CGFloat)contentCenterYUpOffset {
     return [self centerTopOffset];
+}
+
+#pragma mark - private
+- (void)setupTopSpaceInSafeAreaWithHeight:(CGFloat)height {
+    CGFloat statusBar = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
+    CGFloat space = kDRScreenHeight - [UITabBar safeHeight] - statusBar - height;
+    if (space < 0) {
+        space = 0;
+    }
+    self.cardContainerVc.minTopSpaceInSafeArea = space;
 }
 
 @end
