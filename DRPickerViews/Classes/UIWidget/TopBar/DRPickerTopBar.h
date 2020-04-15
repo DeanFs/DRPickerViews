@@ -15,7 +15,7 @@ IB_DESIGNABLE
 @interface DRPickerTopBar : UIView
 
 // default YES
-@property (assign, nonatomic) BOOL showBottomLine;
+@property (assign, nonatomic) IBInspectable BOOL showBottomLine;
 @property (nonatomic, copy) IBInspectable NSString *leftButtonTitle;
 @property (nonatomic, weak) IBInspectable UIImage *leftButtonImage;
 @property (strong, nonatomic) IBInspectable UIColor *leftButtonTintColor;
