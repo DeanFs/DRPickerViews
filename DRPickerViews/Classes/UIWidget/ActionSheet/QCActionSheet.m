@@ -60,7 +60,7 @@
             if ([RX(@"^http") isMatch:(NSString *)model.icon]) {
                 [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:(NSString *)model.icon]];
             } else {
-                self.iconImageView.image = [self imageNamed:(NSString *)model.icon];
+                self.iconImageView.image = [UIImage imageNamed:(NSString *)model.icon];
             }
         }
     }
@@ -102,7 +102,8 @@
     CGFloat iconWidth = 24;
     if (model.haveIcon) {
         UIImageView *iconView = [[UIImageView alloc] init];
-        iconView.contentMode = UIViewContentModeScaleAspectFit;
+        iconView.contentMode = UIViewContentModeCenter;
+        iconView.clipsToBounds = YES;
         [containerView addSubview:iconView];
         [iconView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_offset(0);

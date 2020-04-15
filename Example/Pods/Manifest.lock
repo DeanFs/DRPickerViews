@@ -33,21 +33,21 @@ PODS:
     - pop
     - RegExCategories
   - DRMacroDefines (0.1.2)
-  - DRPickerViews (0.4.4):
+  - DRPickerViews (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
     - DRMacroDefines
-    - DRPickerViews/Factory (= 0.4.4)
-    - DRPickerViews/Pickers (= 0.4.4)
-    - DRPickerViews/UIWidget (= 0.4.4)
+    - DRPickerViews/Factory (= 0.4.5)
+    - DRPickerViews/Pickers (= 0.4.5)
+    - DRPickerViews/UIWidget (= 0.4.5)
     - DRToastView
     - HexColors (= 4.0.0)
     - Masonry
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Factory (0.4.4):
+  - DRPickerViews/Factory (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -59,50 +59,38 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers (0.4.4):
+  - DRPickerViews/Pickers (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
     - DRMacroDefines
-    - DRPickerViews/Pickers/AheadTimePicker (= 0.4.4)
-    - DRPickerViews/Pickers/CityPicker (= 0.4.4)
-    - DRPickerViews/Pickers/ClassDurationPicker (= 0.4.4)
-    - DRPickerViews/Pickers/ClassTableWeekPicker (= 0.4.4)
-    - DRPickerViews/Pickers/ClassTermPicker (= 0.4.4)
-    - DRPickerViews/Pickers/ClassTimeRemindPicker (= 0.4.4)
-    - DRPickerViews/Pickers/Common (= 0.4.4)
-    - DRPickerViews/Pickers/DateToNowPicker (= 0.4.4)
-    - DRPickerViews/Pickers/HourMinutePicker (= 0.4.4)
-    - DRPickerViews/Pickers/LinkagePicker (= 0.4.4)
-    - DRPickerViews/Pickers/MultipleColumnPicker (= 0.4.4)
-    - DRPickerViews/Pickers/OneWeekPicker (= 0.4.4)
-    - DRPickerViews/Pickers/OptionCardPicker (= 0.4.4)
-    - DRPickerViews/Pickers/StringOptionPicker (= 0.4.4)
-    - DRPickerViews/Pickers/TimeConsumingPicker (= 0.4.4)
-    - DRPickerViews/Pickers/ValueSelectPicker (= 0.4.4)
-    - DRPickerViews/Pickers/WithLunarPicker (= 0.4.4)
-    - DRPickerViews/Pickers/YearMonthDayPicker (= 0.4.4)
-    - DRPickerViews/Pickers/YearMonthPicker (= 0.4.4)
-    - DRPickerViews/Pickers/YearOrYearMonthPicker (= 0.4.4)
+    - DRPickerViews/Pickers/AheadTimePicker (= 0.4.5)
+    - DRPickerViews/Pickers/CityPicker (= 0.4.5)
+    - DRPickerViews/Pickers/ClassDurationPicker (= 0.4.5)
+    - DRPickerViews/Pickers/ClassTableWeekPicker (= 0.4.5)
+    - DRPickerViews/Pickers/ClassTermPicker (= 0.4.5)
+    - DRPickerViews/Pickers/ClassTimeRemindPicker (= 0.4.5)
+    - DRPickerViews/Pickers/Common (= 0.4.5)
+    - DRPickerViews/Pickers/DateToNowPicker (= 0.4.5)
+    - DRPickerViews/Pickers/HourMinutePicker (= 0.4.5)
+    - DRPickerViews/Pickers/LinkagePicker (= 0.4.5)
+    - DRPickerViews/Pickers/MultipleColumnPicker (= 0.4.5)
+    - DRPickerViews/Pickers/OneWeekPicker (= 0.4.5)
+    - DRPickerViews/Pickers/OptionCardPicker (= 0.4.5)
+    - DRPickerViews/Pickers/StringOptionPicker (= 0.4.5)
+    - DRPickerViews/Pickers/TimeConsumingPicker (= 0.4.5)
+    - DRPickerViews/Pickers/ValueSelectPicker (= 0.4.5)
+    - DRPickerViews/Pickers/WithLunarPicker (= 0.4.5)
+    - DRPickerViews/Pickers/YearMonthDayPicker (= 0.4.5)
+    - DRPickerViews/Pickers/YearMonthPicker (= 0.4.5)
+    - DRPickerViews/Pickers/YearOrYearMonthPicker (= 0.4.5)
     - DRToastView
     - HexColors (= 4.0.0)
     - Masonry
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/AheadTimePicker (0.4.4):
-    - Aspects
-    - BlocksKit
-    - DRCategories
-    - DRMacroDefines
-    - DRPickerViews/Pickers/Common
-    - DRToastView
-    - HexColors (= 4.0.0)
-    - Masonry
-    - RTRootNavigationController
-    - SDWebImage
-    - YYModel
-  - DRPickerViews/Pickers/CityPicker (0.4.4):
+  - DRPickerViews/Pickers/AheadTimePicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -114,7 +102,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/ClassDurationPicker (0.4.4):
+  - DRPickerViews/Pickers/CityPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -126,7 +114,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/ClassTableWeekPicker (0.4.4):
+  - DRPickerViews/Pickers/ClassDurationPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -138,7 +126,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/ClassTermPicker (0.4.4):
+  - DRPickerViews/Pickers/ClassTableWeekPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -150,7 +138,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/ClassTimeRemindPicker (0.4.4):
+  - DRPickerViews/Pickers/ClassTermPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -162,18 +150,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/Common (0.4.4):
-    - Aspects
-    - BlocksKit
-    - DRCategories
-    - DRMacroDefines
-    - DRToastView
-    - HexColors (= 4.0.0)
-    - Masonry
-    - RTRootNavigationController
-    - SDWebImage
-    - YYModel
-  - DRPickerViews/Pickers/DateToNowPicker (0.4.4):
+  - DRPickerViews/Pickers/ClassTimeRemindPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -185,7 +162,18 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/HourMinutePicker (0.4.4):
+  - DRPickerViews/Pickers/Common (0.4.5):
+    - Aspects
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+    - RTRootNavigationController
+    - SDWebImage
+    - YYModel
+  - DRPickerViews/Pickers/DateToNowPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -197,7 +185,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/LinkagePicker (0.4.4):
+  - DRPickerViews/Pickers/HourMinutePicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -209,7 +197,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/MultipleColumnPicker (0.4.4):
+  - DRPickerViews/Pickers/LinkagePicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -221,7 +209,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/OneWeekPicker (0.4.4):
+  - DRPickerViews/Pickers/MultipleColumnPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -233,7 +221,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/OptionCardPicker (0.4.4):
+  - DRPickerViews/Pickers/OneWeekPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -245,7 +233,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/StringOptionPicker (0.4.4):
+  - DRPickerViews/Pickers/OptionCardPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -257,7 +245,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/TimeConsumingPicker (0.4.4):
+  - DRPickerViews/Pickers/StringOptionPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -269,7 +257,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/ValueSelectPicker (0.4.4):
+  - DRPickerViews/Pickers/TimeConsumingPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -281,7 +269,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/WithLunarPicker (0.4.4):
+  - DRPickerViews/Pickers/ValueSelectPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -293,7 +281,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/YearMonthDayPicker (0.4.4):
+  - DRPickerViews/Pickers/WithLunarPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -305,7 +293,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/YearMonthPicker (0.4.4):
+  - DRPickerViews/Pickers/YearMonthDayPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -317,7 +305,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/Pickers/YearOrYearMonthPicker (0.4.4):
+  - DRPickerViews/Pickers/YearMonthPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -329,44 +317,56 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget (0.4.4):
+  - DRPickerViews/Pickers/YearOrYearMonthPicker (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
     - DRMacroDefines
-    - DRPickerViews/UIWidget/ActionSheet (= 0.4.4)
-    - DRPickerViews/UIWidget/CardContainer (= 0.4.4)
-    - DRPickerViews/UIWidget/CheckboxGroupView (= 0.4.4)
-    - DRPickerViews/UIWidget/CityPickerView (= 0.4.4)
-    - DRPickerViews/UIWidget/ClassDurationPickerView (= 0.4.4)
-    - DRPickerViews/UIWidget/ClassRemindTimePickerView (= 0.4.4)
-    - DRPickerViews/UIWidget/ClassTermPickerView (= 0.4.4)
-    - DRPickerViews/UIWidget/Common (= 0.4.4)
-    - DRPickerViews/UIWidget/CustomLayout (= 0.4.4)
-    - DRPickerViews/UIWidget/DatePickerView (= 0.4.4)
-    - DRPickerViews/UIWidget/DRCollectionViews (= 0.4.4)
-    - DRPickerViews/UIWidget/DRPageControl (= 0.4.4)
-    - DRPickerViews/UIWidget/DRTableViews (= 0.4.4)
-    - DRPickerViews/UIWidget/HorizenPageView (= 0.4.4)
-    - DRPickerViews/UIWidget/HourMinutePickerView (= 0.4.4)
-    - DRPickerViews/UIWidget/LunarDatePickerView (= 0.4.4)
-    - DRPickerViews/UIWidget/NormalDataPickerView (= 0.4.4)
-    - DRPickerViews/UIWidget/OptionCard (= 0.4.4)
-    - DRPickerViews/UIWidget/PickerContainerView (= 0.4.4)
-    - DRPickerViews/UIWidget/SectionView (= 0.4.4)
-    - DRPickerViews/UIWidget/Segment (= 0.4.4)
-    - DRPickerViews/UIWidget/StarRateView (= 0.4.4)
-    - DRPickerViews/UIWidget/TopBar (= 0.4.4)
-    - DRPickerViews/UIWidget/ValuePickerView (= 0.4.4)
-    - DRPickerViews/UIWidget/VoiceWaveView (= 0.4.4)
-    - DRPickerViews/UIWidget/WeekPickerView (= 0.4.4)
+    - DRPickerViews/Pickers/Common
     - DRToastView
     - HexColors (= 4.0.0)
     - Masonry
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/ActionSheet (0.4.4):
+  - DRPickerViews/UIWidget (0.4.5):
+    - Aspects
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/ActionSheet (= 0.4.5)
+    - DRPickerViews/UIWidget/CardContainer (= 0.4.5)
+    - DRPickerViews/UIWidget/CheckboxGroupView (= 0.4.5)
+    - DRPickerViews/UIWidget/CityPickerView (= 0.4.5)
+    - DRPickerViews/UIWidget/ClassDurationPickerView (= 0.4.5)
+    - DRPickerViews/UIWidget/ClassRemindTimePickerView (= 0.4.5)
+    - DRPickerViews/UIWidget/ClassTermPickerView (= 0.4.5)
+    - DRPickerViews/UIWidget/Common (= 0.4.5)
+    - DRPickerViews/UIWidget/CustomLayout (= 0.4.5)
+    - DRPickerViews/UIWidget/DatePickerView (= 0.4.5)
+    - DRPickerViews/UIWidget/DRCollectionViews (= 0.4.5)
+    - DRPickerViews/UIWidget/DRPageControl (= 0.4.5)
+    - DRPickerViews/UIWidget/DRTableViews (= 0.4.5)
+    - DRPickerViews/UIWidget/HorizenPageView (= 0.4.5)
+    - DRPickerViews/UIWidget/HourMinutePickerView (= 0.4.5)
+    - DRPickerViews/UIWidget/LunarDatePickerView (= 0.4.5)
+    - DRPickerViews/UIWidget/NormalDataPickerView (= 0.4.5)
+    - DRPickerViews/UIWidget/OptionCard (= 0.4.5)
+    - DRPickerViews/UIWidget/PickerContainerView (= 0.4.5)
+    - DRPickerViews/UIWidget/SectionView (= 0.4.5)
+    - DRPickerViews/UIWidget/Segment (= 0.4.5)
+    - DRPickerViews/UIWidget/StarRateView (= 0.4.5)
+    - DRPickerViews/UIWidget/TopBar (= 0.4.5)
+    - DRPickerViews/UIWidget/ValuePickerView (= 0.4.5)
+    - DRPickerViews/UIWidget/VoiceWaveView (= 0.4.5)
+    - DRPickerViews/UIWidget/WeekPickerView (= 0.4.5)
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+    - RTRootNavigationController
+    - SDWebImage
+    - YYModel
+  - DRPickerViews/UIWidget/ActionSheet (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -378,7 +378,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/CardContainer (0.4.4):
+  - DRPickerViews/UIWidget/CardContainer (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -390,7 +390,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/CheckboxGroupView (0.4.4):
+  - DRPickerViews/UIWidget/CheckboxGroupView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -402,7 +402,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/CityPickerView (0.4.4):
+  - DRPickerViews/UIWidget/CityPickerView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -414,7 +414,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/ClassDurationPickerView (0.4.4):
+  - DRPickerViews/UIWidget/ClassDurationPickerView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -426,7 +426,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/ClassRemindTimePickerView (0.4.4):
+  - DRPickerViews/UIWidget/ClassRemindTimePickerView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -438,7 +438,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/ClassTermPickerView (0.4.4):
+  - DRPickerViews/UIWidget/ClassTermPickerView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -450,7 +450,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/Common (0.4.4):
+  - DRPickerViews/UIWidget/Common (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -461,19 +461,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/CustomLayout (0.4.4):
-    - Aspects
-    - BlocksKit
-    - DRCategories
-    - DRMacroDefines
-    - DRPickerViews/UIWidget/Common
-    - DRToastView
-    - HexColors (= 4.0.0)
-    - Masonry
-    - RTRootNavigationController
-    - SDWebImage
-    - YYModel
-  - DRPickerViews/UIWidget/DatePickerView (0.4.4):
+  - DRPickerViews/UIWidget/CustomLayout (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -485,31 +473,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/DRCollectionViews (0.4.4):
-    - Aspects
-    - BlocksKit
-    - DRCategories
-    - DRMacroDefines
-    - DRPickerViews/UIWidget/DRCollectionViews/FoldableView (= 0.4.4)
-    - DRPickerViews/UIWidget/DRCollectionViews/TimeFlowView (= 0.4.4)
-    - DRToastView
-    - HexColors (= 4.0.0)
-    - Masonry
-    - RTRootNavigationController
-    - SDWebImage
-    - YYModel
-  - DRPickerViews/UIWidget/DRCollectionViews/FoldableView (0.4.4):
-    - Aspects
-    - BlocksKit
-    - DRCategories
-    - DRMacroDefines
-    - DRToastView
-    - HexColors (= 4.0.0)
-    - Masonry
-    - RTRootNavigationController
-    - SDWebImage
-    - YYModel
-  - DRPickerViews/UIWidget/DRCollectionViews/TimeFlowView (0.4.4):
+  - DRPickerViews/UIWidget/DatePickerView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -521,7 +485,31 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/DRPageControl (0.4.4):
+  - DRPickerViews/UIWidget/DRCollectionViews (0.4.5):
+    - Aspects
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/DRCollectionViews/FoldableView (= 0.4.5)
+    - DRPickerViews/UIWidget/DRCollectionViews/TimeFlowView (= 0.4.5)
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+    - RTRootNavigationController
+    - SDWebImage
+    - YYModel
+  - DRPickerViews/UIWidget/DRCollectionViews/FoldableView (0.4.5):
+    - Aspects
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+    - RTRootNavigationController
+    - SDWebImage
+    - YYModel
+  - DRPickerViews/UIWidget/DRCollectionViews/TimeFlowView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -533,20 +521,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/DRTableViews (0.4.4):
-    - Aspects
-    - BlocksKit
-    - DRCategories
-    - DRMacroDefines
-    - DRPickerViews/UIWidget/DRTableViews/DRDragSortTableView (= 0.4.4)
-    - DRPickerViews/UIWidget/DRTableViews/DRTextScrollView (= 0.4.4)
-    - DRToastView
-    - HexColors (= 4.0.0)
-    - Masonry
-    - RTRootNavigationController
-    - SDWebImage
-    - YYModel
-  - DRPickerViews/UIWidget/DRTableViews/DRDragSortTableView (0.4.4):
+  - DRPickerViews/UIWidget/DRPageControl (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -558,7 +533,32 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/DRTableViews/DRTextScrollView (0.4.4):
+  - DRPickerViews/UIWidget/DRTableViews (0.4.5):
+    - Aspects
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/DRTableViews/DRDragSortTableView (= 0.4.5)
+    - DRPickerViews/UIWidget/DRTableViews/DRTextScrollView (= 0.4.5)
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+    - RTRootNavigationController
+    - SDWebImage
+    - YYModel
+  - DRPickerViews/UIWidget/DRTableViews/DRDragSortTableView (0.4.5):
+    - Aspects
+    - BlocksKit
+    - DRCategories
+    - DRMacroDefines
+    - DRPickerViews/UIWidget/Common
+    - DRToastView
+    - HexColors (= 4.0.0)
+    - Masonry
+    - RTRootNavigationController
+    - SDWebImage
+    - YYModel
+  - DRPickerViews/UIWidget/DRTableViews/DRTextScrollView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -569,7 +569,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/HorizenPageView (0.4.4):
+  - DRPickerViews/UIWidget/HorizenPageView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -583,7 +583,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/HourMinutePickerView (0.4.4):
+  - DRPickerViews/UIWidget/HourMinutePickerView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -595,7 +595,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/LunarDatePickerView (0.4.4):
+  - DRPickerViews/UIWidget/LunarDatePickerView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -607,7 +607,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/NormalDataPickerView (0.4.4):
+  - DRPickerViews/UIWidget/NormalDataPickerView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -619,7 +619,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/OptionCard (0.4.4):
+  - DRPickerViews/UIWidget/OptionCard (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -631,7 +631,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/PickerContainerView (0.4.4):
+  - DRPickerViews/UIWidget/PickerContainerView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -643,7 +643,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/SectionView (0.4.4):
+  - DRPickerViews/UIWidget/SectionView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -655,7 +655,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/Segment (0.4.4):
+  - DRPickerViews/UIWidget/Segment (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -667,7 +667,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/StarRateView (0.4.4):
+  - DRPickerViews/UIWidget/StarRateView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -679,7 +679,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/TopBar (0.4.4):
+  - DRPickerViews/UIWidget/TopBar (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -691,7 +691,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/ValuePickerView (0.4.4):
+  - DRPickerViews/UIWidget/ValuePickerView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -703,7 +703,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/VoiceWaveView (0.4.4):
+  - DRPickerViews/UIWidget/VoiceWaveView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -715,7 +715,7 @@ PODS:
     - RTRootNavigationController
     - SDWebImage
     - YYModel
-  - DRPickerViews/UIWidget/WeekPickerView (0.4.4):
+  - DRPickerViews/UIWidget/WeekPickerView (0.4.5):
     - Aspects
     - BlocksKit
     - DRCategories
@@ -788,7 +788,7 @@ SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   DRCategories: 5ce7e79748e3cbfd8813f34431c36f44eed0fd09
   DRMacroDefines: 58aa271bc1c4170fa09f4f33dcad18fc4f21a57e
-  DRPickerViews: 7526c2cd53ed3093b7e97be4c045dd915f0e02b6
+  DRPickerViews: ae52887f501d1a60caaf704740138c4375da8b4d
   DRSandboxManager: dc4c6a07a6ab2b0f01aac05ab2d1c128587e91a7
   DRToastView: 3e7a5d8c66640ca6c618910c926425c9c0ab3954
   HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379

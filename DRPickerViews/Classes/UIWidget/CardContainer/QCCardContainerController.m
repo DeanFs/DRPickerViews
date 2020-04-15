@@ -846,7 +846,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
             UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
             leftButton.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:15];
             [leftButton setTitleColor:[DRUIWidgetUtil cancelColor] forState:UIControlStateNormal];
-            [leftButton addTarget:self action:@selector(onCancelAction) forControlEvents:UIControlEventTouchUpInside];
+            [leftButton addTarget:self action:@selector(onLeftButtonAction) forControlEvents:UIControlEventTouchUpInside];
             [leftButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
             [leftButton setImageEdgeInsets:UIEdgeInsetsMake(0, -2, 0, 2)];
             [self.headerBarView addSubview:leftButton];
