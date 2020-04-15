@@ -15,7 +15,7 @@
 @interface DRBaseAlertPicker ()
 
 // 时间选择器点击完成选择的回调
-@property (nonatomic, copy) DRPickerInnerDoneBlock pickDoneBlock;
+@property (nonatomic, copy) DRPickerDoneBlock pickDoneBlock;
 
 @end
 
@@ -31,7 +31,7 @@
  */
 + (void)showPickerViewWithOption:(DRPickerOptionBase *)pickerOption
                       setupBlock:(DRPickerSetupBlock)setupBlock
-                   pickDoneBlock:(DRPickerInnerDoneBlock)pickDoneBlock {
+                   pickDoneBlock:(DRPickerDoneBlock)pickDoneBlock {
     DRBaseAlertPicker *pickerView = [self pickerView];
     kDR_SAFE_BLOCK(setupBlock, pickerView);
     pickerView.pickerOption = pickerOption;
@@ -109,8 +109,9 @@
     kDRWeakSelf
     self.topBar.showBottomLine = NO;
     self.topBar.leftButtonActionBlock = ^(DRPickerTopBar *topBar, UIButton *tappedButton) {
-        kDR_SAFE_BLOCK(weakSelf.pickerOption.cancelBlock);
-        [weakSelf dismiss];
+        [weakSelf dismissComplete:^{
+            kDR_SAFE_BLOCK(weakSelf.pickerOption.cancelBlock);
+        }];
     };
     if (self.pickerOption.cancelBlock != nil) {
         self.topBar.leftButtonTintColor = [DRUIWidgetUtil highlightColor];
@@ -118,17 +119,15 @@
     self.topBar.rightButtonActionBlock = ^(DRPickerTopBar *topBar, UIButton *tappedButton) {
         // 未停止滚动时，不执行完成回调
         if ([weakSelf anySubViewScrolling:weakSelf.picker]) {
-            [weakSelf dismiss];
+            [weakSelf dismissComplete:nil];
             return;
         }
-        
-        // 执行完成回调
-        BOOL autoDismiss = YES;
-        if (weakSelf.pickDoneBlock) {
-            autoDismiss = weakSelf.pickDoneBlock(weakSelf, [weakSelf pickedObject]);
-        }
-        if (autoDismiss) {
-            [weakSelf dismiss];
+        if (weakSelf.pickerOption.autoDismissWhenPicked) {
+            [weakSelf dismissComplete:^{
+                kDR_SAFE_BLOCK(weakSelf.pickDoneBlock, weakSelf, [weakSelf pickDoneBlock]);
+            }];
+        } else {
+            kDR_SAFE_BLOCK(weakSelf.pickDoneBlock, weakSelf, [weakSelf pickDoneBlock]);
         }
     };
     [self prepareToShow];

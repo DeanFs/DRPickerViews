@@ -220,9 +220,12 @@
 //        [opt.pickerView dismiss];
 //    }];
     
+    kDRWeakSelf
     [DRPickerFactory showPickerViewWithType:type pickerOption:opt pickDoneBlock:^(DRBaseAlertPicker * _Nonnull picker, id  _Nonnull pickedObject) {
         kDR_LOG(@"%@", pickedObject);
-        [picker dismiss];
+        [picker dismissComplete:^{
+            [weakSelf.navigationController pushViewController:[UIViewController new] animated:YES];
+        }];
     }];
 }
 

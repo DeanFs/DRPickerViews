@@ -44,6 +44,6 @@ typedef NS_ENUM(NSInteger, DRPickerShowPosition) {
 - (void)pickerViewHeightChange:(CGFloat)newHeight;
 
 // 隐藏退出
-- (void)dismiss;
+- (void)dismissComplete:(dispatch_block_t)complete;
 
 @end

@@ -16,9 +16,8 @@
  
  @param picker 选择器对象，满足DRDatePickerProtocol协议
  @param pickedObject 选中的数据结构
- @return YES:自动隐藏pickerView, NO不自动隐藏
  */
-typedef BOOL (^DRPickerInnerDoneBlock)(DRBaseAlertPicker *picker, id pickedObject);
+typedef void (^DRPickerDoneBlock)(DRBaseAlertPicker *picker, id pickedObject);
 
 /**
  额外初始化回调
@@ -44,7 +43,7 @@ typedef void (^DRPickerSetupBlock)(__kindof DRBaseAlertPicker *picker);
  */
 + (void)showPickerViewWithOption:(DRPickerOptionBase *)pickerOption
                       setupBlock:(DRPickerSetupBlock)setupBlock
-                   pickDoneBlock:(DRPickerInnerDoneBlock)pickDoneBlock;
+                   pickDoneBlock:(DRPickerDoneBlock)pickDoneBlock;
 
 #pragma mark - 子类中可能需要重写的方法
 /**

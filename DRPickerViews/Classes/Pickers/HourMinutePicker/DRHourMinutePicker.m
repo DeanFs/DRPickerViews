@@ -102,8 +102,9 @@
     if (hmOption.canClean && hmOption.onCleanTimeBlock) {
         self.topBar.centerButtonTitle = @"清除时间";
         self.topBar.centerButtonActionBlock = ^(DRPickerTopBar *topBar, UIButton *tappedButton) {
-            kDR_SAFE_BLOCK(hmOption.onCleanTimeBlock, hmOption.currentTime);
-            [weakSelf dismiss];
+            [weakSelf dismissComplete:^{
+                kDR_SAFE_BLOCK(hmOption.onCleanTimeBlock, hmOption.currentTime);
+            }];
         };
     }
 

@@ -39,19 +39,17 @@
 + (void)showPickerViewWithType:(DRPickerType)type
                   pickerOption:(DRPickerOptionBase *)pickerOption
                  pickDoneBlock:(DRPickerDoneBlock)pickDoneBlock {
-    DRPickerInnerDoneBlock innerPickDoneBlock = [self pickDoneBlockWithOption:pickerOption
-                                                                pickDoneBlock:pickDoneBlock];
     switch (type) {
         case DRPickerTypeYMD: {
             [DRYMDPicker showPickerViewWithOption:pickerOption
                                        setupBlock:nil
-                                    pickDoneBlock:innerPickDoneBlock];
+                                    pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeWithLunar: {
             [DRYMDWithLunarPicker showPickerViewWithOption:pickerOption
                                                 setupBlock:nil
-                                             pickDoneBlock:innerPickDoneBlock];
+                                             pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypePlanEnd: {
@@ -59,19 +57,19 @@
                                        setupBlock:^(DRYMDPicker *picker) {
                                            picker.type = DRYMDPickerTypePlanEnd;
                                        }
-                                    pickDoneBlock:innerPickDoneBlock];
+                                    pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeYearMoth: {
             [DRYearMonthPicker showPickerViewWithOption:pickerOption
                                              setupBlock:nil
-                                          pickDoneBlock:innerPickDoneBlock];
+                                          pickDoneBlock:pickDoneBlock];
         } break;
 
         case DRPickerTypeYearOrYearMoth: {
             [DRYearOrYearMonthPicker showPickerViewWithOption:pickerOption
                                                    setupBlock:nil
-                                                pickDoneBlock:innerPickDoneBlock];
+                                                pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeYearMothFileter: {
@@ -79,13 +77,13 @@
                                              setupBlock:^(DRYearMonthPicker *picker) {
                                                  picker.withMonthViewFilter = YES;
                                              }
-                                          pickDoneBlock:innerPickDoneBlock];
+                                          pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeOneWeek: {
             [DROneWeekPicker showPickerViewWithOption:pickerOption
                                            setupBlock:nil
-                                        pickDoneBlock:innerPickDoneBlock];
+                                        pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeHMForDate: {
@@ -93,7 +91,7 @@
                                               setupBlock:^(DRHourMinutePicker *picker) {
                                                   picker.type = DRHourMinutePickerTypeResetDate;
                                               }
-                                           pickDoneBlock:innerPickDoneBlock];
+                                           pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeHMOnly: {
@@ -101,7 +99,7 @@
                                               setupBlock:^(DRHourMinutePicker *picker) {
                                                   picker.type = DRHourMinutePickerTypeNormal;
                                               }
-                                           pickDoneBlock:innerPickDoneBlock];
+                                           pickDoneBlock:pickDoneBlock];
             
         } break;
             
@@ -110,101 +108,90 @@
                                               setupBlock:^(DRHourMinutePicker *picker) {
                                                   picker.type = DRHourMinutePickerTypePlanWeekConfig;
                                               }
-                                           pickDoneBlock:innerPickDoneBlock];
+                                           pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeTimeConsuming: {
             [DRTimeConsumingPicker showPickerViewWithOption:pickerOption
                                                  setupBlock:nil
-                                              pickDoneBlock:innerPickDoneBlock];
+                                              pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeRemindAhead: {
             [DRAheadTimePicker showPickerViewWithOption:pickerOption
                                              setupBlock:nil
-                                          pickDoneBlock:innerPickDoneBlock];
+                                          pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeValueSelect: {
             [DRValueSelectPicker showPickerViewWithOption:pickerOption
                                                setupBlock:nil
-                                            pickDoneBlock:innerPickDoneBlock];
+                                            pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeStringSelect: {
             [DRStringOptionsPicker showPickerViewWithOption:pickerOption
                                                  setupBlock:nil
-                                              pickDoneBlock:innerPickDoneBlock];
+                                              pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeOptionCard: {
             [DROptionCardPicker showPickerViewWithOption:pickerOption
                                               setupBlock:nil
-                                           pickDoneBlock:innerPickDoneBlock];
+                                           pickDoneBlock:pickDoneBlock];
         } break;
 
         case DRPickerTypeCity: {
             [DRCityPicker showPickerViewWithOption:pickerOption
                                         setupBlock:nil
-                                     pickDoneBlock:innerPickDoneBlock];
+                                     pickDoneBlock:pickDoneBlock];
         } break;
 
         case DRPickerTypeClassTable: {
             [DRClassTableWeekPicker showPickerViewWithOption:pickerOption
                                                   setupBlock:nil
-                                               pickDoneBlock:innerPickDoneBlock];
+                                               pickDoneBlock:pickDoneBlock];
         } break;
 
         case DRPickerTypeClassTerm: {
             [DRClassTermPicker showPickerViewWithOption:pickerOption
                                               setupBlock:nil
-                                           pickDoneBlock:innerPickDoneBlock];
+                                           pickDoneBlock:pickDoneBlock];
         } break;
 
         case DRPickerTypeClassDuration: {
             [DRClassDurationPicker showPickerViewWithOption:pickerOption
                                                  setupBlock:nil
-                                              pickDoneBlock:innerPickDoneBlock];
+                                              pickDoneBlock:pickDoneBlock];
         } break;
 
         case DRPickerTypeClassRemindTime: {
             [DRClassRemindTimePicker showPickerViewWithOption:pickerOption
                                                    setupBlock:nil
-                                                pickDoneBlock:innerPickDoneBlock];
+                                                pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeLinkage: {
             [DRLinkagePicker showPickerViewWithOption:pickerOption
                                            setupBlock:nil
-                                        pickDoneBlock:innerPickDoneBlock];
+                                        pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeMultipleColumn: {
             [DRMultipleColumnPicker showPickerViewWithOption:pickerOption
                                                   setupBlock:nil
-                                               pickDoneBlock:innerPickDoneBlock];
+                                               pickDoneBlock:pickDoneBlock];
         } break;
             
         case DRPickerTypeDateToNow: {
             [DRDateToNowPicker showPickerViewWithOption:pickerOption
                                              setupBlock:nil
-                                          pickDoneBlock:innerPickDoneBlock];
+                                          pickDoneBlock:pickDoneBlock];
         } break;
             
         default:
             break;
     }
-}
-
-+ (DRPickerInnerDoneBlock)pickDoneBlockWithOption:(DRPickerOptionBase *)pickerOption
-                                    pickDoneBlock:(DRPickerDoneBlock)pickDoneBlock {
-    return ^BOOL(DRBaseAlertPicker * _Nonnull picker, id  _Nonnull pickedObject) {
-        kDR_SAFE_BLOCK(pickDoneBlock, picker, pickedObject);
-        if (pickerOption && !pickerOption.autoDismissWhenPicked) {
-            return NO;
-        }
-        return YES;
-    };
 }
 
 @end

@@ -33,10 +33,11 @@
                                                  atPosition:cardPosition];
 }
 
-- (void)dismiss {
+- (void)dismissComplete:(dispatch_block_t)complete {
     kDRWeakSelf
     [self.cardContainerVc dismissComplete:^{
         [weakSelf viewDidDismiss];
+        kDR_SAFE_BLOCK(complete);
     }];
 }
 
