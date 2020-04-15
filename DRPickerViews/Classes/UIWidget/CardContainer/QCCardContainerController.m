@@ -500,7 +500,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
     if (self.contentType == QCCardContentTypeService || self.customBottomBar != nil) {
         if (self.customBottomBar != nil) {
             self.bottomBarHeight += self.customBottomBar.height;
-            [self.containerView addSubview:self.customBottomBar];
+            [self.bottomBarView addSubview:self.customBottomBar];
             [self.customBottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.left.right.mas_offset(0);
                 make.height.mas_equalTo(weakSelf.customBottomBar.height);
