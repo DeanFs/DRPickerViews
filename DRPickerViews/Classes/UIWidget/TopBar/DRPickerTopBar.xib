@@ -23,11 +23,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Oh-gz-fbH">
-                    <rect key="frame" x="16" y="0.0" width="50" height="55"/>
+                    <rect key="frame" x="0.0" y="0.0" width="90" height="55"/>
                     <constraints>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Ouf-2l-0aU"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="Ouf-2l-0aU"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="15"/>
+                    <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="取消">
                         <color key="titleColor" red="0.29411764705882354" green="0.63529411764705879" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -51,11 +52,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrI-Wp-bNi">
-                    <rect key="frame" x="348" y="0.0" width="50" height="55"/>
+                    <rect key="frame" x="324" y="0.0" width="90" height="55"/>
                     <constraints>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="xmv-wg-mDk"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="xmv-wg-mDk"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="15"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="16" maxY="0.0"/>
                     <state key="normal" title="确定">
                         <color key="titleColor" red="0.29411764709999999" green="0.63529411759999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -76,14 +78,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="2Oh-gz-fbH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="4Vi-1D-Mbw"/>
+                <constraint firstItem="2Oh-gz-fbH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4Vi-1D-Mbw"/>
                 <constraint firstAttribute="bottom" secondItem="2Oh-gz-fbH" secondAttribute="bottom" id="BRS-AO-H5D"/>
                 <constraint firstAttribute="trailing" secondItem="SRK-EJ-0jh" secondAttribute="trailing" constant="16" id="Dtt-5p-MsG"/>
                 <constraint firstItem="crv-I2-gBW" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="IjT-Em-vHP"/>
                 <constraint firstItem="QrI-Wp-bNi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LHY-kD-IgB"/>
                 <constraint firstAttribute="bottom" secondItem="QrI-Wp-bNi" secondAttribute="bottom" id="M8M-mJ-pUi"/>
                 <constraint firstItem="crv-I2-gBW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Nf3-KJ-qUn"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="QrI-Wp-bNi" secondAttribute="trailing" constant="16" id="RX9-jo-iL4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="QrI-Wp-bNi" secondAttribute="trailing" id="RX9-jo-iL4"/>
                 <constraint firstItem="2Oh-gz-fbH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZP2-BG-cDG"/>
                 <constraint firstAttribute="bottom" secondItem="crv-I2-gBW" secondAttribute="bottom" id="hgf-c0-tiD"/>
                 <constraint firstAttribute="bottom" secondItem="SRK-EJ-0jh" secondAttribute="bottom" id="s5c-qQ-Qol"/>

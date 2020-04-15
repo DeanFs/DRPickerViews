@@ -820,7 +820,6 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 - (UIButton *)titleButton {
     if (!_titleButton) {
         if (self.position == QCCardContentPositionBottom && self.contentType != QCCardContentTypeView) {
-            kDRWeakSelf
             UIButton *titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
             [titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             titleButton.userInteractionEnabled = NO;
@@ -831,7 +830,6 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
             [self.headerBarView addSubview:titleButton];
             [titleButton mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.centerY.mas_offset(0);
-                make.left.mas_equalTo(weakSelf.leftButton.mas_right).mas_offset(10);
                 make.height.mas_equalTo(22.5);
             }];
             _titleButton = titleButton;
@@ -848,11 +846,12 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
             [leftButton setTitleColor:[DRUIWidgetUtil cancelColor] forState:UIControlStateNormal];
             [leftButton addTarget:self action:@selector(onLeftButtonAction) forControlEvents:UIControlEventTouchUpInside];
             [leftButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-            [leftButton setImageEdgeInsets:UIEdgeInsetsMake(0, -2, 0, 2)];
+            [leftButton setImageEdgeInsets:UIEdgeInsetsMake(0, 14, 0, 0)];
+            [leftButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 16, 0, 0)];
             [self.headerBarView addSubview:leftButton];
             [leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.bottom.mas_offset(0);
-                make.left.mas_offset(16);
+                make.top.left.bottom.mas_offset(0);
+                make.width.mas_greaterThanOrEqualTo(90);
             }];
             _leftButton = leftButton;
         }
@@ -869,10 +868,11 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
             [rightButton setTitleColor:[DRUIWidgetUtil disableColor] forState:UIControlStateDisabled];
             [rightButton addTarget:self action:@selector(onRightButtonAction) forControlEvents:UIControlEventTouchUpInside];
             [rightButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+            [rightButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 16)];
             [self.headerBarView addSubview:rightButton];
             [rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.bottom.mas_offset(0);
-                make.right.mas_offset(-16);
+                make.top.right.bottom.mas_offset(0);
+                make.width.mas_greaterThanOrEqualTo(90);
             }];
             _rightButton = rightButton;
         }
