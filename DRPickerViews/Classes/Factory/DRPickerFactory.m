@@ -60,7 +60,7 @@
                                     pickDoneBlock:pickDoneBlock];
         } break;
             
-        case DRPickerTypeYearMoth: {
+        case DRPickerTypeYearMonth: {
             [DRYearMonthPicker showPickerViewWithOption:pickerOption
                                              setupBlock:nil
                                           pickDoneBlock:pickDoneBlock];
@@ -72,7 +72,7 @@
                                                 pickDoneBlock:pickDoneBlock];
         } break;
             
-        case DRPickerTypeYearMothFileter: {
+        case DRPickerTypeYearMonthFileter: {
             [DRYearMonthPicker showPickerViewWithOption:pickerOption
                                              setupBlock:^(DRYearMonthPicker *picker) {
                                                  picker.withMonthViewFilter = YES;

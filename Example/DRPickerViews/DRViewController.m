@@ -61,7 +61,7 @@
             opt = [DRPickerPlanEndOption optionWithTitle:@"计划结束时间" currentDate:nil startDate:[NSDate date].lastMonth maxDate:[NSDate maxDate]];
         } break;
             
-        case DRPickerTypeYearMoth: {
+        case DRPickerTypeYearMonth: {
             opt = [DRPickerDateOption optionWithTitle:@"选择月份" currentDate:[NSDate date] minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
         } break;
 
@@ -70,7 +70,7 @@
             ((DRPickerYearOrYearMonthOption *)opt).isOnlyYear = YES;
         } break;
             
-        case DRPickerTypeYearMothFileter: {
+        case DRPickerTypeYearMonthFileter: {
             opt = [DRPickerYearMonthFilterOption optionWithTitle:@"选择月份" currentDate:[NSDate date] minDate:[NSDate minDate] maxDate:[NSDate maxDate]];
             ((DRPickerYearMonthFilterOption *)opt).monthViewFilterIndexs = @[@(0), @(2)];
         } break;

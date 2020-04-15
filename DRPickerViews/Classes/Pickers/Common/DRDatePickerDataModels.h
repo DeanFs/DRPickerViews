@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     // 年月选择器
     // 入参：DRPickerDateOption
     // 出参：NSDate
-    DRPickerTypeYearMoth,
+    DRPickerTypeYearMonth,
 
     // 年月或者年选择器
     // 入参：DRPickerYearOrYearMonthOption
@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     // 年月选择器带筛选，月视图中使用
     // 入参：DRPickerYearMonthFilterOption
     // 出参：DRPickerYearMonthFilterPickedObj
-    DRPickerTypeYearMothFileter,
+    DRPickerTypeYearMonthFileter,
     
     // 周选择器，周视图中使用
     // 入参：DRPickerDateOption
