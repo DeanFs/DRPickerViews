@@ -404,7 +404,7 @@
         model.data = option;
         model.contentAlignment = alignment;
         model.rightIconType = self.rightIconType;
-        model.haveIcon = YES;
+        model.haveIcon = haveIcon;
         model.icon = [icons safeGetObjectWithIndex:i];
         model.selected = ([selectedMap objectForKey:@(i)] != nil);
         if ([option isKindOfClass:[NSString class]]) {
