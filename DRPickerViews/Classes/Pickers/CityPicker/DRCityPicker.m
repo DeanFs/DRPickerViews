@@ -7,7 +7,7 @@
 //
 
 #import "DRCityPicker.h"
-#import <DRUIWidgetKit/DRCityPickerView.h>
+#import "DRCityPickerView.h"
 
 @interface DRCityPicker ()
 

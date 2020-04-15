@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DRDatePickerView">
+            <connections>
+                <outlet property="containerView" destination="yfy-WJ-XHe" id="31V-bX-iX4"/>
+                <outlet property="lunarDateContentView" destination="ehA-Ob-ZaE" id="z8x-Rp-db1"/>
+                <outlet property="lunarDateContentViewHeight" destination="dnU-aI-8bD" id="DPz-ja-Kb1"/>
+                <outlet property="lunarDateLabel" destination="vEK-2k-HHR" id="gIF-QJ-8M5"/>
+                <outlet property="lunarIcon" destination="dlf-6F-aSM" id="tWM-Y0-9Mn"/>
+                <outlet property="pickerView" destination="9A8-uM-KNJ" id="juL-ow-COH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="yfy-WJ-XHe">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="204"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehA-Ob-ZaE">
+                    <rect key="frame" x="0.0" y="162" width="414" height="42"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ikT-Xm-jRP">
+                            <rect key="frame" x="175.5" y="11" width="63.5" height="20"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_birth_lunar.png" translatesAutoresizingMaskIntoConstraints="NO" id="dlf-6F-aSM">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="VvK-RL-eD0"/>
+                                        <constraint firstAttribute="width" constant="20" id="xJw-xh-kVq"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEK-2k-HHR">
+                                    <rect key="frame" x="28" y="0.0" width="35.5" height="20"/>
+                                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="vEK-2k-HHR" firstAttribute="leading" secondItem="dlf-6F-aSM" secondAttribute="trailing" constant="8" id="BbM-VO-WNV"/>
+                                <constraint firstItem="dlf-6F-aSM" firstAttribute="leading" secondItem="ikT-Xm-jRP" secondAttribute="leading" id="FuZ-ep-FhP"/>
+                                <constraint firstAttribute="bottom" secondItem="dlf-6F-aSM" secondAttribute="bottom" id="IFd-cx-5lj"/>
+                                <constraint firstItem="dlf-6F-aSM" firstAttribute="top" secondItem="ikT-Xm-jRP" secondAttribute="top" id="bah-pe-J1u"/>
+                                <constraint firstItem="vEK-2k-HHR" firstAttribute="centerY" secondItem="dlf-6F-aSM" secondAttribute="centerY" id="e0c-zs-amd"/>
+                                <constraint firstAttribute="trailing" secondItem="vEK-2k-HHR" secondAttribute="trailing" id="rgn-hc-zgt"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="ikT-Xm-jRP" firstAttribute="centerY" secondItem="ehA-Ob-ZaE" secondAttribute="centerY" id="CG4-qF-n3x"/>
+                        <constraint firstAttribute="height" constant="42" id="dnU-aI-8bD"/>
+                        <constraint firstItem="ikT-Xm-jRP" firstAttribute="centerX" secondItem="ehA-Ob-ZaE" secondAttribute="centerX" id="gbh-mf-64W"/>
+                    </constraints>
+                </view>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9A8-uM-KNJ">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ehA-Ob-ZaE" firstAttribute="leading" secondItem="wQK-Ta-Rlw" secondAttribute="leading" id="12o-TT-sQD"/>
+                <constraint firstItem="wQK-Ta-Rlw" firstAttribute="trailing" secondItem="ehA-Ob-ZaE" secondAttribute="trailing" id="4xn-fK-u4x"/>
+                <constraint firstItem="ehA-Ob-ZaE" firstAttribute="top" secondItem="9A8-uM-KNJ" secondAttribute="bottom" id="62K-ag-7rZ"/>
+                <constraint firstItem="ehA-Ob-ZaE" firstAttribute="bottom" secondItem="wQK-Ta-Rlw" secondAttribute="bottom" id="7bY-cM-fGX"/>
+                <constraint firstItem="9A8-uM-KNJ" firstAttribute="trailing" secondItem="wQK-Ta-Rlw" secondAttribute="trailing" id="CS6-cy-nqN"/>
+                <constraint firstItem="9A8-uM-KNJ" firstAttribute="top" secondItem="yfy-WJ-XHe" secondAttribute="top" id="N39-yG-INH"/>
+                <constraint firstItem="9A8-uM-KNJ" firstAttribute="leading" secondItem="wQK-Ta-Rlw" secondAttribute="leading" id="sJE-BH-oXV"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="wQK-Ta-Rlw"/>
+            <point key="canvasLocation" x="137.68115942028987" y="119.86607142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_birth_lunar.png" width="20" height="20"/>
+    </resources>
+</document>

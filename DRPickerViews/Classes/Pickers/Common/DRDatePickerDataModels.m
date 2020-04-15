@@ -9,7 +9,7 @@
 #import "DRDatePickerDataModels.h"
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/UIFont+DRExtension.h>
-#import <DRUIWidgetKit/DRUIWidgetUtil.h>
+#import "DRUIWidgetUtil.h"
 
 #define kDefaultMinDuration 30
 
@@ -27,7 +27,6 @@
     self = [super init];
     if (self) {
         _autoDismissWhenPicked = YES;
-        _showInView = kDRWindow;
         _showFromPosition = DRPickerShowPositionBottom;
         _shouldDismissWhenTapSpaceArea = YES;
     }
@@ -230,7 +229,7 @@
         _columnSpace = 13;
         _lineHeight = 32;
         _fontSize = 13;
-        _itemCornerRadius = 6;
+        _itemCornerRadius = 16;
         _showPageControl = NO;
         _pageControlHeight = 30;
     }

@@ -6,9 +6,9 @@
 //
 
 #import "DRYearOrYearMonthPicker.h"
-#import <DRUIWidgetKit/DRSegmentBar.h>
+#import "DRSegmentBar.h"
 #import <DRMacroDefines/DRMacroDefines.h>
-#import <DRUIWidgetKit/DRDatePickerView.h>
+#import "DRDatePickerView.h"
 #import <DRCategories/UIView+DRExtension.h>
 
 @interface DRYearOrYearMonthPicker ()
@@ -26,7 +26,7 @@
 @implementation DRYearOrYearMonthPicker
 
 - (CGFloat)pickerViewHeight {
-    return 303;
+    return 260;
 }
 
 - (Class)pickerOptionClass {
@@ -43,6 +43,10 @@
     };
 }
 
+- (void)prepareToShow {
+    self.topBar.centerButtonTitle = nil;
+}
+
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
 
@@ -56,8 +60,8 @@
         self.isOnlyYear = option.isOnlyYear;
 
         // 设置选择器容器scrollView
-        CGFloat width = self.scrollView.width;
-        CGFloat height = self.scrollView.height;
+        CGFloat width = kDRScreenWidth;
+        CGFloat height = [self pickerViewHeight] - self.topBar.height;
         self.scrollView.contentSize = CGSizeMake(width*2, height);
 
         // 初始化并添加农历选择器

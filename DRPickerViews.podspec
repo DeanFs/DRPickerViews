@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DRPickerViews'
-  s.version          = '0.4.3'
+  s.version          = '0.4.4'
   s.summary          = '自定义选择器集合'
 
 # This description is used to generate tags and improve search results.
@@ -133,6 +133,158 @@ TODO: Add long description of the pod here.
         sss.dependency 'DRPickerViews/Pickers/Common'
     end
   end
+  
+  s.subspec 'UIWidget' do |ss|
+      ss.subspec 'Common' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/Common/*.{h,m}'
+      end
+      
+      ss.subspec 'PickerContainerView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/PickerContainerView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      ss.subspec 'TopBar' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/TopBar/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      ss.subspec 'Segment' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/Segment/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      ss.subspec 'SectionView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/SectionView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      ss.subspec 'OptionCard' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/OptionCard/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      ss.subspec 'HourMinutePickerView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/HourMinutePickerView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      ss.subspec 'DatePickerView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/DatePickerView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      ss.subspec 'LunarDatePickerView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/LunarDatePickerView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      ss.subspec 'WeekPickerView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/WeekPickerView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      ss.subspec 'ValuePickerView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/ValuePickerView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      ss.subspec 'CityPickerView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/CityPickerView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      ss.subspec 'NormalDataPickerView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/NormalDataPickerView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      ss.subspec 'ClassDurationPickerView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/ClassDurationPickerView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/NormalDataPickerView'
+      end
+      
+      ss.subspec 'ClassRemindTimePickerView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/ClassRemindTimePickerView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/NormalDataPickerView'
+      end
+      
+      ss.subspec 'ClassTermPickerView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/ClassTermPickerView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/NormalDataPickerView'
+      end
+      
+      ss.subspec 'CheckboxGroupView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/CheckboxGroupView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/NormalDataPickerView'
+      end
+      
+      # 布局信息
+      ss.subspec 'CustomLayout' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/CustomLayout/*/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      # 星星评级
+      ss.subspec 'StarRateView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/StarRateView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      # pageControl
+      ss.subspec 'DRPageControl' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/DRPageControl/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      # 音频录音水波
+      ss.subspec 'VoiceWaveView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/VoiceWaveView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+      end
+      
+      # 控件水平collectionview 带pagecontrol
+      ss.subspec 'HorizenPageView' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/HorizenPageView/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/Common'
+          sss.dependency 'DRPickerViews/UIWidget/CustomLayout'
+          sss.dependency 'DRPickerViews/UIWidget/DRPageControl'
+      end
+      
+      ss.subspec 'DRTableViews' do |sss|
+          sss.subspec 'DRDragSortTableView' do |ssss|
+              ssss.source_files = 'DRPickerViews/Classes/UIWidget/DRTableViews/DRDragSortTableView/*.{h,m}'
+              ssss.dependency 'DRPickerViews/UIWidget/Common'
+          end
+          
+          sss.subspec 'DRTextScrollView' do |ssss|
+              ssss.source_files = 'DRPickerViews/Classes/UIWidget/DRTableViews/DRTextScrollView/*.{h,m}'
+          end
+      end
+      
+      
+      ss.subspec 'DRCollectionViews' do |sss|
+          sss.subspec 'FoldableView' do |ssss|
+              ssss.source_files = 'DRPickerViews/Classes/UIWidget/DRCollectionViews/FoldableView/*.{h,m}'
+          end
+          
+          sss.subspec 'TimeFlowView' do |ssss|
+              ssss.source_files = 'DRPickerViews/Classes/UIWidget/DRCollectionViews/TimeFlowView/*.{h,m}'
+              ssss.dependency 'DRPickerViews/UIWidget/Common'
+          end
+      end
+      
+      # 卡片页面控制器，弹窗页面容器
+      ss.subspec 'CardContainer' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/CardContainer/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/DRTableViews/DRDragSortTableView'
+      end
+      
+      ss.subspec 'ActionSheet' do |sss|
+          sss.source_files = 'DRPickerViews/Classes/UIWidget/ActionSheet/*.{h,m}'
+          sss.dependency 'DRPickerViews/UIWidget/CardContainer'
+      end
+  end
 
   s.subspec 'Factory' do |ss|
     ss.source_files = 'DRPickerViews/Classes/Factory/*.{h,m}'
@@ -149,6 +301,12 @@ TODO: Add long description of the pod here.
   s.dependency 'DRCategories'
   s.dependency 'DRMacroDefines'
   s.dependency 'HexColors', '4.0.0'
-  s.dependency 'DRUIWidgetKit'
+  s.dependency 'Masonry'
+  s.dependency 'DRToastView'
+  s.dependency 'BlocksKit'
+  s.dependency 'YYModel'
+  s.dependency 'SDWebImage'
+  s.dependency 'RTRootNavigationController'
+  s.dependency 'Aspects'
 
 end

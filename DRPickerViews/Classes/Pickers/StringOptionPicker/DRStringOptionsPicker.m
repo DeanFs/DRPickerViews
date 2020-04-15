@@ -10,8 +10,8 @@
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/UIView+DRExtension.h>
 #import <DRCategories/NSArray+DRExtension.h>
-#import <DRUIWidgetKit/DRSectionTitleView.h>
-#import <DRUIWidgetKit/DRNormalDataPickerView.h>
+#import "DRSectionTitleView.h"
+#import "DRNormalDataPickerView.h"
 
 @interface DRStringOptionsPicker ()
 

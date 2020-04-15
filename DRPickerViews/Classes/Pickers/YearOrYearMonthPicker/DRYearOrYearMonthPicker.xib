@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,12 +22,17 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ap-OV-7iS" customClass="DRSegmentBar">
-                    <rect key="frame" x="0.0" y="56" width="414" height="56"/>
+                    <rect key="frame" x="127" y="12" width="160" height="32"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="Ezz-Jf-V1m"/>
-                        <constraint firstAttribute="height" constant="56" id="cwa-BY-6ys"/>
+                        <constraint firstAttribute="width" constant="160" id="7vM-hu-FxE"/>
+                        <constraint firstAttribute="height" constant="32" id="Ezz-Jf-V1m"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="showType">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YFW-6N-EmD">
                     <rect key="frame" x="0.0" y="112" width="414" height="191"/>
@@ -39,13 +44,12 @@
             <constraints>
                 <constraint firstItem="py2-Am-tIA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="2MQ-8Q-hUW"/>
                 <constraint firstItem="YFW-6N-EmD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FyH-E0-oQi"/>
-                <constraint firstItem="YFW-6N-EmD" firstAttribute="top" secondItem="8ap-OV-7iS" secondAttribute="bottom" id="HUO-ja-Rz0"/>
-                <constraint firstItem="8ap-OV-7iS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OMC-qe-L1c"/>
+                <constraint firstItem="8ap-OV-7iS" firstAttribute="centerY" secondItem="py2-Am-tIA" secondAttribute="centerY" id="OVf-bZ-FtJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="py2-Am-tIA" secondAttribute="trailing" id="VKN-d7-fvy"/>
                 <constraint firstAttribute="trailing" secondItem="YFW-6N-EmD" secondAttribute="trailing" id="fEV-9y-h5u"/>
+                <constraint firstItem="YFW-6N-EmD" firstAttribute="top" secondItem="py2-Am-tIA" secondAttribute="bottom" id="jKz-CW-nbA"/>
                 <constraint firstItem="py2-Am-tIA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mof-Yn-zFr"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8ap-OV-7iS" secondAttribute="trailing" id="n2c-8x-Usl"/>
-                <constraint firstItem="8ap-OV-7iS" firstAttribute="top" secondItem="py2-Am-tIA" secondAttribute="bottom" id="xGa-Ea-vgj"/>
+                <constraint firstItem="8ap-OV-7iS" firstAttribute="centerX" secondItem="py2-Am-tIA" secondAttribute="centerX" id="wLS-Uw-ENC"/>
                 <constraint firstAttribute="bottom" secondItem="YFW-6N-EmD" secondAttribute="bottom" id="zTf-Ut-L42"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

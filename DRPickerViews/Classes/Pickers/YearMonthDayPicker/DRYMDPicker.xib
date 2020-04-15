@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,21 +40,11 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQD-bH-Ln5">
-                                    <rect key="frame" x="15" y="101.5" width="345" height="0.5"/>
-                                    <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="0.5" id="7ci-WI-q0e"/>
-                                    </constraints>
-                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="aQD-bH-Ln5" firstAttribute="leading" secondItem="djL-fW-5FM" secondAttribute="leading" constant="15" id="25i-PL-kct"/>
-                                <constraint firstAttribute="trailing" secondItem="aQD-bH-Ln5" secondAttribute="trailing" constant="15" id="9sX-fy-KeV"/>
                                 <constraint firstItem="5GZ-3o-NfF" firstAttribute="leading" secondItem="djL-fW-5FM" secondAttribute="leading" constant="22" id="RI4-ke-oAV"/>
                                 <constraint firstAttribute="height" constant="102" id="Z4Q-rU-SVW"/>
-                                <constraint firstAttribute="bottom" secondItem="aQD-bH-Ln5" secondAttribute="bottom" id="fA7-gv-Qpk"/>
                                 <constraint firstAttribute="trailing" secondItem="5GZ-3o-NfF" secondAttribute="trailing" constant="22" id="uYy-J7-acV"/>
                                 <constraint firstItem="5GZ-3o-NfF" firstAttribute="top" secondItem="djL-fW-5FM" secondAttribute="top" constant="12" id="zPQ-gc-4ZP"/>
                                 <constraint firstItem="5GZ-3o-NfF" firstAttribute="centerY" secondItem="djL-fW-5FM" secondAttribute="centerY" id="ztc-sw-JMM"/>

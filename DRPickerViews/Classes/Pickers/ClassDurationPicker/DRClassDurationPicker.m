@@ -6,7 +6,7 @@
 //
 
 #import "DRClassDurationPicker.h"
-#import <DRUIWidgetKit/DRClassDurationPickerView.h>
+#import "DRClassDurationPickerView.h"
 
 @interface DRClassDurationPicker ()
 

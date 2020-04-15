@@ -7,7 +7,7 @@
 //
 
 #import "DRClassTermPicker.h"
-#import <DRUIWidgetKit/DRClassTermPickerView.h>
+#import "DRClassTermPickerView.h"
 #import <DRMacroDefines/DRMacroDefines.h>
 
 @interface DRClassTermPicker ()

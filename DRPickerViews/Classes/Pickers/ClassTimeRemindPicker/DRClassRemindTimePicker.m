@@ -6,7 +6,7 @@
 //
 
 #import "DRClassRemindTimePicker.h"
-#import <DRUIWidgetKit/DRClassRemindTimePickerView.h>
+#import "DRClassRemindTimePickerView.h"
 
 @interface DRClassRemindTimePicker ()
 

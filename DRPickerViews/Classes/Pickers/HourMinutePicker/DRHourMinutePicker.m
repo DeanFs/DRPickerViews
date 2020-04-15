@@ -10,12 +10,13 @@
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/NSDate+DRExtension.h>
 #import <DRCategories/NSString+DRExtension.h>
+#import <DRCategories/UIView+DRExtension.h>
 #import <JXExtension/JXExtension.h>
 #import <HexColors/HexColors.h>
-#import <DRUIWidgetKit/DRHourMinutePickerView.h>
-#import <DRUIWidgetKit/DROptionCardView.h>
-#import <DRUIWidgetKit/DRUIWidgetUtil.h>
-#import <DRUIWidgetKit/DRSectionTitleView.h>
+#import "DRHourMinutePickerView.h"
+#import "DROptionCardView.h"
+#import "DRUIWidgetUtil.h"
+#import "DRSectionTitleView.h"
 
 @interface DRHourMinutePicker ()<DRHourMinutePickerViewDelegate>
 
@@ -217,6 +218,14 @@
         self.tipLabel.textColor = [DRUIWidgetUtil descColor];
         self.topBar.rightButtonEnble = YES;
     }
+}
+
+- (void)setupCardContainerVc:(QCCardContainerController *)cardContainerVc {
+    [super setupCardContainerVc:cardContainerVc];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CGFloat columnSpace = (self.weekDaySelectView.width - self.weekDaySelectView.height * 7) / 6;
+        self.weekDaySelectView.columnSpace = columnSpace;
+    });
 }
 
 @end

@@ -6,12 +6,13 @@
 //
 
 #import "DRYMDWithLunarPicker.h"
-#import <DRUIWidgetKit/DRSegmentBar.h>
-#import <DRUIWidgetKit/DRDatePickerView.h>
-#import <DRUIWidgetKit/DRLunarDatePickerView.h>
+#import "DRSegmentBar.h"
+#import "DRDatePickerView.h"
+#import "DRLunarDatePickerView.h"
 #import <DRCategories/NSDate+DRExtension.h>
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/UIView+DRExtension.h>
+#import "DRUIWidgetUtil.h"
 
 @interface DRYMDWithLunarPicker ()
 
@@ -36,7 +37,10 @@
 @implementation DRYMDWithLunarPicker
 
 - (CGFloat)pickerViewHeight {
-    return 303;
+    if (((DRPickerWithLunarOption *)self.pickerOption).showDoubleCalendarTip) {
+        return 280;
+    }
+    return 260;
 }
 
 - (Class)pickerOptionClass {
@@ -54,6 +58,7 @@
 }
 
 - (void)prepareToShow {
+    self.topBar.centerButtonTitle = nil;
     kDRWeakSelf
     DRPickerWithLunarOption *lunarOpt = (DRPickerWithLunarOption *)self.pickerOption;
     self.type = lunarOpt.type;
@@ -85,6 +90,7 @@
             weakSelf.ignoreYear = !weakSelf.ignoreYear;
             [weakSelf setupTopLeftButton];
         };
+        self.topBar.leftButtonTintColor = [DRUIWidgetUtil highlightColor];
     } else if (self.type == DRYMDWithLunarPickerTypeMonthDayOnly) {
         self.solarPickerView.dateMode = DRDatePickerModeMD;
         self.lunarPickerView.dateMode = DRLunarDatePickerModeMD;
@@ -101,8 +107,8 @@
     
     if (self.scrollView.subviews.count == 0) {
         // 设置选择器容器scrollView
-        CGFloat width = self.scrollView.width;
-        CGFloat height = self.scrollView.height;
+        CGFloat width = kDRScreenWidth;
+        CGFloat height = [self pickerViewHeight] - self.topBar.height;
         self.scrollView.contentSize = CGSizeMake(width*2, height);
         
         // 初始化并添加公历选择器
@@ -127,6 +133,7 @@
         } else {
             [self.scrollView addSubview:self.solarPickerView];
         }
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kDRAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (self.isLunar) {
                 [self.scrollView addSubview:self.solarPickerView];

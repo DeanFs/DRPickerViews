@@ -1,6 +1,6 @@
 {
   "name": "DRPickerViews",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "summary": "自定义选择器集合",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/DeanFs/DRPickerViews",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/DeanFs/DRPickerViews.git",
-    "tag": "0.4.3"
+    "tag": "0.4.4"
   },
   "platforms": {
     "ios": "9.0"
@@ -32,7 +32,25 @@
     "HexColors": [
       "4.0.0"
     ],
-    "DRUIWidgetKit": [
+    "Masonry": [
+
+    ],
+    "DRToastView": [
+
+    ],
+    "BlocksKit": [
+
+    ],
+    "YYModel": [
+
+    ],
+    "SDWebImage": [
+
+    ],
+    "RTRootNavigationController": [
+
+    ],
+    "Aspects": [
 
     ]
   },
@@ -211,6 +229,264 @@
           "source_files": "DRPickerViews/Classes/Pickers/DateToNowPicker/*.{h,m}",
           "dependencies": {
             "DRPickerViews/Pickers/Common": [
+
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "UIWidget",
+      "subspecs": [
+        {
+          "name": "Common",
+          "source_files": "DRPickerViews/Classes/UIWidget/Common/*.{h,m}"
+        },
+        {
+          "name": "PickerContainerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/PickerContainerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "TopBar",
+          "source_files": "DRPickerViews/Classes/UIWidget/TopBar/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "Segment",
+          "source_files": "DRPickerViews/Classes/UIWidget/Segment/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "SectionView",
+          "source_files": "DRPickerViews/Classes/UIWidget/SectionView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "OptionCard",
+          "source_files": "DRPickerViews/Classes/UIWidget/OptionCard/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "HourMinutePickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/HourMinutePickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "DatePickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/DatePickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "LunarDatePickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/LunarDatePickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "WeekPickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/WeekPickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "ValuePickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/ValuePickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "CityPickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/CityPickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "NormalDataPickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/NormalDataPickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "ClassDurationPickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/ClassDurationPickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/NormalDataPickerView": [
+
+            ]
+          }
+        },
+        {
+          "name": "ClassRemindTimePickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/ClassRemindTimePickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/NormalDataPickerView": [
+
+            ]
+          }
+        },
+        {
+          "name": "ClassTermPickerView",
+          "source_files": "DRPickerViews/Classes/UIWidget/ClassTermPickerView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/NormalDataPickerView": [
+
+            ]
+          }
+        },
+        {
+          "name": "CheckboxGroupView",
+          "source_files": "DRPickerViews/Classes/UIWidget/CheckboxGroupView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/NormalDataPickerView": [
+
+            ]
+          }
+        },
+        {
+          "name": "CustomLayout",
+          "source_files": "DRPickerViews/Classes/UIWidget/CustomLayout/*/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "StarRateView",
+          "source_files": "DRPickerViews/Classes/UIWidget/StarRateView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "DRPageControl",
+          "source_files": "DRPickerViews/Classes/UIWidget/DRPageControl/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "VoiceWaveView",
+          "source_files": "DRPickerViews/Classes/UIWidget/VoiceWaveView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ]
+          }
+        },
+        {
+          "name": "HorizenPageView",
+          "source_files": "DRPickerViews/Classes/UIWidget/HorizenPageView/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/Common": [
+
+            ],
+            "DRPickerViews/UIWidget/CustomLayout": [
+
+            ],
+            "DRPickerViews/UIWidget/DRPageControl": [
+
+            ]
+          }
+        },
+        {
+          "name": "DRTableViews",
+          "subspecs": [
+            {
+              "name": "DRDragSortTableView",
+              "source_files": "DRPickerViews/Classes/UIWidget/DRTableViews/DRDragSortTableView/*.{h,m}",
+              "dependencies": {
+                "DRPickerViews/UIWidget/Common": [
+
+                ]
+              }
+            },
+            {
+              "name": "DRTextScrollView",
+              "source_files": "DRPickerViews/Classes/UIWidget/DRTableViews/DRTextScrollView/*.{h,m}"
+            }
+          ]
+        },
+        {
+          "name": "DRCollectionViews",
+          "subspecs": [
+            {
+              "name": "FoldableView",
+              "source_files": "DRPickerViews/Classes/UIWidget/DRCollectionViews/FoldableView/*.{h,m}"
+            },
+            {
+              "name": "TimeFlowView",
+              "source_files": "DRPickerViews/Classes/UIWidget/DRCollectionViews/TimeFlowView/*.{h,m}",
+              "dependencies": {
+                "DRPickerViews/UIWidget/Common": [
+
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "CardContainer",
+          "source_files": "DRPickerViews/Classes/UIWidget/CardContainer/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/DRTableViews/DRDragSortTableView": [
+
+            ]
+          }
+        },
+        {
+          "name": "ActionSheet",
+          "source_files": "DRPickerViews/Classes/UIWidget/ActionSheet/*.{h,m}",
+          "dependencies": {
+            "DRPickerViews/UIWidget/CardContainer": [
 
             ]
           }

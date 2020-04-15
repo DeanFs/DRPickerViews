@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <DRUIWidgetKit/DRPickerContainerView.h>
+#import "DRPickerContainerView.h"
 
 #pragma mark - 选择器类型定义
 typedef NS_ENUM(NSInteger, DRPickerType) {
@@ -139,11 +139,6 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
 
 /// 点击空白区域是否隐藏选择器，默认YES
 @property (nonatomic, assign) BOOL shouldDismissWhenTapSpaceArea;
-
-/**
- 指定在某个UI显示，默认显示到 keyWindow
- */
-@property (nonatomic, weak) UIView *showInView;
 
 /**
  选择器弹出的方向，默认：DRPickerShowPositionBottom
@@ -579,7 +574,7 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 @property (nonatomic, assign) IBInspectable CGFloat fontSize;
 
 /**
- item的圆角半径，默认6
+ item的圆角半径，默认16
  */
 @property (nonatomic, assign) IBInspectable CGFloat itemCornerRadius;
 

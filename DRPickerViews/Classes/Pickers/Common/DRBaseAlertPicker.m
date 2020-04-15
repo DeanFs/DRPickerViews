@@ -10,6 +10,7 @@
 #import <DRCategories/UIView+DRExtension.h>
 #import <DRCategories/NSDate+DRExtension.h>
 #import <DRMacroDefines/DRMacroDefines.h>
+#import "DRUIWidgetUtil.h"
 
 @interface DRBaseAlertPicker ()
 
@@ -72,10 +73,6 @@
 }
 
 #pragma mark - overwrite
-- (UIView *)showInView {
-    return self.pickerOption.showInView;
-}
-
 - (BOOL)shouldDismissWhenTapSpaceArea {
     kDR_SAFE_BLOCK(self.pickerOption.tappedSpaceAreaBlock);
     return self.pickerOption.shouldDismissWhenTapSpaceArea;
@@ -87,14 +84,6 @@
 
 - (void)viewDidDismiss {
     kDR_SAFE_BLOCK(self.pickerOption.dismissBlock);
-}
-
-- (CGFloat)bottomPaddingFromSafeArea {
-    CGFloat padding = [super bottomPaddingFromSafeArea];
-    if (self.pickerOption.customBottomView != nil) {
-        padding += (6 + self.pickerOption.customBottomView.height);
-    }
-    return padding;
 }
 
 - (void)dealloc {
@@ -118,10 +107,14 @@
     }
     
     kDRWeakSelf
+    self.topBar.showBottomLine = NO;
     self.topBar.leftButtonActionBlock = ^(DRPickerTopBar *topBar, UIButton *tappedButton) {
         kDR_SAFE_BLOCK(weakSelf.pickerOption.cancelBlock);
         [weakSelf dismiss];
     };
+    if (self.pickerOption.cancelBlock != nil) {
+        self.topBar.leftButtonTintColor = [DRUIWidgetUtil highlightColor];
+    }
     self.topBar.rightButtonActionBlock = ^(DRPickerTopBar *topBar, UIButton *tappedButton) {
         // 未停止滚动时，不执行完成回调
         if ([weakSelf anySubViewScrolling:weakSelf.picker]) {
@@ -140,25 +133,21 @@
     };
     [self prepareToShow];
     [self showFromPostion:self.pickerOption.showFromPosition];
-    
-    if (self.pickerOption.customBottomView != nil) {
-        self.pickerOption.customBottomView.x = (kDRScreenWidth - self.pickerOption.customBottomView.width) / 2;
-        self.pickerOption.customBottomView.y = kDRScreenHeight + [self pickerViewHeight] + 6;
-        [self.superview addSubview:self.pickerOption.customBottomView];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:kDRAnimationDuration animations:^{
-                self.pickerOption.customBottomView.y = kDRScreenHeight - self.pickerOption.customBottomView.height - [super bottomPaddingFromSafeArea] - [UITabBar safeHeight];
-            } completion:^(BOOL finished) {
-                self.pickerOption.customBottomView = nil;
-            }];
-        });
-    }
 }
 
 - (void)setPickerOption:(DRPickerOptionBase *)pickerOption {
     _pickerOption = pickerOption;
     pickerOption.pickerView = self;
+}
+
+#pragma mark - QCCardContentDelegate
+- (void)setupCardContainerVc:(QCCardContainerController *)cardContainerVc {
+    [super setupCardContainerVc:cardContainerVc];
+    cardContainerVc.allowPanClose = NO;
+    if (self.pickerOption.customBottomView != nil) {
+        cardContainerVc.customBottomBar = self.pickerOption.customBottomView;
+        self.pickerOption.customBottomView = nil;
+    }
 }
 
 @end

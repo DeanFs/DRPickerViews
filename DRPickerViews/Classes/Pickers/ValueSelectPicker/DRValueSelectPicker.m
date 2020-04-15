@@ -10,9 +10,9 @@
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/UIFont+DRExtension.h>
 #import <DRCategories/UIView+DRExtension.h>
-#import <DRUIWidgetKit/DRUIWidgetUtil.h>
-#import <DRUIWidgetKit/DRValuePickerView.h>
-#import <DRUIWidgetKit/DRSectionTitleView.h>
+#import "DRUIWidgetUtil.h"
+#import "DRValuePickerView.h"
+#import "DRSectionTitleView.h"
 
 @interface DRValueSelectPicker ()
 

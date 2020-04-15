@@ -7,8 +7,8 @@
 //
 
 #import "DRClassTableWeekPicker.h"
-#import <DRUIWidgetKit/DROptionCardView.h>
-#import <DRUIWidgetKit/DRCheckboxGroupView.h>
+#import "DROptionCardView.h"
+#import "DRCheckboxGroupView.h"
 #import <DRCategories/UIView+DRExtension.h>
 #import <DRMacroDefines/DRMacroDefines.h>
 
@@ -120,6 +120,13 @@
 
 - (Class)pickerOptionClass {
     return [DRPickerClassTableOption class];
+}
+
+- (void)setupCardContainerVc:(QCCardContainerController *)cardContainerVc {
+    [super setupCardContainerVc:cardContainerVc];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.optionCardView reloadData];
+    });
 }
 
 @end

@@ -1,6 +1,0 @@
-framework module DRUIWidgetKit {
-  umbrella header "DRUIWidgetKit-umbrella.h"
-
-  export *
-  module * { export * }
-}

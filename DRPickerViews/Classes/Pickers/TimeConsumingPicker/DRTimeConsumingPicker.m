@@ -8,8 +8,8 @@
 #import "DRTimeConsumingPicker.h"
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/UIFont+DRExtension.h>
-#import <DRUIWidgetKit/DRUIWidgetUtil.h>
-#import <DRUIWidgetKit/DRNormalDataPickerView.h>
+#import "DRUIWidgetUtil.h"
+#import "DRNormalDataPickerView.h"
 #import <DRCategories/NSArray+DRExtension.h>
 
 @interface DRTimeConsumingPicker ()

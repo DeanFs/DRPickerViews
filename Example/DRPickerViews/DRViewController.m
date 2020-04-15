@@ -13,7 +13,7 @@
 #import <DRMacroDefines/DRMacroDefines.h>
 #import "DRPickerContainerView.h"
 #import <BlocksKit/UIView+BlocksKit.h>
-#import <DRUIWidgetKit/DRUIWidgetUtil.h>
+#import "DRUIWidgetUtil.h"
 #import <DRCategories/UIFont+DRExtension.h>
 
 @interface DRViewController ()
@@ -23,7 +23,11 @@
 @implementation DRViewController
 
 - (void)viewDidLoad {
+    kDRWeakSelf
     [DRUIWidgetUtil setTimeScale:5];
+    [DRUIWidgetUtil setGetTopViewControllerBlock:^UIViewController *{
+        return weakSelf;
+    }];
     [NSDate setCalendarWeekFirstday:7];
     [super viewDidLoad];
 }
@@ -44,7 +48,7 @@
             opt = [DRPickerWithLunarOption optionWithTitle:@"农历"];
             DRPickerWithLunarOption *lunarOpt = (DRPickerWithLunarOption *)opt;
             lunarOpt.type = DRYMDWithLunarPickerTypeCanIngnoreYear;
-            lunarOpt.showDoubleCalendarTip = YES;
+            lunarOpt.showDoubleCalendarTip = NO;
             lunarOpt.year = 2018;
             lunarOpt.month = 12;
             lunarOpt.day = 4;
@@ -91,6 +95,10 @@
                 kDR_LOG(@"清除时间： %@", deletedObj);
             };
             opt.cancelButtonTitle = @"清除";
+            opt.cancelBlock = ^{
+                kDR_LOG(@"picker cancel");
+                kDR_LOG(@"清除");
+            };
         } break;
             
         case DRPickerTypeHMPlanWeek: {
@@ -201,10 +209,6 @@
     }
     opt.dismissBlock = ^{
         kDR_LOG(@"picker dismiss");
-    };
-    opt.cancelBlock = ^{
-        kDR_LOG(@"picker cancel");
-        kDR_LOG(@"清除");
     };
     opt.autoDismissWhenPicked = NO;
     

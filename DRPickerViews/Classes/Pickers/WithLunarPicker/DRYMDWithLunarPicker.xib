@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,28 +22,33 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yp-8U-z1E" customClass="DRSegmentBar">
-                    <rect key="frame" x="0.0" y="56" width="320" height="43"/>
+                    <rect key="frame" x="80" y="12" width="160" height="32"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="43" id="Ure-pZ-hLI"/>
+                        <constraint firstAttribute="width" constant="160" id="8rn-Ep-rhI"/>
+                        <constraint firstAttribute="height" constant="32" id="Ure-pZ-hLI"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="showType">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G63-Ul-eIr">
-                    <rect key="frame" x="0.0" y="99" width="320" height="204"/>
+                    <rect key="frame" x="0.0" y="56" width="320" height="247"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="G63-Ul-eIr" firstAttribute="top" secondItem="3yp-8U-z1E" secondAttribute="bottom" id="28f-a9-bnl"/>
-                <constraint firstItem="3yp-8U-z1E" firstAttribute="leading" secondItem="c9o-W7-lnY" secondAttribute="leading" id="2tU-AI-3f1"/>
                 <constraint firstItem="HqV-hm-YdG" firstAttribute="top" secondItem="c9o-W7-lnY" secondAttribute="top" id="80n-1D-rm4"/>
                 <constraint firstAttribute="bottom" secondItem="G63-Ul-eIr" secondAttribute="bottom" id="BNf-Wr-g2W"/>
-                <constraint firstAttribute="trailing" secondItem="3yp-8U-z1E" secondAttribute="trailing" id="OgO-kJ-EYU"/>
+                <constraint firstItem="3yp-8U-z1E" firstAttribute="centerX" secondItem="HqV-hm-YdG" secondAttribute="centerX" id="DMw-kG-gO2"/>
                 <constraint firstAttribute="trailing" secondItem="G63-Ul-eIr" secondAttribute="trailing" id="OoR-bu-QQg"/>
                 <constraint firstItem="HqV-hm-YdG" firstAttribute="leading" secondItem="c9o-W7-lnY" secondAttribute="leading" id="P2x-r9-gE7"/>
-                <constraint firstItem="3yp-8U-z1E" firstAttribute="top" secondItem="HqV-hm-YdG" secondAttribute="bottom" id="QuT-Xt-3yM"/>
+                <constraint firstItem="G63-Ul-eIr" firstAttribute="top" secondItem="HqV-hm-YdG" secondAttribute="bottom" id="SZ3-Kj-2H9"/>
                 <constraint firstAttribute="trailing" secondItem="HqV-hm-YdG" secondAttribute="trailing" id="dKD-xw-TAE"/>
                 <constraint firstItem="G63-Ul-eIr" firstAttribute="leading" secondItem="c9o-W7-lnY" secondAttribute="leading" id="oEO-BA-ss1"/>
+                <constraint firstItem="3yp-8U-z1E" firstAttribute="centerY" secondItem="HqV-hm-YdG" secondAttribute="centerY" id="zA6-Fw-4pL"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="bwZ-B3-ig6"/>
