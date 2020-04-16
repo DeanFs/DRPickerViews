@@ -21,6 +21,26 @@ typedef NS_ENUM(NSInteger, QCActionSheetRightIconType) {
     QCActionSheetRightIconTypeSelectMark    // 右侧有圆圈选中状态图标
 };
 
+@interface QCActionSheetModel : NSObject
+
+@property (assign, nonatomic) BOOL haveIcon;
+@property (assign, nonatomic) BOOL allowsMultipleSelection;
+@property (copy, nonatomic) NSString *title;
+@property (strong, nonatomic) id icon;
+@property (assign, nonatomic) QCActionSheetAlignment contentAlignment;
+@property (assign, nonatomic) QCActionSheetRightIconType rightIconType;
+@property (assign, nonatomic) BOOL selected;
+@property (strong, nonatomic) id data;
+@property (assign, nonatomic) NSInteger index;
+
+@end
+
+@interface QCActionSheetCell : UITableViewCell
+
+- (void)refreshWithActionSheetModel:(QCActionSheetModel *)model;
+
+@end
+
 @interface QCActionSheet : QCCardContainerBaseService
 
 #pragma mark - 功能，行为配置

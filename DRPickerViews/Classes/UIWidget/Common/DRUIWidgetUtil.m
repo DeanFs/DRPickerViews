@@ -93,6 +93,10 @@ static DRUIWidgetGetTopViewControllerBlock _getTopVcBlock;
     return [[self lineBaseColor] colorWithAlphaComponent:0.06];
 }
 
++ (UIColor *)coverBgColor {
+    return [[self lineBaseColor] colorWithAlphaComponent:0.24];
+}
+
 + (UIColor *)pickerDisableColor {
     return [[self oneLevelColor] colorWithAlphaComponent:0.2];
 }

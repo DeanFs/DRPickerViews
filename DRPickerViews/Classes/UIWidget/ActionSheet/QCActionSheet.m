@@ -16,25 +16,11 @@
 #import <Masonry/Masonry.h>
 #import "DRUIWidgetUtil.h"
 
-@interface QCActionSheetModel : NSObject
-
-@property (assign, nonatomic) BOOL haveIcon;
-@property (assign, nonatomic) BOOL allowsMultipleSelection;
-@property (copy, nonatomic) NSString *title;
-@property (strong, nonatomic) id icon;
-@property (assign, nonatomic) QCActionSheetAlignment contentAlignment;
-@property (assign, nonatomic) QCActionSheetRightIconType rightIconType;
-@property (assign, nonatomic) BOOL selected;
-@property (strong, nonatomic) id data;
-@property (assign, nonatomic) NSInteger index;
-
-@end
-
 @implementation QCActionSheetModel
 
 @end
 
-@interface QCActionSheetCell : UITableViewCell
+@interface QCActionSheetCell ()
 
 @property (weak, nonatomic) UILabel *titleLabel;
 @property (weak, nonatomic) UIImageView *iconImageView;

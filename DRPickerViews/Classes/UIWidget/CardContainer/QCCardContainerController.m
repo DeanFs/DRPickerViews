@@ -511,9 +511,9 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
                 self.bottomBarHeight += (kBottomBarHeight + self.bottomBarTopSpace);
                 
                 UIView *line = [[UIView alloc] init];
-                line.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.06];
+                line.backgroundColor = [DRUIWidgetUtil thickLineColor];
                 if (self.bottomBarTopSpace < 1) {
-                    line.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.1];
+                    line.backgroundColor = [DRUIWidgetUtil borderColor];
                 }
                 [self.bottomBarView addSubview:line];
                 [line mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -738,7 +738,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
                 make.top.mas_equalTo(weakSelf.normalTop);
             }];
             [UIView animateWithDuration:kDRAnimationDuration animations:^{
-                self.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.24];
+                self.view.backgroundColor = [DRUIWidgetUtil coverBgColor];
                 [self.view layoutIfNeeded];
             } completion:^(BOOL finished) {
                 [self setupViews];

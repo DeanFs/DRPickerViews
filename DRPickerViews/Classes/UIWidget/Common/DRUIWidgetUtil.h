@@ -28,6 +28,7 @@
 + (UIColor *)disableColor;
 + (UIColor *)borderColor;
 + (UIColor *)thickLineColor;
++ (UIColor *)coverBgColor;
 + (UIColor *)pickerDisableColor;
 
 #pragma mark - 渐变色
