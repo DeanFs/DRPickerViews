@@ -34,6 +34,13 @@
 
 @implementation QCActionSheetCell
 
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    return self;
+}
+
 - (void)refreshWithActionSheetModel:(QCActionSheetModel *)model {
     if (self.titleLabel == nil) {
         [self setupViewWithModel:model];
