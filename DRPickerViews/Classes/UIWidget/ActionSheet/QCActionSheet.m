@@ -26,8 +26,6 @@
 @property (weak, nonatomic) UIImageView *iconImageView;
 @property (weak, nonatomic) UIImageView *rightImageView;
 @property (weak, nonatomic) UIView *bottomLine;
-@property (strong, nonatomic) UIColor *textColor;
-@property (strong, nonatomic) UIFont *textFont;
 
 @end
 
@@ -107,6 +105,8 @@
     }
     
     UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:15];
+    titleLabel.textColor = [DRUIWidgetUtil normalColor];
     [containerView addSubview:titleLabel];
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_offset(titleLabelLeft);
