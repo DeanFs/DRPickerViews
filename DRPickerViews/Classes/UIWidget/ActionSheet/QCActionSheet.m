@@ -72,9 +72,13 @@
     UIView *containerView = [[UIView alloc] init];
     [self.contentView addSubview:containerView];
     
+    CGFloat horizontalPadding = 16;
+    if (model.haveIcon) {
+        horizontalPadding = 12;
+    }
     if (model.contentAlignment == QCActionSheetAlignmentRight) {
         [containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_offset(-12);
+            make.right.mas_offset(-horizontalPadding);
             make.top.bottom.mas_offset(0);
         }];
     } else if (model.contentAlignment == QCActionSheetAlignmentCenter) {
@@ -84,7 +88,7 @@
         }];
     } else {
         [containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_offset(12);
+            make.left.mas_offset(horizontalPadding);
             make.top.bottom.mas_offset(0);
         }];
     }
