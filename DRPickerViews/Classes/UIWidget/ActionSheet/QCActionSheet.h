@@ -37,6 +37,8 @@ typedef NS_ENUM(NSInteger, QCActionSheetRightIconType) {
 
 @interface QCActionSheetCell : UITableViewCell
 
+@property (assign, nonatomic) BOOL showBottomLine;
+
 - (void)refreshWithActionSheetModel:(QCActionSheetModel *)model;
 
 @end

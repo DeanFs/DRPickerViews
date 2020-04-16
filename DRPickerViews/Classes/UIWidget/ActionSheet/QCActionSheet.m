@@ -26,7 +26,6 @@
 @property (weak, nonatomic) UIImageView *iconImageView;
 @property (weak, nonatomic) UIImageView *rightImageView;
 @property (weak, nonatomic) UIView *bottomLine;
-@property (assign, nonatomic) BOOL showBottomLine;
 @property (strong, nonatomic) UIColor *textColor;
 @property (strong, nonatomic) UIFont *textFont;
 
