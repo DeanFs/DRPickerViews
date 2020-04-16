@@ -34,6 +34,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.showBottomLine = NO;
     }
     return self;
 }
@@ -129,15 +130,6 @@
         }];
         self.rightImageView = rightImageView;
     }
-    
-    UIView *line = [[UIView alloc] init];
-    line.backgroundColor = [DRUIWidgetUtil borderColor];
-    [self.contentView addSubview:line];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.right.mas_equalTo(0);
-        make.height.mas_equalTo(0.5);
-    }];
-    self.bottomLine = line;
 }
 
 - (void)setShowBottomLine:(BOOL)showBottomLine {
@@ -155,6 +147,20 @@
 - (UIImage *)imageNamed:(NSString *)imageName {
     return [DRUIWidgetUtil pngImageWithName:imageName
                                    inBundle:KDR_CURRENT_BUNDLE];
+}
+
+- (UIView *)bottomLine {
+    if (!_bottomLine) {
+        UIView *line = [[UIView alloc] init];
+        line.backgroundColor = [DRUIWidgetUtil borderColor];
+        [self.contentView addSubview:line];
+        [line mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.bottom.right.mas_equalTo(0);
+            make.height.mas_equalTo(0.5);
+        }];
+        _bottomLine = line;
+    }
+    return _bottomLine;
 }
 
 @end

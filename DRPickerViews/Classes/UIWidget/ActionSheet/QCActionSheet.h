@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, QCActionSheetRightIconType) {
 
 @interface QCActionSheetCell : UITableViewCell
 
-@property (assign, nonatomic) BOOL showBottomLine;
+@property (assign, nonatomic) BOOL showBottomLine; // default: NO
 @property (strong, nonatomic) UIColor *textColor;
 @property (strong, nonatomic) UIFont *textFont;
 
