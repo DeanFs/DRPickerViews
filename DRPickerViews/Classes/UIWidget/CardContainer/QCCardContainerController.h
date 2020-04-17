@@ -20,6 +20,14 @@ typedef NS_ENUM(NSInteger, QCCardContentPosition) {
 /// @param cardContainerVc 卡片控制器
 - (void)setupCardContainerVc:(QCCardContainerController *)cardContainerVc;
 
+/// 用于切面下滑退出手势
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
+
+/// 用于切面下滑退出手势
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
+                     withVelocity:(CGPoint)velocity
+              targetContentOffset:(inout CGPoint *)targetContentOffset;
+
 @optional
 /// 可滚容器的代理，用于下滑退出，该代理需要实现以下两个方法，
 /// 1. scrollViewDidScroll:
