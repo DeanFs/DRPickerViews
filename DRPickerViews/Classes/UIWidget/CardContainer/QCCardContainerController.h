@@ -57,6 +57,8 @@ typedef NS_ENUM(NSInteger, QCCardContentPosition) {
 @property (assign, nonatomic) BOOL alwaysBounceVertical;
 /// 在安全距离内，顶部预留的最小空间，默认 24
 @property (assign, nonatomic) CGFloat minTopSpaceInSafeArea;
+/// 最小显示高度，默认：50
+@property (assign, nonatomic) CGFloat minContentHeight;
 /// 内容区域显示圆角，默认：16
 @property (assign, nonatomic) CGFloat contentCornerRadius;
 /// 入场动画执行完成

@@ -23,7 +23,6 @@
 #define kHeaderBarHeight 56
 #define kBottomBarHeight 56
 #define kMinPanSpace 80
-#define kMinTableViewHeight 50
 
 typedef NS_ENUM(NSInteger, QCCardContentType) {
     QCCardContentTypeService,
@@ -145,7 +144,6 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 
 /// 退出页面
 - (void)dismissComplete:(dispatch_block_t)complete {
-    kDRWeakSelf
     for (id<AspectToken> token in self.aspectTokens) {
         [token remove];
     }
@@ -154,23 +152,23 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
             make.top.mas_equalTo(kDRScreenHeight);
         }];
         [UIView animateWithDuration:kDRAnimationDuration animations:^{
-            weakSelf.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
-            [weakSelf.view layoutIfNeeded];
+            self.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
+            [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
-            [weakSelf dismissViewControllerAnimated:NO completion:^{
+            [self dismissViewControllerAnimated:NO completion:^{
                 kDR_SAFE_BLOCK(complete);
-                kDR_SAFE_BLOCK(weakSelf.onHideAnimationDone);
+                kDR_SAFE_BLOCK(self.onHideAnimationDone);
             }];
         }];
     } else if (self.position == QCCardContentPositionCenter) {
         [UIView animateWithDuration:kDRAnimationDuration animations:^{
-            weakSelf.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
-            weakSelf.containerView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+            self.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
+            self.containerView.transform = CGAffineTransformMakeScale(0.1, 0.1);
             self.containerView.alpha = 0.0f;
         } completion:^(BOOL finished) {
-            [weakSelf dismissViewControllerAnimated:NO completion:^{
+            [self dismissViewControllerAnimated:NO completion:^{
                 kDR_SAFE_BLOCK(complete);
-                kDR_SAFE_BLOCK(weakSelf.onHideAnimationDone);
+                kDR_SAFE_BLOCK(self.onHideAnimationDone);
             }];
         }];
     }
@@ -269,6 +267,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
         _alwaysBounceVertical = YES;
         _contentCornerRadius = 16;
         _minTopSpaceInSafeArea = 24;
+        _minContentHeight = 50;
         _leftButtonAutoHighlight = YES;
         _showBottomBar = NO;
         _bottomBarTitle = @"取消";
@@ -686,7 +685,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
             tableViewHeight += (rowCount * self.tableView.rowHeight);
         }
     }
-    if (tableViewHeight < kMinTableViewHeight) {
+    if (tableViewHeight < self.minContentHeight) {
         return;
     }
     
@@ -707,6 +706,9 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 
 - (void)animationChangeHeight:(CGFloat)containerHeight {
     kDRWeakSelf
+    if (containerHeight < self.minContentHeight) {
+        return;
+    }
     self.normalTop = kDRScreenHeight - containerHeight + self.contentCornerRadius;
     if (self.containerView.hidden) {
         self.containerView.hidden = NO;
@@ -742,9 +744,8 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 - (void)onRightButtonAction {
     [self.view endEditing:YES];
     if (self.autoDismissWhenRightButtonAction) {
-        kDRWeakSelf
         [self dismissComplete:^{
-            kDR_SAFE_BLOCK(weakSelf.onRightButtonTapBlock);
+            kDR_SAFE_BLOCK(self.onRightButtonTapBlock);
         }];
     } else {
         kDR_SAFE_BLOCK(self.onRightButtonTapBlock);
@@ -893,14 +894,14 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
             if (offset < 0) {
                 offset = 0;
             }
-            CGFloat y = kDRScreenHeight - weakSelf.containerView.height + self.contentCornerRadius + offset;
+            CGFloat y = kDRScreenHeight - weakSelf.containerView.height + weakSelf.contentCornerRadius + offset;
             weakSelf.containerView.y = y;
         } else {
             CGPoint velocity = [(UIPanGestureRecognizer *)sender velocityInView:weakSelf.view];
             if (offset + velocity.y >= kMinPanSpace) {
                 [weakSelf dismissComplete:nil];
             } else {
-                CGFloat y = kDRScreenHeight - weakSelf.containerView.height + self.contentCornerRadius;
+                CGFloat y = kDRScreenHeight - weakSelf.containerView.height + weakSelf.contentCornerRadius;
                 [UIView animateWithDuration:kDRAnimationDuration animations:^{
                     weakSelf.containerView.y = y;
                 }];

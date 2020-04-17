@@ -225,8 +225,7 @@ static DRUIWidgetGetTopViewControllerBlock _getTopVcBlock;
 + (UIImage *)pngImageWithName:(NSString *)imageName
                      inBundle:(NSBundle *)bundle {
     NSInteger scale = (NSInteger)[UIScreen mainScreen].scale;
-    NSString *realImageName = [imageName stringByAppendingFormat:@"@%ldx", scale];
-    NSString *path = [bundle pathForResource:realImageName ofType:@"png"];
+    NSString *realImageName = [imageName stringByAppendingFormat:@"@%ldx", (long)scale];
     return [UIImage imageWithContentsOfFile:[bundle pathForResource:realImageName ofType:@"png"]];
 }
 

@@ -101,7 +101,16 @@ typedef NS_ENUM(NSInteger, QCActionSheetRightIconType) {
 
 /// 左上角取消按钮标题，title不为空，或者allowsMultipleSelection=YES时有效，默认：YES
 @property (assign, nonatomic) BOOL showCancelButton;
-
+/// 默认：取消
+@property (copy, nonatomic) NSString *bottomBarTitle;
+/// 默认：空
+@property (strong, nonatomic) UIImage *bottomBarIcon;
+/// 默认：#3C3C43,不透明85%
+@property (strong, nonatomic) UIColor *bottomBarTintColor;
+/// 默认：空
+@property (copy, nonatomic) void (^onBottomBarTappedBlock)(QCActionSheet *theSheet);
+/// 默认：4pt
+@property (assign, nonatomic) CGFloat bottomBarTopSpace;
 /// 自定义底部栏
 @property (strong, nonatomic) UIView *customBottomBar;
 

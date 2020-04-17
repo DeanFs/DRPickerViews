@@ -13,7 +13,7 @@
 #import <DRCategories/UIView+DRExtension.h>
 #import <HexColors/HexColors.h>
 
-@interface DRPickerContainerView () 
+@interface DRPickerContainerView ()
 
 @property (nonatomic, assign) DRPickerShowPosition position;
 @property (assign, nonatomic) CGFloat changeToHeight;
@@ -87,6 +87,7 @@
     kDRWeakSelf
     _cardContainerVc = cardContainerVc;
     cardContainerVc.contentCornerRadius = [self cornerRadius];
+    cardContainerVc.autoFitHeight = NO;
     cardContainerVc.onShowAnimationDone = ^{
         [weakSelf viewDidShow];
     };
@@ -97,6 +98,10 @@
         [self setupTopSpaceInSafeAreaWithHeight:[self pickerViewHeight]];
     }
     self.changeToHeight = -1;
+}
+
+- (UIScrollView *)supportCardPanCloseScrollView {
+    return nil;
 }
 
 /// 从中间弹出时，水平方向距离屏幕边缘距离，默认 16pt
@@ -125,6 +130,10 @@
         space = 0;
     }
     self.cardContainerVc.minTopSpaceInSafeArea = space;
+}
+
+- (void)dealloc {
+    kDR_LOG(@"%@ dealloc", NSStringFromClass([self class]));
 }
 
 @end

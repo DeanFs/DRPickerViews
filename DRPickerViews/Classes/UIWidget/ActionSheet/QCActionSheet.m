@@ -224,6 +224,9 @@
         _minSelectCount = 0;
         _maxSelectCount = 3;
         _showCancelButton = YES;
+        _bottomBarTitle = @"取消";
+        _bottomBarTintColor = [DRUIWidgetUtil cancelColor];
+        _bottomBarTopSpace = 4;
         _contentAlignment = QCActionSheetAlignmentNone;
         _textColor = [DRUIWidgetUtil normalColor];
         _textFont = [UIFont dr_PingFangSC_MediumWithSize:15];
@@ -271,9 +274,18 @@
     self.containerVc.customBottomBar = self.customBottomBar;
     if (!showTopBar && self.customBottomBar == nil) {
         self.containerVc.showBottomBar = YES;
+        self.containerVc.bottomBarIcon = self.bottomBarIcon;
+        self.containerVc.bottomBarTitle = self.bottomBarTitle;
+        self.containerVc.bottomBarTopSpace = self.bottomBarTopSpace;
+        self.containerVc.bottomBarTintColor = self.bottomBarTintColor;
         self.containerVc.onBottomBarTappedBlock = ^{
-            kDR_SAFE_BLOCK(weakSelf.sheetCancelBlock, YES);
-            [weakSelf.containerVc dismissComplete:nil];
+            if (weakSelf.onBottomBarTappedBlock == nil) {
+                [weakSelf.containerVc dismissComplete:^{
+                    kDR_SAFE_BLOCK(weakSelf.sheetCancelBlock, YES);
+                }];
+            } else {
+                kDR_SAFE_BLOCK(weakSelf.onBottomBarTappedBlock, weakSelf);
+            }
         };
     }
 }

@@ -49,7 +49,6 @@ typedef void (^DRPickerSetupBlock)(__kindof DRBaseAlertPicker *picker);
 /**
  加载同名xib
  子类有特殊的实例化方法时，子类中需要重写
-
  @return pickerView实例
  */
 + (instancetype)pickerView;
@@ -64,14 +63,12 @@ typedef void (^DRPickerSetupBlock)(__kindof DRBaseAlertPicker *picker);
 /**
  构建选中的数据，抽象方法
  必须实现
-
  @return 选中的数据
  */
 - (id)pickedObject;
 
 /**
  需要的参数类，默认DRPickerOptionBase
-
  @return option 的类
  */
 - (Class)pickerOptionClass;

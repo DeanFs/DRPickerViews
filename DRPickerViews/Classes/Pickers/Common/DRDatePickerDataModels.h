@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     // 入参：DRPickerDateOption
     // 出参：NSDate
     DRPickerTypeYearMonth,
-
+    
     // 年月或者年选择器
     // 入参：DRPickerYearOrYearMonthOption
     // 出参：DRPickerYearOrYearMonthPickedObj
@@ -83,27 +83,27 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     // 入参：DRPickerOptionCardOption
     // 出参：DRPickerOptionCardPickedObj
     DRPickerTypeOptionCard,
-
+    
     // 城市选择
     // 入参：DRPickerCityOption
     // 出参：DRPickerCityPickedObj
     DRPickerTypeCity,
-
+    
     // 课程表周数选择
     // 入参：DRPickerClassTableOption
     // 出参：DRPickerClassTablePickedObj
     DRPickerTypeClassTable,
-
+    
     // 课程表周或学期选择
     // 入参：DRPickerClassTermOption
     // 出参：DRPickerClassTermPickedObj
     DRPickerTypeClassTerm,
-
+    
     // 课程表课程时长选择
     // 入参：DRPickerClassDurationOption
     // 出参：DRPickerClassDurationPickedObj
     DRPickerTypeClassDuration,
-
+    
     // 课程表上课提醒时间选择
     // 入参：DRPickerClassRemindTimeOption
     // 出参：DRPickerClassRemindTimePickedObj
