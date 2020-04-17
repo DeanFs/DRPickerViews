@@ -41,6 +41,7 @@ typedef NS_ENUM(NSInteger, AutoScroll) {
 @property (assign, nonatomic) CGFloat minCenterY;
 @property (assign, nonatomic) CGFloat minOffsetY;
 @property (assign, nonatomic) CGFloat maxOffsetY;
+@property (weak, nonatomic) UIView *fullView;
 
 @end
 
@@ -49,7 +50,7 @@ typedef NS_ENUM(NSInteger, AutoScroll) {
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
-    self.tableRectInWindow = [self.superview convertRect:self.frame toView:kDRWindow];
+    self.tableRectInWindow = [self.superview convertRect:self.frame toView:self.fullView];
 }
 
 - (void)dealloc {
@@ -123,7 +124,7 @@ typedef NS_ENUM(NSInteger, AutoScroll) {
     }
     
     // 边缘检测
-    CGPoint pointToWindow = [sender locationInView:kDRWindow];
+    CGPoint pointToWindow = [sender locationInView:self.fullView];
     BOOL isMoveToEdge = [self isMoveToEdgeWithPonitToWindow:pointToWindow
                                            pointInTableView:point];
     
@@ -181,7 +182,7 @@ typedef NS_ENUM(NSInteger, AutoScroll) {
     AudioServicesPlaySystemSound(1519); // 振动反馈
     
     if (self.canDeleteStartCell) { // 显示右下角删除区
-        [kDRWindow addSubview:self.deleteView];
+        [self.fullView addSubview:self.deleteView];
         [self.deleteView show];
     }
     
@@ -198,7 +199,7 @@ typedef NS_ENUM(NSInteger, AutoScroll) {
     }
     self.dragImageView.alpha = 0.0;
     [self updateCellImageCenterWithPoint:[self.dragView.superview convertPoint:self.dragView.center
-                                                                        toView:kDRWindow]];
+                                                                        toView:self.fullView]];
     
     // 更改imageView的中心点为手指点击位置
     [UIView animateWithDuration:0.25 animations:^{
@@ -379,7 +380,7 @@ typedef NS_ENUM(NSInteger, AutoScroll) {
         self.dragImageView.alpha = 0;
         self.dragImageView.transform = CGAffineTransformIdentity;
         [self updateCellImageCenterWithPoint:[self.dragView.superview convertPoint:self.dragView.center
-                                                                            toView:kDRWindow]];
+                                                                            toView:self.fullView]];
     } completion:^(BOOL finished) {
         [self.dragImageView removeFromSuperview];
         self.dragImageView = nil;
@@ -420,7 +421,7 @@ typedef NS_ENUM(NSInteger, AutoScroll) {
     cellImageView.layer.shadowRadius = 5.0;
     cellImageView.layer.shadowOpacity = 0.4;
     cellImageView.layer.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6].CGColor;
-    [kDRWindow addSubview:cellImageView];
+    [self.fullView addSubview:cellImageView];
     return cellImageView;
 }
 
@@ -555,7 +556,7 @@ typedef NS_ENUM(NSInteger, AutoScroll) {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         // 获取滚动后，当前手指对应的indexPath
-        CGPoint currentPoint = [kDRWindow convertPoint:self.dragImageView.center toView:self];
+        CGPoint currentPoint = [self.fullView convertPoint:self.dragImageView.center toView:self];
         NSIndexPath *indexPath = [self indexPathForRowAtPoint:currentPoint];
         BOOL canSort = [self canSortWithIndex:indexPath fromIndexPath:self.fromIndexPath];
         if (canSort && self.canSortStartCell) {
@@ -577,6 +578,16 @@ typedef NS_ENUM(NSInteger, AutoScroll) {
             }
         }
     });
+}
+
+- (UIView *)fullView {
+    if (_fullView == nil) {
+        _fullView = self.superview;
+        while (!CGRectEqualToRect(_fullView.bounds, kDRWindow.bounds) && _fullView != nil) {
+            _fullView = _fullView.superview;
+        }
+    }
+    return _fullView;
 }
 
 @end
