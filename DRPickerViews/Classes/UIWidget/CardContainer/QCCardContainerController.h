@@ -121,6 +121,9 @@ typedef NS_ENUM(NSInteger, QCCardContentPosition) {
 /// autoFitHeight = YES 自适应高度时无效
 - (void)onContentHeightChange;
 
+/// 卡片内容区域的内容发生变更
+- (void)onContentViewChange;
+
 /// 退出页面
 - (void)dismissComplete:(dispatch_block_t)complete;
 

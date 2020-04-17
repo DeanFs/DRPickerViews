@@ -138,6 +138,11 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
     }
 }
 
+/// 卡片内容区域的内容发生变更
+- (void)onContentViewChange {
+    [self setupPanClose];
+}
+
 /// 退出页面
 - (void)dismissComplete:(dispatch_block_t)complete {
     kDRWeakSelf
@@ -597,8 +602,9 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
     }
     
     // 显示顶部栏则给顶部栏下滑退出手势
-    if (self.topBarHeight) {
+    if (self.topBarHeight && self.headerBarView.tag != 333) {
         [self.headerBarView addGestureRecognizer:[self panGesture]];
+        self.headerBarView.tag = 333;
     }
     
     // 获取ScrollView代理
