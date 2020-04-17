@@ -21,6 +21,12 @@ typedef NS_ENUM(NSInteger, QCActionSheetRightIconType) {
     QCActionSheetRightIconTypeSelectMark    // 右侧有圆圈选中状态图标
 };
 
+typedef NS_ENUM(NSInteger, QCActionSheetBottomBarType) {
+    QCActionSheetBottomBarTypeAuto,    // 自适应显示，有topBar则不显示BottomBar，否则显示不显示
+    QCActionSheetBottomBarTypeShow,    // 强制显示底部栏，可以与顶部栏同时存在
+    QCActionSheetBottomBarTypeHidden,  // 不显示底部栏，即使TopBar不存在也不显示底部栏
+};
+
 @interface QCActionSheetModel : NSObject
 
 @property (assign, nonatomic) BOOL haveIcon;
@@ -98,9 +104,10 @@ typedef NS_ENUM(NSInteger, QCActionSheetRightIconType) {
 #pragma mark - TopBar & BottomBar配置
 /// 标题
 @property (copy, nonatomic) NSString *title;
-
 /// 左上角取消按钮标题，title不为空，或者allowsMultipleSelection=YES时有效，默认：YES
 @property (assign, nonatomic) BOOL showCancelButton;
+/// 底部栏行为描述，默认：QCActionSheetBottomBarTypeAuto
+@property (assign, nonatomic) QCActionSheetBottomBarType bottomBarType;
 /// 默认：取消
 @property (copy, nonatomic) NSString *bottomBarTitle;
 /// 默认：空

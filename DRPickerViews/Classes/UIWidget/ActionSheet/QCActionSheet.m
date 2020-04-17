@@ -224,6 +224,7 @@
         _minSelectCount = 0;
         _maxSelectCount = 3;
         _showCancelButton = YES;
+        _bottomBarType = QCActionSheetBottomBarTypeAuto;
         _bottomBarTitle = @"取消";
         _bottomBarTintColor = [DRUIWidgetUtil cancelColor];
         _bottomBarTopSpace = 4;
@@ -271,22 +272,26 @@
             self.containerVc.leftButtonTitle = @""; // 隐藏取消按钮
         }
     }
-    self.containerVc.customBottomBar = self.customBottomBar;
-    if (!showTopBar && self.customBottomBar == nil) {
-        self.containerVc.showBottomBar = YES;
-        self.containerVc.bottomBarIcon = self.bottomBarIcon;
-        self.containerVc.bottomBarTitle = self.bottomBarTitle;
-        self.containerVc.bottomBarTopSpace = self.bottomBarTopSpace;
-        self.containerVc.bottomBarTintColor = self.bottomBarTintColor;
-        self.containerVc.onBottomBarTappedBlock = ^{
-            if (weakSelf.onBottomBarTappedBlock == nil) {
-                [weakSelf.containerVc dismissComplete:^{
-                    kDR_SAFE_BLOCK(weakSelf.sheetCancelBlock, YES);
-                }];
-            } else {
-                kDR_SAFE_BLOCK(weakSelf.onBottomBarTappedBlock, weakSelf);
-            }
-        };
+    
+    if (self.bottomBarType == QCActionSheetBottomBarTypeShow ||
+        (self.bottomBarType == QCActionSheetBottomBarTypeAuto && !showTopBar)) {
+        self.containerVc.customBottomBar = self.customBottomBar;
+        if (self.customBottomBar == nil) {
+            self.containerVc.showBottomBar = YES;
+            self.containerVc.bottomBarIcon = self.bottomBarIcon;
+            self.containerVc.bottomBarTitle = self.bottomBarTitle;
+            self.containerVc.bottomBarTopSpace = self.bottomBarTopSpace;
+            self.containerVc.bottomBarTintColor = self.bottomBarTintColor;
+            self.containerVc.onBottomBarTappedBlock = ^{
+                if (weakSelf.onBottomBarTappedBlock == nil) {
+                    [weakSelf.containerVc dismissComplete:^{
+                        kDR_SAFE_BLOCK(weakSelf.sheetCancelBlock, YES);
+                    }];
+                } else {
+                    kDR_SAFE_BLOCK(weakSelf.onBottomBarTappedBlock, weakSelf);
+                }
+            };
+        }
     }
 }
 
