@@ -7,6 +7,7 @@
 //
 
 #import "QCCardContainerBaseService.h"
+#import <DRMacroDefines/DRMacroDefines.h>
 
 @implementation QCCardContainerBaseService
 
@@ -23,6 +24,9 @@
 - (void)viewDidLayoutSubviews {}
 - (void)viewWillDisappear:(BOOL)animated {}
 - (void)viewDidDisappear:(BOOL)animated {}
+- (void)dealloc {
+    kDR_LOG(@"%@ dealloc", NSStringFromClass([self class]))
+}
 
 #pragma mark - UITableViewDataSouce
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

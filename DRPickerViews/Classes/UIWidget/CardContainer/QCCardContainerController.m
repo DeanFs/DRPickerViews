@@ -637,6 +637,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
                             top = weakSelf.normalTop;
                         }
                         if (!scrollView.decelerating) {
+                            [weakSelf.view endEditing:YES];
                             [weakSelf.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
                                 make.top.mas_equalTo(top);
                             }];
@@ -767,6 +768,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 
 #pragma mark - events
 - (void)onRightButtonAction {
+    [self.view endEditing:YES];
     if (self.autoDismissWhenRightButtonAction) {
         kDRWeakSelf
         [self dismissComplete:^{
@@ -778,6 +780,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 }
 
 - (void)onLeftButtonAction {
+    [self.view endEditing:YES];
     if (self.onLeftButtonTapBlock == nil) {
         [self dismissComplete:nil];
     } else {
@@ -790,6 +793,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self.view];
     if (!CGRectContainsPoint(self.containerView.frame, location)) {
