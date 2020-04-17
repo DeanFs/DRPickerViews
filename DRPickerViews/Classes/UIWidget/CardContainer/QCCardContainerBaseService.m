@@ -37,9 +37,4 @@
     return nil;
 }
 
-#pragma mark - UIScrollViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {}
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {}
-
 @end

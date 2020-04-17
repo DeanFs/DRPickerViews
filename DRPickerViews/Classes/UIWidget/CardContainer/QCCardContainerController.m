@@ -16,6 +16,7 @@
 #import <DRCategories/UIView+DRExtension.h>
 #import <DRCategories/UITabBar+DRExtension.h>
 #import <DRCategories/UIFont+DRExtension.h>
+#import <objc/message.h>
 #import "QCCardContainerBaseService.h"
 #import "DRUIWidgetUtil.h"
 
@@ -30,7 +31,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
     QCCardContentTypeView
 };
 
-@interface QCCardContainerController ()
+@interface QCCardContainerController ()<UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIView *containerView;
 @property (weak, nonatomic) UIView *headerBarView;
@@ -321,7 +322,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
                     self.containerView.transform = CGAffineTransformIdentity;
                     self.containerView.alpha = 1.0f;
                 } completion:^(BOOL finished) {
-                    [self setupViews];
+                    [self setupPanClose];
                 }];
             });
         }
@@ -587,102 +588,67 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
     self.tableView = tableView;
 }
 
-- (void)setupViews {
-    kDRWeakSelf
-    BOOL allowPan = self.allowPanClose && self.position == QCCardContentPositionBottom;
+- (void)setupPanClose {
+    kDR_SAFE_BLOCK(self.onShowAnimationDone);
     
-    // 显示顶部栏且允许滑动退出，则给顶部栏添加滑动手势
-    if (self.topBarHeight > 0 && allowPan) {
+    BOOL allowPan = self.allowPanClose && self.position == QCCardContentPositionBottom;
+    if (!allowPan) {
+        return;
+    }
+    
+    // 显示顶部栏则给顶部栏下滑退出手势
+    if (self.topBarHeight) {
         [self.headerBarView addGestureRecognizer:[self panGesture]];
     }
     
     // 获取ScrollView代理
+    UIScrollView *scrollView;
     id<UIScrollViewDelegate> delegate = nil;
     if (self.contentType == QCCardContentTypeService) {
         delegate = self.service;
-    } else if (self.contentType == QCCardContentTypeController) {
-        if ([self.contentController respondsToSelector:@selector(cardContentScrollViewDelegate)]) {
-            delegate = [self.contentController cardContentScrollViewDelegate];
-        }
-    } else if (self.contentType == QCCardContentTypeView) {
-        if ([self.contentView respondsToSelector:@selector(cardContentScrollViewDelegate)]) {
-            delegate = [self.contentView cardContentScrollViewDelegate];
-        }
-    }
-    
-    // 允许滑动退出且没有scrollView代理则添加滑动手势
-    if (delegate == nil && allowPan) {
-        [self.containerView addGestureRecognizer:[self panGesture]];
-    }
-    
-    // scrollView代理存在则hook切面scrollViewDidScroll:
-    if (delegate != nil) {
-        if ([delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
-            id token = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewDidScroll:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
-                UIScrollView *scrollView = (UIScrollView *)[[aspectInfo arguments] firstObject];
-                CGFloat offsetY = scrollView.contentOffset.y;
-                CGFloat insetTop = scrollView.contentInset.top;
-                if (@available(iOS 11.0, *)) {
-                    insetTop += scrollView.adjustedContentInset.top;
-                }
-                offsetY += insetTop;
-                if (offsetY < 0 ||
-                    (scrollView.dragging && weakSelf.autoFitHeight && scrollView.contentSize.height <= scrollView.height) ||
-                    (!weakSelf.alwaysBounceVertical && scrollView.contentSize.height <= scrollView.height) ||
-                    (offsetY > 0 && weakSelf.containerView.y > weakSelf.normalTop)) {
-                    [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, -insetTop)];
-                    if (allowPan && (offsetY < 0 || weakSelf.containerView.y > weakSelf.normalTop)) {
-                        CGFloat top = weakSelf.containerView.y - offsetY;
-                        if (top < weakSelf.normalTop) {
-                            top = weakSelf.normalTop;
-                        }
-                        if (!scrollView.decelerating) {
-                            [weakSelf.view endEditing:YES];
-                            [weakSelf.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
-                                make.top.mas_equalTo(top);
-                            }];
-                        }
-                    }
-                } else if (allowPan) {
-                    [weakSelf.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
-                        make.top.mas_equalTo(weakSelf.normalTop);
-                    }];
-                }
-            } error:nil];
-            [self.aspectTokens addObject:token];
-        } else if (allowPan) { // 允许滑动退出且未实现scrollViewDidScroll:代理方法则抛异常
-#if DEBUG
-            NSAssert(NO, @"scrollView.delegate未实现scrollViewDidScroll:代理方法，无法实现下滑退出页面");
-#endif
-        }
-    }
-    
-    // scrollView代理存且允许滑动退出在则hook切面scrollViewWillEndDragging:withVelocity:targetContentOffset:
-    if (allowPan) {
-        if ([delegate respondsToSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)]) {
-            id token = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
-                NSArray *arguments = [aspectInfo arguments];
-                CGPoint velocity = [(NSValue *)arguments[1] CGPointValue];
-                CGFloat space = weakSelf.containerView.y - weakSelf.normalTop;
-                if (space >= kMinPanSpace || (space > 20 && velocity.y < -1)) {
-                    [weakSelf dismissComplete:nil];
-                } else {
-                    [weakSelf.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
-                        make.top.mas_equalTo(weakSelf.normalTop);
-                    }];
-                    [UIView animateWithDuration:kDRAnimationDuration animations:^{
-                        [weakSelf.view layoutIfNeeded];
-                    }];
-                }
-            } error:nil];
-            [self.aspectTokens addObject:token];
+        scrollView = self.tableView;
+    } else {
+        scrollView = [self getScrollView];
+        if (scrollView != nil) {
+            if (scrollView.delegate != nil) {
+                delegate = scrollView.delegate;
+            } else {
+                scrollView.delegate = self;
+                return;
+            }
         } else {
-#if DEBUG
-            NSAssert(NO, @"scrollView.delegate未实现scrollViewWillEndDragging:withVelocity:targetContentOffset:代理方法，无法实现下滑退出页面");
-#endif
+            // 没有scrollView则添加滑动手势
+            [self.containerView addGestureRecognizer:[self panGesture]];
+            return;
         }
     }
-    kDR_SAFE_BLOCK(self.onShowAnimationDone);
+    
+    kDRWeakSelf
+    // 方法不存在则添加方法
+    scrollView.delegate = nil;
+    if (![delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
+        [self addSelector:@selector(scrollViewDidScroll:)
+                   forObj:delegate
+                      imp:(IMP)add_scrollViewDidScroll];
+    }
+    if (![delegate respondsToSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)]) {
+        [self addSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)
+                   forObj:delegate
+                      imp:(IMP)add_scrollViewWillEndDragging];
+    }
+    scrollView.delegate = delegate;
+    id token1 = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewDidScroll:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+        [weakSelf scrollViewDidScroll:(UIScrollView *)[[aspectInfo arguments] firstObject]];
+    } error:nil];
+    id token2 = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+        NSArray *arguments = [aspectInfo arguments];
+        CGPoint targetContentOffset;
+        [weakSelf scrollViewWillEndDragging:[aspectInfo arguments].firstObject
+                               withVelocity:[(NSValue *)arguments[1] CGPointValue]
+                        targetContentOffset:&targetContentOffset];
+    } error:nil];
+    [self.aspectTokens addObject:token1];
+    [self.aspectTokens addObject:token2];
 }
 
 - (void)countHeight {
@@ -752,7 +718,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
                 self.view.backgroundColor = [DRUIWidgetUtil coverBgColor];
                 [self.view layoutIfNeeded];
             } completion:^(BOOL finished) {
-                [self setupViews];
+                [self setupPanClose];
             }];
         });
     } else {
@@ -952,6 +918,82 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
+}
+
+#pragma mark - 滚动支持动态添加方法
+- (UIScrollView *)getScrollView {
+    UIScrollView *scrollView = nil;
+    if (self.contentType == QCCardContentTypeController) {
+        if ([self.contentController respondsToSelector:@selector(supportCardPanCloseScrollView)]) {
+            scrollView = [self.contentController supportCardPanCloseScrollView];
+        }
+    } else if (self.contentType == QCCardContentTypeView) {
+        if ([self.contentView respondsToSelector:@selector(supportCardPanCloseScrollView)]) {
+            scrollView = [self.contentView supportCardPanCloseScrollView];
+        }
+    }
+    if (scrollView != nil && [scrollView isKindOfClass:[UIScrollView class]]) {
+        return scrollView;;
+    }
+    return nil;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    CGFloat insetTop = scrollView.contentInset.top;
+    if (@available(iOS 11.0, *)) {
+        insetTop += scrollView.adjustedContentInset.top;
+    }
+    offsetY += insetTop;
+    if (offsetY < 0 ||
+        (scrollView.dragging && self.autoFitHeight && scrollView.contentSize.height <= scrollView.height) ||
+        (!self.alwaysBounceVertical && scrollView.contentSize.height <= scrollView.height) ||
+        (offsetY > 0 && self.containerView.y > self.normalTop)) {
+        [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, -insetTop)];
+        if (offsetY < 0 || self.containerView.y > self.normalTop) {
+            CGFloat top = self.containerView.y - offsetY;
+            if (top < self.normalTop) {
+                top = self.normalTop;
+            }
+            if (!scrollView.decelerating) {
+                [self.view endEditing:YES];
+                [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.top.mas_equalTo(top);
+                }];
+            }
+        }
+    }
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    CGFloat space = self.containerView.y - self.normalTop;
+    if (space >= kMinPanSpace || (space > 20 && velocity.y < -1)) {
+        [self dismissComplete:nil];
+    } else {
+        [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.normalTop);
+        }];
+        [UIView animateWithDuration:kDRAnimationDuration animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
+}
+
+- (void)addSelector:(SEL)selector forObj:(id)obj imp:(IMP)imp {
+    Method exchangeM = class_getInstanceMethod([self class], selector);
+    BOOL success = class_addMethod([obj class],
+                                   selector,
+                                   imp,
+                                   method_getTypeEncoding(exchangeM));
+    kDR_LOG(@"方法%@添加成功：%d", NSStringFromSelector(selector), success)
+}
+
+void add_scrollViewDidScroll(id self, SEL _cmd, UIScrollView *scrollView) {
+    kDR_LOG(@"调用了%@ %@ %@", self, NSStringFromSelector(_cmd), scrollView);
+}
+
+void add_scrollViewWillEndDragging(id self, SEL _cmd, UIScrollView *scrollView, CGPoint velocity, CGPoint *targetContentOffset) {
+    kDR_LOG(@"调用了%@ %@ %@ %@ %@", self, NSStringFromSelector(_cmd), scrollView, NSStringFromCGPoint(velocity), NSStringFromCGPoint(*targetContentOffset));
 }
 
 @end

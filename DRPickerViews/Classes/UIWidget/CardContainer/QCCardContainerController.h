@@ -20,22 +20,15 @@ typedef NS_ENUM(NSInteger, QCCardContentPosition) {
 /// @param cardContainerVc 卡片控制器
 - (void)setupCardContainerVc:(QCCardContainerController *)cardContainerVc;
 
-/// 用于切面下滑退出手势
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
-
-/// 用于切面下滑退出手势
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
-                     withVelocity:(CGPoint)velocity
-              targetContentOffset:(inout CGPoint *)targetContentOffset;
-
-@optional
-/// 可滚容器的代理，用于下滑退出，该代理需要实现以下两个方法，
-/// 1. scrollViewDidScroll:
-/// 2. scrollViewWillEndDragging:withVelocity:targetContentOffset:
-/// 若未实现在debug模式下会抛异常，release模式下，内容区域下滑无效
-- (id<UIScrollViewDelegate>)cardContentScrollViewDelegate;
+/// 插入到卡片容器的视图View.SubViews中，
+/// 有铺满整个View的，用于支持滑动退出的可滚视图
+/// 如果没有，可返回nil，
+/// 如待插入到卡片的ViewController.view中，有一个撑满的tableView，
+/// 则这里返回这个tableView
+- (UIScrollView *)supportCardPanCloseScrollView;
 
 #pragma mark - 从中间弹出时可选实现，加载ViewController时必须实现
+@optional
 /// 从中间弹出时水平距离屏幕间距，不实现默认：40pt
 - (CGFloat)horizontalPadding;
 
