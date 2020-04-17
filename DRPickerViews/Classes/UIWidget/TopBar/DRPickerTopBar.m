@@ -105,6 +105,10 @@
     self.rightButton.enabled = rightButtonEnble;
 }
 
+- (void)setRightButtonTitle:(NSString *)rightButtonTitle {
+    [self.rightButton setTitle:rightButtonTitle forState:UIControlStateNormal];
+}
+
 #pragma mark - action
 - (IBAction)leftButtonAction:(UIButton *)sender {
     kDR_SAFE_BLOCK(self.leftButtonActionBlock, self, sender);

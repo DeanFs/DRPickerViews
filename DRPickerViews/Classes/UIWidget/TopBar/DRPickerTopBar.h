@@ -20,6 +20,7 @@ IB_DESIGNABLE
 @property (nonatomic, weak) IBInspectable UIImage *leftButtonImage;
 @property (strong, nonatomic) IBInspectable UIColor *leftButtonTintColor;
 @property (nonatomic, copy) IBInspectable NSString *centerButtonTitle;
+@property (copy, nonatomic) IBInspectable NSString *rightButtonTitle;
 @property (nonatomic, assign) BOOL rightButtonEnble;
 
 // action callback
