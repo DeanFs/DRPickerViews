@@ -34,9 +34,7 @@
 }
 
 - (void)dismissComplete:(dispatch_block_t)complete {
-    kDRWeakSelf
     [self.cardContainerVc dismissComplete:^{
-        [weakSelf viewDidDismiss];
         kDR_SAFE_BLOCK(complete);
     }];
 }
@@ -93,6 +91,9 @@
     };
     cardContainerVc.dismissWhenTouchSpaceBlock = ^BOOL{
         return [self shouldDismissWhenTapSpaceArea];
+    };
+    cardContainerVc.onHideAnimationDone = ^{
+        [weakSelf viewDidDismiss];
     };
     if (self.position == DRPickerShowPositionBottom) {
         [self setupTopSpaceInSafeAreaWithHeight:[self pickerViewHeight]];
