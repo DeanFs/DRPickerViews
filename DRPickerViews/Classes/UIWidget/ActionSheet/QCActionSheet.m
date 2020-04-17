@@ -173,7 +173,7 @@
 
 @property (strong, nonatomic) NSMutableArray<QCActionSheetModel *> *dataSource;
 @property (strong, nonatomic) NSMutableArray<QCActionSheetModel *> *selectedModels;
-@property (copy, nonatomic) void(^selectionDoneBlock)(NSArray<NSNumber *> *indexs, NSArray<id> *options);
+@property (copy, nonatomic) void(^selectionDoneBlock)(NSArray<NSNumber *> *indexs, NSArray<id> *options, QCActionSheet *theSheet);
 @property (copy, nonatomic) void(^sheetCancelBlock) (BOOL isCancelButton);
 @property (assign, nonatomic) BOOL showSeparatorLine;
 
@@ -191,7 +191,7 @@
 + (void)showActionSheetWithOptions:(NSArray *)options
                              icons:(NSArray *)icons
                         setupBlock:(void(^)(QCActionSheet *actionSheet))setupBlock
-                      selectAction:(void(^)(NSArray<NSNumber *> *indexs, NSArray<id> *options))selectedBlock
+                      selectAction:(void(^)(NSArray<NSNumber *> *indexs, NSArray<id> *options, QCActionSheet *theSheet))selectedBlock
                        cancelBlock:(void(^)(BOOL isCancelButton))cancelBlock {
     QCActionSheet *sheet = [QCActionSheet new];
     sheet.selectionDoneBlock = selectedBlock;
@@ -217,8 +217,9 @@
     self = [super init];
     if (self) {
         _dataSource = [NSMutableArray array];
-        _isCustomCell = NO;
+        _autoDismissWhenConfirm = YES;
         _allowPanClose = NO;
+        _isCustomCell = NO;
         _allowsMultipleSelection = NO;
         _minSelectCount = 0;
         _maxSelectCount = 3;
@@ -238,6 +239,7 @@
     // top bar
     self.containerVc.leftButtonAutoHighlight = NO;
     self.containerVc.allowPanClose = self.allowPanClose;
+    self.containerVc.autoDismissWhenRightButtonAction = self.autoDismissWhenConfirm;
     BOOL showTopBar = NO;
     if (self.title != nil) {
         self.containerVc.title = self.title;
@@ -245,7 +247,13 @@
     }
     if (self.allowsMultipleSelection) {
         self.containerVc.onRightButtonTapBlock = ^{
-            [self onConfirmAction];
+            if (weakSelf.autoDismissWhenConfirm) {
+                [weakSelf.containerVc dismissComplete:^{
+                    [weakSelf onConfirmAction];
+                }];
+            } else {
+                [weakSelf onConfirmAction];
+            }
         };
         showTopBar = YES;
     }
@@ -343,9 +351,13 @@
         }
         [tableView reloadData];
     } else {
-        [self.containerVc dismissComplete:^{
-            kDR_SAFE_BLOCK(weakSelf.selectionDoneBlock, @[@(indexPath.row)], @[model.data]);
-        }];
+        if (self.autoDismissWhenConfirm) {
+            [self.containerVc dismissComplete:^{
+                kDR_SAFE_BLOCK(weakSelf.selectionDoneBlock, @[@(indexPath.row)], @[model.data], weakSelf);
+            }];
+        } else {
+            kDR_SAFE_BLOCK(self.selectionDoneBlock, @[@(indexPath.row)], @[model.data], self);
+        }
     }
 }
 
@@ -436,7 +448,7 @@
         [indexs addObject:@(model.index)];
         [options addObject:model.data];
     }
-    kDR_SAFE_BLOCK(self.selectionDoneBlock, indexs, options);
+    kDR_SAFE_BLOCK(self.selectionDoneBlock, indexs, options, self);
 }
 
 @end

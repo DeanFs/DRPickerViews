@@ -48,6 +48,9 @@ typedef NS_ENUM(NSInteger, QCActionSheetRightIconType) {
 @interface QCActionSheet : QCCardContainerBaseService
 
 #pragma mark - 功能，行为配置
+/// 点击确定按钮，或者点击单选选项后自动退出页面，默认：YES
+@property (assign, nonatomic) BOOL autoDismissWhenConfirm;
+
 /// 允许下滑退出，默认NO，从底部弹出才有效
 @property (assign, nonatomic) BOOL allowPanClose;
 
@@ -125,8 +128,8 @@ typedef NS_ENUM(NSInteger, QCActionSheetRightIconType) {
 /// @param cancelBlock 击取消回调，isCancelButton区分点击按钮还是空白区域
 + (void)showActionSheetWithOptions:(NSArray *)options
                              icons:(NSArray *)icons
-                        setupBlock:(void(^)(QCActionSheet *actionSheet))setupBlock
-                      selectAction:(void(^)(NSArray<NSNumber *> *indexs, NSArray<id> *options))selectedBlock
+                        setupBlock:(void(^)(QCActionSheet *theSheet))setupBlock
+                      selectAction:(void(^)(NSArray<NSNumber *> *indexs, NSArray<id> *options, QCActionSheet *theSheet))selectedBlock
                        cancelBlock:(void(^)(BOOL isCancelButton))cancelBlock;
 
 /// 退出sheet
