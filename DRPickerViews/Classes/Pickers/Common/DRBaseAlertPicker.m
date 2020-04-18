@@ -36,7 +36,11 @@
     kDR_SAFE_BLOCK(setupBlock, pickerView);
     pickerView.pickerOption = pickerOption;
     pickerView.pickDoneBlock = pickDoneBlock;
-    [pickerView show];
+    if (![pickerOption isKindOfClass:[pickerView pickerOptionClass]]) {
+        kDR_LOG(@"error: 请传入正确的参数类型【%@】", NSStringFromClass([pickerView pickerOptionClass]));
+        return;
+    }
+    [pickerView showFromPostion:pickerOption.showFromPosition];
 }
 
 #pragma mark - 子类中可能需要重写的方法
@@ -91,13 +95,18 @@
 }
 
 #pragma mark - private
-/**
- 动画显示选择器
- */
-- (void)show {
-    if (![self.pickerOption isKindOfClass:[self pickerOptionClass]]) {
-        kDR_LOG(@"error: 请传入正确的参数类型【%@】", NSStringFromClass([self pickerOptionClass]));
-        return;
+- (void)setPickerOption:(DRPickerOptionBase *)pickerOption {
+    _pickerOption = pickerOption;
+    pickerOption.pickerView = self;
+}
+
+#pragma mark - QCCardContentDelegate
+- (void)setupCardContainerVc:(QCCardContainerController *)cardContainerVc {
+    [super setupCardContainerVc:cardContainerVc];
+    cardContainerVc.allowPanClose = NO;
+    if (self.pickerOption.customBottomView != nil) {
+        cardContainerVc.customBottomBar = self.pickerOption.customBottomView;
+        self.pickerOption.customBottomView = nil;
     }
     if (self.pickerOption.title.length > 0) {
         self.topBar.centerButtonTitle = self.pickerOption.title;
@@ -131,22 +140,6 @@
         }
     };
     [self prepareToShow];
-    [self showFromPostion:self.pickerOption.showFromPosition];
-}
-
-- (void)setPickerOption:(DRPickerOptionBase *)pickerOption {
-    _pickerOption = pickerOption;
-    pickerOption.pickerView = self;
-}
-
-#pragma mark - QCCardContentDelegate
-- (void)setupCardContainerVc:(QCCardContainerController *)cardContainerVc {
-    [super setupCardContainerVc:cardContainerVc];
-    cardContainerVc.allowPanClose = NO;
-    if (self.pickerOption.customBottomView != nil) {
-        cardContainerVc.customBottomBar = self.pickerOption.customBottomView;
-        self.pickerOption.customBottomView = nil;
-    }
 }
 
 @end

@@ -139,4 +139,12 @@
     return self.tableView;
 }
 
+- (CGFloat)contentHeight {
+    return 440;
+}
+
+- (CGFloat)horizontalPadding {
+    return 16;
+}
+
 @end

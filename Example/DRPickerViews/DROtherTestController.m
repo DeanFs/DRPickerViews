@@ -8,7 +8,7 @@
 
 #import "DROtherTestController.h"
 #import "DRDragSortTableViewController.h"
-
+#import <DRPickerViews/QCActionSheet.h>
 
 @interface DROtherTestController ()
 
@@ -26,6 +26,17 @@
         DRDragSortTableViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DRDragSortTableViewController"];;
         [QCCardContainerController showContainerWithContentVc:vc
                                                    atPosition:QCCardContentPositionBottom];
+    } else if (indexPath.row == 3) {
+        NSArray *options = @[@"仅删除当天", @"删除今天及未来的重复", @"删除全部重复"];
+        [QCActionSheet showActionSheetWithOptions:options icons:nil setupBlock:nil selectAction:^(NSArray<NSNumber *> *indexs, NSArray<id> *options, QCActionSheet *theSheet) {
+            NSLog(@"index: %@", indexs.firstObject);
+        } cancelBlock:^(BOOL isCancelButton) {
+            
+        }];
+    } else if (indexPath.row == 4) {
+        DRDragSortTableViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DRDragSortTableViewController"];;
+        [QCCardContainerController showContainerWithContentVc:vc
+                                                   atPosition:QCCardContentPositionCenter];
     }
 }
 

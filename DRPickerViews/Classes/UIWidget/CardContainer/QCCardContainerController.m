@@ -24,12 +24,6 @@
 #define kBottomBarHeight 56
 #define kMinPanSpace 80
 
-typedef NS_ENUM(NSInteger, QCCardContentType) {
-    QCCardContentTypeService,
-    QCCardContentTypeController,
-    QCCardContentTypeView
-};
-
 @interface QCCardContainerController ()<UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIView *containerView;
@@ -40,11 +34,9 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 @property (weak, nonatomic) DRDragSortTableView *tableView;
 @property (weak, nonatomic) UIView *bottomBarView;
 
-@property (assign, nonatomic) QCCardContentType contentType;
 @property (assign, nonatomic) QCCardContentPosition position;
 @property (strong, nonatomic) QCCardContainerBaseService *service;
-@property (weak, nonatomic) UIViewController<QCCardContentDelegate> *contentController;
-@property (weak, nonatomic) UIView<QCCardContentDelegate> *contentView;
+@property (strong, nonatomic) id<QCCardContentDelegate> contentObj;
 @property (assign, nonatomic) UIStatusBarStyle statusBarStyle;
 @property (assign, nonatomic) CGFloat topBarHeight;
 @property (assign, nonatomic) CGFloat bottomBarHeight;
@@ -61,7 +53,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 /// 通过业务管理类，定义显示内容
 /// @param service 业务逻辑
 + (void)showContainerWithService:(QCCardContainerBaseService *)service {
-    QCCardContainerController *card = [QCCardContainerController cardWithContentType:QCCardContentTypeService  position:QCCardContentPositionBottom];
+    QCCardContainerController *card = [[QCCardContainerController alloc] initWithPosition:QCCardContentPositionBottom];
     card.autoFitHeight = YES;
     card.service = service;
     [self showCardContainer:card];
@@ -72,9 +64,8 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 /// @param position 弹出位置
 + (void)showContainerWithContentVc:(UIViewController<QCCardContentDelegate> *)contentVc
                         atPosition:(QCCardContentPosition)position {
-    QCCardContainerController *card = [QCCardContainerController cardWithContentType:QCCardContentTypeController  position:position];
-    [card addChildViewController:contentVc];
-    card.contentController = contentVc;
+    QCCardContainerController *card = [[QCCardContainerController alloc] initWithPosition:position];
+    card.contentObj = contentVc;
     [self showCardContainer:card];
 }
 
@@ -83,9 +74,8 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 /// @param position 弹出位置
 + (void)showContainerWithContentView:(UIView<QCCardContentDelegate> *)contentView
                           atPosition:(QCCardContentPosition)position {
-    QCCardContainerController *card = [QCCardContainerController cardWithContentType:QCCardContentTypeView  position:position];
-    [card.containerView addSubview:contentView];
-    card.contentView = contentView;
+    QCCardContainerController *card = [[QCCardContainerController alloc] initWithPosition:position];
+    card.contentObj = contentView;
     [self showCardContainer:card];
 }
 
@@ -101,38 +91,23 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
         CGFloat width = kDRScreenWidth - 80;
         CGFloat height = self.maxHeight;
         CGFloat offsetY = 0;
-        if (self.contentType == QCCardContentTypeController) {
-            if ([self.contentController respondsToSelector:@selector(horizontalPadding)]) {
-                width = kDRScreenWidth - [self.contentController horizontalPadding] * 2;
-            } else if ([self.contentController respondsToSelector:@selector(contentWidth)]) {
-                width = [self.contentController contentWidth];
-            }
-            if ([self.contentController respondsToSelector:@selector(contentHeight)]) {
-                height = [self.contentController contentHeight];
-            }
-            if ([self.contentController respondsToSelector:@selector(contentCenterYUpOffset)]) {
-                offsetY = [self.contentController contentCenterYUpOffset];
-            }
-        } else if (self.contentType == QCCardContentTypeView) {
-            width = self.contentView.width;
-            if ([self.contentView respondsToSelector:@selector(horizontalPadding)]) {
-                width = kDRScreenWidth - [self.contentView horizontalPadding] * 2;
-            } else if ([self.contentView respondsToSelector:@selector(contentWidth)]) {
-                width = [self.contentView contentWidth];
-            }
-            height = self.contentView.height;
-            if ([self.contentView respondsToSelector:@selector(contentHeight)]) {
-                height = [self.contentView contentHeight];
-            }
-            if ([self.contentView respondsToSelector:@selector(contentCenterYUpOffset)]) {
-                offsetY = [self.contentView contentCenterYUpOffset];
-            }
+        if ([self.contentObj respondsToSelector:@selector(horizontalPadding)]) {
+            width = kDRScreenWidth - [self.contentObj horizontalPadding] * 2;
+        } else if ([self.contentObj respondsToSelector:@selector(contentWidth)]) {
+            width = [self.contentObj contentWidth];
+        }
+        if ([self.contentObj respondsToSelector:@selector(contentHeight)]) {
+            height = [self.contentObj contentHeight];
+        }
+        if ([self.contentObj respondsToSelector:@selector(contentCenterYUpOffset)]) {
+            offsetY = [self.contentObj contentCenterYUpOffset];
         }
         if (height > self.maxHeight) {
             height = self.maxHeight;
         }
         [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(width, height));
+            make.centerY.mas_offset(-offsetY);
         }];
     }
 }
@@ -176,8 +151,8 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 
 /// 用于获取真实页面
 - (UIViewController *)topViewController {
-    if (self.contentController != nil) {
-        return self.contentController;
+    if ([self.contentObj isKindOfClass:[UIViewController class]]) {
+        return (UIViewController *)self.contentObj;
     }
     return self;
 }
@@ -252,12 +227,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 }
 
 #pragma mark - lifecycle
-+ (instancetype)cardWithContentType:(QCCardContentType)contentType position:(QCCardContentPosition)position {
-    QCCardContainerController *card = [[QCCardContainerController alloc] initWithContentType:contentType position:position];
-    return card;
-}
-
-- (instancetype)initWithContentType:(QCCardContentType)contentType position:(QCCardContentPosition)position {
+- (instancetype)initWithPosition:(QCCardContentPosition)position {
     if (self = [super init]) {
         _statusBarStyle = [[DRUIWidgetUtil topViewController] preferredStatusBarStyle];
         _firstLayout = YES;
@@ -273,7 +243,6 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
         _bottomBarTitle = @"取消";
         _bottomBarTintColor = [DRUIWidgetUtil cancelColor];
         _bottomBarTopSpace = 4;
-        _contentType = contentType;
         _position = position;
         
         UIView *containerView = [[UIView alloc] init];
@@ -289,34 +258,31 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (self.contentType == QCCardContentTypeService) {
+    if (self.service != nil) {
         self.service.navigationController = self.navigationController;
         self.service.containerVc = self;
         self.service.view = self.view;
         [self.service setupCardContainerViwContoller];
-    } else if (self.contentType == QCCardContentTypeController) {
-        [self.contentController setupCardContainerVc:self];
-    } else if (self.contentType == QCCardContentTypeView) {
-        [self.contentView setupCardContainerVc:self];
+    } else {
+        [self.contentObj setupCardContainerVc:self];
     }
-    [self initSubviews];
     [self.service viewDidLoad];
+    if ([self.contentObj respondsToSelector:@selector(card_viewDidLoad)]) {
+        [self.contentObj card_viewDidLoad];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setHidden:YES];
-    [self.service viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    if (self.position == QCCardContentPositionBottom) {
-        if (!self.autoFitHeight) {
-            [self animationChangeHeight:self.maxHeight];
-        }
-    } else {
-        if (self.containerView.hidden) {
+    if (self.containerView.hidden) {
+        [self initSubviews];
+        [self setupPanClose];
+        if (self.position == QCCardContentPositionBottom) {
+            if (!self.autoFitHeight || self.service == nil) {
+                [self animationChangeHeight:self.maxHeight];
+            }
+        } else {
             self.containerView.transform = CGAffineTransformMakeScale(0.1, 0.1);
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.containerView.hidden = NO;
@@ -326,21 +292,29 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
                     self.containerView.transform = CGAffineTransformIdentity;
                     self.containerView.alpha = 1.0f;
                 } completion:^(BOOL finished) {
-                    [self setupPanClose];
+                    kDR_SAFE_BLOCK(self.onShowAnimationDone);
                 }];
             });
         }
+    }
+    if ([self.contentObj respondsToSelector:@selector(card_viewWillAppear:)]) {
+        [self.contentObj card_viewWillAppear:animated];
+    }
+    [self.service viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if ([self.contentObj respondsToSelector:@selector(card_viewDidAppear:)]) {
+        [self.contentObj card_viewDidAppear:animated];
     }
     [self.service viewDidAppear:animated];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    [self.service viewDidLayoutSubviews];
-    
     if (self.firstLayout) {
         self.firstLayout = NO;
-        
         if (self.position == QCCardContentPositionBottom) {
             [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(kDRScreenHeight);
@@ -350,15 +324,25 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
             }];
         }
     }
+    if ([self.contentObj respondsToSelector:@selector(card_viewDidLayoutSubviews)]) {
+        [self.contentObj card_viewDidLayoutSubviews];
+    }
+    [self.service viewDidLayoutSubviews];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    if ([self.contentObj respondsToSelector:@selector(card_viewWillDisappear:)]) {
+        [self.contentObj card_viewWillDisappear:animated];
+    }
     [self.service viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    if ([self.contentObj respondsToSelector:@selector(card_viewDidDisappear:)]) {
+        [self.contentObj card_viewDidDisappear:animated];
+    }
     [self.self.service viewDidDisappear:animated];
 }
 
@@ -368,7 +352,6 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 
 #pragma mark - setup views
 - (void)initSubviews {
-    kDRWeakSelf
     self.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
     [self.view addSubview:self.containerView];
     if (self.position == QCCardContentPositionBottom) {
@@ -380,58 +363,29 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
         self.maxHeight = kDRScreenHeight - CGRectGetHeight([UIApplication sharedApplication].statusBarFrame) - self.minTopSpaceInSafeArea + self.contentCornerRadius;
         [self setupHeaderBar];
         [self setupBottomBar];
-        if (self.contentType == QCCardContentTypeService) {
+        if (self.service != nil) {
             [self setupTableView];
             self.service.tableView = self.tableView;
             [self.service registerTableViewCells];
             self.tableView.dr_dragSortDelegate = self.service;
         } else {
-            if (self.contentType == QCCardContentTypeController) {
-                [self.containerView addSubview:self.contentController.view];
-                [self.contentController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.top.mas_offset(weakSelf.topBarHeight);
-                    make.bottom.mas_offset(-weakSelf.bottomBarHeight);
-                    make.left.right.mas_offset(0);
-                }];
-            } else if (self.contentType == QCCardContentTypeView) {
-                [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.top.mas_offset(weakSelf.topBarHeight);
-                    make.bottom.mas_offset(-weakSelf.bottomBarHeight);
-                    make.left.right.mas_offset(0);
-                }];
-            }
+            [self setupContentObj];
         }
     } else {
         self.maxHeight = kDRScreenHeight - CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)*2;
         CGFloat width = kDRScreenWidth - 80;
         CGFloat height = self.maxHeight;
         CGFloat offsetY = 0;
-        if (self.contentType == QCCardContentTypeController) {
-            if ([self.contentController respondsToSelector:@selector(horizontalPadding)]) {
-                width = kDRScreenWidth - [self.contentController horizontalPadding] * 2;
-            } else if ([self.contentController respondsToSelector:@selector(contentWidth)]) {
-                width = [self.contentController contentWidth];
-            }
-            if ([self.contentController respondsToSelector:@selector(contentHeight)]) {
-                height = [self.contentController contentHeight];
-            }
-            if ([self.contentController respondsToSelector:@selector(contentCenterYUpOffset)]) {
-                offsetY = [self.contentController contentCenterYUpOffset];
-            }
-        } else if (self.contentType == QCCardContentTypeView) {
-            width = self.contentView.width;
-            if ([self.contentView respondsToSelector:@selector(horizontalPadding)]) {
-                width = kDRScreenWidth - [self.contentView horizontalPadding] * 2;
-            } else if ([self.contentView respondsToSelector:@selector(contentWidth)]) {
-                width = [self.contentView contentWidth];
-            }
-            height = self.contentView.height;
-            if ([self.contentView respondsToSelector:@selector(contentHeight)]) {
-                height = [self.contentView contentHeight];
-            }
-            if ([self.contentView respondsToSelector:@selector(contentCenterYUpOffset)]) {
-                offsetY = [self.contentView contentCenterYUpOffset];
-            }
+        if ([self.contentObj respondsToSelector:@selector(horizontalPadding)]) {
+            width = kDRScreenWidth - [self.contentObj horizontalPadding] * 2;
+        } else if ([self.contentObj respondsToSelector:@selector(contentWidth)]) {
+            width = [self.contentObj contentWidth];
+        }
+        if ([self.contentObj respondsToSelector:@selector(contentHeight)]) {
+            height = [self.contentObj contentHeight];
+        }
+        if ([self.contentObj respondsToSelector:@selector(contentCenterYUpOffset)]) {
+            offsetY = [self.contentObj contentCenterYUpOffset];
         }
         if (height > self.maxHeight) {
             height = self.maxHeight;
@@ -441,22 +395,35 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
             make.centerY.mas_offset(-offsetY);
             make.size.mas_equalTo(CGSizeMake(width, height));
         }];
-        if (self.contentType == QCCardContentTypeController) {
-            [self.containerView addSubview:self.contentController.view];
-            [self.contentController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.left.bottom.right.mas_offset(0);
+        [self setupContentObj];
+    }
+}
+
+- (void)setupContentObj {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIView *contentView = (UIView *)self.contentObj;
+        if ([self.contentObj isKindOfClass:[UIViewController class]]) {
+            [self addChildViewController:(UIViewController *)self.contentObj];
+            contentView = ((UIViewController *)self.contentObj).view;
+        }
+        [self.containerView addSubview:contentView];
+        if (self.position == QCCardContentPositionBottom) {
+            [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_offset(self.topBarHeight);
+                make.bottom.mas_offset(-self.bottomBarHeight);
+                make.left.right.mas_offset(0);
             }];
-        } else if (self.contentType == QCCardContentTypeView) {
-            [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        } else {
+            [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.left.bottom.right.mas_offset(0);
             }];
         }
-    }
+    });
 }
 
 - (void)setupHeaderBar {
     self.topBarHeight = 0;
-    if (self.contentType != QCCardContentTypeView) {
+    if (![self.contentObj isKindOfClass:[UIView class]]) {
         /// 标题
         if (self.title != nil) {
             [self.titleButton setTitle:self.title forState:UIControlStateNormal];
@@ -490,7 +457,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
             self.onRightButtonTapBlock != nil) {
             if (self.rightButtonTitle == nil) {
                 [self.rightButton setTitle:@"确定" forState:UIControlStateNormal];
-                if (self.contentType == QCCardContentTypeController) {
+                if ([self.contentObj isKindOfClass:[UIViewController class]]) {
                     [self.rightButton setTitle:@"保存" forState:UIControlStateNormal];
                 }
             }
@@ -502,7 +469,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 - (void)setupBottomBar {
     kDRWeakSelf
     self.bottomBarHeight = [UITabBar safeHeight] + self.contentCornerRadius;
-    if (self.contentType == QCCardContentTypeService || self.customBottomBar != nil) {
+    if (![self.contentObj isKindOfClass:[UIView class]]) {
         if (self.customBottomBar != nil) {
             self.bottomBarHeight += self.customBottomBar.height;
             [self.bottomBarView addSubview:self.customBottomBar];
@@ -593,8 +560,6 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 }
 
 - (void)setupPanClose {
-    kDR_SAFE_BLOCK(self.onShowAnimationDone);
-    
     BOOL allowPan = self.allowPanClose && self.position == QCCardContentPositionBottom;
     if (!allowPan) {
         return;
@@ -607,13 +572,10 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
     }
     
     // 获取ScrollView代理
-    UIScrollView *scrollView;
-    id<UIScrollViewDelegate> delegate = nil;
-    if (self.contentType == QCCardContentTypeService) {
-        delegate = self.service;
-        scrollView = self.tableView;
-    } else {
-        scrollView = [self getScrollView];
+    UIScrollView *scrollView = self.tableView;
+    id<UIScrollViewDelegate> delegate = self.service;
+    if (delegate == nil) {
+        scrollView = [self.contentObj supportCardPanCloseScrollView];
         if (scrollView != nil) {
             if (scrollView.delegate != nil) {
                 delegate = scrollView.delegate;
@@ -726,7 +688,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
                 self.view.backgroundColor = [DRUIWidgetUtil coverBgColor];
                 [self.view layoutIfNeeded];
             } completion:^(BOOL finished) {
-                [self setupPanClose];
+                kDR_SAFE_BLOCK(self.onShowAnimationDone);
             }];
         });
     } else {
@@ -790,7 +752,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 #pragma mark - lazy load
 - (UIView *)headerBarView {
     if (!_headerBarView) {
-        if (self.position == QCCardContentPositionBottom && self.contentType != QCCardContentTypeView) {
+        if (self.position == QCCardContentPositionBottom && ![self.contentObj isKindOfClass:[UIView class]]) {
             UIView *headerBarView = [[UIView alloc] init];
             headerBarView.backgroundColor = [UIColor whiteColor];
             [self.containerView addSubview:headerBarView];
@@ -806,7 +768,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 
 - (UIButton *)titleButton {
     if (!_titleButton) {
-        if (self.position == QCCardContentPositionBottom && self.contentType != QCCardContentTypeView) {
+        if (self.position == QCCardContentPositionBottom && ![self.contentObj isKindOfClass:[UIView class]]) {
             UIButton *titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
             [titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             titleButton.userInteractionEnabled = NO;
@@ -827,7 +789,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 
 - (UIButton *)leftButton {
     if (!_leftButton) {
-        if (self.position == QCCardContentPositionBottom && self.contentType != QCCardContentTypeView) {
+        if (self.position == QCCardContentPositionBottom && ![self.contentObj isKindOfClass:[UIView class]]) {
             UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
             leftButton.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:15];
             [leftButton setTitleColor:[DRUIWidgetUtil cancelColor] forState:UIControlStateNormal];
@@ -848,7 +810,7 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 
 - (UIButton *)rightButton {
     if (!_rightButton) {
-        if (self.position == QCCardContentPositionBottom && self.contentType != QCCardContentTypeView) {
+        if (self.position == QCCardContentPositionBottom && ![self.contentObj isKindOfClass:[UIView class]]) {
             UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
             rightButton.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:15];
             [rightButton setTitleColor:[DRUIWidgetUtil highlightColor] forState:UIControlStateNormal];
@@ -928,23 +890,6 @@ typedef NS_ENUM(NSInteger, QCCardContentType) {
 }
 
 #pragma mark - 滚动支持动态添加方法
-- (UIScrollView *)getScrollView {
-    UIScrollView *scrollView = nil;
-    if (self.contentType == QCCardContentTypeController) {
-        if ([self.contentController respondsToSelector:@selector(supportCardPanCloseScrollView)]) {
-            scrollView = [self.contentController supportCardPanCloseScrollView];
-        }
-    } else if (self.contentType == QCCardContentTypeView) {
-        if ([self.contentView respondsToSelector:@selector(supportCardPanCloseScrollView)]) {
-            scrollView = [self.contentView supportCardPanCloseScrollView];
-        }
-    }
-    if (scrollView != nil && [scrollView isKindOfClass:[UIScrollView class]]) {
-        return scrollView;;
-    }
-    return nil;
-}
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
     CGFloat insetTop = scrollView.contentInset.top;

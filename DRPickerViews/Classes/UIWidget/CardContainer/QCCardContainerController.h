@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, QCCardContentPosition) {
 @protocol QCCardContentDelegate <NSObject>
 
 /// 设置卡片控制器的属性
-/// @param cardContainerVc 卡片控制器
+/// @param cardContainerVc 卡片控制器，若要引用cardContainerVc需要使用 weak 弱引用
 - (void)setupCardContainerVc:(QCCardContainerController *)cardContainerVc;
 
 /// 插入到卡片容器的视图View.SubViews中，
@@ -27,8 +27,16 @@ typedef NS_ENUM(NSInteger, QCCardContentPosition) {
 /// 则这里返回这个tableView
 - (UIScrollView *)supportCardPanCloseScrollView;
 
-#pragma mark - 从中间弹出时可选实现，加载ViewController时必须实现
 @optional
+#pragma mark - 卡片页面的生命周期
+- (void)card_viewDidLoad;
+- (void)card_viewWillAppear:(BOOL)animated;
+- (void)card_viewDidAppear:(BOOL)animated;
+- (void)card_viewDidLayoutSubviews;
+- (void)card_viewWillDisappear:(BOOL)animated;
+- (void)card_viewDidDisappear:(BOOL)animated;
+
+#pragma mark - 从中间弹出时可选实现，加载ViewController时必须实现
 /// 从中间弹出时水平距离屏幕间距，不实现默认：40pt
 - (CGFloat)horizontalPadding;
 
@@ -81,12 +89,12 @@ typedef NS_ENUM(NSInteger, QCCardContentPosition) {
 @property (copy, nonatomic) dispatch_block_t onTitleTapBlock;
 /// 右边按钮是否可点
 @property (assign, nonatomic) BOOL rightButtonEnble;
-/// 右边按钮标题
+/// 右边按钮标题，默认：若弹出UIViewController则按钮为"保存"，否则"确定"
 @property (copy, nonatomic) NSString *rightButtonTitle;
 /// 右边按钮点击响应
 @property (copy, nonatomic) dispatch_block_t onRightButtonTapBlock;
 
-#pragma mark - 底部悬浮按钮，如取消，添加等，使用service类型弹出时才有效
+#pragma mark - 底部悬浮按钮，如取消，添加等，contentVc及service类型弹出才有效，且从底部弹出
 /// 在底部悬浮显示按钮，默认：NO
 @property (assign, nonatomic) BOOL showBottomBar;
 /// 默认：取消
