@@ -10,7 +10,6 @@
 
 @interface DROptionCardCell : UICollectionViewCell
 
-@property (nonatomic, assign) NSInteger itemFace;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, assign) CGFloat fontSize;
 @property (nonatomic, assign) CGFloat itemCornerRadius;

@@ -77,10 +77,6 @@
     [self.collectionView reloadData];
 }
 
-- (void)setItemFaceXib:(NSInteger)itemFaceXib {
-    self.itemFace = itemFaceXib;
-}
-
 - (void)setSelectedOptions:(NSArray<NSString *> *)selectedOptions {
     _selectedOptions = selectedOptions;
 
@@ -148,7 +144,6 @@
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     DROptionCardCell *cardCell = (DROptionCardCell *)cell;
     cardCell.itemSize = self.layout.itemSize;
-    cardCell.itemFace = self.itemFace;
     cardCell.fontSize = self.fontSize;
     cardCell.itemCornerRadius = self.itemCornerRadius;
     if ([self.selectMap objectForKey:@(indexPath.item)]) {
@@ -188,7 +183,7 @@
             [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
             NSString *alert = self.belowMinAlert;
             if (!alert.length) {
-                alert = [NSString stringWithFormat:@"最少选择 %ld 项", self.minSelectCount];
+                alert = [NSString stringWithFormat:@"最少选择 %ld 项", (long)self.minSelectCount];
             }
             [DRToastView showWithMessage:alert complete:nil];
         }
@@ -282,7 +277,6 @@
             self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
         [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DROptionCardCell class]) bundle:KDR_CURRENT_BUNDLE] forCellWithReuseIdentifier:NSStringFromClass([DROptionCardCell class])];
-        self.itemFace = DROptionCardViewItemFaceBorder;
         self.columnCount = 3;
         self.columnSpace = 6.5;
         self.lineCount = 3;

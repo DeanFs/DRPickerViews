@@ -8,15 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, DROptionCardViewItemFace) {
-    DROptionCardViewItemFaceBorder,     // 线条框
-    DROptionCardViewItemFaceGradient    // 渐变底
-};
-
 @interface DROptionCardView : UIView
 
-@property (nonatomic, assign) DROptionCardViewItemFace itemFace;        // default DROptionCardViewItemFaceBorder
-@property (nonatomic, assign) IBInspectable NSInteger itemFaceXib;
 @property (nonatomic, assign) IBInspectable NSInteger columnCount;      // default 3
 @property (nonatomic, assign) IBInspectable CGFloat columnSpace;        // default 6.5
 @property (nonatomic, assign) IBInspectable NSInteger lineCount;        // default 3
