@@ -31,16 +31,6 @@
 + (UIColor *)coverBgColor;
 + (UIColor *)pickerDisableColor;
 
-#pragma mark - 渐变色
-/// 设置渐变色，跟随主题
-/// @param lightColor 渐变相对浅色值
-/// @param darkColor 渐变相对深色值
-+ (void)setupGradientLightColor:(UIColor *)lightColor
-                      darkColor:(UIColor *)darkColor;
-
-+ (UIColor *)gradientLightColor;
-+ (UIColor *)gradientDarkColor;
-
 #pragma mark - 包含小时分钟的时间选择器，分钟步长设置
 /// 设置时间步长
 /// @param timeScale 步长，默认5

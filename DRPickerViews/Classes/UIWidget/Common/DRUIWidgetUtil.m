@@ -101,31 +101,6 @@ static DRUIWidgetGetTopViewControllerBlock _getTopVcBlock;
     return [[self oneLevelColor] colorWithAlphaComponent:0.2];
 }
 
-#pragma mark - 渐变色
-/// 设置渐变色，跟随主题
-/// @param lightColor 渐变相对浅色值
-/// @param darkColor 渐变相对深色值
-+ (void)setupGradientLightColor:(UIColor *)lightColor
-                      darkColor:(UIColor *)darkColor {
-    _gradientLightColor = lightColor;
-    _gradientDarkColor = darkColor;
-}
-
-+ (UIColor *)gradientLightColor {
-    if (!_gradientLightColor) {
-        _gradientLightColor = [UIColor hx_colorWithHexRGBAString:@"8CCDFF"];
-    }
-    return _gradientLightColor;
-}
-
-+ (UIColor *)gradientDarkColor {
-    if (!_gradientDarkColor) {
-        _gradientDarkColor = [UIColor hx_colorWithHexRGBAString:@"4BA2F3"];
-    }
-    return _gradientDarkColor;
-}
-
-
 #pragma mark - 包含小时分钟的时间选择器，分钟步长设置
 /// 设置时间步长
 /// @param timeScale 步长，默认5
