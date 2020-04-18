@@ -680,7 +680,7 @@
         [UIView performWithoutAnimation:^{
             [self.view layoutIfNeeded];
         }];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(weakSelf.normalTop);
             }];
@@ -912,8 +912,20 @@
                 [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
                     make.top.mas_equalTo(top);
                 }];
+            } else {
+                [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.top.mas_equalTo(self.normalTop);
+                }];
             }
+        } else {
+            [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_equalTo(self.normalTop);
+            }];
         }
+    } else {
+        [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.normalTop);
+        }];
     }
 }
 
