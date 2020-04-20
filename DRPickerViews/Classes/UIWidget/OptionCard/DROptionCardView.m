@@ -263,24 +263,19 @@
     CGFloat rest = scrollView.contentOffset.x - index * self.layout.pageWidth;
     if (velocity.x > 0) { // 向左加速滑
         if ((rest > scrollView.width / 2 || velocity.x > 0.4) && index < self.layout.pageCount - 1) {
-            *targetContentOffset = CGPointMake((index + 1) * self.layout.pageWidth, 0);
-        } else {
-            *targetContentOffset = CGPointMake(index * self.layout.pageWidth, 0);
+            index ++;
         }
     } else if (velocity.x < 0) { // 向右加速滑
-        if (index >= 0 && (rest < scrollView.width / 2 || velocity.x < -0.4)) {
-            *targetContentOffset = CGPointMake(index * self.layout.pageWidth, 0);
-        } else {
-            *targetContentOffset = CGPointMake((index + 1) * self.layout.pageWidth, 0);
+        if (!(index >= 0 && (rest < scrollView.width / 2 || velocity.x < -0.4))) {
+            index ++;
         }
     } else { // 无加速
         if (rest > scrollView.width / 2) {
-            *targetContentOffset = CGPointMake((index + 1) * self.layout.pageWidth, 0);
-        } else {
-            *targetContentOffset = CGPointMake(index * self.layout.pageWidth, 0);
+            index ++;
         }
     }
-    self.targetOffset = *targetContentOffset;
+    self.targetOffset = CGPointMake(index * self.layout.pageWidth, 0);
+    *targetContentOffset = self.targetOffset;
 }
 
 #pragma mark - setup xib

@@ -14,6 +14,7 @@
 @property (nonatomic, assign) CGFloat height;
 @property (nonatomic, assign) CGFloat lineSpace;
 @property (nonatomic, assign) NSInteger itemCount;
+@property (assign, nonatomic) UIEdgeInsets contentInset;
 
 @end
 
@@ -23,14 +24,29 @@
     [super prepareLayout];
     
     self.height = CGRectGetHeight(self.collectionView.frame);
+    UIEdgeInsets originInset;
+    if (@available(iOS 11.0, *)) {
+        originInset = self.collectionView.adjustedContentInset;
+    } else {
+        originInset = self.collectionView.contentInset;
+    }
+    if (!UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsZero, originInset) ) {
+        self.contentInset = originInset;
+        self.collectionView.contentInset = UIEdgeInsetsZero;
+    }
     if (self.showPageControl) {
         self.height -= (self.pageControlHeight + self.pageControlTopSpace);
     }
     CGFloat pixel = 1.0 / [UIScreen mainScreen].scale;
     self.columnSpace = floor(self.columnSpace / pixel) * pixel;
+    CGFloat insetWidth = self.contentInset.right + self.contentInset.left;
     CGFloat boundsWidth = CGRectGetWidth(self.collectionView.bounds);
-    CGFloat itemWidth = floor(((boundsWidth - (self.columnCount - 1) * self.columnSpace) / self.columnCount) / pixel) * pixel;
+    CGFloat pageContentWidth = boundsWidth - insetWidth;
+    CGFloat itemWidth = floor(((pageContentWidth - (self.columnCount - 1) * self.columnSpace) / self.columnCount) / pixel) * pixel;
     _pageWidth = (self.columnSpace + itemWidth) * self.columnCount;
+    if (insetWidth > 0) {
+        _pageWidth = boundsWidth;
+    }
     self.itemSize = CGSizeMake(itemWidth, self.lineHeight);
 }
 
@@ -70,7 +86,7 @@
     NSInteger col = itemInPage % self.columnCount;
     NSInteger row = itemInPage / self.columnCount;
     
-    CGFloat x = (self.itemSize.width + self.columnSpace)*col + pageNumber * self.pageWidth;
+    CGFloat x = (self.itemSize.width + self.columnSpace)*col + pageNumber * self.pageWidth + self.contentInset.left;
     CGFloat y = (self.itemSize.height + self.lineSpace)*row ;
     
     attri.frame = CGRectMake(x, y, self.itemSize.width, self.itemSize.height);
