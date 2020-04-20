@@ -21,12 +21,13 @@
 @property (nonatomic, copy) IBInspectable NSString *beyondMaxAlert;     // 多余最大限制的提示文案
 @property (nonatomic, assign) IBInspectable NSInteger minSelectCount;   // default 1, effective when mutableSelection is YES
 @property (nonatomic, assign) IBInspectable NSString *belowMinAlert;     // 低于最低限制的提示文案
+@property (assign, nonatomic) IBInspectable CGFloat pageControlTopSpace; // default 0
 @property (nonatomic, assign) IBInspectable BOOL showPageControl;      // 超过一页时，显示分页控制器 default NO
 @property (nonatomic, assign) IBInspectable CGFloat pageControlHeight; // 分页控制器显示高度        default 30
 @property (strong, nonatomic) IBInspectable UIColor *pageControlTintColor;
 @property (strong, nonatomic) IBInspectable UIColor *pageControlCurrentColor;
 @property (assign, nonatomic) IBInspectable UIEdgeInsets contentInset;
-
+@property (assign, nonatomic) IBInspectable BOOL pagingEnabled; // default YES
 @property (nonatomic, strong) NSArray<NSString *> *allOptions;
 @property (nonatomic, strong) NSArray<NSString *> *selectedOptions;     // 反显
 @property (nonatomic, strong) NSArray<NSNumber *> *selectedIndexs;

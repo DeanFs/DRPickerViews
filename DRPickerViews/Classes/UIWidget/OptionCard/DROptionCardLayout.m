@@ -24,7 +24,7 @@
     
     self.height = CGRectGetHeight(self.collectionView.frame);
     if (self.showPageControl) {
-        self.height -= self.pageControlHeight;
+        self.height -= (self.pageControlHeight + self.pageControlTopSpace);
     }
     CGFloat pixel = 1.0 / [UIScreen mainScreen].scale;
     self.columnSpace = floor(self.columnSpace / pixel) * pixel;

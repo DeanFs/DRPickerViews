@@ -77,6 +77,11 @@
     self.layout.showPageControl = showPageControll;
 }
 
+- (void)setPageControlTopSpace:(CGFloat)pageControlTopSpace {
+    _pageControlTopSpace = pageControlTopSpace;
+    self.layout.pageControlTopSpace = pageControlTopSpace;
+}
+
 - (void)setPageControlHeight:(CGFloat)pageControllHeight {
     _pageControlHeight = pageControllHeight;
     self.layout.pageControlHeight = pageControllHeight;
@@ -242,12 +247,18 @@
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (!self.pagingEnabled) {
+        return;
+    }
     if (scrollView.decelerating) {
         [scrollView setContentOffset:self.targetOffset animated:YES];
     }
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    if (!self.pagingEnabled) {
+        return;
+    }
     NSInteger index = floor(scrollView.contentOffset.x / self.layout.pageWidth);
     CGFloat rest = scrollView.contentOffset.x - index * self.layout.pageWidth;
     if (velocity.x > 0) { // 向左加速滑
@@ -321,6 +332,8 @@
         self.minSelectCount = 1;
         self.showPageControl = NO;
         self.pageControlHeight = 30;
+        self.pageControlTopSpace = 0;
+        self.pagingEnabled = YES;
         
         kDRWeakSelf
         self.layout.layoutDoneBlock = ^{
