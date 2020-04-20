@@ -42,8 +42,8 @@
 @property (assign, nonatomic) CGFloat bottomBarHeight;
 @property (assign, nonatomic) CGFloat maxHeight;
 @property (assign, nonatomic) BOOL firstLayout;
-@property (strong, nonatomic) NSMutableArray<id<AspectToken>> *aspectTokens;
 @property (assign, nonatomic) CGFloat normalTop;
+@property (assign, nonatomic) BOOL willDismiss;
 
 @end
 
@@ -119,9 +119,7 @@
 
 /// 退出页面
 - (void)dismissComplete:(dispatch_block_t)complete {
-    for (id<AspectToken> token in self.aspectTokens) {
-        [token remove];
-    }
+    self.willDismiss = YES;
     if (self.position == QCCardContentPositionBottom) {
         [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(kDRScreenHeight);
@@ -538,18 +536,16 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     if (self.autoFitHeight) {
-        id token1 = [tableView aspect_hookSelector:@selector(reloadData) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+        [tableView aspect_hookSelector:@selector(reloadData) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf countHeight];
             });
         } error:nil];
-        id token2 = [tableView aspect_hookSelector:@selector(endUpdates) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+        [tableView aspect_hookSelector:@selector(endUpdates) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kDRAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf countHeight];
             });
         } error:nil];
-        [self.aspectTokens addObject:token1];
-        [self.aspectTokens addObject:token2];
     }
     [self.containerView addSubview:tableView];
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -605,18 +601,16 @@
                       imp:(IMP)add_scrollViewWillEndDragging];
     }
     scrollView.delegate = delegate;
-    id token1 = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewDidScroll:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+    [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewDidScroll:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
         [weakSelf scrollViewDidScroll:(UIScrollView *)[[aspectInfo arguments] firstObject]];
     } error:nil];
-    id token2 = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+    [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
         NSArray *arguments = [aspectInfo arguments];
         CGPoint targetContentOffset;
         [weakSelf scrollViewWillEndDragging:[aspectInfo arguments].firstObject
                                withVelocity:[(NSValue *)arguments[1] CGPointValue]
                         targetContentOffset:&targetContentOffset];
     } error:nil];
-    [self.aspectTokens addObject:token1];
-    [self.aspectTokens addObject:token2];
 }
 
 - (void)countHeight {
@@ -668,6 +662,9 @@
 }
 
 - (void)animationChangeHeight:(CGFloat)containerHeight {
+    if (self.willDismiss) {
+        return;
+    }
     kDRWeakSelf
     if (containerHeight < self.minContentHeight) {
         return;
@@ -838,13 +835,6 @@
         _bottomBarView = bottomBarView;
     }
     return _bottomBarView;
-}
-
-- (NSMutableArray<id<AspectToken>> *)aspectTokens {
-    if (!_aspectTokens) {
-        _aspectTokens = [NSMutableArray array];
-    }
-    return _aspectTokens;
 }
 
 - (UIPanGestureRecognizer *)panGesture {
