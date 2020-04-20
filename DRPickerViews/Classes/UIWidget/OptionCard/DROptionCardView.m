@@ -119,6 +119,10 @@
     self.collectionView.backgroundColor = backgroundColor;
 }
 
+- (void)setContentInset:(UIEdgeInsets)contentInset {
+    [self.collectionView setContentInset:contentInset];
+}
+
 - (void)setupPageControl {
     if (self.showPageControl) {
         if (self.layout.pageCount > 1) {

@@ -23,6 +23,7 @@
 @property (nonatomic, assign) IBInspectable NSString *belowMinAlert;     // 低于最低限制的提示文案
 @property (nonatomic, assign) IBInspectable BOOL showPageControl;      // 超过一页时，显示分页控制器 default NO
 @property (nonatomic, assign) IBInspectable CGFloat pageControlHeight; // 分页控制器显示高度        default 30
+@property (assign, nonatomic) IBInspectable UIEdgeInsets contentInset;
 
 @property (nonatomic, strong) NSArray<NSString *> *allOptions;
 @property (nonatomic, strong) NSArray<NSString *> *selectedOptions;     // 反显
