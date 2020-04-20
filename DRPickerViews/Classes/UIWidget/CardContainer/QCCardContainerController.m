@@ -185,8 +185,8 @@
     _onLeftButtonTapBlock = onLeftButtonTapBlock;
     if (self.leftButtonAutoHighlight) {
         if (onLeftButtonTapBlock != nil) {
-            [self.leftButton setTitleColor:[DRUIWidgetUtil highlightColor] forState:UIControlStateNormal];
-            self.leftButton.tintColor = [DRUIWidgetUtil highlightColor];
+            [self.leftButton setTitleColor:self.highlightColor forState:UIControlStateNormal];
+            self.leftButton.tintColor = self.highlightColor;
         } else {
             [self.leftButton setTitleColor:[DRUIWidgetUtil cancelColor] forState:UIControlStateNormal];
             self.leftButton.tintColor = [DRUIWidgetUtil cancelColor];
@@ -209,7 +209,7 @@
     self.titleButton.userInteractionEnabled = NO;
     if (onTitleTapBlock != nil) {
         self.titleButton.userInteractionEnabled = YES;
-        [self.titleButton setTitleColor:[DRUIWidgetUtil highlightColor] forState:UIControlStateNormal];
+        [self.titleButton setTitleColor:self.highlightColor forState:UIControlStateNormal];
     } else {
         [self.titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
@@ -231,6 +231,7 @@
     if (self = [super init]) {
         _statusBarStyle = [[DRUIWidgetUtil topViewController] preferredStatusBarStyle];
         _firstLayout = YES;
+        _highlightColor = [DRUIWidgetUtil highlightColor];
         _autoDismissWhenRightButtonAction = YES;
         _allowPanClose = YES;
         _autoFitHeight = NO;
@@ -813,7 +814,7 @@
         if (self.position == QCCardContentPositionBottom && ![self.contentObj isKindOfClass:[UIView class]]) {
             UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
             rightButton.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:15];
-            [rightButton setTitleColor:[DRUIWidgetUtil highlightColor] forState:UIControlStateNormal];
+            [rightButton setTitleColor:self.highlightColor forState:UIControlStateNormal];
             [rightButton setTitleColor:[DRUIWidgetUtil disableColor] forState:UIControlStateDisabled];
             [rightButton addTarget:self action:@selector(onRightButtonAction) forControlEvents:UIControlEventTouchUpInside];
             [rightButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];

@@ -54,6 +54,10 @@ typedef NS_ENUM(NSInteger, QCCardContentPosition) {
 @class QCCardContainerBaseService;
 @interface QCCardContainerController : UIViewController
 
+#pragma mark - 通用配置
+/// 高亮颜色，默认跟随全局配置
+@property (strong, nonatomic) UIColor *highlightColor;
+
 #pragma mark - 操作及显示控制
 /// 点击右边按钮后自动退出页面，默认：YES，contentVc及service类型弹出才有效
 @property (assign, nonatomic) BOOL autoDismissWhenRightButtonAction;
