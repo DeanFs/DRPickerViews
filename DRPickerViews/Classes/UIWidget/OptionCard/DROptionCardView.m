@@ -26,6 +26,8 @@
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSString *> *selectMap;
 @property (nonatomic, assign) CGPoint targetOffset;
 @property (nonatomic, assign) BOOL didRrawRect;
+@property (assign, nonatomic) BOOL isCustomCell; /// 自定义itemCell，默认：NO]
+@property (copy, nonatomic) UICollectionViewCell *(^getCellForIndexPath)(UICollectionView *collectionView, NSIndexPath *indexPath, id optionModel);
 
 @end
 
@@ -33,6 +35,20 @@
 
 - (void)reloadData {
     [self.collectionView reloadData];
+}
+
+/// setup自定义选项Cell
+/// @param registerBlock 注册Cell回调
+/// @param getCelBlock 获取Cell回调
+- (void)setupCustomCellWithRegisterBlock:(void (^)(UICollectionView *collectionView))registerBlock
+                getCellForIndexPathBlock:(UICollectionViewCell *(^)(UICollectionView *collectionView,
+                                                                    NSIndexPath *indexPath,
+                                                                    id optionModel))getCellBlock {
+    if (registerBlock != nil && getCellBlock != nil) {
+        self.isCustomCell = YES;
+        registerBlock(self.collectionView);
+        self.getCellForIndexPath = getCellBlock;
+    }
 }
 
 - (void)setColumnCount:(NSInteger)columnCount {
@@ -119,6 +135,14 @@
     self.collectionView.backgroundColor = backgroundColor;
 }
 
+- (void)setPageControlTintColor:(UIColor *)pageControlTintColor {
+    self.pageControl.pageIndicatorTintColor = pageControlTintColor;
+}
+
+- (void)setPageControlCurrentColor:(UIColor *)pageControlCurrentColor {
+    self.pageControl.currentPageIndicatorTintColor = pageControlCurrentColor;
+}
+
 - (void)setContentInset:(UIEdgeInsets)contentInset {
     [self.collectionView setContentInset:contentInset];
 }
@@ -141,22 +165,27 @@
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.isCustomCell) {
+        return self.getCellForIndexPath(collectionView, indexPath, self.allOptions[indexPath.item]);
+    }
     return [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([DROptionCardCell class]) forIndexPath:indexPath];
 }
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    DROptionCardCell *cardCell = (DROptionCardCell *)cell;
-    cardCell.itemSize = self.layout.itemSize;
-    cardCell.fontSize = self.fontSize;
-    cardCell.itemCornerRadius = self.itemCornerRadius;
-    if ([self.selectMap objectForKey:@(indexPath.item)]) {
-        [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-    } else {
-        [collectionView deselectItemAtIndexPath:indexPath animated:NO];
+    if (!self.isCustomCell) {
+        DROptionCardCell *cardCell = (DROptionCardCell *)cell;
+        cardCell.itemSize = self.layout.itemSize;
+        cardCell.fontSize = self.fontSize;
+        cardCell.itemCornerRadius = self.itemCornerRadius;
+        if ([self.selectMap objectForKey:@(indexPath.item)]) {
+            [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+        } else {
+            [collectionView deselectItemAtIndexPath:indexPath animated:NO];
+        }
+        cardCell.title = self.allOptions[indexPath.row];
     }
-    cardCell.title = self.allOptions[indexPath.row];
-    cardCell.selected = [self.selectMap objectForKey:@(indexPath.item)] != nil;
+    cell.selected = [self.selectMap objectForKey:@(indexPath.item)] != nil;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
