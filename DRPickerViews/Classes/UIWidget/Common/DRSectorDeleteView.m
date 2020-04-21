@@ -12,6 +12,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/UIFont+DRExtension.h>
+#import "DRUIWidgetUtil.h"
 
 static const CGFloat DRSectorDeleteViewWidth = 140.0;
 
@@ -54,8 +55,8 @@ static const CGFloat DRSectorDeleteViewWidth = 140.0;
         }];
         
         //删除图标
-        NSString *imageName = [NSString stringWithFormat:@"sector_delete@%dx", (int)[UIScreen mainScreen].scale];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:[KDR_CURRENT_BUNDLE pathForResource:imageName ofType:@"png"]]];
+        UIImage *image = [DRUIWidgetUtil pngImageWithName:@"sector_delete" inBundle:KDR_CURRENT_BUNDLE];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         [self addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self).offset(-40.0);

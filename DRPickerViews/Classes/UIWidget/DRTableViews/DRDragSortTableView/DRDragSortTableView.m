@@ -182,7 +182,7 @@ typedef NS_ENUM(NSInteger, AutoScroll) {
     AudioServicesPlaySystemSound(1519); // 振动反馈
     
     if (self.canDeleteStartCell) { // 显示右下角删除区
-        [self.fullView addSubview:self.deleteView];
+        [kDRWindow addSubview:self.deleteView];
         [self.deleteView show];
     }
     
