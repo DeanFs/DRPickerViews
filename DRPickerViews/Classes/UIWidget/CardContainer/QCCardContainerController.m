@@ -276,7 +276,6 @@
     [self.navigationController.navigationBar setHidden:YES];
     if (self.containerView.hidden) {
         [self initSubviews];
-        [self setupPanClose];
         if (self.position == QCCardContentPositionBottom) {
             if (!self.autoFitHeight || self.service == nil) {
                 [self animationChangeHeight:self.maxHeight];
@@ -291,6 +290,7 @@
                     self.containerView.transform = CGAffineTransformIdentity;
                     self.containerView.alpha = 1.0f;
                 } completion:^(BOOL finished) {
+                    [self setupPanClose];
                     kDR_SAFE_BLOCK(self.onShowAnimationDone);
                 }];
             });
@@ -535,6 +535,9 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    if (!self.allowPanClose) {
+        tableView.alwaysBounceVertical = self.alwaysBounceVertical;
+    }
     if (self.autoFitHeight) {
         [tableView aspect_hookSelector:@selector(reloadData) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -686,6 +689,7 @@
                 self.view.backgroundColor = [DRUIWidgetUtil coverBgColor];
                 [self.view layoutIfNeeded];
             } completion:^(BOOL finished) {
+                [self setupPanClose];
                 kDR_SAFE_BLOCK(self.onShowAnimationDone);
             }];
         });
