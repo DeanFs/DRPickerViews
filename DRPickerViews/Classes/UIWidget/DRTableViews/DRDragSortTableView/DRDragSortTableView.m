@@ -421,7 +421,7 @@ typedef NS_ENUM(NSInteger, AutoScroll) {
     cellImageView.layer.shadowRadius = 5.0;
     cellImageView.layer.shadowOpacity = 0.4;
     cellImageView.layer.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6].CGColor;
-    [self.fullView addSubview:cellImageView];
+    [kDRWindow addSubview:cellImageView];
     return cellImageView;
 }
 
