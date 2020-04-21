@@ -28,8 +28,16 @@ typedef NS_ENUM(NSInteger, DRLunarDatePickerMode) {
 IB_DESIGNABLE
 @interface DRLunarDatePickerView : UIView
 
-@property (nonatomic, assign) IBInspectable NSInteger dateModeXib;
 @property (nonatomic, assign) DRLunarDatePickerMode dateMode;
+@property (nonatomic, assign) IBInspectable NSInteger dateModeXib;
+/// 农历汉子字号
+@property (strong, nonatomic) UIFont *lunarTextFont;
+/// 数字年份字体
+@property (strong, nonatomic) UIFont *yearTextFont;
+/// 分隔线字体
+@property (strong, nonatomic) UIFont *separatorFont;
+/// 年月日文字颜色
+@property (strong, nonatomic) UIColor *textColor;
 // 底部显示农历日期，DRDatePickerModeYMD模式有效，默认 NO
 @property (nonatomic, assign) BOOL showSolarTip;
 

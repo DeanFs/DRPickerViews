@@ -18,9 +18,15 @@ typedef NS_ENUM(NSInteger, DRDatePickerMode) {
 IB_DESIGNABLE
 @interface DRDatePickerView : UIView
 
-@property (nonatomic, assign) IBInspectable NSInteger dateModeXib;
 @property (nonatomic, assign) DRDatePickerMode dateMode;
-// 底部显示农历日期，DRDatePickerModeYMD模式有效，默认 NO
+@property (nonatomic, assign) IBInspectable NSInteger dateModeXib;
+/// 年月日文字字体
+@property (strong, nonatomic) UIFont *textFont;
+/// 分隔线字体
+@property (strong, nonatomic) UIFont *separatorFont;
+/// 年月日文字颜色
+@property (strong, nonatomic) UIColor *textColor;
+/// 底部显示农历日期，DRDatePickerModeYMD模式有效，默认 NO
 @property (nonatomic, assign) BOOL showLunarTip;
 
 @property (nonatomic, copy) void (^onSelectChangeBlock) (NSDate *date, NSInteger month, NSInteger day);

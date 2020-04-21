@@ -17,6 +17,11 @@
 
 @implementation DRLunarYearView
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.backgroundColor = [UIColor clearColor];
+}
+
 - (void)setupName:(NSString *)name year:(NSInteger)year {
     self.nameLabel.text = name;
     self.yearLabel.text = [NSString stringWithFormat:@"%ld", year];
@@ -25,6 +30,16 @@
 - (void)setTextColor:(UIColor *)textColor {
     self.nameLabel.textColor = textColor;
     self.yearLabel.textColor = textColor;
+}
+
+- (void)setLunarTextFont:(UIFont *)lunarTextFont {
+    _lunarTextFont = lunarTextFont;
+    self.nameLabel.font = lunarTextFont;
+}
+
+- (void)setYearTextFont:(UIFont *)yearTextFont {
+    _yearTextFont = yearTextFont;
+    self.yearLabel.font = yearTextFont;
 }
 
 @end

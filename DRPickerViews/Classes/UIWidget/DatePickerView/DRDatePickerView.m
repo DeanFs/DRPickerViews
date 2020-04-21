@@ -25,7 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIView *lunarDateContentView;
 @property (weak, nonatomic) IBOutlet UIImageView *lunarIcon;
 @property (weak, nonatomic) IBOutlet UILabel *lunarDateLabel;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lunarDateContentViewHeight;
 
 @property (nonatomic, assign) NSInteger monthDayCount; // 当月天数
@@ -34,6 +33,7 @@
 @property (nonatomic, strong) NSCalendar *calendar;
 @property (nonatomic, assign) BOOL didDrawRect;
 @property (nonatomic, assign) BOOL dateModeChanging;
+@property (strong, nonatomic) UIColor *pickerDisableColor;
 
 @end
 
@@ -208,11 +208,11 @@
     UILabel *label = (UILabel *)view;
     if (!label) {
         label = [[UILabel alloc] init];
-        label.textColor = [DRUIWidgetUtil normalColor];
-        label.font = [UIFont dr_PingFangSC_RegularWithSize:26];
+        label.textColor = self.textColor;
+        label.font = self.textFont;
         label.textAlignment = NSTextAlignmentCenter;
         if (component % 2 > 0) {
-            label.font = [UIFont dr_PingFangSC_RegularWithSize:15];
+            label.font = self.separatorFont;
         }
     }
     if (component % 2 == 0) {
@@ -349,7 +349,7 @@
 - (void)setupTextColorForLabel:(UILabel *)label inComponent:(NSInteger)component forRow:(NSInteger)row {
     NSInteger selectedRow = [self.pickerView selectedRowInComponent:component];
     if (row == selectedRow) {
-        label.textColor = [DRUIWidgetUtil normalColor];
+        label.textColor = self.textColor;
     }
     
     if (self.dateMode != DRDatePickerModeMD) {
@@ -361,7 +361,7 @@
             maxDate = maxDate / 100 * 100;
         }
         if (currentDate < minDate || currentDate > maxDate) {
-            label.textColor = [DRUIWidgetUtil pickerDisableColor];
+            label.textColor = self.pickerDisableColor;
         }
     }
 }
@@ -544,6 +544,10 @@
         self.lunarIcon.image = [DRUIWidgetUtil pngImageWithName:@"icon_birth_lunar"
                                                        inBundle:KDR_CURRENT_BUNDLE];
         _dateMode = DRDatePickerModeYMD;
+        _textColor = [DRUIWidgetUtil normalColor];
+        _pickerDisableColor = [_textColor colorWithAlphaComponent:0.2];
+        _textFont = [UIFont dr_PingFangSC_RegularWithSize:26];
+        _separatorFont = [UIFont dr_PingFangSC_RegularWithSize:15];
         self.lunarDateContentView.hidden = YES;
         self.lunarDateContentViewHeight.constant = 0;
     }
@@ -565,6 +569,28 @@
             [self setupPickerView];
         });
     }
+}
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    [super setBackgroundColor:backgroundColor];
+    self.containerView.backgroundColor = backgroundColor;
+    self.pickerView.backgroundColor = backgroundColor;
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    _pickerDisableColor = [textColor colorWithAlphaComponent:0.2];
+    [self.pickerView reloadAllComponents];
+}
+
+- (void)setTextFont:(UIFont *)textFont {
+    _textFont = textFont;
+    [self.pickerView reloadAllComponents];
+}
+
+- (void)setSeparatorFont:(UIFont *)separatorFont {
+    _separatorFont = separatorFont;
+    [self.pickerView reloadAllComponents];
 }
 
 #pragma mark - lazy load

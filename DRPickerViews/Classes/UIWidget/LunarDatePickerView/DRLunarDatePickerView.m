@@ -46,6 +46,7 @@
 @property (nonatomic, assign) NSInteger lunarYear;
 @property (nonatomic, assign) BOOL didDrawRect;
 @property (nonatomic, assign) BOOL dateModeChanging;
+@property (strong, nonatomic) UIColor *pickerDisableColor;
 
 @end
 
@@ -215,17 +216,19 @@
         yearView = (DRLunarYearView *)view;
         if (!yearView) {
             yearView = kDR_LOAD_XIB_NAMED(NSStringFromClass([DRLunarYearView class]));
-            yearView.textColor = [DRUIWidgetUtil normalColor];
+            yearView.textColor = self.textColor;
+            yearView.yearTextFont = self.yearTextFont;
+            yearView.lunarTextFont = self.lunarTextFont;
         }
     } else {
         label = (UILabel *)view;
         if (!label) {
             label = [[UILabel alloc] init];
-            label.textColor = [DRUIWidgetUtil normalColor];
-            label.font = [UIFont dr_PingFangSC_RegularWithSize:17];
+            label.textColor = self.textColor;
+            label.font = self.lunarTextFont;
             label.textAlignment = NSTextAlignmentCenter;
             if (component % 2 > 0) {
-                label.font = [UIFont dr_PingFangSC_RegularWithSize:15];
+                label.font = self.separatorFont;
             }
         }
     }
@@ -332,13 +335,13 @@
 - (void)setupTextColorForLabel:(UILabel *)label yearView:(DRLunarYearView *)yearView inComponent:(NSInteger)component forRow:(NSInteger)row {
     NSInteger selectedRow = [self.pickerView selectedRowInComponent:component];
     if (row == selectedRow) {
-        label.textColor = [DRUIWidgetUtil normalColor];
-        yearView.textColor = [DRUIWidgetUtil normalColor];
+        label.textColor = self.textColor;
+        yearView.textColor = self.textColor;
     }
     
     if (self.dateMode == DRLunarDatePickerModeYMD && [self isDisableForRow:row inComponent:component]) {
-        label.textColor = [DRUIWidgetUtil pickerDisableColor];
-        yearView.textColor = [DRUIWidgetUtil pickerDisableColor];
+        label.textColor = self.pickerDisableColor;
+        yearView.textColor = self.pickerDisableColor;
     }
 }
 
@@ -576,6 +579,12 @@
         self.solarDateLabel.textColor = [DRUIWidgetUtil highlightColor];
         self.solarIcon.image = [DRUIWidgetUtil pngImageWithName:@"icon_birth_solar"
                                                        inBundle:KDR_CURRENT_BUNDLE];
+        
+        _textColor = [DRUIWidgetUtil normalColor];
+        _pickerDisableColor = [_textColor colorWithAlphaComponent:0.2];
+        _lunarTextFont = [UIFont dr_PingFangSC_RegularWithSize:17];
+        _yearTextFont = [UIFont dr_PingFangSC_RegularWithSize:22];
+        _separatorFont = [UIFont dr_PingFangSC_RegularWithSize:15];
     }
 }
 
@@ -595,6 +604,33 @@
             [self setupPickerView];
         });
     }
+}
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    [super setBackgroundColor:backgroundColor];
+    self.containerView.backgroundColor = backgroundColor;
+    self.pickerView.backgroundColor = backgroundColor;
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    _pickerDisableColor = [textColor colorWithAlphaComponent:0.2];
+    [self.pickerView reloadAllComponents];
+}
+
+- (void)setLunarTextFont:(UIFont *)lunarTextFont {
+    _lunarTextFont = lunarTextFont;
+    [self.pickerView reloadAllComponents];
+}
+
+- (void)setYearTextFont:(UIFont *)yearTextFont {
+    _yearTextFont = yearTextFont;
+    [self.pickerView reloadAllComponents];
+}
+
+- (void)setSeparatorFont:(UIFont *)separatorFont {
+    _separatorFont = separatorFont;
+    [self.pickerView reloadAllComponents];
 }
 
 #pragma mark - layzy load

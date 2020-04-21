@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DRLunarYearView : UIView
 
 @property (nonatomic, strong) UIColor *textColor;
+/// 农历汉子字号
+@property (strong, nonatomic) UIFont *lunarTextFont;
+/// 数字年份字体
+@property (strong, nonatomic) UIFont *yearTextFont;
 
 - (void)setupName:(NSString *)name year:(NSInteger)year;
 
