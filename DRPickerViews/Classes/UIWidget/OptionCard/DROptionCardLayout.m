@@ -58,7 +58,6 @@
     if (self.lineCount > 1) { // 多行lineSpace才有意义
         self.lineSpace = (self.height - self.lineCount * self.lineHeight) / (self.lineCount - 1);
     }
-    [self.collectionView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     return CGSizeMake(self.pageCount * self.pageWidth - self.columnSpace, self.height);
 }
 
