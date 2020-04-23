@@ -10,6 +10,8 @@
 #import <Masonry/Masonry.h>
 #import <DRMacroDefines/DRMacroDefines.h>
 #import "DRUIWidgetUtil.h"
+#import <JXExtension/NSString+JXSize.h>
+#import <DRCategories/UIFont+DRExtension.h>
 
 @interface DRPickerTopBar ()
 
@@ -18,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *centerButton;
 @property (weak, nonatomic) IBOutlet UIButton *rightButton;
 @property (weak, nonatomic) IBOutlet UIView *bottomLine;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftButtonWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightButtonWidth;
 
 @end
 
@@ -42,8 +46,16 @@
         [self.leftButton setTitle:leftButtonTitle forState:UIControlStateNormal];
         [self.leftButton layoutIfNeeded];
     }];
-    if (leftButtonTitle.length) {
+    if (leftButtonTitle.length > 0) {
         self.leftButtonImage = nil;
+        CGFloat width = [leftButtonTitle jx_widthWithFont:[UIFont dr_PingFangSC_MediumWithSize:15]
+                                      constrainedToHeight:16] + 20;
+        if (width < 90) {
+            width = 90;
+        }
+        self.leftButtonWidth.constant = width;
+    } else {
+        self.leftButtonWidth.constant = 90;
     }
 }
 
@@ -53,7 +65,7 @@
         [self.leftButton setImage:leftButtonImage forState:UIControlStateNormal];
         [self.leftButton layoutIfNeeded];
     }];
-    if (leftButtonImage) {
+    if (leftButtonImage != nil) {
         self.leftButtonTitle = nil;
     }
 }
@@ -107,6 +119,17 @@
 
 - (void)setRightButtonTitle:(NSString *)rightButtonTitle {
     [self.rightButton setTitle:rightButtonTitle forState:UIControlStateNormal];
+    if (rightButtonTitle.length > 0) {
+        self.leftButtonImage = nil;
+        CGFloat width = [rightButtonTitle jx_widthWithFont:[UIFont dr_PingFangSC_MediumWithSize:15]
+                                      constrainedToHeight:16] + 20;
+        if (width < 90) {
+            width = 90;
+        }
+        self.rightButtonWidth.constant = width;
+    } else {
+        self.rightButtonWidth.constant = 90;
+    }
 }
 
 #pragma mark - action

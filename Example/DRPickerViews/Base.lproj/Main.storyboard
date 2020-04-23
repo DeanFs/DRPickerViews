@@ -1240,10 +1240,10 @@
             </objects>
             <point key="canvasLocation" x="-1851" y="432"/>
         </scene>
-        <!--Drag Sort Table View Controller-->
+        <!--长按cell拖拽-->
         <scene sceneID="RD0-93-JsK">
             <objects>
-                <tableViewController storyboardIdentifier="DRDragSortTableViewController" id="qQT-Qh-PAS" customClass="DRDragSortTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DRDragSortTableViewController" title="长按cell拖拽" id="qQT-Qh-PAS" customClass="DRDragSortTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Lsa-i9-vgC" customClass="DRDragSortTableView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

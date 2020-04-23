@@ -19,6 +19,7 @@
 #import <objc/message.h>
 #import "QCCardContainerBaseService.h"
 #import "DRUIWidgetUtil.h"
+#import <JXExtension/NSString+JXSize.h>
 
 #define kHeaderBarHeight 56
 #define kBottomBarHeight 56
@@ -163,8 +164,20 @@
     self.leftButton.hidden = NO;
     if (leftButtonTitle.length > 0) {
         self.leftButtonImage = nil;
+        CGFloat width = [leftButtonTitle jx_widthWithFont:[UIFont dr_PingFangSC_MediumWithSize:15]
+                                      constrainedToHeight:16] + 20;
+        if (width < 90) {
+            width = 90;
+        }
+        [self.leftButton mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(width);
+        }];
     } else if (self.leftButtonImage == nil) {
         self.leftButton.hidden = YES;
+    } else {
+        [self.leftButton mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(90);
+        }];
     }
 }
 
@@ -222,6 +235,21 @@
 - (void)setRightButtonTitle:(NSString *)rightButtonTitle {
     _rightButtonTitle = rightButtonTitle;
     [self.rightButton setTitle:rightButtonTitle forState:UIControlStateNormal];
+    if (rightButtonTitle.length > 0) {
+        self.leftButtonImage = nil;
+        CGFloat width = [rightButtonTitle jx_widthWithFont:[UIFont dr_PingFangSC_MediumWithSize:15]
+                                       constrainedToHeight:16] + 20;
+        if (width < 90) {
+            width = 90;
+        }
+        [self.rightButton mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(width);
+        }];
+    } else {
+        [self.rightButton mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(90);
+        }];
+    }
 }
 
 #pragma mark - lifecycle
@@ -422,97 +450,93 @@
 
 - (void)setupHeaderBar {
     self.topBarHeight = 0;
-    if (![self.contentObj isKindOfClass:[UIView class]]) {
-        /// 标题
-        if (self.title != nil) {
-            [self.titleButton setTitle:self.title forState:UIControlStateNormal];
-            self.topBarHeight = kHeaderBarHeight;
-            if (self.title.length == 0) {
-                self.titleButton.hidden = YES;
-            }
+    /// 标题
+    if (self.title != nil) {
+        [self.titleButton setTitle:self.title forState:UIControlStateNormal];
+        self.topBarHeight = kHeaderBarHeight;
+        if (self.title.length == 0) {
+            self.titleButton.hidden = YES;
         }
-        
-        // 左边按钮
-        if (self.topBarHeight > 0 ||
-            self.leftButtonTitle != nil ||
-            self.leftButtonImage != nil ||
-            self.onLeftButtonTapBlock != nil) {
-            if (self.leftButtonTitle == nil && self.leftButtonImage == nil) {
-                [self.leftButton setTitle:@"取消" forState:UIControlStateNormal];
+    }
+    
+    // 左边按钮
+    if (self.topBarHeight > 0 ||
+        self.leftButtonTitle != nil ||
+        self.leftButtonImage != nil ||
+        self.onLeftButtonTapBlock != nil) {
+        if (self.leftButtonTitle == nil && self.leftButtonImage == nil) {
+            [self.leftButton setTitle:@"取消" forState:UIControlStateNormal];
+        } else {
+            if (self.leftButtonImage != nil) {
+                [self.leftButton setImage:self.leftButtonImage forState:UIControlStateNormal];
+            } else if (self.leftButtonTitle.length > 0) {
+                [self.leftButton setTitle:self.leftButtonTitle forState:UIControlStateNormal];
             } else {
-                if (self.leftButtonImage != nil) {
-                    [self.leftButton setImage:self.leftButtonImage forState:UIControlStateNormal];
-                } else if (self.leftButtonTitle.length > 0) {
-                    [self.leftButton setTitle:self.leftButtonTitle forState:UIControlStateNormal];
-                } else {
-                    self.leftButton.hidden = YES;
-                }
+                self.leftButton.hidden = YES;
             }
-            self.topBarHeight = kHeaderBarHeight;
         }
-        
-        // 确定/保存按钮
-        if (self.rightButtonTitle.length > 0 ||
-            self.onRightButtonTapBlock != nil) {
-            if (self.rightButtonTitle == nil) {
-                [self.rightButton setTitle:@"确定" forState:UIControlStateNormal];
-                if ([self.contentObj isKindOfClass:[UIViewController class]]) {
-                    [self.rightButton setTitle:@"保存" forState:UIControlStateNormal];
-                }
+        self.topBarHeight = kHeaderBarHeight;
+    }
+    
+    // 确定/保存按钮
+    if (self.rightButtonTitle.length > 0 ||
+        self.onRightButtonTapBlock != nil) {
+        if (self.rightButtonTitle == nil) {
+            [self.rightButton setTitle:@"确定" forState:UIControlStateNormal];
+            if ([self.contentObj isKindOfClass:[UIViewController class]]) {
+                [self.rightButton setTitle:@"保存" forState:UIControlStateNormal];
             }
-            self.topBarHeight = kHeaderBarHeight;
         }
+        self.topBarHeight = kHeaderBarHeight;
     }
 }
 
 - (void)setupBottomBar {
     kDRWeakSelf
     self.bottomBarHeight = [UITabBar safeHeight] + self.contentCornerRadius;
-    if (![self.contentObj isKindOfClass:[UIView class]]) {
-        if (self.customBottomBar != nil) {
-            self.bottomBarHeight += self.customBottomBar.height;
-            [self.bottomBarView addSubview:self.customBottomBar];
-            [self.customBottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.left.right.mas_offset(0);
-                make.height.mas_equalTo(weakSelf.customBottomBar.height);
-            }];
-            self.customBottomBar = nil;
-        } else {
-            if (self.showBottomBar) {
-                self.bottomBarHeight += (kBottomBarHeight + self.bottomBarTopSpace);
-                
-                UIView *line = [[UIView alloc] init];
-                line.backgroundColor = [DRUIWidgetUtil thickLineColor];
-                if (self.bottomBarTopSpace < 1) {
-                    line.backgroundColor = [DRUIWidgetUtil borderColor];
-                }
-                [self.bottomBarView addSubview:line];
-                [line mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.top.left.right.mas_offset(0);
-                    make.height.mas_equalTo(weakSelf.bottomBarTopSpace);
-                }];
-                
-                UIButton *actionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                actionButton.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:15];
-                actionButton.tintColor = self.bottomBarTintColor;
-                [actionButton setTitleColor:self.bottomBarTintColor forState:UIControlStateNormal];
-                [actionButton setTitle:@"取消" forState:UIControlStateNormal];
-                if (self.bottomBarTitle.length > 0) {
-                    [actionButton setTitle:self.bottomBarTitle forState:UIControlStateNormal];
-                }
-                if (self.bottomBarIcon != nil) {
-                    UIImage *image = [self.bottomBarIcon imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-                    [actionButton setImage:image forState:UIControlStateNormal];
-                    [actionButton setImageEdgeInsets:UIEdgeInsetsMake(0, -4, 0, 0)];
-                }
-                [actionButton addTarget:self action:@selector(onBottomBarTappedAction) forControlEvents:UIControlEventTouchUpInside];
-                [self.bottomBarView addSubview:actionButton];
-                [actionButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.top.mas_offset(weakSelf.bottomBarTopSpace);
-                    make.height.mas_equalTo(kBottomBarHeight);
-                    make.left.right.mas_offset(0);
-                }];
+    if (self.customBottomBar != nil) {
+        self.bottomBarHeight += self.customBottomBar.height;
+        [self.bottomBarView addSubview:self.customBottomBar];
+        [self.customBottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.mas_offset(0);
+            make.height.mas_equalTo(weakSelf.customBottomBar.height);
+        }];
+        self.customBottomBar = nil;
+    } else {
+        if (self.showBottomBar) {
+            self.bottomBarHeight += (kBottomBarHeight + self.bottomBarTopSpace);
+            
+            UIView *line = [[UIView alloc] init];
+            line.backgroundColor = [DRUIWidgetUtil thickLineColor];
+            if (self.bottomBarTopSpace < 1) {
+                line.backgroundColor = [DRUIWidgetUtil borderColor];
             }
+            [self.bottomBarView addSubview:line];
+            [line mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.left.right.mas_offset(0);
+                make.height.mas_equalTo(weakSelf.bottomBarTopSpace);
+            }];
+            
+            UIButton *actionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            actionButton.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:15];
+            actionButton.tintColor = self.bottomBarTintColor;
+            [actionButton setTitleColor:self.bottomBarTintColor forState:UIControlStateNormal];
+            [actionButton setTitle:@"取消" forState:UIControlStateNormal];
+            if (self.bottomBarTitle.length > 0) {
+                [actionButton setTitle:self.bottomBarTitle forState:UIControlStateNormal];
+            }
+            if (self.bottomBarIcon != nil) {
+                UIImage *image = [self.bottomBarIcon imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                [actionButton setImage:image forState:UIControlStateNormal];
+                [actionButton setImageEdgeInsets:UIEdgeInsetsMake(0, -4, 0, 0)];
+            }
+            [actionButton addTarget:self action:@selector(onBottomBarTappedAction) forControlEvents:UIControlEventTouchUpInside];
+            [self.bottomBarView addSubview:actionButton];
+            [actionButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_offset(weakSelf.bottomBarTopSpace);
+                make.height.mas_equalTo(kBottomBarHeight);
+                make.left.right.mas_offset(0);
+            }];
         }
     }
     [self.bottomBarView mas_makeConstraints:^(MASConstraintMaker *make) {

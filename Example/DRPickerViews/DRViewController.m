@@ -94,7 +94,7 @@
             ((DRPickerHMOnlyOption *)opt).onCleanTimeBlock = ^(id deletedObj) {
                 kDR_LOG(@"清除时间： %@", deletedObj);
             };
-            opt.cancelButtonTitle = @"清除";
+            opt.cancelButtonTitle = @"清除清除清除清除";
             opt.cancelBlock = ^{
                 kDR_LOG(@"picker cancel");
                 kDR_LOG(@"清除");
@@ -213,11 +213,11 @@
     opt.autoDismissWhenPicked = NO;
     
 //    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDRScreenWidth - 40, 70)];
-//    customView.backgroundColor = [UIColor whiteColor];
+//    customView.backgroundColor = [UIColor redColor];
 //    customView.userInteractionEnabled = YES;
 //    opt.customBottomView = customView;
 //    [customView bk_whenTapped:^{
-//        [opt.pickerView dismiss];
+//        [opt.pickerView dismissComplete:nil];
 //    }];
     
     kDRWeakSelf

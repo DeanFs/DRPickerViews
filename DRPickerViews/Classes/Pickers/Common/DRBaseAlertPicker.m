@@ -106,6 +106,7 @@
     cardContainerVc.allowPanClose = NO;
     if (self.pickerOption.customBottomView != nil) {
         cardContainerVc.customBottomBar = self.pickerOption.customBottomView;
+        cardContainerVc.minTopSpaceInSafeArea -= self.pickerOption.customBottomView.height;
         self.pickerOption.customBottomView = nil;
     }
     if (self.pickerOption.title.length > 0) {

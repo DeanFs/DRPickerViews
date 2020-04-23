@@ -188,10 +188,10 @@
 		24D9375D2449832C000A3288 /* FoldableOptionItemDemo */ = {
 			isa = PBXGroup;
 			children = (
-				24D9375E2449832C000A3288 /* DRFoldableOptionItemViewController.m */,
-				24D9375F2449832C000A3288 /* Models */,
 				24D937622449832C000A3288 /* DRFoldableOptionItemViewController.h */,
+				24D9375E2449832C000A3288 /* DRFoldableOptionItemViewController.m */,
 				24D937632449832C000A3288 /* FoldableOptionView.xcassets */,
+				24D9375F2449832C000A3288 /* Models */,
 				24D937642449832C000A3288 /* Views */,
 			);
 			path = FoldableOptionItemDemo;
@@ -209,9 +209,9 @@
 		24D937642449832C000A3288 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				24D937652449832C000A3288 /* DRFoldableOptionCell.xib */,
-				24D937662449832C000A3288 /* DRFoldableOptionCell.m */,
 				24D937672449832C000A3288 /* DRFoldableOptionCell.h */,
+				24D937662449832C000A3288 /* DRFoldableOptionCell.m */,
+				24D937652449832C000A3288 /* DRFoldableOptionCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,12 +220,12 @@
 			isa = PBXGroup;
 			children = (
 				24D937692449832C000A3288 /* DRTimeFlowPullRefreshView.h */,
+				24D9376C2449832C000A3288 /* DRTimeFlowPullRefreshView.m */,
+				24D937722449832C000A3288 /* DRTimeFlowViewController.h */,
 				24D9376A2449832C000A3288 /* DRTimeFlowViewController.m */,
 				24D9376B2449832C000A3288 /* DRTimeFlowViewController.xib */,
-				24D9376C2449832C000A3288 /* DRTimeFlowPullRefreshView.m */,
 				24D9376D2449832C000A3288 /* TimeFlow.xcassets */,
 				24D9376E2449832C000A3288 /* Views */,
-				24D937722449832C000A3288 /* DRTimeFlowViewController.h */,
 			);
 			path = TimeFlow;
 			sourceTree = "<group>";
@@ -234,8 +234,8 @@
 			isa = PBXGroup;
 			children = (
 				24D9376F2449832C000A3288 /* DRTimeFlowCell.h */,
-				24D937702449832C000A3288 /* DRTimeFlowCell.xib */,
 				24D937712449832C000A3288 /* DRTimeFlowCell.m */,
+				24D937702449832C000A3288 /* DRTimeFlowCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -244,12 +244,12 @@
 			isa = PBXGroup;
 			children = (
 				24D937742449832D000A3288 /* DRDragSortDeleteCell.h */,
-				24D937752449832D000A3288 /* DRDragSortTableViewController.m */,
-				24D937762449832D000A3288 /* DRTextScrollViewViewController.m */,
-				24D937772449832D000A3288 /* DRDragSortDeleteCell.xib */,
 				24D937782449832D000A3288 /* DRDragSortDeleteCell.m */,
-				24D937792449832D000A3288 /* DRTextScrollViewViewController.h */,
+				24D937772449832D000A3288 /* DRDragSortDeleteCell.xib */,
 				24D9377A2449832D000A3288 /* DRDragSortTableViewController.h */,
+				24D937752449832D000A3288 /* DRDragSortTableViewController.m */,
+				24D937792449832D000A3288 /* DRTextScrollViewViewController.h */,
+				24D937762449832D000A3288 /* DRTextScrollViewViewController.m */,
 			);
 			path = DragSortTableViewDemo;
 			sourceTree = "<group>";

@@ -80,7 +80,7 @@ typedef NS_ENUM(NSInteger, QCCardContentPosition) {
 /// 点击空白区域是否退出页面，不实现默认：YES，可用于捕获点击空白区域事件
 @property (copy, nonatomic) BOOL(^dismissWhenTouchSpaceBlock)(void);
 
-#pragma mark - 顶部栏，以下至少有一项不为空时才显示顶部栏，contentVc及service类型弹出才有效，且从底部弹出
+#pragma mark - 顶部栏，以下至少有一项不为空时才显示顶部栏，从底部弹出才有效
 /// 左边按钮标题，与leftButtonImage互斥
 @property (copy, nonatomic) NSString *leftButtonTitle;
 /// 左边按钮图标，与leftButtonTitle互斥
@@ -98,7 +98,7 @@ typedef NS_ENUM(NSInteger, QCCardContentPosition) {
 /// 右边按钮点击响应
 @property (copy, nonatomic) dispatch_block_t onRightButtonTapBlock;
 
-#pragma mark - 底部悬浮按钮，如取消，添加等，contentVc及service类型弹出才有效，且从底部弹出
+#pragma mark - 底部悬浮按钮，如取消，添加等，从底部弹出才有效
 /// 在底部悬浮显示按钮，默认：NO
 @property (assign, nonatomic) BOOL showBottomBar;
 /// 默认：取消

@@ -44,8 +44,6 @@
         }
     }
     self.datas = sections;
-    
-    self.title = @"长按cell拖拽";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -132,7 +130,9 @@
 
 #pragma mark - QCCardContentDelegate
 - (void)setupCardContainerVc:(QCCardContainerController *)cardContainerVc {
-    
+    cardContainerVc.title = self.title;
+    cardContainerVc.rightButtonTitle = @"这是一个有点长的标题";
+    cardContainerVc.leftButtonTitle = @"这是一个有点长的标题";
 }
 
 - (UIScrollView *)supportCardPanCloseScrollView {
