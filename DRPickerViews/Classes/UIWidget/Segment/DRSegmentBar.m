@@ -106,7 +106,7 @@
     } else {
         self.titleLabel.textColor = self.normalColor;
         self.titleLabel.font = [UIFont dr_PingFangSC_RegularWithSize:self.titleFontSize > 0 ? self.titleFontSize : 13];
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
     }
 }
 
