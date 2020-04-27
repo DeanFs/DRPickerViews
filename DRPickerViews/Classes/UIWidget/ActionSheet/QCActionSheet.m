@@ -251,13 +251,7 @@
     }
     if (self.allowsMultipleSelection) {
         self.containerVc.onRightButtonTapBlock = ^{
-            if (weakSelf.autoDismissWhenConfirm) {
-                [weakSelf.containerVc dismissComplete:^{
-                    [weakSelf onConfirmAction];
-                }];
-            } else {
-                [weakSelf onConfirmAction];
-            }
+            [weakSelf onConfirmAction];
         };
         showTopBar = YES;
     }
