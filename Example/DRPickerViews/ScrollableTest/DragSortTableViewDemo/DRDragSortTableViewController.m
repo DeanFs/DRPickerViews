@@ -133,6 +133,7 @@
     cardContainerVc.title = self.title;
     cardContainerVc.rightButtonTitle = @"这是一个有点长的标题";
     cardContainerVc.leftButtonTitle = @"这是一个有点长的标题";
+    cardContainerVc.inSafeArea = NO;
 }
 
 - (UIScrollView *)supportCardPanCloseScrollView {

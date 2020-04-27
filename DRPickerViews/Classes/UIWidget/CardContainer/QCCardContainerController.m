@@ -257,6 +257,7 @@
         _statusBarStyle = [[DRUIWidgetUtil topViewController] preferredStatusBarStyle];
         _firstLayout = YES;
         _highlightColor = [DRUIWidgetUtil highlightColor];
+        _inSafeArea = YES;
         _autoDismissWhenRightButtonAction = YES;
         _allowPanClose = YES;
         _autoFitHeight = NO;
@@ -492,7 +493,7 @@
 
 - (void)setupBottomBar {
     kDRWeakSelf
-    self.bottomBarHeight = [UITabBar safeHeight] + self.contentCornerRadius;
+    self.bottomBarHeight = ([UITabBar safeHeight]*self.inSafeArea) + self.contentCornerRadius;
     if (self.customBottomBar != nil) {
         self.bottomBarHeight += self.customBottomBar.height;
         [self.bottomBarView addSubview:self.customBottomBar];
