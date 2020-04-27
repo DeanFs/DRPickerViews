@@ -236,7 +236,6 @@
     _rightButtonTitle = rightButtonTitle;
     [self.rightButton setTitle:rightButtonTitle forState:UIControlStateNormal];
     if (rightButtonTitle.length > 0) {
-        self.leftButtonImage = nil;
         CGFloat width = [rightButtonTitle jx_widthWithFont:[UIFont dr_PingFangSC_MediumWithSize:15]
                                        constrainedToHeight:16] + 20;
         if (width < 90) {
