@@ -34,23 +34,25 @@ IB_DESIGNABLE
 /**
  偏移位置，标签图片底部展示偏移
  */
-@property (nonatomic, assign) CGFloat flagImageOffsetBottom;
+@property (nonatomic, assign) IBInspectable CGFloat flagImageOffsetBottom;
 
 /**
  字体大小，如果不设置使用13
  */
-@property (nonatomic, assign)IBInspectable CGFloat titleFontSize;
+@property (nonatomic, assign) IBInspectable CGFloat titleFontSize;
 
 /**
  选中字体颜色, 默认为主题色
  */
-@property (nonatomic, strong)IBInspectable UIColor * selectColor;
-
+@property (nonatomic, strong) IBInspectable UIColor * selectColor;
 
 /**
  未选中字体颜色, 默认为黑色
  */
-@property (nonatomic, strong)IBInspectable UIColor * normalColor;
+@property (nonatomic, strong) IBInspectable UIColor * normalColor;
+
+/// DRSegmentBarShowTypeHighlightButton模式下按钮之间的间距
+@property (assign, nonatomic) IBInspectable CGFloat buttonHorizontalSpacing;
 
 
 @property (nonatomic, assign) NSInteger selectedIndex; // 默认选中第一个

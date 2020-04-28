@@ -182,7 +182,13 @@
     }
     
     if (self.showType == DRSegmentBarShowTypeHighlightButton) {
-        self.stackView.spacing = 4;
+        self.stackView.spacing = self.buttonHorizontalSpacing;
+    }
+}
+
+- (void)setButtonHorizontalSpacing:(CGFloat)buttonHorizontalSpacing {
+    if (self.showType == DRSegmentBarShowTypeHighlightButton) {
+        self.stackView.spacing = buttonHorizontalSpacing;
     }
 }
 
@@ -298,6 +304,7 @@
         self.selectMarkView.backgroundColor = [DRUIWidgetUtil highlightColor];
         self.selectColor = [DRUIWidgetUtil highlightColor];
         self.normalColor = [DRUIWidgetUtil normalColor];
+        _buttonHorizontalSpacing = 4;
     }
 }
 
