@@ -144,6 +144,7 @@
 @property (nonatomic, weak) UIScrollView *associatedScrollView;
 @property (nonatomic, assign) BOOL haveDrag;
 @property (nonatomic, assign) BOOL didDrawRect;
+@property (weak, nonatomic) id<UIScrollViewDelegate> currentDelegate;
 
 @end
 
@@ -198,15 +199,15 @@
         return;
     }
     _selectedIndex = selectedIndex;
-
+    
     if (!self.didDrawRect) {
         return;
     }
-
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         DRSegmentBarItem *barItem = [self.stackView viewWithTag:self.selectedIndex];
         barItem.selected = YES;
-
+        
         self.currentItemTitleRect = [barItem titleRect];
         [UIView animateWithDuration:self.currentItem?kDRAnimationDuration:0 animations:^{
             self.selectMarkViewLeft.constant = self.currentItemTitleRect.origin.x;
@@ -216,7 +217,7 @@
         CGPoint offset = CGPointMake(barItem.tag * self.associatedScrollView.width, 0);
         [self.associatedScrollView setContentOffset:offset
                                            animated:self.currentItem!=nil];
-
+        
         self.currentItem.selected = NO;
         self.currentItem = barItem;
     });
@@ -233,6 +234,7 @@
     if (associatedScrollView.delegate == nil) {
         kDRWeakSelf
         associatedScrollView.delegate = self;
+        self.currentDelegate = self;
         [associatedScrollView bk_addObserverForKeyPath:@"delegate" task:^(id target) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf setupScrollDelegate:weakSelf.associatedScrollView.delegate];
@@ -244,6 +246,10 @@
 }
 
 - (void)setupScrollDelegate:(id<UIScrollViewDelegate>)delegate {
+    if (delegate == nil || self.currentDelegate == delegate) {
+        return;
+    }
+    self.currentDelegate = delegate;
     self.associatedScrollView.delegate = nil;
     if (![delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
         [DRUIWidgetUtil addSelector:@selector(scrollViewDidScroll:)
@@ -371,7 +377,7 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-
+    
     if (self.selectedIndex == -1) {
         return;
     }
@@ -380,11 +386,11 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             DRSegmentBarItem *barItem = [self.stackView viewWithTag:self.selectedIndex];
             barItem.selected = YES;
-
+            
             self.currentItemTitleRect = [barItem titleRect];
             self.selectMarkViewLeft.constant = self.currentItemTitleRect.origin.x;
             self.selectMarkViewWidth.constant = self.currentItemTitleRect.size.width;
-
+            
             CGPoint offset = CGPointMake(barItem.tag * self.associatedScrollView.width, 0);
             [self.associatedScrollView setContentOffset:offset
                                                animated:NO];
