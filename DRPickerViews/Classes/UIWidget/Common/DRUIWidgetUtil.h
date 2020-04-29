@@ -74,4 +74,13 @@
 /// 获取顶层视图控制器
 + (UIViewController *)topViewController;
 
+#pragma mark - scrollView.delegate method hook
++ (BOOL)addSelector:(SEL)selector forObj:(id)obj fromObj:(id)fromObj imp:(IMP)imp;
+
+void add_scrollViewDidScroll(id self, SEL _cmd, UIScrollView *scrollView);
+void add_scrollViewWillBeginDragging(id self, SEL _cmd, UIScrollView *scrollView);
+void add_scrollViewDidEndDecelerating(id self, SEL _cmd, UIScrollView *scrollView);
+void add_scrollViewDidEndScrollingAnimation(id self, SEL _cmd, UIScrollView *scrollView);
+void add_scrollViewWillEndDragging(id self, SEL _cmd, UIScrollView *scrollView, CGPoint velocity, CGPoint *targetContentOffset);
+
 @end

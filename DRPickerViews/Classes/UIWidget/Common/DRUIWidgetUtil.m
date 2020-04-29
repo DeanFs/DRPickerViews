@@ -10,6 +10,7 @@
 #import <HexColors/HexColors.h>
 #import <DRCategories/NSDate+DRExtension.h>
 #import <DRCategories/NSUserDefaults+DRExtension.h>
+#import <objc/message.h>
 
 typedef UIViewController *(^DRUIWidgetGetTopViewControllerBlock) (void);
 
@@ -217,5 +218,20 @@ static DRUIWidgetGetTopViewControllerBlock _getTopVcBlock;
     }
     return nil;
 }
+
+#pragma mark - scrollView.delegate method hook
++ (BOOL)addSelector:(SEL)selector forObj:(id)obj fromObj:(id)fromObj imp:(IMP)imp {
+    Method exchangeM = class_getInstanceMethod([fromObj class], selector);
+    return class_addMethod([obj class],
+                           selector,
+                           imp,
+                           method_getTypeEncoding(exchangeM));
+}
+
+void add_scrollViewDidScroll(id self, SEL _cmd, UIScrollView *scrollView) {}
+void add_scrollViewWillBeginDragging(id self, SEL _cmd, UIScrollView *scrollView) {}
+void add_scrollViewDidEndDecelerating(id self, SEL _cmd, UIScrollView *scrollView) {}
+void add_scrollViewDidEndScrollingAnimation(id self, SEL _cmd, UIScrollView *scrollView) {}
+void add_scrollViewWillEndDragging(id self, SEL _cmd, UIScrollView *scrollView, CGPoint velocity, CGPoint *targetContentOffset) {}
 
 @end

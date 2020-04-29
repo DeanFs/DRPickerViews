@@ -11,7 +11,7 @@
 #import <Masonry/Masonry.h>
 #import <DRCategories/DRCategories.h>
 
-@interface DRSegmentTemplateController ()
+@interface DRSegmentTemplateController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet DRSegmentBar *segmentBar;
 
 @property (weak, nonatomic) IBOutlet DRSegmentBar *segmentBar1;
@@ -66,6 +66,7 @@
        
        container.contentSize = CGSizeMake(self.view.width * 5, container.height);
        
+    container.delegate = self;
        [self.segmentBar setupWithAssociatedScrollView:container titles:titles];
 }
 

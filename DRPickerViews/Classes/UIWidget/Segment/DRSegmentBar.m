@@ -13,7 +13,8 @@
 #import <BlocksKit/NSObject+BKBlockObservation.h>
 #import <DRCategories/UIView+DRExtension.h>
 #import <DRCategories/UIFont+DRExtension.h>
-
+#import <Aspects/Aspects.h>
+#import <objc/message.h>
 #import "DRUIWidgetUtil.h"
 
 @interface DRSegmentBarItem : UIView
@@ -127,7 +128,7 @@
 
 @end
 
-@interface DRSegmentBar () <UIScrollViewDelegate>
+@interface DRSegmentBar ()<UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
@@ -229,7 +230,60 @@
     associatedScrollView.showsHorizontalScrollIndicator = NO;
     associatedScrollView.pagingEnabled = YES;
     associatedScrollView.bounces = NO;
-    associatedScrollView.delegate = self;
+    if (associatedScrollView.delegate == nil) {
+        kDRWeakSelf
+        associatedScrollView.delegate = self;
+        [associatedScrollView bk_addObserverForKeyPath:@"delegate" task:^(id target) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf setupScrollDelegate:weakSelf.associatedScrollView.delegate];
+            });
+        }];
+    } else {
+        [self setupScrollDelegate:associatedScrollView.delegate];
+    }
+}
+
+- (void)setupScrollDelegate:(id<UIScrollViewDelegate>)delegate {
+    self.associatedScrollView.delegate = nil;
+    if (![delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
+        [DRUIWidgetUtil addSelector:@selector(scrollViewDidScroll:)
+                             forObj:delegate
+                            fromObj:self
+                                imp:(IMP)add_scrollViewDidScroll];
+    }
+    if (![delegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]) {
+        [DRUIWidgetUtil addSelector:@selector(scrollViewWillBeginDragging:)
+                             forObj:delegate
+                            fromObj:self
+                                imp:(IMP)add_scrollViewWillBeginDragging];
+    }
+    if (![delegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
+        [DRUIWidgetUtil addSelector:@selector(scrollViewDidEndDecelerating:)
+                             forObj:delegate
+                            fromObj:self
+                                imp:(IMP)add_scrollViewDidEndDecelerating];
+    }
+    if (![delegate respondsToSelector:@selector(scrollViewDidEndScrollingAnimation:)]) {
+        [DRUIWidgetUtil addSelector:@selector(scrollViewDidEndScrollingAnimation:)
+                             forObj:delegate
+                            fromObj:self
+                                imp:(IMP)add_scrollViewDidEndScrollingAnimation];
+    }
+    self.associatedScrollView.delegate = delegate;
+    
+    kDRWeakSelf
+    [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewDidScroll:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+        [weakSelf scrollViewDidScroll:[aspectInfo arguments].firstObject];
+    } error:nil];
+    [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewWillBeginDragging:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+        [weakSelf scrollViewWillBeginDragging:[aspectInfo arguments].firstObject];
+    } error:nil];
+    [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewDidEndDecelerating:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+        [weakSelf scrollViewDidEndDecelerating:[aspectInfo arguments].firstObject];
+    } error:nil];
+    [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewDidEndScrollingAnimation:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+        [weakSelf scrollViewDidEndScrollingAnimation:[aspectInfo arguments].firstObject];
+    } error:nil];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -258,6 +312,9 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (scrollView.contentSize.width != scrollView.width * self.self.stackView.arrangedSubviews.count) {
+        scrollView.contentSize = CGSizeMake(scrollView.width * self.self.stackView.arrangedSubviews.count, scrollView.height);
+    }
     self.haveDrag = YES;
 }
 
@@ -290,6 +347,10 @@
         [self setup];
     }
     return self;
+}
+
+- (void)dealloc {
+    [self.associatedScrollView bk_removeAllBlockObservers];
 }
 
 - (void)setup {
@@ -349,4 +410,5 @@
     _flagImageOffsetBottom = flagImageOffsetBottom;
     self.flagViewBottomConst.constant = _flagImageOffsetBottom;
 }
+
 @end

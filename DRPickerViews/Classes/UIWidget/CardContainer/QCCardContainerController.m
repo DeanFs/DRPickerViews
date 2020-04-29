@@ -618,14 +618,16 @@
     // 方法不存在则添加方法
     scrollView.delegate = nil;
     if (![delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
-        [self addSelector:@selector(scrollViewDidScroll:)
-                   forObj:delegate
-                      imp:(IMP)add_scrollViewDidScroll];
+        [DRUIWidgetUtil addSelector:@selector(scrollViewDidScroll:)
+                             forObj:delegate
+                            fromObj:self
+                                imp:(IMP)add_scrollViewDidScroll];
     }
     if (![delegate respondsToSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)]) {
-        [self addSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)
-                   forObj:delegate
-                      imp:(IMP)add_scrollViewWillEndDragging];
+        [DRUIWidgetUtil addSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)
+                             forObj:delegate
+                            fromObj:self
+                                imp:(IMP)add_scrollViewWillEndDragging];
     }
     scrollView.delegate = delegate;
     [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewDidScroll:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
@@ -960,23 +962,6 @@
             [self.view layoutIfNeeded];
         }];
     }
-}
-
-- (void)addSelector:(SEL)selector forObj:(id)obj imp:(IMP)imp {
-    Method exchangeM = class_getInstanceMethod([self class], selector);
-    BOOL success = class_addMethod([obj class],
-                                   selector,
-                                   imp,
-                                   method_getTypeEncoding(exchangeM));
-    kDR_LOG(@"方法%@添加成功：%d", NSStringFromSelector(selector), success)
-}
-
-void add_scrollViewDidScroll(id self, SEL _cmd, UIScrollView *scrollView) {
-    kDR_LOG(@"调用了%@ %@ %@", self, NSStringFromSelector(_cmd), scrollView);
-}
-
-void add_scrollViewWillEndDragging(id self, SEL _cmd, UIScrollView *scrollView, CGPoint velocity, CGPoint *targetContentOffset) {
-    kDR_LOG(@"调用了%@ %@ %@ %@ %@", self, NSStringFromSelector(_cmd), scrollView, NSStringFromCGPoint(velocity), NSStringFromCGPoint(*targetContentOffset));
 }
 
 @end
