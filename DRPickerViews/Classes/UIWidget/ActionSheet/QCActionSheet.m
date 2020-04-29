@@ -317,6 +317,16 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.isCustomCell) {
+        if (self.numbersOfRows != nil) {
+            return self.numbersOfRows(tableView, self);
+        } else {
+#if DEBUG
+            NSAssert(NO, @"自定义cell未设置numbersOfRows回调");
+#endif
+            return 0;
+        }
+    }
     return self.dataSource.count;
 }
 
