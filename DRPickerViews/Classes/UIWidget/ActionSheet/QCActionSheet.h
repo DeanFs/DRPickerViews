@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, QCActionSheetBottomBarType) {
 /// 点击确定按钮，或者点击单选选项后自动退出页面，默认：YES
 @property (assign, nonatomic) BOOL autoDismissWhenConfirm;
 
-/// 允许下滑退出，默认NO，从底部弹出才有效
+/// 允许下滑退出，默认NO
 @property (assign, nonatomic) BOOL allowPanClose;
 
 /// 使用自定义的Cell，完全自定义UI，默认：NO，置YES时，右上角显示确定按钮
@@ -152,8 +152,12 @@ typedef NS_ENUM(NSInteger, QCActionSheetBottomBarType) {
 /// @param complete 退出完成回调
 - (void)dismissComplete:(dispatch_block_t)complete;
 
-/// 刷新数据
+/// 刷新数据，适用于isCustomCell=YES，cell全部自定义的情况
 - (void)reloadData;
+
+/// 传入新的选项并刷新
+- (void)reloadDataWithNewOptions:(NSArray *)newOptions
+                        newIcons:(NSArray *)newIcons;
 
 @end
 

@@ -33,6 +33,8 @@
 @property (weak, nonatomic) UIButton *leftButton;
 @property (weak, nonatomic) UIButton *rightButton;
 @property (weak, nonatomic) DRDragSortTableView *tableView;
+@property (weak, nonatomic) UIScrollView *scrollView;
+@property (weak, nonatomic) id<UIScrollViewDelegate> currentDelegate;
 @property (weak, nonatomic) UIView *bottomBarView;
 
 @property (assign, nonatomic) QCCardContentPosition position;
@@ -374,6 +376,7 @@
 }
 
 - (void)dealloc {
+    [self.scrollView bk_removeAllBlockObservers];
     kDR_LOG(@"%@ dealloc and removeObserver", [self class])
 }
 
@@ -597,26 +600,35 @@
     
     // 获取ScrollView代理
     UIScrollView *scrollView = self.tableView;
-    id<UIScrollViewDelegate> delegate = self.service;
-    if (delegate == nil) {
+    if (scrollView == nil) {
         scrollView = [self.contentObj supportCardPanCloseScrollView];
-        if (scrollView != nil) {
-            if (scrollView.delegate != nil) {
-                delegate = scrollView.delegate;
-            } else {
-                scrollView.delegate = self;
-                return;
-            }
-        } else {
-            // 没有scrollView则添加滑动手势
-            [self.containerView addGestureRecognizer:[self panGesture]];
-            return;
-        }
     }
-    
+    if (scrollView != nil) {
+        self.scrollView = scrollView;
+        if (scrollView.delegate == nil) {
+            scrollView.delegate = self;
+        } else {
+            [self setupScrollDelegate:scrollView.delegate];
+        }
+        kDRWeakSelf
+        [scrollView bk_addObserverForKeyPath:@"delegate" task:^(id target) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf setupScrollDelegate:weakSelf.scrollView.delegate];
+            });
+        }];
+    } else {
+        // 没有scrollView则添加滑动手势
+        [self.containerView addGestureRecognizer:[self panGesture]];
+    }
+}
+
+- (void)setupScrollDelegate:(id<UIScrollViewDelegate>)delegate {
+    if (delegate == nil || self.currentDelegate == delegate) {
+        return;
+    }
     kDRWeakSelf
     // 方法不存在则添加方法
-    scrollView.delegate = nil;
+    self.scrollView.delegate = nil;
     if (![delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
         [DRUIWidgetUtil addSelector:@selector(scrollViewDidScroll:)
                              forObj:delegate
@@ -629,7 +641,7 @@
                             fromObj:self
                                 imp:(IMP)add_scrollViewWillEndDragging];
     }
-    scrollView.delegate = delegate;
+    self.scrollView.delegate = delegate;
     [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewDidScroll:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
         [weakSelf scrollViewDidScroll:(UIScrollView *)[[aspectInfo arguments] firstObject]];
     } error:nil];

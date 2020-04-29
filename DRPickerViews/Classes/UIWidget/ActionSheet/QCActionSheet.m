@@ -212,6 +212,13 @@
     [self.tableView reloadData];
 }
 
+/// 传入新的选项并刷新
+- (void)reloadDataWithNewOptions:(NSArray *)newOptions
+                        newIcons:(NSArray *)newIcons {
+    [self setupWithOptions:newOptions icons:newIcons];
+    [self.tableView reloadData];
+}
+
 #pragma mark - lifecycle
 - (instancetype)init {
     self = [super init];
@@ -244,6 +251,7 @@
     self.containerVc.leftButtonAutoHighlight = NO;
     self.containerVc.allowPanClose = self.allowPanClose;
     self.containerVc.autoDismissWhenRightButtonAction = self.autoDismissWhenConfirm;
+    self.containerVc.alwaysBounceVertical = self.allowPanClose;
     BOOL showTopBar = NO;
     if (self.title != nil) {
         self.containerVc.title = self.title;

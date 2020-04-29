@@ -155,6 +155,9 @@
     self.associatedScrollView = associatedScrollView;
     
     kDRWeakSelf
+    for (DRSegmentBarItem *item in self.stackView.arrangedSubviews) {
+        [item removeFromSuperview];
+    }
     for (NSInteger i=0; i<titles.count; i++) {
         DRSegmentBarItem *item = [DRSegmentBarItem itemWithTitle:titles[i] whenTapBlock:^(DRSegmentBarItem *barItem) {
             weakSelf.selectedIndex = barItem.tag;
@@ -225,6 +228,9 @@
 }
 
 - (void)setAssociatedScrollView:(UIScrollView *)associatedScrollView {
+    if (_associatedScrollView == associatedScrollView) {
+        return;
+    }
     _associatedScrollView = associatedScrollView;
     
     associatedScrollView.showsVerticalScrollIndicator = NO;
@@ -232,17 +238,18 @@
     associatedScrollView.pagingEnabled = YES;
     associatedScrollView.bounces = NO;
     if (associatedScrollView.delegate == nil) {
-        kDRWeakSelf
         associatedScrollView.delegate = self;
         self.currentDelegate = self;
-        [associatedScrollView bk_addObserverForKeyPath:@"delegate" task:^(id target) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf setupScrollDelegate:weakSelf.associatedScrollView.delegate];
-            });
-        }];
     } else {
         [self setupScrollDelegate:associatedScrollView.delegate];
     }
+    
+    kDRWeakSelf
+    [associatedScrollView bk_addObserverForKeyPath:@"delegate" task:^(id target) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf setupScrollDelegate:weakSelf.associatedScrollView.delegate];
+        });
+    }];
 }
 
 - (void)setupScrollDelegate:(id<UIScrollViewDelegate>)delegate {
