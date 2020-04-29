@@ -392,6 +392,7 @@
 #pragma mark - private
 - (void)setupWithOptions:(NSArray *)options
                    icons:(NSArray *)icons {
+    [self.dataSource removeAllObjects];
     if (options.count == 0) {
         if (self.isCustomCell && self.numbersOfRows != nil) {
             NSInteger rows = self.numbersOfRows(self.tableView, self);
