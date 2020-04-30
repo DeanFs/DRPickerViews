@@ -58,7 +58,7 @@
     if (self.lineCount > 1) { // 多行lineSpace才有意义
         self.lineSpace = (self.height - self.lineCount * self.lineHeight) / (self.lineCount - 1);
     }
-    return CGSizeMake(self.pageCount * self.pageWidth - self.columnSpace, self.height);
+    return CGSizeMake(self.pageCount * self.pageWidth - self.columnSpace*(self.pageWidth > self.collectionView.frame.size.width), self.height);
 }
 
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
