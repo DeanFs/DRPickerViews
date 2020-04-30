@@ -626,6 +626,7 @@
     if (delegate == nil || self.currentDelegate == delegate) {
         return;
     }
+    self.currentDelegate = delegate;
     kDRWeakSelf
     // 方法不存在则添加方法
     self.scrollView.delegate = nil;
