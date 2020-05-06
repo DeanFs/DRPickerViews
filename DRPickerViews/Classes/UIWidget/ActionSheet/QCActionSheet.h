@@ -120,6 +120,8 @@ typedef NS_ENUM(NSInteger, QCActionSheetBottomBarType) {
 @property (assign, nonatomic) CGFloat bottomBarTopSpace;
 /// 自定义底部栏
 @property (strong, nonatomic) UIView *customBottomBar;
+/// 固定显示确定按钮，默认：NO
+@property (assign, nonatomic) BOOL alwaysShowConfirmButton;
 
 #pragma mark - 选项显示样式配置
 /// 选项内容对齐方式 默认QCActionSheetAlignmentNone

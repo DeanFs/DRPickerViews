@@ -235,6 +235,7 @@
         _bottomBarTitle = @"取消";
         _bottomBarTintColor = [DRUIWidgetUtil cancelColor];
         _bottomBarTopSpace = 4;
+        _alwaysShowConfirmButton = NO;
         _contentAlignment = QCActionSheetAlignmentNone;
         _textColor = [DRUIWidgetUtil normalColor];
         _textFont = [UIFont dr_PingFangSC_MediumWithSize:15];
@@ -257,7 +258,7 @@
         self.containerVc.title = self.title;
         showTopBar = YES;
     }
-    if (self.allowsMultipleSelection) {
+    if (self.allowsMultipleSelection || self.alwaysShowConfirmButton) {
         self.containerVc.onRightButtonTapBlock = ^{
             [weakSelf onConfirmAction];
         };
@@ -380,12 +381,20 @@
         }
         [tableView reloadData];
     } else {
-        if (self.autoDismissWhenConfirm) {
-            [self.containerVc dismissComplete:^{
-                kDR_SAFE_BLOCK(weakSelf.selectionDoneBlock, @[@(indexPath.row)], @[model.data], weakSelf);
-            }];
+        if (self.alwaysShowConfirmButton) {
+            self.selectedModels.firstObject.selected = NO;
+            [self.selectedModels removeAllObjects];
+            [self.selectedModels addObject:model];
+            model.selected = YES;
+            [tableView reloadData];
         } else {
-            kDR_SAFE_BLOCK(self.selectionDoneBlock, @[@(indexPath.row)], @[model.data], self);
+            if (self.autoDismissWhenConfirm) {
+                [self.containerVc dismissComplete:^{
+                    kDR_SAFE_BLOCK(weakSelf.selectionDoneBlock, @[@(indexPath.row)], @[model.data], weakSelf);
+                }];
+            } else {
+                kDR_SAFE_BLOCK(self.selectionDoneBlock, @[@(indexPath.row)], @[model.data], self);
+            }
         }
     }
 }
