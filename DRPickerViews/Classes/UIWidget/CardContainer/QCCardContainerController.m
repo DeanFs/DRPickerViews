@@ -21,8 +21,7 @@
 #import "DRUIWidgetUtil.h"
 #import <JXExtension/NSString+JXSize.h>
 
-#define kHeaderBarHeight 56
-#define kBottomBarHeight 56
+#define kBarHeight 56
 #define kMinPanSpace 80
 
 @interface QCCardContainerController ()<UIScrollViewDelegate>
@@ -35,6 +34,7 @@
 @property (weak, nonatomic) DRDragSortTableView *tableView;
 @property (weak, nonatomic) UIScrollView *scrollView;
 @property (weak, nonatomic) id<UIScrollViewDelegate> currentDelegate;
+@property (weak, nonatomic) UIView *bottomBarContainerView;
 @property (weak, nonatomic) UIView *bottomBarView;
 
 @property (assign, nonatomic) QCCardContentPosition position;
@@ -42,11 +42,15 @@
 @property (strong, nonatomic) id<QCCardContentDelegate> contentObj;
 @property (assign, nonatomic) UIStatusBarStyle statusBarStyle;
 @property (assign, nonatomic) CGFloat topBarHeight;
+@property (assign, nonatomic) CGFloat bottomBarContainerHeight;
 @property (assign, nonatomic) CGFloat bottomBarHeight;
 @property (assign, nonatomic) CGFloat maxHeight;
 @property (assign, nonatomic) BOOL firstLayout;
 @property (assign, nonatomic) CGFloat normalTop;
 @property (assign, nonatomic) BOOL willDismiss;
+@property (strong, nonatomic) NSMutableArray<id<AspectToken>> *delegateAspectTokens;
+@property (weak, nonatomic) UIPanGestureRecognizer *containerPanGesture;
+@property (assign, nonatomic) CGFloat panOffset;
 
 @end
 
@@ -111,6 +115,28 @@
         [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(width, height));
             make.centerY.mas_offset(-offsetY);
+        }];
+    }
+}
+
+/// 修改底部Bar高度
+/// @param height 目标高度
+- (void)bottomBarChangeToHeight:(CGFloat)height {
+    if (self.position == QCCardContentPositionCenter) {
+        return;
+    }
+    self.bottomBarHeight = height;
+    self.bottomBarContainerHeight = ([UITabBar safeHeight]*self.inSafeArea) + self.contentCornerRadius + height;
+    if (self.bottomBarView != nil) {
+        self.bottomBarView.hidden = (height == 0);
+        [self.bottomBarContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(self.bottomBarContainerHeight);
+        }];
+        [self.bottomBarView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(height);
+        }];
+        [UIView animateWithDuration:kDRAnimationDuration animations:^{
+            [self.view layoutIfNeeded];
         }];
     }
 }
@@ -273,6 +299,7 @@
         _bottomBarTintColor = [DRUIWidgetUtil cancelColor];
         _bottomBarTopSpace = 4;
         _position = position;
+        _bottomBarHeight = kBarHeight;
         
         UIView *containerView = [[UIView alloc] init];
         containerView.backgroundColor = [UIColor clearColor];
@@ -439,8 +466,8 @@
         [self.containerView addSubview:contentView];
         if (self.position == QCCardContentPositionBottom) {
             [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_offset(self.topBarHeight);
-                make.bottom.mas_offset(-self.bottomBarHeight);
+                make.top.mas_equalTo(self.headerBarView.mas_bottom).mas_offset(0);
+                make.bottom.mas_equalTo(self.bottomBarContainerView.mas_top).mas_offset(0);
                 make.left.right.mas_offset(0);
             }];
         } else {
@@ -456,7 +483,7 @@
     /// 标题
     if (self.title != nil) {
         [self.titleButton setTitle:self.title forState:UIControlStateNormal];
-        self.topBarHeight = kHeaderBarHeight;
+        self.topBarHeight = kBarHeight;
         if (self.title.length == 0) {
             self.titleButton.hidden = YES;
         }
@@ -478,7 +505,7 @@
                 self.leftButton.hidden = YES;
             }
         }
-        self.topBarHeight = kHeaderBarHeight;
+        self.topBarHeight = kBarHeight;
     }
     
     // 确定/保存按钮
@@ -490,24 +517,38 @@
                 [self.rightButton setTitle:@"保存" forState:UIControlStateNormal];
             }
         }
-        self.topBarHeight = kHeaderBarHeight;
+        self.topBarHeight = kBarHeight;
     }
+    [self.headerBarView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(self.topBarHeight);
+    }];
 }
 
 - (void)setupBottomBar {
     kDRWeakSelf
-    self.bottomBarHeight = ([UITabBar safeHeight]*self.inSafeArea) + self.contentCornerRadius;
+    self.bottomBarContainerHeight = ([UITabBar safeHeight]*self.inSafeArea) + self.contentCornerRadius;
     if (self.customBottomBar != nil) {
-        self.bottomBarHeight += self.customBottomBar.height;
-        [self.bottomBarView addSubview:self.customBottomBar];
+        self.bottomBarContainerHeight += self.customBottomBar.height;
+        [self.bottomBarContainerView addSubview:self.customBottomBar];
         [self.customBottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.mas_offset(0);
             make.height.mas_equalTo(weakSelf.customBottomBar.height);
         }];
+        self.bottomBarView = self.customBottomBar;
         self.customBottomBar = nil;
     } else {
         if (self.showBottomBar) {
-            self.bottomBarHeight += (kBottomBarHeight + self.bottomBarTopSpace);
+            CGFloat bottomBarHeight = (self.bottomBarHeight + self.bottomBarTopSpace);
+            self.bottomBarContainerHeight += bottomBarHeight;
+            
+            UIView *bottomBarView = [[UIView alloc] init];
+            bottomBarView.backgroundColor = [UIColor whiteColor];
+            [self.bottomBarContainerView addSubview:bottomBarView];
+            [bottomBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.left.right.mas_offset(0);
+                make.height.mas_equalTo(bottomBarHeight);
+            }];
+            self.bottomBarView = bottomBarView;
             
             UIView *line = [[UIView alloc] init];
             line.backgroundColor = [DRUIWidgetUtil thickLineColor];
@@ -537,14 +578,14 @@
             [self.bottomBarView addSubview:actionButton];
             [actionButton mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_offset(weakSelf.bottomBarTopSpace);
-                make.height.mas_equalTo(kBottomBarHeight);
+                make.height.mas_equalTo(self.bottomBarHeight);
                 make.left.right.mas_offset(0);
             }];
         }
     }
-    [self.bottomBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.bottomBarContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.right.mas_offset(0);
-        make.height.mas_equalTo(weakSelf.bottomBarHeight);
+        make.height.mas_equalTo(weakSelf.bottomBarContainerHeight);
     }];
 }
 
@@ -579,8 +620,8 @@
     }
     [self.containerView addSubview:tableView];
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_offset(weakSelf.topBarHeight);
-        make.bottom.mas_offset(-weakSelf.bottomBarHeight);
+        make.top.mas_equalTo(self.headerBarView.mas_bottom).mas_offset(0);
+        make.bottom.mas_equalTo(self.bottomBarContainerView.mas_top).mas_offset(0);
         make.left.right.mas_offset(0);
     }];
     self.tableView = tableView;
@@ -603,8 +644,8 @@
     if (scrollView == nil) {
         scrollView = [self.contentObj supportCardPanCloseScrollView];
     }
+    self.scrollView = scrollView;
     if (scrollView != nil) {
-        self.scrollView = scrollView;
         if (scrollView.delegate == nil) {
             scrollView.delegate = self;
         } else {
@@ -616,9 +657,15 @@
                 [weakSelf setupScrollDelegate:weakSelf.scrollView.delegate];
             });
         }];
+        if (self.containerPanGesture) {
+            [self.containerView removeGestureRecognizer:self.containerPanGesture];
+            self.containerPanGesture = nil;
+        }
     } else {
         // 没有scrollView则添加滑动手势
-        [self.containerView addGestureRecognizer:[self panGesture]];
+        UIPanGestureRecognizer *pan = [self panGesture];
+        [self.containerView addGestureRecognizer:pan];
+        self.containerPanGesture = pan;
     }
 }
 
@@ -626,6 +673,10 @@
     if (delegate == nil || self.currentDelegate == delegate) {
         return;
     }
+    for (id<AspectToken> token in self.delegateAspectTokens) {
+        [token remove];
+    }
+    [self.delegateAspectTokens removeAllObjects];
     self.currentDelegate = delegate;
     kDRWeakSelf
     // 方法不存在则添加方法
@@ -642,17 +693,35 @@
                             fromObj:self
                                 imp:(IMP)add_scrollViewWillEndDragging];
     }
+    if (![delegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]) {
+        [DRUIWidgetUtil addSelector:@selector(scrollViewWillBeginDragging:)
+                             forObj:delegate
+                            fromObj:self
+                                imp:(IMP)add_scrollViewWillBeginDragging];
+    }
     self.scrollView.delegate = delegate;
-    [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewDidScroll:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+    id token = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewWillBeginDragging:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+        [weakSelf scrollViewWillBeginDragging:(UIScrollView *)[[aspectInfo arguments] firstObject]];
+    } error:nil];
+    if (token) {
+        [self.delegateAspectTokens addObject:token];
+    }
+    token = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewDidScroll:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
         [weakSelf scrollViewDidScroll:(UIScrollView *)[[aspectInfo arguments] firstObject]];
     } error:nil];
-    [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+    if (token) {
+        [self.delegateAspectTokens addObject:token];
+    }
+    token = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
         NSArray *arguments = [aspectInfo arguments];
         CGPoint targetContentOffset;
         [weakSelf scrollViewWillEndDragging:[aspectInfo arguments].firstObject
                                withVelocity:[(NSValue *)arguments[1] CGPointValue]
                         targetContentOffset:&targetContentOffset];
     } error:nil];
+    if (token) {
+        [self.delegateAspectTokens addObject:token];
+    }
 }
 
 - (void)countHeight {
@@ -696,7 +765,7 @@
         tableViewHeight += self.tableView.contentInset.bottom;
     }
     
-    CGFloat containerHeight = tableViewHeight + self.topBarHeight + self.bottomBarHeight;
+    CGFloat containerHeight = tableViewHeight + self.topBarHeight + self.bottomBarContainerHeight;
     if (containerHeight > self.maxHeight) {
         containerHeight = self.maxHeight;
     }
@@ -793,91 +862,83 @@
 #pragma mark - lazy load
 - (UIView *)headerBarView {
     if (!_headerBarView) {
-        if (self.position == QCCardContentPositionBottom && ![self.contentObj isKindOfClass:[UIView class]]) {
-            UIView *headerBarView = [[UIView alloc] init];
-            headerBarView.backgroundColor = [UIColor whiteColor];
-            [self.containerView addSubview:headerBarView];
-            [headerBarView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.left.right.mas_offset(0);
-                make.height.mas_equalTo(kHeaderBarHeight);
-            }];
-            _headerBarView = headerBarView;
-        }
+        UIView *headerBarView = [[UIView alloc] init];
+        headerBarView.backgroundColor = [UIColor whiteColor];
+        [self.containerView addSubview:headerBarView];
+        [headerBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.mas_offset(0);
+            make.height.mas_equalTo(kBarHeight);
+        }];
+        _headerBarView = headerBarView;
     }
     return _headerBarView;
 }
 
 - (UIButton *)titleButton {
     if (!_titleButton) {
-        if (self.position == QCCardContentPositionBottom && ![self.contentObj isKindOfClass:[UIView class]]) {
-            UIButton *titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            titleButton.userInteractionEnabled = NO;
-            titleButton.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:16];
-            titleButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-            titleButton.titleLabel.numberOfLines = 1;
-            titleButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-            [self.headerBarView addSubview:titleButton];
-            [titleButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerX.centerY.mas_offset(0);
-                make.height.mas_equalTo(22.5);
-            }];
-            _titleButton = titleButton;
-        }
+        UIButton *titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        titleButton.userInteractionEnabled = NO;
+        titleButton.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:16];
+        titleButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleButton.titleLabel.numberOfLines = 1;
+        titleButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        [self.headerBarView addSubview:titleButton];
+        [titleButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.centerY.mas_offset(0);
+            make.height.mas_equalTo(22.5);
+        }];
+        _titleButton = titleButton;
     }
     return _titleButton;
 }
 
 - (UIButton *)leftButton {
     if (!_leftButton) {
-        if (self.position == QCCardContentPositionBottom && ![self.contentObj isKindOfClass:[UIView class]]) {
-            UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            leftButton.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:15];
-            [leftButton setTitleColor:[DRUIWidgetUtil cancelColor] forState:UIControlStateNormal];
-            [leftButton addTarget:self action:@selector(onLeftButtonAction) forControlEvents:UIControlEventTouchUpInside];
-            [leftButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-            [leftButton setImageEdgeInsets:UIEdgeInsetsMake(0, 14, 0, 0)];
-            [leftButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 16, 0, 0)];
-            [self.headerBarView addSubview:leftButton];
-            [leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.left.bottom.mas_offset(0);
-                make.width.mas_greaterThanOrEqualTo(90);
-            }];
-            _leftButton = leftButton;
-        }
+        UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        leftButton.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:15];
+        [leftButton setTitleColor:[DRUIWidgetUtil cancelColor] forState:UIControlStateNormal];
+        [leftButton addTarget:self action:@selector(onLeftButtonAction) forControlEvents:UIControlEventTouchUpInside];
+        [leftButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+        [leftButton setImageEdgeInsets:UIEdgeInsetsMake(0, 14, 0, 0)];
+        [leftButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 16, 0, 0)];
+        [self.headerBarView addSubview:leftButton];
+        [leftButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.bottom.mas_offset(0);
+            make.width.mas_greaterThanOrEqualTo(90);
+        }];
+        _leftButton = leftButton;
     }
     return _leftButton;
 }
 
 - (UIButton *)rightButton {
     if (!_rightButton) {
-        if (self.position == QCCardContentPositionBottom && ![self.contentObj isKindOfClass:[UIView class]]) {
-            UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            rightButton.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:15];
-            [rightButton setTitleColor:self.highlightColor forState:UIControlStateNormal];
-            [rightButton setTitleColor:[DRUIWidgetUtil disableColor] forState:UIControlStateDisabled];
-            [rightButton addTarget:self action:@selector(onRightButtonAction) forControlEvents:UIControlEventTouchUpInside];
-            [rightButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
-            [rightButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 16)];
-            [self.headerBarView addSubview:rightButton];
-            [rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.right.bottom.mas_offset(0);
-                make.width.mas_greaterThanOrEqualTo(90);
-            }];
-            _rightButton = rightButton;
-        }
+        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        rightButton.titleLabel.font = [UIFont dr_PingFangSC_MediumWithSize:15];
+        [rightButton setTitleColor:self.highlightColor forState:UIControlStateNormal];
+        [rightButton setTitleColor:[DRUIWidgetUtil disableColor] forState:UIControlStateDisabled];
+        [rightButton addTarget:self action:@selector(onRightButtonAction) forControlEvents:UIControlEventTouchUpInside];
+        [rightButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+        [rightButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 16)];
+        [self.headerBarView addSubview:rightButton];
+        [rightButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.right.bottom.mas_offset(0);
+            make.width.mas_greaterThanOrEqualTo(90);
+        }];
+        _rightButton = rightButton;
     }
     return _rightButton;
 }
 
-- (UIView *)bottomBarView {
-    if (!_bottomBarView) {
+- (UIView *)bottomBarContainerView {
+    if (!_bottomBarContainerView) {
         UIView *bottomBarView = [[UIView alloc] init];
         bottomBarView.backgroundColor = [UIColor whiteColor];
         [self.containerView addSubview:bottomBarView];
-        _bottomBarView = bottomBarView;
+        _bottomBarContainerView = bottomBarView;
     }
-    return _bottomBarView;
+    return _bottomBarContainerView;
 }
 
 - (UIPanGestureRecognizer *)panGesture {
@@ -906,6 +967,13 @@
     }];
 }
 
+- (NSMutableArray<id<AspectToken>> *)delegateAspectTokens {
+    if (!_delegateAspectTokens) {
+        _delegateAspectTokens = [NSMutableArray array];
+    }
+    return _delegateAspectTokens;
+}
+
 #pragma mark - NavigationBar Configuration
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return self.statusBarStyle;
@@ -924,6 +992,11 @@
 }
 
 #pragma mark - 滚动支持动态添加方法
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
+    self.panOffset = 0;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
     CGFloat insetTop = scrollView.contentInset.top;
@@ -931,30 +1004,19 @@
         insetTop += scrollView.adjustedContentInset.top;
     }
     offsetY += insetTop;
-    if (offsetY < 0 ||
-        (scrollView.dragging && self.autoFitHeight && scrollView.contentSize.height <= scrollView.height) ||
-        (!self.alwaysBounceVertical && scrollView.contentSize.height <= scrollView.height) ||
-        (offsetY > 0 && self.containerView.y > self.normalTop)) {
-        [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, -insetTop)];
-        if (offsetY < 0 || self.containerView.y > self.normalTop) {
-            CGFloat top = self.containerView.y - offsetY;
-            if (top < self.normalTop) {
-                top = self.normalTop;
-            }
-            if (!scrollView.decelerating) {
-                [self.view endEditing:YES];
-                [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
-                    make.top.mas_equalTo(top);
-                }];
-            } else {
-                [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
-                    make.top.mas_equalTo(self.normalTop);
-                }];
-            }
-        } else {
+    if (offsetY < 0 || self.panOffset > 0) {
+        self.panOffset -= offsetY;
+        CGFloat top = self.normalTop + self.panOffset;
+        if (top < self.normalTop) {
+            top = self.normalTop;
+        }
+        if (!scrollView.decelerating) {
             [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(self.normalTop);
+                make.top.mas_equalTo(top);
             }];
+        }
+        if (offsetY != 0) {
+            [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, -insetTop)];
         }
     } else {
         [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -964,8 +1026,7 @@
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    CGFloat space = self.containerView.y - self.normalTop;
-    if (space >= kMinPanSpace || (space > 20 && velocity.y < -1)) {
+    if (self.panOffset >= kMinPanSpace || (self.panOffset > 20 && velocity.y < -1)) {
         [self dismissComplete:nil];
     } else {
         [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
