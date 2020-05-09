@@ -646,6 +646,7 @@
     }
     self.scrollView = scrollView;
     if (scrollView != nil) {
+        scrollView.alwaysBounceVertical = YES;
         if (scrollView.delegate == nil) {
             scrollView.delegate = self;
         } else {
@@ -1004,7 +1005,7 @@
         insetTop += scrollView.adjustedContentInset.top;
     }
     offsetY += insetTop;
-    if (offsetY < 0 || self.panOffset > 0) {
+    if (offsetY < 0 || self.panOffset > 0 || (!self.alwaysBounceVertical && scrollView.contentSize.height <= scrollView.height)) {
         self.panOffset -= offsetY;
         CGFloat top = self.normalTop + self.panOffset;
         if (top < self.normalTop) {
@@ -1018,10 +1019,6 @@
         if (offsetY != 0) {
             [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, -insetTop)];
         }
-    } else {
-        [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.normalTop);
-        }];
     }
 }
 
