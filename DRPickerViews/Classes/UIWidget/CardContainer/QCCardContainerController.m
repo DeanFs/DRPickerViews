@@ -528,14 +528,14 @@
     kDRWeakSelf
     self.bottomBarContainerHeight = ([UITabBar safeHeight]*self.inSafeArea) + self.contentCornerRadius;
     if (self.customBottomBar != nil) {
+        self.bottomBarContainerHeight += self.customBottomBar.height;
         [self.bottomBarContainerView addSubview:self.customBottomBar];
         [self.customBottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.mas_offset(0);
-            make.bottom.mas_offset(-self.bottomBarContainerHeight);
+            make.height.mas_equalTo(weakSelf.customBottomBar.height);
         }];
         self.bottomBarView = self.customBottomBar;
         self.customBottomBar = nil;
-        self.bottomBarContainerHeight += self.customBottomBar.height;
     } else {
         if (self.showBottomBar) {
             CGFloat bottomBarHeight = (self.bottomBarHeight + self.bottomBarTopSpace);
@@ -576,8 +576,7 @@
             [self.bottomBarView addSubview:actionButton];
             [actionButton mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_offset(weakSelf.bottomBarTopSpace);
-                make.left.right.mas_offset(0);
-                make.bottom.mas_offset(-self.bottomBarContainerHeight);
+                make.left.right.bottom.mas_offset(0);
             }];
             self.bottomBarContainerHeight += bottomBarHeight;
         }
