@@ -274,6 +274,9 @@
         } else {
             self.containerVc.leftButtonTitle = @""; // 隐藏取消按钮
         }
+        if (self.confirmButtonTitle.length > 0) {
+            self.containerVc.rightButtonTitle = self.confirmButtonTitle;
+        }
     }
     
     if (self.bottomBarType == QCActionSheetBottomBarTypeShow ||
@@ -460,6 +463,7 @@
         model.haveIcon = haveIcon;
         model.icon = [icons safeGetObjectWithIndex:i];
         model.selected = ([selectedMap objectForKey:@(i)] != nil);
+        model.allowsMultipleSelection = self.allowsMultipleSelection;
         if ([option isKindOfClass:[NSString class]]) {
             model.title = option;
         } else {

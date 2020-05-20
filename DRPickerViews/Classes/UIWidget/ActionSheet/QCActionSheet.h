@@ -104,6 +104,8 @@ typedef NS_ENUM(NSInteger, QCActionSheetBottomBarType) {
 #pragma mark - TopBar & BottomBar配置
 /// 标题
 @property (copy, nonatomic) NSString *title;
+/// 确定按钮标题
+@property (copy, nonatomic) NSString *confirmButtonTitle;
 /// 左上角取消按钮标题，title不为空，或者allowsMultipleSelection=YES时有效，默认：YES
 @property (assign, nonatomic) BOOL showCancelButton;
 /// 底部栏行为描述，默认：QCActionSheetBottomBarTypeAuto

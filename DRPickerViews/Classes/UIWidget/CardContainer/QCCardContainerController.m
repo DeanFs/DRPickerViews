@@ -611,11 +611,6 @@
                 [weakSelf countHeight];
             });
         } error:nil];
-        [tableView aspect_hookSelector:@selector(endUpdates) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kDRAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [weakSelf countHeight];
-            });
-        } error:nil];
     }
     [self.containerView addSubview:tableView];
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -732,10 +727,7 @@
     if (self.tableView.tableFooterView != nil) {
         tableViewHeight = self.tableView.tableFooterView.height;
     }
-    NSInteger sectionCount = 1;
-    if ([self.service respondsToSelector:@selector(numberOfSectionsInTableView:)]) {
-        sectionCount = [self.service numberOfSectionsInTableView:self.tableView];
-    }
+    NSInteger sectionCount = [self.tableView numberOfSections];
     for (NSInteger section=0; section<sectionCount; section ++) {
         if ([self.service respondsToSelector:@selector(tableView:heightForFooterInSection:)]) {
             tableViewHeight += [self.service tableView:self.tableView heightForFooterInSection:section];
@@ -743,7 +735,7 @@
         if ([self.service respondsToSelector:@selector(tableView:heightForHeaderInSection:)]) {
             tableViewHeight += [self.service tableView:self.tableView heightForHeaderInSection:section];
         }
-        NSInteger rowCount = [self.service tableView:self.tableView numberOfRowsInSection:section];
+        NSInteger rowCount = [self.tableView numberOfRowsInSection:section];
         if ([self.service respondsToSelector:@selector(tableView:heightForRowAtIndexPath:)]) {
             for (NSInteger row=0; row<rowCount; row++) {
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
