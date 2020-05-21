@@ -32,7 +32,15 @@
 }
 
 - (void)prepareToShow {
-    self.pickerView.currentSelectedStrings = @[@"提前", @"0", @"小时", @"30", @"分钟"];
+    NSMutableArray *currentSelected = [NSMutableArray arrayWithArray:@[@"提前", @"0", @"小时", @"30", @"分钟"]];
+    DRPickerRemindAheadOption *option = (DRPickerRemindAheadOption *)self.pickerOption;
+    if (option.currentAhead > 0) {
+        self.hour = option.currentAhead / 60;
+        NSInteger minute = option.currentAhead % 60;
+        [currentSelected replaceObjectAtIndex:1 withObject:@(self.hour).stringValue];
+        [currentSelected replaceObjectAtIndex:3 withObject:@(minute).stringValue];
+    }
+    self.pickerView.currentSelectedStrings = currentSelected;
     self.pickerView.dataSource = @[@[@"提前"], self.hours, @[@"小时"], self.minutes, @[@"分钟"]];
     
     kDRWeakSelf
@@ -72,6 +80,12 @@
     return [DRPickerRemindAheadOption class];
 }
 
+- (void)setMinutesList:(NSArray<NSString *> *)minutes forHour:(NSInteger)hour inDictionary:(NSMutableDictionary *)dic {
+    if (hour < 7 || hour == 12 || hour == 24 || hour == 48) {
+        dic[@(hour).stringValue] = minutes;
+    }
+}
+
 #pragma mark - lazy load
 - (NSDictionary *)hourMinuteMap {
     if (!_hourMinuteMap) {
@@ -79,28 +93,46 @@
         NSInteger timeScale = option.timeScale;
         NSMutableArray *mins = [NSMutableArray array];
         NSInteger min = ceil(1.0 * option.minAheadTime / timeScale);
-        for (NSInteger i=min; i<(60 / timeScale); i++) {
+        NSInteger minCount = MIN(60, option.maxAheadTime) / timeScale;
+        for (NSInteger i=min; i<minCount; i++) {
             [mins addObject:@(i * timeScale).stringValue];
         }
-        _hourMinuteMap = @{
-            @"0": mins,
-            @"1": @[@"0", @"30"],
-            @"2": @[@"0", @"30"],
-            @"3": @[@"0", @"30"],
-            @"4": @[@"0", @"30"],
-            @"5": @[@"0", @"30"],
-            @"6": @[@"0", @"30"],
-            @"12": @[@"0", @"30"],
-            @"24": @[@"0"],
-            @"48": @[@"0"]
-        };
+        NSMutableDictionary *hourMap = [NSMutableDictionary dictionary];
+        hourMap[@"0"] = mins;
+        NSInteger restMinute = option.maxAheadTime % 60;
+        NSInteger maxHour = option.maxAheadTime / 60 + (restMinute > 0);
+        for (NSInteger i=1; i<=maxHour; i++) {
+            if (i == maxHour && restMinute > 0) {
+                if (i < 24 && restMinute >= 30) {
+                    [self setMinutesList:@[@"0", @"30"] forHour:i inDictionary:hourMap];
+                } else {
+                    [self setMinutesList:@[@"0"] forHour:i inDictionary:hourMap];
+                }
+            } else {
+                if (i < 24) {
+                    [self setMinutesList:@[@"0", @"30"] forHour:i inDictionary:hourMap];
+                } else {
+                    [self setMinutesList:@[@"0"] forHour:i inDictionary:hourMap];
+                }
+            }
+        }
+        _hourMinuteMap = hourMap;
     }
     return _hourMinuteMap;
 }
 
 - (NSArray *)hours {
     if (!_hours) {
-        _hours = @[@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"12", @"24", @"48"];
+        NSMutableArray *hours = [[self.hourMinuteMap allKeys] mutableCopy];
+        [hours sortUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+            if (obj1.integerValue > obj2.integerValue) {
+                return NSOrderedDescending;
+            } else if (obj1.integerValue == obj2.integerValue) {
+                return NSOrderedSame;
+            }
+            return NSOrderedAscending;
+        }];
+        _hours = hours;
     }
     return _hours;
 }

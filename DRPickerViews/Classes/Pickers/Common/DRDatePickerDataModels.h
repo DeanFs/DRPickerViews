@@ -414,6 +414,12 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 /// 最小提前提醒时间，单位：分钟，默认5
 @property (assign, nonatomic) NSInteger minAheadTime;
 
+/// 最大提前提醒时间，单位：分钟，默认48 * 60
+@property (assign, nonatomic) NSInteger maxAheadTime;
+
+/// 当前时间返显
+@property (assign, nonatomic) NSInteger currentAhead;
+
 @end
 
 

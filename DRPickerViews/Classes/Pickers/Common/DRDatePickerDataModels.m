@@ -173,7 +173,9 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _minAheadTime = 5;
+        _minAheadTime = [DRUIWidgetUtil defaultTimeScale];
+        _maxAheadTime = 48 * 60;
+        _currentAhead = -1;
     }
     return self;
 }

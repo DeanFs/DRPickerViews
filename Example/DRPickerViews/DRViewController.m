@@ -117,6 +117,8 @@
             
         case DRPickerTypeRemindAhead: {
             opt = [DRPickerRemindAheadOption optionWithTitle:@"设置提前提醒"];
+            ((DRPickerRemindAheadOption *)opt).maxAheadTime = 120;
+            ((DRPickerRemindAheadOption *)opt).currentAhead = 20;
         } break;
             
         case DRPickerTypeValueSelect: {
