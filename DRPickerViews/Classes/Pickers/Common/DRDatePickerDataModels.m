@@ -391,6 +391,11 @@
 @end
 
 
+@implementation DRPickerRemindAheadPickedObj
+
+@end
+
+
 @implementation DRPickerStringSelectPickedObj
 
 + (instancetype)objWithSelectedOption:(NSString *)option selectedIndex:(NSInteger)index {

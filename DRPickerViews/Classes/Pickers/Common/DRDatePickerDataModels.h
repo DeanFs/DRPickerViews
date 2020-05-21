@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger, DRPickerType) {
     
     // 提前提醒0~6,12,24,48小时，小时为0时，分5~55，否则分为0或30, 刻度为5分钟
     // 入参：DRPickerRemindAheadOption
-    // 出参：NSNumber
+    // 出参：DRPickerRemindAheadPickedObj
     DRPickerTypeRemindAhead,
     
     // 数值带单位选择器，如xx天  xx岁
@@ -849,6 +849,23 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 
 + (instancetype)objWithTimeConsuming:(int64_t)timeConsuming
                             timeDesc:(NSString *)timeDesc;
+
+@end
+
+
+@interface DRPickerRemindAheadPickedObj : NSObject
+
+/// 选择结果全部转换为分钟的值
+@property (assign, nonatomic) NSInteger minuteValue;
+
+/// 选中的小时
+@property (assign, nonatomic) NSInteger hour;
+
+/// 选中的分钟
+@property (assign, nonatomic) NSInteger minute;
+
+/// 选择结果的描述，xx分钟，xx小时xx分钟
+@property (copy, nonatomic) NSString *desc;
 
 @end
 

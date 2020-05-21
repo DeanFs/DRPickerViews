@@ -212,7 +212,7 @@
     opt.dismissBlock = ^{
         kDR_LOG(@"picker dismiss");
     };
-    opt.autoDismissWhenPicked = NO;
+    opt.autoDismissWhenPicked = YES;
     
 //    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDRScreenWidth - 40, 70)];
 //    customView.backgroundColor = [UIColor redColor];
@@ -222,12 +222,8 @@
 //        [opt.pickerView dismissComplete:nil];
 //    }];
     
-    kDRWeakSelf
     [DRPickerFactory showPickerViewWithType:type pickerOption:opt pickDoneBlock:^(DRBaseAlertPicker * _Nonnull picker, id  _Nonnull pickedObject) {
         kDR_LOG(@"%@", pickedObject);
-        [picker dismissComplete:^{
-            [weakSelf.navigationController pushViewController:[UIViewController new] animated:YES];
-        }];
     }];
 }
 

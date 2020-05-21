@@ -72,8 +72,18 @@
 }
 
 - (id)pickedObject {
-    NSInteger minute = [(NSString *)[self.pickerView.currentSelectedStrings safeGetObjectWithIndex:3] integerValue];
-    return @(self.hour * 60 + minute);
+    DRPickerRemindAheadPickedObj *obj = [DRPickerRemindAheadPickedObj new];
+    obj.hour = self.hour;
+    obj.minute = [(NSString *)[self.pickerView.currentSelectedStrings safeGetObjectWithIndex:3] integerValue];
+    obj.minuteValue = obj.hour * 60 + obj.minute;
+    obj.desc = @"";
+    if (obj.hour > 0) {
+        obj.desc = [obj.desc stringByAppendingFormat:@"%ld小时", obj.hour];
+    }
+    if (obj.minute > 0) {
+        obj.desc = [obj.desc stringByAppendingFormat:@"%ld分钟", obj.minute];
+    }
+    return obj;
 }
 
 - (Class)pickerOptionClass {
