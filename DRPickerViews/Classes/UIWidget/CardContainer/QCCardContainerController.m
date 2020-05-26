@@ -12,7 +12,6 @@
 #import <Masonry/Masonry.h>
 #import <BlocksKit/NSObject+BKBlockObservation.h>
 #import <BlocksKit/UIGestureRecognizer+BlocksKit.h>
-#import <BlocksKit/UIView+BlocksKit.h>
 #import <DRMacroDefines/DRMacroDefines.h>
 #import <DRCategories/UIView+DRExtension.h>
 #import <DRCategories/UITabBar+DRExtension.h>
@@ -455,7 +454,6 @@
         }];
         [self setupContentObj];
     }
-    [self.containerView bk_whenTapped:^{}];
 }
 
 - (void)setupContentObj {
@@ -833,9 +831,15 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
-    if (self.dismissWhenTouchSpaceBlock == nil || self.dismissWhenTouchSpaceBlock()) {
-        [self dismissComplete:nil];
+    UITouch *touch = [touches anyObject];
+    UIView *touchView = touch.view;
+    while (touchView != nil && touchView != self.view) {
+        if (touchView == self.containerView) {
+            return;
+        }
+        touchView = touchView.superview;
     }
+    [self dismissComplete:nil];
 }
 
 #pragma mark - private
