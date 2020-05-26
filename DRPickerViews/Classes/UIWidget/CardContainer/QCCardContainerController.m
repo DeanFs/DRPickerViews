@@ -830,10 +830,11 @@
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
     UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInView:self.view];
-    if (!CGRectContainsPoint(self.containerView.frame, location)) {
+    CGPoint location = [touch locationInView:kDRWindow];
+    CGRect rectToWindow = [self.view convertRect:self.containerView.frame toView:kDRWindow];
+    if (!CGRectContainsPoint(rectToWindow, location)) {
+        [self.view endEditing:YES];
         if (self.dismissWhenTouchSpaceBlock == nil || self.dismissWhenTouchSpaceBlock()) {
             [self dismissComplete:nil];
         }
