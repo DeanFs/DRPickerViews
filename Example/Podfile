@@ -6,6 +6,7 @@ target 'DRPickerViews_Example' do
   pod 'DRPickerViews', :path => '../'
   pod 'YYModel'
   pod 'BlocksKit'
+  pod 'AFNetworking'
 
   target 'DRPickerViews_Tests' do
     inherit! :search_paths

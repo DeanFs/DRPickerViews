@@ -71,7 +71,7 @@
         layoutWidth += self.itemWidth;
     }
     
-    // 设置左右两边残缺item的透明不
+    // 设置左右两边残缺item的透明度
     // 左边
     UICollectionViewLayoutAttributes *firstAttributes = array.firstObject;
     CGFloat firstItemRight = firstAttributes.center.x + self.itemWidth / 2;
@@ -117,8 +117,7 @@
             attributes.transform = CGAffineTransformMakeScale(scale, scale);
             
             CGPoint center = attributes.center;
-            CGFloat y = self.height - self.expandHeight / 2;
-            attributes.center = CGPointMake(center.x, y);
+            attributes.center = CGPointMake(center.x, self.expandHeight / 2);
         }
     }    
     return array;

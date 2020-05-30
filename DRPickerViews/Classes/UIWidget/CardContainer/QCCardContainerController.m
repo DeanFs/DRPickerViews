@@ -676,6 +676,12 @@
     kDRWeakSelf
     // 方法不存在则添加方法
     self.scrollView.delegate = nil;
+    if (![delegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]) {
+        [DRUIWidgetUtil addSelector:@selector(scrollViewWillBeginDragging:)
+                             forObj:delegate
+                            fromObj:self
+                                imp:(IMP)add_scrollViewWillBeginDragging];
+    }
     if (![delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
         [DRUIWidgetUtil addSelector:@selector(scrollViewDidScroll:)
                              forObj:delegate
@@ -687,12 +693,6 @@
                              forObj:delegate
                             fromObj:self
                                 imp:(IMP)add_scrollViewWillEndDragging];
-    }
-    if (![delegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]) {
-        [DRUIWidgetUtil addSelector:@selector(scrollViewWillBeginDragging:)
-                             forObj:delegate
-                            fromObj:self
-                                imp:(IMP)add_scrollViewWillBeginDragging];
     }
     self.scrollView.delegate = delegate;
     id token = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewWillBeginDragging:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
@@ -710,7 +710,7 @@
     token = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
         NSArray *arguments = [aspectInfo arguments];
         CGPoint targetContentOffset;
-        [weakSelf scrollViewWillEndDragging:[aspectInfo arguments].firstObject
+        [weakSelf scrollViewWillEndDragging:arguments.firstObject
                                withVelocity:[(NSValue *)arguments[1] CGPointValue]
                         targetContentOffset:&targetContentOffset];
     } error:nil];

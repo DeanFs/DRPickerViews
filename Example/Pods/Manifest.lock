@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
   - Aspects (1.4.1)
   - BlocksKit (2.2.5):
     - BlocksKit/All (= 2.2.5)
@@ -757,12 +772,14 @@ PODS:
   - YYModel (1.0.4)
 
 DEPENDENCIES:
+  - AFNetworking
   - BlocksKit
   - DRPickerViews (from `../`)
   - YYModel
 
 SPEC REPOS:
   trunk:
+    - AFNetworking
     - Aspects
     - BlocksKit
     - DRCategories
@@ -784,6 +801,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   DRCategories: 5ce7e79748e3cbfd8813f34431c36f44eed0fd09
@@ -801,6 +819,6 @@ SPEC CHECKSUMS:
   SDWebImage: 21b19f56b4226cdfe3aefe4e6848dc43ed129a86
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: ad5c5ae183157645d67499b43970e3920496657a
+PODFILE CHECKSUM: fdbdae6b5aa1afc2e1706c03e1474cc79b35d1cc
 
 COCOAPODS: 1.8.4
