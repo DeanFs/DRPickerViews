@@ -39,7 +39,7 @@
     valueModel->_endMinute = endMinute % 60;
     valueModel->_duration = durationMinute * 60;
     valueModel->_enoughDuration = durationMinute >= minDuration;
-    valueModel->_endHourMinute = [NSString stringWithFormat:@"%02ld%02ld", endHour, endMinute];
+    valueModel->_endHourMinute = [NSString stringWithFormat:@"%02ld%02ld", valueModel.endHour, valueModel.endMinute];
     valueModel->_beyondOneDay = beyondOneDay;
     return valueModel;
 }
