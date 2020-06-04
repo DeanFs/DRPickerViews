@@ -225,11 +225,11 @@
                 endHour += endMinute / 60;
                 endMinute = endMinute % 60;
             }
-            if (endHour > 23) {
-                endHour = endHour % 24;
-            }
             NSInteger endMinuteRow = endMinute / self.timeScale + (endMinute % self.timeScale > 0);
             if (self.endTimeCyclable) {
+                if (endHour > 23) {
+                    endHour = endHour % 24;
+                }
                 endHour = kHourCenterRow + endHour;
                 endMinuteRow = kMinuteCenterRow + endMinuteRow;
             } else {
