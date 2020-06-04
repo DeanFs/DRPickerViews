@@ -85,9 +85,10 @@
     }
     
     if (hmOption.forDuration) {
-        self.pickerView.delegate = self;
         self.tipLabel.hidden = !hmOption.showDurationTip;
         self.pickerViewTop.constant = 20;
+        self.pickerView.delegate = self;
+        self.pickerView.endTimeCyclable = hmOption.endTimeCyclable || !hmOption.allowBeyondDay;
         self.pickerView.type = DRHourMinutePickerViewTypeDuration;
         self.pickerView.minDuration = hmOption.minDuration;
         [self.pickerView setCurrentStartHour:hour
@@ -168,7 +169,6 @@
                 [config setupWeekDays:self.selectedWeekdays
                            pickedTime:pickedTime
                              duration:value.duration
-                         durationDesc:value.durationDesc
                         endHourMinute:value.endHourMinute
                        enoughDuration:value.enoughDuration
                          beyondOneDay:value.beyondOneDay];
@@ -186,7 +186,6 @@
         DRPickerHMOnlyPickedObj *obj = [DRPickerHMOnlyPickedObj new];
         [obj setupWithPickedTime:[NSString stringWithFormat:@"%02ld%02ld", value.hour, value.minute]
                     duration:value.duration
-                durationDesc:value.durationDesc
                endHourMinute:value.endHourMinute
                enoughDuation:value.enoughDuration
                 beyondOneDay:value.beyondOneDay];
@@ -200,7 +199,7 @@
     self.topBar.rightButtonEnble = NO;
     self.tipLabel.textColor = [UIColor hx_colorWithHexRGBAString:@"E95157"];
     DRPickerHMOnlyOption *hmOption = (DRPickerHMOnlyOption *)self.pickerOption;
-    if (selectedValue.beyondOneDay) {
+    if (selectedValue.beyondOneDay && !hmOption.allowBeyondDay) {
         if (hmOption.ignoreError) {
             self.tipLabel.hidden = YES;
         } else {

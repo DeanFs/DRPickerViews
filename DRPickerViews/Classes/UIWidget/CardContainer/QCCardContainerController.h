@@ -20,13 +20,6 @@ typedef NS_ENUM(NSInteger, QCCardContentPosition) {
 /// @param cardContainerVc 卡片控制器，若要引用cardContainerVc需要使用 weak 弱引用
 - (void)setupCardContainerVc:(QCCardContainerController *)cardContainerVc;
 
-/// 插入到卡片容器的视图View.SubViews中，
-/// 有铺满整个View的，用于支持滑动退出的可滚视图
-/// 如果没有，可返回nil，
-/// 如待插入到卡片的ViewController.view中，有一个撑满的tableView，
-/// 则这里返回这个tableView
-- (UIScrollView *)supportCardPanCloseScrollView;
-
 @optional
 #pragma mark - 卡片页面的生命周期
 - (void)card_viewDidLoad;
@@ -35,6 +28,14 @@ typedef NS_ENUM(NSInteger, QCCardContentPosition) {
 - (void)card_viewDidLayoutSubviews;
 - (void)card_viewWillDisappear:(BOOL)animated;
 - (void)card_viewDidDisappear:(BOOL)animated;
+
+#pragma mark - 从底部弹出，且支持下滑退出时必须实现
+/// 插入到卡片容器的视图View.SubViews中，
+/// 有铺满整个View的，用于支持滑动退出的可滚视图
+/// 如果没有，可返回nil，
+/// 如待插入到卡片的ViewController.view中，有一个撑满的tableView，
+/// 则这里返回这个tableView
+- (UIScrollView *)supportCardPanCloseScrollView;
 
 #pragma mark - 从中间弹出时可选实现，加载ViewController时必须实现
 /// 从中间弹出时水平距离屏幕间距，不实现默认：40pt

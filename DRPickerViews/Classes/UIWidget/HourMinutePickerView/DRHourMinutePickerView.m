@@ -19,25 +19,17 @@
                             startMinute:(NSInteger)startMinute
                                 endHour:(NSInteger)endHour
                               endMinute:(NSInteger)endMinute
-                            minDuration:(NSInteger)minDuration {
+                            minDuration:(NSInteger)minDuration
+                        endTimeCyclable:(BOOL)endTimeCyclable {
     int64_t startMinuteStamp = startHour * 60 + startMinute;
     int64_t endMinuteStamp = endHour * 60 + endMinute;
     int64_t durationMinute = endMinuteStamp - startMinuteStamp;
     BOOL beyondOneDay = NO;
-    if (durationMinute < 0) {
-        durationMinute = 1440 - startMinuteStamp + endMinuteStamp;
-        beyondOneDay = YES;
-    }
-    
-    NSMutableString *text = [NSMutableString string];
-    if (durationMinute > 59) {
-        [text appendFormat:@"持续 %lli 小时", durationMinute/60];
-        NSInteger minute = durationMinute % 60;
-        if (minute > 0) {
-            [text appendFormat:@" %ld 分钟", minute];
+    if ((durationMinute <= 0 && endTimeCyclable) || endHour >= 24) {
+        if (durationMinute <= 0) {
+            durationMinute = 1440 - startMinuteStamp + endMinuteStamp;
         }
-    } else {
-        [text appendFormat:@"持续 %lli 分钟", durationMinute];
+        beyondOneDay = YES;
     }
     
     DRHourMinutePickerValueModel *valueModel = [DRHourMinutePickerValueModel new];
@@ -46,7 +38,6 @@
     valueModel->_endHour = endHour;
     valueModel->_endMinute = endMinute;
     valueModel->_duration = durationMinute * 60;
-    valueModel->_durationDesc = text;
     valueModel->_enoughDuration = durationMinute >= minDuration;
     valueModel->_endHourMinute = [NSString stringWithFormat:@"%02ld%02ld", endHour, endMinute];
     valueModel->_beyondOneDay = beyondOneDay;
@@ -65,7 +56,6 @@
     if (self = [super init]) {
         _enoughDuration = YES;
         _beyondOneDay = NO;
-        _durationDesc = @"";
     }
     return self;
 }
@@ -85,6 +75,7 @@
 @property (nonatomic, assign) NSInteger minute;
 @property (nonatomic, assign) int64_t duration;
 @property (nonatomic, assign) BOOL setupWaiting;
+@property (copy, nonatomic) NSString *centerSeparator;
 
 @end
 
@@ -112,21 +103,33 @@
  @return 根据type不同返回不同数据模型
  */
 - (DRHourMinutePickerValueModel *)currentSelectedValue {
-    NSInteger startHour = [self.pickerView selectedRowInComponent:0] % 24;
-    NSInteger startMinute = ([self.pickerView selectedRowInComponent:1] * self.timeScale) % 60;
+    self.hour = [self.pickerView selectedRowInComponent:0] % 24;
+    self.minute = ([self.pickerView selectedRowInComponent:1] * self.timeScale) % 60;
+    [self.pickerView reloadAllComponents];
     
     if (self.type == DRHourMinutePickerViewTypeMoment) {
-        return [DRHourMinutePickerValueModel valueModelWithStartHour:startHour
-                                                         startMinute:startMinute];
+        return [DRHourMinutePickerValueModel valueModelWithStartHour:self.hour
+                                                         startMinute:self.minute];
     }
-    NSInteger endHour = [self.pickerView selectedRowInComponent:3] % 24;
-    NSInteger endMinute = ([self.pickerView selectedRowInComponent:4] * self.timeScale) % 60;
+    NSInteger endHour = [self.pickerView selectedRowInComponent:3];
+    if (self.endTimeCyclable) {
+        endHour %= 24;
+    } else {
+        endHour += self.hour;
+    }
+    NSInteger endMinute = ([self.pickerView selectedRowInComponent:4] * self.timeScale);
+    if (self.endTimeCyclable || endHour != self.hour) {
+        endMinute %= 60;
+    } else {
+        endMinute += (self.minute + self.timeScale);
+    }
     
-    return [DRHourMinutePickerValueModel valueModelWithStartHour:startHour
-                                                     startMinute:startMinute
+    return [DRHourMinutePickerValueModel valueModelWithStartHour:self.hour
+                                                     startMinute:self.minute
                                                          endHour:endHour
                                                        endMinute:endMinute
-                                                     minDuration:self.minDuration];
+                                                     minDuration:self.minDuration
+                                                 endTimeCyclable:self.endTimeCyclable];
 }
 
 /**
@@ -199,9 +202,9 @@
             hour = hour % 24;
         }
         self.hour = hour;
+        [self.pickerView reloadAllComponents];
         
         // 反显
-        NSAssert(self.timeScale > 0 && self.timeScale < 60, @"时间步长需要在1~59之间");
         [self.pickerView selectRow:kHourCenterRow + self.hour
                        inComponent:0
                           animated:NO];
@@ -209,8 +212,6 @@
                        inComponent:1
                           animated:NO];
         if (self.type == DRHourMinutePickerViewTypeDuration) {
-            NSAssert(self.minDuration >= self.timeScale && self.minDuration <= 1440, @"最小时间间隔不能小于时间步长，且不能超过24小时(1440分钟)");
-            NSAssert(self.duration <= 86400, @"时间跨度不能超过一天");
             if (self.duration <= 0) {
                 self.duration = self.minDuration*60;
             }
@@ -228,11 +229,18 @@
                 endHour = endHour % 24;
             }
             NSInteger endMinuteRow = endMinute / self.timeScale + (endMinute % self.timeScale > 0);
+            if (self.endTimeCyclable) {
+                endHour = kHourCenterRow + endHour;
+                endMinuteRow = kMinuteCenterRow + endMinuteRow;
+            } else {
+                endHour = 24 - self.hour + endHour;
+                endMinuteRow += (60 - self.minute) / self.timeScale;
+            }
             
-            [self.pickerView selectRow:kHourCenterRow + endHour
+            [self.pickerView selectRow:endHour
                            inComponent:3
                               animated:NO];
-            [self.pickerView selectRow:kMinuteCenterRow + endMinuteRow
+            [self.pickerView selectRow:endMinuteRow
                            inComponent:4
                               animated:NO];
         }
@@ -240,8 +248,17 @@
         self.setupWaiting = NO;
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            DRHourMinutePickerValueModel *value = [self currentSelectedValue];
+            if (self.type == DRHourMinutePickerViewTypeDuration) {
+                if (value.beyondOneDay) {
+                    self.centerSeparator = @"次日";
+                } else {
+                    self.centerSeparator = @"-";
+                }
+                [self.pickerView reloadComponent:2];
+            }
+        
             if ([self.delegate respondsToSelector:@selector(hourMinutePickerView:didSeletedValue:)]) {
-                DRHourMinutePickerValueModel *value = [self currentSelectedValue];
                 [self.delegate hourMinutePickerView:self
                                     didSeletedValue:value];
             }
@@ -260,14 +277,28 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    if (component == 0) {
+        return kHourRow;
+    }
+    if (component == 1) {
+        return kMinuteRow;
+    }
     if (component == 2) {
         return 1;
     }
-    if (component == 0 || component == 3) {
-        return kHourRow;
-    } else {
+    if (component == 3) {
+        if (self.endTimeCyclable) {
+            return kHourRow;
+        }
+        return 48 - self.hour;
+    }
+    if (self.endTimeCyclable) {
         return kMinuteRow;
     }
+    if ([pickerView selectedRowInComponent:3] == 0) {
+        return (60 - self.minute) / self.timeScale - 1;
+    }
+    return 60 / self.timeScale;
 }
 
 #pragma mark - UIPickerViewDelegate
@@ -276,9 +307,9 @@
         return 70;
     }
     if (component == 2) {
-        return 8;
+        return 32;
     }
-    return (self.width-58) / 4;
+    return (self.width-62) / 4;
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
@@ -290,12 +321,28 @@
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
     NSString *text;
-    if (component == 2) {
-        text = @"-";
-    } else if (component == 0 || component == 3) {
+    if (component == 0) {
         text = [NSString stringWithFormat:@"%02ld", row % 24];
-    } else {
+    } else if (component == 1) {
         text = [NSString stringWithFormat:@"%02ld", (row * self.timeScale) % 60];
+    } else if (component == 2) {
+        text = self.centerSeparator;
+    } else if (component == 3) {
+        if (self.endTimeCyclable) {
+            text = [NSString stringWithFormat:@"%02ld", row % 24];
+        } else {
+            text = [NSString stringWithFormat:@"%02ld", (row + self.hour) % 24];
+        }
+    } else {
+        if (self.endTimeCyclable) {
+            text = [NSString stringWithFormat:@"%02ld", (row * self.timeScale) % 60];
+        } else {
+            if ([pickerView selectedRowInComponent:3] == 0) {
+                text = [NSString stringWithFormat:@"%02ld", ((row+1) * self.timeScale) + self.minute];
+            } else {
+                text = [NSString stringWithFormat:@"%02ld", row * self.timeScale];
+            }
+        }
     }
     
     UILabel *label = (UILabel *)view;
@@ -324,22 +371,29 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     // 代理回调
+    DRHourMinutePickerValueModel *value = [self currentSelectedValue];
+    if (value.beyondOneDay) {
+        self.centerSeparator = @"次日";
+    } else {
+        self.centerSeparator = @"-";
+    }
     if ([self.delegate respondsToSelector:@selector(hourMinutePickerView:didSeletedValue:)]) {
-        DRHourMinutePickerValueModel *value = [self currentSelectedValue];
         [self.delegate hourMinutePickerView:self
                             didSeletedValue:value];
     }
     
-    // 回滚设置，无限滚动支持
-    if (component == 0 || component == 3) {
-        [pickerView selectRow:kHourCenterRow + row % 24 inComponent:component animated:NO];
-    } else if (component == 1 || component == 4) {
-        NSInteger minuteRow = ((row * self.timeScale) % 60) / self.timeScale;
-        [pickerView selectRow:kMinuteCenterRow + minuteRow inComponent:component animated:NO];
+    if (self.type == DRHourMinutePickerViewTypeMoment || self.endTimeCyclable) {
+        // 回滚设置，无限滚动支持
+        if (component == 0 || component == 3) {
+            [pickerView selectRow:kHourCenterRow + row % 24 inComponent:component animated:NO];
+        } else if (component == 1 || component == 4) {
+            NSInteger minuteRow = ((row * self.timeScale) % 60) / self.timeScale;
+            [pickerView selectRow:kMinuteCenterRow + minuteRow inComponent:component animated:NO];
+        }
     }
     
     // 用于富文本设置
-    [pickerView reloadComponent:component];
+    [pickerView reloadAllComponents];
 }
 
 #pragma mark - lifecycle
@@ -375,8 +429,10 @@
     self.pickerView = picker;
     
     self.timeScale = [DRUIWidgetUtil defaultTimeScale];
-    self.minDuration = 1;
+    self.minDuration = self.timeScale;
     self.textColor = [DRUIWidgetUtil normalColor];
+    self.endTimeCyclable = NO;
+    self.centerSeparator = @"-";
 }
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor {

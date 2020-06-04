@@ -134,9 +134,10 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _minDuration = kDefaultMinDuration;
-        _allowBeyondDay = NO;
+        _minDuration = self.timeScale;
+        _allowBeyondDay = YES;
         _showDurationTip = YES;
+        _endTimeCyclable = NO;
     }
     return self;
 }
@@ -173,8 +174,8 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _minAheadTime = [DRUIWidgetUtil defaultTimeScale];
-        _maxAheadTime = 48 * 60;
+        _minAheadTime = self.timeScale;
+        _maxAheadTime = 60 * 24 * 60; // 最多60天
         _currentAhead = -1;
     }
     return self;
@@ -337,13 +338,11 @@
 
 - (void)setupWithPickedTime:(NSString *)pickedTime
                    duration:(NSInteger)duration
-               durationDesc:(NSString *)durationDesc
               endHourMinute:(NSString *)endHourMinute
               enoughDuation:(BOOL)enoughDuration
                beyondOneDay:(BOOL)beyondOneDay {
     _pickedTime = pickedTime;
     _duration = duration;
-    _durationDesc = durationDesc;
     _endHourMinute = endHourMinute;
     _enoughDuration = enoughDuration;
     _beyondOneDay = beyondOneDay;
@@ -363,14 +362,12 @@
 - (void)setupWeekDays:(NSArray<NSNumber *> *)weekDays
            pickedTime:(NSString *)pickedTime
              duration:(NSInteger)duration
-         durationDesc:(NSString *)durationDesc
         endHourMinute:(NSString *)endHourMinute
        enoughDuration:(BOOL)enoughDuration
          beyondOneDay:(BOOL)beyondOneDay {
     self.weekDays = weekDays;
     self.pickedTime = pickedTime;
     self.duration = duration;
-    self.durationDesc = durationDesc;
     self.endHourMinute = endHourMinute;
     self.enoughDuration = enoughDuration;
     self.beyondOneDay = beyondOneDay;

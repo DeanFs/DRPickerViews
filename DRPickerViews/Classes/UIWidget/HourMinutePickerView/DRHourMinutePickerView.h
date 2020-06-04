@@ -22,8 +22,6 @@ typedef NS_ENUM(NSInteger, DRHourMinutePickerViewType) {
 
 // 持续分钟数，时间段类型时有值，时间点类型为0，单位：秒
 @property (nonatomic, assign, readonly) int64_t duration;
-// 持续时长中文描述
-@property (nonatomic, copy, readonly) NSString *durationDesc;
 // 结束时间的小时分钟 HHmm
 @property (nonatomic, copy, readonly) NSString *endHourMinute;
 // 时间段类型时，标记时间段有效（duration > minDuration）
@@ -64,6 +62,9 @@ IB_DESIGNABLE
 
 /// 最小时间跨度，1~1439，时间段类型时可用
 @property (nonatomic, assign) IBInspectable NSInteger minDuration;
+
+/// 时间段的结束时间可循环滚动，默认NO
+@property (assign, nonatomic) BOOL endTimeCyclable;
 
 /// 代理
 @property (nonatomic, weak) id<DRHourMinutePickerViewDelegate> delegate;

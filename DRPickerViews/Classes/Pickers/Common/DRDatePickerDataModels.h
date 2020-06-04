@@ -341,6 +341,9 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
  */
 @property (nonatomic, assign) BOOL allowBeyondDay;
 
+/// 时间段的结束时间可循环滚动，默认NO
+@property (assign, nonatomic) BOOL endTimeCyclable;
+
 /**
  忽略错误，durationTip 不显示红色，不合法时隐藏tip
  */
@@ -411,10 +414,10 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 
 @interface DRPickerRemindAheadOption : DRPickerHMBaseOption
 
-/// 最小提前提醒时间，单位：分钟，默认5
+/// 最小提前提醒时间，单位：分钟，默认时间步长
 @property (assign, nonatomic) NSInteger minAheadTime;
 
-/// 最大提前提醒时间，单位：分钟，默认48 * 60
+/// 最大提前提醒时间，单位：分钟，默认60天
 @property (assign, nonatomic) NSInteger maxAheadTime;
 
 /// 当前时间返显
@@ -783,11 +786,6 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 @property (nonatomic, assign) int64_t duration;
 
 /**
- 持续时长中文描述
- */
-@property (nonatomic, copy) NSString *durationDesc;
-
-/**
  结束时间的小时分钟 HHmm
  */
 @property (nonatomic, copy) NSString *endHourMinute;
@@ -804,7 +802,6 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 
 - (void)setupWithPickedTime:(NSString *)pickedTime
                    duration:(NSInteger)duration
-               durationDesc:(NSString *)durationDesc
               endHourMinute:(NSString *)endHourMinute
               enoughDuation:(BOOL)enoughDuration
                beyondOneDay:(BOOL)beyondOneDay;
@@ -824,7 +821,6 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 - (void)setupWeekDays:(NSArray<NSNumber *> *)weekDays
            pickedTime:(NSString *)pickedTime
              duration:(NSInteger)duration
-         durationDesc:(NSString *)durationDesc
         endHourMinute:(NSString *)endHourMinute
        enoughDuration:(BOOL)enoughDuration
          beyondOneDay:(BOOL)beyondOneDay;
@@ -857,6 +853,9 @@ typedef NS_ENUM(NSInteger, DRYMDWithLunarPickerType) {
 
 /// 选择结果全部转换为分钟的值
 @property (assign, nonatomic) NSInteger minuteValue;
+
+/// 选中的天
+@property (assign, nonatomic) NSInteger day;
 
 /// 选中的小时
 @property (assign, nonatomic) NSInteger hour;

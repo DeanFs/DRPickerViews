@@ -186,180 +186,205 @@
 
 @interface UIView (QCPullDownContainer)
 
-@property (weak, nonatomic) QCAppletePullDownView *pullDownView;
-@property (assign, nonatomic) CGFloat originY;
-@property (assign, nonatomic) BOOL haveExpand;
+@property (weak, nonatomic) QCAppletePullDownView *qc_pull_pullDownView;
+@property (assign, nonatomic) CGFloat qc_pull_originY;
+@property (assign, nonatomic) CGFloat qc_pull_pullViewHeight;
+@property (assign, nonatomic) BOOL qc_pull_haveExpand;
 
 @end
 
 @implementation UIView (PullDownContainer)
 
-- (QCAppletePullDownView *)pullDownView {
-    return [self bk_associatedValueForKey:@selector(pullDownView)];
+- (QCAppletePullDownView *)qc_pull_pullDownView {
+    return [self bk_associatedValueForKey:@selector(qc_pull_pullDownView)];
 }
 
-- (void)setPullDownView:(QCAppletePullDownView *)pullDownView {
-    [self bk_associateValue:pullDownView withKey:@selector(pullDownView)];
+- (void)setQc_pull_pullDownView:(QCAppletePullDownView *)pullDownView {
+    [self bk_associateValue:pullDownView withKey:@selector(qc_pull_pullDownView)];
 }
 
-- (CGFloat)originY {
-   return [[self bk_associatedValueForKey:@selector(originY)] floatValue];
+- (CGFloat)qc_pull_originY {
+    return [[self bk_associatedValueForKey:@selector(qc_pull_originY)] floatValue];
 }
 
-- (void)setOriginY:(CGFloat)originY {
-    [self bk_associateValue:@(originY) withKey:@selector(originY)];
+- (void)setQc_pull_originY:(CGFloat)originY {
+    [self bk_associateValue:@(originY) withKey:@selector(qc_pull_originY)];
 }
 
-- (BOOL)haveExpand {
-    return [[self bk_associatedValueForKey:@selector(haveExpand)] boolValue];
+- (CGFloat)qc_pull_pullViewHeight {
+    return [[self bk_associatedValueForKey:@selector(qc_pull_pullViewHeight)] floatValue];
 }
 
-- (void)setHaveExpand:(BOOL)haveExpand {
-    [self bk_associateValue:@(haveExpand) withKey:@selector(haveExpand)];
+- (void)setQc_pull_pullViewHeight:(CGFloat)qc_pull_pullViewHeight {
+    [self bk_associateValue:@(qc_pull_pullViewHeight) withKey:@selector(qc_pull_pullViewHeight)];
+}
+
+- (BOOL)qc_pull_haveExpand {
+    return [[self bk_associatedValueForKey:@selector(qc_pull_haveExpand)] boolValue];
+}
+
+- (void)setQc_pull_haveExpand:(BOOL)haveExpand {
+    [self bk_associateValue:@(haveExpand) withKey:@selector(qc_pull_haveExpand)];
 }
 
 - (void)preparePullDown {
-    if (self.pullDownView == nil) {
+    if (self.qc_pull_pullDownView == nil) {
         QCAppletePullDownView *pullView = [QCAppletePullDownView pullDownView];
         [pullView.superview recover];
         pullView.y = self.y;
         [self.superview insertSubview:pullView belowSubview:self];
-        self.originY = self.y;
-        self.pullDownView = pullView;
+        self.qc_pull_originY = self.y;
+        self.qc_pull_pullDownView = pullView;
     }
 }
 
 - (void)recover {
-    self.y = self.originY;
-    [self.pullDownView expandChangeToHeight:0];
-    [self.pullDownView removeFromSuperview];
-    self.pullDownView = nil;
-    self.haveExpand = NO;
+    self.y = self.qc_pull_originY;
+    [self.qc_pull_pullDownView expandChangeToHeight:0];
+    [self.qc_pull_pullDownView removeFromSuperview];
+    self.qc_pull_pullDownView = nil;
+    self.qc_pull_haveExpand = NO;
 }
 
 - (void)dragEnd {
     self.userInteractionEnabled = NO;
-    if (self.y - self.originY >= kAppletPullViewHeight) {
+    if (self.y - self.qc_pull_originY >= kAppletPullViewHeight) {
         [UIView animateWithDuration:DRGlobalAnimationDuration animations:^{
-            self.y = self.originY + kAppletPullViewHeight;
-            self.pullDownView.y = self.originY;
+            self.y = self.qc_pull_originY + self.qc_pull_pullViewHeight;
+            self.qc_pull_pullDownView.y = self.qc_pull_originY;
         } completion:^(BOOL finished) {
             self.userInteractionEnabled = finished;
         }];
-        self.haveExpand = YES;
+        self.qc_pull_haveExpand = YES;
     } else {
         [UIView animateWithDuration:DRGlobalAnimationDuration animations:^{
-            self.y = self.originY;
+            self.y = self.qc_pull_originY;
         } completion:^(BOOL finished) {
             self.userInteractionEnabled = finished;
         }];
-        [self.pullDownView expandChangeToHeight:0];
-        self.haveExpand = NO;
+        [self.qc_pull_pullDownView expandChangeToHeight:0];
+        self.qc_pull_haveExpand = NO;
     }
 }
 
 - (void)pullDownWithDistance:(CGFloat)distance {
-    self.y = self.originY + distance;
-    self.pullDownView.y = self.originY;
-    if (self.y > self.originY + kAppletPullViewHeight) {
-        self.pullDownView.y = self.y - kAppletPullViewHeight;
+    if (distance < 0) {
+        return;
     }
-    [self.pullDownView expandChangeToHeight:distance];
+    self.y = self.qc_pull_originY + distance;
+    self.qc_pull_pullDownView.y = self.qc_pull_originY;
+    if (self.y > self.qc_pull_originY + self.qc_pull_pullViewHeight) {
+        self.qc_pull_pullDownView.y = self.y - self.qc_pull_pullViewHeight;
+    }
+    if (!self.qc_pull_haveExpand || distance < self.qc_pull_pullViewHeight) {
+        [self.qc_pull_pullDownView expandChangeToHeight:distance];
+    }
 }
 
 @end
 
-@interface UIScrollView () <UIScrollViewDelegate>
+@interface UIScrollView ()<UIScrollViewDelegate>
 
-@property (weak, nonatomic) UIView *containerView;
-@property (weak, nonatomic) id<UIScrollViewDelegate> currentDelegate;
-@property (copy, nonatomic) void (^onPullChangeBlock)(CGFloat pullDistance);
-@property (strong, nonatomic) NSMutableArray<id<AspectToken>> *delegateAspectTokens;
-@property (assign, nonatomic) CGFloat pullDistance;
+@property (weak, nonatomic) UIView *qc_pull_containerView;
+@property (weak, nonatomic) NSString *qc_pull_currentDelegate;
+@property (strong, nonatomic) NSMutableArray<id<AspectToken>> *qc_pull_delegateAspectTokens;
+@property (assign, nonatomic) CGFloat qc_pull_pullDistance;
 
 @end
 
 @implementation UIScrollView (QCPullDown)
 
-/// 设置ScrollView可以下拉出小程序
-/// @param containerView 下拉时整体可以移动的view
-/// @param onPullChangeBlock 下拉距离实时反馈回调
+/// 设置ScrollView可以下拉出小程序，每个scrollView仅可以调用一次
+/// @param containerView 下拉时整体可以移动的view，不能为空
+/// @param bottomInset 默认高度104，实际高度 104 - bottomInset
 - (void)setupCanPullDownWithContainerView:(UIView *)containerView
-                        onPullChangeBlock:(void(^)(CGFloat pullDistance))onPullChangeBlock {
-    if (self.containerView == nil) {
-        self.containerView = containerView;
-        self.onPullChangeBlock = onPullChangeBlock;
-        if (self.delegate == nil) {
-            self.delegate = self;
-        } else {
-            [self setupScrollDelegate:self.delegate];
-        }
+                              bottomInset:(CGFloat)bottomInset {
+    if (self.qc_pull_containerView == nil && containerView != nil) {
+        containerView.qc_pull_pullViewHeight = kAppletPullViewHeight - bottomInset;
+        self.qc_pull_containerView = containerView;
         kWeakSelf
         [self bk_addObserverForKeyPath:@"delegate" task:^(id target) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf setupScrollDelegate:weakSelf.delegate];
             });
         }];
+        if (self.delegate == nil) {
+            self.delegate = self;
+        } else {
+            [self setupScrollDelegate:self.delegate];
+        }
+        self.alwaysBounceVertical = YES;
     }
 }
 
 /// 收起已经下拉的小程序
 - (void)foldBack {
-    [self.containerView recover];
-    DR_SAFE_BLOCK(self.onPullChangeBlock, 0);
+    [self.qc_pull_containerView recover];
 }
 
 #pragma mark - private
-- (UIView *)containerView {
-    return [self bk_associatedValueForKey:@selector(containerView)];
+- (BOOL)qc_pull_allowUpBounce {
+    NSNumber *allowUpBounce = [self bk_associatedValueForKey:@selector(qc_pull_allowUpBounce)];
+    if (allowUpBounce == nil) {
+        return YES;
+    }
+    return [allowUpBounce boolValue];
 }
 
-- (void)setContainerView:(UIView *)containerView {
-    [self bk_associateValue:containerView withKey:@selector(containerView)];
+- (void)setQc_pull_allowUpBounce:(BOOL)qc_pull_allowUpBounce {
+    [self bk_associateValue:@(qc_pull_allowUpBounce) withKey:@selector(qc_pull_allowUpBounce)];
 }
 
-- (void (^)(CGFloat))onPullChangeBlock {
-    return [self bk_associatedValueForKey:@selector(onPullChangeBlock)];
+- (UIView *)qc_pull_containerView {
+    return [self bk_associatedValueForKey:@selector(qc_pull_containerView)];
 }
 
-- (void)setOnPullChangeBlock:(void (^)(CGFloat))onPullChangeBlock {
-    [self bk_associateValue:onPullChangeBlock withKey:@selector(onPullChangeBlock)];
+- (void)setQc_pull_containerView:(UIView *)containerView {
+    [self bk_associateValue:containerView withKey:@selector(qc_pull_containerView)];
 }
 
-- (CGFloat)pullDistance {
-    return [[self bk_associatedValueForKey:@selector(pullDistance)] floatValue];
+- (void (^)(CGFloat))qc_pull_onPullChangeBlock {
+    return [self bk_associatedValueForKey:@selector(qc_pull_onPullChangeBlock)];
 }
 
-- (void)setPullDistance:(CGFloat)pullDistance {
-    [self bk_associateValue:@(pullDistance) withKey:@selector(pullDistance)];
+- (void)setQc_pull_onPullChangeBlock:(void (^)(CGFloat))onPullChangeBlock {
+    [self bk_associateValue:onPullChangeBlock withKey:@selector(qc_pull_onPullChangeBlock)];
 }
 
-- (id<UIScrollViewDelegate>)currentDelegate {
-    return [self bk_associatedValueForKey:@selector(currentDelegate)];
+- (CGFloat)qc_pull_pullDistance {
+    return [[self bk_associatedValueForKey:@selector(qc_pull_pullDistance)] floatValue];
 }
 
-- (void)setCurrentDelegate:(id<UIScrollViewDelegate>)currentDelegate {
-    [self bk_associateValue:currentDelegate withKey:@selector(currentDelegate)];
+- (void)setQc_pull_pullDistance:(CGFloat)pullDistance {
+    [self bk_associateValue:@(pullDistance) withKey:@selector(qc_pull_pullDistance)];
 }
 
-- (NSMutableArray<id<AspectToken>> *)delegateAspectTokens {
-    NSMutableArray *tokens = [self bk_associatedValueForKey:@selector(delegateAspectTokens)];
+- (NSString *)qc_pull_currentDelegate {
+    return [self bk_associatedValueForKey:@selector(qc_pull_currentDelegate)];
+}
+
+- (void)setQc_pull_currentDelegate:(NSString *)currentDelegate {
+    [self bk_associateValue:currentDelegate withKey:@selector(qc_pull_currentDelegate)];
+}
+
+- (NSMutableArray<id<AspectToken>> *)qc_pull_delegateAspectTokens {
+    NSMutableArray *tokens = [self bk_associatedValueForKey:@selector(qc_pull_delegateAspectTokens)];
     if (tokens == nil) {
         tokens = [NSMutableArray array];
-        [self bk_associateValue:tokens withKey:@selector(delegateAspectTokens)];
+        [self bk_associateValue:tokens withKey:@selector(qc_pull_delegateAspectTokens)];
     }
     return tokens;
 }
 
 - (void)setupScrollDelegate:(id<UIScrollViewDelegate>)delegate {
-    if (delegate == nil || self.currentDelegate == delegate) {
+    if (delegate == nil || [self.qc_pull_currentDelegate isEqualToString:[NSString stringWithFormat:@"%@", delegate]]) {
         return;
     }
-    for (id<AspectToken> token in self.delegateAspectTokens) {
+    for (id<AspectToken> token in self.qc_pull_delegateAspectTokens) {
         [token remove];
     }
-    [self.delegateAspectTokens removeAllObjects];
-    self.currentDelegate = delegate;
+    [self.qc_pull_delegateAspectTokens removeAllObjects];
+    self.qc_pull_currentDelegate = [NSString stringWithFormat:@"%@", delegate];
     kWeakSelf
     // 方法不存在则添加方法
     self.delegate = nil;
@@ -383,52 +408,55 @@
     }
     self.delegate = delegate;
     id token = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewWillBeginDragging:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
-        [weakSelf scrollViewWillBeginDragging:weakSelf];
+        [weakSelf qc_pull_scrollViewWillBeginDragging:weakSelf];
     } error:nil];
     if (token) {
-        [self.delegateAspectTokens addObject:token];
+        [self.qc_pull_delegateAspectTokens addObject:token];
     }
     token = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewDidScroll:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
-        [weakSelf scrollViewDidScroll:weakSelf];
+        [weakSelf qc_pull_scrollViewDidScroll:weakSelf];
     } error:nil];
     if (token) {
-        [self.delegateAspectTokens addObject:token];
+        [self.qc_pull_delegateAspectTokens addObject:token];
     }
     token = [(NSObject *)delegate aspect_hookSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
-        [weakSelf.containerView dragEnd];
+        [weakSelf qc_pull_scrollViewWillEndDragging:weakSelf
+                                       withVelocity:CGPointZero
+                                targetContentOffset:nil];
     } error:nil];
     if (token) {
-        [self.delegateAspectTokens addObject:token];
+        [self.qc_pull_delegateAspectTokens addObject:token];
     }
-    self.currentDelegate = nil; // 防止循环引用
 }
 
 #pragma mark - UIScrollViewDelegate
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    [self.containerView preparePullDown];
-    self.pullDistance = self.containerView.haveExpand * kAppletPullViewHeight;
+- (void)qc_pull_scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.qc_pull_containerView preparePullDown];
+    self.qc_pull_pullDistance = self.qc_pull_containerView.qc_pull_haveExpand * self.qc_pull_containerView.qc_pull_pullViewHeight;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void)qc_pull_scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
     CGFloat insetTop = scrollView.contentInset.top;
     if (@available(iOS 11.0, *)) {
         insetTop += scrollView.adjustedContentInset.top;
     }
     offsetY += insetTop;
-    if (offsetY < 0 || self.pullDistance > 0) {
-        self.pullDistance -= offsetY*0.5;
-        if (!scrollView.decelerating) {
-            [self.containerView pullDownWithDistance:self.pullDistance];
+    if (offsetY < 0 || self.qc_pull_pullDistance > 0) {
+        self.qc_pull_pullDistance -= offsetY*0.5;
+        if (!scrollView.decelerating && scrollView.dragging) {
+            [self.qc_pull_containerView pullDownWithDistance:self.qc_pull_pullDistance];
         }
         if (offsetY != 0) {
             [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, -insetTop)];
         }
+    } else if (!self.qc_pull_allowUpBounce) {
+        [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, -insetTop)];
     }
 }
 
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    [self.containerView dragEnd];
+- (void)qc_pull_scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    [self.qc_pull_containerView dragEnd];
 }
 
 @end

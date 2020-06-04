@@ -839,7 +839,13 @@
         }
         touchView = touchView.superview;
     }
-    [self dismissComplete:nil];
+    if (self.dismissWhenTouchSpaceBlock != nil) {
+        if (self.dismissWhenTouchSpaceBlock()) {
+            [self dismissComplete:nil];
+        }
+    } else {
+        [self dismissComplete:nil];
+    }
 }
 
 #pragma mark - private

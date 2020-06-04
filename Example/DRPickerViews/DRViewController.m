@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     kDRWeakSelf
-    [DRUIWidgetUtil setTimeScale:5];
+    [DRUIWidgetUtil setTimeScale:1];
     [DRUIWidgetUtil setGetTopViewControllerBlock:^UIViewController *{
         return weakSelf;
     }];
@@ -105,8 +105,10 @@
             opt = [DRPickerHMPlanWeekOption optionWithTitle:@"选择周时间点"];
             ((DRPickerHMOnlyOption *)opt).currentTime = @"1229";
             ((DRPickerHMPlanWeekOption *)opt).forDuration = YES;
+            ((DRPickerHMPlanWeekOption *)opt).endTimeCyclable = YES;
+//            ((DRPickerHMPlanWeekOption *)opt).allowBeyondDay = NO;
 //            ((DRPickerHMPlanWeekOption *)opt).weekDays = @[@(1), @(3), @(7)];
-            ((DRPickerHMPlanWeekOption *)opt).onlyWeekDay = YES;
+//            ((DRPickerHMPlanWeekOption *)opt).onlyWeekDay = YES;
         } break;
             
         case DRPickerTypeTimeConsuming: {
@@ -117,7 +119,7 @@
             
         case DRPickerTypeRemindAhead: {
             opt = [DRPickerRemindAheadOption optionWithTitle:@"设置提前提醒"];
-            ((DRPickerRemindAheadOption *)opt).maxAheadTime = 120;
+//            ((DRPickerRemindAheadOption *)opt).maxAheadTime = 150;
             ((DRPickerRemindAheadOption *)opt).currentAhead = 20;
         } break;
             
