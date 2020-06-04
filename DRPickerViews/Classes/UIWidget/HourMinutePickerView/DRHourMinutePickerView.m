@@ -115,7 +115,7 @@
     if (self.endTimeCyclable) {
         endHour %= 24;
     } else {
-        endHour += self.hour;
+        endHour += (self.hour + (self.minute + self.timeScale >= 60));
     }
     NSInteger endMinute = ([self.pickerView selectedRowInComponent:4] * self.timeScale);
     if (self.endTimeCyclable || endHour != self.hour) {
@@ -233,13 +233,16 @@
                 endHour = kHourCenterRow + endHour;
                 endMinuteRow = kMinuteCenterRow + endMinuteRow;
             } else {
-                endHour = 24 - self.hour + endHour;
-                endMinuteRow += (60 - self.minute) / self.timeScale;
+                endHour = endHour - self.hour - (self.minute + self.timeScale >= 60);
+                if (endHour == 0 && (self.minute + self.timeScale < 60)) {
+                    endMinuteRow = (endMinute - self.minute) / self.timeScale - 1;
+                }
             }
             
             [self.pickerView selectRow:endHour
                            inComponent:3
                               animated:NO];
+            [self.pickerView reloadComponent:4];
             [self.pickerView selectRow:endMinuteRow
                            inComponent:4
                               animated:NO];
@@ -257,7 +260,7 @@
                 }
                 [self.pickerView reloadComponent:2];
             }
-        
+            
             if ([self.delegate respondsToSelector:@selector(hourMinutePickerView:didSeletedValue:)]) {
                 [self.delegate hourMinutePickerView:self
                                     didSeletedValue:value];
@@ -290,13 +293,17 @@
         if (self.endTimeCyclable) {
             return kHourRow;
         }
-        return 48 - self.hour;
+        NSInteger count = 48 - self.hour;
+        if (self.minute + self.timeScale >= 60) {
+            count --;
+        }
+        return count;
     }
     if (self.endTimeCyclable) {
         return kMinuteRow;
     }
     if ([pickerView selectedRowInComponent:3] == 0) {
-        return (60 - self.minute) / self.timeScale - 1;
+        return (60 - self.minute * (self.minute + self.timeScale < 60)) / self.timeScale - 1;
     }
     return 60 / self.timeScale;
 }
@@ -331,13 +338,13 @@
         if (self.endTimeCyclable) {
             text = [NSString stringWithFormat:@"%02ld", row % 24];
         } else {
-            text = [NSString stringWithFormat:@"%02ld", (row + self.hour) % 24];
+            text = [NSString stringWithFormat:@"%02ld", (row + self.hour + (self.minute + self.timeScale >= 60)) % 24];
         }
     } else {
         if (self.endTimeCyclable) {
             text = [NSString stringWithFormat:@"%02ld", (row * self.timeScale) % 60];
         } else {
-            if ([pickerView selectedRowInComponent:3] == 0) {
+            if ([pickerView selectedRowInComponent:3] == 0 && (self.minute + self.timeScale < 60)) {
                 text = [NSString stringWithFormat:@"%02ld", ((row+1) * self.timeScale) + self.minute];
             } else {
                 text = [NSString stringWithFormat:@"%02ld", row * self.timeScale];
