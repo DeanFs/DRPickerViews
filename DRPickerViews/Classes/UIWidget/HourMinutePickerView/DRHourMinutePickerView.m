@@ -35,8 +35,8 @@
     DRHourMinutePickerValueModel *valueModel = [DRHourMinutePickerValueModel new];
     valueModel->_hour = startHour;
     valueModel->_minute = startMinute;
-    valueModel->_endHour = endHour;
-    valueModel->_endMinute = endMinute;
+    valueModel->_endHour = endHour % 24;
+    valueModel->_endMinute = endMinute % 60;
     valueModel->_duration = durationMinute * 60;
     valueModel->_enoughDuration = durationMinute >= minDuration;
     valueModel->_endHourMinute = [NSString stringWithFormat:@"%02ld%02ld", endHour, endMinute];
