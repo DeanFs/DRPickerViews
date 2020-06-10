@@ -253,6 +253,10 @@
     self.containerVc.allowPanClose = self.allowPanClose;
     self.containerVc.autoDismissWhenRightButtonAction = self.autoDismissWhenConfirm;
     self.containerVc.alwaysBounceVertical = self.allowPanClose;
+    self.containerVc.dismissWhenTouchSpaceBlock = ^BOOL{
+        kDR_SAFE_BLOCK(weakSelf.sheetCancelBlock, NO);
+        return YES;
+    };
     BOOL showTopBar = NO;
     if (self.title != nil) {
         self.containerVc.title = self.title;
