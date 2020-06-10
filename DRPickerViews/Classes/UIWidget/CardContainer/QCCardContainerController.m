@@ -999,9 +999,11 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
-    CGFloat insetTop = scrollView.contentInset.top;
+    CGFloat insetTop = 0;
     if (@available(iOS 11.0, *)) {
         insetTop += scrollView.adjustedContentInset.top;
+    } else {
+        insetTop = scrollView.contentInset.top;
     }
     offsetY += insetTop;
     if (offsetY < 0 || self.panOffset > 0 || (!self.alwaysBounceVertical && scrollView.contentSize.height <= scrollView.height)) {
