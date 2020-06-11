@@ -125,7 +125,7 @@
     self.maxAheadTimeCmp.minute = maxAheadTime % 60;
     
     self.currentAheadCmp = [NSDateComponents new];
-    if (option.currentAhead > 0) {
+    if (option.currentAhead >= 0) {
         NSInteger currentAhead = option.currentAhead / timeScale * timeScale;
         self.currentAheadCmp.day = currentAhead / 1440;
         currentAhead %= 1440;
@@ -134,7 +134,7 @@
     } else {
         self.currentAheadCmp.day = 0;
         self.currentAheadCmp.hour = 0;
-        self.currentAheadCmp.minute = MIN(30, maxAheadTime);
+        self.currentAheadCmp.minute = MIN(30, option.maxAheadTime / timeScale * timeScale);
     }
     
     if (self.maxAheadTimeCmp.day > 0) {
